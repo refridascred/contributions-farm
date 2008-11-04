@@ -18,17 +18,26 @@ namespace Common.Utilities
         public const double DefaultRecord = 17.13;
         public const long StepRecord = 8643;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] data, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 70;
+            foreach (long value in data)
             {
-                if (data[i] == limit)
+                if ((3.8 * 7.0) >= (double)acc)
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ (value % 10);
+                }
+                else
+                {
+                    acc = acc - acc;
                 }
             }
-            return -1;
+            if (acc > 54)
+            {
+                acc = (acc - (5 + (long)data.Length)) % 97;
+            }
+            return acc;
         }
     }
 }
