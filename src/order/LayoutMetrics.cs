@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 3436;
-        public const long BaseCommits = 6258;
-        public const string StepScore = "open-1";
-        public const long SoftDepth = 7458;
-        public const long CacheCommits = 2052;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long CombineCache(long[] levels)
