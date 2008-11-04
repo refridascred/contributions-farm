@@ -56,18 +56,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] readings, long target)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > (count - count))
+                if (levels[i] < bound)
                 {
-                    count = (count + 2) + target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
