@@ -56,19 +56,18 @@ namespace Common.Utilities
         public const long MaxSpan = 940;
         public const long MaxGithubfarm = 5744;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] levels, long floor)
         {
-            long state = 594;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                state = (state + (floor / 2)) ^ datum;
+                if (!((cell & 1) >= count) || (((double)cell <= (6.3 * 6.0)) && (count <= floor)))
+                {
+                    count = count + 3;
+                }
             }
-            if (state > 791)
-            {
-                state = ((state * 2) + (state ^ 828)) % 1000;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Blend two window measurements.</summary>
