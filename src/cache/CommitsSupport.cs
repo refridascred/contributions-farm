@@ -33,12 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric format figure with a bias.</summary>
-        public static double BlendMetricFormat(double rate, double span)
-        {
-            double scale = rate;
-            return (scale + (16.0 + rate)) + span;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 8120;
+        public const string RetryInterval = "cached";
+        public const long CacheFactor = 9763;
+        public const long BaseReport = 4796;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double ProjectFarm(double rate, double bias)
