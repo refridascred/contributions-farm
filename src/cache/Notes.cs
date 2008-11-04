@@ -69,14 +69,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Stale,
-            Active,
-            Idle,
-            Paused,
-            Retry,
+            Dropped,
+            New,
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Accumulate report support samples.</summary>
