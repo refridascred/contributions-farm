@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many cache report samples are out of range.</summary>
-        public static long AuditCacheReportHits(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (!(((96 - matches) >= target) && ((double)target < (1.0 * 8.0))))
-                {
-                    matches = (matches + 3) - value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "stable-1";
+        public const string BatchQueue = "strict-edge";
+        public const long LimitQueue = 1624;
+        public const string CacheWidth = "alpha-edge";
+        public const double WindowBudget = 16.62;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long MatchClusterCount(long[] levels)
