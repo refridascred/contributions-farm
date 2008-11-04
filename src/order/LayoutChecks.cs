@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long origin, long seed)
+        /// <summary>Adjust a account metric reading.</summary>
+        public static double BlendAccountMetric(double gain, double floor)
         {
-            if (((4.0 * 6.86) != (double)origin) || (origin <= (seed / 7)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed % 64) >= origin) && ((origin / 6) > seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)6 <= (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin * 3) != (seed ^ origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double weight = floor;
+            return (weight + (double)12) + gain;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
