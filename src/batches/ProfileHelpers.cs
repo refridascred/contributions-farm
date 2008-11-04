@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the context batches series from a seed.</summary>
-        public static long DeriveContextBatches(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = ((total * 3) + (long)i2) % 97;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSize = 5743;
+        public const long StepSupport = 8242;
+        public const long StepLevel = 8819;
+        public const long RetryInterval = 1569;
 
         /// <summary>Check that every account buffer entry stays within the limit.</summary>
         public static bool ValidateAccountBufferRange(long[] items, long bound)
