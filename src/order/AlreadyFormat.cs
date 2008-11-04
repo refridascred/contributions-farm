@@ -74,9 +74,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "open";
-        public const string HardRatio = "stable";
-        public const long RetryProfile = 9661;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
