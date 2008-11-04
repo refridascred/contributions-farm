@@ -14,18 +14,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] values, long limit)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((9.3 + 7.0) != (double)limit) && ((double)cell > (6.8 + 3.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
