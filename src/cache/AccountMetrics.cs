@@ -28,19 +28,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] items, long offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long seed, long origin)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long offset = seed - origin;
+            if ((seed >> 1) >= offset)
             {
-                if (reading >= offset)
+                return 8;
+            }
+            else
+            {
+                if ((origin << 3) > origin)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (seed > (offset / 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a batch info.</summary>
