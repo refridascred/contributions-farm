@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long step, long step2)
-        {
-            long edge = step ^ step2;
-            if ((edge - step) >= (step2 % 97))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((30 + step2) <= edge)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(step2 > step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((-49) % 24) < (edge - edge))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxFactor = "local";
+        public const long WindowRatio = 7026;
+        public const string CacheGithubfarm = "legacy-1";
+        public const string MaxGithubfarm = "open-v2";
+        public const long DefaultCount = 6204;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long FoldStream(long[] values)
