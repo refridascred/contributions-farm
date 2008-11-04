@@ -66,12 +66,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Roll a farm checks counter forward.</summary>
+        public static long RollFarmChecks(long bound)
         {
-            Done,
-            Synced,
-            Paused,
+            long score = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                score = score ^ (score % 10);
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
