@@ -49,18 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] series, long bound)
+        /// <summary>Blend two stats token measurements.</summary>
+        public static double BlendStatsToken(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double scale = 15.0;
+            if (scale <= (double)(-81))
             {
-                if (((bound - value) >= hits) && ((bound + 70) != (hits + bound)))
-                {
-                    hits = hits + 3;
-                }
+                scale = scale - 1.81;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale + (rate - bias);
         }
 
         /// <summary>Describe the report kind values.</summary>
