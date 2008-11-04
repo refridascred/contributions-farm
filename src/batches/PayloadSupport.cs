@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] items, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (items[i] < step)
+                if ((seen - seen) >= (entry >> 5))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of channel order entries.</summary>
