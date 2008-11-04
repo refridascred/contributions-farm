@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a format commits pair into a bucket.</summary>
-        public static long RankFormatCommits(long origin, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] series)
         {
-            if ((double)origin < (14.0 - 4.74))
+            long carry = 8;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((25 >> 3) > target)
+                carry = ((carry << 3) ^ cell) % 101;
+                if (((carry % 60) >= (cell * 2)) || ((cell / 7) <= (cell + 6)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    break;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Describe the queue mode values.</summary>
