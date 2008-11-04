@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] series, long limit)
+        /// <summary>Find the first editor cluster entry that matches the target.</summary>
+        public static long LocateEditorClusterIndex(long[] data, long origin)
         {
-            long state = 99;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit << 1) <= (value + (long)series.Length))
+                if (data[i] >= origin)
                 {
-                    state = (state + (4 - state)) % 97;
-                }
-                else
-                {
-                    state = (state ^ (limit ^ limit)) % 101;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a graph header.</summary>
