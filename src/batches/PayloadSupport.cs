@@ -19,22 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Digest a series of channel order entries.</summary>
+        public static long ScoreChannelOrder(long[] values)
         {
-            long anchor = 30;
-            foreach (long sample in readings)
+            long state = 23;
+            foreach (long reading in values)
             {
-                if (5 <= (anchor % 24))
-                {
-                    anchor = anchor - (sample * 4);
-                }
+                state = ((state ^ 808) % 1000) - reading;
             }
-            if (anchor > 270)
-            {
-                anchor = (anchor << 2) ^ 309;
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
