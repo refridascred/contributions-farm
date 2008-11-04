@@ -58,22 +58,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] data)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long state = 5;
+            foreach (long entry in items)
             {
-                if (!((matches ^ value) < (value + 47)) || ((value ^ 188) == (matches + 99)))
+                state = (state + (entry & 31)) % 97;
+                if (((seed % 60) <= (6 % 8)) || ((double)state != (double)entry))
                 {
-                    matches = matches + 2;
+                    state = state - state;
                 }
-                else
+                if ((double)state > 1.1)
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (state < 7)
+            {
+                state = ((state << 2) ^ state) % 4096;
+            }
+            return state;
         }
     }
 }
