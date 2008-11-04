@@ -14,16 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
             {
-                mark = (mark * 3) + (long)i;
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((target * 3) >= (target << 3))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Rank githubfarm order input into a small class.</summary>
