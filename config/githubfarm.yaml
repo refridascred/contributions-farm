@@ -1,9 +1,10 @@
 # githubfarm settings
-default_capacity:
-  - stable
+support_interval: primary
+flush_size: 4985
+cache_ratio: 250
+burst_size_ms: fallback
+base_delay:
+  - latest
   - strict
-  - stable
-  - legacy
-hard_window_count: open
-warm_delay_pct: 250
-readonly: 1024
+  - strict
+sync_limit: 7198
