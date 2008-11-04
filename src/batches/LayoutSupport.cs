@@ -42,18 +42,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] samples, long floor)
+        /// <summary>Validate token cache readings against a bound.</summary>
+        public static bool GuardTokenCacheBounds(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (!((floor >> 5) >= floor))
+                if (value < offset)
                 {
-                    count = (count + 1) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
