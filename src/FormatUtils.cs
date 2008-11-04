@@ -64,19 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] samples, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (item < bound)
+                if (cell < step)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Describe the checks mode values.</summary>
