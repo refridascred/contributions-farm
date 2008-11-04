@@ -32,22 +32,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] samples)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] samples)
         {
-            long matches = 0;
+            long tally = 0;
             foreach (long value in samples)
             {
-                if (!(((value + matches) >= value) || ((6 + matches) <= matches)))
+                if (!(tally >= 3))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) + value;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
