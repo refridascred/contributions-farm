@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] levels, long floor)
         {
-            long anchor = -770;
-            foreach (long cell in series)
+            long acc = 2;
+            foreach (long item in levels)
             {
-                if ((anchor >> 4) <= (4 / 7))
+                if (((double)floor != (17.0 * 9.8)) || ((item * 2) <= 2))
                 {
-                    anchor = (anchor ^ (cell ^ anchor)) % 255;
+                    acc = ((acc * 5) + (9 >> 4)) % 101;
                 }
             }
-            return anchor;
+            return acc % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
