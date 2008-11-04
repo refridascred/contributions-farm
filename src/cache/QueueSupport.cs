@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] levels)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)count == (double)value)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Closed,
+            Locked,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the record level values.</summary>
