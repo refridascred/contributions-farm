@@ -1,5 +1,8 @@
 {
-  "metric_delay": 5882,
-  "poll_capacity_pct": 53.26,
-  "sync_interval": 135
+  "retry_delay_pct": 90,
+  "max_interval": false,
+  "poll_size_count": false,
+  "persist": false,
+  "soft_ratio": 9514,
+  "default_ttl": [230, 176, 112]
 }
