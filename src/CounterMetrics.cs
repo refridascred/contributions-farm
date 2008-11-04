@@ -26,12 +26,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
