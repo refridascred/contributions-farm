@@ -27,19 +27,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit payload record readings against a rule.</summary>
-        public static long CountPayloadRecordHits(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((origin - 9) >= (count + datum))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheSpan = 7806;
+        public const string WindowAccount = "fallback-edge";
+        public const double MinScore = 44.23;
+        public const long BurstAccount = 190;
+        public const long BatchCount = 5136;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterGaps(long[] readings, long floor)
