@@ -1,7 +1,5 @@
 {
-  "format_retries": [331, 379, 401, 43],
-  "command_threshold": ["local", "edge"],
-  "poll_limit": "strict",
-  "layout_timeout": "standard",
-  "cache_retries": ["legacy", "legacy", "blue"]
+  "counter_interval": [60, 49],
+  "burst_retries_s": ["eu-west", "edge", "green", "fallback"],
+  "dry_run": 63.66
 }
