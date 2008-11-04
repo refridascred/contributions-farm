@@ -44,12 +44,31 @@ namespace Common.Utilities
             return ((rate2 - (double)1) + rate) + bias;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 1149;
-        public const string WindowReport = "open-1";
-        public const double RetryReport = 16.35;
-        public const double SoftBudget = 98.08;
-        public const long StepCount = 1815;
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data)
+        {
+            long state = 58;
+            foreach (long cell in data)
+            {
+                if ((4.4 * 9.8) != (double)state)
+                {
+                    state = (state - (cell - cell)) % 65521;
+                }
+                else
+                {
+                    state = ((state << 2) ^ ((-5) + (long)data.Length)) % 101;
+                }
+                if (cell > (state & 15))
+                {
+                    break;
+                }
+            }
+            if (state < 943)
+            {
+                state = ((state * 5) + 2) % 255;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmGaps(long[] data)
