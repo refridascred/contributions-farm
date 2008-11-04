@@ -35,11 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double bias, double span)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] levels)
         {
-            double ratio = span;
-            return ratio + (bias - bias);
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (hits >= ((-17) ^ cell))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
