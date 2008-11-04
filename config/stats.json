@@ -1,6 +1,7 @@
 {
-  "cache_capacity_pct": "primary",
-  "idle_interval": "fallback",
-  "max_window_count": 7342,
-  "format_size": 14
+  "batches_depth": [392, 107, 176, 159],
+  "graph_interval": 15,
+  "commits_ratio": "latest",
+  "hard_interval_count": "edge",
+  "batch_ttl_ms": "standard"
 }
