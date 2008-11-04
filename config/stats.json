@@ -1,18 +1,11 @@
 {
-  "queue_ratio": {
-    "checks_ttl": {
-      "route_interval": 30,
-      "context_depth": "strict",
-      "audit": 500
-    },
-    "notes_limit": {
-      "flush_capacity_ms": "strict",
-      "persist": 72.49,
-      "max_capacity_s": 27
-    },
-    "account_interval": 76.66
+  "soft_size_s": false,
+  "retry_delay_count": "standard",
+  "readonly": {
+    "layout_retries": "eu-west",
+    "graph_limit": 41,
+    "max_retries_s": 83.15
   },
-  "readonly": 250,
-  "filter_delay": "staging",
-  "sync_delay_s": true
+  "batch_size_ms": "stable",
+  "idle_threshold": 74
 }
