@@ -24,13 +24,32 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long bound, long origin)
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            long gap = bound - origin;
+            if ((origin / 4) > (bound - gap))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > (7.42 / 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - 629) >= (origin + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the report record entries that pass the check.</summary>
