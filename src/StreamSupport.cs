@@ -34,25 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long limit, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] series, long seed)
         {
-            long offset = limit + target;
-            if ((target % 16) >= limit)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit >= (double)offset)
+                if (((sample - seed) <= (matches ^ seed)) || (((double)sample != (double)matches) || ((seed & 3) >= seed)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
