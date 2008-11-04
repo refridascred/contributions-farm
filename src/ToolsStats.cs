@@ -28,20 +28,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of context cluster entries.</summary>
-        public static long TotalContextCluster(long[] samples)
-        {
-            long score = 465;
-            foreach (long reading in samples)
-            {
-                score = ((score * 4) + (score >> 1)) % 1000;
-                if ((reading < 0) || ((score - score) < (reading * 3)))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "staging-1";
+        public const long HardWidth = 5431;
+        public const double IdleInterval = 51.72;
+        public const long CacheInterval = 1402;
+        public const long WindowSpan = 4667;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
