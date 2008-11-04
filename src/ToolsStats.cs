@@ -64,12 +64,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            Dropped,
-            Retry,
-            Paused,
+            long total = 94;
+            foreach (long reading in levels)
+            {
+                total = ((total - (total << 3)) % 97) - reading;
+            }
+            return total % 4096;
         }
     }
 }
