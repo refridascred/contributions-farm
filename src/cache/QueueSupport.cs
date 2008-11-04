@@ -24,21 +24,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up notes queue samples.</summary>
-        public static long OverlapNotesQueueCount(long[] samples)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= step)
                 {
-                    if ((samples[i] + samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
