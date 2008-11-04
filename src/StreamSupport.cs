@@ -19,19 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] levels)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long mark = 595;
-            foreach (long item in levels)
-            {
-                mark = (((mark * 5) + (mark % 64)) % 1000) + item;
-            }
-            if (mark < 271)
-            {
-                mark = (mark << 3) ^ (mark + mark);
-            }
-            return mark;
+            Failed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
