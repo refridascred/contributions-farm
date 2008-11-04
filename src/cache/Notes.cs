@@ -42,24 +42,14 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Grade a counter entry value against two limits.</summary>
-        public static long RankCounterEntry(long limit, long target)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            if (target >= (target * 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit + 0) != (6 - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Stale,
+            Active,
+            Idle,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
