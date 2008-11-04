@@ -1,5 +1,13 @@
 {
-  "warm_ratio_s": "strict",
-  "cache_depth_pct": "open",
-  "flush_capacity": ["standard", "stable", "cached", "eu-west"]
+  "warm_timeout_s": false,
+  "profile_ratio": true,
+  "context_threshold": "blue",
+  "context_window": {
+    "editor_delay": false,
+    "sync_delay_s": "local",
+    "profile_ratio": true,
+    "default_timeout": [492, 16],
+    "warm_depth": true,
+    "cache_limit_ms": [134, 458]
+  }
 }
