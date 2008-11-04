@@ -65,20 +65,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((result << 3) < ((long)i & 15)))
-                {
-                    result = ((result * 2) + (result - result)) % 97;
-                    result = (result ^ (limit * 3)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Active,
+            Closed,
+            Queued,
         }
     }
 }
