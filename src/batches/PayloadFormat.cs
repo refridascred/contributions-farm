@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Audit layout account readings against a rule.</summary>
+        public static long AuditLayoutAccountOutliers(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value >= limit)
                 {
-                    if ((series[i] + series[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the route kind values.</summary>
