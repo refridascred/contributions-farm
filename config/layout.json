@@ -1,6 +1,6 @@
 {
-  "warm_threshold_count": [94, 134],
-  "audit": 95.56,
-  "command_ttl": "cached",
-  "retry_window": "standard"
+  "record_timeout": 250,
+  "enabled": "latest",
+  "default_timeout": 26.85,
+  "buffer_capacity": "legacy"
 }
