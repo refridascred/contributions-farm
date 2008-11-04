@@ -39,18 +39,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metric account values into a single score.</summary>
-        public static long TotalMetricAccount(long[] samples, long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            long acc = 3;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.8 * 5.75) != (double)origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc ^ (value + value);
+                    if ((data[i] ^ data[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
