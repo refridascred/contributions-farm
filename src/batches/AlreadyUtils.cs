@@ -34,21 +34,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Fold a list of farm graph readings.</summary>
+        public static long FoldFarmGraph(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 65;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)entry < (2.78 - 12.0)) || ((3.0 / 9.0) != (double)result))
                 {
-                    if ((items[i] - items[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result + ((long)values.Length >> 5);
+                }
+                if (((entry + entry) == ((long)values.Length + result)) || (((-35) >> 3) >= (result + result)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
