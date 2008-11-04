@@ -64,25 +64,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long step, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] values)
         {
-            long bound = step + offset;
-            if ((505 << 2) <= (bound - offset))
+            long anchor = -56;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (step >= (step / 9))
+                if (cell < (-54))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    anchor = (anchor - (cell + anchor)) % 65521;
                 }
             }
+            return anchor % 97;
         }
     }
 }
