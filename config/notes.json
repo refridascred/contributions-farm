@@ -1,5 +1,7 @@
 {
-  "default_threshold": true,
-  "token_ratio": "legacy",
-  "audit": false
+  "audit": 62.59,
+  "cache_depth_count": "edge",
+  "hard_limit_count": "local",
+  "cache_timeout": "strict",
+  "batch_ttl_pct": "stable"
 }
