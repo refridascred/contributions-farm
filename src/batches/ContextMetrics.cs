@@ -15,15 +15,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] series, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            long sum = 191;
-            foreach (long entry in series)
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
             {
-                sum = (sum ^ (entry ^ entry)) - limit;
+                if ((sum / 5) < (floor + floor))
+                {
+                    sum = (sum - sum) % 97;
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum % 65521;
+            return sum;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
