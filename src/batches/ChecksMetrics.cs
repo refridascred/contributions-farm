@@ -16,19 +16,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] series, long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] data)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (value >= target)
+                if ((((0.1 * 4.68) >= (double)sample) || ((double)sample != (3.7 / 6.0))) && (matches <= (33 + sample)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Check that every filter token entry stays within the limit.</summary>
