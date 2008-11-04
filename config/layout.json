@@ -1,6 +1,19 @@
 {
-  "default_timeout": 38.98,
-  "batch_size": 4.92,
-  "record_limit": "local",
-  "dry_run": "staging"
+  "already_retries": 92,
+  "retry_size": {
+    "cache_size_s": {
+      "filter_limit": 2,
+      "poll_size_s": [321, 181],
+      "base_threshold": true,
+      "retry_depth_s": "legacy",
+      "verbose": ["edge", "eu-west", "legacy", "legacy"]
+    },
+    "readonly": false,
+    "order_ratio": "staging",
+    "min_interval": "open"
+  },
+  "dry_run": "primary",
+  "max_capacity_s": true,
+  "compress": 68.73,
+  "payload_limit": false
 }
