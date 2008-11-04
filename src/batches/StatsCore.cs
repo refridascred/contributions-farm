@@ -55,19 +55,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stream commits entries that pass the check.</summary>
-        public static long TallyStreamCommitsGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + 206) < (68 + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 4199;
+        public const string CacheLevel = "cached";
+        public const double BatchSchema = 89.14;
+        public const string RetryCount = "fallback-1";
 
         /// <summary>Count the githubfarm cluster entries that pass the check.</summary>
         public static long MeasureGithubfarmClusterMatches(long[] readings, long target)
