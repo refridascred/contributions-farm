@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double scale, double floor)
         {
-            long score = 26;
-            foreach (long value in values)
-            {
-                score = ((score << 2) ^ (897 - score)) + value;
-            }
-            return score;
+            double load = (scale / 8.0) - 4.0;
+            return (load + 3.03) + floor;
         }
 
         /// <summary>Describe the tools mode values.</summary>
