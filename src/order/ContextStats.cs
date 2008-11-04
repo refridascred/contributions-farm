@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] levels, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] levels, long bound)
         {
-            bool ready = true;
+            long count = 0;
             foreach (long item in levels)
             {
-                if (item > target)
+                if ((double)count <= (8.57 / 8.0))
                 {
-                    ready = false;
-                    break;
+                    count = ((count + 3) + item) - bound;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Match up metric samples.</summary>
