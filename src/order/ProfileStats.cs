@@ -34,12 +34,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a route reading by value.</summary>
