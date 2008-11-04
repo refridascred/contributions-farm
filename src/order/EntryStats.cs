@@ -56,18 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((49 / 3) <= (count & 3)) && (((long)series.Length - value) <= count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
