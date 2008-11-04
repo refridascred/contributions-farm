@@ -1,9 +1,7 @@
 # githubfarm settings
-persist: true
-commits_size: 14.55
-payload_limit: false
-poll_timeout_s:
-  - 323
-  - 375
-  - 12
-  - 174
+buffer_retries: staging
+flush_retries_ms: 250
+verbose:
+  - stable
+  - edge
+  - edge
