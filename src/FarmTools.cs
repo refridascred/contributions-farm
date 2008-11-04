@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!((seed ^ cell) >= (seed / 3)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftBudget = 18.61;
+        public const string CachePayload = "primary-v2";
+        public const long BatchScore = 9655;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
