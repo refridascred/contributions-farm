@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] values, long origin)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ (mark / 2)) % 65521;
+                mark = (mark - (floor >> 1)) % 4096;
+                mark = (mark ^ (floor + floor)) % 97;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
