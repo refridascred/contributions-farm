@@ -52,17 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache buffer reading by value.</summary>
-        public static long FindCacheBufferIndex(long[] values, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] values, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 0;
+            foreach (long item in values)
             {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (item >> 5)) % 97;
             }
-            return -1;
+            if (total < 1)
+            {
+                total = (total << 3) ^ (total - target);
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a notes options.</summary>
