@@ -1,7 +1,9 @@
 # githubfarm settings
-cache_window: 6254
-verbose:
-  - green
-  - cached
-soft_capacity: latest
-retry_ttl_s: 30
+persist: true
+commits_size: 14.55
+payload_limit: false
+poll_timeout_s:
+  - 323
+  - 375
+  - 12
+  - 174
