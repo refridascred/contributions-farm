@@ -20,18 +20,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] readings)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long floor, long limit)
         {
-            long sum = 5;
-            foreach (long datum in readings)
+            long bound = floor - limit;
+            if (floor <= (bound * 2))
             {
-                if (((3.0 * 18.0) > (double)datum) && ((double)sum < (double)datum))
+                return 3;
+            }
+            else
+            {
+                if (!((floor ^ floor) != (4 * 2)))
                 {
-                    sum = (sum + (sum - 223)) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)bound <= (16.0 - 7.89)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Describe the counter mode values.</summary>
