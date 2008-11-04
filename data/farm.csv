@@ -1,8 +1,9 @@
-id,active,weight
-1,273,149
-2,50.45,primary
-3,eu-west,eu-west
-4,95,517
-5,standard,197
-6,strict,91.35
-7,352,28.08
+id,level,active,label
+1,319,203,76.44
+2,75.34,85,fallback
+3,eu-west,3.06,latest
+4,124,edge,46.48
+5,24.28,659,43.6
+6,17.55,47.13,34.49
+7,76.12,24.46,90
+8,stable,eu-west,59.19
