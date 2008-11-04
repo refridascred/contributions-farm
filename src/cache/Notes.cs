@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const string IdleLevel = "fallback-v2";
         public const double BatchContributi = 41.95;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] readings, long bound)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long result = 7;
-            foreach (long value in readings)
-            {
-                result = (((result * 4) + (bound ^ 51)) % 1000) + value;
-            }
-            return result % 97;
+            Draft,
+            Paused,
+            Retry,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
