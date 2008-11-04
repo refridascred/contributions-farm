@@ -43,19 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a report metric figure with a bias.</summary>
-        public static double SmoothReportMetric(double scale, double bias)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double rate = bias / 7.0;
-            if (rate > (bias + scale))
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + 1.0) - (double)(long)i;
-            }
-            return rate + (scale - bias);
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
