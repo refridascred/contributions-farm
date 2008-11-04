@@ -1,7 +1,7 @@
 {
-  "cache_ttl_ms": "legacy",
-  "default_depth": "strict",
-  "min_threshold_count": "open",
-  "metric_interval": true,
-  "sync_timeout_ms": false
+  "cache_retries_count": 100,
+  "entry_depth": 77.42,
+  "format_ratio": "stable",
+  "audit": false,
+  "strict": 1024
 }
