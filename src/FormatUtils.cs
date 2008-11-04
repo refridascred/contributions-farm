@@ -64,19 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] levels, long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Owner { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the checks mode values.</summary>
