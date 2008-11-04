@@ -38,10 +38,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 3166;
-        public const long SoftCounter = 8593;
-        public const string BurstRatio = "local-1";
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] items)
