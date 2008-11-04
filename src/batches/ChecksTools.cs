@@ -54,10 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 8739;
-        public const long WindowTimeout = 2095;
-        public const long LimitSize = 5355;
+        /// <summary>Accumulate metric farm samples.</summary>
+        public static long WeighMetricFarm(long[] levels, long origin)
+        {
+            long acc = 8;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 4) <= (acc + 7))
+                {
+                    acc = (acc + (origin & 63)) % 101;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = (acc - (836 * 5)) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Project the next buffer value.</summary>
         public static double ProjectBuffer(double bias, double offset)
