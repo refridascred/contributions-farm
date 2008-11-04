@@ -15,13 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] values, long target)
         {
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell >= 2.2)
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a report header.</summary>
