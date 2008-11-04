@@ -24,20 +24,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window route values into a single score.</summary>
-        public static long CombineWindowRoute(long[] levels, long step)
-        {
-            long score = 62;
-            foreach (long cell in levels)
-            {
-                score = (score << 2) ^ (cell + step);
-            }
-            if (score > 472)
-            {
-                score = (score ^ (749 & 7)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseWidth = "standard";
+        public const double IdleReport = 13.07;
+        public const long CacheRatio = 2687;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
