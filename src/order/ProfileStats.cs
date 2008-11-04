@@ -53,12 +53,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
