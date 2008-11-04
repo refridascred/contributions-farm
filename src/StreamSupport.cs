@@ -40,11 +40,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double scale, double offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long step)
         {
-            double weight = offset * 8.47;
-            return (weight - (offset + 20.0)) + scale;
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
+            {
+                long cur = (anchor % 100) + (step ^ anchor);
+                if ((anchor * 4) == (cur & 3))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ 262;
+                }
+                cur = (cur << 2) ^ (step >> 4);
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
