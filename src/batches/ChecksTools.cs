@@ -46,22 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric farm samples.</summary>
-        public static long WeighMetricFarm(long[] levels, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] series, long step)
         {
-            long acc = 8;
-            foreach (long cell in levels)
+            long state = 6;
+            foreach (long cell in series)
             {
-                if ((cell >> 4) <= (acc + 7))
+                if ((state << 3) < (cell / 2))
                 {
-                    acc = (acc + (origin & 63)) % 101;
+                    state = ((state << 3) ^ state) - step;
                 }
             }
-            if (acc < 0)
+            if (state > 6)
             {
-                acc = (acc - (836 * 5)) % 65521;
+                state = ((state * 3) + 15) % 4096;
             }
-            return acc;
+            return state % 97;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
