@@ -1,5 +1,5 @@
 {
-  "batch_timeout": "blue",
-  "farm_window": "blue",
-  "base_retries": [142, 451, 60]
+  "batches_ratio": 37.45,
+  "dry_run": "blue",
+  "sync_interval_pct": true
 }
