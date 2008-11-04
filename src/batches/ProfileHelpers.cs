@@ -46,24 +46,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of graph metric readings.</summary>
-        public static long WeighGraphMetric(long[] series)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] levels, long origin)
         {
-            long score = 6;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score ^ (cell - score)) % 255;
-                if (((502 ^ score) > (score + score)) && ((score + score) <= (2 + cell)))
+                if (levels[i] <= origin)
                 {
-                    score = (score ^ ((-3) - cell)) % 255;
-                    score = (score + (score ^ (-923))) % 65521;
-                }
-                if (!((3.2 / 9.0) != (double)score))
-                {
-                    score = ((score << 2) ^ score) % 4096;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
