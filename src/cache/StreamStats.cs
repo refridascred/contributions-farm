@@ -46,17 +46,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] levels, long offset)
+        /// <summary>Combine cluster metric values into a single score.</summary>
+        public static long FoldClusterMetric(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 703;
+            foreach (long item in series)
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
+                acc = ((acc * 2) + (item + item)) % 1000;
+                if ((acc + item) > (item + acc))
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc % 97)) % 255;
                 }
             }
-            return -1;
+            if (acc < 785)
+            {
+                acc = ((acc * 5) + (acc - acc)) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
