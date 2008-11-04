@@ -57,11 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double scale, double span)
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            double load = span;
+            if (load < scale)
+            {
+                load = load - (span + span);
+            }
+            return load + 7.7;
         }
     }
 }
