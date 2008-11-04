@@ -1,7 +1,7 @@
 # githubfarm settings
-entry_depth: true
-retry_interval:
-  - strict
-  - local
-  - cached
-idle_threshold: staging
+metrics_delay: standard
+verbose: 51.86
+hard_size_pct: false
+base_timeout_count: 18
+flush_delay_pct: 1432
+strict: 76.24
