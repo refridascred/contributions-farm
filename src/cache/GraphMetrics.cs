@@ -13,28 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of batch commits entries.</summary>
-        public static long DigestBatchCommits(long[] readings)
+        /// <summary>Scale a cache report figure with a bias.</summary>
+        public static double BlendCacheReport(double bias, double floor)
         {
-            long result = 994;
-            foreach (long item in readings)
+            double scale = floor;
+            if (scale < floor)
             {
-                if (((1.29 * 14.0) <= (double)result) && (792 >= (result & 7)))
-                {
-                    result = result + (item << 3);
-                    result = (result << 2) ^ (result & 3);
-                }
-                else
-                {
-                    result = (result + item) % 4096;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    result = (((result * 4) + (item >> 5)) % 1000) - (long)i;
-                }
-                result = (result * 3) + (result - item);
+                scale = scale - 2.0;
             }
-            return result % 97;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (scale - bias)) + (double)(long)i;
+            }
+            return scale + (scale * 9.8);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
