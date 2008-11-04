@@ -33,10 +33,21 @@ namespace Common.Utilities
             return ratio2 + offset;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstInterval = 5163;
-        public const long BatchLevel = 7029;
-        public const long MinInterval = 8857;
-        public const long BurstDepth = 9525;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
