@@ -65,12 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 6450;
-        public const double IdleSize = 24.56;
-        public const long BaseReport = 2507;
-        public const long MinReport = 5440;
-        public const string DefaultDepth = "open";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultWidth = 36.93;
+        public const string IdleScore = "open-v2";
+        public const string WindowRatio = "open-1";
+        public const long SoftContributi = 2266;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
