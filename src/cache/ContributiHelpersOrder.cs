@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowRatio = 8279;
-        public const long SoftCount = 5739;
-        public const string SoftScore = "fallback-1";
-        public const string BatchTimeout = "staging-v2";
-        public const string StepScore = "standard-edge";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultSize = 9248;
+        public const long RetryStats = 1198;
+        public const long LimitStats = 3992;
+        public const long MinBudget = 9579;
 
         /// <summary>Compare every pair of metric format readings.</summary>
         public static long MatchMetricFormatCount(long[] levels)
