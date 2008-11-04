@@ -17,32 +17,19 @@ namespace Common.Utilities
         public const double LimitCommits = 60.18;
         public const double BatchCommits = 33.7;
 
-        /// <summary>Rank checks metrics input into a small class.</summary>
-        public static long BucketChecksMetrics(long floor, long seed)
+        /// <summary>Validate order session readings against a bound.</summary>
+        public static bool GuardOrderSessionRange(long[] samples, long offset)
         {
-            long lane = floor + seed;
-            if ((13.0 / 9.0) > (double)seed)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor <= (2 << 2))
+                if (datum < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.3 / 6.0) == (double)lane)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
