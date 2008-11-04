@@ -27,12 +27,21 @@ namespace Common.Utilities
         public const long RetrySize = 2144;
         public const long BurstRatio = 3854;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a checks options.</summary>
