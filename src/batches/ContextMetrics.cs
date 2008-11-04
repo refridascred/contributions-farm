@@ -38,19 +38,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (!((floor - 413) < (reading % 12)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowCount = 48.28;
+        public const string HardSpan = "local-edge";
+        public const long IdleRatio = 4626;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
