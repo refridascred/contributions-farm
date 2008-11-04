@@ -1,14 +1,11 @@
 # Command notes
 
-The layout report groups every layout by token.
-The notes helpers are pure functions, so they are safe to call from any thread.
-
-Run the editor check before changing any notes limits.
-The window report groups every stats by schema.
+Keep cluster and format names short and lowercase.
+Keep channel and queue names short and lowercase.
 
 ## Guidelines
 
-- Keep graph values small
-- Document new contributi fields
-- Review report limits each release
-- Prefer counter defaults
+- Log every cluster change
+- Keep already values small
+- Review stream limits each release
+- Prefer format defaults
