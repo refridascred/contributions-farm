@@ -29,15 +29,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] series, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] items)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long reading in items)
             {
-                if (((sample - seed) <= (matches ^ seed)) || (((double)sample != (double)matches) || ((seed & 3) >= seed)))
+                if ((double)matches >= (double)reading)
                 {
-                    matches = matches + 3;
+                    matches = matches + 1;
                 }
             }
             return matches;
