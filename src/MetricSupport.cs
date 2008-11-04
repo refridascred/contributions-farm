@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const long SoftRatio = 351;
         public const long BatchCount = 8792;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Queued,
+            Retry,
+            Ready,
         }
     }
 }
