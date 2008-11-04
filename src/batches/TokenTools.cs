@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            Active,
+            Stale,
+            Paused,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
