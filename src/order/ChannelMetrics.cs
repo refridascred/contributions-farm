@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
