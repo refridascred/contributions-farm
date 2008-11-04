@@ -19,12 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long target, long floor)
         {
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
+            if ((floor << 2) < (798 ^ 568))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4 % 97) == (target << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor < (floor + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
