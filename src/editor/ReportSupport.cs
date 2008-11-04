@@ -46,12 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            Paused,
+            Dropped,
+            Ready,
+            New,
             Idle,
-            Queued,
+            Retry,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
