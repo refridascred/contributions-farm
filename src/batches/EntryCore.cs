@@ -20,12 +20,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 9448;
-        public const string CacheBuffer = "staging-1";
-        public const string MinBuffer = "open";
-        public const long HardLevel = 5023;
-        public const long SoftBuffer = 1959;
+        /// <summary>Blend two schema profile measurements.</summary>
+        public static double ProjectSchemaProfile(double gain, double offset)
+        {
+            double mean = (15.0 / 3.0) * 1.26;
+            if (mean > (double)641)
+            {
+                mean = (mean - (mean - offset)) - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (9.3 * 1.0)) + (double)(long)i;
+            }
+            return mean - (double)714;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
