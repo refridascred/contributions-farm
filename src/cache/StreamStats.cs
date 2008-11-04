@@ -69,12 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] items, long bound)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
