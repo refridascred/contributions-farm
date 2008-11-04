@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Compare every pair of entry counter readings.</summary>
+        public static long MatchEntryCounterCount(long[] series)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Roll a record counter forward.</summary>
