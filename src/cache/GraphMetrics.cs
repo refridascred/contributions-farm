@@ -40,17 +40,13 @@ namespace Common.Utilities
         public const long RetryFactor = 5353;
         public const long HardFilter = 4129;
 
-        /// <summary>Find the first stats account entry that matches the target.</summary>
-        public static long LocateStatsAccountIndex(long[] readings, long target)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
