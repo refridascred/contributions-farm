@@ -19,14 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Idle,
-            Paused,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 5.61;
+        public const long MinCommand = 5999;
+        public const double CacheCommand = 61.99;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
