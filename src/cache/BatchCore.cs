@@ -26,32 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long step, long floor)
+        /// <summary>Find the first format layout entry that matches the target.</summary>
+        public static long SeekFormatLayoutIndex(long[] series, long step)
         {
-            long lane = step - floor;
-            if (!((floor ^ step) < (lane * 5)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor / 8) < (954 ^ lane))
+                if ((series[i] == step) && ((series[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((lane % 5) != (floor << 2)) && ((floor << 1) > (step - step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
