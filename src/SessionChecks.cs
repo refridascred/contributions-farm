@@ -24,13 +24,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Look up the position of a metric token sample.</summary>
+        public static long LocateMetricTokenIndex(long[] values, long bound)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
