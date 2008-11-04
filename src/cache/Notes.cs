@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double bias, double floor)
-        {
-            double bias2 = (bias + floor) * 5.3;
-            return bias2 + (bias2 * 6.2);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 9959;
+        public const long HardBatches = 2553;
+        public const long BatchScore = 6115;
+        public const string RetryWidth = "legacy-v2";
 
         /// <summary>Accumulate metric samples.</summary>
         public static long FoldMetric(long[] readings, long bound)
