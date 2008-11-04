@@ -31,13 +31,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Match up metric token samples.</summary>
+        public static long MatchMetricTokenCount(long[] samples)
         {
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the filter mode values.</summary>
