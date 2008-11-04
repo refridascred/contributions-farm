@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] values)
         {
-            Draft,
-            Synced,
-            Idle,
-            Retry,
+            long score = 26;
+            foreach (long value in values)
+            {
+                score = ((score << 2) ^ (897 - score)) + value;
+            }
+            return score;
         }
 
         /// <summary>Describe the tools mode values.</summary>
