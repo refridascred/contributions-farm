@@ -31,16 +31,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] values, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                mix = ((mix << 3) ^ (9 << 1)) % 4096;
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((limit & 127) != (matches - matches))
+                {
+                    matches = (matches + 3) + value;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of report contributi entries.</summary>
