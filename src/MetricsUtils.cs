@@ -67,12 +67,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] samples)
         {
-            Done,
-            Dropped,
-            Queued,
+            long result = 483;
+            foreach (long item in samples)
+            {
+                if ((item & 15) <= (283 ^ item))
+                {
+                    result = (result ^ (item / 6)) % 1000;
+                }
+            }
+            if (result < 5)
+            {
+                result = (result + result) % 65521;
+            }
+            return result % 1000;
         }
     }
 }
