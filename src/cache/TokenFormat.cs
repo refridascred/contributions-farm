@@ -21,21 +21,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up farm commits samples.</summary>
-        public static long OverlapFarmCommitsCount(long[] levels)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = span;
+            if (gain <= (span - scale))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain + (double)928;
             }
-            return tally;
+            else
+            {
+                gain = gain - (double)71;
+            }
+            return gain + (span - span);
         }
     }
 }
