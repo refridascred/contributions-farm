@@ -38,13 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Synced,
+            New,
             Closed,
-            Failed,
-            Draft,
+            Paused,
+            Pending,
         }
 
         /// <summary>Measure how many graph route samples are out of range.</summary>
