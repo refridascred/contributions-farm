@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double weight, double floor)
+        /// <summary>Audit session farm readings against a rule.</summary>
+        public static long TallySessionFarmHits(long[] values)
         {
-            double gain = floor;
-            if (gain >= (double)8)
+            long count = 0;
+            foreach (long entry in values)
             {
-                gain = gain + (1.9 + weight);
+                if ((((entry - count) < ((long)values.Length / 5)) && ((9.0 * 4.7) >= (double)count)) && (entry > (count << 2)))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                gain = gain - (weight - weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (gain - 5.8)) - (double)(long)i;
-            }
-            return gain - (gain / 8.0);
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
