@@ -47,18 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] values, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((limit * 3) < cell)
+                if (entry < step)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a entry summary.</summary>
