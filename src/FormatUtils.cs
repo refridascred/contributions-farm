@@ -52,19 +52,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate token metrics readings against a bound.</summary>
-        public static bool ValidateTokenMetricsRange(long[] series, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (item < seed)
+                if (item < bound)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Rank already input into a small class.</summary>
