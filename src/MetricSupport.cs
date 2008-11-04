@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the batch counter series from a seed.</summary>
-        public static long SeriesBatchCounter(long floor)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i & 1) > (result + (long)i))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result * 2) + (floor + result)) % 255;
-                    result = result + ((long)i + 6);
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((floor << 1) < floor)
-                {
-                    result = result + ((long)i >> 4);
-                    result = ((result * 5) + (floor + floor)) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the stream phase values.</summary>
