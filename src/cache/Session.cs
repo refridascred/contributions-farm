@@ -15,15 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double ratio, double floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double scale = floor;
-            if (scale < (ratio * 6.88))
-            {
-                scale = scale + ratio;
-            }
-            return scale - scale;
+            Draft,
+            Dropped,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
