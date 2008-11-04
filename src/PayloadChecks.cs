@@ -50,13 +50,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Digest a series of payload already entries.</summary>
+        public static long WeighPayloadAlready(long[] samples, long origin)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
+            long score = -563;
+            foreach (long sample in samples)
+            {
+                if (!((double)sample > (11.0 / 9.0)))
+                {
+                    score = ((score << 3) ^ (sample & 1)) - origin;
+                }
+                else
+                {
+                    score = (score << 2) ^ (sample * 3);
+                }
+            }
+            if (score > 0)
+            {
+                score = (score ^ score) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
