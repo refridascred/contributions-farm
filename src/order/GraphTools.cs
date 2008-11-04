@@ -76,19 +76,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data, long seed)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long total = 3;
-            foreach (long reading in data)
-            {
-                total = (((total * 4) + (seed & 255)) % 4096) ^ reading;
-                if (8.28 > (double)total)
-                {
-                    break;
-                }
-            }
-            return total;
+            Pending,
+            Draft,
+            Active,
+            Paused,
         }
     }
 }
