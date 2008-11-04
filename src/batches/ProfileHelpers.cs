@@ -58,17 +58,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] levels, long origin)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long floor, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = floor ^ step;
+            if ((double)step >= (9.6 - 1.0))
             {
-                if (levels[i] <= origin)
+                return 7;
+            }
+            else
+            {
+                if ((step * 5) < (slot << 1))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
