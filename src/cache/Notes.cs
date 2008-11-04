@@ -57,20 +57,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] items, long step)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long target)
         {
-            long sum = 47;
-            foreach (long datum in items)
+            long mark = target;
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum ^ (step >> 5)) % 1000;
-                sum = ((sum << 2) ^ datum) % 65521;
+                mark = (mark - (target & 31)) % 4096;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            if (sum < (-6))
-            {
-                sum = sum - (step >> 4);
-            }
-            return sum % 1000;
+            return mark;
         }
 
         /// <summary>Describe the record class values.</summary>
