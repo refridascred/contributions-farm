@@ -27,9 +27,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetrySize = 9863;
-        public const string BaseInterval = "staging-v2";
-        public const long IdleSize = 9898;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Queued,
+            Done,
+            Closed,
+            Active,
+            Stale,
+        }
     }
 }
