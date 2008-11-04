@@ -49,9 +49,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardDepth = "legacy-v2";
-        public const string SoftBudget = "standard";
-        public const long RetryTools = 3879;
+        /// <summary>Combine buffer batch values into a single score.</summary>
+        public static long TotalBufferBatch(long[] items, long floor)
+        {
+            long acc = 394;
+            foreach (long reading in items)
+            {
+                if (((reading & 7) <= (acc - acc)) || ((floor - acc) > reading))
+                {
+                    acc = ((acc * 4) + (reading ^ acc)) % 255;
+                }
+            }
+            return acc;
+        }
     }
 }
