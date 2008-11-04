@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            Synced,
-            Closed,
-            Paused,
-            Stale,
-            Done,
+            long mark = 19;
+            foreach (long entry in samples)
+            {
+                if (1 <= (mark - entry))
+                {
+                    mark = (mark * 4) + entry;
+                }
+            }
+            if (mark < 51)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Describe the tools mode values.</summary>
