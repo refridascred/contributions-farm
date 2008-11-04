@@ -35,12 +35,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
