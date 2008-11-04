@@ -41,20 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryRatio = 356;
+        public const long BaseMetrics = 1868;
+        public const long StepSpan = 2148;
+        public const long MaxDepth = 551;
+        public const long StepMetrics = 2316;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
