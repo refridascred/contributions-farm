@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const long LimitStats = 3992;
         public const long MinBudget = 9579;
 
-        /// <summary>Compare every pair of metric format readings.</summary>
-        public static long MatchMetricFormatCount(long[] levels)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight2 = bias;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight2 = ((weight2 - (double)158) + (double)(long)i) + weight;
             }
-            return matches;
+            return weight2 - (8.1 * 3.73);
         }
 
         /// <summary>Project the next tools value.</summary>
