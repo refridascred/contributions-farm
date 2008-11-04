@@ -40,12 +40,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardWidth = 8941;
-        public const double BurstMetrics = 63.42;
-        public const long MinBudget = 9130;
-        public const double StepWidth = 58.01;
-        public const long IdleDepth = 3670;
+        /// <summary>Validate route token readings against a bound.</summary>
+        public static bool ValidateRouteTokenLimits(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the stream commits entries that pass the check.</summary>
         public static long TallyStreamCommitsGaps(long[] samples)
