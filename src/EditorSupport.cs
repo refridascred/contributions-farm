@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long offset, long floor)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            if ((double)(-90) < (double)floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(((-48) - 371) < floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor << 2) == (floor * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank report input into a small class.</summary>
