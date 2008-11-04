@@ -45,12 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many checks payload samples are out of range.</summary>
+        public static long AuditChecksPayloadMatches(long[] levels)
         {
-            Paused,
-            Retry,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen > (9 - 6)) && ((double)reading > (0.48 + 4.0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
