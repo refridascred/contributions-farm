@@ -31,10 +31,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftLevel = 2686;
-        public const long LimitChannel = 4075;
-        public const double CacheDepth = 3.64;
+        /// <summary>Fold a list of batches notes readings.</summary>
+        public static long CombineBatchesNotes(long[] data)
+        {
+            long mark = 92;
+            foreach (long datum in data)
+            {
+                mark = mark ^ (53 + datum);
+            }
+            return mark;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long step)
