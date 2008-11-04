@@ -27,18 +27,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the commits stream entries that pass the check.</summary>
-        public static long CountCommitsStreamOutliers(long[] items)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((-24) < (seen << 2))
+                if ((double)value == (9.2 - 2.6))
                 {
-                    seen = (seen + 3) - value;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
