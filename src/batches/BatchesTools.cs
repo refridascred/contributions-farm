@@ -16,17 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result << 2) ^ result) % 1000;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 1301;
+        public const long BatchCommits = 4246;
+        public const string LimitFactor = "staging-v2";
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteMatches(long[] data, long offset)
