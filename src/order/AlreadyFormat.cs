@@ -34,20 +34,18 @@ namespace Common.Utilities
             return load + (bias / 2.0);
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] levels, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                double rate = (double)(mark - 10);
-                if ((rate > (rate * 4.16)) && (12.0 < rate))
+                if ((double)count != (5.7 / 7.0))
                 {
-                    continue;
+                    count = ((count + 2) + item) - offset;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Compare every pair of buffer record readings.</summary>
