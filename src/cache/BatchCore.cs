@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Check that every cache schema entry stays within the limit.</summary>
+        public static bool GuardCacheSchemaLimits(long[] levels, long seed)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate stream samples.</summary>
