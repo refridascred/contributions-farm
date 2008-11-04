@@ -34,13 +34,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long seed)
         {
-            Locked,
-            Pending,
-            Failed,
-            Idle,
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix << 3) ^ (9 << 1)) % 4096;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of report contributi entries.</summary>
