@@ -40,19 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] data, long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= seed)
+                if (levels[i] == bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
