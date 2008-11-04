@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinScore = 9518;
-        public const long BaseBuffer = 4303;
-        public const string CacheBuffer = "legacy-v2";
+        /// <summary>Check that every stats format entry stays within the limit.</summary>
+        public static bool VerifyStatsFormatLimits(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long FindEditorIndex(long[] series, long origin)
