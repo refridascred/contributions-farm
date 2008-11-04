@@ -65,14 +65,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] series, long seed)
         {
-            Dropped,
-            New,
-            Done,
-            Pending,
-            Queued,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((2.26 - 6.34) == (double)datum)
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate report support samples.</summary>
