@@ -24,19 +24,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of channel cache entries.</summary>
-        public static long WeighChannelCache(long[] items, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] readings)
         {
-            long state = 883;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                state = ((state + (6 % 24)) % 65521) - value;
+                if ((cell & 3) <= (cell / 2))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (state < 714)
-            {
-                state = state + (origin % 12);
-            }
-            return state;
+            return seen;
         }
     }
 }
