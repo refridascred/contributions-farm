@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Validate counter notes readings against a bound.</summary>
+        public static bool VerifyCounterNotesRange(long[] readings, long origin)
         {
-            long mark = 19;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (1 <= (mark - entry))
+                if (cell < origin)
                 {
-                    mark = (mark * 4) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            if (mark < 51)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Describe the tools mode values.</summary>
