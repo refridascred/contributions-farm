@@ -1,19 +1,24 @@
 {
-  "already_retries": 92,
-  "retry_size": {
-    "cache_size_s": {
-      "filter_limit": 2,
-      "poll_size_s": [321, 181],
-      "base_threshold": true,
-      "retry_depth_s": "legacy",
-      "verbose": ["edge", "eu-west", "legacy", "legacy"]
-    },
-    "readonly": false,
-    "order_ratio": "staging",
-    "min_interval": "open"
+  "persist": 58.53,
+  "dry_run": "local",
+  "max_ratio_s": {
+    "max_ttl_s": false,
+    "graph_timeout": false,
+    "support_ratio": 15.15,
+    "max_ratio_count": 5822
   },
-  "dry_run": "primary",
-  "max_capacity_s": true,
-  "compress": 68.73,
-  "payload_limit": false
+  "verbose": [248, 207],
+  "batch_size_s": {
+    "account_capacity": ["cached", "blue", "staging", "blue"],
+    "cache_ttl_s": {
+      "default_depth_count": "blue",
+      "format_limit": ["cached", "stable", "strict", "latest"],
+      "cache_size_s": 45,
+      "strict": 44,
+      "enabled": 83.02,
+      "idle_size": 54
+    },
+    "tools_ratio": "green"
+  },
+  "token_limit": "staging"
 }
