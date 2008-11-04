@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double scale, double floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] items)
         {
-            double ratio = floor;
-            for (int i = 0; i < 6; i++)
+            long total = 537;
+            foreach (long sample in items)
             {
-                ratio = ((ratio - (0.4 - ratio)) + (double)(long)i) - scale;
+                total = total + (980 + sample);
             }
-            return ratio - (6.0 - ratio);
+            return total % 4096;
         }
 
         /// <summary>Hold a filter stats.</summary>
