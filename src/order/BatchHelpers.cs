@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the command buffer series from a seed.</summary>
-        public static long DeriveCommandBuffer(long step)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
