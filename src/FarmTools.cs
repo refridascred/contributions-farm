@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long limit, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long gap = limit - floor;
+            if ((double)limit >= (13.0 - 6.7))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((gap << 3) <= gap) && ((double)floor != (double)gap))
                 {
-                    if ((items[i] ^ items[j]) != 6)
+                    return 5;
+                }
+                else
+                {
+                    if (floor >= (floor + limit))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor & 255) >= limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a profile githubfarm figure with a bias.</summary>
