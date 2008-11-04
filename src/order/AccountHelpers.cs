@@ -16,32 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long bound, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] values)
         {
-            long gap = bound - origin;
-            if ((origin / 4) > (bound - gap))
+            long carry = 625;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound > (7.42 / 2.0))
+                if ((9 / 7) < carry)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin - 629) >= (origin + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = ((carry ^ ((-640) >> 2)) % 255) - entry;
                 }
             }
+            return carry;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
