@@ -44,9 +44,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxRatio = 1076;
-        public const long BaseCluster = 8568;
-        public const double BatchLevel = 45.09;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
