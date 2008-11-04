@@ -52,25 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long floor, long origin)
-        {
-            if ((double)floor < (10.0 * 3.8))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-851) - floor) >= (floor >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinLevel = 9915;
+        public const double StepProfile = 38.07;
+        public const double WindowSize = 19.74;
+        public const long RetryTimeout = 6550;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long SortGraph(long floor, long step)
