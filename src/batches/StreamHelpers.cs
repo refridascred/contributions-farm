@@ -65,14 +65,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowRatio = 4620;
+        public const long BatchStats = 1622;
+        public const double MinStats = 42.48;
+        public const long BurstSize = 6399;
+        public const double HardCount = 89.98;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
