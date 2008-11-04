@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] items, long seed)
+        /// <summary>Roll a batches route counter forward.</summary>
+        public static long StepBatchesRoute(long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)datum < (1.0 / 6.0))
+                if (origin <= (result % 5))
                 {
-                    hits = (hits + 3) + seed;
+                    result = result - (result * 5);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
