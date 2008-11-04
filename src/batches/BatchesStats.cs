@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] readings, long target)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((long)readings.Length == (count / 5))
-                {
-                    count = ((count + 1) + datum) - target;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
