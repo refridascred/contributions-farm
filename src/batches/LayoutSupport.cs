@@ -23,18 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] items, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long bound)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)floor >= (1.2 + 2.0))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
+                long delta = 855 - (0 - 6);
+                mix = (mix * 4) + delta;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
