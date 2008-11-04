@@ -23,23 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cluster batch values into a single score.</summary>
-        public static long TallyClusterBatch(long[] data, long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long step)
         {
-            long score = 44;
-            foreach (long reading in data)
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((score - 11) < 55)
-                {
-                    score = (score << 3) ^ (reading << 1);
-                }
-                score = score - (72 << 2);
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            if (score < 50)
-            {
-                score = (score ^ limit) % 1000;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
