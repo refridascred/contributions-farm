@@ -43,12 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] values, long limit)
         {
-            Active,
-            Synced,
-            Retry,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (11.0 <= (double)entry)
+                {
+                    count = (count + 2) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
