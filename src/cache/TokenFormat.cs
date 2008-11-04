@@ -56,21 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 62;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = score - (9 ^ score);
+                if ((datum < score) && ((94 + score) >= (score << 1)))
                 {
-                    if ((values[i] ^ values[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score ^ ((-2) / 4);
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
