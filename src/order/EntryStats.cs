@@ -49,10 +49,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardTimeout = 4432;
-        public const long RetryProfile = 7306;
-        public const long BaseProfile = 6557;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] readings)
+        {
+            long carry = 8;
+            foreach (long entry in readings)
+            {
+                carry = ((carry * 5) + (entry + entry)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double SmoothFormat(double bias, double floor)
