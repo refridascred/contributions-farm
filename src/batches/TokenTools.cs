@@ -36,18 +36,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools batches entries that pass the check.</summary>
-        public static long AuditToolsBatchesMatches(long[] samples)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if ((offset + (-54)) < (3 % 3))
             {
-                if (((double)hits == (double)item) && ((item % 10) > (hits + item)))
+                return 8;
+            }
+            else
+            {
+                if ((2 > (bound / 9)) || ((offset >> 1) <= ((-12) & 3)))
                 {
-                    hits = hits + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
     }
 }
