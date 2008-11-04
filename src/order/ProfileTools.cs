@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const long BaseCount = 5390;
         public const string BatchCount = "strict-edge";
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            Queued,
+            Locked,
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Combine window route values into a single score.</summary>
