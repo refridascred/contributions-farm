@@ -23,19 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] data, long limit)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up tools context samples.</summary>
