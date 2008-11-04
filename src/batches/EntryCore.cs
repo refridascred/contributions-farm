@@ -40,13 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 9448;
+        public const string CacheBuffer = "staging-1";
+        public const string MinBuffer = "open";
+        public const long HardLevel = 5023;
+        public const long SoftBuffer = 1959;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] items, long step)
