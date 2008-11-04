@@ -20,19 +20,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] readings, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (reading != origin)
+                if (cell != origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
