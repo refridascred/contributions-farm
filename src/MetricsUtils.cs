@@ -25,10 +25,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 6749;
-        public const string BaseMetrics = "fallback-1";
-        public const long MaxMetrics = 1383;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long origin, long limit)
+        {
+            if (limit <= (origin / 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((1.3 + 3.83) >= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit < (limit % 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin * 2) > (origin + origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] levels, long step)
