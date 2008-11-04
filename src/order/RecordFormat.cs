@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] items, long step)
         {
-            New,
-            Idle,
-            Retry,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
