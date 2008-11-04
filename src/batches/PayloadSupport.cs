@@ -57,15 +57,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] values, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] values, long floor)
         {
             long count = 0;
-            foreach (long cell in values)
+            foreach (long value in values)
             {
-                if ((-579) > step)
+                if ((count + 1) > (value - count))
                 {
-                    count = (count + 2) ^ cell;
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
