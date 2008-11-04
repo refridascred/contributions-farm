@@ -1,16 +1,9 @@
 # support settings
 dry_run:
-  dry_run:
-    editor_interval:
-      - 398
-      - 482
-      - 423
-      - 132
-    strict: true
-    route_ttl: 86
-  farm_limit: 63.19
-  max_interval: false
-enabled: 2333
-hard_interval_ms: true
-soft_ttl_ms: 59
-burst_ttl: 86
+  - primary
+  - staging
+  - stable
+  - local
+audit: green
+githubfarm_threshold: 3.13
+burst_delay_ms: 17.26
