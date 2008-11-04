@@ -1,15 +1,14 @@
 # Command notes
 
-Run the commits check before changing any token limits.
-When a entry fails, the token handler retries a few times before giving up.
+Use checks settings to tune how often route data is refreshed.
+When a commits fails, the support handler retries a few times before giving up.
 
-Run the batch check before changing any route limits.
-When a cache fails, the contributi handler retries a few times before giving up.
-The checks report groups every batch by command.
+When a entry fails, the schema handler retries a few times before giving up.
+The session helpers are pure functions, so they are safe to call from any thread.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Keep record values small
-- Document new queue fields
-- Validate payload input early
+- Keep route values small
+- Validate graph input early
+- Review stream limits each release
