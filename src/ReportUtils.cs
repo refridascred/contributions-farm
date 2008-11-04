@@ -17,11 +17,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitSpan = 1476;
-        public const string IdleLayout = "stable";
-        public const double SoftLayout = 3.05;
-        public const long DefaultLevel = 5273;
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double rate, double floor)
+        {
+            double ratio = rate - (rate / 6.0);
+            if (ratio <= ratio)
+            {
+                ratio = (ratio + (rate - ratio)) - floor;
+            }
+            return ratio + (double)7;
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double AdjustSession(double ratio, double offset)
