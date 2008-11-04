@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] values, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] data)
         {
-            long score = 44;
-            foreach (long datum in values)
+            long state = 50;
+            foreach (long entry in data)
             {
-                if (!(53 >= (score * 3)))
-                {
-                    score = ((score - (score % 12)) % 101) + datum;
-                }
+                state = state - (entry - entry);
             }
-            if (score > 559)
+            if (state > (-3))
             {
-                score = score ^ (222 + bound);
+                state = (state + state) % 65521;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Hold a counter info.</summary>
