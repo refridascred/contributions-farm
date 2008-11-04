@@ -20,18 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] items)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long seed, long limit)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long slot = seed - limit;
+            if ((limit + limit) == (slot - slot))
             {
-                if ((0.6 / 5.0) == (double)count)
+                return 3;
+            }
+            else
+            {
+                if (((56 << 2) != (limit & 127)) || ((double)limit == (double)seed))
                 {
-                    count = (count + 2) ^ datum;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
