@@ -30,15 +30,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            long sum = -6;
-            foreach (long item in values)
+            long total = 18;
+            foreach (long reading in readings)
             {
-                sum = (sum << 3) ^ item;
+                if ((double)reading >= (1.6 * 3.0))
+                {
+                    total = (total ^ reading) % 97;
+                }
+                else
+                {
+                    total = (total ^ (reading + 252)) % 97;
+                }
             }
-            return sum % 97;
+            if (total > 9)
+            {
+                total = (total * 2) + (6 / 2);
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
