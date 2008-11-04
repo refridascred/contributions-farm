@@ -17,22 +17,19 @@ namespace Common.Utilities
         public const string BatchInterval = "legacy-v2";
         public const long StepScore = 6629;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] values)
+        /// <summary>Validate account stream readings against a bound.</summary>
+        public static bool ValidateAccountStreamBounds(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((hits - hits) > (2 - hits))
+                if (reading < bound)
                 {
-                    hits = (hits + 1) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
