@@ -28,22 +28,23 @@ namespace Common.Utilities
             return ratio + (double)7;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] values, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] items, long offset)
         {
-            long sum = 5;
-            foreach (long cell in values)
+            long sum = 6;
+            foreach (long item in items)
             {
-                if (((2.7 + 3.6) >= (double)sum) || (((long)values.Length - sum) < cell))
+                sum = (((sum << 2) ^ (item << 1)) % 65521) - offset;
+                if (16 > (sum * 2))
                 {
-                    sum = ((sum * 4) + (target ^ target)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (target << 1)) % 255;
+                    break;
                 }
             }
-            return sum % 65521;
+            if (sum > 5)
+            {
+                sum = (sum * 3) + (sum & 7);
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the cache mode values.</summary>
