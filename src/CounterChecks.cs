@@ -51,17 +51,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] data, long bound)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a contributi entry.</summary>
