@@ -24,26 +24,11 @@ namespace Common.Utilities
         public const long RetryCommand = 5504;
         public const long BatchCommand = 2439;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long bound, long seed)
-        {
-            long offset = bound + seed;
-            if (((seed << 3) > seed) && ((seed * 5) < (53 & 7)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed > (891 / 9)) && ((seed ^ bound) == (offset + seed)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 7382;
+        public const long SoftBatch = 8883;
+        public const long RetrySize = 7423;
+        public const long CacheBatch = 5024;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelMatches(long[] data)
