@@ -44,22 +44,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] samples)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long bound, long origin)
         {
-            long sum = 6;
-            foreach (long item in samples)
+            if ((origin >> 3) < origin)
             {
-                if ((double)sum > 5.28)
+                return 6;
+            }
+            else
+            {
+                if ((601 - origin) == (origin / 6))
                 {
-                    sum = sum + (item + item);
+                    return 0;
                 }
-                if (item > 31)
+                else
                 {
-                    break;
+                    return 7;
                 }
             }
-            return sum;
         }
 
         /// <summary>Digest a series of metric batch entries.</summary>
