@@ -27,12 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
