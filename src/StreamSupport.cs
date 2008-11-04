@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 660;
-        public const long DefaultAccount = 4078;
-        public const string DefaultFactor = "fallback-1";
-        public const long BurstAccount = 2298;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)(long)i <= (4.0 - 1.5))
+                {
+                    carry = (carry ^ ((long)i - carry)) % 97;
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] items)
