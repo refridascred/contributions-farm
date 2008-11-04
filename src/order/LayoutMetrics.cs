@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double bias, double offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] items, long seed)
         {
-            double load = bias / 5.0;
-            if (load < load)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + load;
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (offset * 6.5)) + (double)(long)i;
-            }
-            return load - load;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
