@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheCount = 52.23;
-        public const long BatchAlready = 2139;
-        public const double RetryInterval = 10.6;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((datum ^ matches) >= (matches / 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long MatchMetricCount(long[] samples)
