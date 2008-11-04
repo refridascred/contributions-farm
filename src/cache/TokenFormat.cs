@@ -22,12 +22,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Check that every notes stream entry stays within the limit.</summary>
+        public static bool CheckNotesStreamRange(long[] levels, long offset)
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
