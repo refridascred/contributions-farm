@@ -20,19 +20,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] samples, long bound)
+        /// <summary>Grade a queue route value against two limits.</summary>
+        public static long GradeQueueRoute(long origin, long bound)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long gap = origin ^ bound;
+            if ((double)gap == (double)748)
             {
-                if (sample <= bound)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin != (double)33)
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((-18) >= gap)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin <= (gap & 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
