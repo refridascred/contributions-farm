@@ -41,14 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] items)
         {
-            Dropped,
-            Synced,
-            Pending,
-            Active,
-            Draft,
+            long anchor = 61;
+            foreach (long item in items)
+            {
+                if ((item * 3) != (51 ^ item))
+                {
+                    anchor = anchor - (3 & 127);
+                }
+                else
+                {
+                    anchor = anchor ^ 7;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
