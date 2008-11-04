@@ -1,8 +1,14 @@
 {
-  "min_ratio_count": "primary",
-  "githubfarm_depth": "staging",
-  "support_ratio": false,
-  "hard_limit_ms": "fallback",
-  "cache_ratio": 69,
-  "soft_threshold_count": "staging"
+  "persist": {
+    "audit": 21.22,
+    "metric_window": ["open", "eu-west"],
+    "retry_delay_ms": "fallback"
+  },
+  "soft_window_pct": "stable",
+  "verbose": {
+    "profile_timeout": 30,
+    "strict": [222, 238],
+    "order_ttl": "primary"
+  },
+  "retry_depth_pct": true
 }
