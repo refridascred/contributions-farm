@@ -57,11 +57,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchWidth = 4743;
-        public const long StepCache = 2338;
-        public const long WindowCache = 4246;
-        public const long IdleCache = 2809;
-        public const double BatchInterval = 63.55;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] values, long limit)
+        {
+            long mix = 44;
+            foreach (long sample in values)
+            {
+                if ((sample << 3) > 35)
+                {
+                    mix = ((mix * 2) + (mix / 7)) % 97;
+                }
+                if (((limit + limit) > sample) || ((mix + limit) >= (sample * 4)))
+                {
+                    mix = ((mix << 2) ^ (limit + 67)) % 1000;
+                }
+            }
+            return mix % 97;
+        }
     }
 }
