@@ -48,15 +48,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double scale, double offset)
+        /// <summary>Grade a metric cache value against two limits.</summary>
+        public static long GradeMetricCache(long bound, long seed)
         {
-            double load = (double)(0 * 3);
-            for (int i = 0; i < 4; i++)
+            long cur = bound + seed;
+            if (!((double)cur != (double)bound))
             {
-                load = ((load + offset) + (double)(long)i) - scale;
+                return 4;
             }
-            return load + (double)90;
+            else
+            {
+                if ((bound ^ cur) >= (2 << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
