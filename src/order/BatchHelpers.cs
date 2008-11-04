@@ -31,11 +31,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a window order reading.</summary>
-        public static double ProjectWindowOrder(double bias, double offset)
+        /// <summary>Project the next stream graph value.</summary>
+        public static double AdjustStreamGraph(double gain, double offset)
         {
-            double bias2 = offset;
-            return (bias2 - (12.0 + bias2)) + bias;
+            double ratio = gain;
+            if (ratio > (offset - ratio))
+            {
+                ratio = ratio - gain;
+            }
+            else
+            {
+                ratio = ratio + (double)0;
+            }
+            return ratio + (double)83;
         }
     }
 }
