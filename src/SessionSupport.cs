@@ -32,20 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long seed)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc - ((long)i - (long)i);
-                    acc = (acc << 3) ^ (seed - (long)i2);
+                    if ((items[i] + items[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
     }
 }
