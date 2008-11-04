@@ -13,13 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] series, long step)
         {
-            Pending,
-            Closed,
-            New,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every notes stream entry stays within the limit.</summary>
