@@ -26,12 +26,25 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long limit, long target)
         {
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            long offset = limit + target;
+            if ((target % 16) >= limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit >= (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
