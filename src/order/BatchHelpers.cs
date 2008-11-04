@@ -26,17 +26,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowInterval = "fallback";
+        public const string IdleTools = "open";
+        public const long MaxTools = 4542;
+        public const double MinTools = 98.78;
     }
 }
