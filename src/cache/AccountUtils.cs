@@ -57,11 +57,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a payload schema figure with a bias.</summary>
-        public static double SmoothPayloadSchema(double scale, double floor)
-        {
-            double drift = (double)6 + (12.0 + 9.5);
-            return (drift + (floor / 2.0)) + scale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 1581;
+        public const long StepAccount = 3163;
+        public const long MinAccount = 4677;
     }
 }
