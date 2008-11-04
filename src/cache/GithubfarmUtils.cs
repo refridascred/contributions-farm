@@ -19,25 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long origin, long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            long step = origin - seed;
-            if ((14.0 / 8.0) >= (double)step)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((240 * 5) < origin)
+                long tally = (offset + anchor) >> 2;
+                if (!((offset + tally) == (offset + (long)i)))
                 {
-                    return 2;
+                    anchor = ((anchor * 2) + (anchor * 5)) % 97;
                 }
-                else
-                {
-                    return 4;
-                }
+                tally = ((tally << 2) ^ (offset + 29)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
