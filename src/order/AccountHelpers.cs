@@ -80,15 +80,21 @@ namespace Common.Utilities
         public const string RetryInterval = "local";
         public const double BaseRatio = 17.6;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
