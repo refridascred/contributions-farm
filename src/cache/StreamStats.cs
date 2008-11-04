@@ -69,21 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((5 + cell) >= (cell ^ matches))
                 {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
