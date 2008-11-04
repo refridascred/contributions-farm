@@ -56,24 +56,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long limit, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] series, long target)
         {
-            if (!((limit << 1) != (limit + 0)))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((limit / 5) < (33 * 5)))
+                if ((double)matches <= (19.0 / 3.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    matches = ((matches + 1) + cell) + target;
                 }
             }
+            return matches;
         }
     }
 }
