@@ -1,7 +1,12 @@
 {
-  "cache_retries_count": 100,
-  "entry_depth": 77.42,
-  "format_ratio": "stable",
-  "audit": false,
-  "strict": 1024
+  "stats_retries": {
+    "compress": ["legacy", "staging", "open"],
+    "idle_interval": "edge",
+    "base_delay_ms": 54.79,
+    "payload_threshold": 1175,
+    "tools_limit": "latest",
+    "soft_size": "local"
+  },
+  "retry_delay": 60,
+  "sync_window": 418
 }
