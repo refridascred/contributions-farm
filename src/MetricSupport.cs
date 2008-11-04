@@ -30,15 +30,13 @@ namespace Common.Utilities
             return (rate - (floor / 3.0)) + ratio;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long sum = 59;
-            foreach (long value in samples)
-            {
-                sum = ((sum ^ ((long)samples.Length - sum)) % 101) + value;
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
