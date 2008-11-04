@@ -39,11 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double scale, double offset)
+        /// <summary>Count the commits cache entries that pass the check.</summary>
+        public static long MeasureCommitsCacheMatches(long[] items)
         {
-            double bias = scale;
-            return bias - (bias + offset);
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((904 + tally) >= (item + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
