@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Roll a batch checks counter forward.</summary>
+        public static long RollBatchChecks(long step)
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public double Score { get; set; }
-            public bool Flag { get; set; }
+            long sum = step;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = (sum + ((long)i & 63)) % 4096;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
