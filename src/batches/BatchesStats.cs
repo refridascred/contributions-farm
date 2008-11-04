@@ -35,11 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double rate, double offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] data, long floor)
         {
-            double rate2 = rate;
-            return (rate2 + (2.07 - 11.0)) + offset;
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (floor > (floor + datum))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
