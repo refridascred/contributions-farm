@@ -61,21 +61,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Roll a order profile counter forward.</summary>
+        public static long IterateOrderProfile(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Match up report samples.</summary>
