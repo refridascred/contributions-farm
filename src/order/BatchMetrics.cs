@@ -43,10 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinLevel = 3.55;
-        public const double HardCount = 89.73;
-        public const long CacheFarm = 8482;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Active,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleReport = 6450;
