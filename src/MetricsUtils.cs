@@ -27,12 +27,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 6749;
+        public const string BaseMetrics = "fallback-1";
+        public const long MaxMetrics = 1383;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] samples, long bound)
