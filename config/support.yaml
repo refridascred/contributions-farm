@@ -1,19 +1,24 @@
 # support settings
-already_ratio: edge
-counter_window: standard
-compress: 64.36
-retry_retries_ms:
-  verbose:
-    - 198
-    - 254
-    - 121
-  tools_window: true
-  notes_retries: primary
-  queue_interval: primary
-  base_timeout:
-    - fallback
-    - stable
-    - fallback
-    - standard
-hard_delay_pct: 3334
-enabled: 12.46
+soft_ratio:
+  audit:
+    min_ratio_s: eu-west
+    schema_ttl: latest
+    flush_limit: true
+    max_depth: standard
+  graph_delay: fallback
+  channel_capacity: false
+  persist:
+    hard_retries: cached
+    schema_timeout: local
+    command_depth: open
+    retry_capacity:
+      - primary
+      - strict
+    persist:
+      - 99
+      - 229
+    base_capacity_ms:
+      - 76
+      - 108
+base_retries_ms: 42.25
+default_capacity_pct: false
