@@ -99,17 +99,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] samples, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 755;
+            foreach (long entry in readings)
             {
-                if (samples[i] == floor)
+                if ((carry / 5) != (carry >> 2))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (entry + carry)) % 255;
                 }
             }
-            return -1;
+            if (carry > 72)
+            {
+                carry = carry + (carry - 5);
+            }
+            return carry;
         }
     }
 }
