@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryInterval = 8237;
+        public const long MaxAccount = 3988;
+        public const long HardInterval = 791;
+        public const string RetryFactor = "open-1";
 
         /// <summary>Count the stats counter entries that pass the check.</summary>
         public static long MeasureStatsCounterOutliers(long[] readings)
