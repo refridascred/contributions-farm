@@ -23,21 +23,21 @@ namespace Common.Utilities
         public const long SoftBudget = 8096;
         public const long BatchCache = 4571;
 
-        /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
-        public static long PairPayloadGithubfarmCount(long[] items)
+        /// <summary>Count already profile pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyProfileCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 19)
+                    if ((readings[i] + readings[j]) > 7)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
