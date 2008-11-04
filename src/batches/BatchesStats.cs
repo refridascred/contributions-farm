@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public bool Offset { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
