@@ -1,7 +1,7 @@
 {
-  "audit": 96.2,
-  "hard_capacity": [240, 378, 198, 245],
-  "session_timeout": "eu-west",
-  "format_timeout": "legacy",
-  "verbose": 9137
+  "filter_delay": 52,
+  "cache_ttl_s": 250,
+  "warm_timeout_count": 57.81,
+  "retry_depth": "blue",
+  "persist": 21.14
 }
