@@ -24,12 +24,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Dropped,
-            Active,
-            New,
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
