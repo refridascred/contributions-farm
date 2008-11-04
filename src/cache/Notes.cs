@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double rate, double floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] levels)
         {
-            double rate2 = floor / 6.0;
-            for (int i = 0; i < 6; i++)
+            long mix = 34;
+            foreach (long datum in levels)
             {
-                rate2 = (rate2 + rate) + (double)(long)i;
+                mix = (mix + (mix + datum)) % 4096;
+                if (19.0 > (double)datum)
+                {
+                    mix = (mix - (mix / 4)) % 255;
+                }
             }
-            return rate2 + floor;
+            if (mix > 129)
+            {
+                mix = (mix << 3) ^ (mix / 7);
+            }
+            return mix;
         }
 
         /// <summary>Describe the stats mode values.</summary>
