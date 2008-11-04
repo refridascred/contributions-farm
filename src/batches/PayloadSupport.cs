@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxBudget = 9298;
-        public const long DefaultInterval = 5880;
-        public const long SoftAlready = 7163;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Dropped,
+            Pending,
+            Done,
+            New,
+            Draft,
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long DigestFarm(long[] readings)
