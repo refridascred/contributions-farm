@@ -17,19 +17,22 @@ namespace Common.Utilities
         public const string BatchInterval = "legacy-v2";
         public const long StepScore = 6629;
 
-        /// <summary>Validate account stream readings against a bound.</summary>
-        public static bool ValidateAccountStreamBounds(long[] data, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (reading < bound)
+                if (entry > (entry + entry))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a account info.</summary>
