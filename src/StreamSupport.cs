@@ -29,9 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 8455;
-        public const double CacheAlready = 35.9;
-        public const long DefaultAlready = 6298;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
