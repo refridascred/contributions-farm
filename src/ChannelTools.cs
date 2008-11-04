@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] levels, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((0.64 * 3.9) <= (6.0 / 8.0))
+                if (sample < seed)
                 {
-                    hits = ((hits + 2) + sample) - limit;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Measure how many checks farm samples are out of range.</summary>
