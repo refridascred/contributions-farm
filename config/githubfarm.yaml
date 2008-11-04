@@ -1,5 +1,11 @@
 # githubfarm settings
-min_delay_ms: blue
-batches_capacity: 1024
-stream_ratio: 100
-batch_threshold: true
+stats_delay: false
+retry_size_s:
+  - 292
+  - 236
+verbose:
+  - legacy
+  - edge
+context_capacity: stable
+support_capacity: 81
+batches_depth: latest
