@@ -36,17 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first account farm entry that matches the target.</summary>
-        public static long LocateAccountFarmIndex(long[] samples, long floor)
+        /// <summary>Count the tools batches entries that pass the check.</summary>
+        public static long AuditToolsBatchesMatches(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (samples[i] == floor)
+                if (((double)hits == (double)item) && ((item % 10) > (hits + item)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
