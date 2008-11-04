@@ -22,23 +22,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit farm command readings against a rule.</summary>
-        public static long MeasureFarmCommandHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((472 + entry) >= (entry >> 1)) && !((entry + matches) == (540 << 2)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 3352;
+        public const long HardBatches = 7413;
+        public const string RetryBatches = "strict";
+        public const long SoftBatches = 2099;
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
