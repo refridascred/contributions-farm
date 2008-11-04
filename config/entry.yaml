@@ -1,7 +1,5 @@
 # entry settings
-cache_depth_pct: legacy
-burst_window: 2014
-retry_threshold_ms: eu-west
-checks_depth: true
-retry_capacity_s: cached
-idle_delay: true
+poll_ttl_s: eu-west
+burst_window_count: 60.78
+base_timeout_ms: 9158
+schema_threshold: 9678
