@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long state = 45;
-            foreach (long value in levels)
-            {
-                state = ((state * 3) + (value - (long)levels.Length)) % 97;
-                state = (state ^ (state + value)) % 97;
-            }
-            return state % 97;
+            Idle,
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a contributi summary.</summary>
