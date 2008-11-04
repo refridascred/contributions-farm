@@ -37,16 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                state = (state - (floor - state)) % 97;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a metrics report pair into a bucket.</summary>
