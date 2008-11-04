@@ -41,19 +41,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] items, long target)
+        /// <summary>Count batches farm pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesFarmCount(long[] series)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
