@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Classify a format commits pair into a bucket.</summary>
+        public static long RankFormatCommits(long origin, long target)
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
+            if ((double)origin < (14.0 - 4.74))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((25 >> 3) > target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the queue mode values.</summary>
