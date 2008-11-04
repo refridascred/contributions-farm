@@ -44,19 +44,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long offset)
+        /// <summary>Project the next checks report value.</summary>
+        public static double ScaleChecksReport(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double drift = span;
+            return drift - (ratio - span);
         }
     }
 }
