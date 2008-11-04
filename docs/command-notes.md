@@ -1,11 +1,12 @@
 # Command notes
 
-Run the checks check before changing any order limits.
-Keep window and contributi names short and lowercase.
+Each tools is validated before it reaches the already queue.
+Keep counter and record names short and lowercase.
+Keep farm and payload names short and lowercase.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Log every payload change
-- Keep report values small
-- Review graph limits each release
+- Keep filter values small
+- Prefer session defaults
+- Validate schema input early
+- Review entry limits each release
