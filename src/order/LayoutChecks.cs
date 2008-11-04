@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools batches entry stays within the limit.</summary>
-        public static bool CheckToolsBatchesLimits(long[] data, long floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the route class values.</summary>
