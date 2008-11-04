@@ -34,15 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double rate, double span)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] readings)
         {
-            double weight = span / 7.0;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - (rate / 3.0)) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight + (weight + span);
+            return matches;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
