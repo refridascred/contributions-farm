@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long edge = target ^ seed;
+            if ((107 + edge) < (edge * 2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((7.26 < (double)edge) || (target <= (seed - edge)))
                 {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
