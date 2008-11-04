@@ -39,19 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] series, long step)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Closed,
+            Stale,
+            Ready,
+            New,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
