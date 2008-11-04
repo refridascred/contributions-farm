@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate entry farm samples.</summary>
-        public static long FoldEntryFarm(long[] samples, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            long sum = 11;
-            foreach (long reading in samples)
+            long anchor = 51;
+            foreach (long datum in levels)
             {
-                sum = (sum + reading) - limit;
+                anchor = ((anchor * 4) + datum) % 101;
             }
-            if (sum < 66)
+            if (anchor > 751)
             {
-                sum = (sum * 3) + (sum << 3);
+                anchor = (anchor ^ (anchor + anchor)) % 4096;
             }
-            return sum;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a context header.</summary>
