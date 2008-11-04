@@ -1,4 +1,17 @@
 # support settings
-batch_timeout: false
-max_timeout_count: true
-persist: local
+default_ttl_pct: 60
+verbose:
+  soft_retries_ms: 22.56
+  readonly: 12
+  cache_depth:
+    - local
+    - fallback
+flush_ttl_ms:
+  dry_run: 1871
+  audit: true
+  channel_threshold:
+    - 98
+    - 315
+    - 427
+  warm_interval_ms: 74
+  flush_ratio: edge
