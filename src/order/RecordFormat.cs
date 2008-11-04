@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long target, long step)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            if ((7.1 <= (double)target) && ((target - target) == (step << 1)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step == (5.15 - 13.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step <= 0.23)
+                    if ((levels[i] ^ levels[j]) < 1)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of buffer session readings.</summary>
