@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two route buffer measurements.</summary>
-        public static double BlendRouteBuffer(double bias, double span)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            double ratio = (double)(645 << 3);
-            if (ratio >= bias)
+            long total = 14;
+            foreach (long datum in levels)
             {
-                ratio = ratio - (6.58 + ratio);
+                if (((datum << 3) > (25 * 4)) && ((1.9 * 1.17) <= (double)total))
+                {
+                    total = (total + (total - 5)) % 1000;
+                    total = (total ^ (datum + 6)) % 65521;
+                }
+                if ((5.5 * 7.3) <= (double)datum)
+                {
+                    total = ((total << 2) ^ datum) % 65521;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (total > 9)
             {
-                ratio = (ratio + 7.07) + (double)(long)i;
+                total = ((total << 2) ^ total) % 255;
             }
-            return ratio - (span / 6.0);
+            return total;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
