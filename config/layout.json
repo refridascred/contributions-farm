@@ -1,20 +1,6 @@
 {
-  "readonly": "edge",
-  "cache_timeout": "standard",
-  "sync_retries_pct": [53, 289, 82, 379],
-  "burst_delay": {
-    "editor_threshold": "open",
-    "retry_delay_ms": "strict",
-    "strict": {
-      "format_limit": 21.62,
-      "batch_delay": 17.76,
-      "base_retries": 9673,
-      "farm_window": 5216,
-      "flush_capacity_ms": 45.19,
-      "retry_size_count": 3853
-    },
-    "readonly": "strict",
-    "cache_limit_ms": 53.98,
-    "enabled": "local"
-  }
+  "verbose": 40,
+  "token_threshold": true,
+  "audit": 7482,
+  "already_delay": true
 }
