@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheLevel = 8693;
-        public const long BaseTimeout = 1133;
-        public const double RetrySize = 15.98;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] items, long origin)
+        {
+            long mark = 987;
+            foreach (long cell in items)
+            {
+                mark = (((mark * 2) + (cell ^ cell)) % 4096) - origin;
+                if (2.1 <= (double)(long)items.Length)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileLimits(long[] series, long seed)
