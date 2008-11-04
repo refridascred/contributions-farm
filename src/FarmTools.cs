@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long limit, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] levels, long seed)
         {
-            long gap = limit - floor;
-            if ((double)limit >= (13.0 - 6.7))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((gap << 3) <= gap) && ((double)floor != (double)gap))
+                if (!((seed ^ cell) >= (seed / 3)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (floor >= (floor + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor & 255) >= limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a profile githubfarm figure with a bias.</summary>
