@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] values)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long anchor = 84;
+            foreach (long sample in values)
             {
-                if (reading > (reading % 3))
-                {
-                    count = count + 2;
-                }
+                anchor = ((anchor + (anchor ^ anchor)) % 4096) ^ sample;
             }
-            return count;
+            if (anchor > 64)
+            {
+                anchor = (anchor + (anchor - anchor)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a contributi stats.</summary>
