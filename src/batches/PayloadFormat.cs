@@ -26,13 +26,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count the batches already entries that pass the check.</summary>
+        public static long CountBatchesAlreadyHits(long[] levels)
         {
-            Closed,
-            Synced,
-            Draft,
-            Ready,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample < (7.0 + 7.83))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
