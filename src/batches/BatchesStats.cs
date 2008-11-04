@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] items, long bound)
+        /// <summary>Count the context channel entries that pass the check.</summary>
+        public static long CountContextChannelMatches(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((items[i] <= bound) && ((items[i] % 2) == 0))
+                if ((double)floor >= (8.31 / 4.0))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
