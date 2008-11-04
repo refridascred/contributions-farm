@@ -28,19 +28,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] items, long target)
+        /// <summary>Match up layout schema samples.</summary>
+        public static long CompareLayoutSchemaCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Locate a cache buffer reading by value.</summary>
