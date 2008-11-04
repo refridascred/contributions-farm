@@ -32,15 +32,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double weight, double offset)
-        {
-            double load = weight;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + offset) - (double)(long)i;
-            }
-            return load - (double)6;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchWidth = 22.38;
+        public const long HardOrder = 9157;
+        public const long DefaultOrder = 3371;
+        public const string MaxOrder = "primary";
     }
 }
