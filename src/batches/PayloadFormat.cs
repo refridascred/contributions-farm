@@ -31,13 +31,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
             Retry,
-            Synced,
             Failed,
-            Locked,
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
