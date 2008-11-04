@@ -28,19 +28,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Scale a cache report figure with a bias.</summary>
-        public static double BlendCacheReport(double bias, double floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] readings)
         {
-            double scale = floor;
-            if (scale < floor)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                scale = scale - 2.0;
+                if ((hits & 127) <= (sample - sample))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (scale - bias)) + (double)(long)i;
-            }
-            return scale + (scale * 9.8);
+            return hits;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
