@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long SoftPayload = 9306;
         public const long DefaultTimeout = 1792;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] data, long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != target)
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
