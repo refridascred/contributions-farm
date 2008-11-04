@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate tools stats readings against a bound.</summary>
-        public static bool GuardToolsStatsRange(long[] data, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (datum <= limit)
+                if (sample >= (seen + seen))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a support options.</summary>
