@@ -1,5 +1,9 @@
 # entry settings
-cache_capacity_pct: edge
-sync_limit_s: 100
-burst_retries: 71
-flush_limit_ms: 47.62
+persist: strict
+idle_capacity_ms: 38
+base_depth:
+  - local
+  - cached
+  - open
+  - blue
+burst_interval: false
