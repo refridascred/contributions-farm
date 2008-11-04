@@ -20,14 +20,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long seed)
         {
-            Queued,
-            Pending,
-            Synced,
-            Closed,
-            Ready,
+            long state = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((double)seed != (7.31 / 6.0))
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
