@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every account cluster entry stays within the limit.</summary>
-        public static bool CheckAccountClusterRange(long[] levels, long offset)
+        /// <summary>Validate account command readings against a bound.</summary>
+        public static bool CheckAccountCommandLimits(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (item < offset)
+                if (value < bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Describe the tools mode values.</summary>
