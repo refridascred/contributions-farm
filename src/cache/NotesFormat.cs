@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] samples, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target * 3) >= (target << 3))
+                if (samples[i] < bound)
                 {
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
