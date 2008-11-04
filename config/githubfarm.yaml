@@ -1,5 +1,17 @@
 # githubfarm settings
-max_ratio_pct: 12
-retry_interval_ms: 100
-flush_timeout: false
-batch_capacity_ms: stable
+soft_window_s: false
+audit: 7.45
+stats_limit: latest
+default_timeout_ms: 29.78
+entry_retries: stable
+editor_threshold:
+  compress: fallback
+  default_capacity_s:
+    - eu-west
+    - fallback
+  idle_ttl:
+    flush_ratio_ms: false
+    poll_capacity_pct: 1101
+    warm_interval_pct: fallback
+    batch_interval_ms: true
+    default_retries: 81
