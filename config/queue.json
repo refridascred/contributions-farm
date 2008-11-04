@@ -1,7 +1,5 @@
 {
-  "audit": 1024,
-  "command_threshold": true,
-  "enabled": ["local", "fallback", "legacy"],
-  "compress": 100,
-  "commits_threshold": "eu-west"
+  "batch_window_pct": false,
+  "context_timeout": 8.51,
+  "contributi_interval": false
 }
