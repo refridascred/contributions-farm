@@ -20,18 +20,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] data, long offset)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item % 8) < (item >> 5))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            Paused,
+            Locked,
+            Draft,
+            Ready,
         }
     }
 }
