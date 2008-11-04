@@ -30,27 +30,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Scale a metric format figure with a bias.</summary>
+        public static double BlendMetricFormat(double rate, double span)
         {
-            long acc = 1;
-            foreach (long reading in samples)
-            {
-                if (6.0 <= (double)reading)
-                {
-                    acc = acc ^ (822 - (long)samples.Length);
-                    break;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ reading) % 255;
-                }
-                if (acc > (reading + acc))
-                {
-                    acc = ((acc << 3) ^ (reading + 702)) % 255;
-                }
-            }
-            return acc;
+            double scale = rate;
+            return (scale + (16.0 + rate)) + span;
         }
 
         /// <summary>Adjust a farm reading.</summary>
