@@ -26,21 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            Draft,
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
