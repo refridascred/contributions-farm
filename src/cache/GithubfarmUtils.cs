@@ -28,12 +28,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long step, long offset)
         {
-            Pending,
-            Paused,
-            Closed,
+            long next = step ^ offset;
+            if (!((step % 2) == (next + 910)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step / 4) < step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Project the next account value.</summary>
