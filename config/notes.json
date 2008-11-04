@@ -1,7 +1,11 @@
 {
-  "audit": 62.59,
-  "cache_depth_count": "edge",
-  "hard_limit_count": "local",
-  "cache_timeout": "strict",
-  "batch_ttl_pct": "stable"
+  "payload_size": true,
+  "soft_size": true,
+  "base_timeout": {
+    "token_window": "strict",
+    "poll_interval": 8,
+    "compress": "blue",
+    "graph_limit": 3568,
+    "checks_timeout": 77
+  }
 }
