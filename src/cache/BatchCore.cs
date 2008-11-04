@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] values, long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long offset, long target)
         {
-            long score = 8;
-            foreach (long cell in values)
+            long step = offset - target;
+            if (7.8 >= (double)step)
             {
-                score = (score ^ cell) + target;
-                score = score + score;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((double)offset <= (3.0 - 2.5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Find the first buffer command entry that matches the target.</summary>
