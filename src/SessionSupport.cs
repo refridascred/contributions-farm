@@ -19,25 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long origin, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] samples, long limit)
         {
-            long diff = origin + step;
-            if ((double)3 > (double)origin)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step / 6) < diff)
+                if (entry != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
