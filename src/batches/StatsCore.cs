@@ -27,18 +27,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] data)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)seen < (10.0 - 15.0)))
+                if ((items[i] > step) && ((items[i] % 5) != 0))
                 {
-                    seen = (seen + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
