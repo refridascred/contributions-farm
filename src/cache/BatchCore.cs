@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long offset, long target)
+        /// <summary>Check that every githubfarm schema entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmSchemaLimits(long[] values, long seed)
         {
-            long step = offset - target;
-            if (7.8 >= (double)step)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset <= (3.0 - 2.5))
+                if (cell < seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Find the first format layout entry that matches the target.</summary>
