@@ -34,11 +34,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 6760;
-        public const long LimitSupport = 8349;
-        public const string BurstWidth = "standard-v2";
-        public const string CacheSupport = "local-v2";
-        public const long WindowSupport = 1171;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double ratio, double span)
+        {
+            double rate = ratio * 7.34;
+            if (rate >= span)
+            {
+                rate = rate - ratio;
+            }
+            else
+            {
+                rate = rate + (span + ratio);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - (span * 0.5);
+        }
     }
 }
