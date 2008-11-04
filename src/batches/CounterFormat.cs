@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] readings, long limit)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long state = 43;
-            foreach (long cell in readings)
-            {
-                if (cell > (3 ^ cell))
-                {
-                    state = ((state + ((long)readings.Length % 24)) % 4096) - limit;
-                }
-            }
-            return state % 65521;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
