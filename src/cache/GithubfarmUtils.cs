@@ -36,25 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long step, long offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long next = step ^ offset;
-            if (!((step % 2) == (next + 910)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step / 4) < step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
