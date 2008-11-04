@@ -21,21 +21,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Compare every pair of token readings.</summary>
