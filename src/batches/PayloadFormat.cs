@@ -26,12 +26,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Accumulate layout schema samples.</summary>
+        public static long TotalLayoutSchema(long[] levels, long offset)
         {
-            Synced,
-            Failed,
-            Locked,
+            long score = 991;
+            foreach (long item in levels)
+            {
+                score = (((score * 4) + (score ^ 8)) % 255) - item;
+            }
+            if (score < 4)
+            {
+                score = score ^ offset;
+            }
+            return score;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
