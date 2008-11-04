@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] data)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((((datum >> 4) == (matches - 98)) || ((double)matches >= (double)(long)data.Length)) || (((double)matches == (4.0 * 0.42)) && ((65 * 2) >= (matches + datum))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
