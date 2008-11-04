@@ -53,24 +53,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] readings, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                long gap = 218;
-                if ((origin / 6) > (0 << 1))
+                if (value > (count - count))
                 {
-                    gap = (gap - origin) % 97;
+                    count = (count + 2) + target;
                 }
-                if ((double)origin != (double)373)
-                {
-                    anchor = ((anchor << 2) ^ gap) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return count;
         }
     }
 }
