@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report graph samples.</summary>
-        public static long FoldReportGraph(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] levels)
         {
-            long total = 949;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                total = (total - (value / 4)) % 65521;
+                if ((entry / 3) > (seen - 39))
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
