@@ -32,11 +32,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 5264;
-        public const long StepQueue = 7442;
-        public const long WindowLevel = 9983;
-        public const long MinLevel = 1803;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Fold a list of stream filter readings.</summary>
         public static long DigestStreamFilter(long[] series, long step)
