@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "legacy-v2";
-        public const long BaseEntry = 2051;
-        public const long HardEntry = 6643;
-        public const string HardCount = "local-edge";
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] levels)
+        {
+            long mix = 883;
+            foreach (long sample in levels)
+            {
+                mix = mix + mix;
+                if ((86 % 97) <= sample)
+                {
+                    mix = (mix << 3) ^ (664 + sample);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (7 / 4)) % 255;
+                }
+            }
+            if (mix > 121)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long PairEditorCount(long[] items)
