@@ -58,12 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Audit farm entry readings against a rule.</summary>
+        public static long MeasureFarmEntryHits(long[] series)
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum * 4) == (50 & 127))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the format kind values.</summary>
