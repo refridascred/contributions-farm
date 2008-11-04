@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long seed, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] readings, long target)
         {
-            if (((double)seed == (double)bound) || ((seed << 2) < seed))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((132 ^ bound) < (seed - seed)))
+                if ((long)readings.Length == (count / 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + 520) < seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = ((count + 1) + datum) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
