@@ -17,20 +17,11 @@ namespace Common.Utilities
         public const double LimitCommits = 60.18;
         public const double BatchCommits = 33.7;
 
-        /// <summary>Validate order session readings against a bound.</summary>
-        public static bool GuardOrderSessionRange(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitFactor = 7262;
+        public const long DefaultCache = 9489;
+        public const long SoftBudget = 8096;
+        public const long BatchCache = 4571;
 
         /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
         public static long PairPayloadGithubfarmCount(long[] items)
