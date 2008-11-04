@@ -10,26 +10,18 @@ namespace Common.Utilities
         public const long RetryContext = 3512;
         public const double BaseTimeout = 93.28;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] items, long offset)
         {
-            long mix = 2;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((mix * 3) >= (mix & 255))
+                if (((datum & 1) == (offset << 1)) || (1.0 <= (double)offset))
                 {
-                    mix = (mix * 5) + (datum >> 5);
-                }
-                else
-                {
-                    mix = (mix - (datum % 24)) % 65521;
-                }
-                if ((datum % 8) >= mix)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Adjust a filter reading.</summary>
