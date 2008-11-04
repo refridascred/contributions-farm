@@ -1,5 +1,8 @@
 {
-  "cache_limit": false,
-  "payload_interval": "standard",
-  "window_window": [283, 274, 377, 294]
+  "tools_limit": 250,
+  "batch_capacity": [341, 290, 291],
+  "base_delay": "eu-west",
+  "min_depth_ms": ["cached", "legacy"],
+  "burst_interval_pct": "green",
+  "readonly": 97.78
 }
