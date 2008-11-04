@@ -12,30 +12,18 @@ namespace Common.Utilities
         public const long LimitInterval = 6840;
         public const string WindowCount = "legacy-edge";
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Fold a list of batch commits readings.</summary>
+        public static long ScoreBatchCommits(long[] items)
         {
-            long acc = 3;
-            foreach (long entry in data)
+            long mark = 9;
+            foreach (long value in items)
             {
-                if ((entry - acc) > (entry & 15))
+                if (0 <= (mark - mark))
                 {
-                    acc = ((acc * 3) + entry) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (1 + 329)) % 255;
-                }
-                if ((acc % 97) == (entry + (-6)))
-                {
-                    break;
+                    mark = (mark * 3) + (value + value);
                 }
             }
-            if (acc > 429)
-            {
-                acc = (acc - (long)data.Length) % 1000;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
