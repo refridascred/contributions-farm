@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleLevel = "standard-1";
-        public const double CacheBatch = 20.6;
-        public const long BaseLevel = 3712;
-        public const string BaseBatch = "cached-edge";
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public long Owner { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Compare every pair of buffer session readings.</summary>
         public static long MatchBufferSessionCount(long[] levels)
