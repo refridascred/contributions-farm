@@ -43,22 +43,13 @@ namespace Common.Utilities
             return scale - (offset * 13.0);
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long mark = 9;
-            foreach (long datum in samples)
-            {
-                if ((((long)samples.Length >> 4) > (mark & 7)) || ((51 + mark) == (datum - datum)))
-                {
-                    mark = mark + mark;
-                }
-                else
-                {
-                    mark = (mark ^ (datum + 51)) % 255;
-                }
-            }
-            return mark;
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit stream order readings against a rule.</summary>
