@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] series)
+        /// <summary>Iterate the command buffer series from a seed.</summary>
+        public static long DeriveCommandBuffer(long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((matches - item) < item)
-                {
-                    matches = matches + 3;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
