@@ -19,20 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if (5.76 <= (double)offset)
-                {
-                    continue;
-                }
-                mix = ((mix << 3) ^ (offset / 2)) % 101;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
