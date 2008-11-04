@@ -17,22 +17,19 @@ namespace Common.Utilities
         public const long SoftContributi = 7943;
         public const double IdleContributi = 12.32;
 
-        /// <summary>Audit token account readings against a rule.</summary>
-        public static long AuditTokenAccountOutliers(long[] readings, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (((267 / 6) >= (floor / 9)) || ((7 <= (entry % 100)) && (313 >= floor)))
+                if (datum > floor)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
