@@ -38,12 +38,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] samples, long limit)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
+                if ((items[i] == limit) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
