@@ -40,10 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardRatio = 9299;
-        public const double BurstBatches = 54.42;
-        public const string BatchBatches = "alpha-v2";
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Synced,
+            Active,
+            Idle,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 4199;
