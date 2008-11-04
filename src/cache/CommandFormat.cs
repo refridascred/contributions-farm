@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 5280;
-        public const double IdleSize = 19.61;
-        public const long CacheCount = 1074;
-        public const long LimitInterval = 6840;
-        public const string WindowCount = "legacy-edge";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "primary-edge";
+        public const long HardPayload = 4799;
+        public const long SoftPayload = 9306;
+        public const long DefaultTimeout = 1792;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool ValidateStreamRange(long[] data, long target)
