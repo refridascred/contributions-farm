@@ -26,12 +26,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            New,
+            Active,
+            Ready,
+            Failed,
         }
     }
 }
