@@ -66,17 +66,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] series, long seed)
+        /// <summary>Accumulate graph notes samples.</summary>
+        public static long CombineGraphNotes(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = -5;
+            foreach (long reading in series)
             {
-                if ((series[i] >= seed) && ((series[i] % 5) == 0))
+                if ((6.0 * 19.0) != (double)sum)
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + (reading / 7)) % 101;
                 }
             }
-            return -1;
+            if (sum < 83)
+            {
+                sum = (sum ^ (sum / 4)) % 1000;
+            }
+            return sum;
         }
     }
 }
