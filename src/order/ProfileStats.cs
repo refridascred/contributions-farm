@@ -23,12 +23,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardLevel = 18.33;
-        public const long RetryQueue = 6661;
-        public const long WindowQueue = 4791;
-        public const long CacheQueue = 8924;
-        public const long BaseLevel = 5220;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long step, long target)
+        {
+            long delta = step ^ target;
+            if ((step >> 3) <= (target * 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((7.0 / 6.0) < (double)delta) && ((double)delta <= (2.86 / 9.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(delta <= (59 & 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long DigestWindow(long[] items, long target)
