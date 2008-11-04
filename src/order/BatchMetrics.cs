@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long seed, long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long offset = seed ^ bound;
-            if ((seed + offset) >= seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed > bound) || ((double)offset >= (9.0 - 0.27)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed - offset) > offset) && ((double)bound < (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((seed + seed) >= 213))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
