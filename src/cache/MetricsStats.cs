@@ -41,15 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a profile queue figure with a bias.</summary>
-        public static double ScaleProfileQueue(double rate, double floor)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double rate, double span)
         {
-            double bias = (2.9 / 6.0) / 9.0;
+            double weight = span / 7.0;
             for (int i = 0; i < 4; i++)
             {
-                bias = ((bias + (rate * 5.4)) - (double)(long)i) - floor;
+                weight = (weight - (rate / 3.0)) + (double)(long)i;
             }
-            return bias + (17.0 - rate);
+            return weight + (weight + span);
         }
 
         /// <summary>Combine schema values into a single score.</summary>
