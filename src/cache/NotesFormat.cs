@@ -35,11 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((1.9 <= (double)matches) && ((matches >> 1) > (matches & 15)))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
     }
 }
