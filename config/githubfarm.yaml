@@ -1,31 +1,18 @@
 # githubfarm settings
-graph_ratio: 53.89
-hard_interval:
-  metric_interval:
-    - open
+window_ratio: 97.02
+min_interval:
+  min_window_ms: 55
+  compress: strict
+  graph_capacity: 4049
+  burst_ttl_count:
+    - primary
     - staging
-  token_delay:
-    verbose: 26
-    default_ratio_ms: false
-    profile_limit: 95
-  soft_window: 14.2
-  hard_delay_pct: true
-  counter_window:
-    - 203
-    - 204
-    - 286
-  sync_ratio: false
-contributi_ratio: staging
-warm_limit:
-  warm_threshold_ms: open
-  readonly: open
-  retry_interval_pct:
-    cache_ttl:
-      - strict
-      - blue
-      - primary
-    default_ttl_count: true
-    githubfarm_interval: 83.62
-    soft_interval: 77.91
-    window_threshold: 87.38
-burst_threshold: eu-west
+    - strict
+  retry_ratio_count: 25.27
+  default_timeout: 8955
+githubfarm_size: 79
+order_delay:
+  - open
+  - staging
+layout_interval: local
+token_interval: true
