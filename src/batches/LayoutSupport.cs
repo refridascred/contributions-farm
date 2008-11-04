@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long floor, long step)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            if ((6.6 * 12.0) >= (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step >= (5.16 / 7.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - 90) == (step % 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor - 56) == (floor / 9))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record status values.</summary>
