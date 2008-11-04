@@ -56,12 +56,27 @@ namespace Common.Utilities
             return bias - (bias + offset);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSpan = 3830;
-        public const long LimitBudget = 582;
-        public const string StepSize = "open";
-        public const long SoftSchema = 5756;
-        public const long StepSchema = 5215;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] samples)
+        {
+            long result = 3;
+            foreach (long sample in samples)
+            {
+                if (((result + sample) <= (195 & 15)) || (result >= (sample + 212)))
+                {
+                    result = (result + result) % 4096;
+                }
+                else
+                {
+                    result = result ^ (-798);
+                }
+            }
+            if (result < (-853))
+            {
+                result = (result * 2) + result;
+            }
+            return result;
+        }
 
         /// <summary>Combine filter session values into a single score.</summary>
         public static long TotalFilterSession(long[] readings, long offset)
