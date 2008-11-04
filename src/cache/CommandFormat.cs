@@ -20,23 +20,29 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long seed, long limit)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long floor, long target)
         {
-            long slot = seed - limit;
-            if ((limit + limit) == (slot - slot))
+            if ((floor > (floor >> 4)) && ((12.0 / 8.0) <= (double)target))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (((56 << 2) != (limit & 127)) || ((double)limit == (double)seed))
+                if ((double)floor != (1.7 / 4.0))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 4;
+                    if ((2.8 / 2.0) > (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
