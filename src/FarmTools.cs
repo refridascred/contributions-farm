@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long total = 14;
-            foreach (long datum in levels)
-            {
-                if (((datum << 3) > (25 * 4)) && ((1.9 * 1.17) <= (double)total))
-                {
-                    total = (total + (total - 5)) % 1000;
-                    total = (total ^ (datum + 6)) % 65521;
-                }
-                if ((5.5 * 7.3) <= (double)datum)
-                {
-                    total = ((total << 2) ^ datum) % 65521;
-                }
-            }
-            if (total > 9)
-            {
-                total = ((total << 2) ^ total) % 255;
-            }
-            return total;
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a support options.</summary>
