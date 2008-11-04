@@ -26,10 +26,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowInterval = "fallback";
-        public const string IdleTools = "open";
-        public const long MaxTools = 4542;
-        public const double MinTools = 98.78;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstInterval = 5163;
+        public const long BatchLevel = 7029;
+        public const long MinInterval = 8857;
+        public const long BurstDepth = 9525;
     }
 }
