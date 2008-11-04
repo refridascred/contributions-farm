@@ -35,12 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] values, long seed)
         {
-            Active,
-            Dropped,
-            Paused,
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
