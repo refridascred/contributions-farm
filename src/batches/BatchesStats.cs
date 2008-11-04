@@ -64,19 +64,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] levels, long origin)
+        /// <summary>Audit profile filter readings against a rule.</summary>
+        public static long CountProfileFilterOutliers(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (datum > origin)
+                if (seen < ((-6) & 1))
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 1) - value) - step;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
