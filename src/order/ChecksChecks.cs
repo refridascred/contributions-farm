@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((sample + sample) >= (long)samples.Length)
                 {
-                    score = (score + score) ^ (long)i2;
+                    matches = matches + 1;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
