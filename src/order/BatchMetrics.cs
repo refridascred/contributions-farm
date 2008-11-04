@@ -20,32 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long target)
-        {
-            if ((double)target <= 5.3)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target >> 3) < target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)step == (4.0 / 3.0)) || ((double)step >= (double)target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 4493;
+        public const string MaxNotes = "latest-v2";
+        public const string StepDepth = "stable-edge";
+        public const long MinNotes = 3942;
 
         /// <summary>Measure how many cluster command samples are out of range.</summary>
         public static long TallyClusterCommandGaps(long[] readings)
