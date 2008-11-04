@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long floor)
         {
-            long mix = 883;
-            foreach (long sample in levels)
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                mix = mix + mix;
-                if ((86 % 97) <= sample)
-                {
-                    mix = (mix << 3) ^ (664 + sample);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (7 / 4)) % 255;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (mix > 121)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
