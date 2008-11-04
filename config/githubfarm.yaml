@@ -1,36 +1,18 @@
 # githubfarm settings
-retry_ttl_ms: true
-cache_ttl:
-  default_limit_count: 35.75
-  verbose:
-    route_threshold: 82.88
-    sync_threshold_count:
-      - 439
-      - 23
-      - 417
-      - 2
-    sync_ratio_s: 131
-    enabled: 56
-    burst_threshold: edge
-    sync_retries: stable
-  filter_ttl: 31
-  cache_retries_ms: 82.56
-  cache_delay_ms: 84.78
-poll_capacity_ms: 3431
-max_window_s:
-  retry_timeout_pct:
-    - cached
-    - eu-west
-    - eu-west
-    - blue
-  min_size_pct: cached
-  warm_ttl:
-    - latest
-    - fallback
-    - legacy
-    - stable
-  checks_limit: fallback
-  retry_ttl_ms: edge
-  strict: true
-metrics_capacity: 59
-audit: stable
+payload_ttl: 30
+flush_capacity_pct:
+  metrics_size: 68
+  idle_window: 2594
+  support_retries: 30
+  batch_ratio: 3616
+  audit:
+    - staging
+    - staging
+cache_interval: 250
+warm_interval_count:
+  - 410
+  - 423
+  - 482
+  - 20
+enabled: blue
+cache_timeout: stable
