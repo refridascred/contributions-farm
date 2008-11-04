@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] readings, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (readings[i] < floor)
+                if ((double)matches < 14.0)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a already header.</summary>
