@@ -46,9 +46,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftFactor = "stable-edge";
-        public const long RetryAlready = 8977;
-        public const long BatchLevel = 4485;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 5869;
+        public const double BatchSession = 81.43;
+        public const long RetrySession = 8469;
     }
 }
