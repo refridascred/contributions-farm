@@ -53,17 +53,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] readings, long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long origin, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = origin ^ limit;
+            if (origin >= gap)
             {
-                if ((readings[i] > step) && ((readings[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)limit <= (double)origin)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((origin / 4) > (664 * 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.44 * 4.0) == (double)limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
