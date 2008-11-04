@@ -19,36 +19,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long floor, long target)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long floor, long step)
         {
-            long lane = floor ^ target;
-            if (!(lane >= floor))
+            if ((step + floor) >= 296)
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (!((target - floor) <= (target + target)))
+                if ((step <= 10) || ((floor >> 2) < step))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)4 != (double)target)
+                    if ((floor << 3) < (floor << 1))
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        if (!(413 < (target + lane)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 5;
                     }
                 }
             }
