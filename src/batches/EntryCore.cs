@@ -48,17 +48,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] values, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 44;
+            foreach (long sample in items)
             {
-                if (values[i] == limit)
+                if (((sample >> 5) >= (step / 7)) || ((mix ^ mix) < (step + step)))
                 {
-                    return (long)i;
+                    mix = (mix ^ sample) % 101;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Hold a layout entry.</summary>
