@@ -45,11 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            Synced,
+            Closed,
+            Failed,
+            Draft,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
