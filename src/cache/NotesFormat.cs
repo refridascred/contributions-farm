@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many cluster batches samples are out of range.</summary>
-        public static long MeasureClusterBatchesHits(long[] items)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] values)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long state = 85;
+            foreach (long reading in values)
             {
-                if (item > (634 << 2))
-                {
-                    hits = hits + 2;
-                }
+                state = (((state << 2) ^ 8) % 97) + reading;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Validate token channel readings against a bound.</summary>
