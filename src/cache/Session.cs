@@ -15,24 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((acc - acc) < offset) && ((acc >> 4) < (acc << 2)))
-                {
-                    acc = ((acc * 2) + (offset >> 5)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 4) + acc) % 65521;
-                }
-                acc = (acc << 3) ^ (-28);
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
