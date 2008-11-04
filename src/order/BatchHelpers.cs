@@ -16,18 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] samples)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((5.7 - 9.74) != (double)reading)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
