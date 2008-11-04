@@ -74,19 +74,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next stats buffer value.</summary>
-        public static double BlendStatsBuffer(double bias, double span)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] samples, long step)
         {
-            double bias2 = bias;
-            if (bias2 > bias2)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                bias2 = bias2 + 6.0;
+                if (item >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - span;
-            }
-            return bias2 - 4.0;
+            return ready;
         }
 
         /// <summary>Validate stream cluster readings against a bound.</summary>
