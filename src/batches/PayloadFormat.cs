@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            long mix = 20;
-            foreach (long cell in series)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (((cell >> 2) != (mix - cell)) && ((mix ^ mix) >= mix))
+                if (!(((long)i >> 2) < (result + 13)))
                 {
-                    mix = (mix ^ (942 ^ cell)) % 1000;
+                    result = (result * 3) + (long)i;
                 }
+                result = (result - (result & 3)) % 97;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return mix % 97;
+            return result;
         }
 
         /// <summary>Describe the record class values.</summary>
