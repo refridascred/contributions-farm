@@ -76,12 +76,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            Active,
-            Dropped,
-            Stale,
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = (anchor * 4) + (anchor - (long)i);
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
