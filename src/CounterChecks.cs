@@ -42,12 +42,27 @@ namespace Common.Utilities
         public const long MinBudget = 4516;
         public const double StepSize = 89.82;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Fold a list of payload checks readings.</summary>
+        public static long CombinePayloadChecks(long[] values)
         {
-            Ready,
-            Failed,
-            Locked,
+            long sum = 4;
+            foreach (long reading in values)
+            {
+                sum = sum ^ reading;
+                if ((reading % 60) >= reading)
+                {
+                    sum = ((sum << 3) ^ (sum * 4)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum + sum)) % 101;
+                }
+            }
+            if (sum > (-707))
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Describe the format kind values.</summary>
