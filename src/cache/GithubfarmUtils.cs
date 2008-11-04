@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every stats format entry stays within the limit.</summary>
-        public static bool VerifyStatsFormatLimits(long[] data, long floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Paused,
+            Done,
+            Locked,
+            Pending,
         }
 
         /// <summary>Accumulate route samples.</summary>
