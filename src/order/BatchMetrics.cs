@@ -20,22 +20,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] levels)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if ((double)target <= 5.3)
             {
-                if ((58 * 4) != (matches + matches))
+                return 7;
+            }
+            else
+            {
+                if ((target >> 3) < target)
                 {
-                    matches = (matches + 1) ^ datum;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((double)step == (4.0 / 3.0)) || ((double)step >= (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many cluster command samples are out of range.</summary>
