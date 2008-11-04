@@ -13,22 +13,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine layout window values into a single score.</summary>
-        public static long FoldLayoutWindow(long[] values)
+        /// <summary>Validate profile queue readings against a bound.</summary>
+        public static bool ValidateProfileQueueBounds(long[] items, long offset)
         {
-            long carry = 6;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((carry + carry) > (330 * 3))
+                if (item <= offset)
                 {
-                    carry = ((carry + carry) % 4096) ^ item;
-                }
-                else
-                {
-                    carry = carry ^ 698;
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Project the next farm value.</summary>
