@@ -1,19 +1,7 @@
 # support settings
-batch_delay:
-  soft_interval:
-    - standard
-    - eu-west
-    - stable
-    - blue
-  verbose: false
-  githubfarm_ttl: 60.21
-  warm_retries: green
-  min_capacity_count: 30
-  warm_size_count: 3.06
-audit:
-  - staging
-  - cached
-  - blue
-min_interval_count: 60
-enabled: false
-readonly: blue
+checks_limit: 500
+cache_timeout_count: edge
+payload_limit: false
+batch_retries: 1024
+default_size: 60
+poll_retries_count: 94
