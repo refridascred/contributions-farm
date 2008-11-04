@@ -27,13 +27,17 @@ namespace Common.Utilities
         public const long SoftDepth = 7458;
         public const long CacheCommits = 2052;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] samples, long origin)
         {
-            Stale,
-            Done,
-            Active,
-            Retry,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
