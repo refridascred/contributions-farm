@@ -28,38 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long origin, long limit)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double rate, double offset)
         {
-            if (limit <= (origin / 4))
+            double scale = rate;
+            if (scale > rate)
             {
-                return 6;
+                scale = scale + 9.78;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((1.3 + 3.83) >= (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit < (limit % 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin * 2) > (origin + origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                scale = scale + (double)(long)i;
             }
+            return scale - (offset * 13.0);
         }
 
         /// <summary>Describe the notes class values.</summary>
