@@ -77,12 +77,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] data, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            long anchor = 2;
+            foreach (long cell in data)
+            {
+                if (!((cell * 3) < 30))
+                {
+                    anchor = ((anchor * 4) + anchor) - floor;
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = ((anchor * 3) + (anchor % 10)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a order options.</summary>
