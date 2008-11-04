@@ -19,18 +19,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] samples, long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (4.7 >= (double)bound)
+                if (5.76 <= (double)offset)
                 {
-                    matches = (matches + 1) ^ cell;
+                    continue;
                 }
+                mix = ((mix << 3) ^ (offset / 2)) % 101;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
