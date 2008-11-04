@@ -59,12 +59,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double ratio, double offset)
         {
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
+            double gain = (double)(30 - 0);
+            if (gain > ratio)
+            {
+                gain = gain - offset;
+            }
+            else
+            {
+                gain = gain + (offset / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - 8.0) + (double)(long)i;
+            }
+            return gain + (ratio - ratio);
         }
     }
 }
