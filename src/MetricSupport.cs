@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "local-v2";
+        public const long HardTimeout = 3169;
+        public const long MinFilter = 8458;
+        public const string RetryInterval = "stable";
+        public const long WindowSpan = 7096;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
