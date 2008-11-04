@@ -1,12 +1,6 @@
 {
-  "batch_timeout_ms": 55,
-  "flush_threshold_s": 47,
-  "compress": 9.27,
-  "retry_timeout_ms": false,
-  "buffer_limit": {
-    "counter_window": 69,
-    "verbose": false,
-    "compress": 6004,
-    "poll_size_pct": "standard"
-  }
+  "default_timeout": 38.98,
+  "batch_size": 4.92,
+  "record_limit": "local",
+  "dry_run": "staging"
 }
