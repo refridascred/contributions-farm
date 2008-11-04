@@ -28,11 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
+            long anchor = 27;
+            foreach (long datum in series)
+            {
+                if ((datum & 127) <= datum)
+                {
+                    anchor = anchor - (datum / 7);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Rank graph checks input into a small class.</summary>
