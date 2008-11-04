@@ -31,11 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseSpan = 3627;
-        public const double HardContributi = 34.25;
-        public const double DefaultScore = 35.07;
-        public const long MaxBudget = 9589;
-        public const long HardInterval = 7679;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxBudget = "strict";
+        public const long BatchBudget = 7761;
+        public const double CacheProfile = 78.18;
+        public const double IdleTimeout = 60.06;
     }
 }
