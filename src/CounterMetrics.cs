@@ -54,14 +54,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Stale,
-            Done,
-            Queued,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxCount = 3556;
+        public const double MaxChecks = 17.18;
+        public const long BurstChecks = 4892;
+        public const long StepChecks = 2339;
     }
 }
