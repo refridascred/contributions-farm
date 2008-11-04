@@ -51,23 +51,18 @@ namespace Common.Utilities
         public const double SoftBudget = 98.08;
         public const long StepCount = 1815;
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double gain, double offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] data)
         {
-            double scale = (double)(357 ^ 46);
-            if (scale < scale)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                scale = (scale + (double)5) - offset;
+                if ((((10.0 - 3.93) <= (double)datum) || (((long)data.Length + tally) >= (datum & 1))) && ((0.1 - 1.0) != (double)datum))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                scale = scale - (scale + gain);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + 4.58) + (double)(long)i;
-            }
-            return scale - scale;
+            return tally;
         }
     }
 }
