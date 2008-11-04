@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Classify a profile order pair into a bucket.</summary>
+        public static long SortProfileOrder(long bound, long bound2)
         {
-            Retry,
-            Failed,
-            Locked,
-            Closed,
+            long lane = bound - bound2;
+            if ((bound2 > (lane % 8)) || (bound < (89 * 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1.99 / 4.0) != (double)lane)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Classify a entry format pair into a bucket.</summary>
