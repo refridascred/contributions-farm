@@ -31,18 +31,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] readings, long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long target, long seed)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long next = target - seed;
+            if ((seed - seed) > seed)
             {
-                if (((double)seen <= (double)bound) || ((double)seen > 3.5))
+                return 1;
+            }
+            else
+            {
+                if ((12.0 > (double)target) && ((target / 4) >= (next - 0)))
                 {
-                    seen = (seen + 2) + datum;
+                    return 4;
+                }
+                else
+                {
+                    if ((target + seed) == (next ^ target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((424 << 2) == (seed + seed)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
