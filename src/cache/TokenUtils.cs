@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] data, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
