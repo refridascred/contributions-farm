@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long LimitInterval = 6840;
         public const string WindowCount = "legacy-edge";
 
-        /// <summary>Fold a list of batch commits readings.</summary>
-        public static long ScoreBatchCommits(long[] items)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mark = 9;
-            foreach (long value in items)
-            {
-                if (0 <= (mark - mark))
-                {
-                    mark = (mark * 3) + (value + value);
-                }
-            }
-            return mark;
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
