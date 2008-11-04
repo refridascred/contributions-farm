@@ -16,12 +16,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstFactor = "local-edge";
-        public const string WindowWidth = "fallback";
-        public const long IdleLevel = 3397;
-        public const string CacheStats = "strict-edge";
-        public const long StepScore = 5304;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Project the next stream graph value.</summary>
         public static double AdjustStreamGraph(double gain, double offset)
