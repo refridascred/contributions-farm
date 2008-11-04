@@ -39,15 +39,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Audit command contributi readings against a rule.</summary>
+        public static long MeasureCommandContributiMatches(long[] levels)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (((1 * 4) == (hits - 2)) && !((reading + 78) > (hits & 31)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
