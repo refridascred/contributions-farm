@@ -25,13 +25,11 @@ namespace Common.Utilities
             return rate + (floor - floor);
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Failed,
-            Synced,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseRatio = 37.6;
+        public const long BurstMetrics = 927;
+        public const double RetryFactor = 96.2;
+        public const string LimitSpan = "staging-v2";
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long RollWindow(long limit)
