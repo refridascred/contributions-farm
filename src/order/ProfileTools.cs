@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTimeout = 9316;
-        public const long CacheTools = 5869;
-        public const long MaxTimeout = 2485;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] levels, long origin)
+        {
+            long anchor = 673;
+            foreach (long datum in levels)
+            {
+                if (((double)anchor != (13.0 * 14.0)) && ((double)origin < 5.6))
+                {
+                    anchor = ((anchor ^ ((-901) - 5)) % 97) ^ datum;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long SoftInterval = 2855;
