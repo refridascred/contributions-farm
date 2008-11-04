@@ -1,5 +1,7 @@
 {
-  "batch_window_pct": false,
-  "context_timeout": 8.51,
-  "contributi_interval": false
+  "githubfarm_limit": true,
+  "commits_ratio": true,
+  "hard_timeout": 46,
+  "schema_size": ["stable", "standard", "standard", "fallback"],
+  "warm_timeout_count": ["local", "stable", "local"]
 }
