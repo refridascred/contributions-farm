@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public double Limit { get; set; }
-            public double Offset { get; set; }
-            public double Rank { get; set; }
+            Closed,
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Measure how many checks farm samples are out of range.</summary>
