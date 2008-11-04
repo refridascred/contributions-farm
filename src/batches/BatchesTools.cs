@@ -28,22 +28,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] samples, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] data, long offset)
         {
-            long anchor = 281;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((anchor & 63) > ((long)samples.Length + seed))
+                if ((item % 8) < (item >> 5))
                 {
-                    anchor = ((anchor << 2) ^ anchor) - cell;
+                    matches = (matches + 1) + offset;
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = (anchor + (52 / 8)) % 255;
-            }
-            return anchor % 1000;
+            return matches;
         }
     }
 }
