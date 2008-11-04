@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] samples)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample + sample) >= (long)samples.Length)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define format limits and defaults.</summary>
