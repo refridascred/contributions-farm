@@ -44,17 +44,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] data, long target)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = (floor / 9.0) * 9.3;
+            if (bias2 < floor)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (bias2 - bias2);
             }
-            return -1;
+            return bias2 - (bias + bias2);
         }
 
         /// <summary>Describe the tools level values.</summary>
