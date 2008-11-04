@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long LimitInterval = 6840;
         public const string WindowCount = "legacy-edge";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinSpan = 4745;
-        public const string SoftProfile = "open-1";
-        public const string BaseProfile = "strict-edge";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long RankCluster(long floor, long target)
