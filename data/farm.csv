@@ -1,8 +1,8 @@
-id,score
-1,726
-2,53.04
-3,508
-4,11
-5,381
-6,staging
-7,58.33
+id,active,weight
+1,273,149
+2,50.45,primary
+3,eu-west,eu-west
+4,95,517
+5,standard,197
+6,strict,91.35
+7,352,28.08
