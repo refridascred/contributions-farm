@@ -43,19 +43,22 @@ namespace Common.Utilities
             return scale - (offset * 13.0);
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] series, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mark = 9;
+            foreach (long datum in samples)
             {
-                if (entry <= origin)
+                if ((((long)samples.Length >> 4) > (mark & 7)) || ((51 + mark) == (datum - datum)))
                 {
-                    ready = false;
-                    break;
+                    mark = mark + mark;
+                }
+                else
+                {
+                    mark = (mark ^ (datum + 51)) % 255;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Audit stream order readings against a rule.</summary>
