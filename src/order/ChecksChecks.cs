@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] samples, long seed)
-        {
-            long state = 158;
-            foreach (long entry in samples)
-            {
-                if (((state / 7) == (state + seed)) || (seed < (entry - state)))
-                {
-                    state = (state ^ entry) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepBudget = 7475;
+        public const long IdleRatio = 1047;
+        public const long DefaultFormat = 1399;
+        public const long BurstDepth = 2493;
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long FindGraphIndex(long[] samples, long seed)
