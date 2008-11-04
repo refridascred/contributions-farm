@@ -32,39 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order metrics pair into a bucket.</summary>
-        public static long GradeOrderMetrics(long floor, long origin)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] data)
         {
-            long bound = floor ^ origin;
-            if (((floor + 6) != (bound << 1)) && ((double)29 == (double)floor))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin != (1.1 + 2.08))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound > 12.0)
+                    if ((data[i] ^ data[j]) > 2)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin ^ 789) != (6 << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
