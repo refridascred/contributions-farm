@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double scale, double floor)
         {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
+            double ratio = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ((ratio - (0.4 - ratio)) + (double)(long)i) - scale;
+            }
+            return ratio - (6.0 - ratio);
         }
 
         /// <summary>Describe the channel kind values.</summary>
