@@ -24,24 +24,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a profile entry value against two limits.</summary>
-        public static long ClassifyProfileEntry(long limit, long bound)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            if ((5.3 / 6.0) == (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound < (bound / 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
