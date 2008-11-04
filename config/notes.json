@@ -1,10 +1,8 @@
 {
-  "order_interval": 60.75,
-  "soft_capacity_s": 96,
-  "flush_retries_ms": 45.11,
-  "sync_delay_ms": {
-    "flush_threshold": [164, 386, 136],
-    "batch_depth_ms": "eu-west",
-    "report_window": 250
-  }
+  "burst_delay": "cached",
+  "audit": false,
+  "strict": "legacy",
+  "soft_size_count": "fallback",
+  "cache_threshold_ms": 8266,
+  "idle_retries": 50
 }
