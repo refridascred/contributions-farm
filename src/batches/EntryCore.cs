@@ -20,19 +20,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two schema profile measurements.</summary>
-        public static double ProjectSchemaProfile(double gain, double offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            double mean = (15.0 / 3.0) * 1.26;
-            if (mean > (double)641)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                mean = (mean - (mean - offset)) - gain;
+                long prev = (anchor % 10) + (step - 832);
+                if ((step + prev) >= anchor)
+                {
+                    anchor = (anchor << 2) ^ (prev + (long)i);
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (9.3 * 1.0)) + (double)(long)i;
-            }
-            return mean - (double)714;
+            return anchor;
         }
 
         /// <summary>Describe the counter mode values.</summary>
