@@ -54,12 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double rate, double bias)
-        {
-            double gain = (double)(26 + (-68));
-            return ((gain - (double)3) + rate) + bias;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 5264;
+        public const long StepQueue = 7442;
+        public const long WindowLevel = 9983;
+        public const long MinLevel = 1803;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] levels, long origin)
