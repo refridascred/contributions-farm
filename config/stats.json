@@ -1,12 +1,7 @@
 {
-  "stats_retries": {
-    "compress": ["legacy", "staging", "open"],
-    "idle_interval": "edge",
-    "base_delay_ms": 54.79,
-    "payload_threshold": 1175,
-    "tools_limit": "latest",
-    "soft_size": "local"
-  },
-  "retry_delay": 60,
-  "sync_window": 418
+  "readonly": 21,
+  "cluster_timeout": 15,
+  "enabled": 19,
+  "base_timeout_pct": 96,
+  "contributi_depth": false
 }
