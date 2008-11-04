@@ -57,17 +57,16 @@ namespace Common.Utilities
             return mean - (double)0;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] samples, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (target + (long)i)) % 255;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
