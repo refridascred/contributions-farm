@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of counter commits readings.</summary>
-        public static long PairCounterCommitsCount(long[] items)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = (double)909 * 3.9;
+            if (weight < span)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + (double)40;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Hold a already header.</summary>
