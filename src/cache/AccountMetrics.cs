@@ -58,21 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cluster metric pairs that satisfy a relation.</summary>
-        public static long PairClusterMetricCount(long[] samples)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Combine window values into a single score.</summary>
