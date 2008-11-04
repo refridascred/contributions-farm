@@ -35,10 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinInterval = 742;
-        public const long DefaultFactor = 13;
-        public const double WindowTimeout = 6.89;
-        public const double MinCount = 50.22;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
