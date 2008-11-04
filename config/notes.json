@@ -1,5 +1,14 @@
 {
-  "counter_interval": [60, 49],
-  "burst_retries_s": ["eu-west", "edge", "green", "fallback"],
-  "dry_run": 63.66
+  "cache_capacity": 2205,
+  "batch_timeout": {
+    "retry_delay_count": "primary",
+    "hard_delay_pct": 250,
+    "stream_capacity": false,
+    "counter_depth": true,
+    "notes_limit": [343, 348, 201],
+    "cache_interval": 2143
+  },
+  "queue_size": 33.52,
+  "batch_depth": 5.02,
+  "base_ttl_count": false
 }
