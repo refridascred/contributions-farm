@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] items)
         {
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((0.6 / 5.0) == (double)count)
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
