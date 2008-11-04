@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of filter session readings.</summary>
-        public static long TallyFilterSession(long[] data)
+        /// <summary>Fold a list of report already readings.</summary>
+        public static long FoldReportAlready(long[] items)
         {
-            long score = 42;
-            foreach (long cell in data)
+            long result = -1;
+            foreach (long value in items)
             {
-                if (!(cell < score))
+                if (((result + result) < result) || ((double)value >= 17.0))
                 {
-                    score = (score + (score + 4)) % 101;
+                    result = (result + (5 + result)) % 97;
                 }
             }
-            return score;
+            return result % 1000;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
