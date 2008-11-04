@@ -1,11 +1,7 @@
 {
-  "soft_size_s": false,
-  "retry_delay_count": "standard",
-  "readonly": {
-    "layout_retries": "eu-west",
-    "graph_limit": 41,
-    "max_retries_s": 83.15
-  },
-  "batch_size_ms": "stable",
-  "idle_threshold": 74
+  "hard_limit_ms": [392, 207, 266, 299],
+  "counter_threshold": true,
+  "max_threshold_ms": 100,
+  "warm_timeout_pct": "green",
+  "context_window": "fallback"
 }
