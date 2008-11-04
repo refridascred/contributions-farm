@@ -56,29 +56,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long bound, long bound2)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long offset, long step)
         {
-            if ((bound2 + bound) < (523 << 1))
+            if (((double)offset <= 8.8) || ((step ^ offset) >= offset))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if ((double)bound < 6.82)
+                if ((step + offset) <= (offset ^ step))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((bound2 ^ bound2) < (85 + bound2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 8;
                 }
             }
         }
