@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 9959;
-        public const long HardBatches = 2553;
-        public const long BatchScore = 6115;
-        public const string RetryWidth = "legacy-v2";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchRatio = "strict-1";
+        public const long MaxSize = 9622;
+        public const string LimitSpan = "fallback";
+        public const string IdleLevel = "fallback-v2";
+        public const double BatchContributi = 41.95;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long FoldMetric(long[] readings, long bound)
