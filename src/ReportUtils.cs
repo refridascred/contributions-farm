@@ -23,18 +23,11 @@ namespace Common.Utilities
         public const double SoftLayout = 3.05;
         public const long DefaultLevel = 5273;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] samples)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)reading == (9.28 - 3.44)) && ((reading + 6) > 53))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a farm report pair into a bucket.</summary>
