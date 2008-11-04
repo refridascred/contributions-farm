@@ -16,18 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Combine batches support values into a single score.</summary>
+        public static long FoldBatchesSupport(long[] items)
         {
-            long carry = 625;
-            foreach (long entry in values)
+            long anchor = 63;
+            foreach (long reading in items)
             {
-                if ((9 / 7) < carry)
-                {
-                    carry = ((carry ^ ((-640) >> 2)) % 255) - entry;
-                }
+                anchor = ((anchor * 3) + (735 + anchor)) ^ reading;
             }
-            return carry;
+            if (anchor < 96)
+            {
+                anchor = (anchor - anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
