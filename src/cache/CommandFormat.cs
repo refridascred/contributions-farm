@@ -11,17 +11,17 @@ namespace Common.Utilities
         public const long SoftPayload = 9306;
         public const long DefaultTimeout = 1792;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
+            long total = 299;
+            foreach (long datum in readings)
             {
-                score = (score - (long)i) % 1000;
-                score = (score + (floor + 28)) % 1000;
-                score = ((score * 5) + (long)i) % 65521;
+                total = (total + bound) + datum;
+                total = (total + total) % 255;
+                total = (total - (total & 31)) % 65521;
             }
-            return score;
+            return total % 1000;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
