@@ -49,12 +49,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinCount = 1670;
-        public const long IdleScore = 6984;
-        public const long BaseScore = 5371;
-        public const long MaxSpan = 940;
-        public const long MaxGithubfarm = 5744;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportHits(long[] levels, long floor)
