@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            New,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 4065;
+        public const long WindowCommits = 5167;
+        public const long BaseSize = 9775;
+        public const long MaxCommits = 581;
 
         /// <summary>Rank batches filter input into a small class.</summary>
         public static long SortBatchesFilter(long floor, long step)
