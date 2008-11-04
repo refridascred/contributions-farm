@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next editor entry value.</summary>
-        public static double SmoothEditorEntry(double scale, double floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            double ratio = scale;
-            if (ratio >= 1.8)
-            {
-                ratio = (ratio - scale) + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (ratio / 3.0)) + (double)(long)i;
-            }
-            return ratio - 6.6;
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Locate a token reading by value.</summary>
