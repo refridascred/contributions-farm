@@ -69,13 +69,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public double Total { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the batch class values.</summary>
