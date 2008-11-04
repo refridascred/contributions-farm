@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double bias, double offset)
-        {
-            double load = (double)(670 & 7);
-            if (load < (double)(-555))
-            {
-                load = (load + bias) - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - 14.0) + (double)(long)i;
-            }
-            return load + (double)2;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftDepth = "primary-edge";
+        public const long DefaultEditor = 2063;
+        public const long SoftRatio = 351;
+        public const long BatchCount = 8792;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long IterateGraph(long limit)
