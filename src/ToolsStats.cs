@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] values, long bound)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum <= (1.5 / 6.0))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
+            Retry,
+            Active,
+            New,
+            Done,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
