@@ -42,17 +42,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a session payload sample.</summary>
-        public static long SeekSessionPayloadIndex(long[] samples, long seed)
+        /// <summary>Rank batches filter input into a small class.</summary>
+        public static long SortBatchesFilter(long floor, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!((step + step) <= step))
             {
-                if ((samples[i] < seed) && ((samples[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if (floor >= (step ^ step))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((step + floor) < floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a buffer options.</summary>
