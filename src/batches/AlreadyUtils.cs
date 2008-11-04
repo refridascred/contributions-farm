@@ -19,18 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record batch entries that pass the check.</summary>
-        public static long MeasureRecordBatchHits(long[] series)
+        /// <summary>Roll a checks token counter forward.</summary>
+        public static long DeriveChecksToken(long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum & 63) < count)
+                if ((((-11) - (long)i) >= (anchor - 526)) && ((double)bound < (double)anchor))
                 {
-                    count = count + 1;
+                    anchor = ((anchor << 2) ^ ((long)i >> 2)) % 4096;
+                    continue;
                 }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Fold a list of farm graph readings.</summary>
