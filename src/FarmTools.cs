@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] levels)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (sample >= (seen + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double load = (double)(8 - 12);
+            return ((load + load) + scale) + bias;
         }
 
         /// <summary>Locate a buffer schema reading by value.</summary>
