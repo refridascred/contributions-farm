@@ -1,6 +1,10 @@
 {
-  "dry_run": "eu-west",
-  "base_window": 13.92,
-  "compress": 1024,
-  "base_threshold_pct": 15
+  "readonly": "local",
+  "cache_timeout_pct": {
+    "queue_timeout": 9757,
+    "account_size": 250,
+    "audit": 6.17,
+    "route_limit": [252, 414, 380]
+  },
+  "cache_capacity": ["fallback", "fallback", "staging", "edge"]
 }
