@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long floor, long limit)
         {
-            Draft,
-            Locked,
-            Closed,
+            long next = floor - limit;
+            if ((7 << 2) > (floor >> 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (9.01 >= (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit >> 2) > floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (limit < next)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
