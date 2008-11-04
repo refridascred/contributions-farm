@@ -44,12 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 36.87;
-        public const long BaseFarm = 1027;
-        public const string MaxFarm = "local-edge";
-        public const long WindowFarm = 4361;
-        public const string RetryWidth = "cached-1";
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Queued,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsGaps(long[] readings)
