@@ -1,5 +1,19 @@
 {
-  "cache_timeout_pct": ["open", "legacy", "local", "latest"],
-  "cluster_depth": "stable",
-  "readonly": "staging"
+  "max_interval": {
+    "editor_capacity": false,
+    "batches_timeout": "cached",
+    "context_timeout": ["stable", "green", "stable"],
+    "hard_size_count": 500,
+    "idle_capacity": {
+      "warm_retries": 47.38,
+      "token_limit": ["open", "latest"],
+      "default_ratio": 39.62,
+      "flush_capacity_pct": 500,
+      "burst_limit": 51.96,
+      "payload_timeout": "latest"
+    }
+  },
+  "layout_window": 500,
+  "readonly": "standard",
+  "verbose": "eu-west"
 }
