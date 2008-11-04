@@ -59,11 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 9922;
-        public const string BurstChecks = "local-1";
-        public const long LimitChecks = 5178;
-        public const long RetryChecks = 5493;
-        public const long CacheLevel = 2642;
+        /// <summary>Count the already channel entries that pass the check.</summary>
+        public static long MeasureAlreadyChannelHits(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((((1.74 * 5.0) > (double)entry) || (target > (target + hits))) || ((entry % 24) <= hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
