@@ -1,9 +1,5 @@
 # entry settings
-persist: strict
-idle_capacity_ms: 38
-base_depth:
-  - local
-  - cached
-  - open
-  - blue
-burst_interval: false
+sync_ratio_ms: strict
+max_ratio_ms: 8858
+filter_depth: false
+retry_size_ms: 19
