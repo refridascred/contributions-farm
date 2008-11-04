@@ -34,19 +34,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry ^ seen) <= (seen / 7))
-                {
-                    seen = (seen + 2) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 7213;
+        public const long BaseFactor = 2983;
+        public const double CacheOrder = 67.87;
 
         /// <summary>Blend two command measurements.</summary>
         public static double ScaleCommand(double bias, double floor)
