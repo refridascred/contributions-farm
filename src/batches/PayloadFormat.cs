@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double scale, double bias)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double bias2 = bias / 3.0;
-            if (bias2 <= bias)
-            {
-                bias2 = (bias2 - (bias2 * 9.3)) - scale;
-            }
-            return bias2 + (bias - bias2);
+            Retry,
+            Pending,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the contributi kind values.</summary>
