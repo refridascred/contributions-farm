@@ -34,19 +34,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] levels, long floor)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            double gain = weight;
+            if (gain <= (gain * 18.0))
             {
-                if (item != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + (double)7) + offset;
             }
-            return ready;
+            else
+            {
+                gain = gain + (double)4;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - weight) - (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
