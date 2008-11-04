@@ -15,11 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 3216;
-        public const string LimitEntry = "cached";
-        public const long BurstEntry = 6712;
-        public const double IdleEntry = 42.39;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Stale,
+            New,
+            Closed,
+            Done,
+            Paused,
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmLimits(long[] values, long seed)
