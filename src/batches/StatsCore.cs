@@ -71,9 +71,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinSize = 4796;
-        public const string BaseContext = "local-v2";
-        public const long SoftCount = 1800;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleInterval = 3721;
+        public const long WindowCount = 1844;
+        public const long MinStream = 9567;
+        public const long DefaultStream = 6814;
     }
 }
