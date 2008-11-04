@@ -12,10 +12,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 72.35;
-        public const double LimitPayload = 41.26;
-        public const long CacheBudget = 4037;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((5.7 - 9.74) != (double)reading)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] items, long seed)
