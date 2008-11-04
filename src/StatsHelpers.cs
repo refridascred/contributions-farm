@@ -47,17 +47,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] samples, long floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = 4.4 * 6.93;
+            if (mean > span)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + 7.8) - rate;
             }
-            return -1;
+            else
+            {
+                mean = mean - (double)751;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + 9.0) + (double)(long)i;
+            }
+            return mean - (double)0;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
