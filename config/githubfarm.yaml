@@ -1,7 +1,16 @@
 # githubfarm settings
-metrics_delay: standard
-verbose: 51.86
-hard_size_pct: false
-base_timeout_count: 18
-flush_delay_pct: 1432
-strict: 76.24
+payload_limit: 60.14
+retry_ratio_count: blue
+enabled: primary
+compress:
+  persist:
+    - cached
+    - primary
+    - local
+  cache_size: true
+  compress:
+    persist: 25
+    dry_run: latest
+    audit:
+      - standard
+      - latest
