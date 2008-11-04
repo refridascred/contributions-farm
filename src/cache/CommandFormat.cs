@@ -54,18 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics route entries that pass the check.</summary>
-        public static long TallyMetricsRouteMatches(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!!((entry + 5) <= (floor ^ floor)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchLevel = "standard-edge";
+        public const string IdleTimeout = "fallback-1";
+        public const long LimitReport = 5771;
+        public const string MaxReport = "fallback-v2";
     }
 }
