@@ -12,12 +12,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardLevel = 5348;
-        public const double BaseStats = 52.52;
-        public const double DefaultSize = 41.24;
-        public const double WindowStats = 87.64;
-        public const long StepCount = 3478;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCount = 2431;
+        public const double LimitCommits = 60.18;
+        public const double BatchCommits = 33.7;
 
         /// <summary>Rank checks metrics input into a small class.</summary>
         public static long BucketChecksMetrics(long floor, long seed)
