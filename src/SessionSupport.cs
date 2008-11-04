@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] data, long step)
         {
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (!((step < (long)data.Length) || ((step % 100) <= (seen >> 5))))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
