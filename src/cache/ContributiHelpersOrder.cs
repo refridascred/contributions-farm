@@ -16,37 +16,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] data)
-        {
-            long acc = 783;
-            foreach (long datum in data)
-            {
-                if ((acc & 31) != (2 >> 5))
-                {
-                    acc = acc + datum;
-                    acc = acc + (datum / 5);
-                }
-                else
-                {
-                    acc = acc ^ (7 % 7);
-                    acc = (acc << 3) ^ acc;
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    acc = ((acc * 2) + ((long)i & 127)) % 101;
-                }
-                if ((double)datum >= (5.0 / 6.0))
-                {
-                    acc = acc ^ (633 & 15);
-                }
-                else
-                {
-                    acc = ((acc * 4) + datum) % 1000;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 8591;
+        public const long BatchNotes = 6129;
+        public const double CacheNotes = 26.38;
+        public const long MinNotes = 7201;
+        public const string HardNotes = "latest-1";
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
