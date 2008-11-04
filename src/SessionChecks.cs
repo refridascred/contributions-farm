@@ -25,24 +25,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long bound, long seed)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] values, long origin)
         {
-            if (seed < ((-18) << 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.4 + 5.5) <= (double)seed)
+                if (values[i] > origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the channel status values.</summary>
