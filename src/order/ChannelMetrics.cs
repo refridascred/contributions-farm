@@ -25,17 +25,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first order schema entry that matches the target.</summary>
-        public static long LocateOrderSchemaIndex(long[] data, long origin)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
