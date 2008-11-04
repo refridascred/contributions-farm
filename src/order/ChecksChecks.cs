@@ -36,18 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many profile counter samples are out of range.</summary>
-        public static long CountProfileCounterHits(long[] series)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((sample / 7) != (sample ^ seen))
+                if (cell != step)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
