@@ -27,19 +27,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every stats report entry stays within the limit.</summary>
-        public static bool ValidateStatsReportLimits(long[] levels, long floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
