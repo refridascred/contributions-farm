@@ -22,12 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double ratio, double offset)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            double ratio2 = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = ((ratio2 - offset) + (double)(long)i) - ratio;
+            }
+            return ratio2 + offset;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
