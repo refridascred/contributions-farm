@@ -31,13 +31,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public bool Size { get; set; }
-            public bool Level { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
