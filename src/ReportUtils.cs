@@ -5,34 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] samples, long origin)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] readings, long origin)
         {
-            long total = 2;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= (value & 31))
+                if (readings[i] <= origin)
                 {
-                    total = (total ^ 851) % 65521;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (value % 24)) % 4096;
-                }
-                if ((503 <= (origin ^ total)) || ((value / 8) == (total * 3)))
-                {
-                    total = (total ^ 26) % 101;
-                }
-                else
-                {
-                    total = (total * 2) + origin;
-                }
-                if (((total - total) >= (value ^ value)) || ((823 + value) <= (value - value)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
