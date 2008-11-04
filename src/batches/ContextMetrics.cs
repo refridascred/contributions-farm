@@ -13,13 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] levels, long floor)
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
