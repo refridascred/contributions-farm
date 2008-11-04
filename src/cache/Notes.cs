@@ -23,23 +23,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double scale, double span)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] items)
         {
-            double mean = (double)101 + (double)82;
-            if (mean < (mean - span))
+            long anchor = 0;
+            foreach (long item in items)
             {
-                mean = (mean - (mean - 8.9)) - scale;
+                anchor = anchor ^ (item + anchor);
             }
-            else
-            {
-                mean = mean - (double)22;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + span;
+            return anchor;
         }
 
         /// <summary>Describe the record class values.</summary>
