@@ -38,19 +38,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] samples, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (cell > step)
+                if ((double)matches > (7.1 + 4.76))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
