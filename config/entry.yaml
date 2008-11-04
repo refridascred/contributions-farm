@@ -1,9 +1,5 @@
 # entry settings
-command_capacity: 500
-burst_timeout:
-  - open
-  - blue
-  - staging
-  - standard
-sync_delay: false
-flush_limit: 76.64
+stream_retries: fallback
+persist: 26.21
+burst_interval_ms: 940
+layout_ratio: 75
