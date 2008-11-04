@@ -82,21 +82,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long step, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long bound = step + offset;
+            if ((505 << 2) <= (bound - offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (step >= (step / 9))
                 {
-                    if ((levels[i] - levels[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
