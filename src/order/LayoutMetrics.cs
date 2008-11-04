@@ -24,15 +24,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
