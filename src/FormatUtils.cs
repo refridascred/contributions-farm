@@ -54,17 +54,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] data, long bound)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
