@@ -47,15 +47,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double bias, double bias2)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long seed)
         {
-            double ratio = bias;
-            if (ratio > (6.05 + bias))
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                ratio = (ratio - (5.7 / 5.0)) - bias2;
+                if ((score * 4) > (score % 64))
+                {
+                    score = (score - ((long)i + (long)i)) % 1000;
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return ratio + 2.0;
+            return score;
         }
     }
 }
