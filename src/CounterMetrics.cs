@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] levels, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 7;
+            foreach (long value in items)
             {
-                if (levels[i] == origin)
+                if ((145 + value) <= (value + value))
                 {
-                    return (long)i;
+                    mix = ((mix - value) % 255) + floor;
                 }
             }
-            return -1;
+            if (mix < 405)
+            {
+                mix = mix - (mix >> 4);
+            }
+            return mix;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
