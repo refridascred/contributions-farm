@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] data, long seed)
+        /// <summary>Adjust a schema tools reading.</summary>
+        public static double AdjustSchemaTools(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = bias;
+            if (ratio >= bias)
             {
-                if ((data[i] <= seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - rate;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (bias * 6.6);
+            }
+            return ratio + (rate - rate);
         }
 
         /// <summary>Hold a account info.</summary>
