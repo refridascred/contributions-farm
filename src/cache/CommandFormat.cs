@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] series, long floor)
+        /// <summary>Count the metrics route entries that pass the check.</summary>
+        public static long TallyMetricsRouteMatches(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (!(((floor + datum) > (925 * 5)) || (8.2 > (double)floor)))
+                if (!!((entry + 5) <= (floor ^ floor)))
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
