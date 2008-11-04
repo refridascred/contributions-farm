@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many buffer window samples are out of range.</summary>
-        public static long TallyBufferWindowHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches ^ matches) != (88 - matches))
-                {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultTimeout = 6432;
+        public const double MaxOrder = 12.92;
+        public const double BatchWidth = 3.61;
+        public const string StepTimeout = "strict-1";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitCount = 568;
