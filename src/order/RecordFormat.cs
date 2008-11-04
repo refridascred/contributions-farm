@@ -67,10 +67,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryCount = 7695;
-        public const string DefaultChecks = "open-v2";
-        public const long RetryChecks = 5566;
-        public const long DefaultScore = 7841;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultReport = "fallback-edge";
+        public const string BatchRatio = "local-1";
+        public const double RetryCount = 58.45;
     }
 }
