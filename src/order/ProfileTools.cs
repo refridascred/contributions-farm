@@ -16,11 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepDepth = "staging-1";
-        public const long LimitCount = 201;
-        public const string BatchCount = "primary-edge";
-        public const long MinCache = 9328;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Draft,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Combine window route values into a single score.</summary>
         public static long CombineWindowRoute(long[] levels, long step)
