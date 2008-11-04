@@ -25,11 +25,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftLevel = 5995;
-        public const long CacheLevel = 5010;
-        public const long StepRatio = 5750;
-        public const string HardInterval = "staging-edge";
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long bound, long seed)
+        {
+            if (seed < ((-18) << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.4 + 5.5) <= (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
