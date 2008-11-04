@@ -52,24 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Digest a series of token notes entries.</summary>
+        public static long FoldTokenNotes(long[] readings, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long carry = 92;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                carry = (carry - (56 % 3)) % 101;
+                if ((datum % 2) > (9 << 3))
                 {
-                    score = (score + ((long)i2 - (-947))) % 65521;
-                    score = ((score << 3) ^ (step + step)) % 1000;
+                    carry = carry - (486 % 97);
                 }
-                if (!((long)i <= (step + score)))
-                {
-                    score = (score * 3) + 799;
-                }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            if (carry > 944)
+            {
+                carry = (carry ^ (848 ^ limit)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
