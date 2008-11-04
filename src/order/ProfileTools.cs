@@ -31,13 +31,11 @@ namespace Common.Utilities
         public const double IdleReport = 13.07;
         public const long CacheRatio = 2687;
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
