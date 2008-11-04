@@ -27,28 +27,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] items, long origin)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long total = 770;
-            foreach (long sample in items)
-            {
-                if ((total & 31) != (sample - sample))
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total ^ (507 << 3)) % 255;
-                    total = total ^ (total / 8);
-                }
-                total = (total - (total + origin)) % 255;
-            }
-            if (total < 472)
-            {
-                total = (total ^ origin) % 255;
-            }
-            return total % 97;
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
