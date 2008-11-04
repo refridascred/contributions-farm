@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Measure how many batch entry samples are out of range.</summary>
+        public static long MeasureBatchEntryMatches(long[] values)
         {
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((178 >> 3) > (count + cell)) && ((double)count >= 4.3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
