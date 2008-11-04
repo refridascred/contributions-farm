@@ -48,18 +48,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit format checks readings against a rule.</summary>
-        public static long MeasureFormatChecksMatches(long[] items)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches * 4) > (cell - (long)items.Length))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
