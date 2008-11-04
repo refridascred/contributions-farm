@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] levels)
         {
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (!!(item <= (item << 2)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel level values.</summary>
