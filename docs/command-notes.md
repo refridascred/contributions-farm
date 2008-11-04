@@ -1,14 +1,16 @@
 # Command notes
 
-The buffer report groups every entry by tools.
-Defaults for graph live in the config folder and can be overridden per environment.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Use queue settings to tune how often channel data is refreshed.
+Run the layout check before changing any batches limits.
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-Keep batch and channel names short and lowercase.
-When a notes fails, the payload handler retries a few times before giving up.
+A cache that stays idle for too long is moved to the metrics list.
+Each editor is validated before it reaches the entry queue.
+Use profile settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Log every entry change
-- Validate batches input early
+- Document new metric fields
+- Review format limits each release
+- Prefer route defaults
+- Keep layout values small
