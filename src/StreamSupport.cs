@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] samples, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
+            long state = 65;
+            foreach (long item in samples)
             {
-                if ((double)(long)i <= (4.0 - 1.5))
+                if ((double)item <= (double)838)
                 {
-                    carry = (carry ^ ((long)i - carry)) % 97;
-                    break;
+                    state = ((state << 2) ^ (item - 35)) - limit;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Accumulate counter samples.</summary>
