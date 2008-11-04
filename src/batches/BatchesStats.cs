@@ -37,24 +37,25 @@ namespace Common.Utilities
         public const long RetryCommand = 5504;
         public const long BatchCommand = 2439;
 
-        /// <summary>Accumulate stats window samples.</summary>
-        public static long DigestStatsWindow(long[] levels, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long bound, long seed)
         {
-            long score = 395;
-            foreach (long value in levels)
+            long offset = bound + seed;
+            if (((seed << 3) > seed) && ((seed * 5) < (53 & 7)))
             {
-                if ((0.1 - 5.1) > (double)value)
+                return 4;
+            }
+            else
+            {
+                if ((seed > (891 / 9)) && ((seed ^ bound) == (offset + seed)))
                 {
-                    score = (score + (step ^ value)) % 4096;
-                    continue;
+                    return 0;
                 }
-                score = (score * 2) + score;
+                else
+                {
+                    return 6;
+                }
             }
-            if (score > 481)
-            {
-                score = score + (step + step);
-            }
-            return score;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
