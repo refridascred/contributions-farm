@@ -24,38 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long target, long limit)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long step)
         {
-            if (((limit << 3) != (target << 1)) || ((target * 3) >= target))
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (((target ^ limit) == (limit - 1)) || (limit < (-6)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit ^ target) < (target % 97)) && ((target << 1) >= limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target * 4) <= target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Accumulate session samples.</summary>
