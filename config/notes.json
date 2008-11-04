@@ -1,8 +1,30 @@
 {
-  "burst_delay": "cached",
-  "audit": false,
-  "strict": "legacy",
-  "soft_size_count": "fallback",
-  "cache_threshold_ms": 8266,
-  "idle_retries": 50
+  "compress": {
+    "default_timeout_ms": [390, 388, 391],
+    "retry_depth_pct": {
+      "metrics_delay": true,
+      "graph_interval": "primary",
+      "retry_depth": true,
+      "burst_size_ms": 72.75
+    },
+    "strict": "legacy"
+  },
+  "batch_size_count": 36.49,
+  "burst_timeout_s": [140, 199, 410],
+  "readonly": 31,
+  "cache_ttl_count": {
+    "min_timeout_ms": true,
+    "base_limit": {
+      "persist": [429, 462, 488, 467],
+      "soft_timeout_pct": 8412,
+      "enabled": "primary",
+      "flush_ratio_ms": [309, 64],
+      "batches_window": false,
+      "cache_interval_pct": ["strict", "open", "primary"]
+    },
+    "strict": true,
+    "cache_depth_count": true,
+    "burst_size_count": "staging"
+  },
+  "entry_timeout": "legacy"
 }
