@@ -1,16 +1,7 @@
 {
-  "sync_limit_ms": ["edge", "green", "fallback"],
-  "batch_threshold_count": [460, 213],
-  "base_ttl_s": {
-    "cache_retries": "stable",
-    "notes_ratio": 7448,
-    "warm_ttl": true
-  },
-  "retry_timeout": false,
-  "flush_delay_count": {
-    "strict": false,
-    "route_limit": [23, 434, 407],
-    "entry_depth": "edge"
-  },
-  "stream_size": "fallback"
+  "warm_depth": true,
+  "burst_capacity_ms": "stable",
+  "metrics_interval": 6702,
+  "min_window": true,
+  "idle_ratio": 250
 }
