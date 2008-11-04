@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            Done,
-            Queued,
-            Stale,
-            Pending,
-            Paused,
+            long mix = 19;
+            foreach (long value in levels)
+            {
+                if (!(mix < (mix >> 1)))
+                {
+                    mix = ((mix << 2) ^ (value & 15)) % 255;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
