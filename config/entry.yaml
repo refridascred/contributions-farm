@@ -1,10 +1,6 @@
 # entry settings
-default_size_count:
-  - 10
-  - 339
-  - 134
-  - 249
-cache_limit_pct: 16.31
-retry_depth_s: 56.77
-default_threshold_count: 52.33
-poll_retries_count: 6451
+cache_window_s: 71
+soft_ttl: false
+strict: 57.87
+verbose: eu-west
+poll_window_ms: 78.75
