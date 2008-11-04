@@ -41,15 +41,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of stream filter readings.</summary>
-        public static long DigestStreamFilter(long[] series, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long target)
         {
-            long acc = 49;
-            foreach (long value in series)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                acc = ((acc - (acc % 5)) + value) - step;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return acc % 1000;
+            return state;
         }
     }
 }
