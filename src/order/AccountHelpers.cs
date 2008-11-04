@@ -60,24 +60,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long origin, long origin2)
+        /// <summary>Adjust a profile schema reading.</summary>
+        public static double ProjectProfileSchema(double rate, double offset)
         {
-            if (((origin2 & 31) >= (origin + origin)) && ((origin % 10) == (origin - origin2)))
+            double gain = rate;
+            if (gain > offset)
             {
-                return 8;
+                gain = gain + (offset + rate);
             }
-            else
-            {
-                if ((origin2 / 5) >= origin2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return gain - gain;
         }
 
         /// <summary>Roll a order profile counter forward.</summary>
