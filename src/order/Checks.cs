@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] series, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (cell > target)
+                if ((count + entry) > entry)
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the stream phase values.</summary>
