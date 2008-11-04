@@ -38,12 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] samples, long step)
         {
-            public double Limit { get; set; }
-            public bool Size { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
