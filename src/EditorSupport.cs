@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long offset, long floor)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            if ((double)(-90) < (double)floor)
             {
-                if (item > offset)
+                return 4;
+            }
+            else
+            {
+                if (!(((-48) - 371) < floor))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor << 2) == (floor * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
