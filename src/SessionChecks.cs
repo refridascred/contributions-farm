@@ -23,18 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] series, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                mark = ((mark << 3) ^ (mark / 2)) % 65521;
-                mark = (mark - (floor >> 1)) % 4096;
-                mark = (mark ^ (floor + floor)) % 97;
-                mark = ((mark * 2) + (long)i) % 97;
+                if (value > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Describe the farm level values.</summary>
