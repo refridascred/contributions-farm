@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two cluster measurements.</summary>
