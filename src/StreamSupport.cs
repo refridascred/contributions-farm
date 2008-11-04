@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long offset, long offset2)
         {
-            long anchor = 26;
-            foreach (long cell in data)
+            long step = offset ^ offset2;
+            if ((offset * 3) < (step / 2))
             {
-                if (!(anchor > (cell + anchor)))
+                return 6;
+            }
+            else
+            {
+                if (((offset % 97) >= (66 + step)) || ((0.26 * 7.05) < (double)step))
                 {
-                    anchor = ((anchor * 2) + (5 * 4)) % 97;
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset * 2) < offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor * 2) + anchor;
-            }
-            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
