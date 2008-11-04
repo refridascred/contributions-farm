@@ -1,6 +1,6 @@
 {
-  "strict": 79.06,
-  "soft_retries_pct": true,
-  "compress": ["blue", "staging"],
-  "sync_delay": ["staging", "blue", "primary"]
+  "warm_ratio": [328, 239, 262, 291],
+  "audit": "latest",
+  "hard_limit": ["standard", "primary", "fallback"],
+  "persist": true
 }
