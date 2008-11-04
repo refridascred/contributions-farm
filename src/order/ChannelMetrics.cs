@@ -57,19 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] data)
+        /// <summary>Measure how many schema window samples are out of range.</summary>
+        public static long MeasureSchemaWindowMatches(long[] levels, long offset)
         {
-            long result = 6;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                result = (result * 5) + reading;
+                if (((value << 3) > value) && (matches > (offset >> 5)))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (result > 7)
-            {
-                result = result ^ (result - result);
-            }
-            return result % 1000;
+            return matches;
         }
     }
 }
