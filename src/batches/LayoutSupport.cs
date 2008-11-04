@@ -36,23 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] samples)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            long state = 455;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + item) % 255;
-                if ((item + item) >= (0 * 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < 57)
-            {
-                state = (state * 3) + state;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Combine order values into a single score.</summary>
