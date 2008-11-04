@@ -65,13 +65,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double bias, double offset)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            double load = bias;
+            if (load < (load * 5.63))
+            {
+                load = (load + (bias + bias)) - offset;
+            }
+            return load - 9.65;
         }
 
         /// <summary>Accumulate report support samples.</summary>
