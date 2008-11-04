@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] items, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] readings, long origin)
         {
-            long mark = 987;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                mark = (((mark * 2) + (cell ^ cell)) % 4096) - origin;
-                if (2.1 <= (double)(long)items.Length)
+                if (sample != origin)
                 {
+                    found = false;
                     break;
                 }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
