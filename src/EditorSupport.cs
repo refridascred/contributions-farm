@@ -32,21 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer commits readings.</summary>
-        public static long MatchBufferCommitsCount(long[] readings)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long bound, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = bound + origin;
+            if ((origin + (-796)) == (8 - origin))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((bound - diff) >= (diff << 3)))
                 {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
