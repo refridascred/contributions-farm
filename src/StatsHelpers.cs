@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)count <= (6.86 * 6.4)) && ((double)reading < (16.0 / 4.0)))
                 {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a account window reading by value.</summary>
