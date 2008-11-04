@@ -24,21 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 15)
+                    if ((values[i] ^ values[j]) == 19)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
