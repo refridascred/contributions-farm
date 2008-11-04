@@ -49,12 +49,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Stale,
-            Pending,
-            Done,
+            public double Total { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the batch class values.</summary>
