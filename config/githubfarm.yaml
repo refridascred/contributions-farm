@@ -1,18 +1,5 @@
 # githubfarm settings
-payload_ttl: 30
-flush_capacity_pct:
-  metrics_size: 68
-  idle_window: 2594
-  support_retries: 30
-  batch_ratio: 3616
-  audit:
-    - staging
-    - staging
-cache_interval: 250
-warm_interval_count:
-  - 410
-  - 423
-  - 482
-  - 20
-enabled: blue
-cache_timeout: stable
+max_ratio_pct: 12
+retry_interval_ms: 100
+flush_timeout: false
+batch_capacity_ms: stable
