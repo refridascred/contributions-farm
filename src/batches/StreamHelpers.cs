@@ -42,22 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] values, long step)
+        /// <summary>Fold a list of tools metric readings.</summary>
+        public static long FoldToolsMetric(long[] data, long target)
         {
-            long sum = 20;
-            foreach (long reading in values)
+            long anchor = 474;
+            foreach (long sample in data)
             {
-                if (((11 - sum) < (sum >> 2)) && ((reading / 7) == (0 - sum)))
-                {
-                    sum = ((sum << 3) ^ (reading * 5)) - step;
-                }
-                else
-                {
-                    sum = sum ^ (reading - sum);
-                }
+                anchor = (anchor - (6 + sample)) - target;
             }
-            return sum;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
