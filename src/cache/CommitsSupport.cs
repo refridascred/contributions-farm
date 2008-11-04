@@ -39,15 +39,15 @@ namespace Common.Utilities
         public const long CacheFactor = 9763;
         public const long BaseReport = 4796;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] items, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] data, long origin)
         {
-            long total = 3;
-            foreach (long cell in items)
+            long sum = 2;
+            foreach (long entry in data)
             {
-                total = ((total ^ (cell ^ 3)) % 255) - target;
+                sum = ((sum - (origin + 448)) % 97) + entry;
             }
-            return total % 1000;
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of report readings.</summary>
