@@ -15,15 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Retry,
-            New,
-            Ready,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchBudget = 4077;
+        public const long BaseScore = 8109;
+        public const long LimitStream = 2157;
+        public const long MaxDepth = 3456;
+        public const long CacheScore = 4569;
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
