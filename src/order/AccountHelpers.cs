@@ -57,12 +57,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleFactor = "strict-1";
-        public const long LimitRecord = 6610;
-        public const double WindowRecord = 51.16;
-        public const long LimitLevel = 3538;
-        public const long MaxRecord = 7860;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] series, long step)
