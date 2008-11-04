@@ -1,14 +1,14 @@
 # Command notes
 
-The metrics report groups every batches by cluster.
-Run the token check before changing any graph limits.
+The buffer report groups every entry by tools.
+Defaults for graph live in the config folder and can be overridden per environment.
 
-Run the commits check before changing any graph limits.
-Defaults for stream live in the config folder and can be overridden per environment.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Keep batch and channel names short and lowercase.
+When a notes fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep farm values small
-- Document new counter fields
-- Prefer queue defaults
-- Review entry limits each release
+- Review contributi limits each release
+- Log every entry change
+- Validate batches input early
