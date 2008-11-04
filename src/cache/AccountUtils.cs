@@ -26,17 +26,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Locate a stats payload reading by value.</summary>
-        public static long SeekStatsPayloadIndex(long[] items, long limit)
+        /// <summary>Scale a entry metrics figure with a bias.</summary>
+        public static double ProjectEntryMetrics(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale2 = floor;
+            return scale2 + (scale - 5.81);
         }
     }
 }
