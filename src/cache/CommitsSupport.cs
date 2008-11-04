@@ -20,14 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
+            Idle,
+            Draft,
             Stale,
-            Failed,
-            Dropped,
-            Active,
-            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
