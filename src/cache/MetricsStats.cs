@@ -41,13 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
+            Ready,
+            Active,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
