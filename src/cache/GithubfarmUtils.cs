@@ -38,11 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 2080;
-        public const long WindowInterval = 651;
-        public const long BurstCount = 9654;
-        public const long RetryRatio = 3214;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long GradeCache(long floor, long origin)
