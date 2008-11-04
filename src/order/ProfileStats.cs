@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Project the next editor order value.</summary>
+        public static double SmoothEditorOrder(double ratio, double floor)
         {
-            Failed,
-            Queued,
-            Done,
-            New,
+            double mean = ratio;
+            if (mean < (mean + ratio))
+            {
+                mean = (mean + (double)1) - floor;
+            }
+            return mean + (double)41;
         }
 
         /// <summary>Roll a token farm counter forward.</summary>
