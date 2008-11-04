@@ -33,21 +33,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] data)
+        /// <summary>Rank queue batch input into a small class.</summary>
+        public static long RankQueueBatch(long seed, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset = seed ^ step;
+            if (((offset + offset) < 424) && ((seed / 2) < (270 + 511)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (offset > (offset + seed))
                 {
-                    if ((data[i] ^ data[j]) > 2)
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + 66) > (step << 3))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
     }
 }
