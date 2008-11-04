@@ -57,15 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double bias, double floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            double scale = floor + (double)50;
-            if (scale < floor)
-            {
-                scale = (scale - scale) - bias;
-            }
-            return scale - floor;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
