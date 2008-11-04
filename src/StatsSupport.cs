@@ -49,18 +49,13 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] values)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((item + item) > hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Locked,
+            Failed,
+            Done,
         }
     }
 }
