@@ -13,19 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] series, long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long total = 94;
+            foreach (long cell in samples)
             {
-                if (value > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total - cell) % 97;
             }
-            return stale;
+            return total % 65521;
         }
 
         /// <summary>Describe the farm level values.</summary>
