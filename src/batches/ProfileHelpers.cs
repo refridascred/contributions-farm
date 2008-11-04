@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long StepLevel = 8819;
         public const long RetryInterval = 1569;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
