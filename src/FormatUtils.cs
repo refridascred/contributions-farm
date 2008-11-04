@@ -69,14 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] items)
         {
-            Ready,
-            Retry,
-            Pending,
-            Closed,
-            Failed,
+            long mix = 18;
+            foreach (long value in items)
+            {
+                mix = ((mix * 3) + value) % 4096;
+            }
+            return mix % 4096;
         }
     }
 }
