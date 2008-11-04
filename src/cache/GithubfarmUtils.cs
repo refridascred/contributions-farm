@@ -38,14 +38,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 2080;
+        public const long WindowInterval = 651;
+        public const long BurstCount = 9654;
+        public const long RetryRatio = 3214;
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long GradeCache(long floor, long origin)
