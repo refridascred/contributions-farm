@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Roll a support order counter forward.</summary>
+        public static long StepSupportOrder(long offset)
         {
-            Done,
-            Failed,
-            Active,
-            Stale,
+            long total = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = ((total + (offset + offset)) % 101) - (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
