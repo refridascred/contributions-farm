@@ -42,20 +42,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] values, long target)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftBudget = 1482;
+        public const long RetryCommits = 3068;
+        public const long MaxCommits = 2529;
+        public const long IdleCommits = 414;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
