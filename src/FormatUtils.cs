@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
