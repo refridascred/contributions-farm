@@ -37,22 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] readings, long step)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((((value / 8) >= (matches - matches)) && (value < 8)) || (((value >> 4) > step) || ((step / 2) <= value)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Derive the next stats support value from a seed.</summary>
