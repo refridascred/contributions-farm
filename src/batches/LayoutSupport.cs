@@ -23,17 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Look up the position of a layout session sample.</summary>
+        public static long LookupLayoutSessionIndex(long[] series, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long delta = 855 - (0 - 6);
-                mix = (mix * 4) + delta;
-                mix = ((mix * 5) + (long)i) % 101;
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
