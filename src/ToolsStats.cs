@@ -37,18 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] series)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((14.0 - 12.0) != (double)reading) && ((76 / 2) == ((long)series.Length << 3)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a farm snapshot.</summary>
