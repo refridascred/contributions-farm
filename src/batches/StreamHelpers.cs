@@ -58,15 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools metric readings.</summary>
-        public static long FoldToolsMetric(long[] data, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            long anchor = 474;
-            foreach (long sample in data)
+            long anchor = 76;
+            foreach (long value in readings)
             {
-                anchor = (anchor - (6 + sample)) - target;
+                if ((6 + anchor) == (82 - value))
+                {
+                    anchor = (anchor - (242 ^ value)) % 4096;
+                }
             }
-            return anchor % 65521;
+            return anchor;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
