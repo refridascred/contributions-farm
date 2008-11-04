@@ -1,10 +1,22 @@
 # githubfarm settings
-session_timeout: staging
-soft_threshold_s: standard
-warm_interval_s: 89.46
-audit: 7686
-dry_run:
-  readonly: true
-  layout_timeout: 100
-  burst_timeout_ms: latest
-min_timeout: 64.37
+burst_retries:
+  verbose: 5859
+  cluster_size: true
+  stream_delay:
+    - 452
+    - 24
+  dry_run:
+    - staging
+    - green
+    - eu-west
+  token_size: 46
+default_ratio_pct: 30
+idle_depth_s:
+  - 124
+  - 437
+min_threshold: false
+counter_ratio:
+  - primary
+  - edge
+  - edge
+  - fallback
