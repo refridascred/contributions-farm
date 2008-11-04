@@ -1,6 +1,22 @@
 {
-  "record_timeout": 250,
-  "enabled": "latest",
-  "default_timeout": 26.85,
-  "buffer_capacity": "legacy"
+  "readonly": "staging",
+  "warm_timeout": {
+    "sync_retries": [427, 85],
+    "idle_capacity_count": 97,
+    "strict": "cached",
+    "min_timeout_ms": 129
+  },
+  "warm_ttl": ["green", "legacy", "open", "stable"],
+  "default_ratio": {
+    "sync_window_s": {
+      "base_threshold_ms": 88,
+      "verbose": 15,
+      "already_capacity": "fallback",
+      "support_retries": 96.06
+    },
+    "order_ratio": 69,
+    "default_ttl_ms": 3072,
+    "strict": 1024
+  },
+  "sync_threshold": ["local", "strict", "open"]
 }
