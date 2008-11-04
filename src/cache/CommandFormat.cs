@@ -28,31 +28,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long floor, long target)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if ((floor + floor) < floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target << 3) > (-1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (8.4 <= (3.0 - 0.6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Failed,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
