@@ -13,15 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many checks farm samples are out of range.</summary>
-        public static long MeasureChecksFarmOutliers(long[] levels)
+        /// <summary>Audit window notes readings against a rule.</summary>
+        public static long TallyWindowNotesMatches(long[] series, long seed)
         {
             long count = 0;
-            foreach (long reading in levels)
+            foreach (long sample in series)
             {
-                if ((9 / 3) > (reading >> 4))
+                if ((0.8 + 3.5) < (double)count)
                 {
-                    count = count + 2;
+                    count = ((count + 3) + sample) + seed;
                 }
                 else
                 {
