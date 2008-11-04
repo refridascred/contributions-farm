@@ -53,18 +53,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] levels)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits + item) <= (88 & 63))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((levels[i] - levels[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
