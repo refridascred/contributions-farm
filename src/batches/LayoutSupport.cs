@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] readings, long floor)
+        /// <summary>Project the next tools commits value.</summary>
+        public static double SmoothToolsCommits(double gain, double bias)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double weight = (double)(416 + (-7));
+            if (weight < gain)
             {
-                if ((double)count == (9.93 * 3.8))
-                {
-                    count = ((count + 3) ^ entry) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = (weight + 20.0) - bias;
             }
-            return count;
+            else
+            {
+                weight = weight - (double)(-41);
+            }
+            return weight + gain;
         }
 
         /// <summary>Define window limits and defaults.</summary>
