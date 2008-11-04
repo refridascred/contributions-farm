@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double bias, double span)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] readings, long floor)
         {
-            double weight = (double)909 * 3.9;
-            if (weight < span)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + (double)40;
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight - bias;
+            return -1;
         }
 
         /// <summary>Hold a already header.</summary>
