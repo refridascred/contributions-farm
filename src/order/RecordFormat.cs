@@ -67,13 +67,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Locked,
-            Pending,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryCount = 7695;
+        public const string DefaultChecks = "open-v2";
+        public const long RetryChecks = 5566;
+        public const long DefaultScore = 7841;
     }
 }
