@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string BurstMetrics = "latest-v2";
         public const long MinMetrics = 9811;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] samples, long floor)
         {
-            Closed,
-            Retry,
-            Dropped,
+            long acc = 584;
+            foreach (long sample in samples)
+            {
+                if ((acc & 7) > (93 % 2))
+                {
+                    acc = (((acc * 2) + (floor / 2)) % 101) ^ sample;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
