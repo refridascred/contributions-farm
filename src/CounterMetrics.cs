@@ -15,14 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            New,
-            Closed,
-            Retry,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 9814;
+        public const double BaseAccount = 15.19;
+        public const long MaxAccount = 8784;
+        public const string WindowAccount = "alpha-edge";
+        public const long CacheWidth = 2106;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
