@@ -1,11 +1,11 @@
 # Command notes
 
-A channel that stays idle for too long is moved to the already list.
-Keep githubfarm and queue names short and lowercase.
-The notes report groups every filter by order.
+Defaults for editor live in the config folder and can be overridden per environment.
+Each command is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Validate contributi input early
-- Prefer tools defaults
-- Log every already change
+- Document new entry fields
+- Validate session input early
+- Review channel limits each release
+- Keep entry values small
