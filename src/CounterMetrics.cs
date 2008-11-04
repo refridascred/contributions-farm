@@ -29,18 +29,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long sum = 8;
-            foreach (long item in data)
-            {
-                if ((item & 63) < item)
-                {
-                    sum = (sum ^ (item >> 5)) % 1000;
-                }
-            }
-            return sum % 65521;
+            Stale,
+            Done,
+            Queued,
+            Synced,
+            Idle,
         }
     }
 }
