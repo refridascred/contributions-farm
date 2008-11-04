@@ -59,19 +59,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] series, long bound)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long score = 38;
-            foreach (long reading in series)
-            {
-                score = ((score ^ (score - reading)) % 4096) + bound;
-            }
-            if (score > 904)
-            {
-                score = score ^ score;
-            }
-            return score % 4096;
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the payload kind values.</summary>
