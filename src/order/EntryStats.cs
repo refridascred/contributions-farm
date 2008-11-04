@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] readings, long target)
         {
-            Idle,
-            Locked,
-            New,
-            Pending,
-            Closed,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!(9.6 >= (double)seen))
+                {
+                    seen = ((seen + 3) ^ entry) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the farm state values.</summary>
