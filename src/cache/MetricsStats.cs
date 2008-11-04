@@ -32,18 +32,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the session batches entries that pass the check.</summary>
-        public static long MeasureSessionBatchesGaps(long[] values, long target)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + matches) != (matches ^ target))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define session limits and defaults.</summary>
