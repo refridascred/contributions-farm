@@ -1,7 +1,16 @@
 # githubfarm settings
-flush_delay: edge
-hard_ratio_count: 250
-cache_delay_count: 10
-support_retries: true
-batch_depth: 1583
-farm_retries: standard
+retry_timeout:
+  enabled: 85
+  min_window_count: true
+  readonly: 8
+  stream_size:
+    account_threshold: primary
+    soft_threshold_s: false
+    cache_limit_s: 250
+    hard_size_count: 250
+soft_interval: 7.93
+max_retries_count:
+  - blue
+  - staging
+  - strict
+idle_window_pct: 7631
