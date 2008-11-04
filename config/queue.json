@@ -1,7 +1,6 @@
 {
-  "warm_size_count": [344, 223],
-  "metric_ratio": "edge",
-  "min_retries_s": ["strict", "cached"],
-  "warm_timeout_s": "edge",
-  "readonly": 46.96
+  "dry_run": "eu-west",
+  "base_window": 13.92,
+  "compress": 1024,
+  "base_threshold_pct": 15
 }
