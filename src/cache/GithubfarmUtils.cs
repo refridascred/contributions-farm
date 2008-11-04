@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 3326;
+        public const string HardBatch = "latest-v2";
+        public const string CacheBatch = "open-1";
+        public const long BaseInterval = 9705;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long StepCache(long step)
