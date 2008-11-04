@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next batch channel value from a seed.</summary>
-        public static long DeriveBatchChannel(long limit)
+        /// <summary>Match up checks counter samples.</summary>
+        public static long PairChecksCounterCount(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a support stats.</summary>
