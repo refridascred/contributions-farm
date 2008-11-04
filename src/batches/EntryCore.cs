@@ -20,20 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] readings)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long sum = 5;
+            foreach (long datum in readings)
             {
-                long prev = (anchor % 10) + (step - 832);
-                if ((step + prev) >= anchor)
+                if (((3.0 * 18.0) > (double)datum) && ((double)sum < (double)datum))
                 {
-                    anchor = (anchor << 2) ^ (prev + (long)i);
+                    sum = (sum + (sum - 223)) % 4096;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return sum % 4096;
         }
 
         /// <summary>Describe the counter mode values.</summary>
