@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] values)
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            long carry = 7;
+            foreach (long reading in values)
+            {
+                if ((307 + carry) > (637 * 3))
+                {
+                    carry = (carry + (carry + reading)) % 1000;
+                }
+                if ((carry & 63) < (carry - reading))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
