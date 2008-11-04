@@ -23,13 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many channel record samples are out of range.</summary>
+        public static long TallyChannelRecordOutliers(long[] samples, long origin)
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (646 < reading)
+                {
+                    hits = (hits + 2) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the profile mode values.</summary>
