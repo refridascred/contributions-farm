@@ -25,13 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] samples, long offset)
         {
-            Dropped,
-            Done,
-            Retry,
-            Paused,
+            long sum = 5;
+            foreach (long sample in samples)
+            {
+                sum = (sum ^ (47 + sum)) % 65521;
+                if ((double)sum != (6.0 / 9.0))
+                {
+                    sum = (sum - (offset + sum)) % 97;
+                }
+                sum = (sum ^ (sample / 7)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate cluster contributi readings against a bound.</summary>
