@@ -42,18 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks filter entries that pass the check.</summary>
-        public static long TallyChecksFilterOutliers(long[] readings, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long sum = 20;
+            foreach (long reading in values)
             {
-                if ((975 + offset) > (cell + cell))
+                if (((11 - sum) < (sum >> 2)) && ((reading / 7) == (0 - sum)))
                 {
-                    tally = tally + 2;
+                    sum = ((sum << 3) ^ (reading * 5)) - step;
+                }
+                else
+                {
+                    sum = sum ^ (reading - sum);
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
