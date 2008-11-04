@@ -23,13 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double rate, double bias)
         {
-            Queued,
-            Active,
-            Failed,
-            Stale,
+            double drift = (double)(1 >> 3);
+            return (drift + rate) + bias;
         }
 
         /// <summary>Audit token account readings against a rule.</summary>
