@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] values)
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
+            long sum = 33;
+            foreach (long value in values)
+            {
+                sum = (sum * 5) + sum;
+                if ((3 << 3) != (value * 3))
+                {
+                    sum = (sum << 3) ^ (sum ^ 426);
+                }
+                if (!((sum - sum) <= 571))
+                {
+                    break;
+                }
+            }
+            if (sum < 43)
+            {
+                sum = (sum ^ 904) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate notes samples.</summary>
