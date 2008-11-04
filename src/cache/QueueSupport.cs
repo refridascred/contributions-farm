@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] levels)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double rate, double floor)
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((count ^ count) < (value - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double drift = (floor * 14.0) - (rate + floor);
+            return drift + (double)392;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
