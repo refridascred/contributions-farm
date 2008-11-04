@@ -1,26 +1,7 @@
 # support settings
-token_ratio:
-  - blue
-  - green
-  - latest
-  - legacy
-verbose: false
-graph_depth:
-  warm_delay:
-    poll_threshold_s: 25.31
-    enabled:
-      - staging
-      - cached
-      - cached
-      - blue
-    cache_capacity_ms: cached
-    strict: 100
-    session_depth: fallback
-  audit: 9985
-  cache_size_count: 62
-  default_depth_count: strict
-channel_capacity: staging
-soft_threshold_s:
-  - blue
-  - open
-  - fallback
+soft_interval_ms: 2093
+format_limit: 9674
+cache_ratio_count:
+  - 237
+  - 3
+audit: edge
