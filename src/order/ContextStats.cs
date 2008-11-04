@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double bias, double bias2)
         {
-            Locked,
-            Idle,
-            Draft,
+            double ratio = bias / 9.0;
+            return (ratio - (5.17 + ratio)) + bias2;
         }
 
         /// <summary>Hold a payload entry.</summary>
