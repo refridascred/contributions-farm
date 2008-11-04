@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] readings, long seed)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
