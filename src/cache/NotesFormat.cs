@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTimeout = 2504;
-        public const double MinTools = 18.78;
-        public const double HardTools = 56.49;
+        /// <summary>Measure how many cluster batches samples are out of range.</summary>
+        public static long MeasureClusterBatchesHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (item > (634 << 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate token channel readings against a bound.</summary>
         public static bool GuardTokenChannelRange(long[] items, long floor)
