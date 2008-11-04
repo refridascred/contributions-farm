@@ -29,9 +29,19 @@ namespace Common.Utilities
         public const long SoftTimeout = 7575;
         public const double DefaultOrder = 97.33;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 1581;
-        public const long StepAccount = 3163;
-        public const long MinAccount = 4677;
+        /// <summary>Check that every githubfarm record entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRecordBounds(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
