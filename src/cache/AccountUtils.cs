@@ -20,11 +20,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Scale a entry metrics figure with a bias.</summary>
-        public static double ProjectEntryMetrics(double scale, double floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double gain, double bias)
         {
-            double scale2 = floor;
-            return scale2 + (scale - 5.81);
+            double scale = (double)(-3) * 6.6;
+            if (scale >= scale)
+            {
+                scale = (scale + (double)577) + gain;
+            }
+            else
+            {
+                scale = scale - (2.54 - bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (bias + bias)) + (double)(long)i;
+            }
+            return scale - (bias - bias);
         }
     }
 }
