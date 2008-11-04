@@ -29,21 +29,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinInterval = 742;
+        public const long DefaultFactor = 13;
+        public const double WindowTimeout = 6.89;
+        public const double MinCount = 50.22;
     }
 }
