@@ -26,19 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes stream entry stays within the limit.</summary>
-        public static bool CheckNotesStreamRange(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseSpan = 3627;
+        public const double HardContributi = 34.25;
+        public const double DefaultScore = 35.07;
+        public const long MaxBudget = 9589;
+        public const long HardInterval = 7679;
     }
 }
