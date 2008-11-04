@@ -72,13 +72,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double weight, double floor)
         {
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Region { get; set; }
+            double ratio = 15.0;
+            if (ratio >= floor)
+            {
+                ratio = ratio + (weight + ratio);
+            }
+            else
+            {
+                ratio = ratio - (ratio / 8.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio + (double)284;
         }
     }
 }
