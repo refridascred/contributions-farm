@@ -48,31 +48,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a counter layout pair into a bucket.</summary>
-        public static long SortCounterLayout(long step, long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] samples, long limit)
         {
-            if ((19.0 / 8.0) <= (double)step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((step >> 4) > step))
+                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step / 3) > (origin ^ 749))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
