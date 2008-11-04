@@ -51,27 +51,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of payload checks readings.</summary>
-        public static long CombinePayloadChecks(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] series)
         {
-            long sum = 4;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                sum = sum ^ reading;
-                if ((reading % 60) >= reading)
+                if ((matches % 2) <= (entry + 5))
                 {
-                    sum = ((sum << 3) ^ (sum * 4)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum + sum)) % 101;
+                    matches = matches + 1;
                 }
             }
-            if (sum > (-707))
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the format kind values.</summary>
