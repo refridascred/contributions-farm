@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
+            Retry,
+            Done,
+            Dropped,
             Locked,
-            Active,
-            Draft,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
