@@ -13,21 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of editor context readings.</summary>
-        public static long CompareEditorContextCount(long[] series)
+        /// <summary>Combine batch filter values into a single score.</summary>
+        public static long FoldBatchFilter(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 4;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry + mark) > (mark << 2))
                 {
-                    if ((series[i] ^ series[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark * 2) + mark) + bound;
                 }
             }
-            return seen;
+            if (mark > 3)
+            {
+                mark = mark ^ mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
