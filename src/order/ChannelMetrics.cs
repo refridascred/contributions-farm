@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long step, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long origin, long offset)
         {
-            long gap = step + bound;
-            if ((0 >> 1) >= gap)
+            long lane = origin + offset;
+            if (!((origin + offset) <= (lane ^ origin)))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((double)7 != (double)gap)
+                if (!((lane + offset) == (offset * 5)))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 6;
+                    return 5;
                 }
             }
         }
