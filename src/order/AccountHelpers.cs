@@ -91,11 +91,15 @@ namespace Common.Utilities
         public const string RetryInterval = "local";
         public const double BaseRatio = 17.6;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 3801;
-        public const long MinStream = 7043;
-        public const string BaseInterval = "staging-v2";
-        public const string BaseStream = "open";
-        public const long SoftStream = 324;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
