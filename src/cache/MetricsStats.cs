@@ -32,22 +32,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] levels)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (hits >= ((-17) ^ cell))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
