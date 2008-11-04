@@ -1,22 +1,10 @@
 # githubfarm settings
-readonly: 56.36
-filter_depth:
-  - 418
-  - 92
-  - 170
-enabled: standard
-order_size:
-  cache_ttl_pct: local
-  poll_ttl_s: true
-  tools_window: fallback
-  tools_interval:
-    batch_limit: stable
-    burst_ttl_s: staging
-    enabled:
-      - 58
-      - 289
-      - 163
-    account_ratio: green
-    already_depth: open
-    schema_limit: 26
-batch_delay_s: false
+session_timeout: staging
+soft_threshold_s: standard
+warm_interval_s: 89.46
+audit: 7686
+dry_run:
+  readonly: true
+  layout_timeout: 100
+  burst_timeout_ms: latest
+min_timeout: 64.37
