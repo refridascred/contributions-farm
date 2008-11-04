@@ -57,11 +57,32 @@ namespace Common.Utilities
         public const long MaxSpan = 2211;
         public const double MinBatch = 73.95;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long floor, long seed)
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
+            long offset = floor ^ seed;
+            if (((seed - seed) < seed) && ((double)offset <= (5.4 + 9.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed > (offset - 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset >> 3) == (offset >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
