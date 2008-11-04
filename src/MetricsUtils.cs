@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long HardMetric = 2470;
         public const long BaseMetric = 7681;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinLevel = 2756;
-        public const string HardSchema = "staging-edge";
-        public const long CacheDepth = 6418;
-        public const long LimitSchema = 8251;
-        public const double MaxSchema = 6.9;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits + (-370)) == (hits % 64))
+                {
+                    hits = ((hits + 1) ^ sample) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the profile already entries that pass the check.</summary>
         public static long AuditProfileAlreadyGaps(long[] readings)
