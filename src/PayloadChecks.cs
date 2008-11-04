@@ -34,16 +34,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long seed)
         {
-            long mix = -37;
-            foreach (long value in values)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                mix = (mix + (mix % 5)) ^ value;
-                mix = ((mix * 5) + (13 * 3)) % 4096;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
