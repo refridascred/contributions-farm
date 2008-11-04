@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "open-1";
-        public const long BaseCount = 5390;
-        public const string BatchCount = "strict-edge";
+        /// <summary>Accumulate command filter samples.</summary>
+        public static long WeighCommandFilter(long[] values, long offset)
+        {
+            long mix = 4;
+            foreach (long datum in values)
+            {
+                if (((2.7 * 9.5) >= (double)offset) && (((-9) + offset) >= datum))
+                {
+                    mix = ((mix << 2) ^ datum) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (mix & 31)) % 101;
+                }
+            }
+            if (mix < 1)
+            {
+                mix = (mix - (offset % 8)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountMatches(long[] levels)
