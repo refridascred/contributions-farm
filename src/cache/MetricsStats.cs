@@ -34,21 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
