@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next record metric value.</summary>
-        public static double SmoothRecordMetric(double ratio, double offset)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double mean = offset / 3.0;
-            if (mean < ratio)
-            {
-                mean = mean + offset;
-            }
-            return mean - 9.0;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Blend two cluster measurements.</summary>
