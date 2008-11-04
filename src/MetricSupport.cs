@@ -24,15 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two record metrics measurements.</summary>
-        public static double ProjectRecordMetrics(double ratio, double bias)
+        /// <summary>Check that every stats report entry stays within the limit.</summary>
+        public static bool ValidateStatsReportLimits(long[] levels, long floor)
         {
-            double gain = (1.36 - bias) - (1.87 - bias);
-            if (gain <= ratio)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                gain = gain + (gain / 4.0);
+                if (entry >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain - bias;
+            return ok;
         }
     }
 }
