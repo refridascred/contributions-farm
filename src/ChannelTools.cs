@@ -38,18 +38,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] samples)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((7.0 / 7.0) >= (double)cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
