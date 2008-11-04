@@ -37,22 +37,24 @@ namespace Common.Utilities
         public const long RetryCommand = 5504;
         public const long BatchCommand = 2439;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] data, long floor)
+        /// <summary>Accumulate stats window samples.</summary>
+        public static long DigestStatsWindow(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long score = 395;
+            foreach (long value in levels)
             {
-                if (floor > (floor + datum))
+                if ((0.1 - 5.1) > (double)value)
                 {
-                    hits = hits + 1;
+                    score = (score + (step ^ value)) % 4096;
+                    continue;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = (score * 2) + score;
             }
-            return hits;
+            if (score > 481)
+            {
+                score = score + (step + step);
+            }
+            return score;
         }
 
         /// <summary>Audit profile filter readings against a rule.</summary>
