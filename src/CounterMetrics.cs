@@ -29,18 +29,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long sum = 8;
+            foreach (long item in data)
             {
-                if ((double)matches > (7.1 + 4.76))
+                if ((item & 63) < item)
                 {
-                    matches = (matches + 1) ^ entry;
+                    sum = (sum ^ (item >> 5)) % 1000;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
     }
 }
