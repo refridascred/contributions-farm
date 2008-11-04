@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long CacheTools = 5869;
         public const long MaxTimeout = 2485;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((19.0 / 3.0) < (double)seen)
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftInterval = 2855;
+        public const double DefaultSpan = 36.15;
+        public const long BaseEditor = 4216;
+        public const long RetryInterval = 572;
+        public const long DefaultEditor = 5882;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BaseWidth = "standard";
