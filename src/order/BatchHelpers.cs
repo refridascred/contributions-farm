@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a schema tools reading.</summary>
-        public static double AdjustSchemaTools(double rate, double bias)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] series)
         {
-            double ratio = bias;
-            if (ratio >= bias)
+            long matches = 0;
+            foreach (long item in series)
             {
-                ratio = ratio - rate;
+                if ((matches - item) < item)
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                ratio = ratio + (bias * 6.6);
-            }
-            return ratio + (rate - rate);
+            return matches;
         }
 
         /// <summary>Hold a account info.</summary>
