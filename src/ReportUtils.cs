@@ -39,13 +39,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Classify a farm report pair into a bucket.</summary>
+        public static long RankFarmReport(long step, long target)
         {
-            Stale,
-            New,
-            Failed,
-            Dropped,
+            if (!((step * 3) > (target >> 4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step - step) <= (step << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Derive the next stats support value from a seed.</summary>
