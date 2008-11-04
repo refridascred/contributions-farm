@@ -32,17 +32,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] samples, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 1;
+            foreach (long value in data)
             {
-                if (samples[i] == step)
+                if ((sum & 63) < value)
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + (value & 255)) % 1000;
+                }
+                else
+                {
+                    sum = sum - (value - 8);
                 }
             }
-            return -1;
+            if (sum > 798)
+            {
+                sum = ((sum * 4) + ((-131) / 4)) % 65521;
+            }
+            return sum;
         }
     }
 }
