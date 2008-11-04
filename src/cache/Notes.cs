@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 9961;
-        public const long BurstRatio = 5490;
-        public const long HardSession = 3208;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((bound + bound) >= (matches ^ entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmLimits(long[] values, long seed)
