@@ -1,4 +1,6 @@
 # support settings
-cache_ttl_count: false
-context_window: staging
-compress: 1024
+filter_depth:
+  - open
+  - latest
+dry_run: 4300
+sync_timeout: 60
