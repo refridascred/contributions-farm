@@ -22,10 +22,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 8023;
-        public const long BatchNotes = 8151;
-        public const string RetryNotes = "strict-1";
-        public const string SoftLevel = "fallback-v2";
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
