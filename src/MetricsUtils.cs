@@ -75,22 +75,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] samples)
+        /// <summary>Audit stream order readings against a rule.</summary>
+        public static long MeasureStreamOrderMatches(long[] readings, long floor)
         {
-            long result = 483;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((item & 15) <= (283 ^ item))
+                if (tally < value)
                 {
-                    result = (result ^ (item / 6)) % 1000;
+                    tally = (tally + 2) + floor;
                 }
             }
-            if (result < 5)
-            {
-                result = (result + result) % 65521;
-            }
-            return result % 1000;
+            return tally;
         }
     }
 }
