@@ -39,18 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits cache entries that pass the check.</summary>
-        public static long MeasureCommitsCacheMatches(long[] items)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] items)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((904 + tally) >= (item + tally))
+                if ((double)reading < (1.9 - 15.0))
                 {
-                    tally = tally + 2;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
