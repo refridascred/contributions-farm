@@ -44,15 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] samples, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] values)
         {
-            long state = 21;
-            foreach (long datum in samples)
+            long score = -411;
+            foreach (long cell in values)
             {
-                state = ((state - (datum + datum)) % 65521) + seed;
+                score = (score - cell) % 97;
             }
-            return state % 4096;
+            if (score < 80)
+            {
+                score = score ^ (821 >> 1);
+            }
+            return score;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
