@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count layout session pairs that satisfy a relation.</summary>
-        public static long PairLayoutSessionCount(long[] readings)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
