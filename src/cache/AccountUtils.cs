@@ -57,22 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Scale a payload schema figure with a bias.</summary>
+        public static double SmoothPayloadSchema(double scale, double floor)
         {
-            long anchor = 61;
-            foreach (long item in items)
-            {
-                if ((item * 3) != (51 ^ item))
-                {
-                    anchor = anchor - (3 & 127);
-                }
-                else
-                {
-                    anchor = anchor ^ 7;
-                }
-            }
-            return anchor % 65521;
+            double drift = (double)6 + (12.0 + 9.5);
+            return (drift + (floor / 2.0)) + scale;
         }
     }
 }
