@@ -29,10 +29,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowCount = 48.28;
-        public const string HardSpan = "local-edge";
-        public const long IdleRatio = 4626;
+        /// <summary>Classify a notes farm pair into a bucket.</summary>
+        public static long GradeNotesFarm(long seed, long bound)
+        {
+            if (9.7 >= (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound - bound) == (bound << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((5.4 / 3.0) > (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4.0 - 8.03) >= (double)bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] series, long step)
