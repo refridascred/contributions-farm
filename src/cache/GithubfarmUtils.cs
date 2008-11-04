@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Check that every farm contributi entry stays within the limit.</summary>
+        public static bool GuardFarmContributiBounds(long[] values, long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
