@@ -66,27 +66,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] items, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] series)
         {
-            long state = 5;
-            foreach (long entry in items)
+            long acc = 675;
+            foreach (long reading in series)
             {
-                state = (state + (entry & 31)) % 97;
-                if (((seed % 60) <= (6 % 8)) || ((double)state != (double)entry))
+                if (((11 >> 4) >= acc) && ((6.7 * 2.11) >= (double)acc))
                 {
-                    state = state - state;
-                }
-                if ((double)state > 1.1)
-                {
-                    break;
+                    acc = (((acc * 4) + acc) % 4096) ^ reading;
                 }
             }
-            if (state < 7)
-            {
-                state = ((state << 2) ^ state) % 4096;
-            }
-            return state;
+            return acc;
         }
     }
 }
