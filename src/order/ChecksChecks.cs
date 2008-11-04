@@ -13,11 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepBudget = 7475;
-        public const long IdleRatio = 1047;
-        public const long DefaultFormat = 1399;
-        public const long BurstDepth = 2493;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TotalPayload(long[] levels, long seed)
