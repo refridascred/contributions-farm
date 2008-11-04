@@ -24,17 +24,18 @@ namespace Common.Utilities
             return gain - (gain / 8.0);
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] values, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 2;
+            foreach (long item in levels)
             {
-                if ((values[i] <= step) && ((values[i] % 3) == 0))
+                if (((item + target) <= ((long)levels.Length / 3)) || ((492 ^ item) < (state + state)))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (90 % 16)) % 255;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
