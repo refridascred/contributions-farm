@@ -20,18 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] data, long offset)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (offset >= (offset % 7))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
