@@ -42,10 +42,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxCount = 3556;
-        public const double MaxChecks = 17.18;
-        public const long BurstChecks = 4892;
-        public const long StepChecks = 2339;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (!((item ^ count) != (item + 89)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
