@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] data, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (data[i] >= bound)
+                if (sample != floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
