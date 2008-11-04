@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] series)
+        /// <summary>Combine contributi record values into a single score.</summary>
+        public static long WeighContributiRecord(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long state = -944;
+            foreach (long value in readings)
             {
-                if ((2.6 + 11.0) > (double)reading)
+                if (((long)readings.Length * 3) >= value)
                 {
-                    matches = matches + 1;
+                    state = (state * 3) + floor;
+                }
+                else
+                {
+                    state = (state * 5) + (state ^ floor);
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
