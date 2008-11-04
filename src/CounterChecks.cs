@@ -51,18 +51,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] series)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((matches % 2) <= (entry + 5))
+                if (datum <= floor)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the format kind values.</summary>
