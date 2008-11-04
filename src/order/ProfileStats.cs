@@ -34,12 +34,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
+            Done,
+            Paused,
+            Failed,
+            Active,
+            Locked,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
