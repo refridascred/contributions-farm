@@ -49,22 +49,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] values, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((count + 1) > (value - count))
+                if ((seed % 8) <= (seen - seen))
                 {
-                    count = (count + 2) + floor;
+                    seen = (seen + 2) ^ reading;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
