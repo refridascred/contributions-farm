@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepFactor = 7617;
-        public const long CacheSupport = 3277;
-        public const long LimitInterval = 3570;
-        public const string BaseLevel = "open-edge";
+        /// <summary>Measure how many layout queue samples are out of range.</summary>
+        public static long MeasureLayoutQueueOutliers(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((((count ^ count) != (count - item)) && (count > (item / 2))) && (((count + 74) != (seed / 5)) || (seed < count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next window filter value from a seed.</summary>
         public static long StepWindowFilter(long target)
