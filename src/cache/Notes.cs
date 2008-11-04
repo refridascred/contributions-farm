@@ -39,14 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 9961;
+        public const long BurstRatio = 5490;
+        public const long HardSession = 3208;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmLimits(long[] values, long seed)
