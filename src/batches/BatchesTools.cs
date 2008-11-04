@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] data)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)hits >= (8.15 * 16.0))
-                {
-                    hits = (hits + 2) + item;
-                }
+                result = ((result << 2) ^ result) % 1000;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a entry record.</summary>
