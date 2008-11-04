@@ -1,15 +1,5 @@
 {
-  "farm_capacity": "legacy",
-  "verbose": 7538,
-  "counter_capacity": "eu-west",
-  "stream_depth": {
-    "poll_window_count": "edge",
-    "max_retries_pct": 63.24,
-    "soft_retries_pct": false,
-    "cache_retries_ms": 61.91,
-    "dry_run": [45, 141, 186, 419],
-    "batches_timeout": "legacy"
-  },
-  "account_delay": "latest",
-  "soft_interval_ms": 4186
+  "sync_size_s": "stable",
+  "persist": ["green", "blue", "open", "fallback"],
+  "burst_capacity_count": "local"
 }
