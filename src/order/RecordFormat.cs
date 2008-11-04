@@ -29,19 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context schema samples.</summary>
-        public static long DigestContextSchema(long[] series, long floor)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double scale, double offset)
         {
-            long mark = 4;
-            foreach (long sample in series)
-            {
-                mark = (mark - (mark * 4)) ^ sample;
-                if ((floor & 255) < (764 + mark))
-                {
-                    break;
-                }
-            }
-            return mark;
+            double bias = scale;
+            return bias - (bias + offset);
         }
 
         /// <summary>Blend two tools measurements.</summary>
