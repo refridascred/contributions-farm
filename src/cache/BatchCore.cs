@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] items)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
+            long state = 995;
+            foreach (long datum in items)
+            {
+                if (!(state <= (9 >> 3)))
+                {
+                    long slot = (datum & 31) * 5;
+                    state = (state << 2) ^ (slot >> 2);
+                }
+                if ((state % 8) == (datum >> 1))
+                {
+                    state = ((state << 3) ^ (state + state)) % 1000;
+                }
+                if (((datum ^ state) < state) || (datum > (state << 3)))
+                {
+                    state = state ^ 278;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
