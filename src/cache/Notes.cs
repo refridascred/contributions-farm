@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record order samples are out of range.</summary>
-        public static long CountRecordOrderOutliers(long[] data)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!((43 ^ entry) < (entry + count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
