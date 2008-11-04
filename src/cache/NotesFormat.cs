@@ -19,18 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] items)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((item / 4) >= (item + tally))
-                {
-                    tally = tally + 1;
-                }
+                mark = (mark * 3) + (long)i;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
