@@ -99,22 +99,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] readings)
+        /// <summary>Validate schema graph readings against a bound.</summary>
+        public static bool VerifySchemaGraphRange(long[] data, long floor)
         {
-            long carry = 755;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((carry / 5) != (carry >> 2))
+                if (sample < floor)
                 {
-                    carry = ((carry << 3) ^ (entry + carry)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (carry > 72)
-            {
-                carry = carry + (carry - 5);
-            }
-            return carry;
+            return found;
         }
     }
 }
