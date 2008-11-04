@@ -29,19 +29,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] levels, long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
