@@ -53,15 +53,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] series, long bound)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] samples, long target)
         {
-            long total = 7;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total + (total + bound)) % 101) ^ item;
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
