@@ -1,7 +1,9 @@
-id,label,count
-1,196,primary
-2,592,44.05
-3,9.04,38.17
-4,latest,423
-5,primary,fallback
-6,standard,local
+id,weight,region,ratio,token
+1,768,64,82.33,standard
+2,802,47.77,269,28.01
+3,257,656,strict,latest
+4,fallback,902,295,710
+5,staging,fallback,272,legacy
+6,558,258,194,edge
+7,53.37,fallback,196,14.26
+8,229,146,322,41.59
