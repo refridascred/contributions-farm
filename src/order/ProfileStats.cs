@@ -20,38 +20,12 @@ namespace Common.Utilities
             return weight + 2.9;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long floor, long bound)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            if ((floor / 3) < (13 - bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound <= floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)bound == (double)(-792)) || ((double)bound < (8.18 / 2.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((floor * 4) >= floor) || ((floor / 7) != (7 & 255)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a record snapshot.</summary>
