@@ -74,19 +74,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] levels)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long acc = 46;
-            foreach (long entry in levels)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = ((((acc * 4) + acc) % 1000) ^ (long)i) ^ entry;
-                }
-                acc = acc + (acc * 2);
-            }
-            return acc;
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
