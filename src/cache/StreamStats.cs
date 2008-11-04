@@ -42,17 +42,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long bound)
+        /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
+        public static long PairPayloadGithubfarmCount(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state << 2) ^ ((long)i % 3);
-                state = state + (state - bound);
-                state = ((state * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
