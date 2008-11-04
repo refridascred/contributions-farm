@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of editor checks readings.</summary>
