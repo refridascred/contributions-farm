@@ -35,12 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long seed)
         {
-            Dropped,
-            Queued,
-            Closed,
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
