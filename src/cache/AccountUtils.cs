@@ -23,22 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel record samples are out of range.</summary>
-        public static long TallyChannelRecordOutliers(long[] samples, long origin)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (646 < reading)
-                {
-                    hits = (hits + 2) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Combine stats values into a single score.</summary>
