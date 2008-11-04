@@ -68,16 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc ^ (target + (long)i)) % 255;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
