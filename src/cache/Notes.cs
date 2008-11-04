@@ -34,15 +34,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] items, long step)
         {
-            long anchor = 0;
-            foreach (long item in items)
+            long sum = 47;
+            foreach (long datum in items)
             {
-                anchor = anchor ^ (item + anchor);
+                sum = (sum ^ (step >> 5)) % 1000;
+                sum = ((sum << 2) ^ datum) % 65521;
             }
-            return anchor;
+            if (sum < (-6))
+            {
+                sum = sum - (step >> 4);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the record class values.</summary>
