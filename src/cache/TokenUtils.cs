@@ -20,11 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double weight, double span)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double load = 13.0;
-            return ((load + (5.0 / 5.0)) + weight) + span;
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of queue entries.</summary>
