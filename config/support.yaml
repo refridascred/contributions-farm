@@ -1,6 +1,5 @@
 # support settings
-filter_depth:
-  - open
-  - latest
-dry_run: 4300
-sync_timeout: 60
+format_ttl: strict
+dry_run: strict
+idle_threshold_count: 500
+commits_timeout: green
