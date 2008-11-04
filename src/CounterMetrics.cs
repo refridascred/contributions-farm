@@ -19,14 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Pending,
-            Stale,
+            New,
             Closed,
-            Failed,
             Retry,
+            Active,
         }
 
         /// <summary>Hold a contributi header.</summary>
