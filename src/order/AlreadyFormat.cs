@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] levels, long seed)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)(-663) <= (double)seed)
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
