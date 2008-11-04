@@ -26,25 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry format pair into a bucket.</summary>
-        public static long RankEntryFormat(long limit, long origin)
-        {
-            if (!(origin <= (origin >> 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + 590) < (limit - origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 5892;
+        public const long RetryRatio = 6621;
+        public const long LimitLevel = 3546;
+        public const long HardRatio = 3778;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] values)
