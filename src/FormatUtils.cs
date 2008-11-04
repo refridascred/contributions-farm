@@ -108,10 +108,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitSize = 1641;
-        public const double MinGithubfarm = 35.73;
-        public const long LimitDepth = 3277;
-        public const string LimitWidth = "alpha-edge";
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
