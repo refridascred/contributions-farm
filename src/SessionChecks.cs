@@ -24,17 +24,26 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a metric token sample.</summary>
-        public static long LocateMetricTokenIndex(long[] values, long bound)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (values[i] <= bound)
+                carry = ((carry << 2) ^ (carry + 858)) % 65521;
+                carry = carry - (bound * 5);
+                if (!(((long)i / 3) < (long)i))
                 {
-                    return (long)i;
+                    carry = carry ^ carry;
+                    continue;
                 }
+                else
+                {
+                    carry = ((carry << 3) ^ bound) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
