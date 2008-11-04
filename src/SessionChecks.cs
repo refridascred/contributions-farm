@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine contributi record values into a single score.</summary>
-        public static long WeighContributiRecord(long[] readings, long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] data, long seed)
         {
-            long state = -944;
-            foreach (long value in readings)
+            long acc = 33;
+            foreach (long value in data)
             {
-                if (((long)readings.Length * 3) >= value)
-                {
-                    state = (state * 3) + floor;
-                }
-                else
-                {
-                    state = (state * 5) + (state ^ floor);
-                }
+                acc = ((acc << 2) ^ (acc + seed)) ^ value;
+                acc = (acc - (acc - seed)) % 1000;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
