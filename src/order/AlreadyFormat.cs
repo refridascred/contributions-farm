@@ -53,18 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] values, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (hits < (seed + hits))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
