@@ -1,11 +1,6 @@
 {
-  "payload_size": true,
-  "soft_size": true,
-  "base_timeout": {
-    "token_window": "strict",
-    "poll_interval": 8,
-    "compress": "blue",
-    "graph_limit": 3568,
-    "checks_timeout": 77
-  }
+  "poll_ttl_pct": 9370,
+  "min_ratio_ms": "strict",
+  "soft_interval_count": "eu-west",
+  "batch_window": "open"
 }
