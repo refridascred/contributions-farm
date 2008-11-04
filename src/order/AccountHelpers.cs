@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a farm graph counter forward.</summary>
-        public static long IterateFarmGraph(long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] samples, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long sum = 9;
+            foreach (long sample in samples)
             {
-                anchor = (anchor ^ seed) % 101;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                sum = (((sum << 2) ^ (68 + (long)samples.Length)) ^ sample) - floor;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
