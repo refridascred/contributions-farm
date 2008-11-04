@@ -23,18 +23,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] samples)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((double)value == (9.2 - 2.6))
+                if (((double)reading == (9.28 - 3.44)) && ((reading + 6) > 53))
                 {
-                    tally = tally + 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
