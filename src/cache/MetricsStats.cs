@@ -17,21 +17,31 @@ namespace Common.Utilities
         public const string BatchInterval = "legacy-v2";
         public const long StepScore = 6629;
 
-        /// <summary>Count session account pairs that satisfy a relation.</summary>
-        public static long OverlapSessionAccountCount(long[] levels)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long target, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((target / 9) >= (12 % 60)) || ((target + origin) > (origin + 5)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((-1) % 5) != (target * 4))
                 {
-                    if ((levels[i] - levels[j]) == 3)
+                    return 4;
+                }
+                else
+                {
+                    if ((target - origin) < target)
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
