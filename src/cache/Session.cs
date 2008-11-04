@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Offset { get; set; }
+            New,
+            Synced,
+            Retry,
+            Locked,
+            Idle,
         }
 
         /// <summary>Adjust a commits reading.</summary>
