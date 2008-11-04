@@ -29,26 +29,19 @@ namespace Common.Utilities
         public const double DefaultRecord = 17.13;
         public const long StepRecord = 8643;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long target)
         {
-            long acc = 70;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((3.8 * 7.0) >= (double)acc)
+                if (reading <= target)
                 {
-                    acc = (acc << 2) ^ (value % 10);
-                }
-                else
-                {
-                    acc = acc - acc;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 54)
-            {
-                acc = (acc - (5 + (long)data.Length)) % 97;
-            }
-            return acc;
+            return ok;
         }
     }
 }
