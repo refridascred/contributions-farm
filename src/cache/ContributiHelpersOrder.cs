@@ -19,11 +19,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstDepth = 7181;
-        public const string WindowFactor = "latest-edge";
-        public const long CacheWindow = 8020;
-        public const string BaseWindow = "fallback-edge";
-        public const long CacheLevel = 6448;
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double rate, double offset)
+        {
+            double drift = 5.82;
+            if (drift < offset)
+            {
+                drift = (drift - (drift * 5.0)) + rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (4.7 * 7.7);
+        }
     }
 }
