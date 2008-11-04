@@ -22,11 +22,12 @@ namespace Common.Utilities
         public const double IdleReport = 13.07;
         public const long CacheRatio = 2687;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
