@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double scale, double bias)
         {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            double bias2 = bias / 3.0;
+            if (bias2 <= bias)
+            {
+                bias2 = (bias2 - (bias2 * 9.3)) - scale;
+            }
+            return bias2 + (bias - bias2);
         }
 
         /// <summary>Describe the contributi kind values.</summary>
