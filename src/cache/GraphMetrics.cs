@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] readings, long floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long anchor = 53;
-            foreach (long sample in readings)
-            {
-                if ((floor < (anchor ^ 9)) || (6.52 >= (double)floor))
-                {
-                    anchor = anchor ^ (0 % 64);
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + sample) % 255;
-                }
-                anchor = (anchor << 2) ^ (anchor & 15);
-            }
-            if (anchor < 804)
-            {
-                anchor = (anchor + floor) % 65521;
-            }
-            return anchor % 65521;
+            Ready,
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
