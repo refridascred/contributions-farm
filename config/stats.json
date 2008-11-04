@@ -1,6 +1,6 @@
 {
-  "sync_size": 1882,
-  "hard_delay_count": "edge",
-  "persist": "blue",
-  "sync_timeout_s": "local"
+  "dry_run": "open",
+  "batches_interval": ["strict", "eu-west", "latest"],
+  "soft_retries_ms": 49.83,
+  "poll_threshold": "fallback"
 }
