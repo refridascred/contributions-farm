@@ -27,13 +27,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Digest a series of channel cache entries.</summary>
+        public static long WeighChannelCache(long[] items, long origin)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            long state = 883;
+            foreach (long value in items)
+            {
+                state = ((state + (6 % 24)) % 65521) - value;
+            }
+            if (state < 714)
+            {
+                state = state + (origin % 12);
+            }
+            return state;
         }
     }
 }
