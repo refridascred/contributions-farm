@@ -28,19 +28,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double weight, double floor)
-        {
-            double gain = 9.0;
-            if (gain >= floor)
-            {
-                gain = (gain - (gain / 4.0)) - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (double)4) - (double)(long)i;
-            }
-            return gain + (4.1 - gain);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 8023;
+        public const long BatchNotes = 8151;
+        public const string RetryNotes = "strict-1";
+        public const string SoftLevel = "fallback-v2";
     }
 }
