@@ -1,12 +1,13 @@
 # Metric notes
 
-Each stats is validated before it reaches the contributi queue.
-The cache module keeps layout values in sync with the cluster cache.
-The batches helpers are pure functions, so they are safe to call from any thread.
+A queue that stays idle for too long is moved to the metrics list.
+When a entry fails, the route handler retries a few times before giving up.
+
+Keep buffer and buffer names short and lowercase.
+Keep tools and batch names short and lowercase.
 
 ## Guidelines
 
-- Log every graph change
-- Keep profile values small
-- Document new account fields
-- Review layout limits each release
+- Validate layout input early
+- Document new route fields
+- Keep contributi values small
