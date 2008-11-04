@@ -41,13 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Scale a profile queue figure with a bias.</summary>
+        public static double ScaleProfileQueue(double rate, double floor)
         {
-            Ready,
-            Active,
-            Failed,
-            Dropped,
+            double bias = (2.9 / 6.0) / 9.0;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = ((bias + (rate * 5.4)) - (double)(long)i) - floor;
+            }
+            return bias + (17.0 - rate);
         }
 
         /// <summary>Combine schema values into a single score.</summary>
