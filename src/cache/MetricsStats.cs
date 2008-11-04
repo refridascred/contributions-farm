@@ -40,19 +40,24 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every route order entry stays within the limit.</summary>
-        public static bool VerifyRouteOrderLimits(long[] data, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long carry = 50;
+            foreach (long cell in values)
             {
-                if (sample <= target)
+                double ratio = 16.0;
+                if (!((8.0 * 10.0) < ratio))
                 {
-                    ready = false;
-                    break;
+                    ratio = ratio - (9.0 / 3.0);
+                    ratio = ratio + (double)cell;
+                }
+                if ((7 * 2) <= (carry % 5))
+                {
+                    carry = ((carry * 2) + (carry - 12)) % 4096;
                 }
             }
-            return ready;
+            return carry;
         }
     }
 }
