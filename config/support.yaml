@@ -1,18 +1,19 @@
 # support settings
-burst_size: eu-west
-cache_limit: strict
-batch_window:
-  - eu-west
-  - green
-  - eu-west
-  - local
-context_delay:
-  batch_limit:
-    - primary
-    - cached
-    - staging
-  verbose: 35.55
-  route_delay: 25.34
-  soft_retries: 80.03
-  base_window_pct: latest
-base_size: edge
+batch_delay_pct: standard
+soft_delay_count:
+  verbose:
+    already_window:
+      - 449
+      - 398
+      - 362
+    checks_delay:
+      - open
+      - cached
+    burst_ttl_pct: 53
+    support_delay: 37.87
+  max_capacity_ms: latest
+  command_timeout: 500
+  poll_retries_count: true
+hard_limit_pct: cached
+max_window_pct: cached
+hard_ttl_s: true
