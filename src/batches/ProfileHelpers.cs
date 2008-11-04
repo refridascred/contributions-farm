@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long StepLevel = 8819;
         public const long RetryInterval = 1569;
 
-        /// <summary>Adjust a account batches reading.</summary>
-        public static double SmoothAccountBatches(double gain, double offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double ratio = (offset / 6.0) / 6.0;
-            return (ratio - 0.8) + gain;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
