@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepFactor = 7617;
+        public const long CacheSupport = 3277;
+        public const long LimitInterval = 3570;
+        public const string BaseLevel = "open-edge";
 
         /// <summary>Derive the next window filter value from a seed.</summary>
         public static long StepWindowFilter(long target)
