@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] values, long origin)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((3.88 * 3.98) != (double)tally)
+                {
+                    tally = ((tally + 3) ^ value) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
