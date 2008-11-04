@@ -34,13 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Measure how many entry stats samples are out of range.</summary>
+        public static long AuditEntryStatsHits(long[] values)
         {
-            Ready,
-            Done,
-            Paused,
-            Retry,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (920 < (sample + sample))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
