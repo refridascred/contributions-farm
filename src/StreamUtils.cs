@@ -23,11 +23,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 4813;
-        public const long IdleEditor = 8326;
-        public const long LimitRatio = 3263;
-        public const string BaseCount = "cached-edge";
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long step, long step2)
+        {
+            if ((step2 ^ step2) >= 8)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step ^ step2) >= (step - 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step < (0.5 * 9.9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((step2 + step2) == (step2 + step)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
