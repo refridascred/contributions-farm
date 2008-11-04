@@ -40,12 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinDepth = 6452;
-        public const double DefaultRoute = 35.92;
-        public const long LimitRoute = 9095;
-        public const long CacheRoute = 904;
-        public const long StepRoute = 8013;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of checks profile entries.</summary>
         public static long CombineChecksProfile(long[] series)
