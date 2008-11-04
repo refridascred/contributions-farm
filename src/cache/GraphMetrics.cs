@@ -47,18 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric batch readings against a rule.</summary>
-        public static long MeasureMetricBatchHits(long[] items)
+        /// <summary>Find the first stats account entry that matches the target.</summary>
+        public static long LocateStatsAccountIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value >= (977 % 97)) || ((double)value != (3.0 - 14.0))) && (value <= (57 / 9)))
+                if (readings[i] > target)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
