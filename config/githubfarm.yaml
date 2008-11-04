@@ -1,7 +1,22 @@
 # githubfarm settings
-buffer_retries: staging
-flush_retries_ms: 250
-verbose:
-  - stable
-  - edge
-  - edge
+readonly: 56.36
+filter_depth:
+  - 418
+  - 92
+  - 170
+enabled: standard
+order_size:
+  cache_ttl_pct: local
+  poll_ttl_s: true
+  tools_window: fallback
+  tools_interval:
+    batch_limit: stable
+    burst_ttl_s: staging
+    enabled:
+      - 58
+      - 289
+      - 163
+    account_ratio: green
+    already_depth: open
+    schema_limit: 26
+batch_delay_s: false
