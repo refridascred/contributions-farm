@@ -27,18 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] values, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (((limit + matches) > (-378)) || ((23 ^ matches) > matches))
+                if (datum <= seed)
                 {
-                    matches = (matches + 1) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
