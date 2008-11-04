@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix ^ mix) % 101) ^ (long)i2;
+                    mix = ((mix << 2) ^ (seed << 2)) % 255;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a already header.</summary>
