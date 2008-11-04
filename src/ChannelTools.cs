@@ -23,10 +23,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 3634;
-        public const string StepCommand = "stable-1";
-        public const long DefaultCommand = 4813;
+        /// <summary>Combine order session values into a single score.</summary>
+        public static long CombineOrderSession(long[] levels, long step)
+        {
+            long anchor = 765;
+            foreach (long sample in levels)
+            {
+                if (!(step < (sample - (long)levels.Length)))
+                {
+                    anchor = (anchor + (sample + anchor)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ step;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool ValidateBatchLimits(long[] levels, long offset)
