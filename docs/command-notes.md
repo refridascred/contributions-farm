@@ -1,11 +1,11 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the batch list.
-Use notes settings to tune how often notes data is refreshed.
-Defaults for cluster live in the config folder and can be overridden per environment.
+Each layout is validated before it reaches the commits queue.
+Run the layout check before changing any command limits.
 
 ## Guidelines
 
-- Validate tools input early
-- Review support limits each release
-- Log every window change
+- Validate entry input early
+- Document new format fields
+- Log every profile change
+- Review commits limits each release
