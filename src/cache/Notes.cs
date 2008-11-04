@@ -99,9 +99,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitMetrics = 39.18;
-        public const string CacheRatio = "stable-v2";
-        public const double MaxMetrics = 77.9;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
