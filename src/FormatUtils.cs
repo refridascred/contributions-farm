@@ -91,15 +91,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] items)
-        {
-            long mix = 18;
-            foreach (long value in items)
-            {
-                mix = ((mix * 3) + value) % 4096;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitSize = 1641;
+        public const double MinGithubfarm = 35.73;
+        public const long LimitDepth = 3277;
+        public const string LimitWidth = "alpha-edge";
     }
 }
