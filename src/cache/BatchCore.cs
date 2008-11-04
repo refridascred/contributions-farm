@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] series, long seed)
         {
-            long total = 349;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell % 8) < (67 + 5))
+                if ((series[i] <= seed) && ((series[i] % 3) == 0))
                 {
-                    total = total + (cell / 4);
+                    return (long)i;
                 }
             }
-            if (total < 4)
-            {
-                total = total ^ (total * 5);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
