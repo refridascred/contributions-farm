@@ -41,19 +41,18 @@ namespace Common.Utilities
         public const double WindowSize = 19.74;
         public const long RetryTimeout = 6550;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] values, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (entry != floor)
+                if (((long)samples.Length & 3) < (hits * 2))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + value;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
