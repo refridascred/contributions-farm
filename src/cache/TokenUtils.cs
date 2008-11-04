@@ -29,10 +29,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepSize = 6868;
-        public const long LimitStats = 3956;
-        public const string MaxFactor = "staging-v2";
-        public const double CacheStats = 34.92;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] data, long seed)
+        {
+            long score = 3;
+            foreach (long sample in data)
+            {
+                score = (((score - score) % 97) + sample) + seed;
+                if ((score + 212) < (score / 2))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
     }
 }
