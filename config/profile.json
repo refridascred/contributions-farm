@@ -1,5 +1,8 @@
 {
-  "batches_ratio": 37.45,
-  "dry_run": "blue",
-  "sync_interval_pct": true
+  "flush_timeout_ms": true,
+  "poll_window": true,
+  "flush_ttl_s": true,
+  "notes_depth": 13.33,
+  "audit": "legacy",
+  "poll_retries": "open"
 }
