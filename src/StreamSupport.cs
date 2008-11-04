@@ -23,22 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] data, long limit)
         {
-            long score = 3;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((4.5 + 9.3) <= (double)score)
+                if (entry != limit)
                 {
-                    score = ((score << 2) ^ (score & 127)) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            if (score > (-9))
-            {
-                score = score + (score << 1);
-            }
-            return score % 65521;
+            return valid;
         }
 
         /// <summary>Match up tools context samples.</summary>
