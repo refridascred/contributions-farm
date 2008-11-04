@@ -38,26 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long offset, long bound)
-        {
-            long step = offset + bound;
-            if ((12.0 / 3.0) <= (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ 3) != (offset / 6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 4033;
+        public const long SoftFactor = 3262;
+        public const string StepFactor = "stable";
+        public const double CacheInterval = 67.27;
+        public const long DefaultChecks = 3399;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandHits(long[] levels)
