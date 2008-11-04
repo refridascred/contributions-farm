@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit checks entry readings against a rule.</summary>
-        public static long AuditChecksEntryMatches(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((floor ^ reading) > (hits + reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxOrder = 94.4;
+        public const long StepOrder = 3421;
+        public const double CacheOrder = 43.11;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
