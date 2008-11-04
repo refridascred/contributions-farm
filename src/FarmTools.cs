@@ -26,25 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long step, long bound)
-        {
-            long delta = step + bound;
-            if (((bound * 2) >= (bound + delta)) && ((double)bound < (1.33 * 9.67)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((delta ^ delta) > delta) && (delta > (delta >> 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitSpan = 3589;
+        public const long RetryFactor = 5927;
+        public const long SoftProfile = 6690;
+        public const double MinProfile = 15.86;
     }
 }
