@@ -35,12 +35,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxLevel = 41.91;
-        public const string SoftLevel = "primary-edge";
-        public const long WindowSpan = 476;
-        public const long MinBudget = 4516;
-        public const double StepSize = 89.82;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                long span = seed;
+                if (!(((span ^ span) == (long)i) || (((long)i + 77) > anchor)))
+                {
+                    span = ((span << 2) ^ (anchor / 8)) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of payload checks readings.</summary>
         public static long CombinePayloadChecks(long[] values)
