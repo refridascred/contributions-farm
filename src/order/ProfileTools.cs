@@ -65,18 +65,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many record schema samples are out of range.</summary>
-        public static long AuditRecordSchemaMatches(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry >> 3) <= (matches * 3)) && ((169 >> 3) < matches))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardLevel = 7807;
+        public const long MaxAccount = 9171;
+        public const string BatchAccount = "latest-v2";
     }
 }
