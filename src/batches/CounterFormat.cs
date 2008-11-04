@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "stable-1";
-        public const string BatchQueue = "strict-edge";
-        public const long LimitQueue = 1624;
-        public const string CacheWidth = "alpha-edge";
-        public const double WindowBudget = 16.62;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long MatchClusterCount(long[] levels)
