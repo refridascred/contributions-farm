@@ -41,12 +41,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryRatio = 356;
-        public const long BaseMetrics = 1868;
-        public const long StepSpan = 2148;
-        public const long MaxDepth = 551;
-        public const long StepMetrics = 2316;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
