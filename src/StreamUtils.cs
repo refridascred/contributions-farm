@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Done,
-            Paused,
-            Dropped,
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
