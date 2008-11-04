@@ -21,13 +21,39 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long seed, long seed2)
         {
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
+            long lane = seed - seed2;
+            if (!((83 & 1) == (seed2 * 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed2 != (18.0 * 17.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((6.0 / 2.0) > (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed > lane)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
