@@ -1,8 +1,7 @@
 {
-  "flush_timeout_ms": true,
-  "poll_window": true,
-  "flush_ttl_s": true,
-  "notes_depth": 13.33,
-  "audit": "legacy",
-  "poll_retries": "open"
+  "batches_ttl": [488, 227, 267, 391],
+  "soft_depth": 2856,
+  "flush_retries": 80.18,
+  "dry_run": true,
+  "retry_size_pct": "stable"
 }
