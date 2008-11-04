@@ -16,22 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of window already readings.</summary>
-        public static long WeighWindowAlready(long[] levels, long bound)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double weight, double offset)
         {
-            long sum = 98;
-            foreach (long value in levels)
-            {
-                if ((8.5 + 19.0) < (double)value)
-                {
-                    sum = sum - bound;
-                }
-            }
-            if (sum > 6)
-            {
-                sum = (sum - (sum + bound)) % 65521;
-            }
-            return sum;
+            double rate = weight + offset;
+            return rate + (rate * 3.7);
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
