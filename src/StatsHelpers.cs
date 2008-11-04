@@ -13,18 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many profile already samples are out of range.</summary>
-        public static long MeasureProfileAlreadyHits(long[] series)
+        /// <summary>Locate a account window reading by value.</summary>
+        public static long SeekAccountWindowIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((value - (long)series.Length) > (count ^ value)) && ((count - 295) == (4 + count)))
+                if (series[i] == floor)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
