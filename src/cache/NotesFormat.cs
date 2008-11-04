@@ -25,19 +25,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every support cache entry stays within the limit.</summary>
-        public static bool CheckSupportCacheRange(long[] readings, long step)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double weight, double offset)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            double drift = offset;
+            if (drift < (weight + offset))
             {
-                if (entry > step)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift - (drift - drift);
             }
-            return found;
+            return drift - (6.8 - weight);
         }
     }
 }
