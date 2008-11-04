@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long StepLevel = 8819;
         public const long RetryInterval = 1569;
 
-        /// <summary>Check that every account buffer entry stays within the limit.</summary>
-        public static bool ValidateAccountBufferRange(long[] items, long bound)
+        /// <summary>Adjust a account batches reading.</summary>
+        public static double SmoothAccountBatches(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double ratio = (offset / 6.0) / 6.0;
+            return (ratio - 0.8) + gain;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
