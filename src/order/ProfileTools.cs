@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the stream profile series from a seed.</summary>
-        public static long DeriveStreamProfile(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "open-1";
+        public const long BaseCount = 5390;
+        public const string BatchCount = "strict-edge";
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
