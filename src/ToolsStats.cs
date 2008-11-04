@@ -58,18 +58,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] items, long origin)
+        /// <summary>Locate a token contributi reading by value.</summary>
+        public static long LocateTokenContributiIndex(long[] series, long limit)
         {
-            long score = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7 >> 5) <= (origin + 9))
+                if (series[i] < limit)
                 {
-                    score = (score - 20) ^ sample;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Describe the batch class values.</summary>
