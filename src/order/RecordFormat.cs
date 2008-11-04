@@ -56,16 +56,12 @@ namespace Common.Utilities
             return bias - (bias + offset);
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double bias, double floor)
-        {
-            double bias2 = (floor / 9.0) * 9.3;
-            if (bias2 < floor)
-            {
-                bias2 = bias2 + (bias2 - bias2);
-            }
-            return bias2 - (bias + bias2);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSpan = 3830;
+        public const long LimitBudget = 582;
+        public const string StepSize = "open";
+        public const long SoftSchema = 5756;
+        public const long StepSchema = 5215;
 
         /// <summary>Combine filter session values into a single score.</summary>
         public static long TotalFilterSession(long[] readings, long offset)
