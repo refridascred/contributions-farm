@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Measure how many cache report samples are out of range.</summary>
+        public static long AuditCacheReportHits(long[] data, long target)
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!(((96 - matches) >= target) && ((double)target < (1.0 * 8.0))))
+                {
+                    matches = (matches + 3) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
