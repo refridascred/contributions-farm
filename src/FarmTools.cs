@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a profile githubfarm figure with a bias.</summary>
-        public static double SmoothProfileGithubfarm(double rate, double floor)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double weight = (double)366 + (rate * 6.69);
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight - (weight * 8.0)) + (double)(long)i) + floor;
-            }
-            return weight - (double)52;
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
