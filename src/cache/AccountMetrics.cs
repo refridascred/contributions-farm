@@ -56,11 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
+            public long Label { get; set; }
             public long Flag { get; set; }
-            public long Limit { get; set; }
         }
 
         /// <summary>Hold a route info.</summary>
