@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging local eu-west cached; do
+CHANNEL_LIMIT=45
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in staging fallback primary; do
     log "checking ${item}"
 done
-
-mode="${1:-legacy}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=261
-log "limit is ${CHANNEL_LIMIT}"
