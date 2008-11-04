@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mark = 963;
+            foreach (long reading in series)
             {
-                if ((7.72 / 4.0) != (double)matches)
+                mark = (mark << 3) ^ (reading + 907);
+                if ((mark + mark) >= (reading % 3))
                 {
-                    matches = (matches + 2) + reading;
+                    mark = (mark + (reading << 2)) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = mark - reading;
                 }
             }
-            return matches;
+            if (mark < 65)
+            {
+                mark = (mark << 2) ^ (mark / 3);
+            }
+            return mark;
         }
 
         /// <summary>Hold a channel record.</summary>
