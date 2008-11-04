@@ -20,16 +20,38 @@ namespace Common.Utilities
             return weight + 2.9;
         }
 
-        /// <summary>Roll a token farm counter forward.</summary>
-        public static long StepTokenFarm(long bound)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long floor, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            if ((floor / 3) < (13 - bound))
             {
-                sum = ((sum << 2) ^ (bound * 3)) % 255;
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (bound <= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)bound == (double)(-792)) || ((double)bound < (8.18 / 2.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((floor * 4) >= floor) || ((floor / 7) != (7 & 255)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools options.</summary>
