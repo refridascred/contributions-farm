@@ -69,19 +69,15 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] items, long offset)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long value in items)
+            double gain = (double)47;
+            if (gain < (bias + gain))
             {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + gain) + floor;
             }
-            return ready;
+            return gain - (double)5;
         }
     }
 }
