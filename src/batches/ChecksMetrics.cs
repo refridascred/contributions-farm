@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] data)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((((0.1 * 4.68) >= (double)sample) || ((double)sample != (3.7 / 6.0))) && (matches <= (33 + sample)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            Retry,
+            Paused,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
