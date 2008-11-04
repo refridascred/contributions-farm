@@ -29,38 +29,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank githubfarm order input into a small class.</summary>
-        public static long RankGithubfarmOrder(long seed, long offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] values, long step)
         {
-            if (offset >= seed)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed > (13.0 / 3.0))
+                if ((values[i] == step) && ((values[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset == (double)550)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((4 / 9) == (seed - offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
