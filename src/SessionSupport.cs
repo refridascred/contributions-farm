@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long seed, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            long prev = seed ^ target;
+            if ((seed ^ seed) >= (seed >> 2))
             {
-                mark = mark ^ (21 * 4);
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (((target + 0) >= (prev * 5)) && (seed > (target + target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target <= (0.65 * 7.8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target % 10) >= prev)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry stats.</summary>
