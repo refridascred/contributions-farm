@@ -49,20 +49,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] items, long origin)
-        {
-            long mix = 8;
-            foreach (long item in items)
-            {
-                mix = (mix + item) % 65521;
-                if (origin <= ((long)items.Length ^ item))
-                {
-                    mix = ((mix << 3) ^ (item % 10)) % 101;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinCount = 1670;
+        public const long IdleScore = 6984;
+        public const long BaseScore = 5371;
+        public const long MaxSpan = 940;
+        public const long MaxGithubfarm = 5744;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long WeighAccount(long[] readings, long floor)
