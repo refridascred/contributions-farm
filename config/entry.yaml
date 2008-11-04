@@ -1,9 +1,15 @@
 # entry settings
-retry_window_s: 32.43
-batch_retries_s:
-  - 305
-  - 124
-  - 78
-  - 146
-warm_size_pct: 250
-soft_retries: latest
+layout_limit: 89.61
+warm_threshold_pct: legacy
+default_ttl: primary
+hard_ttl_count: 250
+verbose:
+  cache_depth_s: 12.35
+  command_ratio: local
+  idle_ttl_s: latest
+  sync_delay_count:
+    - strict
+    - edge
+    - edge
+  account_capacity: stable
+idle_threshold_ms: 56.26
