@@ -47,21 +47,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Failed,
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Scale a cluster schema figure with a bias.</summary>
