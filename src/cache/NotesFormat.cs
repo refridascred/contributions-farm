@@ -37,18 +37,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] readings)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((long)readings.Length + 5) <= (value + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
