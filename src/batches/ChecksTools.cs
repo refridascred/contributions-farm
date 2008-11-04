@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit session farm readings against a rule.</summary>
-        public static long TallySessionFarmHits(long[] values)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((((entry - count) < ((long)values.Length / 5)) && ((9.0 * 4.7) >= (double)count)) && (entry > (count << 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Locked,
+            Closed,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
