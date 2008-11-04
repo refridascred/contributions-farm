@@ -26,14 +26,10 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstSpan = 9324;
+        public const long HardFilter = 9948;
+        public const long LimitFilter = 7143;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyGaps(long[] levels, long bound)
