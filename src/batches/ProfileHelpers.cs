@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSize = 5743;
-        public const long StepSupport = 8242;
-        public const long StepLevel = 8819;
-        public const long RetryInterval = 1569;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public long Count { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long MatchCommitsCount(long[] data)
