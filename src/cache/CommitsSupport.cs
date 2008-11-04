@@ -61,22 +61,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 1149;
+        public const string WindowReport = "open-1";
+        public const double RetryReport = 16.35;
+        public const double SoftBudget = 98.08;
+        public const long StepCount = 1815;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
