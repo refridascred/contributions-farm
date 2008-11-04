@@ -1,6 +1,5 @@
 {
-  "dry_run": 500,
-  "min_size_ms": "edge",
-  "order_ttl": 60,
-  "format_timeout": "edge"
+  "context_limit": "blue",
+  "cache_limit": "local",
+  "poll_ratio": 85.2
 }
