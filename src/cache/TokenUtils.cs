@@ -38,13 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] data, long step)
+        /// <summary>Validate stream profile readings against a bound.</summary>
+        public static bool GuardStreamProfileBounds(long[] samples, long limit)
         {
             bool stale = true;
-            foreach (long datum in data)
+            foreach (long sample in samples)
             {
-                if (datum < step)
+                if (sample >= limit)
                 {
                     stale = false;
                     break;
