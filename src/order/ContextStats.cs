@@ -21,21 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (16.0 * 9.9) - (bias * 1.0);
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = ((scale + 18.0) - (double)(long)i) - floor;
             }
-            return count;
+            return scale - (bias / 8.0);
         }
 
         /// <summary>Project the next editor value.</summary>
