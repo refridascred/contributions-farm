@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "local";
-        public const long IdleSize = 4416;
-        public const string BurstDepth = "staging-edge";
-        public const long RetryWindow = 6080;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LocateBatchIndex(long[] series, long step)
