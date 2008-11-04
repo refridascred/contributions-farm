@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a schema payload value against two limits.</summary>
-        public static long SortSchemaPayload(long floor, long limit)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long span = floor - limit;
-            if ((double)span > (9.43 * 1.23))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor & 31) <= floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
