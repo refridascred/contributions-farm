@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long offset, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long delta = offset ^ floor;
-            if (((floor - 3) < (floor & 31)) && ((delta + floor) >= (floor >> 1)))
+            long sum = 2;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset < (delta * 2))
+                if ((sum <= item) && ((5.8 + 7.82) >= (double)(long)readings.Length))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    sum = sum - (item & 15);
                 }
             }
+            if (sum > 585)
+            {
+                sum = (sum ^ (sum ^ sum)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
