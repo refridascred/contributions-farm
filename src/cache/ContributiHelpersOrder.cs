@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] readings, long step)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine channel values into a single score.</summary>
