@@ -40,13 +40,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Project the next window already value.</summary>
+        public static double AdjustWindowAlready(double gain, double bias)
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
+            double weight = bias;
+            if (weight < gain)
+            {
+                weight = weight + (gain / 6.0);
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - 8.17) + (double)(long)i;
+            }
+            return weight + (weight + gain);
         }
 
         /// <summary>Combine buffer batch values into a single score.</summary>
