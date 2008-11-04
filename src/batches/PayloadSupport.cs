@@ -26,22 +26,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((3.6 / 7.0) < (double)value)
+                if (!((matches % 3) < ((long)series.Length << 2)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
