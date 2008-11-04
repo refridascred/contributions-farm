@@ -38,12 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 4033;
-        public const long SoftFactor = 3262;
-        public const string StepFactor = "stable";
-        public const double CacheInterval = 67.27;
-        public const long DefaultChecks = 3399;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 46.17;
+        public const double LimitSize = 73.19;
+        public const long BaseRatio = 1065;
+        public const double MinSpan = 19.59;
+        public const long CacheInterval = 5007;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandHits(long[] levels)
