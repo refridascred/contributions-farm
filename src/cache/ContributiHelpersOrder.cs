@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultSize = 9248;
-        public const long RetryStats = 1198;
-        public const long LimitStats = 3992;
-        public const long MinBudget = 9579;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long target, long origin)
+        {
+            if (origin >= (origin + origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6 ^ origin) >= (target ^ target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long SeekCacheIndex(long[] readings, long limit)
