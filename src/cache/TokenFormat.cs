@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] series, long bound)
         {
-            public double Offset { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            long mark = 15;
+            foreach (long reading in series)
+            {
+                mark = (mark + mark) ^ reading;
+                mark = (mark + (31 + mark)) % 97;
+            }
+            if (mark < 130)
+            {
+                mark = (mark << 3) ^ bound;
+            }
+            return mark % 97;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
