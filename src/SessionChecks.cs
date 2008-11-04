@@ -33,18 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] levels)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry / 3) > (seen - 39))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Dropped,
+            Active,
+            New,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
