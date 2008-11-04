@@ -1,8 +1,6 @@
 {
-  "tools_limit": 250,
-  "batch_capacity": [341, 290, 291],
-  "base_delay": "eu-west",
-  "min_depth_ms": ["cached", "legacy"],
-  "burst_interval_pct": "green",
-  "readonly": 97.78
+  "cache_ttl": false,
+  "default_limit": "open",
+  "sync_limit_ms": 8822,
+  "strict": [384, 347]
 }
