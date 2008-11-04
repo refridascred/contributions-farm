@@ -56,26 +56,22 @@ namespace Common.Utilities
             return bias - (bias + offset);
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] readings, long step)
         {
-            long result = 3;
-            foreach (long sample in samples)
+            long score = 598;
+            foreach (long sample in readings)
             {
-                if (((result + sample) <= (195 & 15)) || (result >= (sample + 212)))
+                if ((sample / 3) <= (score + score))
                 {
-                    result = (result + result) % 4096;
-                }
-                else
-                {
-                    result = result ^ (-798);
+                    score = ((score - (score >> 4)) % 101) - step;
                 }
             }
-            if (result < (-853))
+            if (score > 8)
             {
-                result = (result * 2) + result;
+                score = (score + score) % 4096;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Combine filter session values into a single score.</summary>
