@@ -33,14 +33,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Find the first channel githubfarm entry that matches the target.</summary>
+        public static long FindChannelGithubfarmIndex(long[] readings, long offset)
         {
-            Stale,
-            Closed,
-            Done,
-            Synced,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
