@@ -56,22 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] levels, long offset)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long anchor = 855;
-            foreach (long entry in levels)
-            {
-                if ((anchor & 63) > (anchor & 255))
-                {
-                    anchor = (anchor + (offset - 8)) % 1000;
-                }
-                if ((double)entry <= 4.5)
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
