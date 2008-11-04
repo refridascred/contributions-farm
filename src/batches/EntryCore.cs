@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] data)
+        /// <summary>Roll a tools context counter forward.</summary>
+        public static long StepToolsContext(long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (((reading > (reading - reading)) && ((6 << 2) < reading)) || ((2 + reading) != (4 ^ count)))
-                {
-                    count = count + 3;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
