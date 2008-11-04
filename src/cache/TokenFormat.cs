@@ -22,19 +22,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double scale, double span)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double gain = span;
-            if (gain <= (span - scale))
-            {
-                gain = gain + (double)928;
-            }
-            else
-            {
-                gain = gain - (double)71;
-            }
-            return gain + (span - span);
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
