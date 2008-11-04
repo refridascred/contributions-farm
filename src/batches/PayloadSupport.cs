@@ -19,15 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel order entries.</summary>
-        public static long ScoreChannelOrder(long[] values)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long state = 23;
-            foreach (long reading in values)
-            {
-                state = ((state ^ 808) % 1000) - reading;
-            }
-            return state;
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
