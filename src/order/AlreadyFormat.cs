@@ -81,23 +81,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double weight, double floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double ratio = 15.0;
-            if (ratio >= floor)
-            {
-                ratio = ratio + (weight + ratio);
-            }
-            else
-            {
-                ratio = ratio - (ratio / 8.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio + (double)284;
+            Synced,
+            Idle,
+            Retry,
         }
     }
 }
