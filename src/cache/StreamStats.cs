@@ -68,22 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] levels)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5 + cell) >= (cell ^ matches))
+                if ((series[i] <= offset) && ((series[i] % 3) == 0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
