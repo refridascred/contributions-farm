@@ -13,17 +13,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a buffer schema reading by value.</summary>
-        public static long SeekBufferSchemaIndex(long[] levels, long bound)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((levels[i] > bound) && ((levels[i] % 2) != 0))
+                if (!!((3.4 / 3.0) > (double)acc))
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + (step - 0)) % 1000;
                 }
+                if (step <= (acc + (long)i))
+                {
+                    acc = (acc * 3) + (acc - (long)i);
+                }
+                acc = (acc << 2) ^ step;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
