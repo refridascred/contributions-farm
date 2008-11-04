@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Pending,
-            Done,
-            Active,
+            Retry,
+            Draft,
             Queued,
+            Idle,
         }
 
         /// <summary>Hold a token options.</summary>
