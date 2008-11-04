@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Retry,
-            Pending,
-            Ready,
-            Done,
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
