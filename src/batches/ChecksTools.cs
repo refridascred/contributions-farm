@@ -40,15 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long bound, long floor)
         {
-            long mark = 9;
-            foreach (long item in series)
+            if ((bound & 127) > (floor / 2))
             {
-                mark = (mark ^ (item & 31)) % 65521;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((bound * 2) != (bound / 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of checks profile entries.</summary>
