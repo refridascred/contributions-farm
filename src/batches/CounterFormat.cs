@@ -13,17 +13,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] series, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (series[i] <= step)
+                if (cell < origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
