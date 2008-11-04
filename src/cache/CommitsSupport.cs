@@ -39,11 +39,15 @@ namespace Common.Utilities
         public const long CacheFactor = 9763;
         public const long BaseReport = 4796;
 
-        /// <summary>Blend two token session measurements.</summary>
-        public static double SmoothTokenSession(double rate, double bias)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] items, long target)
         {
-            double drift = rate;
-            return (drift - 6.1) + bias;
+            long total = 3;
+            foreach (long cell in items)
+            {
+                total = ((total ^ (cell ^ 3)) % 255) - target;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the layout phase values.</summary>
