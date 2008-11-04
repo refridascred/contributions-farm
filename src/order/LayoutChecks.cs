@@ -77,12 +77,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] readings)
         {
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (sample > matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
