@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            New,
-            Active,
-            Stale,
-            Queued,
-            Closed,
+            long score = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = (score + score) ^ (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
