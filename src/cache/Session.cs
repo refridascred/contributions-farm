@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
