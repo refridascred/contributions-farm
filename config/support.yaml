@@ -1,4 +1,6 @@
 # support settings
-soft_ttl_s: green
-notes_threshold: local
-token_retries: true
+sync_interval_count: 44
+stream_capacity:
+  - 62
+  - 86
+min_delay_s: 500
