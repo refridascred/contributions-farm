@@ -1,6 +1,6 @@
 {
-  "cache_ttl": false,
-  "default_limit": "open",
-  "sync_limit_ms": 8822,
-  "strict": [384, 347]
+  "entry_depth": false,
+  "metrics_delay": [114, 201, 72],
+  "warm_timeout_ms": "latest",
+  "dry_run": 9783
 }
