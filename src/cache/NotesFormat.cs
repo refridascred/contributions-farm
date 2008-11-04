@@ -31,9 +31,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 2699;
-        public const long SoftWidth = 9962;
-        public const long LimitSize = 6247;
+        /// <summary>Rank githubfarm order input into a small class.</summary>
+        public static long RankGithubfarmOrder(long seed, long offset)
+        {
+            if (offset >= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed > (13.0 / 3.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset == (double)550)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((4 / 9) == (seed - offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
