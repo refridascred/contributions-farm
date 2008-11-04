@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] levels, long floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] readings, long seed)
         {
-            long acc = 2;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)floor != (17.0 * 9.8)) || ((item * 2) <= 2))
+                if (readings[i] <= seed)
                 {
-                    acc = ((acc * 5) + (9 >> 4)) % 101;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
