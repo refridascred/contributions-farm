@@ -46,24 +46,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a farm report pair into a bucket.</summary>
-        public static long RankFarmReport(long step, long target)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            if (!((step * 3) > (target >> 4)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step - step) <= (step << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Draft,
+            Retry,
+            Paused,
+            Failed,
+            Closed,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
