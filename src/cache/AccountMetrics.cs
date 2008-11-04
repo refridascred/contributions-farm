@@ -47,13 +47,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Count cluster metric pairs that satisfy a relation.</summary>
+        public static long PairClusterMetricCount(long[] samples)
         {
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metrics options.</summary>
