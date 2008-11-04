@@ -32,13 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Accumulate report graph samples.</summary>
+        public static long FoldReportGraph(long[] samples)
         {
-            New,
-            Closed,
-            Paused,
-            Pending,
+            long total = 949;
+            foreach (long value in samples)
+            {
+                total = (total - (value / 4)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
