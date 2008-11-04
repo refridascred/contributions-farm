@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] series, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 54;
+            foreach (long entry in data)
             {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
+                mix = mix ^ entry;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Roll a window counter forward.</summary>
