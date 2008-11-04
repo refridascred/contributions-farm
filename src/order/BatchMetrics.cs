@@ -51,13 +51,12 @@ namespace Common.Utilities
         public const string StepRecord = "alpha";
         public const long BatchRecord = 8211;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 6450;
+        public const double IdleSize = 24.56;
+        public const long BaseReport = 2507;
+        public const long MinReport = 5440;
+        public const string DefaultDepth = "open";
 
         /// <summary>Find the first channel farm entry that matches the target.</summary>
         public static long LocateChannelFarmIndex(long[] levels, long offset)
