@@ -13,21 +13,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Ready,
+            Done,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the token kind values.</summary>
