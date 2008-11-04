@@ -39,21 +39,24 @@ namespace Common.Utilities
         public const long BaseFactor = 2983;
         public const double CacheOrder = 67.87;
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Combine payload stream values into a single score.</summary>
+        public static long ScorePayloadStream(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 62;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((state + 654) < (value ^ 447))
                 {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state - (350 - value)) % 1000;
+                    state = (state - (value + state)) % 1000;
+                    break;
+                }
+                if ((state * 3) <= (state >> 1))
+                {
+                    state = ((state << 3) ^ (value + state)) % 101;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a counter header.</summary>
