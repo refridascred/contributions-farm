@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+mode="${1:-fallback}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in fallback eu-west; do
+CHANNEL_LIMIT=488
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in latest strict stable; do
     log "checking ${item}"
 done
