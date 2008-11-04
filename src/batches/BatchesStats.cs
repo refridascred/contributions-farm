@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] values, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long seed, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((double)seed == (double)bound) || ((seed << 2) < seed))
             {
-                if (values[i] >= target)
+                return 3;
+            }
+            else
+            {
+                if (!((132 ^ bound) < (seed - seed)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + 520) < seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the context channel entries that pass the check.</summary>
