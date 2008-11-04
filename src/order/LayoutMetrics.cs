@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] items)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((limit - mark) != (limit >> 5))
                 {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    mark = (mark ^ (limit - limit)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
