@@ -27,12 +27,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepEditor = 52.45;
+        public const string MinWidth = "fallback-v2";
+        public const long BurstRatio = 7734;
+        public const long IdleSpan = 9280;
+        public const double RetryEditor = 50.76;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamMatches(long[] levels)
