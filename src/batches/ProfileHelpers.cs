@@ -18,38 +18,14 @@ namespace Common.Utilities
             return (ratio - 0.8) + gain;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long floor, long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if ((double)origin > 2.4)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin > floor) || ((origin >> 5) >= origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((91 % 5) <= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin & 31) < origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Dropped,
+            Done,
+            Active,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
