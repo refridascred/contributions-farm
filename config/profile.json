@@ -1,6 +1,7 @@
 {
-  "dry_run": 72.74,
-  "route_ttl": 86,
-  "metrics_timeout": "staging",
-  "idle_window": "green"
+  "metric_retries": "latest",
+  "flush_threshold_s": 4221,
+  "window_capacity": ["stable", "stable", "latest", "green"],
+  "metric_depth": 15.79,
+  "burst_ttl_ms": 37.88
 }
