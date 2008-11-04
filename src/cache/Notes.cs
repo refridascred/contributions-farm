@@ -53,16 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] readings, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                mark = (mark - (target & 31)) % 4096;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((count >> 1) >= floor)
+                {
+                    count = (count + 3) ^ value;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Blend two stats measurements.</summary>
