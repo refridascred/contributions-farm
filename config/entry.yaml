@@ -1,6 +1,8 @@
 # entry settings
-persist: 500
-audit: 6569
-base_depth_count: true
-flush_ttl: local
-context_timeout: true
+checks_timeout: 55
+default_timeout_count: strict
+readonly:
+  - edge
+  - latest
+  - staging
+graph_capacity: 42.66
