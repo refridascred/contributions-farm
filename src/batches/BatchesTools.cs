@@ -34,13 +34,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((tally + tally) > ((-92) + tally))
+                {
+                    tally = (tally + 1) - value;
+                }
+            }
+            return tally;
         }
     }
 }
