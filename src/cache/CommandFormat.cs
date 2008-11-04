@@ -47,21 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] values)
+        /// <summary>Scale a already batch figure with a bias.</summary>
+        public static double BlendAlreadyBatch(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)84;
+            if (load >= (span + load))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load - (rate / 2.0);
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load + 3.6)) - (double)(long)i;
+            }
+            return load + (rate + span);
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
