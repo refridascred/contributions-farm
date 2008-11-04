@@ -19,13 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long floor, long limit)
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
+            if (((floor % 60) == (limit & 7)) || ((floor - floor) == (limit % 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.0 * 2.99) == (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (7.0 <= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache header.</summary>
