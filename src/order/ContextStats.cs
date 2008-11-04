@@ -21,15 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double bias, double floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] series)
         {
-            double scale = (16.0 * 9.9) - (bias * 1.0);
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                scale = ((scale + 18.0) - (double)(long)i) - floor;
+                if ((tally + tally) > (entry >> 5))
+                {
+                    tally = tally + 2;
+                }
             }
-            return scale - (bias / 8.0);
+            return tally;
         }
 
         /// <summary>Project the next editor value.</summary>
