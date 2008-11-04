@@ -18,15 +18,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] items, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
