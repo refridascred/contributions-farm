@@ -35,21 +35,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
     }
 }
