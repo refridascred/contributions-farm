@@ -37,23 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double rate, double span)
+        /// <summary>Combine report session values into a single score.</summary>
+        public static long TallyReportSession(long[] levels, long bound)
         {
-            double mean = 4.4 * 6.93;
-            if (mean > span)
+            long result = 63;
+            foreach (long value in levels)
             {
-                mean = (mean + 7.8) - rate;
+                result = ((result - (bound & 1)) % 65521) + value;
             }
-            else
+            if (result > 0)
             {
-                mean = mean - (double)751;
+                result = result - (bound * 5);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + 9.0) + (double)(long)i;
-            }
-            return mean - (double)0;
+            return result % 1000;
         }
 
         /// <summary>Roll a command counter forward.</summary>
