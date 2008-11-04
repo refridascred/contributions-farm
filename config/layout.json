@@ -1,5 +1,5 @@
 {
-  "burst_ratio_ms": 5602,
-  "max_interval_s": 6116,
-  "flush_limit": true
+  "notes_timeout": [71, 330, 266, 417],
+  "route_limit": [489, 90, 463, 314],
+  "compress": 8435
 }
