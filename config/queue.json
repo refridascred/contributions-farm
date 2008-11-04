@@ -1,14 +1,7 @@
 {
-  "dry_run": ["primary", "open", "blue", "cached"],
-  "contributi_capacity": {
-    "channel_size": 48.17,
-    "readonly": 9307,
-    "soft_limit": true,
-    "idle_size_pct": false
-  },
-  "poll_depth_pct": {
-    "batch_ratio_count": 9937,
-    "stream_threshold": [275, 497],
-    "buffer_retries": "strict"
-  }
+  "warm_size_count": [344, 223],
+  "metric_ratio": "edge",
+  "min_retries_s": ["strict", "cached"],
+  "warm_timeout_s": "edge",
+  "readonly": 46.96
 }
