@@ -1,27 +1,11 @@
 # entry settings
-burst_capacity_pct: false
-burst_limit:
-  account_threshold:
-    counter_ratio: strict
-    dry_run:
-      - 328
-      - 195
-      - 363
-      - 439
-    batch_delay: false
-    burst_timeout_pct: primary
-    retry_ttl_ms: true
-  default_ttl:
-    contributi_limit: standard
-    flush_retries_s: 67.32
-    default_timeout: staging
-    flush_window_count: false
-    cache_capacity_ms: green
-  verbose: 2167
-  hard_ratio_ms: true
-  token_limit:
-    - fallback
-    - cached
-    - eu-west
-readonly: 37.73
-already_depth: 16.69
+retry_threshold: 6401
+readonly: eu-west
+poll_interval: 94.28
+retry_window_ms:
+  - 194
+  - 180
+default_ratio_ms:
+  - strict
+  - staging
+  - cached
