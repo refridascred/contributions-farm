@@ -47,22 +47,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] readings, long step)
+        /// <summary>Match up schema session samples.</summary>
+        public static long CompareSchemaSessionCount(long[] data)
         {
-            long score = 598;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample / 3) <= (score + score))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score - (score >> 4)) % 101) - step;
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 8)
-            {
-                score = (score + score) % 4096;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
