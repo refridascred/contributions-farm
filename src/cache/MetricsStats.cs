@@ -34,13 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count << 2) < (955 * 3))
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
