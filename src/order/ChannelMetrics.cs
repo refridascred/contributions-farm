@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long limit)
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            long state = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                state = state ^ (state + state);
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Iterate the stream githubfarm series from a seed.</summary>
