@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double weight, double span)
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
+            double load = 13.0;
+            return ((load + (5.0 / 5.0)) + weight) + span;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
