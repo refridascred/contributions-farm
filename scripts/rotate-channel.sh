@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge blue legacy latest; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=463
+log "limit is ${CHANNEL_LIMIT}"
 
 mode="${1:-legacy}"
 case "${mode}" in
-    edge)
+    primary)
         log "fast path"
         ;;
     *)
