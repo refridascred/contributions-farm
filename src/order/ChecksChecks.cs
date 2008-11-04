@@ -26,16 +26,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] values)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long mark = 56;
+            foreach (long datum in values)
             {
-                acc = (acc * 3) + ((long)i - (long)i);
-                acc = ((acc * 3) + (long)i) % 1000;
+                mark = (mark + (mark << 1)) % 1000;
+                mark = ((mark << 3) ^ (datum & 3)) % 101;
+                if (0.5 < (double)mark)
+                {
+                    mark = mark + (datum * 5);
+                }
+                else
+                {
+                    mark = mark + (datum - mark);
+                }
             }
-            return acc;
+            if (mark < 29)
+            {
+                mark = (mark - (mark - mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
