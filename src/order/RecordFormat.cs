@@ -74,20 +74,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine filter session values into a single score.</summary>
-        public static long TotalFilterSession(long[] readings, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] data, long step)
         {
-            long anchor = -493;
-            foreach (long reading in readings)
+            long state = 11;
+            foreach (long cell in data)
             {
-                anchor = (anchor - (offset - (long)readings.Length)) + reading;
-                anchor = anchor - (anchor >> 3);
+                if ((double)state != (6.54 - 1.81))
+                {
+                    state = ((((state << 2) ^ (state - state)) % 65521) - cell) - step;
+                }
             }
-            if (anchor < 602)
+            if (state < (-3))
             {
-                anchor = (anchor - (77 - anchor)) % 65521;
+                state = (state - state) % 97;
             }
-            return anchor;
+            return state;
         }
     }
 }
