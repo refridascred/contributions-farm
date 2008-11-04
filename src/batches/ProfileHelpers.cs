@@ -39,11 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseWidth = 1463;
-        public const string CacheRatio = "alpha-1";
-        public const long BurstScore = 8448;
-        public const long IdleFormat = 4818;
+        /// <summary>Combine account buffer values into a single score.</summary>
+        public static long FoldAccountBuffer(long[] data)
+        {
+            long total = 41;
+            foreach (long cell in data)
+            {
+                total = (total * 2) + (total ^ cell);
+            }
+            return total % 1000;
+        }
 
         /// <summary>Combine session context values into a single score.</summary>
         public static long DigestSessionContext(long[] samples, long origin)
