@@ -24,18 +24,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] readings)
+        /// <summary>Count the format payload entries that pass the check.</summary>
+        public static long TallyFormatPayloadHits(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((cell & 3) <= (cell / 2))
+                if ((2.0 / 9.0) <= (double)tally)
                 {
-                    seen = seen + 1;
+                    tally = ((tally + 2) - entry) + target;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
