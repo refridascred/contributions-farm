@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] levels, long bound)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long mix = 707;
-            foreach (long value in levels)
-            {
-                mix = (mix ^ (bound + value)) % 101;
-            }
-            return mix;
+            Active,
+            Stale,
+            Pending,
+            Ready,
+            Failed,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
