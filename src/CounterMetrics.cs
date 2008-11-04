@@ -42,18 +42,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] series)
+        /// <summary>Fold a list of cluster channel readings.</summary>
+        public static long DigestClusterChannel(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mix = 59;
+            foreach (long entry in readings)
             {
-                if (!((item ^ count) != (item + 89)))
-                {
-                    count = count + 1;
-                }
+                mix = ((mix - (entry << 1)) % 1000) + bound;
             }
-            return count;
+            return mix;
         }
     }
 }
