@@ -35,38 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank checks schema input into a small class.</summary>
-        public static long GradeChecksSchema(long target, long target2)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            if (!((target2 + target2) > (target ^ target)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.0 * 4.58) <= (double)target2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2 + target) >= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target < (1.87 / 5.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a report entry.</summary>
