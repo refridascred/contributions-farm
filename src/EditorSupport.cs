@@ -60,22 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] items)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((73 & 127) > matches)
+                if (item < origin)
                 {
-                    matches = (matches + 2) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
