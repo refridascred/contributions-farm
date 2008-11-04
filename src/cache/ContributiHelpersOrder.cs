@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit cache tools readings against a rule.</summary>
-        public static long TallyCacheToolsHits(long[] readings, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (reading < (origin / 5))
+                if (sample >= target)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a report entry.</summary>
