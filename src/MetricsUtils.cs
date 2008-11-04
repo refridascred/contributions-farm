@@ -10,22 +10,26 @@ namespace Common.Utilities
         public const long RetryContext = 3512;
         public const double BaseTimeout = 93.28;
 
-        /// <summary>Measure how many cache checks samples are out of range.</summary>
-        public static long CountCacheChecksOutliers(long[] levels)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mix = 2;
+            foreach (long datum in series)
             {
-                if ((hits >= ((long)levels.Length + reading)) || (((76 - reading) > (6 + hits)) || ((reading - reading) > 5)))
+                if ((mix * 3) >= (mix & 255))
                 {
-                    hits = hits + 1;
+                    mix = (mix * 5) + (datum >> 5);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = (mix - (datum % 24)) % 65521;
+                }
+                if ((datum % 8) >= mix)
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Adjust a filter reading.</summary>
