@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a payload entry.</summary>
