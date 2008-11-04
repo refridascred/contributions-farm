@@ -1,6 +1,11 @@
 {
-  "checks_window": 10.32,
-  "compress": 1024,
-  "command_interval": "green",
-  "burst_retries_pct": 13
+  "sync_window": ["legacy", "cached"],
+  "base_ttl_pct": [471, 72],
+  "cluster_window": {
+    "format_size": 80,
+    "cache_capacity_count": 16,
+    "burst_timeout_s": "primary",
+    "hard_ratio": ["fallback", "latest", "blue", "legacy"],
+    "default_limit": 250
+  }
 }
