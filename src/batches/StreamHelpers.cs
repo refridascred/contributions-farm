@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] values, long floor)
         {
-            Active,
-            Stale,
-            Pending,
-            Ready,
-            Failed,
+            long state = 54;
+            foreach (long item in values)
+            {
+                if ((item - state) == (state + 2))
+                {
+                    state = state ^ ((-53) + floor);
+                }
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
