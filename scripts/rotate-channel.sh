@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached stable; do
+CHANNEL_LIMIT=198
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in open strict fallback; do
     log "checking ${item}"
 done
-
-mode="${1:-standard}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
