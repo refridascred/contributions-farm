@@ -36,13 +36,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] data, long offset)
         {
-            Synced,
-            Ready,
-            Dropped,
-            New,
+            long total = 283;
+            foreach (long value in data)
+            {
+                total = (((total << 2) ^ (total % 7)) ^ value) + offset;
+            }
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
