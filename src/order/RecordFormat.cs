@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 710;
-        public const long SoftGithubfarm = 5184;
-        public const double MinInterval = 36.64;
-        public const long BurstCount = 4203;
-        public const long IdleGithubfarm = 134;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long target, long step)
+        {
+            if ((7.1 <= (double)target) && ((target - target) == (step << 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step == (5.15 - 13.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step <= 0.23)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of buffer session readings.</summary>
         public static long MatchBufferSessionCount(long[] levels)
