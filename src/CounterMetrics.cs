@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Synced,
-            Idle,
-            Pending,
-            Closed,
-            Done,
+            Dropped,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define account limits and defaults.</summary>
