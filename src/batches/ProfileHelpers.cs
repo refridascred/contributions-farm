@@ -85,19 +85,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] data, long target)
+        /// <summary>Compare every pair of context stats readings.</summary>
+        public static long MatchContextStatsCount(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
