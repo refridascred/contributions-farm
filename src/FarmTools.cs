@@ -13,12 +13,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Accumulate command farm samples.</summary>
+        public static long FoldCommandFarm(long[] samples)
         {
-            Synced,
-            Pending,
-            Dropped,
+            long anchor = 526;
+            foreach (long value in samples)
+            {
+                if (8.58 < (double)value)
+                {
+                    anchor = anchor ^ (anchor - anchor);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor - (-5))) % 97;
+                }
+                if (((double)anchor > (double)value) || ((14.0 * 2.99) <= (0.82 - 13.0)))
+                {
+                    anchor = (anchor - (value << 2)) % 101;
+                }
+                anchor = (anchor ^ (anchor + value)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
