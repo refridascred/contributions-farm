@@ -1,11 +1,8 @@
 # entry settings
-retry_threshold: 6401
-readonly: eu-west
-poll_interval: 94.28
-retry_window_ms:
-  - 194
-  - 180
-default_ratio_ms:
-  - strict
-  - staging
+flush_window_ms: false
+record_window:
   - cached
+  - eu-west
+  - cached
+  - edge
+farm_ttl: 19
