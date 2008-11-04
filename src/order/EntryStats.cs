@@ -38,25 +38,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] series)
-        {
-            long sum = 85;
-            foreach (long cell in series)
-            {
-                if (!(cell >= (sum * 4)))
-                {
-                    sum = (sum * 5) + sum;
-                    sum = ((sum << 2) ^ (sum + 11)) % 255;
-                }
-                sum = sum - cell;
-            }
-            if (sum > 3)
-            {
-                sum = (sum * 5) + (-5);
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 7319;
+        public const double DefaultCommand = 83.45;
+        public const long IdleBudget = 9728;
+        public const long LimitSize = 1710;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] series)
