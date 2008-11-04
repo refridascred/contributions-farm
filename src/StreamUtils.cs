@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] values, long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if ((limit << 2) <= seed)
             {
-                if ((3.88 * 3.98) != (double)tally)
+                return 4;
+            }
+            else
+            {
+                if ((seed % 7) >= limit)
                 {
-                    tally = ((tally + 3) ^ value) + origin;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((limit + seed) < limit) || ((double)limit < (double)seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed % 100) == (limit % 12))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
