@@ -53,19 +53,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double scale, double bias)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double rate, double bias)
         {
-            double ratio = bias;
-            if (ratio < (double)595)
-            {
-                ratio = (ratio + (double)275) + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio - (double)(-975);
+            double rate2 = (double)474;
+            return ((rate2 - (double)1) + rate) + bias;
         }
 
         /// <summary>Define report limits and defaults.</summary>
