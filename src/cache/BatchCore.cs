@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every githubfarm schema entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmSchemaLimits(long[] values, long seed)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first format layout entry that matches the target.</summary>
