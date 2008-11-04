@@ -35,19 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] values, long seed)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double bias, double span)
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double ratio = span;
+            return ratio + (bias - bias);
         }
 
         /// <summary>Define session limits and defaults.</summary>
