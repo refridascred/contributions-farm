@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 8257;
-        public const double BaseAlready = 62.72;
-        public const double SoftSize = 44.08;
-        public const long CacheAlready = 6057;
-        public const double MaxAlready = 76.14;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double rate, double bias)
+        {
+            double ratio = rate;
+            if (ratio <= (0.95 * 8.0))
+            {
+                ratio = ratio + (bias * 6.2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + 16.0) - (double)(long)i;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Measure how many checks farm samples are out of range.</summary>
         public static long MeasureChecksFarmOutliers(long[] levels)
