@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double bias, double bias2)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            double bias3 = (double)(915 >> 4);
-            for (int i = 0; i < 8; i++)
-            {
-                bias3 = ((bias3 + (bias / 4.0)) - (double)(long)i) + bias2;
-            }
-            return bias3 - (bias + 6.0);
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a cache header.</summary>
