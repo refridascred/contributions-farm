@@ -62,18 +62,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] levels, long floor)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!((cell & 1) >= count) || (((double)cell <= (6.3 * 6.0)) && (count <= floor)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Blend two window measurements.</summary>
