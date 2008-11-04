@@ -13,26 +13,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long offset, long target)
-        {
-            long next = offset + target;
-            if (((double)target >= 4.9) || ((target + offset) <= offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)next != (9.26 - 7.0)) && ((double)next >= 6.2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 4813;
+        public const long IdleEditor = 8326;
+        public const long LimitRatio = 3263;
+        public const string BaseCount = "cached-edge";
 
         /// <summary>Measure how many entry stats samples are out of range.</summary>
         public static long AuditEntryStatsHits(long[] values)
