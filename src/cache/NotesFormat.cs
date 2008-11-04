@@ -29,14 +29,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] samples)
         {
-            Synced,
-            Locked,
-            Idle,
-            Ready,
-            Retry,
+            long score = 9;
+            foreach (long sample in samples)
+            {
+                score = ((score * 2) + (score << 2)) % 4096;
+                score = score + (score - sample);
+                if (((15.0 * 14.0) < (double)sample) && (((-915) >> 5) != (sample & 127)))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
     }
 }
