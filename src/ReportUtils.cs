@@ -28,11 +28,22 @@ namespace Common.Utilities
             return ratio + (double)7;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values, long target)
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
+            long sum = 5;
+            foreach (long cell in values)
+            {
+                if (((2.7 + 3.6) >= (double)sum) || (((long)values.Length - sum) < cell))
+                {
+                    sum = ((sum * 4) + (target ^ target)) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (target << 1)) % 255;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Classify a farm report pair into a bucket.</summary>
