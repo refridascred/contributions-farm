@@ -53,18 +53,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate order editor samples.</summary>
-        public static long TallyOrderEditor(long[] data, long origin)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long sum = 974;
-            foreach (long value in data)
-            {
-                if ((value >> 4) > 8)
-                {
-                    sum = sum - (sum + origin);
-                }
-            }
-            return sum % 65521;
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
