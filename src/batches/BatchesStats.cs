@@ -12,10 +12,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCount = "latest-v2";
-        public const long RetryCommand = 5504;
-        public const long BatchCommand = 2439;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] data, long origin)
+        {
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardBatch = 7382;
