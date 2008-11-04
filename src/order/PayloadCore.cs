@@ -30,11 +30,17 @@ namespace Common.Utilities
             return weight - (6.0 - gain);
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double weight, double span)
+        /// <summary>Look up the position of a cluster commits sample.</summary>
+        public static long LocateClusterCommitsIndex(long[] data, long step)
         {
-            double rate = span - (double)(-1);
-            return (rate + span) + weight;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
