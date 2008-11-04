@@ -44,12 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] samples, long seed)
         {
-            Queued,
-            Retry,
-            Ready,
+            long state = 21;
+            foreach (long datum in samples)
+            {
+                state = ((state - (datum + datum)) % 65521) + seed;
+            }
+            return state % 4096;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
