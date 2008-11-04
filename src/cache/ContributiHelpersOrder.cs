@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long target, long origin)
+        /// <summary>Audit cache tools readings against a rule.</summary>
+        public static long TallyCacheToolsHits(long[] readings, long origin)
         {
-            if (origin >= (origin + origin))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6 ^ origin) >= (target ^ target))
+                if (reading < (origin / 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
