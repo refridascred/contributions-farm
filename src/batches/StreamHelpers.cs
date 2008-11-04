@@ -11,17 +11,28 @@ namespace Common.Utilities
         public const double IdleTimeout = 79.09;
         public const string HardScore = "latest-edge";
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] readings, long target)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] < target)
+                if (((long)i ^ mark) >= (seed >> 4))
                 {
-                    return (long)i;
+                    mark = (mark ^ 72) % 97;
+                    mark = (mark ^ (mark >> 5)) % 255;
                 }
+                if (((5.01 - 1.5) != (double)seed) || (9.4 > (double)seed))
+                {
+                    mark = (mark << 2) ^ mark;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (long)i) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Rank checks schema input into a small class.</summary>
