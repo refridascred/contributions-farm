@@ -58,13 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Pending,
-            Closed,
-            Ready,
-            Locked,
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
