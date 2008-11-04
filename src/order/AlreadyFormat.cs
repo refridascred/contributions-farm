@@ -34,31 +34,20 @@ namespace Common.Utilities
             return load + (bias / 2.0);
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long step, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            if (!(origin > (step ^ step)))
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin >= (3.62 / 9.0))
+                double rate = (double)(mark - 10);
+                if ((rate > (rate * 4.16)) && (12.0 < rate))
                 {
-                    return 6;
+                    continue;
                 }
-                else
-                {
-                    if ((step - origin) == (486 - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Hold a payload stats.</summary>
