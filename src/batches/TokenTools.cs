@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long step, long limit)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long lane = step ^ limit;
-            if (lane >= (lane & 15))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step != (9.0 + 4.19))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit % 2) == (limit + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Accumulate notes samples.</summary>
