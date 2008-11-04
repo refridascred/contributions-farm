@@ -16,12 +16,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 8591;
-        public const long BatchNotes = 6129;
-        public const double CacheNotes = 26.38;
-        public const long MinNotes = 7201;
-        public const string HardNotes = "latest-1";
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public long Token { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
