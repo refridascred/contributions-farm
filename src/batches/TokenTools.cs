@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Look up the position of a checks entry sample.</summary>
+        public static long FindChecksEntryIndex(long[] readings, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
