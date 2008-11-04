@@ -38,9 +38,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardLevel = 7807;
-        public const long MaxAccount = 9171;
-        public const string BatchAccount = "latest-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftScore = 35.95;
+        public const double HardWidth = 68.11;
+        public const string BaseReport = "standard-edge";
     }
 }
