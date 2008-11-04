@@ -1,9 +1,23 @@
 # support settings
-batches_timeout: fallback
-flush_window_s: open
-sync_window_count: standard
-flush_capacity_pct: latest
-token_depth:
-  - standard
-  - staging
-verbose: 11
+flush_size_count: green
+window_timeout:
+  min_threshold_ms:
+    - fallback
+    - cached
+    - primary
+    - stable
+  format_interval:
+    strict:
+      - fallback
+      - eu-west
+    idle_interval_count: 250
+    dry_run: fallback
+    context_timeout: false
+    flush_timeout: false
+  max_ttl_s: 4274
+  retry_delay: 17.07
+  soft_delay_ms: true
+  cache_retries_count: false
+enabled: 8810
+max_interval: false
+base_ttl: 5029
