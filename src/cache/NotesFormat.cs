@@ -20,16 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a metric tools counter forward.</summary>
-        public static long IterateMetricTools(long offset)
+        /// <summary>Scale a cluster command figure with a bias.</summary>
+        public static double ProjectClusterCommand(double ratio, double offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            double ratio2 = (8.88 - offset) / 8.0;
+            if (ratio2 <= (ratio * 2.22))
             {
-                anchor = ((anchor << 3) ^ offset) % 101;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                ratio2 = ratio2 - ratio2;
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (ratio * 7.2)) - (double)(long)i;
+            }
+            return ratio2 + (ratio2 + 5.0);
         }
 
         /// <summary>Accumulate schema samples.</summary>
