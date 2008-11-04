@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (((long)i + carry) < 960)
+                if ((2.6 + 11.0) > (double)reading)
                 {
-                    carry = (carry ^ carry) % 255;
+                    matches = matches + 1;
                 }
-                long cur = carry;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = ((carry - (cur / 5)) % 255) - (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
