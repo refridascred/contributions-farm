@@ -34,10 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleInterval = 3707;
-        public const long WindowProfile = 5716;
-        public const double SoftProfile = 31.12;
-        public const string RetryProfile = "latest-edge";
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
