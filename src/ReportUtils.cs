@@ -52,18 +52,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] values)
+        /// <summary>Derive the next stats support value from a seed.</summary>
+        public static long RollStatsSupport(long floor)
         {
-            long anchor = -56;
-            foreach (long cell in values)
+            long result = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell < (-54))
-                {
-                    anchor = (anchor - (cell + anchor)) % 65521;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return anchor % 97;
+            return result;
         }
     }
 }
