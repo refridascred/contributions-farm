@@ -1,16 +1,7 @@
 # githubfarm settings
-payload_limit: 60.14
-retry_ratio_count: blue
-enabled: primary
-compress:
-  persist:
-    - cached
-    - primary
-    - local
-  cache_size: true
-  compress:
-    persist: 25
-    dry_run: latest
-    audit:
-      - standard
-      - latest
+format_threshold: eu-west
+base_timeout_s: blue
+idle_capacity: 86.06
+persist: eu-west
+burst_interval: 90.06
+batches_delay: 30
