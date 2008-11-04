@@ -61,21 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Count the githubfarm cluster entries that pass the check.</summary>
+        public static long MeasureGithubfarmClusterMatches(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)target == (7.0 + 3.97))
                 {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) - entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
