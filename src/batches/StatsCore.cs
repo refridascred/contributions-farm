@@ -40,15 +40,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] levels, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] series, long limit)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long datum in series)
             {
-                if ((double)cell <= (15.0 - 6.17))
+                if ((5 - tally) <= (long)series.Length)
                 {
-                    tally = (tally + 1) + offset;
+                    tally = ((tally + 1) + datum) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
