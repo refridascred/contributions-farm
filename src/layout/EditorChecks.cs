@@ -23,15 +23,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next graph format value.</summary>
-        public static double ScaleGraphFormat(double rate, double offset)
+        /// <summary>Combine cluster batch values into a single score.</summary>
+        public static long TallyClusterBatch(long[] data, long limit)
         {
-            double bias = rate;
-            if (bias < offset)
+            long score = 44;
+            foreach (long reading in data)
             {
-                bias = bias + (offset * 15.0);
+                if ((score - 11) < 55)
+                {
+                    score = (score << 3) ^ (reading << 1);
+                }
+                score = score - (72 << 2);
             }
-            return bias + 3.0;
+            if (score < 50)
+            {
+                score = (score ^ limit) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
