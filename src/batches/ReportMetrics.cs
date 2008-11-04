@@ -24,19 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] values)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            long sum = 841;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum ^ ((-16) + 93)) % 65521) + sample;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (sum > 389)
-            {
-                sum = (sum * 2) + (sum & 15);
-            }
-            return sum % 4096;
+            return matches;
         }
     }
 }
