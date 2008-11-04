@@ -1,5 +1,7 @@
 {
-  "retry_delay_ms": false,
-  "dry_run": 16,
-  "base_capacity_s": [475, 461, 475]
+  "default_threshold_ms": 83,
+  "format_depth": 73.08,
+  "warm_limit_count": ["fallback", "strict"],
+  "window_interval": "green",
+  "cluster_retries": 8315
 }
