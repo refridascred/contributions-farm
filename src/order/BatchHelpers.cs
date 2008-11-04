@@ -23,19 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next stream graph value.</summary>
-        public static double AdjustStreamGraph(double gain, double offset)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double weight, double span)
         {
-            double ratio = gain;
-            if (ratio > (offset - ratio))
+            double rate = weight - 9.0;
+            if (rate > span)
             {
-                ratio = ratio - gain;
+                rate = rate + 18.0;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                ratio = ratio + (double)0;
+                rate = (rate - 6.9) + (double)(long)i;
             }
-            return ratio + (double)83;
+            return rate - (5.0 + 6.97);
         }
     }
 }
