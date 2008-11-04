@@ -17,10 +17,13 @@ namespace Common.Utilities
         public const long RetryInterval = 572;
         public const long DefaultEditor = 5882;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseWidth = "standard";
-        public const double IdleReport = 13.07;
-        public const long CacheRatio = 2687;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Failed,
+            Synced,
+            New,
+        }
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
