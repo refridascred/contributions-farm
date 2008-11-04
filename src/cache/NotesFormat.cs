@@ -25,15 +25,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double weight, double offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] series, long offset)
         {
-            double drift = offset;
-            if (drift < (weight + offset))
+            bool ready = true;
+            foreach (long entry in series)
             {
-                drift = drift - (drift - drift);
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (6.8 - weight);
+            return ready;
         }
     }
 }
