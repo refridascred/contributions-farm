@@ -23,15 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a layout notes counter forward.</summary>
-        public static long DeriveLayoutNotes(long floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
