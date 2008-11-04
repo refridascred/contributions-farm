@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] values, long floor)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (!(seen < (seen - (long)values.Length)))
-                {
-                    seen = ((seen + 1) + sample) + floor;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public double Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many checks farm samples are out of range.</summary>
