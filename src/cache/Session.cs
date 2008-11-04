@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            New,
-            Synced,
-            Retry,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 8401;
+        public const long MaxWidth = 7957;
+        public const long BurstWidth = 1707;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
