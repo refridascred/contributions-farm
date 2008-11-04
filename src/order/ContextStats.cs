@@ -44,21 +44,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up batch entry samples.</summary>
-        public static long MatchBatchEntryCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 5257;
+        public const string BurstRatio = "standard-1";
+        public const long StepAccount = 8722;
+        public const long RetryAccount = 7373;
+        public const string MaxTimeout = "standard-v2";
     }
 }
