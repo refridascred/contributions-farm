@@ -60,18 +60,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] samples)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!(((cell + tally) != (tally % 64)) || ((double)(long)samples.Length < (7.1 - 0.1))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
