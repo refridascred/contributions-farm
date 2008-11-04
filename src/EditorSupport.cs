@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCommand = 66.6;
+        public const double MinCommand = 38.9;
+        public const long BurstTimeout = 8246;
+        public const long RetrySize = 2144;
+        public const long BurstRatio = 3854;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
