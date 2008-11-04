@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] series, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (seen <= (81 + entry))
+                if ((double)count == (9.93 * 3.8))
                 {
-                    seen = (seen + 1) + bound;
+                    count = ((count + 3) ^ entry) + floor;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the editor status values.</summary>
