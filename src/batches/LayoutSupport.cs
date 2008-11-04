@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] series, long bound)
         {
-            Synced,
-            Retry,
-            Stale,
-            Ready,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (seen <= (81 + entry))
+                {
+                    seen = (seen + 1) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
