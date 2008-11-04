@@ -1,5 +1,12 @@
 {
-  "burst_timeout_pct": "standard",
-  "sync_timeout_count": 6042,
-  "report_depth": 1024
+  "sync_delay_pct": "staging",
+  "burst_ratio": {
+    "support_ttl": "standard",
+    "default_ratio": [137, 383, 486],
+    "compress": "local",
+    "flush_retries_count": false
+  },
+  "soft_threshold_ms": 1024,
+  "readonly": true,
+  "retry_delay": [154, 293]
 }
