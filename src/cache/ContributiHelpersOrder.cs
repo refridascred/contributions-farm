@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const string BatchTimeout = "staging-v2";
         public const string StepScore = "standard-edge";
 
-        /// <summary>Locate a already report reading by value.</summary>
-        public static long SeekAlreadyReportIndex(long[] levels, long seed)
+        /// <summary>Compare every pair of metric format readings.</summary>
+        public static long MatchMetricFormatCount(long[] levels)
         {
+            long matches = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] < seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next tools value.</summary>
