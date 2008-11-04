@@ -50,11 +50,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 4199;
-        public const string CacheLevel = "cached";
-        public const double BatchSchema = 89.14;
-        public const string RetryCount = "fallback-1";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell <= (15.0 - 6.17))
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
