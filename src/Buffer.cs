@@ -48,11 +48,11 @@ namespace Common.Utilities
             return gain + (gain / 2.0);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseDepth = 9760;
-        public const double DefaultFarm = 71.68;
-        public const double StepDepth = 19.13;
-        public const string BatchFarm = "primary-1";
-        public const long SoftFarm = 517;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
