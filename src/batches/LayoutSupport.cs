@@ -47,19 +47,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate token cache readings against a bound.</summary>
-        public static bool GuardTokenCacheBounds(long[] items, long offset)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double bias, double span)
         {
-            bool ready = true;
-            foreach (long value in items)
+            double bias2 = (double)(192 << 2);
+            if (bias2 > bias)
             {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = bias2 + span;
             }
-            return ready;
+            return bias2 - 14.0;
         }
     }
 }
