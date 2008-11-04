@@ -1,8 +1,18 @@
 # entry settings
-flush_depth:
-  - cached
-  - latest
-batch_threshold:
-  - 373
-  - 359
-idle_ttl: 35.84
+verbose: 84.79
+hard_delay_count: 20.45
+min_threshold_count:
+  - 500
+  - 283
+flush_ratio_ms:
+  min_depth: true
+  max_depth: 80
+  cache_retries_ms: 540
+  readonly:
+    base_timeout_ms: 1024
+    entry_depth:
+      - 289
+      - 411
+      - 302
+    max_retries_count: primary
+warm_interval: true
