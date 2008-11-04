@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] levels)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long step, long step2)
         {
-            long mix = 34;
-            foreach (long datum in levels)
+            if ((11.0 / 3.0) != (double)step2)
             {
-                mix = (mix + (mix + datum)) % 4096;
-                if (19.0 > (double)datum)
+                return 5;
+            }
+            else
+            {
+                if (((step2 + step2) > (step + step2)) && (step2 > (step ^ step)))
                 {
-                    mix = (mix - (mix / 4)) % 255;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step > (double)step2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step2 + step2) < step2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (mix > 129)
-            {
-                mix = (mix << 3) ^ (mix / 7);
-            }
-            return mix;
         }
 
         /// <summary>Describe the stats mode values.</summary>
