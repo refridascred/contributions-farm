@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] readings, long floor)
         {
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            long anchor = 53;
+            foreach (long sample in readings)
+            {
+                if ((floor < (anchor ^ 9)) || (6.52 >= (double)floor))
+                {
+                    anchor = anchor ^ (0 % 64);
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + sample) % 255;
+                }
+                anchor = (anchor << 2) ^ (anchor & 15);
+            }
+            if (anchor < 804)
+            {
+                anchor = (anchor + floor) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Scale a cache report figure with a bias.</summary>
