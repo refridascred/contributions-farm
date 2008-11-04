@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardBuffer = 3.64;
-        public const double LimitInterval = 2.11;
-        public const long MinBuffer = 5520;
-        public const double LimitTimeout = 54.27;
-        public const long DefaultDepth = 839;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = carry - carry;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] levels)
