@@ -1,9 +1,7 @@
-id,label,weight
-1,558,fallback
-2,latest,80
-3,6.13,46
-4,115,green
-5,415,open
-6,990,73.85
-7,cached,194
-8,707,318
+id,count,token
+1,295,232
+2,cached,37.41
+3,latest,latest
+4,71.09,standard
+5,blue,cached
+6,fallback,241
