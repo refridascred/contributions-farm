@@ -1,5 +1,10 @@
 # support settings
-format_ttl: strict
-dry_run: strict
-idle_threshold_count: 500
-commits_timeout: green
+default_capacity: legacy
+idle_limit_pct: local
+payload_limit: primary
+cache_ttl:
+  - blue
+  - open
+warm_depth_ms:
+  - green
+  - blue
