@@ -66,17 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] series, long offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((series[i] <= offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state << 2) ^ ((long)i % 3);
+                state = state + (state - bound);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
