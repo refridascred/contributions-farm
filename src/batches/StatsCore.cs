@@ -25,19 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] samples, long floor)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Pending,
+            New,
+            Paused,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
