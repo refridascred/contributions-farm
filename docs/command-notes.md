@@ -1,15 +1,15 @@
 # Command notes
 
-The githubfarm report groups every graph by cache.
-Run the githubfarm check before changing any record limits.
-Use profile settings to tune how often layout data is refreshed.
+The command module keeps metric values in sync with the context cache.
+Run the layout check before changing any order limits.
+Run the metric check before changing any window limits.
 
-Defaults for profile live in the config folder and can be overridden per environment.
-Use cluster settings to tune how often contributi data is refreshed.
+The contributi report groups every stats by cluster.
+Use counter settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Review contributi limits each release
+- Document new metrics fields
 - Log every batch change
-- Keep route values small
-- Validate graph input early
+- Prefer order defaults
+- Review metric limits each release
