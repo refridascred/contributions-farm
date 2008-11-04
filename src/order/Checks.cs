@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] levels, long limit)
+        /// <summary>Count layout session pairs that satisfy a relation.</summary>
+        public static long PairLayoutSessionCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)matches < 8.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = ((matches + 1) ^ cell) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] ^ readings[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
