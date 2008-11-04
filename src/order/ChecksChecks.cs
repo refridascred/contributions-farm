@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long limit, long bound)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long step = limit ^ bound;
-            if ((750 + bound) == (step * 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step <= (bound % 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
