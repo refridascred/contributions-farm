@@ -1,7 +1,13 @@
 # githubfarm settings
-format_threshold: eu-west
-base_timeout_s: blue
-idle_capacity: 86.06
-persist: eu-west
-burst_interval: 90.06
-batches_delay: 30
+compress: cached
+burst_timeout_pct:
+  strict:
+    tools_delay: 74.01
+    idle_threshold: 100
+    soft_threshold: 1611
+  base_depth: 8475
+  warm_delay_pct: 89.35
+  min_ratio: edge
+soft_retries: open
+max_depth_ms: 100
+min_ttl_ms: edge
