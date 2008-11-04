@@ -29,11 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 167;
-        public const long CacheBudget = 3418;
-        public const string IdleDepth = "latest-1";
-        public const double LimitWidth = 36.06;
-        public const long BatchCount = 1872;
+        /// <summary>Validate checks batches readings against a bound.</summary>
+        public static bool CheckChecksBatchesLimits(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
