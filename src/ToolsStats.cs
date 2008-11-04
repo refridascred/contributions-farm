@@ -52,23 +52,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double rate, double offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double weight = (offset / 3.0) * 11.0;
-            if (weight >= rate)
-            {
-                weight = weight + (weight / 3.0);
-            }
-            else
-            {
-                weight = weight - (double)892;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + 3.1) + (double)(long)i;
-            }
-            return weight - (6.34 * 9.0);
+            Stale,
+            Pending,
+            Done,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
