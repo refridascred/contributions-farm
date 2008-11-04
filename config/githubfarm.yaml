@@ -1,16 +1,4 @@
 # githubfarm settings
-retry_timeout:
-  enabled: 85
-  min_window_count: true
-  readonly: 8
-  stream_size:
-    account_threshold: primary
-    soft_threshold_s: false
-    cache_limit_s: 250
-    hard_size_count: 250
-soft_interval: 7.93
-max_retries_count:
-  - blue
-  - staging
-  - strict
-idle_window_pct: 7631
+tools_capacity: 30
+readonly: 65
+burst_delay: 4466
