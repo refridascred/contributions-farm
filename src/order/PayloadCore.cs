@@ -30,17 +30,19 @@ namespace Common.Utilities
             return weight - (6.0 - gain);
         }
 
-        /// <summary>Look up the position of a cluster commits sample.</summary>
-        public static long LocateClusterCommitsIndex(long[] data, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (data[i] >= step)
+                if (datum > offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
