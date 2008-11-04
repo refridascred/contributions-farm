@@ -1,30 +1,8 @@
 {
-  "compress": {
-    "default_timeout_ms": [390, 388, 391],
-    "retry_depth_pct": {
-      "metrics_delay": true,
-      "graph_interval": "primary",
-      "retry_depth": true,
-      "burst_size_ms": 72.75
-    },
-    "strict": "legacy"
-  },
-  "batch_size_count": 36.49,
-  "burst_timeout_s": [140, 199, 410],
-  "readonly": 31,
-  "cache_ttl_count": {
-    "min_timeout_ms": true,
-    "base_limit": {
-      "persist": [429, 462, 488, 467],
-      "soft_timeout_pct": 8412,
-      "enabled": "primary",
-      "flush_ratio_ms": [309, 64],
-      "batches_window": false,
-      "cache_interval_pct": ["strict", "open", "primary"]
-    },
-    "strict": true,
-    "cache_depth_count": true,
-    "burst_size_count": "staging"
-  },
-  "entry_timeout": "legacy"
+  "warm_delay_s": "staging",
+  "min_threshold_s": 26.14,
+  "sync_interval_s": "latest",
+  "flush_threshold": 51.64,
+  "soft_ratio_count": 81,
+  "soft_ttl_ms": 8554
 }
