@@ -23,17 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] samples, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 731;
+            foreach (long item in data)
             {
-                if ((samples[i] == target) && ((samples[i] % 5) == 0))
+                if ((item * 5) != (item * 3))
                 {
-                    return (long)i;
+                    anchor = (anchor + (anchor - (-237))) % 255;
                 }
             }
-            return -1;
+            if (anchor > 3)
+            {
+                anchor = ((anchor << 2) ^ (anchor / 4)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Match up support samples.</summary>
