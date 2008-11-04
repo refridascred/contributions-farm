@@ -1,7 +1,7 @@
 {
-  "support_capacity": 7041,
-  "audit": 9.62,
-  "default_limit": "staging",
-  "warm_retries_s": true,
-  "idle_size_pct": false
+  "cache_ratio_ms": false,
+  "poll_timeout_ms": true,
+  "warm_size": 29.37,
+  "retry_window": "standard",
+  "default_depth_ms": 1024
 }
