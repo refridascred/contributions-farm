@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] items, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if (!!((sample + sample) > (floor & 15)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the stream phase values.</summary>
