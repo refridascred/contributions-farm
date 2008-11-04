@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] values)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples, long target)
         {
-            long state = 85;
-            foreach (long reading in values)
+            long total = 794;
+            foreach (long datum in samples)
             {
-                state = (((state << 2) ^ 8) % 97) + reading;
+                total = (((total * 5) + total) % 101) ^ datum;
             }
-            return state;
+            if (total > 8)
+            {
+                total = total - (total - target);
+            }
+            return total;
         }
 
         /// <summary>Roll a metric tools counter forward.</summary>
