@@ -22,18 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 3634;
+        public const string StepCommand = "stable-1";
+        public const long DefaultCommand = 4813;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long CombinePayload(long[] readings)
