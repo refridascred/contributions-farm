@@ -23,17 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a account window reading by value.</summary>
-        public static long SeekAccountWindowIndex(long[] series, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (series[i] == floor)
+                if ((double)target > (7.0 * 7.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
