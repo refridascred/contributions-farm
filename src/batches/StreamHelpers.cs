@@ -69,18 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long anchor = 76;
-            foreach (long value in readings)
-            {
-                if ((6 + anchor) == (82 - value))
-                {
-                    anchor = (anchor - (242 ^ value)) % 4096;
-                }
-            }
-            return anchor;
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a queue snapshot.</summary>
