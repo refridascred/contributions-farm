@@ -31,22 +31,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] data, long offset)
+        /// <summary>Find the first cluster route entry that matches the target.</summary>
+        public static long SeekClusterRouteIndex(long[] samples, long target)
         {
-            long mix = 3;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= (2 % 3))
+                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
                 {
-                    mix = mix + (offset % 12);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix << 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Describe the filter mode values.</summary>
