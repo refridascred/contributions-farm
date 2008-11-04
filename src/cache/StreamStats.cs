@@ -23,23 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine cluster metric values into a single score.</summary>
-        public static long FoldClusterMetric(long[] series)
+        /// <summary>Count githubfarm payload pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmPayloadCount(long[] samples)
         {
-            long acc = 703;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 2) + (item + item)) % 1000;
-                if ((acc + item) > (item + acc))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc ^ (acc % 97)) % 255;
+                    if ((samples[i] + samples[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < 785)
-            {
-                acc = ((acc * 5) + (acc - acc)) % 255;
-            }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
