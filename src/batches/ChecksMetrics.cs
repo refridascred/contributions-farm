@@ -29,22 +29,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] readings)
         {
-            long carry = 787;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((long)samples.Length == (cell + (-4)))
+                if ((double)entry != (3.1 - 6.76))
                 {
-                    carry = (carry - (carry - 765)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - cell) % 65521;
+                    matches = matches + 3;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
