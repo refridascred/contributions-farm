@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Ready,
-            Stale,
-            Draft,
-            Synced,
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
