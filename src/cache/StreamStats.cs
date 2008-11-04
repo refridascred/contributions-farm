@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long step, long offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long bound = step - offset;
-            if ((step + offset) <= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((step + offset) > offset) || ((5.0 * 1.08) < (double)offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + bound) == (bound + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
