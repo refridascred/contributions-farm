@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of counter githubfarm entries.</summary>
-        public static long ScoreCounterGithubfarm(long[] series, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] values)
         {
-            long mix = -1;
-            foreach (long entry in series)
+            long total = 349;
+            foreach (long cell in values)
             {
-                if ((double)offset > (19.0 / 3.0))
+                if ((cell % 8) < (67 + 5))
                 {
-                    mix = (mix ^ (mix + entry)) % 97;
-                    break;
+                    total = total + (cell / 4);
                 }
-                mix = mix + offset;
             }
-            return mix % 1000;
+            if (total < 4)
+            {
+                total = total ^ (total * 5);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
