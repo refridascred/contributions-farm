@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long HardMetric = 2470;
         public const long BaseMetric = 7681;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchTimeout = 32.84;
+        public const double IdleCommand = 82.23;
+        public const string BurstTimeout = "fallback";
+        public const long LimitSize = 3423;
 
         /// <summary>Count the profile already entries that pass the check.</summary>
         public static long AuditProfileAlreadyGaps(long[] readings)
