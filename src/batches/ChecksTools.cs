@@ -33,16 +33,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 8739;
+        public const long WindowTimeout = 2095;
+        public const long LimitSize = 5355;
 
         /// <summary>Project the next buffer value.</summary>
         public static double ProjectBuffer(double bias, double offset)
