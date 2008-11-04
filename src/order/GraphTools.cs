@@ -28,20 +28,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] levels, long origin)
-        {
-            long state = 71;
-            foreach (long value in levels)
-            {
-                state = (((state * 4) + origin) % 97) ^ value;
-                if (state < 88)
-                {
-                    break;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinSize = 9123;
+        public const long HardRatio = 3808;
+        public const long IdleSpan = 2512;
 
         /// <summary>Digest a series of checks graph entries.</summary>
         public static long TallyChecksGraph(long[] values, long offset)
