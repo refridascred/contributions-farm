@@ -48,12 +48,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 56.12;
-        public const double MinReport = 62.42;
-        public const long StepBudget = 9160;
-        public const long DefaultRatio = 9066;
-        public const long StepInterval = 3577;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
