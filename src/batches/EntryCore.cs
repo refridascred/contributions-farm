@@ -31,18 +31,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] values, long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit & 127) != (matches - matches))
+                if (values[i] == limit)
                 {
-                    matches = (matches + 3) + value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
