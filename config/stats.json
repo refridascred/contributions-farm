@@ -1,5 +1,8 @@
 {
-  "strict": "eu-west",
-  "hard_retries_s": 30,
-  "session_retries": ["staging", "standard", "fallback", "edge"]
+  "min_ratio_count": "primary",
+  "githubfarm_depth": "staging",
+  "support_ratio": false,
+  "hard_limit_ms": "fallback",
+  "cache_ratio": 69,
+  "soft_threshold_count": "staging"
 }
