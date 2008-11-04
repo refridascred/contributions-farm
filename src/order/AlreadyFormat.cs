@@ -15,23 +15,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a support channel figure with a bias.</summary>
-        public static double ScaleSupportChannel(double bias, double span)
+        /// <summary>Classify a entry format pair into a bucket.</summary>
+        public static long RankEntryFormat(long limit, long origin)
         {
-            double load = bias;
-            if (load < (double)254)
+            if (!(origin <= (origin >> 2)))
             {
-                load = load - bias;
+                return 3;
             }
             else
             {
-                load = load + bias;
+                if ((origin + 590) < (limit - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (bias + span)) - (double)(long)i;
-            }
-            return load + (bias / 2.0);
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
