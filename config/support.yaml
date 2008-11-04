@@ -1,6 +1,11 @@
 # support settings
-batch_size: staging
-soft_ttl_count:
-  - 261
-  - 115
-verbose: 21
+verbose:
+  - 410
+  - 433
+  - 162
+  - 401
+poll_capacity_s: staging
+notes_interval: 86.02
+audit: strict
+warm_ttl: 93
+hard_limit_count: 100
