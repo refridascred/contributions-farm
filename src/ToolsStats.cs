@@ -66,15 +66,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] levels, long floor)
         {
-            long total = 94;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                total = ((total - (total << 3)) % 97) - reading;
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total % 4096;
+            return ready;
         }
     }
 }
