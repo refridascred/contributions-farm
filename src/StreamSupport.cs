@@ -41,25 +41,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Match up tools context samples.</summary>
+        public static long OverlapToolsContextCount(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long cur = (anchor % 100) + (step ^ anchor);
-                if ((anchor * 4) == (cur & 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    continue;
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor << 3) ^ 262;
-                }
-                cur = (cur << 2) ^ (step >> 4);
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
     }
 }
