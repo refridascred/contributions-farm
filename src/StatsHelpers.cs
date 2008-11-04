@@ -66,22 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate graph notes samples.</summary>
-        public static long CombineGraphNotes(long[] series)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] samples, long step)
         {
-            long sum = -5;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((6.0 * 19.0) != (double)sum)
+                if (item < step)
                 {
-                    sum = ((sum * 2) + (reading / 7)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (sum < 83)
-            {
-                sum = (sum ^ (sum / 4)) % 1000;
-            }
-            return sum;
+            return found;
         }
     }
 }
