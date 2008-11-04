@@ -20,19 +20,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] levels, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long state = 57;
+            foreach (long reading in values)
             {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state + (reading - reading)) % 255;
             }
-            return ok;
+            if (state > 566)
+            {
+                state = (state - (seed ^ state)) % 4096;
+            }
+            return state % 97;
         }
     }
 }
