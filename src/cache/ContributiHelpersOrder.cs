@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const string BatchTimeout = "staging-v2";
         public const string StepScore = "standard-edge";
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Locate a already report reading by value.</summary>
+        public static long SeekAlreadyReportIndex(long[] levels, long seed)
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next tools value.</summary>
