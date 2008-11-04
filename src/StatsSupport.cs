@@ -34,19 +34,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double rate, double floor)
+        /// <summary>Rank filter counter input into a small class.</summary>
+        public static long RankFilterCounter(long floor, long offset)
         {
-            double scale = floor * 3.0;
-            if (scale < scale)
+            if ((floor - floor) < (235 ^ floor))
             {
-                scale = scale + rate;
+                return 8;
             }
             else
             {
-                scale = scale + (floor / 4.0);
+                if (offset <= (floor & 31))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return scale - rate;
         }
 
         /// <summary>Describe the payload phase values.</summary>
