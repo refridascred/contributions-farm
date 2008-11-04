@@ -74,16 +74,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                anchor = (anchor * 4) + (anchor - (long)i);
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((cell - seen) <= (676 * 5))
+                {
+                    seen = seen + 2;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
