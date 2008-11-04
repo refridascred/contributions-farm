@@ -41,19 +41,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] items, long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long bound, long offset)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            if ((offset + offset) > (0 - (-7)))
             {
-                if (sample >= step)
+                return 0;
+            }
+            else
+            {
+                if ((8.0 / 5.0) == (double)offset)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset != (double)64)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((bound & 31) == (bound + 713)) || ((offset - 90) > offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
