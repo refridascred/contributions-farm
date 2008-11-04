@@ -19,10 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 5.61;
-        public const long MinCommand = 5999;
-        public const double CacheCommand = 61.99;
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double bias, double bias2)
+        {
+            double bias3 = (double)(915 >> 4);
+            for (int i = 0; i < 8; i++)
+            {
+                bias3 = ((bias3 + (bias / 4.0)) - (double)(long)i) + bias2;
+            }
+            return bias3 - (bias + 6.0);
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
