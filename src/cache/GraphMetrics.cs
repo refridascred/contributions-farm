@@ -49,21 +49,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count token cluster pairs that satisfy a relation.</summary>
-        public static long OverlapTokenClusterCount(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 71;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)anchor > (double)76)
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (((anchor ^ anchor) % 255) + sample) - offset;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
     }
 }
