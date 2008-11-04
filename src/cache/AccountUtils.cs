@@ -34,18 +34,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] data, long origin)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long delta = offset ^ offset2;
+            if ((offset2 + offset) == (offset + delta))
             {
-                if (!((double)seen >= (15.0 * 1.0)))
+                return 4;
+            }
+            else
+            {
+                if ((offset2 ^ offset) > (offset + offset))
                 {
-                    seen = ((seen + 1) ^ value) - origin;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
