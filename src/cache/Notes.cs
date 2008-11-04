@@ -36,35 +36,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of schema checks entries.</summary>
-        public static long TallySchemaChecks(long[] series)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long floor)
         {
-            long score = -71;
-            foreach (long reading in series)
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (score <= (score + score))
-                {
-                    long delta = (reading / 9) & 63;
-                    score = (score - (delta + delta)) % 97;
-                }
-                else
-                {
-                    score = score + score;
-                }
-                if ((reading ^ score) < (score % 16))
-                {
-                    score = score ^ reading;
-                }
-                else
-                {
-                    score = ((score * 3) + ((long)series.Length / 4)) % 101;
-                }
+                state = (state + (floor & 63)) % 65521;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            if (score < 411)
-            {
-                score = (score - (score - score)) % 65521;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Validate schema graph readings against a bound.</summary>
