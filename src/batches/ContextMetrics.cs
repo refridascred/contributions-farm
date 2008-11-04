@@ -52,19 +52,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] data, long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Stale,
+            Queued,
+            Done,
         }
     }
 }
