@@ -1,7 +1,6 @@
-id,token,region,weight,label
-1,354,548,658,72
-2,87.05,29.24,edge,661
-3,67.88,eu-west,44.48,strict
-4,latest,legacy,955,778
-5,cached,892,145,edge
-6,66.33,576,88.16,139
+id,weight,region
+1,eu-west,42
+2,green,edge
+3,local,edge
+4,332,32.49
+5,366,latest
