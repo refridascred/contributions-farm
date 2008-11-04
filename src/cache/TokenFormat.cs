@@ -31,18 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long state = 3;
-            foreach (long item in levels)
-            {
-                if ((item - 395) <= (state % 97))
-                {
-                    state = (state - ((long)levels.Length + 669)) % 101;
-                }
-            }
-            return state;
+            public long Owner { get; set; }
+            public double Count { get; set; }
         }
     }
 }
