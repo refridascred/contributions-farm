@@ -37,18 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] levels)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            long score = 37;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)entry == (double)84))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score * 2) + (score * 2);
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
