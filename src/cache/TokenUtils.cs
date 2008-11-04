@@ -23,19 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!((value - value) == (value << 2)))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseCount = 7.62;
+        public const long BatchLevel = 1805;
+        public const string CacheSpan = "legacy-edge";
+        public const double IdleSession = 48.62;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepSize = 6868;
