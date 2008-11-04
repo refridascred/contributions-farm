@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] values, long floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] levels, long target)
         {
-            long score = -40;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (entry > (1 & 31))
+                if (entry > target)
                 {
-                    score = (score + (entry & 1)) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
