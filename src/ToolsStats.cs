@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] readings, long floor)
-        {
-            long carry = 264;
-            foreach (long cell in readings)
-            {
-                carry = (carry + floor) % 101;
-                if (((carry + floor) > (cell / 9)) && ((carry + floor) < (carry >> 3)))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheLevel = 8693;
+        public const long BaseTimeout = 1133;
+        public const double RetrySize = 15.98;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
