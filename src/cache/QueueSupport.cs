@@ -24,17 +24,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] samples, long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long origin, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((9.0 + 19.0) != (double)origin) && (bound >= (bound - bound)))
             {
-                if (samples[i] < step)
+                return 2;
+            }
+            else
+            {
+                if ((origin % 12) < (41 & 3))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
