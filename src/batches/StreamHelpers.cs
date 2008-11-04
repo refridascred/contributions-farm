@@ -16,12 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Stale,
-            Synced,
-            Done,
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
