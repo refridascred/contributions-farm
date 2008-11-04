@@ -72,18 +72,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] samples, long floor)
+        /// <summary>Grade a checks record value against two limits.</summary>
+        public static long BucketChecksRecord(long target, long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long slot = target ^ seed;
+            if ((seed + seed) != (seed / 4))
             {
-                if ((double)floor == (double)reading)
+                return 1;
+            }
+            else
+            {
+                if ((3 + seed) > (slot - target))
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((target - target) <= slot)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((slot - slot) < (slot % 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
