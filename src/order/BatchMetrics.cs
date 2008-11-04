@@ -32,11 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 4493;
-        public const string MaxNotes = "latest-v2";
-        public const string StepDepth = "stable-edge";
-        public const long MinNotes = 3942;
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Retry,
+            Locked,
+            Draft,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Measure how many cluster command samples are out of range.</summary>
         public static long TallyClusterCommandGaps(long[] readings)
