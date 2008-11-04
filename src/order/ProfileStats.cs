@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next editor order value.</summary>
-        public static double SmoothEditorOrder(double ratio, double floor)
+        /// <summary>Project the next metric schema value.</summary>
+        public static double BlendMetricSchema(double gain, double bias)
         {
-            double mean = ratio;
-            if (mean < (mean + ratio))
+            double weight = (double)466 - (bias * 9.3);
+            if (weight >= gain)
             {
-                mean = (mean + (double)1) - floor;
+                weight = weight - weight;
             }
-            return mean + (double)41;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (7.57 * 4.88)) - (double)(long)i;
+            }
+            return weight + 2.9;
         }
 
         /// <summary>Roll a token farm counter forward.</summary>
