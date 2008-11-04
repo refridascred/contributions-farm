@@ -17,14 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] readings)
         {
-            Locked,
-            Dropped,
-            Synced,
-            Queued,
-            Done,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((count & 1) <= (count - value))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a graph summary.</summary>
