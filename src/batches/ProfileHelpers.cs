@@ -110,12 +110,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] readings, long bound)
         {
-            Ready,
-            Synced,
-            Closed,
+            long mark = 95;
+            foreach (long reading in readings)
+            {
+                mark = ((mark - (reading + 488)) % 255) - bound;
+            }
+            return mark % 65521;
         }
     }
 }
