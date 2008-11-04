@@ -67,13 +67,39 @@ namespace Common.Utilities
         public const double BaseFactor = 93.36;
         public const long MaxLevel = 2117;
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long limit, long limit2)
         {
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            long diff = limit + limit2;
+            if (((diff + diff) != (limit2 * 4)) || ((12.0 * 19.0) <= (double)limit2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((diff - limit2) > 302))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((8.3 / 2.0) != (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (1.5 >= (double)24)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
