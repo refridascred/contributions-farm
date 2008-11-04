@@ -52,16 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            long score = 76;
+            foreach (long reading in values)
             {
-                state = ((state << 3) ^ (origin / 7)) % 255;
-                state = ((state * 4) + (long)i) % 1000;
+                score = score - reading;
             }
-            return state;
+            if (score < 208)
+            {
+                score = (score + (score & 63)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
