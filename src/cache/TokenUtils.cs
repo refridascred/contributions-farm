@@ -38,24 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long origin, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] data, long step)
         {
-            if (((step * 4) > step) || ((double)step <= (double)origin))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((44 + 29) <= (origin & 1)) || ((origin - step) <= (19 % 10)))
+                if (datum < step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
