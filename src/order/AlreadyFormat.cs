@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a profile order pair into a bucket.</summary>
-        public static long SortProfileOrder(long bound, long bound2)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long lane = bound - bound2;
-            if ((bound2 > (lane % 8)) || (bound < (89 * 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((1.99 / 4.0) != (double)lane)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
