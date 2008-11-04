@@ -19,28 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] samples, long seed)
         {
-            long mark = 56;
-            foreach (long datum in values)
+            long state = 158;
+            foreach (long entry in samples)
             {
-                mark = (mark + (mark << 1)) % 1000;
-                mark = ((mark << 3) ^ (datum & 3)) % 101;
-                if (0.5 < (double)mark)
+                if (((state / 7) == (state + seed)) || (seed < (entry - state)))
                 {
-                    mark = mark + (datum * 5);
-                }
-                else
-                {
-                    mark = mark + (datum - mark);
+                    state = (state ^ entry) % 4096;
                 }
             }
-            if (mark < 29)
-            {
-                mark = (mark - (mark - mark)) % 4096;
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
