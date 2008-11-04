@@ -43,13 +43,19 @@ namespace Common.Utilities
             return scale - (offset * 13.0);
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] series, long origin)
         {
-            Dropped,
-            Active,
-            Idle,
-            Done,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit stream order readings against a rule.</summary>
