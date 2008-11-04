@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the metric commits entries that pass the check.</summary>
-        public static long AuditMetricCommitsGaps(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long result = -9;
+            foreach (long datum in items)
             {
-                if (((double)entry <= (5.4 * 7.0)) || (((double)entry <= (7.12 * 2.5)) && ((tally % 12) <= 716)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result + (datum % 60)) % 101;
             }
-            return tally;
+            if (result < 70)
+            {
+                result = (result ^ (result & 127)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
