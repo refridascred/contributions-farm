@@ -1,6 +1,15 @@
 {
-  "order_ttl": 3175,
-  "metric_threshold": ["stable", "eu-west", "standard", "latest"],
-  "cache_size_pct": [323, 130, 428],
-  "hard_delay": 97.62
+  "farm_capacity": "legacy",
+  "verbose": 7538,
+  "counter_capacity": "eu-west",
+  "stream_depth": {
+    "poll_window_count": "edge",
+    "max_retries_pct": 63.24,
+    "soft_retries_pct": false,
+    "cache_retries_ms": 61.91,
+    "dry_run": [45, 141, 186, 419],
+    "batches_timeout": "legacy"
+  },
+  "account_delay": "latest",
+  "soft_interval_ms": 4186
 }
