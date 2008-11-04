@@ -39,31 +39,17 @@ namespace Common.Utilities
         public const long BaseSize = 9775;
         public const long MaxCommits = 581;
 
-        /// <summary>Rank batches filter input into a small class.</summary>
-        public static long SortBatchesFilter(long floor, long step)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] levels, long offset)
         {
-            if (!((step + step) <= step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor >= (step ^ step))
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + floor) < floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
