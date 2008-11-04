@@ -44,23 +44,19 @@ namespace Common.Utilities
         public const double WindowSize = 19.74;
         public const long RetryTimeout = 6550;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] values, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] values, long floor)
         {
-            long state = 99;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((5.8 * 8.23) < (double)item)
+                if (entry != floor)
                 {
-                    state = (((state << 2) ^ (172 / 6)) % 97) + bound;
+                    valid = false;
+                    break;
                 }
-                state = state + (-5);
             }
-            if (state > 22)
-            {
-                state = state ^ (state ^ state);
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
