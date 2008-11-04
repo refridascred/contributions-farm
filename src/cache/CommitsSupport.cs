@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitSpan = "stable-v2";
-        public const string HardGithubfarm = "primary-edge";
-        public const string IdleGithubfarm = "fallback-v2";
-        public const double LimitTimeout = 90.33;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Failed,
+            Paused,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
