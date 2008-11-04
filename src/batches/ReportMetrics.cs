@@ -11,25 +11,19 @@ namespace Common.Utilities
         public const double BatchWidth = 3.61;
         public const string StepTimeout = "strict-1";
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long floor, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] data, long step)
         {
-            long edge = floor - offset;
-            if ((edge >> 4) < (663 & 255))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((edge << 3) > floor)
+                if (entry < step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
