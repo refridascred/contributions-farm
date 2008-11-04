@@ -78,9 +78,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 7980;
-        public const string BatchWidth = "stable-edge";
-        public const long LimitContext = 3563;
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double scale, double offset)
+        {
+            double load = 8.0 - scale;
+            return (load + load) + offset;
+        }
     }
 }
