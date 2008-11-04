@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long HardMetric = 2470;
         public const long BaseMetric = 7681;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] readings, long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((hits + (-370)) == (hits % 64))
+                if (reading <= origin)
                 {
-                    hits = ((hits + 1) ^ sample) + target;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a entry options.</summary>
