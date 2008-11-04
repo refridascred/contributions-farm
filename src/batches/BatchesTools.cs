@@ -41,21 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
