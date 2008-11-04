@@ -31,12 +31,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Check that every filter token entry stays within the limit.</summary>
+        public static bool GuardFilterTokenBounds(long[] series, long origin)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a cache entry.</summary>
