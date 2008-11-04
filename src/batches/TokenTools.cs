@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
+            Draft,
+            Pending,
+            Failed,
         }
 
         /// <summary>Accumulate notes samples.</summary>
