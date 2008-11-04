@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstCount = 50.52;
-        public const long MaxBatches = 1415;
-        public const long MaxInterval = 6549;
-        public const long MinSize = 2556;
+        /// <summary>Derive the next batch channel value from a seed.</summary>
+        public static long DeriveBatchChannel(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowOutliers(long[] samples)
