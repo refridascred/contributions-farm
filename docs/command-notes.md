@@ -1,11 +1,15 @@
 # Command notes
 
-The record module keeps already values in sync with the payload cache.
-The contributi report groups every metric by record.
+Run the commits check before changing any token limits.
+When a entry fails, the token handler retries a few times before giving up.
+
+Run the batch check before changing any route limits.
+When a cache fails, the contributi handler retries a few times before giving up.
+The checks report groups every batch by command.
 
 ## Guidelines
 
-- Validate profile input early
-- Document new stream fields
-- Prefer buffer defaults
-- Keep token values small
+- Prefer channel defaults
+- Keep record values small
+- Document new queue fields
+- Validate payload input early
