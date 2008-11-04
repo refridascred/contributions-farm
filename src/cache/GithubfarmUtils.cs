@@ -14,11 +14,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] levels, long limit)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((double)limit == (7.93 + 1.9)) && !((tally - tally) <= tally))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the checks kind values.</summary>
