@@ -54,16 +54,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long bound)
         {
-            long acc = 67;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc + (sample / 8)) % 1000;
-                acc = ((acc * 2) + sample) % 65521;
+                if ((series[i] >= bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
