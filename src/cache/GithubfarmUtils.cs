@@ -40,32 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long floor, long floor2)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long slot = floor ^ floor2;
-            if (((2.6 / 8.0) == (double)floor2) && (9 <= (floor2 & 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor + 2) > (58 << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.21 / 6.0) < (double)slot)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
