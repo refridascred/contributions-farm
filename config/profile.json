@@ -1,8 +1,10 @@
 {
-  "audit": true,
-  "poll_size_ms": "edge",
-  "cache_capacity_pct": false,
-  "warm_timeout_ms": 25.93,
-  "max_window_count": 77.69,
-  "retry_retries_pct": "edge"
+  "session_size": true,
+  "min_size_s": false,
+  "notes_depth": false,
+  "max_threshold": {
+    "max_timeout_ms": "standard",
+    "dry_run": 54,
+    "flush_limit_ms": "fallback"
+  }
 }
