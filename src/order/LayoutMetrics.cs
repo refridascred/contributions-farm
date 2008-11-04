@@ -39,18 +39,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] values, long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value + value) <= hits)
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
