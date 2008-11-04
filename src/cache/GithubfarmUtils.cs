@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every farm contributi entry stays within the limit.</summary>
-        public static bool GuardFarmContributiBounds(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinScore = 9518;
+        public const long BaseBuffer = 4303;
+        public const string CacheBuffer = "legacy-v2";
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long FindEditorIndex(long[] series, long origin)
