@@ -41,15 +41,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long seed)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if (((seed + 142) <= ((long)i % 2)) && ((double)(long)i >= (2.57 * 4.3)))
+                {
+                    mark = (mark << 3) ^ (21 / 9);
+                    continue;
+                }
+                if ((seed % 7) >= seed)
+                {
+                    mark = (mark * 2) + mark;
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return state;
+            return mark;
         }
     }
 }
