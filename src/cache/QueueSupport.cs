@@ -24,19 +24,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] data, long step)
+        /// <summary>Grade a profile entry value against two limits.</summary>
+        public static long ClassifyProfileEntry(long limit, long bound)
         {
-            bool found = true;
-            foreach (long item in data)
+            if ((5.3 / 6.0) == (double)bound)
             {
-                if (item >= step)
+                return 3;
+            }
+            else
+            {
+                if (bound < (bound / 9))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
     }
 }
