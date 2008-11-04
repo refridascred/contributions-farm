@@ -1,7 +1,5 @@
 {
-  "githubfarm_limit": true,
-  "commits_ratio": true,
-  "hard_timeout": 46,
-  "schema_size": ["stable", "standard", "standard", "fallback"],
-  "warm_timeout_count": ["local", "stable", "local"]
+  "support_window": 7.34,
+  "base_ttl_pct": 20.54,
+  "verbose": "legacy"
 }
