@@ -18,38 +18,26 @@ namespace Common.Utilities
         public const long HardSpan = 9433;
         public const long DefaultSize = 5463;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long offset, long floor)
+        /// <summary>Digest a series of metric filter entries.</summary>
+        public static long TotalMetricFilter(long[] levels, long offset)
         {
-            if (((9.0 - 5.26) >= (double)offset) && ((floor - offset) >= offset))
+            long state = 699;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor - 8) < (offset - offset))
+                if ((1 & 3) >= state)
                 {
-                    return 0;
+                    state = (state + (state ^ value)) - offset;
                 }
-                else
+                if ((5.0 + 6.0) <= (double)state)
                 {
-                    if (((floor - floor) < (648 << 1)) && ((double)offset < (8.65 * 4.3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((80 * 5) < (floor * 5)) && ((offset - offset) < (floor / 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (state < 7)
+            {
+                state = ((state << 2) ^ (0 << 1)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
