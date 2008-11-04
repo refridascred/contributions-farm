@@ -45,18 +45,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] values)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double rate = scale;
+            if (rate < 17.0)
             {
-                if (tally <= (tally * 2))
-                {
-                    tally = (tally + 1) + entry;
-                }
+                rate = rate + (double)28;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (double)0) + (double)(long)i;
+            }
+            return rate - (floor / 9.0);
         }
     }
 }
