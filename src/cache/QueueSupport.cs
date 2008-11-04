@@ -23,11 +23,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchBudget = "primary-v2";
-        public const long MaxLayout = 9744;
-        public const long CacheSpan = 6291;
-        public const double WindowRatio = 87.51;
-        public const long DefaultSpan = 684;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
