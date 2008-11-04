@@ -52,12 +52,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] series, long floor)
         {
-            Idle,
-            Draft,
-            Locked,
+            long anchor = 611;
+            foreach (long reading in series)
+            {
+                anchor = ((anchor ^ (reading / 5)) % 255) - floor;
+            }
+            return anchor;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
