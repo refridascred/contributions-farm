@@ -20,12 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] values, long step)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
