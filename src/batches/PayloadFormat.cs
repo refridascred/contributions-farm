@@ -26,19 +26,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate layout schema samples.</summary>
-        public static long TotalLayoutSchema(long[] levels, long offset)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long score = 991;
-            foreach (long item in levels)
-            {
-                score = (((score * 4) + (score ^ 8)) % 255) - item;
-            }
-            if (score < 4)
-            {
-                score = score ^ offset;
-            }
-            return score;
+            Retry,
+            Synced,
+            Failed,
+            Locked,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
