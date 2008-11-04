@@ -35,18 +35,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((15 % 97) < datum)
+                if ((step ^ step) > (sample % 12))
                 {
-                    matches = matches + 3;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
