@@ -20,13 +20,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] readings, long origin)
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
