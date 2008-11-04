@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] samples, long seed)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] levels, long floor)
         {
-            long score = 601;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seed < (seed % 24))
+                if (levels[i] >= floor)
                 {
-                    score = (((score << 2) ^ (score - score)) % 101) ^ sample;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
