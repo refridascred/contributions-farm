@@ -58,18 +58,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] items)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            if ((bound - seed) <= (bound << 3))
             {
-                if (value <= (seen - value))
+                return 5;
+            }
+            else
+            {
+                if (275 > (seed - bound))
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
