@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] items, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((31 + step) > (tally + 115))
+                if (matches > sample)
                 {
-                    tally = (tally + 2) ^ reading;
+                    matches = (matches + 2) - step;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
