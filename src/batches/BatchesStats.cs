@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] items, long target)
         {
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine layout window values into a single score.</summary>
