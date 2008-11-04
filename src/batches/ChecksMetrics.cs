@@ -32,18 +32,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] samples, long floor)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long state = 494;
-            foreach (long sample in samples)
-            {
-                if (floor >= (sample + 392))
-                {
-                    state = ((state << 3) ^ state) % 255;
-                }
-            }
-            return state;
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
