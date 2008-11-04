@@ -1,8 +1,9 @@
-id,level,token,active
-1,900,fallback,open
-2,stable,22.56,507
-3,stable,blue,legacy
-4,78.39,833,37.92
-5,44.27,930,primary
-6,35,356,7.26
-7,294,12.89,edge
+id,active,level
+1,local,498
+2,235,90.49
+3,strict,fallback
+4,14.84,legacy
+5,67.26,blue
+6,639,eu-west
+7,483,36.46
+8,eu-west,502
