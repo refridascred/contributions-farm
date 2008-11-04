@@ -36,19 +36,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
