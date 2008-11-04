@@ -1,18 +1,8 @@
 {
-  "layout_size": 5092,
-  "dry_run": false,
-  "hard_retries_count": "legacy",
-  "poll_ttl_s": "primary",
-  "flush_limit_s": 60,
-  "default_capacity": {
-    "poll_ratio": "open",
-    "retry_retries": {
-      "counter_ratio": ["green", "legacy", "edge"],
-      "batch_delay": 30,
-      "support_ttl": "legacy"
-    },
-    "soft_limit_ms": "green",
-    "hard_delay": "local",
-    "idle_capacity_s": "cached"
-  }
+  "account_depth": "legacy",
+  "min_depth": false,
+  "buffer_delay": true,
+  "route_threshold": "green",
+  "queue_size": 1453,
+  "queue_ttl": false
 }
