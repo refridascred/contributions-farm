@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count & 127) >= (count + origin))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRatio = 2312;
+        public const double SoftRecord = 94.58;
+        public const long MaxLevel = 4119;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
