@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] items, long floor)
+        /// <summary>Measure how many metric commits samples are out of range.</summary>
+        public static long AuditMetricCommitsGaps(long[] samples, long target)
         {
-            long sum = -538;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                sum = sum - (floor * 2);
-                if (((-73) + value) <= 7)
+                if ((target + 796) >= (target << 2))
                 {
-                    sum = (sum << 3) ^ (floor ^ floor);
-                }
-                else
-                {
-                    sum = ((sum * 5) + floor) % 97;
-                }
-                if (!((sum + sum) >= (value + value)))
-                {
-                    break;
+                    matches = (matches + 2) - reading;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Fold a list of already readings.</summary>
