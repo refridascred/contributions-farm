@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Retry,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheCount = 52.23;
+        public const long BatchAlready = 2139;
+        public const double RetryInterval = 10.6;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long FoldGithubfarm(long[] readings, long seed)
