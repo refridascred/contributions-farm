@@ -38,13 +38,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Count the commits editor entries that pass the check.</summary>
+        public static long AuditCommitsEditorHits(long[] items)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((double)0 < (3.8 + 15.0))
+                {
+                    matches = (matches + 2) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
