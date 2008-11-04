@@ -1,11 +1,5 @@
 {
-  "strict": 60,
-  "cache_limit": 30,
-  "entry_size": 44,
-  "farm_size": {
-    "persist": 47.51,
-    "hard_window_count": [198, 162, 354, 98],
-    "verbose": "edge",
-    "sync_size_ms": ["stable", "strict", "primary"]
-  }
+  "flush_ratio": 60,
+  "editor_delay": "open",
+  "flush_threshold_ms": 72
 }
