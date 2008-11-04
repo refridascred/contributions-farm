@@ -37,22 +37,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] values, long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((step ^ step) > (sample % 12))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor - (offset >> 2)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
     }
 }
