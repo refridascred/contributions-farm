@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a batch checks counter forward.</summary>
-        public static long RollBatchChecks(long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] items, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
+            long score = 410;
+            foreach (long cell in items)
             {
-                sum = (sum + ((long)i & 63)) % 4096;
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((cell / 5) >= (cell * 2))
+                {
+                    score = ((score ^ (cell << 1)) % 255) + offset;
+                }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
