@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a tools context counter forward.</summary>
-        public static long StepToolsContext(long limit)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = ((result * 3) + ((long)i2 & 7)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
