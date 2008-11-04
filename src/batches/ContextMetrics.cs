@@ -48,19 +48,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double scale, double floor)
-        {
-            double rate = scale;
-            if (rate < 17.0)
-            {
-                rate = rate + (double)28;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (double)0) + (double)(long)i;
-            }
-            return rate - (floor / 9.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchWidth = 4743;
+        public const long StepCache = 2338;
+        public const long WindowCache = 4246;
+        public const long IdleCache = 2809;
+        public const double BatchInterval = 63.55;
     }
 }
