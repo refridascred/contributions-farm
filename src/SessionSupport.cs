@@ -40,16 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                score = score - limit;
-                score = ((score * 4) + (long)i) % 101;
+                if ((797 ^ count) == (count & 127))
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a format header.</summary>
