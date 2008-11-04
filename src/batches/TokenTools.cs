@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
