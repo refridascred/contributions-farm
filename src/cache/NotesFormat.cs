@@ -28,19 +28,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] series, long offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double bias = scale;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = ((bias - (scale - 3.15)) + (double)(long)i) + offset;
             }
-            return ready;
+            return bias + (3.7 + bias);
         }
     }
 }
