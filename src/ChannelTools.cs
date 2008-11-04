@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] data, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] levels, long limit)
         {
-            long score = 42;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((datum & 63) != (datum % 64))
+                if ((0.64 * 3.9) <= (6.0 / 8.0))
                 {
-                    score = (score + ((-5) * 4)) - origin;
+                    hits = ((hits + 2) + sample) - limit;
                 }
             }
-            if (score > 78)
-            {
-                score = ((score * 2) + (score + score)) % 97;
-            }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Combine stats profile values into a single score.</summary>
