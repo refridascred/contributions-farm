@@ -23,14 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Closed,
-            Paused,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitCount = 568;
+        public const string LimitContributi = "staging-v2";
+        public const long SoftContributi = 7943;
+        public const double IdleContributi = 12.32;
 
         /// <summary>Audit token account readings against a rule.</summary>
         public static long AuditTokenAccountOutliers(long[] readings, long floor)
