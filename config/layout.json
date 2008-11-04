@@ -1,8 +1,17 @@
 {
-  "account_depth": "legacy",
-  "min_depth": false,
-  "buffer_delay": true,
-  "route_threshold": "green",
-  "queue_size": 1453,
-  "queue_ttl": false
+  "enabled": 1024,
+  "hard_delay_pct": {
+    "compress": 33,
+    "dry_run": 6525,
+    "max_timeout_count": "staging",
+    "cache_depth": 76.71,
+    "audit": {
+      "dry_run": 40.75,
+      "default_capacity": "blue",
+      "retry_threshold_pct": "primary",
+      "sync_threshold": 96,
+      "default_capacity_count": 68.86
+    }
+  },
+  "format_depth": "fallback"
 }
