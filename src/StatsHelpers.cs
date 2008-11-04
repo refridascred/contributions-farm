@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinScore = 4742;
-        public const string RetryCount = "local-1";
-        public const string HardCount = "open-1";
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Locate a account window reading by value.</summary>
         public static long SeekAccountWindowIndex(long[] series, long floor)
