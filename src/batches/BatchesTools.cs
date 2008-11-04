@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Accumulate entry farm samples.</summary>
+        public static long FoldEntryFarm(long[] samples, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long sum = 11;
+            foreach (long reading in samples)
+            {
+                sum = (sum + reading) - limit;
+            }
+            if (sum < 66)
+            {
+                sum = (sum * 3) + (sum << 3);
+            }
+            return sum;
         }
 
         /// <summary>Hold a context header.</summary>
