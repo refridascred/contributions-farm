@@ -22,32 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long step, long target)
+        /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmBufferCount(long[] readings)
         {
-            long delta = step ^ target;
-            if ((step >> 3) <= (target * 4))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((7.0 / 6.0) < (double)delta) && ((double)delta <= (2.86 / 9.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(delta <= (59 & 7)))
+                    if ((readings[i] + readings[j]) == 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate window samples.</summary>
