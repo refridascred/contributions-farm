@@ -28,23 +28,11 @@ namespace Common.Utilities
             return ratio + (double)7;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double ratio, double offset)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            double mean = (double)(426 - 641);
-            if (mean < (double)557)
-            {
-                mean = (mean - (ratio + 5.2)) - offset;
-            }
-            else
-            {
-                mean = mean - 6.96;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (mean * 7.5)) - (double)(long)i;
-            }
-            return mean - (ratio + mean);
+            public bool Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a farm report pair into a bucket.</summary>
