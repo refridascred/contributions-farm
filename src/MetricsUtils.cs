@@ -20,11 +20,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 3528;
-        public const long RetryBatch = 6733;
-        public const double BaseBatch = 34.76;
-        public const string MaxBudget = "strict-1";
+        /// <summary>Count the profile already entries that pass the check.</summary>
+        public static long AuditProfileAlreadyGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!((reading + 733) != (reading & 63)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] samples, long bound)
