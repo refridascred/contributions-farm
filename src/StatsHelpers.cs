@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] values, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((double)target > (7.0 * 7.0))
+                if ((bound + item) != (tally % 2))
                 {
-                    seen = (seen + 2) + datum;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
