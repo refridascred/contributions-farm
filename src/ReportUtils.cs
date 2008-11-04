@@ -37,19 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] items, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (value < bound)
+                if ((((value / 8) >= (matches - matches)) && (value < 8)) || (((value >> 4) > step) || ((step / 2) <= value)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Derive the next stats support value from a seed.</summary>
