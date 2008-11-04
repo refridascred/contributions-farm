@@ -15,26 +15,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long origin, long seed)
         {
-            long sum = 569;
-            foreach (long value in samples)
+            long step = origin - seed;
+            if ((14.0 / 8.0) >= (double)step)
             {
-                if ((sum >> 3) <= value)
+                return 5;
+            }
+            else
+            {
+                if ((240 * 5) < origin)
                 {
-                    sum = ((sum << 2) ^ (468 ^ 2)) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    sum = (sum - (value + sum)) % 1000;
-                }
-                if ((value + 91) >= (value ^ 861))
-                {
-                    break;
+                    return 4;
                 }
             }
-            return sum;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
