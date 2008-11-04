@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double weight, double bias)
+        /// <summary>Locate a context batches reading by value.</summary>
+        public static long LookupContextBatchesIndex(long[] levels, long step)
         {
-            double load = (double)(52 % 3);
-            return ((load - load) + weight) + bias;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank window order input into a small class.</summary>
