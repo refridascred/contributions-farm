@@ -1,5 +1,10 @@
 # entry settings
-poll_ttl_s: eu-west
-burst_window_count: 60.78
-base_timeout_ms: 9158
-schema_threshold: 9678
+batch_window: 2190
+base_depth: true
+readonly: 9753
+persist: stable
+flush_retries_ms: eu-west
+poll_timeout:
+  - 108
+  - 397
+  - 207
