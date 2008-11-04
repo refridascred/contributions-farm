@@ -1,15 +1,5 @@
 {
-  "sync_ttl": {
-    "default_depth_ms": [338, 441, 220, 482],
-    "enabled": {
-      "counter_window": true,
-      "cache_retries": 8145,
-      "min_interval_count": "latest",
-      "metric_retries": "strict",
-      "payload_size": "edge"
-    },
-    "session_limit": 31
-  },
-  "max_ttl_s": 1024,
-  "idle_interval_ms": 6028
+  "burst_interval_ms": [163, 217, 321],
+  "verbose": false,
+  "hard_ratio": 8426
 }
