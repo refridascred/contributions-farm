@@ -39,18 +39,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long acc = 685;
+            foreach (long value in items)
             {
-                if (!((matches % 3) < ((long)series.Length << 2)))
+                acc = acc - (0 + offset);
+                acc = (acc ^ (offset - acc)) % 97;
+                if ((double)value < (double)acc)
                 {
-                    matches = (matches + 2) ^ datum;
+                    acc = ((acc * 3) + (offset << 3)) % 255;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
