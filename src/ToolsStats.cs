@@ -34,11 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] items, long limit)
         {
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!!((double)tally >= (20.0 / 9.0)))
+                {
+                    tally = ((tally + 2) + cell) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a order options.</summary>
