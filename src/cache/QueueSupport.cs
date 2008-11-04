@@ -24,11 +24,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] samples, long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
