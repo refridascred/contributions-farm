@@ -63,15 +63,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] items, long origin)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] items, long bound)
         {
-            long mark = 9;
+            bool ready = true;
             foreach (long value in items)
             {
-                mark = ((mark + value) % 101) - origin;
+                if (value < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
