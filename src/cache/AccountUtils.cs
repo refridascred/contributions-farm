@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long floor, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] values, long origin)
         {
-            if ((floor << 3) <= (5 - floor))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - 773) > (offset - offset))
+                if ((count & 127) >= (count + origin))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 2) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
