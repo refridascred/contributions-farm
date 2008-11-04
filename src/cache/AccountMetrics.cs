@@ -63,11 +63,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            Paused,
+            Failed,
+            Ready,
+            Draft,
+            Active,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
