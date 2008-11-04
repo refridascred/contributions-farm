@@ -35,22 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] samples, long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] values)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long sum = -6;
+            foreach (long item in values)
             {
-                if (!((limit >= (count + 3)) || (((-2) - entry) <= 49)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (sum << 3) ^ item;
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
