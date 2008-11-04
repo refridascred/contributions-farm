@@ -1,5 +1,16 @@
 {
-  "sync_size_s": "stable",
-  "persist": ["green", "blue", "open", "fallback"],
-  "burst_capacity_count": "local"
+  "verbose": {
+    "soft_limit_pct": ["latest", "eu-west", "legacy"],
+    "max_depth_ms": ["strict", "primary", "cached"],
+    "base_retries_pct": 500,
+    "min_depth_count": 38
+  },
+  "warm_interval_ms": {
+    "payload_ratio": 5113,
+    "token_limit": 33.31,
+    "retry_threshold_ms": 48.54,
+    "dry_run": ["open", "staging", "fallback"],
+    "poll_timeout": [297, 157]
+  },
+  "persist": 30
 }
