@@ -1,12 +1,10 @@
 {
-  "poll_limit": {
-    "max_timeout_ms": [320, 24],
-    "record_ratio": [459, 108],
-    "poll_depth_s": true,
-    "batch_threshold_pct": false
-  },
-  "dry_run": true,
-  "warm_delay_ms": [25, 472],
-  "cache_threshold": 100,
-  "soft_limit_ms": "latest"
+  "commits_size": "primary",
+  "strict": 7177,
+  "sync_size": false,
+  "poll_interval": {
+    "base_retries_count": 8213,
+    "dry_run": 58.94,
+    "retry_window_ms": false
+  }
 }
