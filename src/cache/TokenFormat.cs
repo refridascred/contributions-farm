@@ -30,39 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long target, long seed)
-        {
-            long next = target - seed;
-            if ((seed - seed) > seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((12.0 > (double)target) && ((target / 4) >= (next - 0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + seed) == (next ^ target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((424 << 2) == (seed + seed)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleInterval = 6469;
+        public const long BaseAlready = 1492;
+        public const long SoftAlready = 6002;
+        public const string BaseSize = "local-1";
     }
 }
