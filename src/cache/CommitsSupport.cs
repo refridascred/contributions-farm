@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate account command readings against a bound.</summary>
-        public static bool CheckAccountCommandLimits(long[] samples, long bound)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
