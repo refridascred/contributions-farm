@@ -55,15 +55,19 @@ namespace Common.Utilities
         public const long BaseSize = 9183;
         public const long BurstFactor = 9192;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] data, long offset)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double rate, double span)
         {
-            long total = 283;
-            foreach (long value in data)
+            double drift = (8.3 * 4.0) / 5.0;
+            if (drift > drift)
             {
-                total = (((total << 2) ^ (total % 7)) ^ value) + offset;
+                drift = drift + (rate * 9.0);
             }
-            return total;
+            else
+            {
+                drift = drift + (span * 6.84);
+            }
+            return drift + 17.0;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
