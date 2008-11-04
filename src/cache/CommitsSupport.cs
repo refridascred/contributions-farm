@@ -78,11 +78,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double scale, double offset)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double load = 8.0 - scale;
-            return (load + load) + offset;
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
