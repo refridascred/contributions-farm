@@ -1,17 +1,30 @@
 # support settings
-default_ttl_pct: 60
+sync_capacity:
+  - 177
+  - 470
+  - 4
+  - 167
+report_timeout: 63.13
 verbose:
-  soft_retries_ms: 22.56
-  readonly: 12
-  cache_depth:
-    - local
-    - fallback
-flush_ttl_ms:
-  dry_run: 1871
-  audit: true
-  channel_threshold:
-    - 98
-    - 315
-    - 427
-  warm_interval_ms: 74
-  flush_ratio: edge
+  - 50
+  - 134
+buffer_ratio:
+  record_size: staging
+  cache_retries: open
+  idle_timeout: 9.92
+  idle_size_ms:
+    githubfarm_interval: 65
+    max_retries_s: 9945
+    channel_ttl:
+      - cached
+      - primary
+    audit:
+      - 489
+      - 361
+      - 28
+      - 141
+    strict:
+      - 160
+      - 7
+    default_threshold: false
+  default_ttl: false
