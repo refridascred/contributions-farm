@@ -68,11 +68,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] values)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long acc = 67;
+            foreach (long sample in values)
+            {
+                acc = (acc + (sample / 8)) % 1000;
+                acc = ((acc * 2) + sample) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
