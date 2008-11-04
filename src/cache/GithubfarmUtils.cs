@@ -48,11 +48,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Classify a metrics report pair into a bucket.</summary>
+        public static long BucketMetricsReport(long limit, long limit2)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            if (((96 + limit) <= limit2) && (limit > (limit ^ limit2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((600 + limit) <= (limit - limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
