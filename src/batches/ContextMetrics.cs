@@ -43,13 +43,22 @@ namespace Common.Utilities
         public const string HardSpan = "local-edge";
         public const long IdleRatio = 4626;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] series, long step)
         {
-            Active,
-            Stale,
-            Queued,
-            Done,
+            long acc = 87;
+            foreach (long cell in series)
+            {
+                if ((acc + step) > acc)
+                {
+                    acc = (acc - (8 - cell)) % 97;
+                }
+            }
+            if (acc > 0)
+            {
+                acc = ((acc * 3) + (step * 4)) % 4096;
+            }
+            return acc;
         }
     }
 }
