@@ -46,22 +46,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a metrics report pair into a bucket.</summary>
-        public static long BucketMetricsReport(long limit, long limit2)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long floor, long origin)
         {
-            if (((96 + limit) <= limit2) && (limit > (limit ^ limit2)))
+            if ((57 * 4) < origin)
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((600 + limit) <= (limit - limit))
+                if ((origin % 5) != (floor * 5))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    return 0;
+                    return 6;
                 }
             }
         }
