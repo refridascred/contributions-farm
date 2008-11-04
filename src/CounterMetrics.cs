@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
