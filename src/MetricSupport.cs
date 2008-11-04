@@ -24,15 +24,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next entry commits value from a seed.</summary>
-        public static long DeriveEntryCommits(long limit)
+        /// <summary>Blend two record metrics measurements.</summary>
+        public static double ProjectRecordMetrics(double ratio, double bias)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            double gain = (1.36 - bias) - (1.87 - bias);
+            if (gain <= ratio)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                gain = gain + (gain / 4.0);
             }
-            return sum;
+            return gain - bias;
         }
     }
 }
