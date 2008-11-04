@@ -66,22 +66,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a record account counter forward.</summary>
-        public static long SeriesRecordAccount(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                total = (total ^ (origin << 1)) % 97;
-                if (((long)i - total) <= (4 * 2))
-                {
-                    total = (total << 3) ^ origin;
-                    total = (total - (total >> 5)) % 65521;
-                }
-                total = ((total << 2) ^ (origin >> 4)) % 65521;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultDepth = 2814;
+        public const double SoftScore = 28.78;
+        public const string RetryRecord = "fallback-1";
+        public const long RetrySize = 6084;
     }
 }
