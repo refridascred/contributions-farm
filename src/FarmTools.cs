@@ -13,24 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long step)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!!((3.4 / 3.0) > (double)acc))
-                {
-                    acc = ((acc * 2) + (step - 0)) % 1000;
-                }
-                if (step <= (acc + (long)i))
-                {
-                    acc = (acc * 3) + (acc - (long)i);
-                }
-                acc = (acc << 2) ^ step;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Synced,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define session limits and defaults.</summary>
