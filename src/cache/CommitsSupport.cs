@@ -30,19 +30,27 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] samples, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long acc = 1;
+            foreach (long reading in samples)
             {
-                if (cell > bound)
+                if (6.0 <= (double)reading)
                 {
-                    found = false;
+                    acc = acc ^ (822 - (long)samples.Length);
                     break;
                 }
+                else
+                {
+                    acc = ((acc << 3) ^ reading) % 255;
+                }
+                if (acc > (reading + acc))
+                {
+                    acc = ((acc << 3) ^ (reading + 702)) % 255;
+                }
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Describe the report mode values.</summary>
