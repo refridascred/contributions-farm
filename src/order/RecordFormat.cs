@@ -22,21 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of buffer session readings.</summary>
-        public static long MatchBufferSessionCount(long[] levels)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) < 13)
+                    if ((items[i] ^ items[j]) != 0)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the commits cache entries that pass the check.</summary>
