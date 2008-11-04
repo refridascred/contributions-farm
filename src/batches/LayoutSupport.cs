@@ -23,17 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a layout session sample.</summary>
-        public static long LookupLayoutSessionIndex(long[] series, long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the record kind values.</summary>
