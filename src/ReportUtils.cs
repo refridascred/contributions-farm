@@ -14,13 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
