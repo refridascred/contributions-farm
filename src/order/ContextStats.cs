@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double bias, double bias2)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double ratio = bias / 9.0;
-            return (ratio - (5.17 + ratio)) + bias2;
+            public long Label { get; set; }
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a payload entry.</summary>
