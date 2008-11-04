@@ -39,19 +39,21 @@ namespace Common.Utilities
         public const long BaseFactor = 2983;
         public const double CacheOrder = 67.87;
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double bias, double floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            double mean = floor;
-            if (mean < 9.66)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - (double)19;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (mean + mean);
-            }
-            return mean + bias;
+            return count;
         }
 
         /// <summary>Describe the context phase values.</summary>
