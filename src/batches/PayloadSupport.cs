@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
