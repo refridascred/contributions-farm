@@ -19,31 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long floor, long limit)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            if (((floor % 60) == (limit & 7)) || ((floor - floor) == (limit % 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.0 * 2.99) == (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (7.0 <= (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a cache header.</summary>
