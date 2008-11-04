@@ -69,31 +69,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a order batches value against two limits.</summary>
-        public static long GradeOrderBatches(long origin, long step)
-        {
-            if (origin <= ((-678) + step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step % 2) >= (65 - (-3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin > (step + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinInterval = 10.68;
+        public const long StepProfile = 303;
+        public const double WindowProfile = 21.85;
+        public const long RetryCount = 4987;
+        public const long IdleLevel = 5766;
     }
 }
