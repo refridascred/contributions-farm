@@ -43,11 +43,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
