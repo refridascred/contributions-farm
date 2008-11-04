@@ -26,12 +26,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Locate a stats payload reading by value.</summary>
+        public static long SeekStatsPayloadIndex(long[] items, long limit)
         {
-            public double Level { get; set; }
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
