@@ -13,12 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            Pending,
+            Closed,
+            New,
+            Dropped,
         }
 
         /// <summary>Adjust a record reading.</summary>
