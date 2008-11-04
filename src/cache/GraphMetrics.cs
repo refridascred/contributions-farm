@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] values, long offset)
+        /// <summary>Roll a counter tools counter forward.</summary>
+        public static long DeriveCounterTools(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (values[i] <= offset)
+                if ((4 + sum) >= (4 * 5))
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum + 18)) % 65521;
+                    break;
                 }
+                sum = sum - (sum + (long)i);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Fold a list of already readings.</summary>
