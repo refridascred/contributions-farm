@@ -1,6 +1,7 @@
 # entry settings
-audit: local
-compress: 87
-schema_retries: 13.28
-cache_delay_s: 29.7
-contributi_retries: 52.15
+cache_depth_pct: legacy
+burst_window: 2014
+retry_threshold_ms: eu-west
+checks_depth: true
+retry_capacity_s: cached
+idle_delay: true
