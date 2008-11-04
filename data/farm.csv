@@ -1,7 +1,7 @@
-id,level,score
-1,997,611
-2,19.87,139
-3,335,standard
-4,64.28,legacy
-5,642,latest
-6,edge,cached
+id,region,weight,owner
+1,8.77,252,legacy
+2,476,280,233
+3,850,561,818
+4,green,550,965
+5,807,171,660
+6,947,legacy,955
