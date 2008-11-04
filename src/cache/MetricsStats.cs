@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 3920;
+        public const long LimitSupport = 1988;
+        public const long BaseSupport = 2912;
+        public const long HardDepth = 4011;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string MaxLevel = "stable-v2";
