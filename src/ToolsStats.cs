@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] series, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (item >= seed)
+                if (reading < seed)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
