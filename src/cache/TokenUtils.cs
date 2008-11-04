@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long limit)
         {
-            long state = 4;
-            foreach (long reading in data)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (((reading & 63) < (state & 255)) && ((306 - reading) >= state))
-                {
-                    state = (state * 5) + (reading ^ reading);
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (state > 7)
-            {
-                state = (state ^ (state & 63)) % 101;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
