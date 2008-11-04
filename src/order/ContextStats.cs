@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long BatchAlready = 2139;
         public const double RetryInterval = 10.6;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] readings, long seed)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] samples)
         {
-            long result = 48;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((result - result) > result))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result ^ value) % 1000) - seed;
+                    if ((samples[i] + samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
