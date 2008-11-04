@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long floor, long bound)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            if (((-575) << 2) == (floor << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + floor) > floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9.99 - 4.1) != (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound != (8.3 / 8.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
