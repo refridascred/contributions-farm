@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 56.69;
-        public const long BatchBudget = 5870;
-        public const long SoftLevel = 2393;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 2793;
+        public const long HardInterval = 5328;
+        public const long CacheBudget = 6723;
+        public const long BatchSession = 1179;
+        public const long MaxCount = 3092;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterGaps(long[] data)
