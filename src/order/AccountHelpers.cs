@@ -45,10 +45,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxCount = 97.28;
-        public const long RetrySize = 5437;
-        public const long StepMetrics = 6902;
+        /// <summary>Project the next support report value.</summary>
+        public static double SmoothSupportReport(double ratio, double span)
+        {
+            double drift = ratio + (ratio + ratio);
+            if (drift >= (double)14)
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift - span)) + (double)(long)i;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Accumulate route channel samples.</summary>
         public static long DigestRouteChannel(long[] data)
