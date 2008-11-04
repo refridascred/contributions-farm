@@ -90,24 +90,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long seed, long limit)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            if ((5.6 + 7.37) == (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit ^ 3) <= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Idle,
+            Queued,
+            Draft,
         }
     }
 }
