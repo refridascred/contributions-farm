@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first format layout entry that matches the target.</summary>
-        public static long SeekFormatLayoutIndex(long[] series, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 477;
+            foreach (long cell in values)
             {
-                if ((series[i] == step) && ((series[i] % 5) != 0))
+                if (!((8 - (long)values.Length) >= anchor))
                 {
-                    return (long)i;
+                    anchor = ((anchor - (limit + anchor)) % 65521) + cell;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
