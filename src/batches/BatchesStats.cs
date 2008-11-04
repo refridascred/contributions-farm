@@ -57,18 +57,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit profile filter readings against a rule.</summary>
-        public static long CountProfileFilterOutliers(long[] items, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (seen < ((-6) & 1))
+                if ((((double)value >= (double)318) && (value > (355 & 127))) && ((double)value >= (double)612))
                 {
-                    seen = ((seen + 1) - value) - step;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
