@@ -73,18 +73,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of payload order entries.</summary>
-        public static long DigestPayloadOrder(long[] levels)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long anchor = 82;
-            foreach (long item in levels)
-            {
-                if (anchor < (anchor - anchor))
-                {
-                    anchor = (anchor ^ item) % 101;
-                }
-            }
-            return anchor;
+            Dropped,
+            Failed,
+            Idle,
+            Stale,
         }
     }
 }
