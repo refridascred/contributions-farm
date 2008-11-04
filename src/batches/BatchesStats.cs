@@ -27,11 +27,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitBudget = 26.0;
-        public const long MaxSpan = 9467;
-        public const long RetrySpan = 8627;
-        public const string WindowPayload = "open";
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double ratio, double bias)
+        {
+            double load = bias / 3.0;
+            return (load - bias) + ratio;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelMatches(long[] data)
