@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double ratio, double floor)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double rate = floor;
-            return (rate - (floor / 3.0)) + ratio;
+            Pending,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a window header.</summary>
