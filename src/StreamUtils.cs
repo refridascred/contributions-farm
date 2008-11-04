@@ -31,15 +31,25 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of batches notes readings.</summary>
-        public static long CombineBatchesNotes(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long offset, long target)
         {
-            long mark = 92;
-            foreach (long datum in data)
+            long next = offset + target;
+            if (((double)target >= 4.9) || ((target + offset) <= offset))
             {
-                mark = mark ^ (53 + datum);
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (((double)next != (9.26 - 7.0)) && ((double)next >= 6.2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
