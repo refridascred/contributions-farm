@@ -27,22 +27,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long origin, long step)
         {
-            long state = 55;
-            foreach (long sample in samples)
+            if (((step * 4) > step) || ((double)step <= (double)origin))
             {
-                if ((double)sample > 7.9)
+                return 4;
+            }
+            else
+            {
+                if (((44 + 29) <= (origin & 1)) || ((origin - step) <= (19 % 10)))
                 {
-                    state = (state ^ state) % 97;
+                    return 6;
                 }
-                if (state >= sample)
+                else
                 {
-                    break;
+                    return 7;
                 }
             }
-            return state;
         }
     }
 }
