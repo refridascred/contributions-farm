@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] series, long limit)
+        /// <summary>Grade a payload farm value against two limits.</summary>
+        public static long GradePayloadFarm(long step, long bound)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            if (((step % 100) < (step + 3)) || ((step % 97) != (bound / 6)))
             {
-                if (datum < limit)
+                return 1;
+            }
+            else
+            {
+                if (bound < (step ^ bound))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the farm mode values.</summary>
