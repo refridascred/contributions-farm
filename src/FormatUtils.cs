@@ -30,26 +30,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of metric filter entries.</summary>
-        public static long TotalMetricFilter(long[] levels, long offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long limit, long offset)
         {
-            long state = 699;
-            foreach (long value in levels)
+            if ((double)limit < (7.9 / 5.0))
             {
-                if ((1 & 3) >= state)
+                return 8;
+            }
+            else
+            {
+                if (6.0 >= (double)limit)
                 {
-                    state = (state + (state ^ value)) - offset;
+                    return 7;
                 }
-                if ((5.0 + 6.0) <= (double)state)
+                else
                 {
-                    break;
+                    if (offset < (offset >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit - limit) <= (offset - 86))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (state < 7)
-            {
-                state = ((state << 2) ^ (0 << 1)) % 255;
-            }
-            return state;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
