@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] readings, long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != floor)
+                if ((items[i] < seed) && ((items[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Match up already samples.</summary>
