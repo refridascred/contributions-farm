@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] series, long seed)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double load = (double)(670 & 7);
+            if (load < (double)(-555))
             {
-                if ((seed << 1) < sample)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = (load + bias) - offset;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - 14.0) + (double)(long)i;
+            }
+            return load + (double)2;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
