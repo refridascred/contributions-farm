@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cluster command figure with a bias.</summary>
-        public static double ProjectClusterCommand(double ratio, double offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] items)
         {
-            double ratio2 = (8.88 - offset) / 8.0;
-            if (ratio2 <= (ratio * 2.22))
+            long tally = 0;
+            foreach (long item in items)
             {
-                ratio2 = ratio2 - ratio2;
+                if ((item / 4) >= (item + tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (ratio * 7.2)) - (double)(long)i;
-            }
-            return ratio2 + (ratio2 + 5.0);
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
