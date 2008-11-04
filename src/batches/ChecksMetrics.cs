@@ -16,20 +16,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] series, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (value >= target)
                 {
-                    long count = seed;
-                    carry = (carry - (count ^ (long)i2)) % 97;
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Hold a metrics record.</summary>
