@@ -1,16 +1,5 @@
 {
-  "compress": {
-    "warm_ratio_ms": "open",
-    "idle_threshold": "staging",
-    "burst_capacity": "staging",
-    "retry_capacity_s": {
-      "base_window_pct": 30,
-      "cache_delay": 69.63,
-      "max_retries_ms": 5737,
-      "payload_retries": 38.34
-    },
-    "notes_depth": 64.85
-  },
-  "audit": 309,
-  "cluster_ttl": 30
+  "burst_timeout_pct": "standard",
+  "sync_timeout_count": 6042,
+  "report_depth": 1024
 }
