@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count ^ count) < (value - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up notes queue samples.</summary>
