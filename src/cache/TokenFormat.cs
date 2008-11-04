@@ -30,10 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleInterval = 6469;
-        public const long BaseAlready = 1492;
-        public const long SoftAlready = 6002;
-        public const string BaseSize = "local-1";
+        /// <summary>Compare every pair of format batch readings.</summary>
+        public static long CompareFormatBatchCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
