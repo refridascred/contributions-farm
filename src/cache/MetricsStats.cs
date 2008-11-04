@@ -25,13 +25,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] values)
         {
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((hits - hits) > (2 - hits))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
