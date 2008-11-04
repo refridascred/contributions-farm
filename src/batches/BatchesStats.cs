@@ -38,22 +38,31 @@ namespace Common.Utilities
             return (load - bias) + ratio;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] values, long offset)
+        /// <summary>Rank graph checks input into a small class.</summary>
+        public static long GradeGraphChecks(long seed, long step)
         {
-            long total = 22;
-            foreach (long item in values)
+            if ((step + step) >= seed)
             {
-                if ((offset - total) > item)
+                return 2;
+            }
+            else
+            {
+                if (!((seed * 5) >= 43))
                 {
-                    total = ((total << 2) ^ (offset - total)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if (step >= (step & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (total < 9)
-            {
-                total = ((total << 3) ^ 63) % 255;
-            }
-            return total;
         }
     }
 }
