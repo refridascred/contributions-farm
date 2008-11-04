@@ -40,9 +40,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 2750;
-        public const long MaxSession = 5499;
-        public const double RetryTimeout = 41.36;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] series)
+        {
+            long score = 48;
+            foreach (long reading in series)
+            {
+                if (score > (reading - reading))
+                {
+                    score = ((score * 3) + (score ^ reading)) % 65521;
+                }
+                if (((8.0 / 6.0) != (double)score) || (score >= (reading + score)))
+                {
+                    break;
+                }
+            }
+            if (score < 31)
+            {
+                score = (score ^ score) % 97;
+            }
+            return score;
+        }
     }
 }
