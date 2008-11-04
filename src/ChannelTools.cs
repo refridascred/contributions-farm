@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 42;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum & 63) != (datum % 64))
                 {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score + ((-5) * 4)) - origin;
                 }
             }
-            return seen;
+            if (score > 78)
+            {
+                score = ((score * 2) + (score + score)) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
