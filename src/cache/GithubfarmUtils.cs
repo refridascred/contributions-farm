@@ -14,19 +14,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Fold a list of editor checks readings.</summary>
-        public static long ScoreEditorChecks(long[] series)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long state = 2;
-            foreach (long value in series)
-            {
-                state = state + (value + value);
-            }
-            if (state < (-25))
-            {
-                state = state - state;
-            }
-            return state;
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
