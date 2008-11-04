@@ -1,14 +1,4 @@
 # support settings
-format_delay: eu-west
-layout_interval:
-  - open
-  - latest
-  - latest
-  - primary
-flush_ttl_ms: 83
-route_limit: false
-base_retries_pct:
-  - green
-  - latest
-  - stable
-  - standard
+burst_threshold_ms: 30
+soft_limit_count: true
+base_size_pct: 18
