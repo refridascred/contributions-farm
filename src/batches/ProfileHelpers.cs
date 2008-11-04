@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] values, long floor)
+        /// <summary>Iterate the context batches series from a seed.</summary>
+        public static long DeriveContextBatches(long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((floor + item) <= item)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    hits = hits + 2;
+                    total = ((total * 3) + (long)i2) % 97;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Accumulate route samples.</summary>
