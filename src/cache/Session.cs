@@ -33,17 +33,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Find the first channel githubfarm entry that matches the target.</summary>
-        public static long FindChannelGithubfarmIndex(long[] readings, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
+                if ((1 + datum) > (datum - bound))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
