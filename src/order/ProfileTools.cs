@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const long BaseCount = 5390;
         public const string BatchCount = "strict-edge";
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] levels)
         {
-            Queued,
-            Locked,
-            Dropped,
-            Active,
-            Retry,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((19.0 / 3.0) < (double)seen)
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine window route values into a single score.</summary>
