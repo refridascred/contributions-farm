@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] items)
-        {
-            long total = 537;
-            foreach (long sample in items)
-            {
-                total = total + (980 + sample);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowRatio = 8279;
+        public const long SoftCount = 5739;
+        public const string SoftScore = "fallback-1";
+        public const string BatchTimeout = "staging-v2";
+        public const string StepScore = "standard-edge";
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
