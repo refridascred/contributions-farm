@@ -1,28 +1,9 @@
 # entry settings
-burst_retries_s:
-  stats_window: fallback
-  hard_ttl_count: primary
-  order_depth: 54.2
-  base_window: 6051
-  queue_timeout:
-    - 197
-    - 227
-    - 32
-    - 41
-  window_size:
-    command_timeout:
-      - 206
-      - 433
-      - 441
-    soft_threshold_count: true
-    commits_limit: edge
-    account_interval: 250
-    warm_ratio_ms: primary
-    compress:
-      - legacy
-      - standard
-notes_delay: 7636
-idle_timeout_ms: 33
-warm_capacity_s: 30
-entry_depth: 3921
-sync_limit_s: 250
+retry_window_s: 32.43
+batch_retries_s:
+  - 305
+  - 124
+  - 78
+  - 146
+warm_size_pct: 250
+soft_retries: latest
