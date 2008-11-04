@@ -40,25 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long bound, long floor)
-        {
-            if ((bound & 127) > (floor / 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound * 2) != (bound / 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinDepth = 6452;
+        public const double DefaultRoute = 35.92;
+        public const long LimitRoute = 9095;
+        public const long CacheRoute = 904;
+        public const long StepRoute = 8013;
 
         /// <summary>Digest a series of checks profile entries.</summary>
         public static long CombineChecksProfile(long[] series)
