@@ -12,14 +12,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Done,
-            Dropped,
-            Paused,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 7440;
+        public const double SoftSpan = 97.93;
+        public const long HardSpan = 9433;
+        public const long DefaultSize = 5463;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long RankFormat(long offset, long floor)
