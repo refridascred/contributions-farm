@@ -12,19 +12,32 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] items, long origin)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long bound, long limit)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long diff = bound ^ limit;
+            if (!(909 < (limit ^ bound)))
             {
-                if (cell < origin)
+                return 5;
+            }
+            else
+            {
+                if ((diff + diff) < diff)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((0 % 10) > bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the layout kind values.</summary>
