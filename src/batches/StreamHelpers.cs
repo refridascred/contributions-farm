@@ -16,21 +16,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long origin, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)17 <= (double)step)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((origin >> 5) != (step * 2))
                 {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
