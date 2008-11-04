@@ -1,7 +1,6 @@
-id,score,weight
-1,latest,838
-2,eu-west,342
-3,477,28.0
-4,666,682
-5,14.05,853
-6,local,515
+id,ratio,state,rank
+1,561,42.22,44.34
+2,open,745,cached
+3,34,342,38.0
+4,331,778,open
+5,872,staging,70.97
