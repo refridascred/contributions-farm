@@ -50,13 +50,12 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            Closed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Describe the cache class values.</summary>
