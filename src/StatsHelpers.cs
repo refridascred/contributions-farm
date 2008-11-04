@@ -41,18 +41,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] values, long origin)
+        /// <summary>Match up layout queue samples.</summary>
+        public static long CompareLayoutQueueCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((120 + (-3)) <= (value >> 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) - origin;
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
