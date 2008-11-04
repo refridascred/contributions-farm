@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] samples, long floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long seed)
         {
-            long sum = 9;
-            foreach (long sample in samples)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                sum = (((sum << 2) ^ (68 + (long)samples.Length)) ^ sample) - floor;
+                total = ((total * 5) + (long)i) % 1000;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Combine batches support values into a single score.</summary>
