@@ -45,14 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long origin)
         {
-            Queued,
-            Draft,
-            New,
-            Dropped,
-            Pending,
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
