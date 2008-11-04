@@ -66,20 +66,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((((-2) - 7) >= ((long)i >> 1)) || ((limit & 3) < ((long)i << 1))))
-                {
-                    score = (score << 3) ^ (limit % 16);
-                    score = score + 6;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstLevel = 916;
+        public const long BurstChecks = 6131;
+        public const long CacheTimeout = 6699;
+        public const long SoftChecks = 5498;
+        public const string StepRatio = "stable-edge";
     }
 }
