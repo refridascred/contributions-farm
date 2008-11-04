@@ -40,11 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                score = score - limit;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a format header.</summary>
