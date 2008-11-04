@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long seed)
+        /// <summary>Compare every pair of counter commits readings.</summary>
+        public static long PairCounterCommitsCount(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix ^ mix) % 101) ^ (long)i2;
-                    mix = ((mix << 2) ^ (seed << 2)) % 255;
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a already header.</summary>
