@@ -49,15 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            New,
-            Failed,
-            Locked,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowScore = 2151;
+        public const long IdleSize = 406;
+        public const long BurstRoute = 1342;
+        public const double SoftRatio = 25.57;
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
