@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long target, long target2)
+        /// <summary>Derive the next editor support value from a seed.</summary>
+        public static long IterateEditorSupport(long origin)
         {
-            if (!((double)target > (double)target2))
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                acc = acc ^ (origin >> 2);
+                acc = (acc * 3) + (acc / 2);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((target2 >> 2) > (target2 + target)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
