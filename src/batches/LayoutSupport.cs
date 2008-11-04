@@ -53,18 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] samples, long floor)
         {
-            long acc = 675;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (((11 >> 4) >= acc) && ((6.7 * 2.11) >= (double)acc))
+                if (!((floor >> 5) >= floor))
                 {
-                    acc = (((acc * 4) + acc) % 4096) ^ reading;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
