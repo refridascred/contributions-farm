@@ -45,11 +45,9 @@ namespace Common.Utilities
         public const long WindowLevel = 9983;
         public const long MinLevel = 1803;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFilter = 7.28;
+        public const double LimitWidth = 21.98;
+        public const double RetryTimeout = 34.89;
     }
 }
