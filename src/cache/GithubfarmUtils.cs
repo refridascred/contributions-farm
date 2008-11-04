@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Find the first metrics entry entry that matches the target.</summary>
+        public static long SeekMetricsEntryIndex(long[] readings, long target)
         {
-            Dropped,
-            Paused,
-            Done,
-            Locked,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
