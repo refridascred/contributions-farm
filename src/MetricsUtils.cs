@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long HardMetric = 2470;
         public const long BaseMetric = 7681;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchTimeout = 32.84;
-        public const double IdleCommand = 82.23;
-        public const string BurstTimeout = "fallback";
-        public const long LimitSize = 3423;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinLevel = 2756;
+        public const string HardSchema = "staging-edge";
+        public const long CacheDepth = 6418;
+        public const long LimitSchema = 8251;
+        public const double MaxSchema = 6.9;
 
         /// <summary>Count the profile already entries that pass the check.</summary>
         public static long AuditProfileAlreadyGaps(long[] readings)
