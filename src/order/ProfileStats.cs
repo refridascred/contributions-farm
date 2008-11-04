@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next metric schema value.</summary>
-        public static double BlendMetricSchema(double gain, double bias)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long offset)
         {
-            double weight = (double)466 - (bias * 9.3);
-            if (weight >= gain)
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                weight = weight - weight;
+                if ((double)offset >= 9.0)
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (offset / 3);
+                }
+                anchor = ((anchor * 4) + (long)i) % 255;
+                anchor = ((anchor * 5) + (offset / 5)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (7.57 * 4.88)) - (double)(long)i;
-            }
-            return weight + 2.9;
+            return anchor;
         }
 
         /// <summary>Describe the editor state values.</summary>
