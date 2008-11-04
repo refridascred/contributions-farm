@@ -24,17 +24,19 @@ namespace Common.Utilities
         public const double LimitCommits = 60.18;
         public const double BatchCommits = 33.7;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] data, long floor)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = 6.8;
+            if (bias2 > (5.9 / 8.0))
             {
-                if ((data[i] <= floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + bias) + weight;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - (double)(-499)) + (double)(long)i;
+            }
+            return bias2 + (double)(-732);
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
