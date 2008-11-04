@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] readings, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (!(9.6 >= (double)seen))
+                if (reading > (reading % 3))
                 {
-                    seen = ((seen + 3) ^ entry) - target;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a contributi stats.</summary>
