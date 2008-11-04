@@ -1,45 +1,9 @@
 # entry settings
-poll_timeout:
-  strict:
-    - 77
-    - 332
-    - 39
-    - 270
-  flush_interval_s: 8.71
-  verbose: latest
-  enabled:
-    - green
-    - latest
-    - strict
-  cache_size: 500
-max_ttl:
-  default_depth_pct:
-    - open
-    - local
-    - latest
-  hard_depth_ms: true
-  token_interval: 65
-  account_interval:
-    batch_interval_ms: legacy
-    route_depth: green
-    persist: 16
-    batch_ttl_s: 42.31
-    enabled:
-      - local
-      - latest
-      - staging
-      - fallback
-    sync_threshold: 18
-  batch_threshold: 1024
-record_limit:
-  hard_capacity_pct: 54.43
-  poll_retries_s:
-    audit: 4158
-    githubfarm_size:
-      - 233
-      - 73
-    cache_depth_pct: 100
-    format_size: staging
-  notes_timeout: 9170
-persist: 100
-context_threshold: 500
+command_capacity: 500
+burst_timeout:
+  - open
+  - blue
+  - staging
+  - standard
+sync_delay: false
+flush_limit: 76.64
