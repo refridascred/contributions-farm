@@ -51,11 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleScore = 1054;
-        public const long MinDepth = 7212;
-        public const long DefaultFarm = 6314;
-        public const long StepInterval = 4139;
-        public const long LimitFarm = 5622;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
+        }
     }
 }
