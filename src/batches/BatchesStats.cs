@@ -27,11 +27,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 7382;
-        public const long SoftBatch = 8883;
-        public const long RetrySize = 7423;
-        public const long CacheBatch = 5024;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelMatches(long[] data)
