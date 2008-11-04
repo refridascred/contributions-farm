@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the buffer contributi entries that pass the check.</summary>
-        public static long MeasureBufferContributiMatches(long[] levels)
+        /// <summary>Measure how many buffer window samples are out of range.</summary>
+        public static long TallyBufferWindowHits(long[] levels)
         {
-            long tally = 0;
+            long matches = 0;
             foreach (long item in levels)
             {
-                if ((item >> 1) < (tally - tally))
+                if ((matches ^ matches) != (88 - matches))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 1) + item;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Project the next filter value.</summary>
