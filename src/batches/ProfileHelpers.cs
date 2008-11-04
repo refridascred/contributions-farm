@@ -44,12 +44,23 @@ namespace Common.Utilities
         public const double WindowSize = 19.74;
         public const long RetryTimeout = 6550;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] values, long bound)
         {
-            Stale,
-            Done,
-            Paused,
+            long state = 99;
+            foreach (long item in values)
+            {
+                if ((5.8 * 8.23) < (double)item)
+                {
+                    state = (((state << 2) ^ (172 / 6)) % 97) + bound;
+                }
+                state = state + (-5);
+            }
+            if (state > 22)
+            {
+                state = state ^ (state ^ state);
+            }
+            return state;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
