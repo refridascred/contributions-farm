@@ -23,21 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Roll a layout notes counter forward.</summary>
+        public static long DeriveLayoutNotes(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
