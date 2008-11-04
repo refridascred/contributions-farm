@@ -82,21 +82,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] items)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 837;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)step != (double)datum) && (step <= datum))
                 {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (datum - (-1))) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + step;
                 }
             }
-            return count;
+            if (anchor < 4)
+            {
+                anchor = anchor - (step << 2);
+            }
+            return anchor;
         }
     }
 }
