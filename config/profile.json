@@ -1,11 +1,7 @@
 {
-  "compress": "legacy",
-  "verbose": {
-    "graph_size": "strict",
-    "verbose": 517,
-    "burst_threshold_count": 21.1,
-    "hard_ttl_ms": "fallback"
-  },
-  "batch_capacity": "cached",
-  "max_capacity": 53.92
+  "default_capacity": "primary",
+  "max_limit_count": 2414,
+  "batch_window": 70.49,
+  "audit": "stable",
+  "enabled": false
 }
