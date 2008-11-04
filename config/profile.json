@@ -1,5 +1,6 @@
 {
-  "idle_limit_s": 16,
-  "batch_timeout": "cached",
-  "enabled": 6351
+  "readonly": true,
+  "order_limit": "strict",
+  "audit": 1024,
+  "context_retries": "standard"
 }
