@@ -35,14 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryFarm = 36.87;
+        public const long BaseFarm = 1027;
+        public const string MaxFarm = "local-edge";
+        public const long WindowFarm = 4361;
+        public const string RetryWidth = "cached-1";
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsGaps(long[] readings)
