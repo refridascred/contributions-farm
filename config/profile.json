@@ -1,5 +1,5 @@
 {
-  "context_limit": "blue",
-  "cache_limit": "local",
-  "poll_ratio": 85.2
+  "batch_size": ["staging", "green", "green"],
+  "order_window": 60,
+  "farm_interval": 30.38
 }
