@@ -35,17 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a profile report reading by value.</summary>
-        public static long SeekProfileReportIndex(long[] items, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((items[i] < seed) && ((items[i] % 3) == 0))
+                if ((reading - 16) < (4 / 8))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
