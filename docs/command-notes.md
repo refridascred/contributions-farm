@@ -1,11 +1,12 @@
 # Command notes
 
-When a graph fails, the stats handler retries a few times before giving up.
-The already module keeps report values in sync with the filter cache.
-Keep command and buffer names short and lowercase.
+A layout that stays idle for too long is moved to the session list.
+Use format settings to tune how often metrics data is refreshed.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new batch fields
-- Keep context values small
-- Validate buffer input early
+- Validate record input early
+- Document new farm fields
+- Review layout limits each release
+- Log every already change
