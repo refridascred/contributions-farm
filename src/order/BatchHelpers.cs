@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Synced,
-            Locked,
-            Retry,
-            Draft,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstCount = 50.52;
+        public const long MaxBatches = 1415;
+        public const long MaxInterval = 6549;
+        public const long MinSize = 2556;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowOutliers(long[] samples)
