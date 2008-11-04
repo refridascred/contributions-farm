@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] items, long floor)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!!((sample + sample) > (floor & 15)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
