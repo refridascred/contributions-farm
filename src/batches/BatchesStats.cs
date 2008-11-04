@@ -28,11 +28,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double ratio, double bias)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            double load = bias / 3.0;
-            return (load - bias) + ratio;
+            long total = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Rank graph checks input into a small class.</summary>
