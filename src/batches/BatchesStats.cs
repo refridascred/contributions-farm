@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context channel entries that pass the check.</summary>
-        public static long CountContextChannelMatches(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)floor >= (8.31 / 4.0))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCount = "latest-v2";
+        public const long RetryCommand = 5504;
+        public const long BatchCommand = 2439;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long MeasureFilterGaps(long[] data, long floor)
