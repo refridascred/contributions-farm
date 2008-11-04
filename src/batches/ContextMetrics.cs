@@ -29,17 +29,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] series, long bound)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] series)
         {
+            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] == bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a batches options.</summary>
