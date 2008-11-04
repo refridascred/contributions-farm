@@ -43,18 +43,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] values, long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long floor, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long gap = floor - limit;
+            if ((gap * 3) == (limit + (-88)))
             {
-                if (11.0 <= (double)entry)
+                return 0;
+            }
+            else
+            {
+                if ((limit + gap) == (gap >> 2))
                 {
-                    count = (count + 2) - limit;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
