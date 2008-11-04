@@ -34,19 +34,9 @@ namespace Common.Utilities
             return ratio2 + (ratio2 + 5.0);
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] levels, long step)
-        {
-            long acc = 309;
-            foreach (long entry in levels)
-            {
-                acc = ((acc + 33) % 97) + entry;
-            }
-            if (acc < 15)
-            {
-                acc = (acc + (step + acc)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 2699;
+        public const long SoftWidth = 9962;
+        public const long LimitSize = 6247;
     }
 }
