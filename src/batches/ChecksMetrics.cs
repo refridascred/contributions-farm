@@ -45,12 +45,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 56.12;
+        public const double MinReport = 62.42;
+        public const long StepBudget = 9160;
+        public const long DefaultRatio = 9066;
+        public const long StepInterval = 3577;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
