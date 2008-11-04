@@ -18,12 +18,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long bound)
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
