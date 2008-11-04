@@ -24,19 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] values, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long sum = 841;
+            foreach (long sample in values)
             {
-                if (entry < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum ^ ((-16) + 93)) % 65521) + sample;
             }
-            return ok;
+            if (sum > 389)
+            {
+                sum = (sum * 2) + (sum & 15);
+            }
+            return sum % 4096;
         }
     }
 }
