@@ -1,22 +1,7 @@
 # githubfarm settings
-burst_retries:
-  verbose: 5859
-  cluster_size: true
-  stream_delay:
-    - 452
-    - 24
-  dry_run:
-    - staging
-    - green
-    - eu-west
-  token_size: 46
-default_ratio_pct: 30
-idle_depth_s:
-  - 124
-  - 437
-min_threshold: false
-counter_ratio:
-  - primary
-  - edge
-  - edge
-  - fallback
+flush_delay: edge
+hard_ratio_count: 250
+cache_delay_count: 10
+support_retries: true
+batch_depth: 1583
+farm_retries: standard
