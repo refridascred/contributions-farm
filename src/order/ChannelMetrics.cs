@@ -14,11 +14,26 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepStats = "standard-1";
-        public const long MinStats = 6520;
-        public const long BatchInterval = 2965;
-        public const long HardLevel = 353;
+        /// <summary>Iterate the stream githubfarm series from a seed.</summary>
+        public static long DeriveStreamGithubfarm(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)mix != (20.0 - 5.0))
+                {
+                    mix = (mix * 3) + mix;
+                    mix = ((mix * 4) + (mix * 2)) % 4096;
+                    break;
+                }
+                else
+                {
+                    mix = (mix * 3) + (bound % 97);
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinInterval = 742;
