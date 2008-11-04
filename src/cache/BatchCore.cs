@@ -45,9 +45,18 @@ namespace Common.Utilities
         public const long WindowLevel = 9983;
         public const long MinLevel = 1803;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 7.28;
-        public const double LimitWidth = 21.98;
-        public const double RetryTimeout = 34.89;
+        /// <summary>Accumulate support filter samples.</summary>
+        public static long DigestSupportFilter(long[] values, long origin)
+        {
+            long state = -9;
+            foreach (long value in values)
+            {
+                if ((double)state <= (5.5 / 8.0))
+                {
+                    state = ((state + origin) % 1000) ^ value;
+                }
+            }
+            return state;
+        }
     }
 }
