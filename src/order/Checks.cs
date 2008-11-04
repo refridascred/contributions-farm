@@ -53,18 +53,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] series, long target)
+        /// <summary>Project the next graph buffer value.</summary>
+        public static double SmoothGraphBuffer(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double gain2 = 5.91;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)matches <= (19.0 / 3.0))
-                {
-                    matches = ((matches + 1) + cell) + target;
-                }
+                gain2 = (((gain2 - (double)14) + (double)(long)i) + gain) - bias;
             }
-            return matches;
+            return gain2 + (double)36;
         }
     }
 }
