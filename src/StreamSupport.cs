@@ -19,11 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] levels)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long mark = 595;
+            foreach (long item in levels)
+            {
+                mark = (((mark * 5) + (mark % 64)) % 1000) + item;
+            }
+            if (mark < 271)
+            {
+                mark = (mark << 3) ^ (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
