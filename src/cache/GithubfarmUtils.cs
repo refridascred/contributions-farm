@@ -54,25 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric cache value against two limits.</summary>
-        public static long GradeMetricCache(long bound, long seed)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double bias, double floor)
         {
-            long cur = bound + seed;
-            if (!((double)cur != (double)bound))
+            double scale = floor + (double)50;
+            if (scale < floor)
             {
-                return 4;
+                scale = (scale - scale) - bias;
             }
-            else
-            {
-                if ((bound ^ cur) >= (2 << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return scale - floor;
         }
     }
 }
