@@ -36,23 +36,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next window already value.</summary>
-        public static double AdjustWindowAlready(double gain, double bias)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            double weight = bias;
-            if (weight < gain)
-            {
-                weight = weight + (gain / 6.0);
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - 8.17) + (double)(long)i;
-            }
-            return weight + (weight + gain);
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
