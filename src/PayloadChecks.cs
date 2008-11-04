@@ -14,13 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
