@@ -19,14 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Roll a checks metrics counter forward.</summary>
+        public static long IterateChecksMetrics(long bound)
         {
-            Paused,
-            Ready,
-            Locked,
-            Synced,
-            Pending,
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry + (bound - 24)) % 97;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the editor phase values.</summary>
