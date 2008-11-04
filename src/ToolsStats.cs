@@ -20,39 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a queue route value against two limits.</summary>
-        public static long GradeQueueRoute(long origin, long bound)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            long gap = origin ^ bound;
-            if ((double)gap == (double)748)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin != (double)33)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((-18) >= gap)
+                    if ((series[i] - series[j]) < 8)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin <= (gap & 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
