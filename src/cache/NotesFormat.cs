@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] levels, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long seed, long limit)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long lane = seed - limit;
+            if ((seed + lane) == (lane * 3))
             {
-                if (entry > target)
+                return 1;
+            }
+            else
+            {
+                if (!((double)limit == (9.0 / 9.0)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((lane * 3) >= (lane % 100))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((8.84 > (double)lane) && (limit >= (limit ^ limit)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
