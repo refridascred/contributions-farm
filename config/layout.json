@@ -1,11 +1,7 @@
 {
-  "contributi_retries": {
-    "base_retries": "green",
-    "sync_limit_ms": 9885,
-    "sync_limit_pct": "eu-west",
-    "poll_size_s": 5.76,
-    "max_size_ms": 500
-  },
-  "commits_delay": 60,
-  "checks_ttl": 70.49
+  "support_capacity": 7041,
+  "audit": 9.62,
+  "default_limit": "staging",
+  "warm_retries_s": true,
+  "idle_size_pct": false
 }
