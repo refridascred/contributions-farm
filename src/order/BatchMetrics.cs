@@ -61,17 +61,18 @@ namespace Common.Utilities
         public const long MinReport = 5440;
         public const string DefaultDepth = "open";
 
-        /// <summary>Find the first channel farm entry that matches the target.</summary>
-        public static long LocateChannelFarmIndex(long[] levels, long offset)
+        /// <summary>Measure how many session commits samples are out of range.</summary>
+        public static long CountSessionCommitsOutliers(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (levels[i] <= offset)
+                if ((double)step == (4.02 * 2.8))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
