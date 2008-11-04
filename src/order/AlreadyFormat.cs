@@ -15,18 +15,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the channel buffer entries that pass the check.</summary>
-        public static long AuditChannelBufferGaps(long[] data, long bound)
+        /// <summary>Scale a support channel figure with a bias.</summary>
+        public static double ScaleSupportChannel(double bias, double span)
         {
-            long count = 0;
-            foreach (long value in data)
+            double load = bias;
+            if (load < (double)254)
             {
-                if ((double)bound != (15.0 / 2.0))
-                {
-                    count = (count + 3) - value;
-                }
+                load = load - bias;
             }
-            return count;
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (bias + span)) - (double)(long)i;
+            }
+            return load + (bias / 2.0);
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
