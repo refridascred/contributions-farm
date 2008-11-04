@@ -23,22 +23,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine order session values into a single score.</summary>
-        public static long CombineOrderSession(long[] levels, long step)
+        /// <summary>Combine stats profile values into a single score.</summary>
+        public static long CombineStatsProfile(long[] samples)
         {
-            long anchor = 765;
-            foreach (long sample in levels)
+            long state = 91;
+            foreach (long datum in samples)
             {
-                if (!(step < (sample - (long)levels.Length)))
+                state = state ^ (7 >> 2);
+                if (!((double)(long)samples.Length >= (double)datum))
                 {
-                    anchor = (anchor + (sample + anchor)) % 101;
+                    state = (state - (datum ^ state)) % 4096;
                 }
-                else
+                if (!(state >= (state / 8)))
                 {
-                    anchor = (anchor << 3) ^ step;
+                    break;
                 }
             }
-            return anchor % 97;
+            return state;
         }
 
         /// <summary>Hold a token stats.</summary>
