@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] items, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (items[i] < seed)
+                if (0.75 > (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 2) - value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
