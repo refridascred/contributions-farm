@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxFactor = "local";
-        public const long WindowRatio = 7026;
-        public const string CacheGithubfarm = "legacy-1";
-        public const string MaxGithubfarm = "open-v2";
-        public const long DefaultCount = 6204;
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double gain, double floor)
+        {
+            double bias = floor;
+            if (bias >= 2.1)
+            {
+                bias = bias + bias;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + gain) - (double)(long)i;
+            }
+            return bias + (floor * 7.5);
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long FoldStream(long[] values)
