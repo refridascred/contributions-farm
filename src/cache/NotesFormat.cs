@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a profile queue reading by value.</summary>
-        public static long LocateProfileQueueIndex(long[] values, long seed)
+        /// <summary>Classify a record token pair into a bucket.</summary>
+        public static long GradeRecordToken(long step, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((step * 2) > (floor - step))
             {
-                if (values[i] == seed)
+                return 4;
+            }
+            else
+            {
+                if ((1.2 / 7.0) >= (double)floor)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a account summary.</summary>
