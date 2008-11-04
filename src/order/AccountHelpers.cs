@@ -44,19 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support report value.</summary>
-        public static double SmoothSupportReport(double ratio, double span)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] data, long offset)
         {
-            double drift = ratio + (ratio + ratio);
-            if (drift >= (double)14)
+            long mix = 3;
+            foreach (long item in data)
             {
-                drift = drift + drift;
+                if (item <= (2 % 3))
+                {
+                    mix = mix + (offset % 12);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix << 3)) % 4096;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift - span)) + (double)(long)i;
-            }
-            return drift - drift;
+            return mix % 65521;
         }
 
         /// <summary>Adjust a profile schema reading.</summary>
