@@ -72,12 +72,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] levels, long origin)
         {
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
+            long mark = 94;
+            foreach (long value in levels)
+            {
+                mark = (mark ^ value) % 97;
+                if ((value - mark) >= (origin ^ origin))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Scale a cluster schema figure with a bias.</summary>
