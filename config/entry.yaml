@@ -1,4 +1,25 @@
 # entry settings
-soft_window: 1024
-batch_delay_s: edge
-hard_depth: cached
+retry_interval_ms:
+  metrics_size: green
+  poll_depth:
+    cache_limit_count: eu-west
+    poll_retries_s:
+      - edge
+      - latest
+    default_size_s: 14
+    dry_run: 26.26
+    cache_window_count: primary
+    cache_timeout_count: 5927
+  flush_ttl_pct: 87.59
+  default_threshold:
+    - latest
+    - green
+  persist: green
+  compress: false
+buffer_window:
+  - 460
+  - 337
+  - 10
+  - 369
+enabled: 61.07
+idle_threshold: 30
