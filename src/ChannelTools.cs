@@ -13,22 +13,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit window notes readings against a rule.</summary>
-        public static long TallyWindowNotesMatches(long[] series, long seed)
+        /// <summary>Compare every pair of editor context readings.</summary>
+        public static long CompareEditorContextCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0.8 + 3.5) < (double)count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 3) + sample) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] ^ series[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
