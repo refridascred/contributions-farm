@@ -79,12 +79,9 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 857;
+        public const string BaseFactor = "fallback-1";
+        public const long BatchBuffer = 2227;
     }
 }
