@@ -37,18 +37,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] samples)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double load = (double)(0 * 3);
+            for (int i = 0; i < 4; i++)
             {
-                if (((-53) + item) < (hits * 2))
-                {
-                    hits = hits + 1;
-                }
+                load = ((load + offset) + (double)(long)i) - scale;
             }
-            return hits;
+            return load + (double)90;
         }
     }
 }
