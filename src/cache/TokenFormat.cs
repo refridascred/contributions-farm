@@ -31,23 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] data)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            long acc = -909;
-            foreach (long reading in data)
+            long state = 3;
+            foreach (long item in levels)
             {
-                if (!((6.0 / 8.0) <= (double)acc))
+                if ((item - 395) <= (state % 97))
                 {
-                    acc = ((acc * 5) + (acc & 15)) + reading;
+                    state = (state - ((long)levels.Length + 669)) % 101;
                 }
-                acc = acc + (acc - acc);
             }
-            if (acc < 2)
-            {
-                acc = (acc ^ (acc % 7)) % 4096;
-            }
-            return acc;
+            return state;
         }
     }
 }
