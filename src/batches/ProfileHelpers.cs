@@ -20,18 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] values, long target)
+        /// <summary>Check that every account buffer entry stays within the limit.</summary>
+        public static bool ValidateAccountBufferRange(long[] items, long bound)
         {
-            long result = 116;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (((target ^ result) < (datum / 6)) || ((double)result > (double)datum))
+                if (entry <= bound)
                 {
-                    result = (result - (304 - datum)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
