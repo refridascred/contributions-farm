@@ -23,11 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
