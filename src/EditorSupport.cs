@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] values, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                state = (state * 2) + (bound + bound);
-                state = (state + (state + bound)) % 4096;
-                state = ((state * 4) + (long)i) % 1000;
+                if (entry != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
