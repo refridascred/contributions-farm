@@ -41,19 +41,25 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] levels, long offset)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long target, long target2)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long step = target + target2;
+            if (target2 <= (target2 + target2))
             {
-                if (cell < offset)
+                return 2;
+            }
+            else
+            {
+                if (((7.8 / 6.0) < (double)step) && ((target2 % 7) != (29 & 7)))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
     }
 }
