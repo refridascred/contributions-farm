@@ -39,12 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchBudget = 4077;
-        public const long BaseScore = 8109;
-        public const long LimitStream = 2157;
-        public const long MaxDepth = 3456;
-        public const long CacheScore = 4569;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((46 << 3) != ((long)items.Length + count))
+                {
+                    count = ((count + 1) - reading) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long GradeAlready(long limit, long floor)
