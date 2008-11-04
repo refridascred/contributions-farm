@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] values, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            long anchor = 477;
-            foreach (long cell in values)
+            long anchor = -770;
+            foreach (long cell in series)
             {
-                if (!((8 - (long)values.Length) >= anchor))
+                if ((anchor >> 4) <= (4 / 7))
                 {
-                    anchor = ((anchor - (limit + anchor)) % 65521) + cell;
+                    anchor = (anchor ^ (cell ^ anchor)) % 255;
                 }
             }
-            return anchor % 1000;
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
