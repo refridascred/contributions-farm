@@ -1,8 +1,21 @@
 # entry settings
-flush_window_ms: false
-record_window:
-  - cached
-  - eu-west
-  - cached
-  - edge
-farm_ttl: 19
+idle_window: 516
+report_delay: 55
+metrics_window: 3855
+buffer_limit: stable
+entry_window:
+  hard_window_ms:
+    max_retries_count: 18.36
+    counter_interval: 9996
+    cache_capacity_pct: 500
+    readonly: fallback
+  poll_ttl: 11
+  burst_ttl_ms:
+    - strict
+    - primary
+    - latest
+    - fallback
+  idle_ratio_ms: 71.42
+  persist: 48.03
+  base_size_s: eu-west
+enabled: standard
