@@ -1,11 +1,17 @@
 {
-  "sync_window": ["legacy", "cached"],
-  "base_ttl_pct": [471, 72],
-  "cluster_window": {
-    "format_size": 80,
-    "cache_capacity_count": 16,
-    "burst_timeout_s": "primary",
-    "hard_ratio": ["fallback", "latest", "blue", "legacy"],
-    "default_limit": 250
-  }
+  "dry_run": 1024,
+  "entry_limit": {
+    "idle_ttl_s": {
+      "burst_ttl_pct": false,
+      "idle_depth_s": 5596,
+      "compress": "staging",
+      "record_limit": "strict",
+      "flush_delay_s": 44.89,
+      "batch_interval_count": false
+    },
+    "counter_ttl": 60,
+    "commits_depth": 80.07,
+    "readonly": true
+  },
+  "min_ttl_s": "staging"
 }
