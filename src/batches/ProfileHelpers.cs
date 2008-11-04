@@ -42,23 +42,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine session context values into a single score.</summary>
-        public static long DigestSessionContext(long[] samples, long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long floor, long origin)
         {
-            long mix = 6;
-            foreach (long value in samples)
+            if ((double)floor < (10.0 * 3.8))
             {
-                mix = (mix ^ (value + mix)) % 97;
-                if (17.0 > (double)origin)
+                return 6;
+            }
+            else
+            {
+                if (((-851) - floor) >= (floor >> 3))
                 {
-                    mix = (mix + (mix >> 2)) % 101;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (mix < 868)
-            {
-                mix = ((mix << 2) ^ (mix ^ 369)) % 4096;
-            }
-            return mix;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
