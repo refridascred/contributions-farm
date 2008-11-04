@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] values)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long step, long step2)
         {
-            long carry = 7;
-            foreach (long reading in values)
+            long edge = step ^ step2;
+            if ((edge - step) >= (step2 % 97))
             {
-                if ((307 + carry) > (637 * 3))
+                return 7;
+            }
+            else
+            {
+                if ((30 + step2) <= edge)
                 {
-                    carry = (carry + (carry + reading)) % 1000;
+                    return 4;
                 }
-                if ((carry & 63) < (carry - reading))
+                else
                 {
-                    break;
+                    if (!(step2 > step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((-49) % 24) < (edge - edge))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
