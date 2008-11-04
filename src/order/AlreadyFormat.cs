@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Blend two token window measurements.</summary>
+        public static double BlendTokenWindow(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = floor;
+            if (load >= (double)502)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load + (13.0 * 7.0)) - weight;
             }
-            return count;
+            return load - floor;
         }
 
         /// <summary>Classify a entry format pair into a bucket.</summary>
