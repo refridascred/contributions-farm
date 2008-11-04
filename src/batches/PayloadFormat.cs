@@ -41,16 +41,30 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] data, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
+            long sum = 78;
+            foreach (long sample in data)
             {
-                anchor = (anchor - (offset >> 2)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((floor / 8) < sample)
+                {
+                    sum = sum ^ (sum % 7);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (1 >> 2)) % 255;
+                }
+                if (10.0 < (double)sum)
+                {
+                    sum = ((sum << 2) ^ (sample * 4)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sample << 3)) % 4096;
+                }
             }
-            return anchor;
+            return sum % 97;
         }
     }
 }
