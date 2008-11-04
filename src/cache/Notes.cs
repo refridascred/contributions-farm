@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchRatio = "strict-1";
-        public const long MaxSize = 9622;
-        public const string LimitSpan = "fallback";
-        public const string IdleLevel = "fallback-v2";
-        public const double BatchContributi = 41.95;
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double rate, double floor)
+        {
+            double rate2 = floor / 6.0;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + floor;
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
