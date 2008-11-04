@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long bound, long bound2)
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public double Mode { get; set; }
+            long slot = bound ^ bound2;
+            if ((slot * 2) <= (bound2 / 6))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((9.53 * 3.5) >= (double)bound) || ((slot & 7) == (bound / 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((10.0 / 6.0) > (double)bound2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(bound2 <= slot))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a account window reading by value.</summary>
