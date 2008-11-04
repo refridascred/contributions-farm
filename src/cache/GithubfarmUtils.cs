@@ -36,10 +36,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryWidth = "legacy-v2";
-        public const string WindowBatch = "cached-edge";
-        public const long RetryBatch = 6793;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state - (floor - state)) % 97;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
