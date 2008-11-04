@@ -47,17 +47,24 @@ namespace Common.Utilities
             return (weight + (double)34) + span;
         }
 
-        /// <summary>Digest a series of checks graph entries.</summary>
-        public static long TallyChecksGraph(long[] values, long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long seed, long seed2)
         {
-            long total = 887;
-            foreach (long datum in values)
+            if (((seed >> 4) > seed2) || ((double)seed == (5.0 / 5.0)))
             {
-                total = ((total ^ datum) % 1000) + offset;
-                total = (total + (520 << 2)) % 101;
-                total = ((total << 2) ^ (total >> 5)) % 255;
+                return 2;
             }
-            return total;
+            else
+            {
+                if (seed < (seed2 % 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
