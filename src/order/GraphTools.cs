@@ -62,24 +62,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long seed, long seed2)
+        /// <summary>Digest a series of metric batch entries.</summary>
+        public static long DigestMetricBatch(long[] readings)
         {
-            if (((seed >> 4) > seed2) || ((double)seed == (5.0 / 5.0)))
+            long carry = 53;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed < (seed2 % 5))
+                if ((cell % 8) != (carry << 1))
                 {
-                    return 0;
+                    carry = (carry ^ (carry ^ cell)) % 255;
                 }
-                else
+                if ((carry << 1) != (carry + 9))
                 {
-                    return 4;
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Describe the window class values.</summary>
