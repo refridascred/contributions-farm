@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 8401;
-        public const long MaxWidth = 7957;
-        public const long BurstWidth = 1707;
+        /// <summary>Measure how many farm profile samples are out of range.</summary>
+        public static long CountFarmProfileMatches(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((double)tally >= (0.1 / 9.0))
+                {
+                    tally = ((tally + 1) - value) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
