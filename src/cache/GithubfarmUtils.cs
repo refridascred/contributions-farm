@@ -20,21 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                long tally = (offset + anchor) >> 2;
-                if (!((offset + tally) == (offset + (long)i)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    anchor = ((anchor * 2) + (anchor * 5)) % 97;
+                    mix = (mix - 141) ^ (long)i2;
+                    mix = (mix * 4) + mix;
                 }
-                tally = ((tally << 2) ^ (offset + 29)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                mix = (mix - (long)i) % 4096;
+                mix = (mix << 3) ^ (3 ^ 29);
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Hold a stats stats.</summary>
