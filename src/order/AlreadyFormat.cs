@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two token window measurements.</summary>
-        public static double BlendTokenWindow(double weight, double floor)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double load = floor;
-            if (load >= (double)502)
-            {
-                load = (load + (13.0 * 7.0)) - weight;
-            }
-            return load - floor;
+            Retry,
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Classify a entry format pair into a bucket.</summary>
