@@ -1,6 +1,10 @@
-id,score,region,owner,rank
-1,74.92,16.45,53.26,fallback
-2,153,standard,open,39.98
-3,staging,64.37,906,44.84
-4,431,87.13,548,11
-5,67.27,8.1,305,680
+id,owner,token,level,score
+1,727,80.64,green,2.46
+2,98.19,21.95,66.9,local
+3,73.15,primary,448,993
+4,standard,strict,30.95,24.38
+5,28.66,360,latest,517
+6,71.49,5.42,337,514
+7,51.67,13.91,cached,406
+8,open,2.27,950,194
+9,327,182,850,edge
