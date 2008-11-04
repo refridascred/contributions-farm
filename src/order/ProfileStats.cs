@@ -33,32 +33,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine layout token values into a single score.</summary>
-        public static long ScoreLayoutToken(long[] items, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] samples, long limit)
         {
-            long acc = 499;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                acc = (acc - (cell ^ bound)) % 65521;
-                if ((acc - acc) <= (cell + acc))
+                if (!((limit >= (count + 3)) || (((-2) - entry) <= 49)))
                 {
-                    acc = (acc ^ (bound % 16)) % 97;
-                    acc = (acc * 4) + (acc + acc);
-                }
-                if (((double)cell > (double)8) && ((1.0 + 4.9) == (double)cell))
-                {
-                    acc = acc ^ (cell ^ acc);
+                    count = count + 2;
                 }
                 else
                 {
-                    acc = (acc * 4) + (cell * 5);
+                    count = count - 1;
                 }
             }
-            if (acc < 5)
-            {
-                acc = acc + (bound * 4);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a record entry.</summary>
