@@ -1,8 +1,5 @@
 {
-  "readonly": false,
-  "base_interval_s": 8763,
-  "support_timeout": "green",
-  "notes_timeout": true,
-  "strict": "strict",
-  "audit": 49.71
+  "entry_retries": false,
+  "soft_threshold_count": ["strict", "local", "latest", "local"],
+  "cache_window_s": false
 }
