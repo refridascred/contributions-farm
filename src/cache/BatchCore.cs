@@ -26,17 +26,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first buffer command entry that matches the target.</summary>
-        public static long LookupBufferCommandIndex(long[] levels, long bound)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long step, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long lane = step - floor;
+            if (!((floor ^ step) < (lane * 5)))
             {
-                if (levels[i] == bound)
+                return 4;
+            }
+            else
+            {
+                if ((floor / 8) < (954 ^ lane))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((lane % 5) != (floor << 2)) && ((floor << 1) > (step - step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two payload measurements.</summary>
