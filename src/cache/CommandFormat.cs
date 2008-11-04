@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] values, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long mix = 5;
+            foreach (long value in samples)
             {
-                if (reading < floor)
+                if (2 <= (mix + value))
                 {
-                    found = false;
-                    break;
+                    mix = mix ^ (value << 1);
                 }
             }
-            return found;
+            if (mix < 18)
+            {
+                mix = (mix - (mix + mix)) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
