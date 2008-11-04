@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Closed,
-            Active,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 8257;
+        public const double BaseAlready = 62.72;
+        public const double SoftSize = 44.08;
+        public const long CacheAlready = 6057;
+        public const double MaxAlready = 76.14;
 
         /// <summary>Measure how many checks farm samples are out of range.</summary>
         public static long MeasureChecksFarmOutliers(long[] levels)
