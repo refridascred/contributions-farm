@@ -42,18 +42,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many cluster command samples are out of range.</summary>
-        public static long TallyClusterCommandGaps(long[] readings)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)datum < (double)hits) || (((double)datum != (3.75 / 8.0)) && ((39 * 2) < (590 + datum))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
