@@ -48,21 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of buffer record readings.</summary>
-        public static long MatchBufferRecordCount(long[] samples)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((bound - value) >= hits) && ((bound + 70) != (hits + bound)))
                 {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the report kind values.</summary>
