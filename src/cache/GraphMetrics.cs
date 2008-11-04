@@ -53,13 +53,18 @@ namespace Common.Utilities
         public const long RetryFactor = 5353;
         public const long HardFilter = 4129;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (((item + item) == (item & 255)) || (3.9 < (double)count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of report entries.</summary>
