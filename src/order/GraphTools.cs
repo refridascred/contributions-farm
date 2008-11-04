@@ -44,16 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            long sum = 6;
+            foreach (long item in samples)
             {
-                result = (result ^ (-982)) % 4096;
-                result = ((result * 3) + (long)i) % 101;
+                if ((double)sum > 5.28)
+                {
+                    sum = sum + (item + item);
+                }
+                if (item > 31)
+                {
+                    break;
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
