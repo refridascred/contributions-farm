@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryInterval = 4570;
-        public const string IdleOrder = "strict-1";
-        public const double StepOrder = 53.67;
-        public const long LimitRatio = 6775;
-        public const long HardRatio = 9583;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Queued,
+            Draft,
+            Closed,
+            Idle,
+            New,
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
