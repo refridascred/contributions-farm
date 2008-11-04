@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
+            Failed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Match up metric samples.</summary>
