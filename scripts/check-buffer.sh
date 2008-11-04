@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=423
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in blue eu-west cached latest; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=116
+log "limit is ${BUFFER_LIMIT}"
