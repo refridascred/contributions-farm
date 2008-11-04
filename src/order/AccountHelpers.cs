@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] samples)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 1000;
-                total = ((total * 2) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Combine batches support values into a single score.</summary>
