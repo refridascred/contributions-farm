@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] items, long target)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine layout window values into a single score.</summary>
