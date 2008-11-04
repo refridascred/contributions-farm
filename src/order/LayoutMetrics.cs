@@ -35,22 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cache order samples are out of range.</summary>
-        public static long CountCacheOrderHits(long[] items)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((71 - hits) >= item)
+                if (sample >= step)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
