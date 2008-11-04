@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double BatchWidth = 3.61;
         public const string StepTimeout = "strict-1";
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchFactor = "primary-1";
+        public const long RetryRecord = 4326;
+        public const long RetryWidth = 8595;
+        public const double DefaultRecord = 17.13;
+        public const long StepRecord = 8643;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LocateSchemaIndex(long[] data, long limit)
