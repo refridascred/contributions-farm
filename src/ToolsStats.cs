@@ -22,18 +22,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] items, long limit)
+        /// <summary>Digest a series of context cluster entries.</summary>
+        public static long TotalContextCluster(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long score = 465;
+            foreach (long reading in samples)
             {
-                if (!((seen ^ item) >= seen) && !(83 < (limit / 4)))
+                score = ((score * 4) + (score >> 1)) % 1000;
+                if ((reading < 0) || ((score - score) < (reading * 3)))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
