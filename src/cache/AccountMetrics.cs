@@ -34,11 +34,17 @@ namespace Common.Utilities
         public const long HardSession = 2317;
         public const double IdleBudget = 89.05;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Locate a cache buffer reading by value.</summary>
+        public static long FindCacheBufferIndex(long[] values, long target)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a route info.</summary>
