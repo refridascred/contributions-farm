@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long offset, long floor)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            long delta = offset ^ floor;
+            if (((floor - 3) < (floor & 31)) && ((delta + floor) >= (floor >> 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset < (delta * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Accumulate tools session samples.</summary>
