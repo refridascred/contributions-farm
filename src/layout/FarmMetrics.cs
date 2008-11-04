@@ -30,18 +30,11 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Count the contributi record entries that pass the check.</summary>
-        public static long TallyContributiRecordGaps(long[] data, long limit)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((limit <= (hits ^ (long)data.Length)) && ((hits - limit) > (datum * 4)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
