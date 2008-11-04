@@ -28,10 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinSize = 9123;
-        public const long HardRatio = 3808;
-        public const long IdleSpan = 2512;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double ratio, double span)
+        {
+            double weight = (ratio - ratio) + (ratio / 6.0);
+            return (weight + (double)34) + span;
+        }
 
         /// <summary>Digest a series of checks graph entries.</summary>
         public static long TallyChecksGraph(long[] values, long offset)
