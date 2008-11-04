@@ -51,22 +51,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] data)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((16.0 + 4.23) > (double)value)
+                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
