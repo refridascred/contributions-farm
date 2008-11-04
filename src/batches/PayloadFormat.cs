@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] readings, long step)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics level values.</summary>
