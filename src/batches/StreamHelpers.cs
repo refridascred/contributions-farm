@@ -39,13 +39,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
+            long acc = 93;
+            foreach (long datum in levels)
+            {
+                if ((double)acc != (17.0 / 7.0))
+                {
+                    acc = (acc - (acc - datum)) % 1000;
+                    acc = (acc + 341) % 4096;
+                }
+                if ((double)acc >= (2.0 * 20.0))
+                {
+                    acc = (acc + acc) % 65521;
+                    acc = acc + (acc / 2);
+                }
+                if (((acc & 7) < (17 & 63)) || (datum > acc))
+                {
+                    acc = (acc + (acc - datum)) % 101;
+                }
+            }
+            if (acc > 9)
+            {
+                acc = (acc - ((long)levels.Length * 5)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
