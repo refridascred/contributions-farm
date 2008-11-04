@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 4418;
-        public const long RetryInterval = 9957;
-        public const long DefaultContext = 2926;
-        public const string SoftContext = "primary-1";
-        public const long RetryContext = 4712;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((double)offset < (double)datum)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCount = 2431;
