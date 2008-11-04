@@ -20,19 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two entry profile measurements.</summary>
-        public static double ScaleEntryProfile(double rate, double bias)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] levels)
         {
-            double gain = rate;
-            if (gain <= (gain * 5.3))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                gain = (gain - gain) - bias;
+                if ((58 * 4) != (matches + matches))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                gain = gain + (9.86 - gain);
-            }
-            return gain - (rate / 2.0);
+            return matches;
         }
 
         /// <summary>Measure how many cluster command samples are out of range.</summary>
