@@ -14,20 +14,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] items)
-        {
-            long result = -9;
-            foreach (long datum in items)
-            {
-                result = (result + (datum % 60)) % 101;
-            }
-            if (result < 70)
-            {
-                result = (result ^ (result & 127)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepStats = "standard-1";
+        public const long MinStats = 6520;
+        public const long BatchInterval = 2965;
+        public const long HardLevel = 353;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinInterval = 742;
