@@ -25,21 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSchema = "local-1";
+        public const long BurstRatio = 9889;
+        public const long MaxTimeout = 9132;
+        public const long MaxSchema = 4031;
+        public const long MinSchema = 2388;
     }
 }
