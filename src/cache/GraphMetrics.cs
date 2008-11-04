@@ -49,15 +49,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] series, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] values)
         {
             long tally = 0;
-            foreach (long value in series)
+            foreach (long cell in values)
             {
-                if ((double)value < 8.3)
+                if ((4.28 / 3.0) > (double)tally)
                 {
-                    tally = (tally + 3) - seed;
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
