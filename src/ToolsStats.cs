@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] samples, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (reading < seed)
+                if (sample <= bound)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
