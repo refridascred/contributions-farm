@@ -51,22 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] values)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (seen >= (reading + reading))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a stream stats.</summary>
