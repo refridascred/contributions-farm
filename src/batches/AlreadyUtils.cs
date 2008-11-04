@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Count the record batch entries that pass the check.</summary>
+        public static long MeasureRecordBatchHits(long[] series)
         {
-            long score = -54;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in series)
             {
-                score = (((score * 2) + (-3)) % 65521) + reading;
+                if ((datum & 63) < count)
+                {
+                    count = count + 1;
+                }
             }
-            if (score > 987)
-            {
-                score = (score + (score - score)) % 1000;
-            }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Fold a list of farm graph readings.</summary>
