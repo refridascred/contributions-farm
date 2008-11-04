@@ -58,17 +58,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheToken = 64.97;
+        public const double BatchRatio = 7.56;
+        public const long RetryTimeout = 5143;
+        public const long SoftCount = 7433;
     }
 }
