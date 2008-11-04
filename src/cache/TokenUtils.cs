@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] data, long offset)
+        /// <summary>Grade a buffer cache value against two limits.</summary>
+        public static long SortBufferCache(long bound, long limit)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            if ((1.1 * 9.0) != (double)limit)
             {
-                if (reading != offset)
+                return 0;
+            }
+            else
+            {
+                if ((limit % 100) >= bound)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
