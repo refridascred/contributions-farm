@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double BatchWidth = 3.61;
         public const string StepTimeout = "strict-1";
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] data, long step)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < step)
+                if (samples[i] > limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
