@@ -1,6 +1,8 @@
 {
-  "checks_size": "eu-west",
-  "soft_size": "green",
-  "audit": 13.88,
-  "base_window_s": true
+  "hard_retries": 9698,
+  "hard_interval_s": 557,
+  "base_size_ms": 6295,
+  "checks_ttl": "strict",
+  "default_retries_pct": 14.96,
+  "githubfarm_threshold": 100
 }
