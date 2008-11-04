@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const string BurstWidth = "local";
         public const long BurstTools = 5461;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] values)
         {
-            long anchor = 8;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (!((12 / 6) == (anchor % 8)))
+                if ((double)tally == (7.0 / 3.0))
                 {
-                    anchor = ((anchor << 2) ^ reading) % 255;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
