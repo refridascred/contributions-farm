@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBudget = "alpha-1";
-        public const string IdleBatch = "legacy";
-        public const double IdleSpan = 91.61;
-        public const double MaxBatch = 52.69;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] levels, long floor)
+        {
+            long anchor = 2;
+            foreach (long sample in levels)
+            {
+                anchor = ((anchor - (anchor * 2)) ^ sample) - floor;
+                if ((38 ^ 786) >= (anchor + 257))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Blend two entry profile measurements.</summary>
         public static double ScaleEntryProfile(double rate, double bias)
