@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] samples, long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long step, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = step + bound;
+            if ((0 >> 1) >= gap)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)7 != (double)gap)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
