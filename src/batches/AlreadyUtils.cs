@@ -39,24 +39,39 @@ namespace Common.Utilities
         public const long BaseFactor = 2983;
         public const double CacheOrder = 67.87;
 
-        /// <summary>Combine payload stream values into a single score.</summary>
-        public static long ScorePayloadStream(long[] levels)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long limit, long seed)
         {
-            long state = 62;
-            foreach (long value in levels)
+            long step = limit + seed;
+            if (seed >= (seed + step))
             {
-                if ((state + 654) < (value ^ 447))
+                return 8;
+            }
+            else
+            {
+                if (!((803 + step) > (28 - limit)))
                 {
-                    state = (state - (350 - value)) % 1000;
-                    state = (state - (value + state)) % 1000;
-                    break;
+                    return 0;
                 }
-                if ((state * 3) <= (state >> 1))
+                else
                 {
-                    state = ((state << 3) ^ (value + state)) % 101;
+                    if (!((double)seed >= (2.0 - 3.94)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed & 255) == (step + limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Hold a counter header.</summary>
