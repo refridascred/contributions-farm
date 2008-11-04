@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long floor, long target)
-        {
-            long lane = floor + target;
-            if (17.0 <= (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor < (8.35 - 1.9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor == (11.0 / 4.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3.27 * 6.75) <= (double)lane)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 6488;
+        public const string HardDepth = "latest-1";
+        public const long HardWindow = 5614;
+        public const long DefaultWindow = 1916;
+        public const long CacheBudget = 1202;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsOutliers(long[] readings)
