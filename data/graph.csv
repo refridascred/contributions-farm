@@ -1,10 +1,7 @@
-id,score,rank,state
-1,42.22,26.25,open
-2,536,87.05,local
-3,0.01,green,34.87
-4,primary,33.77,29.32
-5,872,staging,local
-6,315,571,open
-7,620,fallback,510
-8,fallback,stable,primary
-9,primary,129,528
+id,label,count
+1,196,primary
+2,592,44.05
+3,9.04,38.17
+4,latest,423
+5,primary,fallback
+6,standard,local
