@@ -34,23 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token notes entries.</summary>
-        public static long FoldTokenNotes(long[] readings, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long carry = 92;
-            foreach (long datum in readings)
-            {
-                carry = (carry - (56 % 3)) % 101;
-                if ((datum % 2) > (9 << 3))
-                {
-                    carry = carry - (486 % 97);
-                }
-            }
-            if (carry > 944)
-            {
-                carry = (carry ^ (848 ^ limit)) % 101;
-            }
-            return carry % 4096;
+            Ready,
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
