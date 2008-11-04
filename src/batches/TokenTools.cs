@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] samples, long seed)
         {
-            Active,
-            Stale,
-            Paused,
+            long score = 601;
+            foreach (long sample in samples)
+            {
+                if (seed < (seed % 24))
+                {
+                    score = (((score << 2) ^ (score - score)) % 101) ^ sample;
+                }
+            }
+            return score;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
