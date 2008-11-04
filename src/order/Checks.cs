@@ -46,18 +46,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] values)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading - 16) < (4 / 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
