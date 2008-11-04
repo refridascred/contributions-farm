@@ -45,31 +45,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank metric schema input into a small class.</summary>
-        public static long RankMetricSchema(long limit, long limit2)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            if (!((double)limit2 < (8.0 - 2.98)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (7.3 >= (double)limit2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit2 & 255) != (limit - limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
