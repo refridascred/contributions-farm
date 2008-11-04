@@ -1,11 +1,14 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the cache list.
-Use context settings to tune how often payload data is refreshed.
-The filter module keeps farm values in sync with the report cache.
+The metrics report groups every batches by cluster.
+Run the token check before changing any graph limits.
+
+Run the commits check before changing any graph limits.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review queue limits each release
-- Log every contributi change
-- Prefer stats defaults
+- Keep farm values small
+- Document new counter fields
+- Prefer queue defaults
+- Review entry limits each release
