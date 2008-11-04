@@ -40,10 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 7870;
-        public const long DefaultWindow = 9984;
-        public const long RetryDepth = 2725;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardWidth = 8941;
+        public const double BurstMetrics = 63.42;
+        public const long MinBudget = 9130;
+        public const double StepWidth = 58.01;
+        public const long IdleDepth = 3670;
 
         /// <summary>Count the stream commits entries that pass the check.</summary>
         public static long TallyStreamCommitsGaps(long[] samples)
