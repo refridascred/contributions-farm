@@ -30,11 +30,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double gain, double bias)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] items)
         {
-            double ratio = gain;
-            return ratio + bias;
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((3.6 / 7.0) < (double)value)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
