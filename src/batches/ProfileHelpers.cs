@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a context batches reading by value.</summary>
-        public static long LookupContextBatchesIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "local";
+        public const double MaxTools = 86.82;
+        public const long LimitTools = 8277;
 
         /// <summary>Rank window order input into a small class.</summary>
         public static long BucketWindowOrder(long floor, long floor2)
