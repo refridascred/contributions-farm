@@ -39,18 +39,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data, long floor)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long sum = 122;
-            foreach (long cell in data)
-            {
-                if (!(((-708) / 9) < floor))
-                {
-                    sum = sum ^ (cell >> 3);
-                }
-            }
-            return sum;
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Project the next graph buffer value.</summary>
