@@ -28,19 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] values)
+        /// <summary>Blend two entry profile measurements.</summary>
+        public static double ScaleEntryProfile(double rate, double bias)
         {
-            long state = 2;
-            foreach (long entry in values)
+            double gain = rate;
+            if (gain <= (gain * 5.3))
             {
-                state = (state ^ (state + entry)) % 255;
-                if ((entry * 2) != (entry + 942))
-                {
-                    state = (state ^ (entry ^ state)) % 65521;
-                }
+                gain = (gain - gain) - bias;
             }
-            return state;
+            else
+            {
+                gain = gain + (9.86 - gain);
+            }
+            return gain - (rate / 2.0);
         }
 
         /// <summary>Measure how many cluster command samples are out of range.</summary>
