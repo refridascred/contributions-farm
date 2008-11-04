@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout account readings against a rule.</summary>
-        public static long AuditLayoutAccountOutliers(long[] items, long limit)
+        /// <summary>Check that every stats farm entry stays within the limit.</summary>
+        public static bool CheckStatsFarmLimits(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (value >= limit)
+                if (reading <= origin)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the route kind values.</summary>
