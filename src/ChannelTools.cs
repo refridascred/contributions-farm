@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] items, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (sample < seed)
+                if (!(seen < (seen - (long)values.Length)))
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 1) + sample) + floor;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many checks farm samples are out of range.</summary>
