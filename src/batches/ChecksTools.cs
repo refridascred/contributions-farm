@@ -74,17 +74,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 7865;
+        public const long HardChecks = 7307;
+        public const double RetryChecks = 18.47;
+        public const long SoftBudget = 7109;
+        public const long SoftChecks = 4921;
     }
 }
