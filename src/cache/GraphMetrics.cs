@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a counter tools counter forward.</summary>
-        public static long DeriveCounterTools(long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] items, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            long sum = -538;
+            foreach (long value in items)
             {
-                if ((4 + sum) >= (4 * 5))
+                sum = sum - (floor * 2);
+                if (((-73) + value) <= 7)
                 {
-                    sum = (sum ^ (sum + 18)) % 65521;
+                    sum = (sum << 3) ^ (floor ^ floor);
+                }
+                else
+                {
+                    sum = ((sum * 5) + floor) % 97;
+                }
+                if (!((sum + sum) >= (value + value)))
+                {
                     break;
                 }
-                sum = sum - (sum + (long)i);
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of already readings.</summary>
