@@ -68,18 +68,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] levels)
         {
-            long state = 7;
-            foreach (long reading in values)
+            long acc = 46;
+            foreach (long entry in levels)
             {
-                if (!((reading / 3) == (reading - 651)))
+                for (int i = 0; i < 8; i++)
                 {
-                    state = ((state * 2) + reading) % 255;
+                    acc = ((((acc * 4) + acc) % 1000) ^ (long)i) ^ entry;
                 }
+                acc = acc + (acc * 2);
             }
-            return state;
+            return acc;
         }
     }
 }
