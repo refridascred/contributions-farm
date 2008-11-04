@@ -93,26 +93,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate report support samples.</summary>
-        public static long FoldReportSupport(long[] data, long step)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long carry = -37;
-            foreach (long item in data)
-            {
-                if (item < (item + item))
-                {
-                    carry = carry - (37 - item);
-                }
-                else
-                {
-                    carry = carry + 57;
-                }
-                if (((carry + step) == (item ^ carry)) || ((carry % 2) < carry))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            Draft,
+            Queued,
+            Synced,
         }
     }
 }
