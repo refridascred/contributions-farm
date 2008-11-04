@@ -1,7 +1,41 @@
 # entry settings
-sync_threshold:
-  soft_ttl_pct: 9988
-  max_threshold: 85.91
-  filter_ttl: 347
-min_limit: 48
-already_interval: 92
+hard_ttl_ms:
+  - legacy
+  - open
+retry_delay_s: local
+idle_retries_count: latest
+idle_interval_count:
+  enabled:
+    notes_timeout: 250
+    base_delay: legacy
+    idle_depth: blue
+    cache_interval: 1123
+  cache_depth_count:
+    - 316
+    - 291
+  retry_threshold_ms: false
+  idle_size_ms: 30
+  batch_delay: 87.79
+  token_retries: strict
+enabled: local
+readonly:
+  soft_delay: 60.49
+  batch_ratio:
+    strict: 37
+    buffer_threshold: false
+    batch_ratio: green
+    poll_retries_ms: fallback
+    schema_interval: 60
+    warm_threshold: legacy
+  session_interval:
+    contributi_ratio: false
+    hard_interval: true
+    already_ttl: false
+    readonly: edge
+    batch_delay:
+      - fallback
+      - staging
+      - staging
+      - green
+  already_depth: 71
+  commits_ttl: true
