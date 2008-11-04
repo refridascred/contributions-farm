@@ -24,18 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 8611;
+        public const string HardBudget = "local";
+        public const long RetryBuffer = 4120;
+        public const double DefaultScore = 83.78;
+        public const string BurstBuffer = "alpha-v2";
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] samples)
