@@ -41,25 +41,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long target, long target2)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long step = target + target2;
-            if (target2 <= (target2 + target2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((7.8 / 6.0) < (double)step) && ((target2 % 7) != (29 & 7)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Limit { get; set; }
+            public bool Size { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
