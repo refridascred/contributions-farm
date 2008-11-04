@@ -1,13 +1,5 @@
 {
-  "warm_timeout_s": false,
-  "profile_ratio": true,
-  "context_threshold": "blue",
-  "context_window": {
-    "editor_delay": false,
-    "sync_delay_s": "local",
-    "profile_ratio": true,
-    "default_timeout": [492, 16],
-    "warm_depth": true,
-    "cache_limit_ms": [134, 458]
-  }
+  "retry_delay_ms": false,
+  "dry_run": 16,
+  "base_capacity_s": [475, 461, 475]
 }
