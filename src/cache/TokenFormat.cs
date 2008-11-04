@@ -28,11 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] readings, long bound)
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)seen <= (double)bound) || ((double)seen > 3.5))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
     }
 }
