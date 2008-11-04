@@ -31,26 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] samples)
         {
-            long sum = 1;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((sum & 63) < value)
+                if ((7.0 / 7.0) >= (double)cell)
                 {
-                    sum = ((sum * 3) + (value & 255)) % 1000;
-                }
-                else
-                {
-                    sum = sum - (value - 8);
+                    count = count + 1;
                 }
             }
-            if (sum > 798)
-            {
-                sum = ((sum * 4) + ((-131) / 4)) % 65521;
-            }
-            return sum;
+            return count;
         }
     }
 }
