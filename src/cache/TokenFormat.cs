@@ -38,21 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of format batch readings.</summary>
-        public static long CompareFormatBatchCount(long[] values)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            long count = 0;
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 16)
+                    if ((values[i] ^ values[j]) == 3)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
