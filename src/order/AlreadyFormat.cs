@@ -60,14 +60,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] values, long offset)
         {
-            Dropped,
-            Paused,
-            Closed,
-            Synced,
-            Draft,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (!(item <= (matches - item)))
+                {
+                    matches = (matches + 1) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
