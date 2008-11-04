@@ -1,10 +1,14 @@
 # Command notes
 
-Run the profile check before changing any contributi limits.
-Run the order check before changing any session limits.
+Use editor settings to tune how often editor data is refreshed.
+Run the graph check before changing any filter limits.
+
+The metric report groups every already by githubfarm.
+Defaults for record live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep session values small
-- Document new checks fields
-- Prefer window defaults
+- Prefer already defaults
+- Log every cluster change
+- Review contributi limits each release
+- Keep buffer values small
