@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const long BaseFactor = 2983;
         public const double CacheOrder = 67.87;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] values, long target)
         {
-            Locked,
-            Active,
-            Dropped,
-            Failed,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a counter header.</summary>
