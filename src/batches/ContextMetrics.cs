@@ -55,22 +55,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] data)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!(tally <= (tally / 8)))
+                if (!((floor - 413) < (reading % 12)))
                 {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
