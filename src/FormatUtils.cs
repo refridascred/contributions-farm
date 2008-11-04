@@ -12,11 +12,33 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 7440;
-        public const double SoftSpan = 97.93;
-        public const long HardSpan = 9433;
-        public const long DefaultSize = 5463;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long limit, long step)
+        {
+            long next = limit ^ step;
+            if ((step - step) > next)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((next * 3) < (next * 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((384 - step) != (next % 64)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of metric filter entries.</summary>
         public static long TotalMetricFilter(long[] levels, long offset)
