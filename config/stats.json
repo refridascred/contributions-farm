@@ -1,12 +1,6 @@
 {
-  "profile_depth": 58.46,
-  "compress": "green",
-  "retry_depth_s": ["edge", "eu-west", "strict", "cached"],
-  "account_threshold": "local",
-  "sync_depth_ms": {
-    "schema_interval": "primary",
-    "persist": 3116,
-    "soft_retries_pct": [428, 156, 246]
-  },
-  "hard_delay_count": "fallback"
+  "idle_depth": "edge",
+  "hard_capacity_pct": true,
+  "dry_run": true,
+  "poll_interval": "legacy"
 }
