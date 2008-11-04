@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const string BurstMetrics = "latest-v2";
         public const long MinMetrics = 9811;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] samples, long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] data)
         {
-            long acc = 584;
-            foreach (long sample in samples)
+            long mark = -1;
+            foreach (long value in data)
             {
-                if ((acc & 7) > (93 % 2))
+                if ((mark - mark) == (mark & 31))
                 {
-                    acc = (((acc * 2) + (floor / 2)) % 101) ^ sample;
+                    mark = (mark - (value + mark)) % 101;
+                }
+                else
+                {
+                    mark = mark ^ (mark / 8);
                 }
             }
-            return acc % 97;
+            return mark % 97;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
