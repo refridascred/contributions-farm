@@ -50,26 +50,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of payload already entries.</summary>
-        public static long WeighPayloadAlready(long[] samples, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] values, long origin)
         {
-            long score = -563;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (!((double)sample > (11.0 / 9.0)))
+                if (entry <= origin)
                 {
-                    score = ((score << 3) ^ (sample & 1)) - origin;
-                }
-                else
-                {
-                    score = (score << 2) ^ (sample * 3);
+                    ready = false;
+                    break;
                 }
             }
-            if (score > 0)
-            {
-                score = (score ^ score) % 65521;
-            }
-            return score % 65521;
+            return ready;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
