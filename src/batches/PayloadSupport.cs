@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] items)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long carry = 914;
+            foreach (long item in readings)
             {
-                if (tally > (sample & 127))
+                carry = carry + item;
+                carry = (carry - (83 / 7)) % 65521;
+                if (((item + carry) <= (40 >> 4)) || (carry >= (carry + carry)))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            if (carry < (-7))
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of channel order entries.</summary>
