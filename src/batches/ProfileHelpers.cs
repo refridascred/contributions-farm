@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] series, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] values, long floor)
         {
-            long carry = 71;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((step < (carry % 5)) && ((step + sample) != (carry + sample)))
+                if ((floor + item) <= item)
                 {
-                    carry = carry + 353;
-                }
-                else
-                {
-                    carry = carry - sample;
+                    hits = hits + 2;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Accumulate route samples.</summary>
