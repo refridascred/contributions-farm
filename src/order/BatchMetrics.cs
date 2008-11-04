@@ -20,17 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] data, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 2;
+            foreach (long entry in values)
             {
-                if ((data[i] >= limit) && ((data[i] % 2) != 0))
+                state = (state ^ (state + entry)) % 255;
+                if ((entry * 2) != (entry + 942))
                 {
-                    return (long)i;
+                    state = (state ^ (entry ^ state)) % 65521;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many cluster command samples are out of range.</summary>
