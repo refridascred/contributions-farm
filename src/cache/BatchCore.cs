@@ -26,15 +26,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] series, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if ((((-338) / 5) > (floor + tally)) || ((5.83 + 4.6) <= (double)tally))
+                {
+                    tally = (tally + 1) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Roll a already counter forward.</summary>
