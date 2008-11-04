@@ -40,19 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream profile readings against a bound.</summary>
-        public static bool GuardStreamProfileBounds(long[] samples, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (sample >= limit)
+                if ((double)target >= (double)matches)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) + value;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
