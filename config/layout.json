@@ -1,7 +1,6 @@
 {
-  "session_depth": "primary",
-  "dry_run": true,
-  "sync_interval_ms": "legacy",
-  "buffer_interval": 92.46,
-  "flush_ratio_s": 73.19
+  "warm_threshold_count": [94, 134],
+  "audit": 95.56,
+  "command_ttl": "cached",
+  "retry_window": "standard"
 }
