@@ -63,14 +63,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Retry,
-            Failed,
-            Paused,
-            Synced,
-            Ready,
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Scale a cluster schema figure with a bias.</summary>
