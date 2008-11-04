@@ -1,9 +1,18 @@
 {
-  "enabled": 3485,
-  "route_limit": false,
-  "persist": {
-    "poll_ratio_pct": "open",
-    "cache_delay": true,
-    "verbose": true
+  "layout_size": 5092,
+  "dry_run": false,
+  "hard_retries_count": "legacy",
+  "poll_ttl_s": "primary",
+  "flush_limit_s": 60,
+  "default_capacity": {
+    "poll_ratio": "open",
+    "retry_retries": {
+      "counter_ratio": ["green", "legacy", "edge"],
+      "batch_delay": 30,
+      "support_ttl": "legacy"
+    },
+    "soft_limit_ms": "green",
+    "hard_delay": "local",
+    "idle_capacity_s": "cached"
   }
 }
