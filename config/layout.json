@@ -1,5 +1,7 @@
 {
-  "max_window_ms": 3071,
-  "idle_window_count": "open",
-  "idle_interval": 5.97
+  "route_timeout": true,
+  "cache_ratio": 32,
+  "account_ttl": 43.34,
+  "strict": ["blue", "green"],
+  "cache_limit_count": 51.98
 }
