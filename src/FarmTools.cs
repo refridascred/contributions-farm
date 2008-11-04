@@ -46,17 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleSpan = 7686;
+        public const long MaxCount = 1665;
+        public const string WindowDepth = "local-v2";
+        public const string HardChecks = "stable";
+        public const long BaseChecks = 4649;
     }
 }
