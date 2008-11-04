@@ -1,5 +1,5 @@
 {
-  "batch_size": ["staging", "green", "green"],
-  "order_window": 60,
-  "farm_interval": 30.38
+  "persist": ["edge", "local", "local"],
+  "idle_depth_pct": 100,
+  "base_ttl": 47
 }
