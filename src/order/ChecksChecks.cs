@@ -43,12 +43,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] samples, long seed)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
