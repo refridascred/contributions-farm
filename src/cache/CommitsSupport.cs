@@ -70,18 +70,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] data)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((((10.0 - 3.93) <= (double)datum) || (((long)data.Length + tally) >= (datum & 1))) && ((0.1 - 1.0) != (double)datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public double Count { get; set; }
         }
     }
 }
