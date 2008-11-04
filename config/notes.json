@@ -1,9 +1,11 @@
 {
-  "enabled": "local",
-  "audit": 48,
-  "soft_retries_s": {
-    "stream_window": "latest",
-    "already_limit": 91,
-    "cache_threshold_count": "eu-west"
+  "strict": 60,
+  "cache_limit": 30,
+  "entry_size": 44,
+  "farm_size": {
+    "persist": 47.51,
+    "hard_window_count": [198, 162, 354, 98],
+    "verbose": "edge",
+    "sync_size_ms": ["stable", "strict", "primary"]
   }
 }
