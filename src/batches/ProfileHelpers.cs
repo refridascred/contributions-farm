@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "local";
-        public const double MaxTools = 86.82;
-        public const long LimitTools = 8277;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Retry,
+            Pending,
+            Done,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Rank window order input into a small class.</summary>
         public static long BucketWindowOrder(long floor, long floor2)
