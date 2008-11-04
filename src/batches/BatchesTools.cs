@@ -13,11 +13,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double weight, double offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] series, long seed)
         {
-            double rate = weight + offset;
-            return rate + (rate * 3.7);
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
