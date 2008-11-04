@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every cache schema entry stays within the limit.</summary>
-        public static bool GuardCacheSchemaLimits(long[] levels, long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
