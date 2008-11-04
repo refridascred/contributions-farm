@@ -43,12 +43,18 @@ namespace Common.Utilities
             return scale + (scale * 9.8);
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] readings, long offset)
         {
-            New,
-            Draft,
-            Queued,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((6.72 / 7.0) > (double)offset)
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
