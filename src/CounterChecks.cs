@@ -30,15 +30,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            New,
-            Done,
-            Dropped,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxLevel = 41.91;
+        public const string SoftLevel = "primary-edge";
+        public const long WindowSpan = 476;
+        public const long MinBudget = 4516;
+        public const double StepSize = 89.82;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
