@@ -1,8 +1,11 @@
 {
-  "route_window": false,
-  "cache_depth_s": "fallback",
-  "hard_limit_count": 48.35,
-  "batch_interval_ms": 47,
-  "sync_delay": 2160,
-  "strict": ["fallback", "eu-west"]
+  "contributi_retries": {
+    "base_retries": "green",
+    "sync_limit_ms": 9885,
+    "sync_limit_pct": "eu-west",
+    "poll_size_s": 5.76,
+    "max_size_ms": 500
+  },
+  "commits_delay": 60,
+  "checks_ttl": 70.49
 }
