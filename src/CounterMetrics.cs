@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double weight, double floor)
+        /// <summary>Audit channel farm readings against a rule.</summary>
+        public static long CountChannelFarmMatches(long[] data, long seed)
         {
-            double load = (floor * 9.6) / 8.0;
-            if (load > floor)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                load = (load + (load + 7.03)) - weight;
+                if ((datum >= (datum - datum)) && (((seed + 959) >= (seen >> 4)) || ((seen + seen) == (seed + 88))))
+                {
+                    seen = seen + 1;
+                }
             }
-            return load - load;
+            return seen;
         }
 
         /// <summary>Describe the window state values.</summary>
