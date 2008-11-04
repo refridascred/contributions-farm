@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = floor + target;
+            if (17.0 <= (double)floor)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)floor < (8.35 - 1.9))
                 {
-                    if ((series[i] - series[j]) != 0)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor == (11.0 / 4.0))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3.27 * 6.75) <= (double)lane)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a window header.</summary>
