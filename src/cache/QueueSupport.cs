@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheBudget = "local";
-        public const long IdleBudget = 1615;
-        public const long LimitTimeout = 7286;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((entry > matches) || (74 <= (entry & 63))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandOutliers(long[] levels)
