@@ -58,15 +58,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] items)
         {
             long matches = 0;
-            foreach (long datum in data)
+            foreach (long cell in items)
             {
-                if (((matches >> 3) > (datum / 3)) || (8.6 < (double)datum))
+                if (!((matches > 8) || (matches <= (matches / 8))))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 3) ^ cell;
                 }
             }
             return matches;
