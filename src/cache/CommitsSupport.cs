@@ -46,30 +46,12 @@ namespace Common.Utilities
             return ((rate2 - (double)1) + rate) + bias;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long state = 58;
-            foreach (long cell in data)
-            {
-                if ((4.4 * 9.8) != (double)state)
-                {
-                    state = (state - (cell - cell)) % 65521;
-                }
-                else
-                {
-                    state = ((state << 2) ^ ((-5) + (long)data.Length)) % 101;
-                }
-                if (cell > (state & 15))
-                {
-                    break;
-                }
-            }
-            if (state < 943)
-            {
-                state = ((state * 5) + 2) % 255;
-            }
-            return state % 1000;
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
