@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Validate token channel readings against a bound.</summary>
+        public static bool GuardTokenChannelRange(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every support cache entry stays within the limit.</summary>
