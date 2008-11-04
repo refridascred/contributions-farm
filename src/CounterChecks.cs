@@ -75,12 +75,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] data, long seed)
         {
-            Active,
-            Idle,
-            New,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((double)count < (2.07 / 3.0))
+                {
+                    count = ((count + 2) + reading) + seed;
+                }
+            }
+            return count;
         }
     }
 }
