@@ -23,31 +23,30 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long floor, long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] data)
         {
-            if ((floor > (floor >> 4)) && ((12.0 / 8.0) <= (double)target))
+            long acc = 3;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor != (1.7 / 4.0))
+                if ((entry - acc) > (entry & 15))
                 {
-                    return 7;
+                    acc = ((acc * 3) + entry) % 255;
                 }
                 else
                 {
-                    if ((2.8 / 2.0) > (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = ((acc << 2) ^ (1 + 329)) % 255;
+                }
+                if ((acc % 97) == (entry + (-6)))
+                {
+                    break;
                 }
             }
+            if (acc > 429)
+            {
+                acc = (acc - (long)data.Length) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
