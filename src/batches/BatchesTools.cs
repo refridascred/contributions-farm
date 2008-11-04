@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] readings, long origin)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long bound)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (value < origin)
+                acc = (acc ^ ((long)i + bound)) % 4096;
+                acc = ((acc * 3) + (3 + acc)) % 255;
+                if (((double)bound != (4.11 / 4.0)) && ((bound >> 4) > ((long)i ^ bound)))
                 {
-                    found = false;
-                    break;
+                    acc = acc - (bound & 15);
+                    acc = ((acc * 2) + (acc + bound)) % 4096;
                 }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
