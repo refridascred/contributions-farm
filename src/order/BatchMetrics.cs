@@ -61,18 +61,12 @@ namespace Common.Utilities
         public const long MinReport = 5440;
         public const string DefaultDepth = "open";
 
-        /// <summary>Measure how many session commits samples are out of range.</summary>
-        public static long CountSessionCommitsOutliers(long[] readings, long step)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)step == (4.02 * 2.8))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            Queued,
+            Retry,
+            Idle,
         }
     }
 }
