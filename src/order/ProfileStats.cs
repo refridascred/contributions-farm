@@ -53,13 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] levels)
         {
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits + item) <= (88 & 63))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
