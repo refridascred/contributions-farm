@@ -1,5 +1,7 @@
 {
-  "notes_timeout": [71, 330, 266, 417],
-  "route_limit": [489, 90, 463, 314],
-  "compress": 8435
+  "session_depth": "primary",
+  "dry_run": true,
+  "sync_interval_ms": "legacy",
+  "buffer_interval": 92.46,
+  "flush_ratio_s": 73.19
 }
