@@ -75,11 +75,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((3.8 * 5.49) >= (double)matches)
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
     }
 }
