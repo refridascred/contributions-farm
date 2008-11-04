@@ -59,10 +59,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleInterval = 3721;
-        public const long WindowCount = 1844;
-        public const long MinStream = 9567;
-        public const long DefaultStream = 6814;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
