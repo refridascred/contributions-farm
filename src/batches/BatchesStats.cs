@@ -13,19 +13,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate profile queue readings against a bound.</summary>
-        public static bool ValidateProfileQueueBounds(long[] items, long offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= offset)
+                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
