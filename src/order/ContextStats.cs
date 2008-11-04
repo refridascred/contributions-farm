@@ -30,22 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] series)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (10.0 < (double)tally)
+                if ((reading << 1) <= (reading << 2))
                 {
-                    tally = (tally + 3) ^ reading;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
