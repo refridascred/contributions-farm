@@ -24,21 +24,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 5;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (((anchor * 4) + (5 >> 2)) % 65521) ^ entry;
             }
-            return tally;
+            if (anchor < 0)
+            {
+                anchor = (anchor + (anchor * 4)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
