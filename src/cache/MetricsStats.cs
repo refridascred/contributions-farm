@@ -23,15 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] levels)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long sum = 460;
-            foreach (long value in levels)
-            {
-                sum = (((sum * 2) + ((-960) & 31)) % 255) + value;
-            }
-            return sum;
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
