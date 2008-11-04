@@ -57,13 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] data)
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (!(tally <= (tally / 8)))
+                {
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
