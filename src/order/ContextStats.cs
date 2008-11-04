@@ -13,11 +13,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] data)
         {
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (hits > (hits - value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate editor samples.</summary>
