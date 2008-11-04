@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] samples, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] items)
         {
-            long total = 794;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                total = (((total * 5) + total) % 101) ^ datum;
+                if (!!((item * 4) != (matches % 5)))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (total > 8)
-            {
-                total = total - (total - target);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Scale a cluster command figure with a bias.</summary>
