@@ -40,22 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] readings, long origin)
         {
-            long acc = 980;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (((double)acc < 2.9) || (acc > (reading >> 5)))
+                if (item >= origin)
                 {
-                    acc = (acc ^ (acc + reading)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 8)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc;
+            return ready;
         }
     }
 }
