@@ -43,19 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] levels, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (value != offset)
+                if (!((double)datum >= (7.3 + 6.0)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Measure how many record schema samples are out of range.</summary>
