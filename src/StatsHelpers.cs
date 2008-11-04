@@ -69,19 +69,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two session filter measurements.</summary>
-        public static double ProjectSessionFilter(double gain, double bias)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double rate = bias;
-            if (rate >= gain)
-            {
-                rate = rate - (gain - gain);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + bias;
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
