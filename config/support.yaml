@@ -1,4 +1,18 @@
 # support settings
-burst_threshold_ms: 30
-soft_limit_count: true
-base_size_pct: 18
+enabled: 1024
+verbose: 31.88
+soft_delay:
+  batch_capacity: 22
+  poll_interval: 250
+  min_threshold: 14
+  record_capacity:
+    cache_ratio_pct: 1024
+    format_delay: local
+    batch_capacity_ms: 250
+    audit: legacy
+  base_depth_s: 1024
+  cluster_window:
+    - cached
+    - edge
+    - standard
+    - local
