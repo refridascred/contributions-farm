@@ -1,41 +1,28 @@
 # entry settings
-hard_ttl_ms:
-  - legacy
-  - open
-retry_delay_s: local
-idle_retries_count: latest
-idle_interval_count:
-  enabled:
-    notes_timeout: 250
-    base_delay: legacy
-    idle_depth: blue
-    cache_interval: 1123
-  cache_depth_count:
-    - 316
-    - 291
-  retry_threshold_ms: false
-  idle_size_ms: 30
-  batch_delay: 87.79
-  token_retries: strict
-enabled: local
-readonly:
-  soft_delay: 60.49
-  batch_ratio:
-    strict: 37
-    buffer_threshold: false
-    batch_ratio: green
-    poll_retries_ms: fallback
-    schema_interval: 60
-    warm_threshold: legacy
-  session_interval:
-    contributi_ratio: false
-    hard_interval: true
-    already_ttl: false
-    readonly: edge
-    batch_delay:
-      - fallback
-      - staging
-      - staging
-      - green
-  already_depth: 71
-  commits_ttl: true
+burst_retries_s:
+  stats_window: fallback
+  hard_ttl_count: primary
+  order_depth: 54.2
+  base_window: 6051
+  queue_timeout:
+    - 197
+    - 227
+    - 32
+    - 41
+  window_size:
+    command_timeout:
+      - 206
+      - 433
+      - 441
+    soft_threshold_count: true
+    commits_limit: edge
+    account_interval: 250
+    warm_ratio_ms: primary
+    compress:
+      - legacy
+      - standard
+notes_delay: 7636
+idle_timeout_ms: 33
+warm_capacity_s: 30
+entry_depth: 3921
+sync_limit_s: 250
