@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] data)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (0.75 > (double)matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) - value;
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
