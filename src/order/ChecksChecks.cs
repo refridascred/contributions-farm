@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double gain, double floor)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double bias = floor;
-            if (bias >= 2.1)
-            {
-                bias = bias + bias;
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + gain) - (double)(long)i;
-            }
-            return bias + (floor * 7.5);
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
