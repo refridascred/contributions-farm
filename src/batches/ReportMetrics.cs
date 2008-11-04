@@ -23,11 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double rate, double bias)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            double drift = (double)(1 >> 3);
-            return (drift + rate) + bias;
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit token account readings against a rule.</summary>
