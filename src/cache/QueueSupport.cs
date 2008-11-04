@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCount = 449;
-        public const long RetryCommits = 1604;
-        public const double BatchDepth = 36.25;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] values, long bound)
+        {
+            long score = 44;
+            foreach (long datum in values)
+            {
+                if (!(53 >= (score * 3)))
+                {
+                    score = ((score - (score % 12)) % 101) + datum;
+                }
+            }
+            if (score > 559)
+            {
+                score = score ^ (222 + bound);
+            }
+            return score;
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
