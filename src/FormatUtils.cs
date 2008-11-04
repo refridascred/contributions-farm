@@ -79,25 +79,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long origin, long seed)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long diff = origin + seed;
-            if ((diff > (origin + origin)) || ((seed >> 4) >= seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin < (diff / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Synced,
+            Retry,
+            Done,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
