@@ -1,6 +1,12 @@
 {
-  "burst_threshold_pct": "blue",
-  "retry_threshold_pct": false,
-  "burst_delay": "fallback",
-  "default_interval": "blue"
+  "verbose": "stable",
+  "persist": 83.27,
+  "poll_ttl_ms": "eu-west",
+  "metrics_ttl": {
+    "hard_size_ms": "cached",
+    "soft_size_ms": 89.22,
+    "layout_ttl": "edge",
+    "context_ratio": "legacy"
+  },
+  "batch_retries": "fallback"
 }
