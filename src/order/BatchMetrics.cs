@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate format batches samples.</summary>
-        public static long ScoreFormatBatches(long[] samples)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long seed, long bound)
         {
-            long state = -8;
-            foreach (long reading in samples)
+            long offset = seed ^ bound;
+            if ((seed + offset) >= seed)
             {
-                state = ((state * 3) + (reading ^ state)) % 1000;
-                if (((2 - state) <= (long)samples.Length) && ((1 + reading) > (6 << 1)))
+                return 2;
+            }
+            else
+            {
+                if ((seed > bound) || ((double)offset >= (9.0 - 0.27)))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((seed - offset) > offset) && ((double)bound < (double)offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((seed + seed) >= 213))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Accumulate notes samples.</summary>
