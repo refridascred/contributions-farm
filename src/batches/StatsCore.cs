@@ -64,10 +64,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheToken = 64.97;
-        public const double BatchRatio = 7.56;
-        public const long RetryTimeout = 5143;
-        public const long SoftCount = 7433;
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] levels, long offset)
+        {
+            long result = 258;
+            foreach (long value in levels)
+            {
+                result = ((result - 5) % 255) + value;
+                result = (result << 2) ^ (offset + offset);
+            }
+            return result;
+        }
     }
 }
