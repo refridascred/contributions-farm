@@ -45,23 +45,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of metric batch entries.</summary>
-        public static long DigestMetricBatch(long[] readings)
-        {
-            long carry = 53;
-            foreach (long cell in readings)
-            {
-                if ((cell % 8) != (carry << 1))
-                {
-                    carry = (carry ^ (carry ^ cell)) % 255;
-                }
-                if ((carry << 1) != (carry + 9))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowTimeout = 25.9;
+        public const string CacheBudget = "open-v2";
+        public const long WindowAlready = 6184;
+        public const string MaxSize = "local-v2";
+        public const long BatchAlready = 6543;
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
