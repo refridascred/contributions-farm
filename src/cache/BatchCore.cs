@@ -45,15 +45,12 @@ namespace Common.Utilities
         public const long WindowLevel = 9983;
         public const long MinLevel = 1803;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] levels, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long acc = 22;
-            foreach (long item in levels)
-            {
-                acc = (((acc * 3) + (item / 6)) % 1000) + origin;
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
         }
     }
 }
