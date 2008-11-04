@@ -45,19 +45,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double scale, double bias)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] levels, long target)
         {
-            double ratio = (scale / 8.0) + bias;
-            if (ratio <= scale)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                ratio = ratio - ratio;
+                if ((reading + tally) >= tally)
+                {
+                    tally = (tally + 2) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                ratio = ratio + scale;
-            }
-            return ratio - (19.0 - 5.08);
+            return tally;
         }
     }
 }
