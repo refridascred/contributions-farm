@@ -26,18 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile already entries that pass the check.</summary>
-        public static long AuditProfileAlreadyGaps(long[] readings)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!((reading + 733) != (reading & 63)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of route readings.</summary>
