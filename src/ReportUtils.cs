@@ -17,13 +17,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitSpan = 1476;
+        public const string IdleLayout = "stable";
+        public const double SoftLayout = 3.05;
+        public const long DefaultLevel = 5273;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsHits(long[] samples)
