@@ -35,15 +35,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] series, long step)
+        /// <summary>Measure how many cache order samples are out of range.</summary>
+        public static long CountCacheOrderHits(long[] items)
         {
-            long mark = 380;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in items)
             {
-                mark = (((mark << 3) ^ (step / 2)) % 1000) - entry;
+                if ((71 - hits) >= item)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark % 97;
+            return hits;
         }
     }
 }
