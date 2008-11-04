@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] readings, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (sample != origin)
+                if ((double)datum <= (1.5 / 6.0))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + bound;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
