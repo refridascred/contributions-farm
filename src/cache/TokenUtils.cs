@@ -29,21 +29,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 55;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)sample > 7.9)
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state ^ state) % 97;
+                }
+                if (state >= sample)
+                {
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
