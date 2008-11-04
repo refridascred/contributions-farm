@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample ^ 571) >= (long)values.Length)
                 {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) + floor;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
