@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)offset >= 9.0)
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (offset / 3);
-                }
-                anchor = ((anchor * 4) + (long)i) % 255;
-                anchor = ((anchor * 5) + (offset / 5)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the editor state values.</summary>
