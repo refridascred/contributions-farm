@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = bias;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio + (weight + bias)) - (double)(long)i;
             }
-            return seen;
+            return ratio - ratio;
         }
 
         /// <summary>Combine batches support values into a single score.</summary>
