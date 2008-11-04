@@ -55,13 +55,23 @@ namespace Common.Utilities
             return bias2 - (bias + bias2);
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] items)
         {
-            Draft,
-            Pending,
-            Paused,
-            Failed,
+            long result = 30;
+            foreach (long entry in items)
+            {
+                if ((result + result) == ((-283) + result))
+                {
+                    result = ((result * 2) + result) % 1000;
+                }
+                else
+                {
+                    result = result + result;
+                }
+                result = (result - (entry + result)) % 101;
+            }
+            return result % 97;
         }
     }
 }
