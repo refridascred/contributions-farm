@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
+            Synced,
+            Locked,
+            Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
