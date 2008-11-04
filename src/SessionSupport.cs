@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] data, long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (!((step < (long)data.Length) || ((step % 100) <= (seen >> 5))))
+                if (item <= bound)
                 {
-                    seen = (seen + 1) ^ value;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a account summary.</summary>
