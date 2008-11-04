@@ -1,11 +1,5 @@
 # githubfarm settings
-dry_run: 76
-editor_delay:
-  - 31
-  - 467
-farm_interval: local
-sync_timeout_s:
-  - green
-  - staging
-verbose: staging
-audit: 74
+min_delay_ms: blue
+batches_capacity: 1024
+stream_ratio: 100
+batch_threshold: true
