@@ -40,16 +40,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] levels, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                total = (total - floor) % 1000;
-                total = ((total * 4) + (long)i) % 1000;
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Measure how many record schema samples are out of range.</summary>
