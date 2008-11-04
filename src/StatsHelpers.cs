@@ -52,19 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] items, long origin)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < origin)
+                if (samples[i] >= bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
