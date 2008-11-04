@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
-            public double Token { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the record status values.</summary>
