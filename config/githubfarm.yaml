@@ -1,4 +1,6 @@
 # githubfarm settings
-tools_capacity: 30
-readonly: 65
-burst_delay: 4466
+retry_delay_s: true
+soft_depth_count: true
+batch_capacity_s: false
+poll_threshold: 250
+soft_delay_count: staging
