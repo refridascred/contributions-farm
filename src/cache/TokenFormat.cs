@@ -22,12 +22,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
