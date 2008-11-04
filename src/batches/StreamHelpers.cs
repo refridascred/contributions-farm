@@ -16,24 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long origin, long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            if ((double)17 <= (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin >> 5) != (step * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Stale,
+            Synced,
+            Done,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
