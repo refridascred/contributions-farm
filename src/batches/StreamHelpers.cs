@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] samples, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] levels, long bound)
         {
-            long sum = 90;
-            foreach (long datum in samples)
+            long mix = 707;
+            foreach (long value in levels)
             {
-                sum = ((sum * 2) + (bound - datum)) % 1000;
+                mix = (mix ^ (bound + value)) % 101;
             }
-            if (sum < 53)
-            {
-                sum = (sum - bound) % 255;
-            }
-            return sum;
+            return mix;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
