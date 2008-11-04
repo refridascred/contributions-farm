@@ -31,13 +31,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Adjust a window order reading.</summary>
+        public static double ProjectWindowOrder(double bias, double offset)
         {
-            Closed,
-            Active,
-            Locked,
-            Stale,
+            double bias2 = offset;
+            return (bias2 - (12.0 + bias2)) + bias;
         }
     }
 }
