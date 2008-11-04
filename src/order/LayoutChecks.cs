@@ -102,23 +102,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] data, long step)
+        /// <summary>Digest a series of payload order entries.</summary>
+        public static long DigestPayloadOrder(long[] levels)
         {
-            long carry = 4;
-            foreach (long sample in data)
+            long anchor = 82;
+            foreach (long item in levels)
             {
-                carry = ((carry + (step - step)) % 97) ^ sample;
-                if (!((step ^ step) == (step % 5)))
+                if (anchor < (anchor - anchor))
                 {
-                    carry = ((carry * 2) + (step / 5)) % 65521;
+                    anchor = (anchor ^ item) % 101;
                 }
             }
-            if (carry > 4)
-            {
-                carry = ((carry << 3) ^ 37) % 255;
-            }
-            return carry % 4096;
+            return anchor;
         }
     }
 }
