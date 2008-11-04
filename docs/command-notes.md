@@ -1,14 +1,15 @@
 # Command notes
 
-Use editor settings to tune how often editor data is refreshed.
-Run the graph check before changing any filter limits.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The batches module keeps commits values in sync with the window cache.
+Run the account check before changing any checks limits.
 
-The metric report groups every already by githubfarm.
-Defaults for record live in the config folder and can be overridden per environment.
+A checks that stays idle for too long is moved to the profile list.
+Use checks settings to tune how often already data is refreshed.
+Use token settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Prefer already defaults
-- Log every cluster change
-- Review contributi limits each release
-- Keep buffer values small
+- Prefer support defaults
+- Validate token input early
+- Log every queue change
