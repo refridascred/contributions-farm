@@ -49,13 +49,9 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public bool Offset { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardDepth = "legacy-v2";
+        public const string SoftBudget = "standard";
+        public const long RetryTools = 3879;
     }
 }
