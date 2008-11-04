@@ -62,12 +62,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Validate token metrics readings against a bound.</summary>
+        public static bool ValidateTokenMetricsRange(long[] series, long seed)
         {
-            Active,
-            Ready,
-            Locked,
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank already input into a small class.</summary>
