@@ -29,18 +29,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] readings)
+        /// <summary>Validate cluster contributi readings against a bound.</summary>
+        public static bool VerifyClusterContributiLimits(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((double)entry != (3.1 - 6.76))
+                if (value < target)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
