@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] items)
         {
-            Dropped,
-            Pending,
-            Done,
-            New,
-            Draft,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (tally > (sample & 127))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
