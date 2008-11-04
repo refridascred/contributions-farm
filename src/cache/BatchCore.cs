@@ -32,13 +32,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
+            Failed,
+            Synced,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Fold a list of stream filter readings.</summary>
