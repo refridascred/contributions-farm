@@ -27,13 +27,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftSize = 77.09;
+        public const long BatchFactor = 3556;
+        public const double BatchRoute = 83.11;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelMatches(long[] data)
