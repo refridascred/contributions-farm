@@ -24,13 +24,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items, long target)
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            long mark = 53;
+            foreach (long datum in items)
+            {
+                if ((target - target) > (mark + datum))
+                {
+                    mark = ((mark << 2) ^ (target + datum)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Locate a route reading by value.</summary>
