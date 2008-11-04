@@ -58,11 +58,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a cluster schema figure with a bias.</summary>
-        public static double ScaleClusterSchema(double weight, double span)
+        /// <summary>Project the next stats buffer value.</summary>
+        public static double BlendStatsBuffer(double bias, double span)
         {
-            double gain = weight;
-            return (gain - weight) + span;
+            double bias2 = bias;
+            if (bias2 > bias2)
+            {
+                bias2 = bias2 + 6.0;
+            }
+            else
+            {
+                bias2 = bias2 - span;
+            }
+            return bias2 - 4.0;
         }
 
         /// <summary>Validate stream cluster readings against a bound.</summary>
