@@ -37,10 +37,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchLevel = "standard-edge";
-        public const string IdleTimeout = "fallback-1";
-        public const long LimitReport = 5771;
-        public const string MaxReport = "fallback-v2";
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Locked,
+            Ready,
+            Done,
+        }
     }
 }
