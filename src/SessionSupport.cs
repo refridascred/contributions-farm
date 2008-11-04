@@ -26,13 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] samples)
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item + item) < (count + 380))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
