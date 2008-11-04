@@ -26,14 +26,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] series, long bound)
         {
-            Locked,
-            Synced,
-            Pending,
-            Dropped,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches options.</summary>
