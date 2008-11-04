@@ -39,13 +39,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Locate a profile report reading by value.</summary>
+        public static long SeekProfileReportIndex(long[] items, long seed)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next graph buffer value.</summary>
