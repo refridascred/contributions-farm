@@ -68,12 +68,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowRatio = 4620;
-        public const long BatchStats = 1622;
-        public const double MinStats = 42.48;
-        public const long BurstSize = 6399;
-        public const double HardCount = 89.98;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Retry,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
