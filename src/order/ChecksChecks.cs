@@ -44,15 +44,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate batches batch samples.</summary>
-        public static long CombineBatchesBatch(long[] items, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long offset)
         {
-            long total = -23;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                total = ((total - (total & 15)) - item) + bound;
+                if (cell >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
