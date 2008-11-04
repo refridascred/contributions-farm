@@ -30,21 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] levels, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                score = score - (score ^ offset);
-                for (int i2 = 0; i2 < 4; i2++)
+                if (value != offset)
                 {
-                    score = ((score - (score & 15)) % 97) ^ (long)i2;
+                    flag = false;
+                    break;
                 }
-                score = score - (score - score);
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return flag;
         }
     }
 }
