@@ -1,5 +1,6 @@
 {
-  "entry_retries": false,
-  "soft_threshold_count": ["strict", "local", "latest", "local"],
-  "cache_window_s": false
+  "dry_run": 500,
+  "min_size_ms": "edge",
+  "order_ttl": 60,
+  "format_timeout": "edge"
 }
