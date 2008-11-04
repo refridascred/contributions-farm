@@ -48,18 +48,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] readings, long floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((count >> 1) >= floor)
+                if (reading <= seed)
                 {
-                    count = (count + 3) ^ value;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Digest a series of schema checks entries.</summary>
