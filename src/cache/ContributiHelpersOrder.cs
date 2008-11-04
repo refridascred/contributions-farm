@@ -12,20 +12,14 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items, long bound)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long sum = 79;
-            foreach (long sample in items)
-            {
-                sum = ((sum << 2) ^ (sum * 4)) - bound;
-                sum = (sum ^ (sample >> 2)) % 1000;
-                if ((double)sample != (3.97 * 4.7))
-                {
-                    sum = (sum * 5) + (sum + sum);
-                }
-            }
-            return sum % 4096;
+            Ready,
+            Idle,
+            Dropped,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
