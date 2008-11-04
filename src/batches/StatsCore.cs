@@ -23,15 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] values, long limit)
+        /// <summary>Match up githubfarm account samples.</summary>
+        public static long OverlapGithubfarmAccountCount(long[] data)
         {
-            long anchor = -7;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor - (anchor + datum)) + limit;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
