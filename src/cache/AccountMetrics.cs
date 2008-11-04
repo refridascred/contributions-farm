@@ -50,39 +50,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a checks record value against two limits.</summary>
-        public static long BucketChecksRecord(long target, long seed)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long slot = target ^ seed;
-            if ((seed + seed) != (seed / 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((3 + seed) > (slot - target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target - target) <= slot)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((slot - slot) < (slot % 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
