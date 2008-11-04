@@ -1,7 +1,9 @@
 {
-  "route_timeout": true,
-  "cache_ratio": 32,
-  "account_ttl": 43.34,
-  "strict": ["blue", "green"],
-  "cache_limit_count": 51.98
+  "enabled": 3485,
+  "route_limit": false,
+  "persist": {
+    "poll_ratio_pct": "open",
+    "cache_delay": true,
+    "verbose": true
+  }
 }
