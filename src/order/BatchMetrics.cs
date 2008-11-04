@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first editor cluster entry that matches the target.</summary>
-        public static long LocateEditorClusterIndex(long[] data, long origin)
+        /// <summary>Accumulate format batches samples.</summary>
+        public static long ScoreFormatBatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = -8;
+            foreach (long reading in samples)
             {
-                if (data[i] >= origin)
+                state = ((state * 3) + (reading ^ state)) % 1000;
+                if (((2 - state) <= (long)samples.Length) && ((1 + reading) > (6 << 1)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
