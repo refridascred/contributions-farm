@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] series, long step)
+        /// <summary>Locate a stream batches reading by value.</summary>
+        public static long FindStreamBatchesIndex(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] == step)
+                if (values[i] == seed)
                 {
                     return (long)i;
                 }
