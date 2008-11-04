@@ -59,18 +59,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the payload account entries that pass the check.</summary>
-        public static long CountPayloadAccountMatches(long[] values, long floor)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally % 2) > floor)
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the cache class values.</summary>
