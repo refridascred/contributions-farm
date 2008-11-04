@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] levels)
         {
-            long sum = 23;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((9.9 / 6.0) <= (double)datum)
+                if ((double)count == (double)value)
                 {
-                    sum = (sum - (sum - datum)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ (sum / 6)) % 97;
+                    count = count + 3;
                 }
             }
-            if (sum > 0)
-            {
-                sum = (sum ^ (sum + 65)) % 255;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the record level values.</summary>
