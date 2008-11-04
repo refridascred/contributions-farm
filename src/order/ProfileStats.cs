@@ -12,13 +12,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Active,
-            Locked,
-            Done,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardLevel = 18.33;
+        public const long RetryQueue = 6661;
+        public const long WindowQueue = 4791;
+        public const long CacheQueue = 8924;
+        public const long BaseLevel = 5220;
 
         /// <summary>Accumulate window samples.</summary>
         public static long DigestWindow(long[] items, long target)
