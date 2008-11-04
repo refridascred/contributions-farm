@@ -70,22 +70,17 @@ namespace Common.Utilities
             return (gain - weight) + span;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] series, long floor)
         {
-            long carry = 314;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((1.0 * 0.7) != (double)carry) && ((carry & 255) <= (55 ^ reading)))
+                if ((series[i] <= floor) && ((series[i] % 3) == 0))
                 {
-                    carry = (carry + (carry ^ carry)) % 101;
+                    return (long)i;
                 }
             }
-            if (carry < 715)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return -1;
         }
     }
 }
