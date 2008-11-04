@@ -14,22 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] data, long offset)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long result = 8;
-            foreach (long sample in data)
-            {
-                if ((double)10 >= (double)result)
-                {
-                    result = (((result * 4) + sample) % 97) - offset;
-                }
-                else
-                {
-                    result = (result ^ ((-3) % 16)) % 1000;
-                }
-            }
-            return result;
+            Closed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
