@@ -5,21 +5,29 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 9;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = (mix + sample) % 97;
+                if (!(2.0 < (double)mix))
                 {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix - (sample >> 4)) % 65521;
+                }
+                else
+                {
+                    mix = mix - (sample - mix);
+                    mix = mix ^ (0 & 63);
+                }
+                mix = mix - (2 << 1);
+                if ((81 + sample) < (mix << 3))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Roll a batches route counter forward.</summary>
