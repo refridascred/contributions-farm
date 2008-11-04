@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up githubfarm account samples.</summary>
-        public static long OverlapGithubfarmAccountCount(long[] data)
+        /// <summary>Count the stats counter entries that pass the check.</summary>
+        public static long MeasureStatsCounterOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((item + seen) > (item >> 2))
                 {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
