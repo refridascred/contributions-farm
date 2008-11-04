@@ -32,18 +32,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit layout route readings against a rule.</summary>
-        public static long TallyLayoutRouteHits(long[] levels, long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((0.5 / 5.0) <= (double)offset)
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
