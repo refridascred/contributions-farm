@@ -27,11 +27,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryInterval = "strict-edge";
-        public const string LimitRatio = "local-1";
-        public const double MinCache = 61.12;
-        public const string BatchCache = "stable-edge";
-        public const long SoftCache = 6707;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] readings, long seed)
+        {
+            long carry = 44;
+            foreach (long value in readings)
+            {
+                if ((value ^ value) > (carry - seed))
+                {
+                    carry = (carry + ((-579) ^ carry)) % 255;
+                }
+            }
+            if (carry < 2)
+            {
+                carry = (carry << 2) ^ (7 ^ 8);
+            }
+            return carry % 4096;
+        }
     }
 }
