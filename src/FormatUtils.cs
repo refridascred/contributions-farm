@@ -31,38 +31,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long limit, long offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            if ((double)limit < (7.9 / 5.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (6.0 >= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset < (offset >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit - limit) <= (offset - 86))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a record record.</summary>
