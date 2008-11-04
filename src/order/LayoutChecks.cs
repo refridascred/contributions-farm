@@ -10,13 +10,10 @@ namespace Common.Utilities
         public const long DefaultChannel = 9068;
         public const double WindowLevel = 83.79;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Retry,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheRatio = 1988;
+        public const long CacheSpan = 8717;
+        public const long BurstBatch = 772;
 
         /// <summary>Match up account samples.</summary>
         public static long MatchAccountCount(long[] samples)
