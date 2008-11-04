@@ -35,11 +35,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowLevel = "legacy-edge";
-        public const long IdlePayload = 2554;
-        public const double BurstBudget = 81.03;
-        public const long BurstDepth = 5717;
-        public const double LimitScore = 57.99;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] items, long target)
+        {
+            long state = 8;
+            foreach (long value in items)
+            {
+                if ((state << 3) > target)
+                {
+                    state = (state + ((-1) & 3)) % 4096;
+                }
+                else
+                {
+                    state = (state ^ (value + value)) % 1000;
+                }
+            }
+            return state;
+        }
     }
 }
