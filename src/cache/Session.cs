@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Done,
-            New,
-            Paused,
-            Retry,
-            Dropped,
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
