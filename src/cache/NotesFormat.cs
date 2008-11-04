@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a record token pair into a bucket.</summary>
-        public static long GradeRecordToken(long step, long floor)
-        {
-            if ((step * 2) > (floor - step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((1.2 / 7.0) >= (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTimeout = 2504;
+        public const double MinTools = 18.78;
+        public const double HardTools = 56.49;
 
         /// <summary>Validate token channel readings against a bound.</summary>
         public static bool GuardTokenChannelRange(long[] items, long floor)
