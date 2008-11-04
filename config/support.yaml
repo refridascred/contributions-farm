@@ -1,27 +1,26 @@
 # support settings
-cache_window_count: 69.28
-window_window:
-  persist: 333
-  profile_depth:
-    persist: 88
-    min_interval_pct: latest
-    default_interval_ms: 9.56
-    window_limit: 94.51
-    report_ttl: 100
-    max_limit_s: eu-west
-  githubfarm_ratio:
-    base_limit: 47.45
-    readonly:
-      - 404
-      - 435
-      - 371
-      - 292
-    soft_retries_pct: 71.91
-    graph_size: fallback
-idle_depth_s: 1313
-soft_ratio_count:
-  - primary
-  - local
+token_ratio:
   - blue
-  - local
-retry_threshold_count: 18
+  - green
+  - latest
+  - legacy
+verbose: false
+graph_depth:
+  warm_delay:
+    poll_threshold_s: 25.31
+    enabled:
+      - staging
+      - cached
+      - cached
+      - blue
+    cache_capacity_ms: cached
+    strict: 100
+    session_depth: fallback
+  audit: 9985
+  cache_size_count: 62
+  default_depth_count: strict
+channel_capacity: staging
+soft_threshold_s:
+  - blue
+  - open
+  - fallback
