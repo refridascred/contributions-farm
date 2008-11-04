@@ -67,15 +67,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double bias, double offset)
+        /// <summary>Digest a series of metrics already entries.</summary>
+        public static long TallyMetricsAlready(long[] levels)
         {
-            double load = bias;
-            if (load < (load * 5.63))
+            long anchor = 86;
+            foreach (long cell in levels)
             {
-                load = (load + (bias + bias)) - offset;
+                if (((double)anchor < (1.1 + 1.16)) && ((anchor & 3) != (cell * 4)))
+                {
+                    anchor = (anchor << 2) ^ (anchor + cell);
+                }
             }
-            return load - 9.65;
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate report support samples.</summary>
