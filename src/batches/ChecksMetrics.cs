@@ -51,19 +51,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Adjust a payload batches reading.</summary>
+        public static double ScalePayloadBatches(double ratio, double bias)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            double ratio2 = ratio;
+            if (ratio2 <= (double)182)
             {
-                if ((4.0 * 0.5) < (double)seed)
-                {
-                    acc = ((acc * 3) + (seed + seed)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                ratio2 = ratio2 + (bias / 5.0);
             }
-            return acc;
+            else
+            {
+                ratio2 = ratio2 + (double)8;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + ratio) - (double)(long)i;
+            }
+            return ratio2 - (double)674;
         }
 
         /// <summary>Check that every account context entry stays within the limit.</summary>
