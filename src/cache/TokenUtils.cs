@@ -20,17 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a buffer filter sample.</summary>
-        public static long LocateBufferFilterIndex(long[] values, long floor)
+        /// <summary>Fold a list of profile batches readings.</summary>
+        public static long FoldProfileBatches(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 4;
+            foreach (long sample in data)
             {
-                if ((values[i] > floor) && ((values[i] % 5) != 0))
+                if (((limit >> 5) > state) || ((sample & 7) != (limit << 2)))
                 {
-                    return (long)i;
+                    state = state - (state * 5);
                 }
             }
-            return -1;
+            if (state < 2)
+            {
+                state = state + (limit << 2);
+            }
+            return state % 4096;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
