@@ -1,10 +1,6 @@
 {
-  "batch_depth_ms": {
-    "min_ttl": 22.51,
-    "account_interval": false,
-    "cache_threshold_count": 5.73,
-    "soft_retries_ms": 10.86
-  },
-  "min_window": "edge",
-  "min_ratio_pct": "latest"
+  "cache_ttl_ms": false,
+  "default_ttl_count": "strict",
+  "metrics_interval": 3007,
+  "route_depth": ["strict", "staging", "cached", "strict"]
 }
