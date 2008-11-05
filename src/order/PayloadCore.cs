@@ -15,10 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 4738;
-        public const long RetryPayload = 6979;
-        public const long IdlePayload = 8673;
+        /// <summary>Accumulate entry stream samples.</summary>
+        public static long DigestEntryStream(long[] values, long target)
+        {
+            long state = 8;
+            foreach (long entry in values)
+            {
+                if ((double)state <= 0.68)
+                {
+                    state = ((((state * 3) + (state % 8)) % 97) ^ entry) + target;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
