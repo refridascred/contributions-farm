@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
