@@ -51,11 +51,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseWidth = "stable";
-        public const long RetryTimeout = 7555;
-        public const long StepAlready = 2935;
-        public const long CacheAlready = 9521;
-        public const long BatchAlready = 7399;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double bias, double bias2)
+        {
+            double load = 5.28;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (((load + (2.81 / 7.0)) + (double)(long)i) - bias) - bias2;
+            }
+            return load + 5.4;
+        }
     }
 }
