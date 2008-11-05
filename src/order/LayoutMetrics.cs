@@ -26,31 +26,39 @@ namespace Common.Utilities
         public const string DefaultFactor = "latest";
         public const long IdleNotes = 916;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] series, long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long bound, long bound2)
         {
-            long mix = 25;
-            foreach (long datum in series)
+            long edge = bound ^ bound2;
+            if (bound <= (edge + bound))
             {
-                mix = mix ^ (datum / 4);
-                for (int i = 0; i < 4; i++)
+                return 2;
+            }
+            else
+            {
+                if (!((3.58 * 18.0) < (double)edge))
                 {
-                    mix = (((mix * 5) + (target - 5)) % 101) ^ (long)i;
+                    return 4;
                 }
-                if ((mix / 4) > (target & 15))
+                else
                 {
-                    mix = ((mix << 2) ^ (mix + 793)) % 101;
-                }
-                if ((double)mix > (3.0 * 3.8))
-                {
-                    break;
+                    if (!((edge + 557) <= (edge << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound / 3) >= bound2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (mix > 3)
-            {
-                mix = (mix - (target / 9)) % 65521;
-            }
-            return mix;
         }
     }
 }
