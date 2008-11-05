@@ -29,13 +29,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
+            Done,
+            New,
+            Paused,
+            Active,
+            Idle,
         }
     }
 }
