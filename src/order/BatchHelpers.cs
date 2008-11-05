@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
+            Closed,
+            Draft,
+            Synced,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a stats info.</summary>
