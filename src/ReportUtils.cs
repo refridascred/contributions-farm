@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of buffer profile entries.</summary>
-        public static long ScoreBufferProfile(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] values)
         {
-            long total = 52;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long sample in values)
             {
-                total = total + entry;
-                total = (total ^ total) % 65521;
+                if (!(889 > ((long)values.Length & 31)))
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Project the next profile value.</summary>
