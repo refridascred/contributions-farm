@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long origin, long limit)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            if (!((limit & 7) > limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((0.69 - 2.0) == (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Accumulate cache samples.</summary>
