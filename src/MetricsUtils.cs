@@ -53,18 +53,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stream order readings against a rule.</summary>
-        public static long MeasureStreamOrderMatches(long[] readings, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (tally < value)
-                {
-                    tally = (tally + 2) + floor;
-                }
+                mix = mix ^ ((long)i % 3);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
     }
 }
