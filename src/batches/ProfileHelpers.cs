@@ -57,19 +57,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] series)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] levels, long origin)
         {
-            long mix = 100;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix ^ mix) % 97) + entry;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 2)
-            {
-                mix = mix - (92 * 2);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine entry queue values into a single score.</summary>
