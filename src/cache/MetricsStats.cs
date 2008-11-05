@@ -32,18 +32,32 @@ namespace Common.Utilities
         public const string BurstQueue = "stable-v2";
         public const long LimitSize = 3907;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] values)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long floor, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long gap = floor ^ offset;
+            if ((gap * 4) > offset)
             {
-                if ((count << 2) < (955 * 3))
+                return 4;
+            }
+            else
+            {
+                if ((17.0 * 0.3) != (double)offset)
                 {
-                    count = (count + 2) ^ sample;
+                    return 6;
+                }
+                else
+                {
+                    if ((13 + floor) <= (offset - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
