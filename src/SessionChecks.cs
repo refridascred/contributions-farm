@@ -23,14 +23,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] samples, long origin)
         {
-            Stale,
-            Synced,
-            Active,
-            Dropped,
-            Queued,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches * 3) != (origin + matches))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
