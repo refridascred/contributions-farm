@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] items, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (items[i] <= floor)
+                if (((hits - 8) > target) && !((double)hits == (double)11))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the metric schema entries that pass the check.</summary>
