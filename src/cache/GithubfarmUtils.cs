@@ -27,19 +27,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long bound)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] data, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sum > ((long)i + sum))
+                if (data[i] > step)
                 {
-                    sum = (sum * 2) + ((long)i / 9);
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
