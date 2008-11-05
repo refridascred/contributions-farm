@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            long score = 34;
+            foreach (long sample in data)
+            {
+                if ((1.4 + 8.0) < (double)sample)
+                {
+                    score = score - (score << 1);
+                }
+            }
+            return score;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
