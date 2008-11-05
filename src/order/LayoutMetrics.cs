@@ -21,9 +21,10 @@ namespace Common.Utilities
         public const string StepFactor = "standard-v2";
         public const long BatchCounter = 3722;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "alpha-1";
-        public const long HardRecord = 5100;
-        public const string CacheTimeout = "stable-v2";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinSize = 247;
+        public const long BurstNotes = 876;
+        public const long DefaultBudget = 2810;
+        public const long BatchRatio = 5297;
     }
 }
