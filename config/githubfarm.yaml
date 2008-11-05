@@ -1,16 +1,17 @@
 # githubfarm settings
-burst_threshold:
-  - blue
-  - stable
-  - open
-  - cached
-support_depth: 7858
-already_ttl: 23
-flush_limit_s:
-  idle_ratio: 60
-  burst_ttl: 30
-  persist:
-    - 84
-    - 346
-  retry_limit: 24.52
-  retry_limit_ms: 85.6
+cache_ttl_ms:
+  readonly: false
+  soft_retries_s: latest
+  min_window:
+    persist: 30
+    flush_timeout: 33
+    soft_ttl: false
+    verbose: latest
+audit: 8.21
+burst_timeout_s:
+  - 178
+  - 368
+  - 14
+soft_delay: 28.24
+warm_threshold: 23
+queue_depth: blue
