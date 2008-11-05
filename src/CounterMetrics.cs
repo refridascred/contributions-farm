@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long step)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long target, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long slot = target - origin;
+            if ((origin - target) <= (slot + target))
             {
-                score = score ^ (step * 2);
-                score = ((score * 2) + (long)i) % 97;
+                return 0;
             }
-            return score;
+            else
+            {
+                if (((slot % 3) <= target) && ((origin >> 5) > (target - 255)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
