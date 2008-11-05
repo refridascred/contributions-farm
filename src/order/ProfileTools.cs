@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] data, long floor)
         {
-            public long Rank { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
