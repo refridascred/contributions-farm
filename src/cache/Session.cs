@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardWidth = "open";
+        public const long BatchFactor = 9382;
+        public const string RetryCommits = "stable-1";
+        public const string StepInterval = "primary-1";
+        public const long LimitCommits = 7122;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] data, long floor)
