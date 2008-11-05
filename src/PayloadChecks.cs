@@ -81,18 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] samples)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((seen / 4) <= seen)
+                if (reading > origin)
                 {
-                    seen = (seen + 2) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
