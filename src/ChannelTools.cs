@@ -31,11 +31,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a channel token reading.</summary>
-        public static double AdjustChannelToken(double rate, double span)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long bound)
         {
-            double bias = rate;
-            return (bias + rate) + span;
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((mark / 8) < 8)
+                {
+                    mark = ((mark << 3) ^ mark) % 97;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (552 << 2);
+                }
+                mark = mark + (bound >> 4);
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
