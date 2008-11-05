@@ -37,13 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] levels)
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
