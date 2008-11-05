@@ -41,12 +41,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardSpan = "staging-v2";
-        public const long BaseFactor = 1003;
-        public const long MinNotes = 2975;
-        public const long SoftNotes = 6191;
-        public const long BaseTimeout = 892;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Idle,
+            Done,
+            Dropped,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MaxRoute = 1992;
