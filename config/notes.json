@@ -1,15 +1,6 @@
 {
-  "checks_limit": 100,
-  "retry_interval": 60,
-  "compress": {
-    "enabled": false,
-    "retry_limit_pct": 6.17,
-    "strict": "standard",
-    "sync_interval": 54.45,
-    "min_ratio_pct": [24, 398, 437, 429],
-    "audit": 2257
-  },
-  "persist": [238, 329],
-  "cache_window_pct": 500,
-  "hard_size_ms": true
+  "sync_delay_ms": 30,
+  "burst_retries_s": false,
+  "cache_ratio_pct": ["eu-west", "edge"],
+  "hard_ttl": true
 }
