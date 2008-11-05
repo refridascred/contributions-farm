@@ -63,12 +63,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] data, long limit)
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long acc = 2;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = (((acc - (49 % 60)) % 1000) ^ (long)i) + limit;
+                }
+                if ((value > (value + acc)) && (value >= acc))
+                {
+                    acc = ((acc * 5) + (value * 3)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Classify a account window pair into a bucket.</summary>
