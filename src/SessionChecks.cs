@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Ready,
-            Stale,
-            Retry,
+            public bool Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
