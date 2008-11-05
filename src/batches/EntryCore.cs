@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] values, long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a metric entry.</summary>
