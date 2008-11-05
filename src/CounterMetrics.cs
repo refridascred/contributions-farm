@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Active,
-            Retry,
-            Stale,
-            Idle,
-            Paused,
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit format readings against a rule.</summary>
