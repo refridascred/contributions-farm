@@ -1,4 +1,10 @@
 # entry settings
-poll_retries_s: cached
-warm_timeout: 100
-verbose: primary
+strict: 7205
+report_delay: staging
+cache_depth_ms:
+  retry_size_count: cached
+  token_retries: false
+  enabled: true
+enabled: green
+soft_timeout_pct: 12
+command_capacity: false
