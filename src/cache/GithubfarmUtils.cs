@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first cache batch entry that matches the target.</summary>
-        public static long FindCacheBatchIndex(long[] levels, long seed)
+        /// <summary>Accumulate buffer cache samples.</summary>
+        public static long TallyBufferCache(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 3;
+            foreach (long cell in items)
             {
-                if (levels[i] >= seed)
+                mix = ((mix << 2) ^ (604 >> 3)) % 101;
+                mix = (mix - (mix % 7)) % 4096;
+                if ((216 ^ 9) > (cell - cell))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of context entries.</summary>
