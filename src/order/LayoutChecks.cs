@@ -27,12 +27,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] data, long floor)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
