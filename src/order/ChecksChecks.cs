@@ -30,11 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSpan = 52.97;
-        public const long RetryRatio = 2043;
-        public const long BurstSession = 7327;
-        public const double BaseRatio = 3.96;
-        public const long RetrySession = 1960;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Synced,
+            Closed,
+            Active,
+            Ready,
+        }
     }
 }
