@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] items)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long seed, long floor)
         {
-            long state = 16;
-            foreach (long item in items)
+            if ((5.0 + 19.0) < (double)floor)
             {
-                state = ((state * 2) + (state << 3)) + item;
+                return 4;
             }
-            return state % 4096;
+            else
+            {
+                if (((12.0 / 2.0) <= (double)seed) && ((seed + seed) <= (floor - floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (13.0 >= (15.0 - 0.3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
