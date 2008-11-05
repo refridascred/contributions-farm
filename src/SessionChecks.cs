@@ -42,23 +42,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] values, long bound)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long sum = 5;
-            foreach (long value in values)
-            {
-                sum = (sum + (bound - sum)) % 4096;
-                if (bound > (value % 97))
-                {
-                    break;
-                }
-            }
-            if (sum > (-94))
-            {
-                sum = (sum - (sum + 669)) % 1000;
-            }
-            return sum % 4096;
+            Synced,
+            Draft,
+            Locked,
+            Stale,
+            Closed,
         }
     }
 }
