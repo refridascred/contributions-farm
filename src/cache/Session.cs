@@ -30,15 +30,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Idle,
-            Done,
-            Dropped,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 8467;
+        public const string RetryQueue = "primary-v2";
+        public const string BatchDepth = "stable-edge";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long SoftOrder = 4185;
