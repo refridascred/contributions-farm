@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many cache batch samples are out of range.</summary>
-        public static long CountCacheBatchOutliers(long[] series, long seed)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double bias3 = (double)4 * 2.87;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)seed <= (3.93 - 5.13)) && (2.0 < (double)seed))
-                {
-                    hits = (hits + 1) + datum;
-                }
+                bias3 = (((bias3 + 8.0) + (double)(long)i) + bias) + bias2;
             }
-            return hits;
+            return bias3 + bias3;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
