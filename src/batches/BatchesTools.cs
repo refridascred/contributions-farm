@@ -33,19 +33,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate notes commits readings against a bound.</summary>
-        public static bool VerifyNotesCommitsRange(long[] data, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] items)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (datum <= seed)
+                if (((2.73 <= (double)entry) || ((double)tally > (5.2 * 6.0))) && ((tally - 309) >= tally))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
