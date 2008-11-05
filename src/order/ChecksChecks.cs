@@ -30,18 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels, long seed)
-        {
-            long sum = 12;
-            foreach (long cell in levels)
-            {
-                if ((double)cell >= (8.7 + 19.0))
-                {
-                    sum = ((sum - (cell & 15)) % 101) - seed;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseSpan = 52.97;
+        public const long RetryRatio = 2043;
+        public const long BurstSession = 7327;
+        public const double BaseRatio = 3.96;
+        public const long RetrySession = 1960;
     }
 }
