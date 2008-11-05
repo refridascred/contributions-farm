@@ -51,11 +51,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 2099;
-        public const string HardBatch = "primary-edge";
-        public const long StepBatch = 1610;
-        public const string RetryTimeout = "open";
-        public const long WindowBatch = 8027;
+        /// <summary>Validate notes commits readings against a bound.</summary>
+        public static bool VerifyNotesCommitsRange(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
