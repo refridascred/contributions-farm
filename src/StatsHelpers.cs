@@ -39,38 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long floor, long target)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long origin)
         {
-            if ((double)floor != (15.0 / 4.0))
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
+                mix = mix - mix;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((floor % 97) < target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor / 2) == (target - 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target ^ floor) < (floor * 4)) && ((double)target <= 9.4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Accumulate token samples.</summary>
