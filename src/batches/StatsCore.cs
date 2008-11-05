@@ -47,14 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Stale,
-            New,
-            Failed,
-            Ready,
-            Locked,
+            Synced,
+            Queued,
+            Retry,
         }
 
         /// <summary>Accumulate format samples.</summary>
