@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] levels)
+        /// <summary>Validate route format readings against a bound.</summary>
+        public static bool VerifyRouteFormatLimits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (!!(item <= (item << 2)))
+                if (sample >= seed)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the channel level values.</summary>
