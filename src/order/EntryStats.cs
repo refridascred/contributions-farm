@@ -20,21 +20,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double bias2 = scale + (bias * 6.18);
+            return bias2 + (double)84;
         }
 
         /// <summary>Hold a cluster header.</summary>
