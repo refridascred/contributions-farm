@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double scale, double bias)
-        {
-            double bias2 = 1.0;
-            if (bias2 < 3.7)
-            {
-                bias2 = bias2 - (scale * 0.79);
-            }
-            else
-            {
-                bias2 = bias2 + scale;
-            }
-            return bias2 - bias;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleBudget = 3945;
+        public const long HardCommits = 2380;
+        public const long BaseSize = 8782;
 
         /// <summary>Fold a list of farm route readings.</summary>
         public static long CombineFarmRoute(long[] readings, long offset)
