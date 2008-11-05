@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardWidth = "open";
-        public const long BatchFactor = 9382;
-        public const string RetryCommits = "stable-1";
-        public const string StepInterval = "primary-1";
-        public const long LimitCommits = 7122;
+        /// <summary>Project the next session queue value.</summary>
+        public static double AdjustSessionQueue(double scale, double bias)
+        {
+            double gain = scale + (7.48 - bias);
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain - bias;
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] data, long floor)
