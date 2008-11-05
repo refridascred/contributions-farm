@@ -1,10 +1,12 @@
 # support settings
-hard_ratio_s: strict
-cache_ratio_s: true
-batches_ttl: legacy
-poll_threshold:
-  - 14
-  - 201
-  - 387
-  - 102
-stats_size: 37.94
+default_threshold: 70
+compress:
+  sync_capacity_pct: 100
+  dry_run: standard
+  profile_delay: 6237
+base_ttl: cached
+verbose: standard
+batch_size_count: 4069
+poll_capacity_s:
+  - 304
+  - 107
