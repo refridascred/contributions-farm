@@ -15,17 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] readings, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] values, long step)
         {
-            long total = 299;
-            foreach (long datum in readings)
+            long result = 39;
+            foreach (long reading in values)
             {
-                total = (total + bound) + datum;
-                total = (total + total) % 255;
-                total = (total - (total & 31)) % 65521;
+                result = (((result + result) % 97) ^ reading) - step;
             }
-            return total % 1000;
+            return result;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
