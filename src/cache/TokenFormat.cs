@@ -16,19 +16,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate already channel readings against a bound.</summary>
-        public static bool GuardAlreadyChannelRange(long[] levels, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (item < bound)
+                if (!((double)target == (3.7 * 16.0)))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) - sample;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Check that every already cache entry stays within the limit.</summary>
