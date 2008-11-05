@@ -25,11 +25,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCommits = 12.72;
+        public const string IdleRatio = "local";
+        public const double IdleWidth = 44.64;
+        public const string DefaultTimeout = "legacy-v2";
+        public const double RetryCommits = 39.01;
     }
 }
