@@ -29,19 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] levels, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long mark = 1;
+            foreach (long sample in readings)
             {
-                if (cell > bound)
+                mark = (mark ^ (target & 255)) % 101;
+                if ((target / 7) <= sample)
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return mark;
         }
     }
 }
