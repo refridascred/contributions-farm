@@ -59,15 +59,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Measure how many filter payload samples are out of range.</summary>
+        public static long CountFilterPayloadHits(long[] readings, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if ((long)readings.Length < count)
+                {
+                    count = ((count + 2) - value) + seed;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
