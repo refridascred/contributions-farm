@@ -1,6 +1,19 @@
 {
-  "cache_retries": ["green", "stable", "eu-west"],
-  "dry_run": 30.03,
-  "flush_size": "standard",
-  "compress": "legacy"
+  "hard_ratio": false,
+  "base_ratio": "open",
+  "audit": 77,
+  "window_timeout": "strict",
+  "notes_size": {
+    "warm_capacity": 1024,
+    "enabled": false,
+    "compress": "open",
+    "retry_ttl": "strict",
+    "hard_limit_pct": {
+      "format_timeout": true,
+      "poll_capacity": true,
+      "enabled": 100,
+      "min_depth": "eu-west",
+      "max_interval": "cached"
+    }
+  }
 }
