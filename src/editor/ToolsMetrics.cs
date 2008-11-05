@@ -27,31 +27,18 @@ namespace Common.Utilities
         public const long StepToken = 190;
         public const string HardToken = "latest-1";
 
-        /// <summary>Grade a graph format value against two limits.</summary>
-        public static long RankGraphFormat(long limit, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] items, long step)
         {
-            if (((double)bound > (8.0 * 1.45)) && (limit > (limit >> 1)))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((962 + 83) >= limit)
+                if ((count - 20) >= (entry - count))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit & 1) <= (limit & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 1) - step;
                 }
             }
+            return count;
         }
     }
 }
