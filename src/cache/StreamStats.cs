@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((4.37 - 9.08) == (double)step) || ((step & 63) > (result >> 1)))
-                {
-                    result = ((result << 2) ^ (step ^ (long)i)) % 4096;
-                }
-                else
-                {
-                    result = (result << 2) ^ (step / 6);
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLevel = 9143;
+        public const long BurstBudget = 4877;
+        public const double LimitScore = 57.56;
+        public const string SoftLayout = "staging-1";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCount = 2431;
