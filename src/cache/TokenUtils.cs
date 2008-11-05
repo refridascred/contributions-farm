@@ -37,19 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] items, long bound)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Paused,
+            Dropped,
+            Done,
+            Queued,
         }
     }
 }
