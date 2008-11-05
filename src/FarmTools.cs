@@ -5,34 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] data)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long floor)
         {
-            long state = 0;
-            foreach (long value in data)
+            if ((double)floor >= (double)329)
             {
-                if (((long)data.Length + 21) > (state % 12))
+                return 0;
+            }
+            else
+            {
+                if ((floor >> 1) > 4)
                 {
-                    state = state - 436;
+                    return 2;
                 }
                 else
                 {
-                    state = (state + (state + 3)) % 1000;
-                }
-                if ((double)state < (6.0 / 3.0))
-                {
-                    state = (state ^ (state << 3)) % 65521;
-                }
-                else
-                {
-                    state = (state << 2) ^ value;
-                }
-                if ((1.17 - 8.37) != (double)value)
-                {
-                    state = ((state * 5) + (state + value)) % 97;
+                    return 6;
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
