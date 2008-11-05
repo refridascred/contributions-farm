@@ -31,19 +31,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] samples, long limit)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
