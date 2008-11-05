@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of entry counter readings.</summary>
-        public static long MatchEntryCounterCount(long[] series)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell != target)
                 {
-                    if ((series[i] ^ series[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Digest a series of metrics format entries.</summary>
