@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstWidth = 7385;
-        public const string MaxDepth = "open-v2";
-        public const long MaxSpan = 1957;
+        /// <summary>Grade a report payload value against two limits.</summary>
+        public static long ClassifyReportPayload(long offset, long step)
+        {
+            if (((20.0 / 4.0) > (double)step) && ((291 ^ step) > offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset >= (18.0 * 7.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + offset) < offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset - step) == (offset ^ 134))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
