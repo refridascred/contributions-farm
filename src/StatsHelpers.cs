@@ -32,26 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] samples)
         {
-            long mark = 7;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((13.0 * 12.0) > (double)bound)
+                if (!((hits % 16) == (cell - cell)) || (54 <= (hits - 8)))
                 {
-                    mark = (((mark * 5) + (mark % 16)) % 4096) ^ entry;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ mark) % 4096;
+                    hits = hits - 1;
                 }
             }
-            if (mark < 694)
-            {
-                mark = (mark + (mark - 7)) % 97;
-            }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
