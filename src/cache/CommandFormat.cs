@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] data)
         {
-            Ready,
-            Stale,
-            Dropped,
-            Paused,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((item >> 1) > item)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
