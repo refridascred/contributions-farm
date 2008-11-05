@@ -1,8 +1,15 @@
 {
-  "soft_capacity_s": "fallback",
-  "stream_capacity": 9811,
-  "burst_threshold": 16,
-  "audit": "staging",
-  "session_limit": 31,
-  "batch_window_ms": true
+  "checks_limit": 100,
+  "retry_interval": 60,
+  "compress": {
+    "enabled": false,
+    "retry_limit_pct": 6.17,
+    "strict": "standard",
+    "sync_interval": 54.45,
+    "min_ratio_pct": [24, 398, 437, 429],
+    "audit": 2257
+  },
+  "persist": [238, 329],
+  "cache_window_pct": 500,
+  "hard_size_ms": true
 }
