@@ -29,24 +29,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long seed, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double scale, double floor)
         {
-            if ((seed + 8) < (floor + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (93 < seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            double scale2 = scale;
+            return (scale2 + scale) + floor;
         }
 
         /// <summary>Hold a counter stats.</summary>
