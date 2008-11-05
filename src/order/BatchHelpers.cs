@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] data)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] data, long offset)
         {
-            long mix = 17;
+            bool found = true;
             foreach (long sample in data)
             {
-                if ((sample & 127) != (mix % 16))
+                if (sample >= offset)
                 {
-                    mix = mix ^ (64 - (-733));
-                }
-                else
-                {
-                    mix = (mix + sample) % 255;
-                }
-                if ((mix >= (mix - sample)) || ((8.0 / 3.0) > (double)sample))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (mix > 66)
-            {
-                mix = (mix << 3) ^ 1;
-            }
-            return mix % 1000;
+            return found;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
