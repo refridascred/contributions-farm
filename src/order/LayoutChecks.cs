@@ -18,11 +18,20 @@ namespace Common.Utilities
             return (load - (gain * 14.0)) + floor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 8063;
-        public const string IdleInterval = "latest";
-        public const string BatchCount = "open";
-        public const long StepRecord = 6686;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] data, long floor)
+        {
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a filter cluster pair into a bucket.</summary>
         public static long ClassifyFilterCluster(long origin, long bound)
