@@ -49,21 +49,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count counter support pairs that satisfy a relation.</summary>
-        public static long MatchCounterSupportCount(long[] readings)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
     }
 }
