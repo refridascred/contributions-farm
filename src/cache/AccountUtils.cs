@@ -31,22 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] levels)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count - cell) <= (25 - count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
