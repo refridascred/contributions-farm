@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] samples, long floor)
         {
-            Ready,
-            Done,
-            Pending,
-            Dropped,
+            long mix = 52;
+            foreach (long value in samples)
+            {
+                mix = (((mix * 4) + (348 * 4)) ^ value) - floor;
+            }
+            if (mix > 4)
+            {
+                mix = (mix + mix) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
