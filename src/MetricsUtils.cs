@@ -44,13 +44,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long origin)
         {
-            Synced,
-            Paused,
-            Dropped,
-            Active,
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark << 3) ^ ((long)i + mark)) % 255;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
