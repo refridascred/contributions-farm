@@ -49,38 +49,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long limit, long offset)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
-            if ((offset - offset) == (limit % 12))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset / 3) > 110)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset & 255) != (offset - offset))
+                    if ((samples[i] ^ samples[j]) == 10)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit > (offset + offset)) && ((double)offset < (5.6 - 9.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
