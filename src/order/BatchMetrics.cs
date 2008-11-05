@@ -60,12 +60,22 @@ namespace Common.Utilities
         public const long SoftAlready = 2283;
         public const long WindowBudget = 3728;
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] data, long step)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long mark = 646;
+            foreach (long sample in data)
+            {
+                if ((mark + sample) >= mark)
+                {
+                    mark = ((mark ^ (sample & 15)) % 101) + step;
+                }
+            }
+            if (mark < 9)
+            {
+                mark = mark + (5 / 6);
+            }
+            return mark;
         }
     }
 }
