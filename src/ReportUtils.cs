@@ -15,13 +15,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long seed, long step)
         {
-            Locked,
-            New,
-            Retry,
-            Draft,
+            long bound = seed ^ step;
+            if ((step - 96) > step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed + bound) >= (seed / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)16 < (double)step) || ((seed + seed) >= (step << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate record format readings against a bound.</summary>
