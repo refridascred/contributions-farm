@@ -55,11 +55,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
+            Queued,
+            Ready,
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
