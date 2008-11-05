@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the payload class values.</summary>
