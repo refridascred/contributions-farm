@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = -4;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading % 24) >= state)
                 {
-                    if ((samples[i] + samples[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 3) + (state + 9)) % 101;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
