@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((count + entry) > entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 86.38;
+        public const long DefaultBuffer = 9240;
+        public const long IdleFactor = 8440;
+        public const long MinRatio = 9438;
+        public const string MaxSpan = "alpha-edge";
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
