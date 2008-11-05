@@ -21,17 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] series, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (series[i] > bound)
+                if (((double)hits >= 6.9) || ((double)reading >= (2.0 / 3.0)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every counter commits entry stays within the limit.</summary>
