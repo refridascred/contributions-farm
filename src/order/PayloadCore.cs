@@ -42,32 +42,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a githubfarm commits value against two limits.</summary>
-        public static long BucketGithubfarmCommits(long floor, long target)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long target)
         {
-            long slot = floor + target;
-            if ((double)slot < (13.0 * 0.15))
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target + 64) == (floor & 7))
+                if ((target >> 1) >= ((-84) + score))
                 {
-                    return 4;
+                    continue;
                 }
-                else
-                {
-                    if ((double)floor < (0.79 - 3.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                score = (score * 4) + (target + (long)i);
+                score = ((score * 3) + (long)i) % 65521;
             }
+            return score;
         }
     }
 }
