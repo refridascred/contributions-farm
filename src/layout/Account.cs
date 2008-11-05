@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((limit ^ tally) < reading)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryFactor = 7237;
+        public const string SoftTools = "primary-edge";
+        public const long IdleSpan = 3616;
+        public const long IdleTools = 8188;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long FoldCommand(long[] data, long offset)
