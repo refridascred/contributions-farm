@@ -32,25 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a farm notes pair into a bucket.</summary>
-        public static long RankFarmNotes(long bound, long bound2)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long delta = bound ^ bound2;
-            if ((2.0 - 10.0) == (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound2 * 3) == (bound2 + delta))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            Idle,
+            New,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
