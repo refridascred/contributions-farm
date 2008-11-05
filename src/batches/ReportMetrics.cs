@@ -26,11 +26,13 @@ namespace Common.Utilities
         public const double DefaultRecord = 17.13;
         public const long StepRecord = 8643;
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
     }
 }
