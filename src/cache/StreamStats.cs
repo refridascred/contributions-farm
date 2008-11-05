@@ -18,15 +18,16 @@ namespace Common.Utilities
         public const double LimitCommits = 60.18;
         public const double BatchCommits = 33.7;
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double ratio, double span)
+        /// <summary>Roll a batch route counter forward.</summary>
+        public static long RollBatchRoute(long step)
         {
-            double drift = span / 6.0;
-            for (int i = 0; i < 8; i++)
+            long mix = step;
+            for (int i = 0; i < 7; i++)
             {
-                drift = (drift + (double)(long)i) - ratio;
+                mix = (mix * 4) + 69;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return drift - span;
+            return mix;
         }
 
         /// <summary>Match up stream samples.</summary>
