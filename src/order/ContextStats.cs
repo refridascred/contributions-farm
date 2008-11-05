@@ -35,17 +35,38 @@ namespace Common.Utilities
         public const long RetrySize = 1889;
         public const long HardDepth = 2831;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long bound)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long target, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            if (97 >= (target << 3))
             {
-                acc = acc ^ (bound ^ bound);
-                acc = ((acc * 3) + (716 - (long)i)) % 1000;
-                acc = ((acc * 4) + (long)i) % 4093;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((double)target < (3.9 - 5.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target > (origin - origin)) && ((origin * 5) >= 40))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((89 + origin) >= (origin - origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
