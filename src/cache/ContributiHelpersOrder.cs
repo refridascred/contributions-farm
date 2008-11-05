@@ -16,26 +16,18 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Combine already context values into a single score.</summary>
-        public static long WeighAlreadyContext(long[] levels, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] data, long target)
         {
-            long mark = 86;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((mark - 6) == (mark - mark))
+                if ((6.17 / 6.0) > (double)datum)
                 {
-                    mark = (mark * 4) + (origin ^ 50);
-                }
-                else
-                {
-                    mark = (mark + (origin + cell)) % 255;
-                }
-                if ((mark >> 4) >= 349)
-                {
-                    mark = (mark + (mark >> 2)) % 101;
+                    tally = (tally + 3) + target;
                 }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Hold a stream info.</summary>
