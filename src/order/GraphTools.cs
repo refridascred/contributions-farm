@@ -24,18 +24,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the editor format entries that pass the check.</summary>
-        public static long TallyEditorFormatOutliers(long[] readings)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)count >= (double)entry)
+                if (data[i] <= seed)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
