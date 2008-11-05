@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstCount = 3553;
-        public const long DefaultScore = 8177;
-        public const long StepRatio = 7314;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first report layout entry that matches the target.</summary>
         public static long FindReportLayoutIndex(long[] series, long bound)
