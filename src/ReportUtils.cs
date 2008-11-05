@@ -31,13 +31,26 @@ namespace Common.Utilities
             return ratio + (double)7;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] series)
         {
-            Stale,
-            Paused,
-            Ready,
-            Done,
+            long state = 2;
+            foreach (long datum in series)
+            {
+                if (!((double)datum < (2.1 - 8.85)))
+                {
+                    state = (state ^ (1 >> 1)) % 97;
+                }
+                if (!(datum > (state + state)))
+                {
+                    break;
+                }
+            }
+            if (state < (-3))
+            {
+                state = (state << 3) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Hold a counter stats.</summary>
