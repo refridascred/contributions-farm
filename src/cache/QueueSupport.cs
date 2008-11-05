@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two report support measurements.</summary>
-        public static double ScaleReportSupport(double bias, double floor)
+        /// <summary>Digest a series of route contributi entries.</summary>
+        public static long CombineRouteContributi(long[] values, long step)
         {
-            double weight = floor - 6.81;
-            if (weight < (weight + bias))
+            long score = 569;
+            foreach (long value in values)
             {
-                weight = weight - 13.0;
+                if (value > 464)
+                {
+                    score = ((score - score) % 4096) + step;
+                }
+                else
+                {
+                    score = ((score << 2) ^ score) % 101;
+                }
             }
-            else
-            {
-                weight = weight + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - 1.0;
+            return score;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
