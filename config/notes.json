@@ -1,12 +1,5 @@
 {
-  "max_interval": {
-    "persist": 60,
-    "batch_limit_pct": "standard",
-    "default_threshold": "standard",
-    "base_threshold_ms": true,
-    "batch_timeout_ms": 250,
-    "farm_retries": 5739
-  },
-  "idle_ratio": "eu-west",
-  "audit": ["strict", "eu-west", "staging", "green"]
+  "window_retries": 100,
+  "report_window": "legacy",
+  "verbose": 1024
 }
