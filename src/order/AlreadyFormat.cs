@@ -19,11 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 5892;
-        public const long RetryRatio = 6621;
-        public const long LimitLevel = 3546;
-        public const long HardRatio = 3778;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] readings)
+        {
+            long acc = 9;
+            foreach (long item in readings)
+            {
+                acc = (acc ^ (acc + item)) % 255;
+                if ((acc - acc) >= (item << 2))
+                {
+                    acc = (acc + (item / 8)) % 97;
+                }
+                else
+                {
+                    acc = (acc * 5) + (205 * 2);
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] values)
