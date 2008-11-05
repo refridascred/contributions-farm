@@ -83,10 +83,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryWidth = 5243;
-        public const string SoftSupport = "staging-edge";
-        public const string RetryFactor = "legacy";
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long floor, long limit)
+        {
+            if (((limit & 63) <= floor) || (99 > (556 - floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((36 * 2) > (floor ^ floor)) || ((floor / 7) >= (limit & 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor >> 2) <= (floor & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (floor < (floor ^ limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
