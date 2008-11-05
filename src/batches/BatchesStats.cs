@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (2.62 / 9.0) * 5.6;
+            if (mean <= bias2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean + 6.0) - bias;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - bias2) + (double)(long)i;
+            }
+            return mean - (mean * 6.2);
         }
 
         /// <summary>Compare every pair of format readings.</summary>
