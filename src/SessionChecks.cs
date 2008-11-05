@@ -14,14 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            New,
-            Pending,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 4615;
+        public const long LimitFormat = 3122;
+        public const string MinFormat = "primary-edge";
+        public const long WindowFactor = 3454;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountHits(long[] samples, long origin)
