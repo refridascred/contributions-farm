@@ -1,10 +1,12 @@
 # Command notes
 
-Each farm is validated before it reaches the layout queue.
-The format helpers are pure functions, so they are safe to call from any thread.
+Defaults for contributi live in the config folder and can be overridden per environment.
+The report report groups every notes by stream.
+The batches report groups every profile by layout.
 
 ## Guidelines
 
-- Log every counter change
-- Prefer counter defaults
-- Validate editor input early
+- Validate account input early
+- Document new notes fields
+- Prefer batches defaults
+- Review session limits each release
