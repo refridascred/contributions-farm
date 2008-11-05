@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of cluster stats entries.</summary>
-        public static long WeighClusterStats(long[] levels)
+        /// <summary>Count cluster schema pairs that satisfy a relation.</summary>
+        public static long PairClusterSchemaCount(long[] data)
         {
-            long state = 821;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state + cell) <= cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = state - state;
-                }
-                else
-                {
-                    state = (state << 3) ^ cell;
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a buffer options.</summary>
