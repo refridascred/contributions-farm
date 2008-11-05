@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long RetryCommits = 2203;
         public const long HardCommits = 9783;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] readings)
+        /// <summary>Audit batch route readings against a rule.</summary>
+        public static long AuditBatchRouteHits(long[] data)
         {
-            long sum = 6;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((sum & 1) < sum)
+                if ((double)value != (double)(long)data.Length)
                 {
-                    sum = (((sum * 4) + sum) % 101) ^ datum;
+                    hits = hits + 1;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
