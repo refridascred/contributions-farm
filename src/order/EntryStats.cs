@@ -48,12 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] series, long floor)
         {
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((((-2) ^ count) <= (5 + 8)) && (entry > (floor / 2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
