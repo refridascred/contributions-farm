@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 65.59;
-        public const long CacheCommand = 3885;
-        public const double CacheBudget = 59.62;
-        public const long BatchCommand = 3438;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheChecks = 61.75;
+        public const long SoftChecks = 7374;
+        public const long IdleChecks = 8617;
+        public const string BurstChecks = "alpha";
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ScaleCommits(double gain, double floor)
