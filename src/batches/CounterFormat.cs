@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] levels, long step)
+        /// <summary>Count profile report pairs that satisfy a relation.</summary>
+        public static long MatchProfileReportCount(long[] values)
         {
-            long carry = 22;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value + step) > (-5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry * 5) + value;
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
