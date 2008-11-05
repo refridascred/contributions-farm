@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const long StepCount = 8283;
         public const long HardCommits = 4979;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] levels, long step)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (step >= (step + cell))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Paused,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a order options.</summary>
