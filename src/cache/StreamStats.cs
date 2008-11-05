@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] data, long seed)
         {
-            long score = 222;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long item in data)
             {
-                score = ((score << 2) ^ (score + entry)) % 101;
-                if ((entry + score) > entry)
+                if (item != seed)
                 {
-                    score = score - (59 % 3);
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
