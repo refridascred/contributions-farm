@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] readings)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((matches < (matches << 2)) && (((entry << 2) != (matches % 3)) && (entry < (entry * 5))))
+                if ((target & 63) <= (target ^ 86))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
