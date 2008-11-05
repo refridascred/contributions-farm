@@ -65,12 +65,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 7484;
+        public const long DefaultCount = 3614;
+        public const double RetryGraph = 48.76;
     }
 }
