@@ -1,7 +1,19 @@
 {
-  "audit": ["latest", "blue"],
-  "channel_limit": 3325,
-  "poll_interval_pct": 100,
-  "context_interval": "open",
-  "compress": [190, 158, 206]
+  "contributi_limit": 512,
+  "poll_ratio_s": 91.91,
+  "retry_ttl_pct": "green",
+  "context_interval": "stable",
+  "audit": {
+    "compress": 2.57,
+    "githubfarm_retries": 26.6,
+    "burst_delay": 30,
+    "min_threshold_pct": "staging",
+    "dry_run": {
+      "audit": 7.33,
+      "report_depth": 78.48,
+      "cache_ttl_ms": true,
+      "entry_threshold": 73
+    }
+  },
+  "soft_depth": false
 }
