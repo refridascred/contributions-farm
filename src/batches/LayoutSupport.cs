@@ -71,19 +71,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] levels, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
                 {
-                    carry = (((carry << 3) ^ carry) % 1000) ^ (long)i2;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
     }
 }
