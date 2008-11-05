@@ -36,15 +36,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] data, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] values)
         {
-            long sum = 2;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                sum = ((sum - (origin + 448)) % 97) + entry;
+                if (5.59 >= (double)matches)
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Fold a list of report readings.</summary>
