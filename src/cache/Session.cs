@@ -23,18 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] data)
         {
-            long carry = 2;
-            foreach (long cell in readings)
+            long mix = 1;
+            foreach (long item in data)
             {
-                if ((((-9) - cell) <= carry) || ((cell * 2) == (carry >> 2)))
+                if ((item ^ item) < 92)
                 {
-                    carry = ((carry * 5) + (carry << 2)) % 4096;
+                    mix = ((mix * 3) + item) % 4096;
                 }
             }
-            return carry;
+            if (mix > 81)
+            {
+                mix = mix ^ (mix % 3);
+            }
+            return mix % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
