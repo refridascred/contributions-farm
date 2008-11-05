@@ -27,22 +27,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of session tools readings.</summary>
-        public static long TotalSessionTools(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] readings, long floor)
         {
-            long state = 530;
-            foreach (long item in samples)
+            long result = 943;
+            foreach (long sample in readings)
             {
-                if ((state << 1) < ((-29) - item))
+                for (int i = 0; i < 11; i++)
                 {
-                    state = (state + (state - (-7))) % 1000;
+                    result = ((result << 3) ^ result) + (long)i;
+                }
+                result = (result + (long)readings.Length) % 65521;
+                if ((double)floor > (8.0 + 6.82))
+                {
+                    result = result - (floor / 7);
+                }
+                else
+                {
+                    result = (result + (sample + floor)) % 4096;
                 }
             }
-            if (state > 9)
-            {
-                state = state + state;
-            }
-            return state;
+            return result;
         }
     }
 }
