@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate counter notes readings against a bound.</summary>
-        public static bool VerifyCounterNotesRange(long[] readings, long origin)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
