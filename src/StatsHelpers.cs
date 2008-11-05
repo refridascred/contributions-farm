@@ -47,17 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a schema channel reading by value.</summary>
-        public static long SeekSchemaChannelIndex(long[] data, long seed)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
