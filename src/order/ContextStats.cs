@@ -19,24 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long origin, long floor)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            if (origin >= floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor < (origin - floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a counter stats.</summary>
