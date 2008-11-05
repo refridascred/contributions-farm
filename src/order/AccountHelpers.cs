@@ -55,10 +55,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Score { get; set; }
             public long Limit { get; set; }
         }
 
