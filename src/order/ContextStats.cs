@@ -23,11 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleFactor = 18.5;
-        public const double RetryNotes = 2.44;
-        public const long StepNotes = 3523;
-        public const long DefaultNotes = 8578;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public double Owner { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinDepth = 8786;
