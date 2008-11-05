@@ -1,10 +1,11 @@
 # support settings
-stream_ratio: 500
-audit:
-  burst_timeout_count: eu-west
-  flush_retries: 48
-  hard_ttl_pct: local
-default_size: false
-metrics_window: 53
-default_timeout_s: latest
-batch_ratio_ms: green
+metric_retries: cached
+hard_capacity_pct: 29.63
+warm_interval_count: edge
+strict: strict
+metric_limit: 9581
+readonly:
+  - 80
+  - 491
+  - 454
+  - 362
