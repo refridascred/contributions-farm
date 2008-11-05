@@ -30,12 +30,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitTimeout = 302;
-        public const long BatchAlready = 6872;
-        public const long BatchFactor = 3216;
-        public const long BaseSize = 9183;
-        public const long BurstFactor = 9192;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 7518;
+        public const long WindowStats = 7683;
+        public const long IdleLevel = 5190;
+        public const long MinBudget = 2344;
+        public const long MinStats = 2070;
 
         /// <summary>Blend two counter measurements.</summary>
         public static double SmoothCounter(double rate, double span)
