@@ -33,39 +33,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a commits already pair into a bucket.</summary>
-        public static long SortCommitsAlready(long offset, long limit)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long slot = offset + limit;
-            if ((slot + 673) > (slot >> 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit > (double)slot)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((slot - 3) <= (slot * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((18.0 / 5.0) != (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up schema session samples.</summary>
