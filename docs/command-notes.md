@@ -1,13 +1,12 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-A editor that stays idle for too long is moved to the order list.
-
-The cache report groups every format by filter.
-Each tools is validated before it reaches the notes queue.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Use metric settings to tune how often batches data is refreshed.
+When a layout fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate checks input early
-- Document new order fields
-- Log every payload change
+- Document new graph fields
+- Log every contributi change
+- Keep stats values small
+- Review format limits each release
