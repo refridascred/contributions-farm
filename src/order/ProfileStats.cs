@@ -37,24 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((double)limit <= 6.0))
-                {
-                    sum = (sum + (sum + sum)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 4) + limit) % 101;
-                    sum = sum - (long)i;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public double Flag { get; set; }
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
