@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] samples, long origin)
         {
-            long total = 5;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total << 2) ^ (502 + 38)) % 255) ^ cell;
-                total = ((total * 2) + 21) % 1000;
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 4)
-            {
-                total = (total + (total / 6)) % 101;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Describe the batches phase values.</summary>
