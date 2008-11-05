@@ -20,14 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] series, long offset)
         {
-            Pending,
-            Failed,
-            Stale,
-            New,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two cache measurements.</summary>
