@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two context schema measurements.</summary>
-        public static double SmoothContextSchema(double ratio, double floor)
-        {
-            double load = floor;
-            if (load <= ratio)
-            {
-                load = load + (floor + floor);
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (ratio + floor)) + (double)(long)i;
-            }
-            return load + load;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 5906;
+        public const long DefaultBudget = 1512;
+        public const string HardProfile = "local";
+        public const double BaseWidth = 8.73;
+        public const long RetryRatio = 8033;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long SeekStatsIndex(long[] values, long step)
