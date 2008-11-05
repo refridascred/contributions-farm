@@ -25,17 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi entry entry that matches the target.</summary>
-        public static long LocateContributiEntryIndex(long[] levels, long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
+            long count = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
