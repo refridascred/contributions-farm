@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a token metric sample.</summary>
-        public static long SeekTokenMetricIndex(long[] readings, long offset)
+        /// <summary>Audit githubfarm context readings against a rule.</summary>
+        public static long MeasureGithubfarmContextOutliers(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (readings[i] < offset)
+                if ((49 * 3) <= limit)
                 {
-                    return (long)i;
+                    tally = (tally + 3) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
