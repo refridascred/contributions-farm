@@ -34,18 +34,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Derive the next schema token value from a seed.</summary>
+        public static long RollSchemaToken(long origin)
         {
-            long anchor = 20;
-            foreach (long reading in samples)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((reading & 3) == (reading + reading))
+                if ((origin % 97) != ((long)i & 3))
                 {
-                    anchor = anchor ^ (4 % 10);
+                    total = ((total << 3) ^ (origin + origin)) % 255;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Roll a support counter forward.</summary>
