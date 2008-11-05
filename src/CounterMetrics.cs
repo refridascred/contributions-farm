@@ -40,10 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchAlready = "stable-1";
-        public const long HardSize = 8383;
-        public const string HardAlready = "legacy";
+        /// <summary>Measure how many order counter samples are out of range.</summary>
+        public static long AuditOrderCounterGaps(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!(((long)readings.Length ^ limit) < (408 - limit)))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every channel checks entry stays within the limit.</summary>
         public static bool VerifyChannelChecksBounds(long[] samples, long offset)
