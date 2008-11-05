@@ -23,14 +23,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] readings)
         {
-            Paused,
-            Synced,
-            Failed,
-            Locked,
-            Active,
+            long carry = 2;
+            foreach (long cell in readings)
+            {
+                if ((((-9) - cell) <= carry) || ((cell * 2) == (carry >> 2)))
+                {
+                    carry = ((carry * 5) + (carry << 2)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
