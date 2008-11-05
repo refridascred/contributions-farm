@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] values, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 1;
+            foreach (long datum in levels)
             {
-                if ((values[i] > step) && ((values[i] % 5) == 0))
+                mix = ((mix * 3) + (datum + mix)) % 97;
+                if (((357 % 10) <= mix) && (7.97 < (double)mix))
                 {
-                    return (long)i;
+                    mix = mix ^ (mix - datum);
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
