@@ -84,11 +84,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] items, long target)
         {
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
+            long total = 35;
+            foreach (long cell in items)
+            {
+                total = (total + (cell >> 2)) + target;
+            }
+            return total;
         }
     }
 }
