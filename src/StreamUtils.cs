@@ -40,16 +40,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a farm checks counter forward.</summary>
-        public static long RollFarmChecks(long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] samples, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                score = score ^ (score % 10);
-                score = ((score * 3) + (long)i) % 4093;
+                if (!((datum & 127) <= (23 / 4)))
+                {
+                    hits = (hits + 3) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a contributi entry.</summary>
