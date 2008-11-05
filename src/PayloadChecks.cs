@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] readings, long limit)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Pending,
+            Retry,
+            New,
+            Done,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
