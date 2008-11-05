@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] readings)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((((double)reading <= 9.67) || ((reading + reading) == (reading - tally))) && ((double)reading < (double)4))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    tally = tally + 2;
+                    acc = (acc ^ (origin << 3)) + (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
