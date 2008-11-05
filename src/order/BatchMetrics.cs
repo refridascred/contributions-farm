@@ -49,18 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes token readings against a rule.</summary>
-        public static long TallyNotesTokenMatches(long[] data, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((4.0 / 4.0) > (double)item)
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
+            Draft,
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Locate a report reading by value.</summary>
