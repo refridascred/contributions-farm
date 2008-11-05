@@ -1,5 +1,4 @@
 # entry settings
-audit: 51
-retry_delay_ms: stable
-batch_retries_count: 51
-verbose: 250
+default_interval_count: 67.11
+graph_window: blue
+compress: 76
