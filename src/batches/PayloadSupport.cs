@@ -24,14 +24,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] data)
         {
-            Active,
-            Done,
-            Draft,
-            Failed,
-            Ready,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum == (5.2 / 8.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
