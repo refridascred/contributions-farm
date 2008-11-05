@@ -60,24 +60,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] levels, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            long score = 25;
-            foreach (long entry in levels)
+            long state = -40;
+            foreach (long datum in levels)
             {
-                score = (score + (limit * 2)) % 97;
-                if (((entry - score) > (score >> 4)) && ((double)score >= (double)limit))
-                {
-                    score = score + (limit % 64);
-                    score = (score ^ limit) % 101;
-                }
-                if (limit < (limit + score))
-                {
-                    score = (score ^ (score + 4)) % 4096;
-                }
+                state = ((state ^ 485) % 1000) + datum;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Hold a context snapshot.</summary>
