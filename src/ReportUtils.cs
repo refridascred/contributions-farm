@@ -15,13 +15,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] data)
         {
-            Dropped,
-            Queued,
-            Paused,
-            Done,
+            long mark = 57;
+            foreach (long sample in data)
+            {
+                mark = (mark + (sample << 3)) % 1000;
+                mark = mark ^ (sample ^ 9);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Accumulate token samples.</summary>
