@@ -1,10 +1,8 @@
 {
-  "min_ratio": 5361,
-  "metric_ttl": {
-    "max_capacity_s": false,
-    "hard_threshold_pct": true,
-    "soft_ratio_count": [202, 230, 287, 1],
-    "queue_timeout": ["legacy", "edge", "green", "latest"]
-  },
-  "entry_delay": [300, 48, 28]
+  "stream_timeout": 9476,
+  "retry_window_s": ["edge", "blue", "strict"],
+  "compress": 60,
+  "soft_ttl_pct": false,
+  "account_retries": "edge",
+  "idle_timeout": "edge"
 }
