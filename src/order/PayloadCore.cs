@@ -37,18 +37,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] data, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((floor + floor) < 5)
+                if (((double)datum > (3.51 + 2.18)) && ((seen - datum) == (67 * 4)))
                 {
-                    count = (count + 3) - entry;
+                    seen = (seen + 3) + origin;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
