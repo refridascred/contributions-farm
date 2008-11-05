@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count commits metric pairs that satisfy a relation.</summary>
-        public static long MatchCommitsMetricCount(long[] readings)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long bound, long bound2)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)bound < 2.92) && (9.89 > (double)bound2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound != (7.6 / 3.0))
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
+                    return 8;
+                }
+                else
+                {
+                    if ((bound2 * 3) != (bound + bound2))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound2 < bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
