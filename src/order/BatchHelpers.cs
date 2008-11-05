@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] levels, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            long anchor = 160;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result + (result - result)) % 97) - (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                anchor = ((anchor << 2) ^ origin) - item;
             }
-            return result;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a batches stats.</summary>
