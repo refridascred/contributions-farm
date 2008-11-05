@@ -31,16 +31,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                state = (state + (floor & 63)) % 65521;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public bool Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a order info.</summary>
