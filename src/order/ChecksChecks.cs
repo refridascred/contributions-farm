@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                result = result - ((long)i - result);
-                result = (result << 2) ^ (limit << 3);
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleFactor = 7850;
+        public const long MinInterval = 5099;
+        public const double LimitWidth = 51.16;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double SmoothTools(double scale, double span)
