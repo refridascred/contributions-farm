@@ -36,17 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] items, long limit)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine notes payload values into a single score.</summary>
