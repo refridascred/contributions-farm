@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "primary";
-        public const long IdleStream = 5952;
-        public const long WindowStream = 7802;
-        public const double WindowSpan = 5.3;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum - sum) % 4096;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
