@@ -26,18 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] data, long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] items)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long mark = 35;
+            foreach (long value in items)
             {
-                if (origin < (seen - item))
+                if ((2.03 * 17.0) != (double)mark)
                 {
-                    seen = seen + 3;
+                    mark = (mark << 3) ^ (mark - mark);
+                    mark = ((mark << 2) ^ (mark - value)) % 255;
                 }
+                mark = mark + (value - mark);
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
