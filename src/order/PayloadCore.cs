@@ -15,11 +15,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Project the next filter metric value.</summary>
+        public static double AdjustFilterMetric(double ratio, double floor)
         {
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
+            double bias = floor;
+            if (bias < ratio)
+            {
+                bias = bias - (5.6 / 9.0);
+            }
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - 2.97) - (double)(long)i;
+            }
+            return bias + floor;
         }
 
         /// <summary>Describe the context class values.</summary>
