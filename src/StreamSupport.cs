@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long SoftBudget = 2417;
         public const long CacheChannel = 7374;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
