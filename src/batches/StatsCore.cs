@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long HardInterval = 791;
         public const string RetryFactor = "open-1";
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] series, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((series[i] > floor) && ((series[i] % 5) != 0))
+                if (((long)values.Length << 3) < offset)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the tools mode values.</summary>
