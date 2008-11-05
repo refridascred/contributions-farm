@@ -14,22 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of entry layout readings.</summary>
-        public static long CombineEntryLayout(long[] samples, long step)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long anchor = 83;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = (((anchor + (cell + anchor)) % 255) - (long)i) - step;
-                }
-                if (((long)samples.Length - cell) != (anchor >> 5))
-                {
-                    anchor = ((anchor << 2) ^ (76 / 2)) % 1000;
-                }
-            }
-            return anchor;
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the cluster commits entries that pass the check.</summary>
