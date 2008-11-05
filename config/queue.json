@@ -1,10 +1,7 @@
 {
-  "enabled": 8765,
-  "hard_interval": {
-    "soft_capacity": "standard",
-    "default_threshold": ["blue", "primary", "open"],
-    "hard_delay_count": false
-  },
-  "dry_run": [96, 161],
-  "burst_delay_pct": ["legacy", "blue"]
+  "warm_timeout_ms": "latest",
+  "idle_capacity_pct": "strict",
+  "min_timeout_count": 73.38,
+  "base_threshold_pct": [349, 59, 455],
+  "warm_retries": true
 }
