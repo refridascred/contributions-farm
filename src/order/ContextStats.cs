@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] readings, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                if ((8.56 / 9.0) >= (double)bound)
                 {
-                    return (long)i;
+                    count = (count + 1) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a counter stats.</summary>
