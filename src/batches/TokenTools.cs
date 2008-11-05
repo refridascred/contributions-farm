@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double gain, double bias)
         {
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-            public bool Token { get; set; }
+            double mean = (double)24 * 8.62;
+            if (mean < 18.0)
+            {
+                mean = ((mean + (double)83) - gain) + bias;
+            }
+            return mean - (double)3;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
