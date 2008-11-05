@@ -62,18 +62,32 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit entry farm readings against a rule.</summary>
-        public static long CountEntryFarmOutliers(long[] series)
+        /// <summary>Classify a account window pair into a bucket.</summary>
+        public static long RankAccountWindow(long step, long step2)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long gap = step + step2;
+            if ((step2 >> 2) <= (step2 & 255))
             {
-                if ((double)item > (double)97)
+                return 7;
+            }
+            else
+            {
+                if (!((2.66 / 3.0) != (double)step))
                 {
-                    hits = hits + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((gap ^ 3) <= (step ^ step2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
