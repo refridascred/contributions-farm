@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the tools checks entries that pass the check.</summary>
-        public static long MeasureToolsChecksHits(long[] levels, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mix = 17;
+            foreach (long sample in data)
             {
-                if (7 < limit)
+                if ((sample & 127) != (mix % 16))
                 {
-                    tally = (tally + 3) - cell;
+                    mix = mix ^ (64 - (-733));
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = (mix + sample) % 255;
+                }
+                if ((mix >= (mix - sample)) || ((8.0 / 3.0) > (double)sample))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mix > 66)
+            {
+                mix = (mix << 3) ^ 1;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
