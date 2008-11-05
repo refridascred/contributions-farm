@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)offset < (double)datum)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryEditor = "staging-v2";
+        public const string DefaultWidth = "primary";
+        public const string RetryCount = "latest-v2";
+        public const long HardRatio = 631;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCount = 2431;
