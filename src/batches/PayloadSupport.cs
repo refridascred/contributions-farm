@@ -23,13 +23,22 @@ namespace Common.Utilities
             return ((gain - (double)94) + rate) + span;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            long anchor = 3;
+            foreach (long entry in readings)
+            {
+                if ((double)anchor < (double)entry)
+                {
+                    anchor = ((anchor * 4) + (anchor * 5)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor + entry;
+                }
+            }
+            return anchor;
         }
     }
 }
