@@ -81,15 +81,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor format entries.</summary>
-        public static long WeighEditorFormat(long[] values, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] values, long bound)
         {
-            long result = -347;
-            foreach (long entry in values)
+            long anchor = 43;
+            foreach (long datum in values)
             {
-                result = (result ^ (result - seed)) - entry;
+                if (datum > anchor)
+                {
+                    anchor = (anchor - datum) % 1000;
+                }
             }
-            return result % 4096;
+            if (anchor < 297)
+            {
+                anchor = (anchor - (anchor - bound)) % 97;
+            }
+            return anchor % 4096;
         }
     }
 }
