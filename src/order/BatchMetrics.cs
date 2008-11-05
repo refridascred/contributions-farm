@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double ratio, double offset)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            double mean = ratio / 2.0;
-            if (mean <= offset)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + 7.0;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (offset * 8.92)) + (double)(long)i;
-            }
-            return mean - (double)671;
+            return count;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
