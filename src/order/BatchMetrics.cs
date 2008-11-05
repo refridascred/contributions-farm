@@ -78,10 +78,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardWidth = 1872;
-        public const double BurstCount = 76.36;
-        public const double IdleBuffer = 39.08;
-        public const string StepBuffer = "local-v2";
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long step, long offset)
+        {
+            long diff = step ^ offset;
+            if ((offset - step) < (146 + offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step * 4) > (step - diff))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + offset) >= (diff << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
