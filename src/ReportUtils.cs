@@ -49,12 +49,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            long mix = 741;
+            foreach (long datum in series)
+            {
+                mix = (mix - (60 + 2)) ^ datum;
+            }
+            return mix % 1000;
         }
     }
 }
