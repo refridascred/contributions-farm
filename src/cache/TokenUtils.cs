@@ -20,21 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item != seed)
                 {
-                    if ((data[i] ^ data[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
