@@ -75,19 +75,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] levels, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
