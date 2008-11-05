@@ -34,15 +34,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a context buffer counter forward.</summary>
-        public static long IterateContextBuffer(long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Adjust a notes reading.</summary>
