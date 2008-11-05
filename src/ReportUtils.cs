@@ -39,14 +39,30 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            Draft,
-            Retry,
-            Paused,
-            Failed,
-            Closed,
+            long score = 624;
+            foreach (long item in readings)
+            {
+                if (((score * 2) > score) || ((item >> 3) >= (item / 3)))
+                {
+                    score = (score - (item % 7)) % 4096;
+                }
+                else
+                {
+                    score = score - (score - item);
+                }
+                if (((double)score < 9.85) || ((item + score) <= (item * 5)))
+                {
+                    score = (score * 3) + (item + item);
+                }
+                else
+                {
+                    score = (score + (item >> 3)) % 1000;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
