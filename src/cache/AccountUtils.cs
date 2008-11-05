@@ -26,14 +26,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] series, long floor)
         {
-            Pending,
-            Done,
-            New,
-            Stale,
-            Synced,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)floor > (0.62 + 8.0))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
