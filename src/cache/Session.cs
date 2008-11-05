@@ -37,12 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 5691;
-        public const long RetryWidth = 2877;
-        public const string DefaultWidth = "local-edge";
-        public const string DefaultRatio = "open";
-        public const long BatchQueue = 3111;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardSpan = "staging-v2";
+        public const long BaseFactor = 1003;
+        public const long MinNotes = 2975;
+        public const long SoftNotes = 6191;
+        public const long BaseTimeout = 892;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long StepChecks(long offset)
