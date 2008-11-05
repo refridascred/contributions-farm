@@ -54,11 +54,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 5329;
-        public const string MaxCount = "latest-v2";
-        public const long BurstBudget = 7582;
-        public const long MaxChecks = 4123;
-        public const long HardWidth = 6355;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] samples)
+        {
+            long anchor = 91;
+            foreach (long sample in samples)
+            {
+                if ((anchor ^ sample) > (sample + sample))
+                {
+                    anchor = ((anchor * 5) + (anchor << 3)) % 97;
+                }
+            }
+            if (anchor < 1)
+            {
+                anchor = ((anchor << 2) ^ (anchor & 31)) % 4096;
+            }
+            return anchor;
+        }
     }
 }
