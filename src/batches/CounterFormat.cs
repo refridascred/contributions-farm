@@ -36,24 +36,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long offset, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] values)
         {
-            if (((double)offset <= 8.8) || ((step ^ offset) >= offset))
+            long total = -127;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + offset) <= (offset ^ step))
+                if ((34 + total) > (60 >> 2))
                 {
-                    return 0;
+                    total = (total + (cell & 7)) % 101;
                 }
                 else
                 {
-                    return 8;
+                    total = ((total * 5) + (total / 4)) % 4096;
                 }
             }
+            if (total > 7)
+            {
+                total = (total ^ total) % 97;
+            }
+            return total % 65521;
         }
     }
 }
