@@ -48,11 +48,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double bias)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long origin, long step)
         {
-            double bias2 = rate;
-            return (bias2 - 12.0) + bias;
+            long slot = origin + step;
+            if (((step >> 1) >= (67 + slot)) && ((slot + step) >= (slot - slot)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step / 7) > (step + step)) || (slot <= (step + origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((2 * 5) >= (origin - slot))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (double)slot)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a githubfarm channel value against two limits.</summary>
