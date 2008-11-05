@@ -42,19 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] values, long origin)
+        /// <summary>Adjust a entry filter reading.</summary>
+        public static double ProjectEntryFilter(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double load = 5.74;
+            return (load + (ratio * 4.4)) + bias;
         }
 
         /// <summary>Blend two route measurements.</summary>
