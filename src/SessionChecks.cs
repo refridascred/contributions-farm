@@ -27,20 +27,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series)
-        {
-            long acc = 8;
-            foreach (long reading in series)
-            {
-                acc = (acc << 3) ^ (reading + 908);
-            }
-            if (acc > 724)
-            {
-                acc = ((acc * 5) + (acc << 3)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxCount = 3822;
+        public const long IdleDepth = 1974;
+        public const double DefaultFilter = 66.27;
+        public const string BatchFilter = "alpha";
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
