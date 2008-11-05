@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict cached edge stable; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in edge open blue; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-blue}"
+mode="${1:-stable}"
 case "${mode}" in
-    blue)
+    stable)
         log "fast path"
         ;;
     *)
