@@ -49,18 +49,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 6089;
         public const double WindowQueue = 3.81;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] values, long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((((680 + limit) <= (1 % 24)) || ((hits - hits) >= limit)) && (15.0 >= (double)entry))
+                if (floor > (floor ^ 1))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
