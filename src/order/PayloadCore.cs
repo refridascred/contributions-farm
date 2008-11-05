@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] series, long limit)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long mix = 841;
-            foreach (long item in series)
-            {
-                mix = ((mix ^ item) % 1000) - limit;
-            }
-            return mix % 4096;
+            public double Rank { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
