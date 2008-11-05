@@ -1,5 +1,20 @@
 {
-  "strict": 2209,
-  "poll_retries_pct": [362, 106],
-  "readonly": 82.64
+  "stats_capacity": "primary",
+  "soft_ttl_count": [382, 206],
+  "stats_ttl": [143, 104, 369, 219],
+  "metric_limit": {
+    "format_size": {
+      "verbose": 93,
+      "warm_interval": [21, 177, 267, 117],
+      "cache_timeout_pct": 250,
+      "base_timeout": "stable",
+      "base_window": "eu-west",
+      "flush_capacity_pct": [203, 93, 465, 491]
+    },
+    "hard_limit_pct": 91,
+    "token_ttl": true,
+    "cache_ttl_count": 6.41,
+    "verbose": "blue",
+    "counter_depth": 6
+  }
 }
