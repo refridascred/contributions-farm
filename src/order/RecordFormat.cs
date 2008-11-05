@@ -24,19 +24,13 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] samples, long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Paused,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a profile header.</summary>
