@@ -42,12 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
+            Synced,
+            Paused,
             Dropped,
-            Failed,
-            Draft,
+            Active,
         }
 
         /// <summary>Audit batches notes readings against a rule.</summary>
