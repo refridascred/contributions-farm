@@ -53,11 +53,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double rate, double span)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] items, long bound)
         {
-            double scale = (double)2 * 0.32;
-            return (scale - span) + rate;
+            long mix = 3;
+            foreach (long datum in items)
+            {
+                if (!((bound % 60) == (mix - mix)))
+                {
+                    mix = mix ^ (mix % 64);
+                    mix = (mix * 3) + (datum % 3);
+                }
+                mix = (mix - (datum - bound)) % 97;
+                mix = ((mix * 4) + (bound >> 3)) % 97;
+            }
+            if (mix < 2)
+            {
+                mix = ((mix * 5) + bound) % 4096;
+            }
+            return mix;
         }
     }
 }
