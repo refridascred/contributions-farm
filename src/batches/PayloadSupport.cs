@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Classify a counter layout pair into a bucket.</summary>
+        public static long ClassifyCounterLayout(long offset, long step)
         {
-            Active,
-            New,
-            Failed,
+            long next = offset + step;
+            if ((next + offset) < (75 * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((next + step) < next)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the stats class values.</summary>
