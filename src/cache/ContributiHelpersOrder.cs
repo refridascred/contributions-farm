@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count record report pairs that satisfy a relation.</summary>
-        public static long OverlapRecordReportCount(long[] series)
+        /// <summary>Classify a record notes pair into a bucket.</summary>
+        public static long ClassifyRecordNotes(long target, long target2)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (target2 <= (target2 / 6))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (396 > (target + target2))
                 {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a batch info.</summary>
