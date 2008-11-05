@@ -1,7 +1,18 @@
 {
-  "min_window_ms": "local",
-  "base_ttl_count": "legacy",
-  "record_window": 1024,
-  "enabled": 100,
-  "account_ratio": 34.35
+  "flush_ratio_ms": 45.82,
+  "format_ttl": 98.1,
+  "retry_depth": 500,
+  "order_timeout": {
+    "cache_depth_ms": "strict",
+    "flush_capacity": "cached",
+    "cache_limit": 48.33,
+    "record_size": "green",
+    "strict": {
+      "readonly": true,
+      "idle_timeout_ms": 1024,
+      "base_limit_ms": 250
+    },
+    "profile_window": "cached"
+  },
+  "sync_retries_count": "latest"
 }
