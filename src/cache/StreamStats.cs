@@ -23,10 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCount = 2431;
-        public const double LimitCommits = 60.18;
-        public const double BatchCommits = 33.7;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of format contributi entries.</summary>
         public static long WeighFormatContributi(long[] series)
