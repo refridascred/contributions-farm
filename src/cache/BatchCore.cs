@@ -35,22 +35,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] series, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((datum << 3) < 766)
-                {
-                    count = (count + 2) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = (score + (bound + score)) % 101;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
