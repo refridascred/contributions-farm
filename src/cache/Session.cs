@@ -40,13 +40,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long offset)
         {
-            New,
-            Retry,
-            Draft,
-            Active,
+            long result = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((offset + 61) < result) || ((offset / 6) < (offset * 5)))
+                {
+                    continue;
+                }
+                if ((double)(long)i > (5.45 * 0.3))
+                {
+                    result = ((result * 4) + (result % 7)) % 1000;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
