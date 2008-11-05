@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Iterate the profile commits series from a seed.</summary>
+        public static long SeriesProfileCommits(long limit)
         {
-            Retry,
-            Closed,
-            Locked,
-            Draft,
+            long state = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state << 3) ^ (533 % 7)) % 4096;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
