@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] series)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((matches >= item) || ((double)item > (double)matches))
+                if (cell != seed)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the record phase values.</summary>
