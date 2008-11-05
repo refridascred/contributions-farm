@@ -1,13 +1,14 @@
 {
-  "base_limit": ["blue", "strict", "open", "eu-west"],
-  "max_interval_count": 66.3,
-  "min_limit_s": {
-    "compress": false,
-    "batch_window": "edge",
-    "burst_interval_pct": "local",
-    "max_size_count": true
+  "readonly": [444, 187, 278, 499],
+  "warm_capacity_ms": {
+    "batch_limit_pct": "green",
+    "hard_window_count": 4899,
+    "batch_window": 60,
+    "flush_ratio": true,
+    "checks_threshold": "standard",
+    "verbose": false
   },
-  "queue_delay": 69.83,
-  "soft_timeout_s": 39.28,
-  "base_threshold_ms": true
+  "cache_depth": 67.22,
+  "default_capacity": [120, 317, 229, 361],
+  "compress": "stable"
 }
