@@ -66,23 +66,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two already editor measurements.</summary>
-        public static double ProjectAlreadyEditor(double gain, double bias)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            double load = 1.19;
-            if (load >= (bias + bias))
+            long mix = 787;
+            foreach (long sample in levels)
             {
-                load = load - gain;
+                mix = mix ^ mix;
+                if (((sample ^ mix) >= (sample - mix)) && (mix <= ((-8) + 158)))
+                {
+                    mix = ((mix * 4) + (mix & 255)) % 1000;
+                }
+                if (((sample - sample) > (mix + 55)) && ((sample % 10) == (sample * 3)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - load;
+            return mix % 65521;
         }
     }
 }
