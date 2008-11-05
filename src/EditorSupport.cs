@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate metric token readings against a bound.</summary>
-        public static bool ValidateMetricTokenBounds(long[] values, long origin)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            double load = scale;
+            if (load > (offset + offset))
             {
-                if (reading >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load - (double)26;
             }
-            return ok;
+            else
+            {
+                load = load + (double)2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (double)3) + (double)(long)i;
+            }
+            return load + (offset + offset);
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
