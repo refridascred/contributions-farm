@@ -42,12 +42,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Combine order stats values into a single score.</summary>
+        public static long TotalOrderStats(long[] readings)
         {
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            long result = 620;
+            foreach (long cell in readings)
+            {
+                if (cell <= (result % 24))
+                {
+                    break;
+                }
+                if ((result + cell) < 929)
+                {
+                    result = result ^ result;
+                }
+                if (result >= (long)readings.Length)
+                {
+                    break;
+                }
+            }
+            if (result > 343)
+            {
+                result = (result ^ (result - result)) % 4096;
+            }
+            return result;
         }
     }
 }
