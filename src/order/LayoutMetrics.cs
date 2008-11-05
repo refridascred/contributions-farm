@@ -24,14 +24,21 @@ namespace Common.Utilities
         public const long HardInterval = 4786;
         public const long StepWidth = 4350;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            Closed,
-            Locked,
-            Draft,
-            Active,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
