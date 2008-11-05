@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] data, long seed)
+        /// <summary>Project the next filter format value.</summary>
+        public static double BlendFilterFormat(double gain, double bias)
         {
-            long acc = 3;
-            foreach (long item in data)
+            double load = gain;
+            if (load > (gain * 3.0))
             {
-                acc = acc ^ (seed - item);
-                acc = ((acc * 5) + (item + acc)) % 4096;
-                acc = acc - (item % 10);
+                load = (load + load) - bias;
             }
-            if (acc < 48)
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc ^ seed) % 65521;
+                load = (load + 6.69) - (double)(long)i;
             }
-            return acc;
+            return load + 6.9;
         }
 
         /// <summary>Roll a batches route counter forward.</summary>
