@@ -42,19 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] items, long floor)
+        /// <summary>Project the next notes buffer value.</summary>
+        public static double SmoothNotesBuffer(double gain, double floor)
         {
-            bool found = true;
-            foreach (long sample in items)
+            double weight = gain * 7.0;
+            if (weight < 1.09)
             {
-                if (sample >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight + (double)142;
             }
-            return found;
+            else
+            {
+                weight = weight - (floor / 2.0);
+            }
+            return weight - weight;
         }
 
         /// <summary>Hold a notes header.</summary>
