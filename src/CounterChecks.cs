@@ -55,13 +55,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double ratio, double floor)
         {
-            Ready,
-            New,
-            Active,
-            Done,
+            double ratio2 = 1.3 + ratio;
+            if (ratio2 > 1.49)
+            {
+                ratio2 = ratio2 + (ratio + floor);
+            }
+            else
+            {
+                ratio2 = ratio2 - (ratio2 + 2.42);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + (ratio * 4.4)) + (double)(long)i;
+            }
+            return ratio2 + floor;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
