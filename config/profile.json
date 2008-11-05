@@ -1,9 +1,6 @@
 {
-  "compress": ["green", "local", "latest", "eu-west"],
-  "min_capacity_count": false,
-  "idle_ratio": {
-    "window_window": false,
-    "poll_ratio_ms": [352, 68, 256],
-    "default_delay": false
-  }
+  "notes_limit": false,
+  "default_window_ms": 1024,
+  "soft_limit_ms": true,
+  "readonly": 5.83
 }
