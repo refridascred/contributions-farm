@@ -33,12 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] levels, long seed)
         {
-            public double Offset { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
