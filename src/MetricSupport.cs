@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long BaseSchema = 4228;
         public const long StepLevel = 1342;
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double weight, double offset)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double gain = offset;
-            if (gain <= 14.0)
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain + (weight - gain);
-            }
-            return gain + (double)40;
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
