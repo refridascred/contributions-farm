@@ -23,11 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 954;
-        public const long DefaultBatch = 960;
-        public const double BurstBatch = 42.08;
-        public const long RetryBatch = 6904;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] items)
