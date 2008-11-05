@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long seed, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] data, long limit)
         {
-            if ((limit << 2) <= seed)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed % 7) >= limit)
+                if (reading >= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit + seed) < limit) || ((double)limit < (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed % 100) == (limit % 12))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
