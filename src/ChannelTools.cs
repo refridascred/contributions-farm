@@ -13,32 +13,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Classify a tools payload pair into a bucket.</summary>
-        public static long BucketToolsPayload(long step, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] values, long origin)
         {
-            long lane = step + seed;
-            if ((step >> 3) < (seed << 2))
+            long sum = 37;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed / 3) != (step * 4))
+                if ((((-42) + origin) == (origin % 97)) && ((sum + reading) <= origin))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((20.0 - 5.5) < (double)lane)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = (sum + (45 / 4)) % 97;
                 }
             }
+            if (sum > 0)
+            {
+                sum = ((sum << 2) ^ (1 ^ origin)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
