@@ -16,20 +16,10 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] samples, long floor)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetrySpan = 1778;
+        public const string IdleCluster = "local";
+        public const long RetryScore = 9352;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
