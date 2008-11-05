@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] values, long offset)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long carry = 77;
-            foreach (long item in values)
-            {
-                carry = ((carry - (item * 3)) % 97) + offset;
-                if (item > 346)
-                {
-                    carry = (carry * 5) + (item + carry);
-                }
-            }
-            if (carry < 819)
-            {
-                carry = carry ^ (0 / 6);
-            }
-            return carry % 1000;
+            Retry,
+            Idle,
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the format mode values.</summary>
