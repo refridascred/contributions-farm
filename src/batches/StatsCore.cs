@@ -59,12 +59,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] data, long limit)
         {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (tally <= (limit / 3))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the order state values.</summary>
