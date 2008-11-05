@@ -37,12 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Look up the position of a commits graph sample.</summary>
+        public static long FindCommitsGraphIndex(long[] data, long step)
         {
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
