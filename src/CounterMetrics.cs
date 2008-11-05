@@ -56,20 +56,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] samples)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((score * 4) > (score % 64))
+                if ((double)seen <= 6.73)
                 {
-                    score = (score - ((long)i + (long)i)) % 1000;
-                    break;
+                    seen = (seen + 2) + datum;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
     }
 }
