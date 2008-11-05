@@ -33,14 +33,11 @@ namespace Common.Utilities
         public const double DefaultFilter = 66.27;
         public const string BatchFilter = "alpha";
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Synced,
-            Draft,
-            Locked,
-            Stale,
-            Closed,
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
