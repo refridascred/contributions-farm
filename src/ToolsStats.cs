@@ -61,19 +61,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] levels, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] data)
         {
             long tally = 0;
-            foreach (long entry in levels)
+            foreach (long item in data)
             {
-                if ((132 - 628) > (tally - tally))
+                if (((4.89 - 9.25) == (double)item) || ((double)8 >= (double)item))
                 {
-                    tally = ((tally + 2) + entry) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 1;
                 }
             }
             return tally;
