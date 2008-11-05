@@ -43,13 +43,16 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long origin)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
+            long score = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                score = score ^ (score % 10);
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
