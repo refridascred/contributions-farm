@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardCount = 8206;
-        public const long MinRecord = 8183;
-        public const double HardRecord = 2.0;
-        public const long IdleRecord = 4141;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Locked,
+            New,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long SeriesTools(long bound)
