@@ -1,20 +1,10 @@
 {
-  "batch_threshold_count": 30,
-  "layout_size": ["blue", "green", "fallback"],
-  "batch_capacity_pct": false,
-  "burst_interval": {
-    "sync_ttl_count": "edge",
-    "readonly": "latest",
-    "enabled": 70,
-    "command_ratio": {
-      "max_ratio": 45.06,
-      "max_size": "standard",
-      "token_delay": 56.7,
-      "stream_ttl": 70,
-      "audit": [337, 76],
-      "hard_timeout": 15
-    }
+  "batch_depth_ms": {
+    "min_ttl": 22.51,
+    "account_interval": false,
+    "cache_threshold_count": 5.73,
+    "soft_retries_ms": 10.86
   },
-  "soft_size_ms": "open",
-  "warm_threshold": false
+  "min_window": "edge",
+  "min_ratio_pct": "latest"
 }
