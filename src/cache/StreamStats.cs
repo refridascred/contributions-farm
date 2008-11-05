@@ -29,16 +29,18 @@ namespace Common.Utilities
         public const double LimitCommits = 60.18;
         public const double BatchCommits = 33.7;
 
-        /// <summary>Roll a batch route counter forward.</summary>
-        public static long RollBatchRoute(long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mix = (mix * 4) + 69;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (!(((matches + sample) > matches) && ((sample >> 3) > (matches + matches))))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Project the next batches value.</summary>
