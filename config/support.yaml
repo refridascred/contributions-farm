@@ -1,8 +1,6 @@
 # support settings
-flush_ratio_count: 1024
-hard_retries: 7610
-max_size_s:
-  - 499
-  - 352
-  - 37
-idle_capacity_ms: 47.09
+channel_ratio: blue
+soft_ratio_ms: blue
+max_retries_count: 366
+format_threshold: 70.42
+soft_ratio: false
