@@ -24,21 +24,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Compare every pair of command editor readings.</summary>
-        public static long OverlapCommandEditorCount(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 8;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc << 3) ^ (reading + 908);
             }
-            return seen;
+            if (acc > 724)
+            {
+                acc = ((acc * 5) + (acc << 3)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
