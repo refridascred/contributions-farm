@@ -22,11 +22,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxSpan = 838;
-        public const long CacheSpan = 6987;
-        public const string RetryCount = "latest";
-        public const long BatchBudget = 2439;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultFactor = 2487;
+        public const long StepSchema = 803;
+        public const long HardDepth = 2716;
+        public const long BatchSchema = 680;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long IterateFormat(long floor)
