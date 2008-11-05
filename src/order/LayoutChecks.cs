@@ -69,17 +69,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a queue record reading by value.</summary>
-        public static long LocateQueueRecordIndex(long[] values, long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long limit, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!(((-545) * 2) < (origin * 3)))
             {
-                if ((values[i] <= offset) && ((values[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((2 ^ origin) < origin)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + 3) < (origin << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
