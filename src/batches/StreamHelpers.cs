@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const double IdleTimeout = 79.09;
         public const string HardScore = "latest-edge";
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] items, long bound)
+        /// <summary>Count format schema pairs that satisfy a relation.</summary>
+        public static long CompareFormatSchemaCount(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a metrics options.</summary>
