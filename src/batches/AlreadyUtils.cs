@@ -20,32 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long offset, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] series, long limit)
         {
-            long next = offset + origin;
-            if ((origin > 2) || (9.4 > (double)origin))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin < offset) || ((next % 64) <= next))
+                if ((limit % 10) > (reading + matches))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-3) - origin) > (9 - next))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
