@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Closed,
-            Idle,
-            Retry,
-            New,
+            public double Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
