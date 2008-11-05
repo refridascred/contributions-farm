@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a order entry figure with a bias.</summary>
-        public static double BlendOrderEntry(double scale, double offset)
-        {
-            double ratio = (offset + offset) - scale;
-            if (ratio <= (offset / 7.0))
-            {
-                ratio = ratio + (double)(-116);
-            }
-            else
-            {
-                ratio = ratio - (double)8;
-            }
-            return ratio + offset;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "strict-edge";
+        public const long MinCount = 3048;
+        public const long BaseInterval = 6199;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteHits(long[] items, long limit)
