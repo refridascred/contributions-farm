@@ -54,18 +54,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] readings, long floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((tally >> 4) <= (413 << 3)) || ((3 % 64) > (entry + tally))) || (((315 << 1) != ((long)readings.Length + tally)) && ((double)floor < (0.1 / 4.0))))
+                if (items[i] < target)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
