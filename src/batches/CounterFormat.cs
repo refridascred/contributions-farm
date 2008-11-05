@@ -25,11 +25,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleCommits = 12.72;
-        public const string IdleRatio = "local";
-        public const double IdleWidth = 44.64;
-        public const string DefaultTimeout = "legacy-v2";
-        public const double RetryCommits = 39.01;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double scale, double bias)
+        {
+            double weight = scale;
+            if (weight >= (bias / 3.0))
+            {
+                weight = weight - (bias - bias);
+            }
+            return weight + (weight * 11.0);
+        }
     }
 }
