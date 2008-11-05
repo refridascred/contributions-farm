@@ -17,21 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 20;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = ((state * 3) + (state - state)) % 1000;
+                if (((state - value) <= (34 >> 5)) && ((double)value < (1.4 * 4.0)))
                 {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state + (value - state)) % 255;
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Match up tools githubfarm samples.</summary>
