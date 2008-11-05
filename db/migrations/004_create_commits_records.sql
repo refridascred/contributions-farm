@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     label TEXT,
+    token TEXT,
     region TEXT,
-    weight REAL,
-    score REAL NOT NULL DEFAULT 0
+    level INTEGER,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
+CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
 
-INSERT INTO commits_records (label, region, weight, score) VALUES ('local', 'latest', 94.23, 48.66);
-INSERT INTO commits_records (label, region, weight, score) VALUES ('primary', 'stable', 70.66, 49.06);
+INSERT INTO commits_records (label, token, region, level) VALUES ('blue', 'blue', 'legacy', 11);
