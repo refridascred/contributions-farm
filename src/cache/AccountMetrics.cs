@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long seed, long origin)
+        /// <summary>Grade a contributi farm value against two limits.</summary>
+        public static long ClassifyContributiFarm(long floor, long bound)
         {
-            if ((double)origin > (2.22 - 4.49))
+            long edge = floor + bound;
+            if ((edge * 4) != ((-85) / 7))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((6 >> 2) >= (seed * 5))
+                if ((double)floor > (double)edge)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if (origin <= (origin & 255))
+                    if (((edge + floor) <= ((-6) << 2)) && (floor < edge))
                     {
-                        return 7;
+                        return 4;
                     }
                     else
                     {
-                        return 0;
+                        if (!((double)edge >= 1.46))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
