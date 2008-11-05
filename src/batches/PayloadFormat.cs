@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] levels, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((long)i >> 2) < (result + 13)))
+                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
                 {
-                    result = (result * 3) + (long)i;
+                    return (long)i;
                 }
-                result = (result - (result & 3)) % 97;
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
