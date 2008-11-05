@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
