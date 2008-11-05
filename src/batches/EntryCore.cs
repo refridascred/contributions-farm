@@ -70,11 +70,9 @@ namespace Common.Utilities
             return drift + 17.0;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinInterval = 10.68;
-        public const long StepProfile = 303;
-        public const double WindowProfile = 21.85;
-        public const long RetryCount = 4987;
-        public const long IdleLevel = 5766;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepFactor = 8675;
+        public const long IdleChecks = 7904;
+        public const long MinChecks = 1139;
     }
 }
