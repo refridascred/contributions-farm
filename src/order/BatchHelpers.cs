@@ -21,22 +21,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] levels, long step)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((((2.0 / 8.0) != (double)matches) && ((4.0 - 6.0) == (double)step)) && ((0 * 2) <= (value - value)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
