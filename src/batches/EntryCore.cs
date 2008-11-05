@@ -27,19 +27,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double ratio, double offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double rate = (double)(8 & 255);
-            if (rate <= 8.0)
-            {
-                rate = (rate + ratio) - offset;
-            }
-            else
-            {
-                rate = rate - (double)99;
-            }
-            return rate + (rate * 8.83);
+            Draft,
+            Closed,
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Accumulate layout samples.</summary>
