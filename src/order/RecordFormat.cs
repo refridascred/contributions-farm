@@ -56,13 +56,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] series)
         {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
+            long state = 734;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    state = (state - ((long)i - (long)i)) % 4096;
+                }
+                if (((datum / 3) != (datum ^ datum)) && ((state >> 5) > (datum + (-23))))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = state + (930 - datum);
+                }
+                if ((datum + datum) != (state ^ 62))
+                {
+                    state = state ^ (state + state);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (75 + state)) % 255;
+                }
+            }
+            if (state > 902)
+            {
+                state = ((state << 3) ^ 12) % 4096;
+            }
+            return state % 97;
         }
     }
 }
