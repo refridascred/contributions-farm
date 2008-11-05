@@ -17,19 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] series, long seed)
+        /// <summary>Validate layout cluster readings against a bound.</summary>
+        public static bool VerifyLayoutClusterLimits(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (reading < seed)
+                if (entry <= origin)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Find the first counter route entry that matches the target.</summary>
