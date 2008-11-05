@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the tools order entries that pass the check.</summary>
-        public static long MeasureToolsOrderMatches(long[] levels)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (((19.0 + 8.8) > (double)(long)levels.Length) && ((1 & 1) > (sample - sample)))
+                if ((double)offset > (8.66 - 9.7))
                 {
-                    count = count + 1;
+                    break;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
