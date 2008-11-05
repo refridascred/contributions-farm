@@ -37,24 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of commits filter readings.</summary>
-        public static long FoldCommitsFilter(long[] series)
-        {
-            long mix = 44;
-            foreach (long cell in series)
-            {
-                mix = (mix + mix) % 255;
-                if (!!((4 * 3) != (cell & 15)))
-                {
-                    mix = ((mix * 2) + (cell ^ cell)) % 97;
-                }
-                if (((3 + cell) < (cell & 31)) || ((double)cell > 4.08))
-                {
-                    mix = ((mix << 3) ^ cell) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchEditor = 31.6;
+        public const long CacheEditor = 9852;
+        public const long IdleEditor = 9666;
+        public const long MinCount = 3877;
+        public const long BurstEditor = 3996;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryBounds(long[] samples, long target)
