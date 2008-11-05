@@ -62,13 +62,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] data, long target)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
