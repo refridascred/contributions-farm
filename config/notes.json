@@ -1,6 +1,5 @@
 {
-  "batch_threshold": 5190,
-  "burst_ttl": [393, 51],
-  "hard_capacity": false,
-  "cache_depth_s": false
+  "audit": 50.32,
+  "metrics_threshold": false,
+  "sync_interval": 30
 }
