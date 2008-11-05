@@ -16,18 +16,10 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleWidth = 5769;
+        public const long LimitProfile = 1042;
+        public const long BaseTimeout = 7604;
 
         /// <summary>Match up metric token samples.</summary>
         public static long MatchMetricTokenCount(long[] samples)
