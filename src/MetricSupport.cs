@@ -20,20 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double scale, double bias)
-        {
-            double weight = (bias + scale) - bias;
-            if (weight >= (bias / 9.0))
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 818;
+        public const double StepSize = 14.93;
+        public const long BaseSchema = 4228;
+        public const long StepLevel = 1342;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double BlendChannel(double weight, double offset)
