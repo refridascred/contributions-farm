@@ -43,19 +43,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] items, long offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Check that every entry support entry stays within the limit.</summary>
