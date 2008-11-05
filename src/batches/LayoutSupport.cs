@@ -22,17 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first window metrics entry that matches the target.</summary>
-        public static long LocateWindowMetricsIndex(long[] items, long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
