@@ -31,21 +31,19 @@ namespace Common.Utilities
         public const long LimitCount = 5603;
         public const string BurstMetric = "stable";
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Combine notes payload values into a single score.</summary>
+        public static long TallyNotesPayload(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 69;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix << 3) ^ mix) ^ value;
             }
-            return count;
+            if (mix > 729)
+            {
+                mix = ((mix << 3) ^ (25 + bound)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
