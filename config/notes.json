@@ -1,6 +1,12 @@
 {
-  "poll_interval_pct": "stable",
-  "retry_capacity": "latest",
-  "poll_window_pct": 6843,
-  "base_ratio_count": "latest"
+  "enabled": "strict",
+  "idle_delay": 46,
+  "entry_ratio": "stable",
+  "tools_threshold": {
+    "audit": 5504,
+    "batch_ttl_pct": 250,
+    "batch_limit": 5746
+  },
+  "report_capacity": "eu-west",
+  "hard_interval": ["strict", "primary", "stable"]
 }
