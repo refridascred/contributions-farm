@@ -35,19 +35,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] levels, long seed)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
