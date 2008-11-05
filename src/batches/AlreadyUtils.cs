@@ -59,19 +59,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate batches checks readings against a bound.</summary>
-        public static bool GuardBatchesChecksLimits(long[] series, long limit)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Queued,
+            Dropped,
         }
     }
 }
