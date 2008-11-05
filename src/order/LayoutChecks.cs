@@ -32,14 +32,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Failed,
-            Retry,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 8063;
+        public const string IdleInterval = "latest";
+        public const string BatchCount = "open";
+        public const long StepRecord = 6686;
 
         /// <summary>Classify a filter cluster pair into a bucket.</summary>
         public static long ClassifyFilterCluster(long origin, long bound)
