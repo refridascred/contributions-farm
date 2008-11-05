@@ -39,19 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!((tally + entry) >= 3))
-                {
-                    tally = (tally + 2) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchScore = 1396;
+        public const long StepCommand = 5215;
+        public const double IdleSpan = 95.15;
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
