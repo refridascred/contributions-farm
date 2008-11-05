@@ -39,20 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] series)
+        /// <summary>Check that every format profile entry stays within the limit.</summary>
+        public static bool ValidateFormatProfileBounds(long[] readings, long seed)
         {
-            long sum = 90;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                sum = ((sum << 3) ^ (3 % 2)) % 1000;
-                sum = ((sum * 2) + (datum >> 3)) % 65521;
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (sum < 0)
-            {
-                sum = sum ^ (33 + sum);
-            }
-            return sum % 65521;
+            return flag;
         }
 
         /// <summary>Audit notes token readings against a rule.</summary>
