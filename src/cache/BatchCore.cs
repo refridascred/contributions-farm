@@ -19,25 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long limit, long limit2)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long step = limit + limit2;
-            if ((6.0 * 1.1) == (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step + (-20)) > limit) && ((limit * 3) <= step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Dropped,
+            New,
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
