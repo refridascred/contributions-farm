@@ -1,7 +1,7 @@
 {
-  "warm_ratio": [73, 363, 306, 148],
-  "hard_capacity_pct": "local",
-  "session_retries": "cached",
-  "flush_retries_count": "cached",
-  "enabled": 55.08
+  "idle_retries_s": false,
+  "route_limit": ["eu-west", "blue", "latest"],
+  "poll_delay": "strict",
+  "default_depth": "local",
+  "warm_ratio_pct": true
 }
