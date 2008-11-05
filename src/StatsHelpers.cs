@@ -37,21 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 2)
+                    if ((data[i] ^ data[j]) < 19)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
