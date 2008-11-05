@@ -54,22 +54,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] values, long origin)
         {
-            long anchor = 91;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor ^ sample) > (sample + sample))
+                if ((values[i] == origin) && ((values[i] % 3) != 0))
                 {
-                    anchor = ((anchor * 5) + (anchor << 3)) % 97;
+                    return (long)i;
                 }
             }
-            if (anchor < 1)
-            {
-                anchor = ((anchor << 2) ^ (anchor & 31)) % 4096;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
