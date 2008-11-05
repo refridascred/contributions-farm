@@ -43,22 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (!((cell >> 3) <= (cell + cell)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 2099;
+        public const string HardBatch = "primary-edge";
+        public const long StepBatch = 1610;
+        public const string RetryTimeout = "open";
+        public const long WindowBatch = 8027;
     }
 }
