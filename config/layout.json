@@ -1,9 +1,7 @@
 {
-  "max_window": [130, 66, 422, 14],
-  "counter_window": 16.75,
-  "burst_threshold": {
-    "contributi_ttl": ["eu-west", "staging", "edge", "eu-west"],
-    "entry_retries": 8475,
-    "burst_timeout": "blue"
-  }
+  "soft_threshold_pct": 4999,
+  "base_size_count": 58,
+  "commits_depth": ["edge", "fallback", "open", "stable"],
+  "persist": 5311,
+  "hard_ttl_ms": "primary"
 }
