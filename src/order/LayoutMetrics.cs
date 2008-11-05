@@ -24,39 +24,14 @@ namespace Common.Utilities
         public const string DefaultFactor = "latest";
         public const long IdleNotes = 916;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long bound, long bound2)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long edge = bound ^ bound2;
-            if (bound <= (edge + bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((3.58 * 18.0) < (double)edge))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((edge + 557) <= (edge << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound / 3) >= bound2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Draft,
+            Active,
+            Retry,
         }
     }
 }
