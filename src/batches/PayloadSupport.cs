@@ -13,19 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] readings, long bound)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
