@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 3920;
-        public const long LimitSupport = 1988;
-        public const long BaseSupport = 2912;
-        public const long HardDepth = 4011;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 5237;
+        public const long IdleCount = 4718;
+        public const long RetryOrder = 9962;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string MaxLevel = "stable-v2";
