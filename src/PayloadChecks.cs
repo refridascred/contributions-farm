@@ -95,22 +95,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((double)seen >= 7.61) && ((double)seen >= (9.39 / 6.0)))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 5218;
+        public const long HardContext = 9758;
+        public const long DefaultCount = 172;
     }
 }
