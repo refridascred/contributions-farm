@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public bool Offset { get; set; }
+            Done,
+            Dropped,
+            Retry,
+            Synced,
+            Stale,
         }
 
         /// <summary>Compare every pair of graph queue readings.</summary>
