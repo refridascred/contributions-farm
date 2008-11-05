@@ -34,21 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of stream report readings.</summary>
-        public static long OverlapStreamReportCount(long[] values)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 50;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)carry <= (11.0 / 9.0))
                 {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry + (cell >> 3)) % 255;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Match up tools samples.</summary>
