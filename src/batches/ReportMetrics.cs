@@ -43,13 +43,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 6479;
+        public const double LimitAlready = 35.5;
+        public const string MaxAlready = "latest";
+        public const string WindowSpan = "latest-edge";
     }
 }
