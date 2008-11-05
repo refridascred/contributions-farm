@@ -25,26 +25,22 @@ namespace Common.Utilities
         public const long HardFilter = 9948;
         public const long LimitFilter = 7143;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] samples, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] samples, long floor)
         {
-            long result = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (result < (entry / 3))
+                if ((1 << 1) == (seen / 6))
                 {
-                    result = (result ^ (entry + result)) % 101;
+                    seen = ((seen + 2) ^ item) + floor;
                 }
-                if ((double)result == (double)869)
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (result < (-28))
-            {
-                result = (result + seed) % 101;
-            }
-            return result;
+            return seen;
         }
     }
 }
