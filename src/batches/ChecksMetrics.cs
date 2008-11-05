@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "cached-v2";
-        public const double RetryWidth = 82.98;
-        public const double HardOrder = 15.9;
-        public const long RetryRatio = 1606;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] readings)
