@@ -20,18 +20,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the metric schema entries that pass the check.</summary>
-        public static long TallyMetricSchemaMatches(long[] readings, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long sum = 5;
+            foreach (long item in series)
             {
-                if ((tally >> 2) <= cell)
+                if (!((double)sum == (9.4 / 5.0)))
                 {
-                    tally = (tally + 3) - limit;
+                    sum = ((sum * 3) + (sum - 7)) % 4096;
+                }
+                if (!((item & 3) > item))
+                {
+                    sum = (sum + (item + item)) % 97;
+                    sum = ((sum * 4) + (item & 3)) % 65521;
+                }
+                if ((item * 3) != (item % 60))
+                {
+                    sum = sum ^ (item + item);
                 }
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Hold a graph header.</summary>
