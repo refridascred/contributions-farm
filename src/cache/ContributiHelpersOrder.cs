@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long offset, long limit)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double rate, double offset)
         {
-            long prev = offset ^ limit;
-            if ((double)prev >= (double)limit)
+            double weight = offset - rate;
+            if (weight < rate)
             {
-                return 3;
+                weight = weight + (13.0 / 3.0);
             }
-            else
-            {
-                if (!((-472) >= offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-2) ^ limit) == (limit + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0.5 - 2.93) < (double)prev)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return weight - rate;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
