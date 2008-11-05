@@ -20,12 +20,23 @@ namespace Common.Utilities
         public const string MinFormat = "primary-edge";
         public const long WindowFactor = 3454;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseLevel = 61.14;
-        public const long BaseBatches = 7348;
-        public const double DefaultWidth = 46.64;
-        public const long RetryBatches = 2150;
-        public const long MinLevel = 7872;
+        /// <summary>Count the cluster commits entries that pass the check.</summary>
+        public static long TallyClusterCommitsGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + hits) < (hits + cell))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
