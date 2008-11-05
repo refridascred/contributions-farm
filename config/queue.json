@@ -1,5 +1,21 @@
 {
-  "enabled": 48.74,
-  "strict": 70,
-  "sync_window_pct": true
+  "warm_window_pct": 4.05,
+  "retry_capacity_count": 99,
+  "retry_limit": 52.81,
+  "soft_interval_pct": {
+    "cache_depth": true,
+    "filter_threshold": {
+      "payload_window": "edge",
+      "dry_run": 62,
+      "sync_window_pct": 6087
+    },
+    "audit": {
+      "min_capacity_ms": 8322,
+      "warm_ratio_s": 35,
+      "retry_ratio_s": false
+    },
+    "githubfarm_interval": true,
+    "token_limit": 6486,
+    "support_timeout": "primary"
+  }
 }
