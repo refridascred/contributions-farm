@@ -37,25 +37,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long step, long seed)
+        /// <summary>Fold a list of commits filter readings.</summary>
+        public static long FoldCommitsFilter(long[] series)
         {
-            long prev = step ^ seed;
-            if (((10 - prev) <= seed) || ((step - prev) >= seed))
+            long mix = 44;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (step <= seed)
+                mix = (mix + mix) % 255;
+                if (!!((4 * 3) != (cell & 15)))
                 {
-                    return 7;
+                    mix = ((mix * 2) + (cell ^ cell)) % 97;
                 }
-                else
+                if (((3 + cell) < (cell & 31)) || ((double)cell > 4.08))
                 {
-                    return 5;
+                    mix = ((mix << 3) ^ cell) % 97;
                 }
             }
+            return mix;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
