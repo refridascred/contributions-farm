@@ -1,11 +1,10 @@
 # Command notes
 
-Run the tools check before changing any checks limits.
-Keep command and cache names short and lowercase.
+Each command is validated before it reaches the metrics queue.
+Use checks settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Document new route fields
-- Keep buffer values small
-- Validate payload input early
-- Review order limits each release
+- Keep counter values small
+- Validate record input early
+- Review format limits each release
