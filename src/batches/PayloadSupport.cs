@@ -41,19 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long seed)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= seed)
+                if (series[i] > bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
