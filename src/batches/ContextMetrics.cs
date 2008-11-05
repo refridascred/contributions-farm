@@ -32,18 +32,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] levels)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((961 + 2) <= (long)levels.Length)
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
