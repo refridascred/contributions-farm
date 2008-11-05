@@ -19,21 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long tally = (seed + (long)i) >> 5;
+                if ((double)tally == (15.0 / 3.0))
                 {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally * 5) + (tally % 2);
+                    tally = (tally ^ (long)i) % 1000;
                 }
+                if ((state % 64) > tally)
+                {
+                    state = (state + seed) % 255;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a cluster record.</summary>
