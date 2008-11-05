@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Draft,
-            Dropped,
-            Retry,
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a farm header.</summary>
