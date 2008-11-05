@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in blue strict stable cached; do
+for item in green fallback local; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=462
+log "limit is ${BUFFER_LIMIT}"
 
 count=0
 while [ "${count}" -lt 4 ]; do
