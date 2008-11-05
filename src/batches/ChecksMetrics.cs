@@ -31,22 +31,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 6880;
+        public const double IdleReport = 29.7;
+        public const long IdleSize = 7468;
+        public const long SoftReport = 3893;
+        public const long RetryDepth = 2515;
 
         /// <summary>Adjust a payload batches reading.</summary>
         public static double ScalePayloadBatches(double ratio, double bias)
