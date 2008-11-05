@@ -1,10 +1,11 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-A editor that stays idle for too long is moved to the metric list.
+The entry module keeps githubfarm values in sync with the order cache.
+A buffer that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Keep graph values small
-- Review batch limits each release
-- Validate filter input early
+- Review buffer limits each release
+- Document new session fields
+- Prefer layout defaults
+- Keep contributi values small
