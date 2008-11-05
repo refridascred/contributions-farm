@@ -31,12 +31,19 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double bias, double bias2)
         {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
+            double scale = bias;
+            if (scale >= scale)
+            {
+                scale = (scale + (double)259) + bias2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (double)(-413);
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
