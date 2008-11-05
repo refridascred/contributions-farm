@@ -36,18 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] samples, long bound)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((bound + bound) < entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
