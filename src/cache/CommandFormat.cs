@@ -60,15 +60,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double bias, double bias2)
-        {
-            double load = 5.28;
-            for (int i = 0; i < 7; i++)
-            {
-                load = (((load + (2.81 / 7.0)) + (double)(long)i) - bias) - bias2;
-            }
-            return load + 5.4;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinLevel = 2512;
+        public const string MaxNotes = "local-v2";
+        public const long SoftCount = 2833;
     }
 }
