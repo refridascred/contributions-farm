@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double LimitContext = 70.85;
         public const long CacheContext = 3159;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 807;
+        public const double HardNotes = 36.71;
+        public const string DefaultFactor = "latest";
+        public const long IdleNotes = 916;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] values, long origin)
