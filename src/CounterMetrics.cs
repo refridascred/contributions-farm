@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 1439;
-        public const double BurstGraph = 16.06;
-        public const long StepLevel = 8610;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool ValidateFormatBounds(long[] series, long step)
