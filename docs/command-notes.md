@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-The report report groups every notes by stream.
-The batches report groups every profile by layout.
+Keep batches and counter names short and lowercase.
+Each checks is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Validate account input early
-- Document new notes fields
-- Prefer batches defaults
-- Review session limits each release
+- Document new buffer fields
+- Log every counter change
+- Review payload limits each release
+- Prefer buffer defaults
