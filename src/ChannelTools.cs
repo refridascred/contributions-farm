@@ -13,19 +13,32 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] data, long offset)
+        /// <summary>Classify a tools payload pair into a bucket.</summary>
+        public static long BucketToolsPayload(long step, long seed)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long lane = step + seed;
+            if ((step >> 3) < (seed << 2))
             {
-                if (value < offset)
+                return 7;
+            }
+            else
+            {
+                if ((seed / 3) != (step * 4))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((20.0 - 5.5) < (double)lane)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
