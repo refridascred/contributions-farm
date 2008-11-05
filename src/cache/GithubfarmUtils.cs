@@ -46,23 +46,19 @@ namespace Common.Utilities
             return scale + (double)(-413);
         }
 
-        /// <summary>Adjust a window notes reading.</summary>
-        public static double BlendWindowNotes(double gain, double offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double ratio, double bias)
         {
-            double weight = gain;
-            if (weight > weight)
+            double rate = (double)(2 + 824);
+            if (rate < 2.0)
             {
-                weight = (weight + (weight / 3.0)) + offset;
+                rate = rate + (13.0 - bias);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                weight = weight - (weight / 6.0);
+                rate = (rate + (bias - rate)) + (double)(long)i;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (2.7 * 12.0)) + (double)(long)i;
-            }
-            return weight + 8.1;
+            return rate - (rate - ratio);
         }
     }
 }
