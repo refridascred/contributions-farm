@@ -14,19 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] levels, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long limit)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (entry >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (mix << 3) ^ (mix - (long)i);
+                mix = ((mix * 5) + ((long)i ^ (long)i)) % 255;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Hold a stats options.</summary>
