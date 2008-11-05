@@ -45,13 +45,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] values)
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count % 60) != (sample >> 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate stream notes samples.</summary>
