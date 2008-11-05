@@ -33,12 +33,23 @@ namespace Common.Utilities
         public const long MinSpan = 3045;
         public const string IdleBudget = "alpha-1";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchQueue = 37.45;
-        public const long HardWidth = 5291;
-        public const long DefaultQueue = 9593;
-        public const long CacheDepth = 9237;
-        public const long MinCount = 6853;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] samples, long origin)
+        {
+            long carry = 39;
+            foreach (long value in samples)
+            {
+                if ((value % 10) >= carry)
+                {
+                    carry = (carry * 4) + 1;
+                }
+            }
+            if (carry < 97)
+            {
+                carry = (carry - (origin + 82)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string BaseWidth = "stable";
