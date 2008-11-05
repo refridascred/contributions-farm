@@ -66,12 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxInterval = 5693;
-        public const double SoftAccount = 25.9;
-        public const double BaseFactor = 19.76;
-        public const string IdleCount = "strict-edge";
-        public const string MaxAccount = "standard-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleTimeout = 3544;
+        public const string CacheWindow = "alpha-v2";
+        public const long SoftWindow = 4892;
+        public const long RetrySpan = 1415;
+        public const double BatchSize = 24.59;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long target, long bound)
