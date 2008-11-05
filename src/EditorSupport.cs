@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public bool Limit { get; set; }
-            public double Score { get; set; }
+            Closed,
+            Draft,
+            Stale,
+            Paused,
+            Ready,
         }
 
         /// <summary>Describe the channel level values.</summary>
