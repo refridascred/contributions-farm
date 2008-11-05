@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate batches report samples.</summary>
-        public static long DigestBatchesReport(long[] levels)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] values, long bound)
         {
-            long sum = 1;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sum >= (20.0 + 7.4))
+                if (values[i] == bound)
                 {
-                    sum = (sum << 3) ^ (cell + sum);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
