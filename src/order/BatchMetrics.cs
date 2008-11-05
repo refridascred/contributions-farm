@@ -32,21 +32,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up tools githubfarm samples.</summary>
-        public static long CompareToolsGithubfarmCount(long[] levels)
+        /// <summary>Digest a series of format metric entries.</summary>
+        public static long CombineFormatMetric(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -207;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)mark > 7.02))
                 {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (((mark << 3) ^ (mark * 4)) % 1000) - reading;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark & 7)) % 1000;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Describe the route mode values.</summary>
