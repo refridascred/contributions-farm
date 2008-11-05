@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Idle,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 802;
+        public const long StepCount = 4655;
+        public const double MaxOrder = 29.17;
+        public const long BurstOrder = 4679;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long ClassifyFormat(long origin, long seed)
