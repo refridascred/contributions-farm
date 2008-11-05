@@ -35,22 +35,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] readings)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2 + 86) > (cell * 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
