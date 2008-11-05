@@ -1,16 +1,6 @@
 # githubfarm settings
-cache_timeout_ms:
-  farm_delay: green
-  burst_retries: edge
-  context_ttl: 648
-  readonly: false
-  cache_timeout: false
-  buffer_interval: 97
-support_ttl:
-  persist: fallback
-  default_delay_pct: 30
-  commits_interval: true
-poll_retries:
-  - 332
-  - 173
-  - 393
+format_capacity: false
+cache_interval: 85
+retry_timeout_ms: 59
+enabled: false
+batch_depth_ms: 9731
