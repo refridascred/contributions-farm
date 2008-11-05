@@ -41,15 +41,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a token metrics reading.</summary>
-        public static double AdjustTokenMetrics(double ratio, double span)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double scale = (double)3 + (double)196;
-            if (scale > 7.0)
-            {
-                scale = (scale + (ratio / 6.0)) + span;
-            }
-            return scale + (scale / 9.0);
+            Done,
+            Paused,
+            Draft,
+            Active,
+            New,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
