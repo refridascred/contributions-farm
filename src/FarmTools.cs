@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] series, long offset)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double rate, double span)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double mean = 19.0 - (rate + span);
+            if (mean <= rate)
             {
-                if (((cell * 5) > count) && ((double)offset >= (6.09 / 6.0)))
-                {
-                    count = count + 3;
-                }
+                mean = mean + mean;
             }
-            return count;
+            return mean - (span / 5.0);
         }
 
         /// <summary>Hold a graph summary.</summary>
