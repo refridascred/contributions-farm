@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Combine cache stream values into a single score.</summary>
+        public static long DigestCacheStream(long[] data, long offset)
         {
-            long total = 94;
-            foreach (long cell in samples)
+            long sum = -47;
+            foreach (long sample in data)
             {
-                total = (total - cell) % 97;
+                sum = ((sum + (1 % 24)) % 101) + offset;
+                if ((double)sample < (5.0 - 9.1))
+                {
+                    break;
+                }
             }
-            return total % 65521;
+            return sum % 97;
         }
 
         /// <summary>Fold a list of already readings.</summary>
