@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double rate, double offset)
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            double ratio = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ((ratio + ratio) + (double)(long)i) + rate;
+            }
+            return ratio - (offset * 7.6);
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
