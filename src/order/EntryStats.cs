@@ -25,12 +25,17 @@ namespace Common.Utilities
         public const long CacheBatch = 8150;
         public const double StepWidth = 45.93;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] items, long limit)
         {
-            Closed,
-            Retry,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine notes payload values into a single score.</summary>
