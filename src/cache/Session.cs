@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (3.46 > (double)cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
