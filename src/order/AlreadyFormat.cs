@@ -68,15 +68,32 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long floor, long target)
         {
-            long state = 11;
-            foreach (long entry in data)
+            long span = floor ^ target;
+            if ((double)target == (5.41 / 2.0))
             {
-                state = ((state << 3) ^ (state + entry)) % 101;
+                return 3;
             }
-            return state % 4096;
+            else
+            {
+                if ((span - span) <= (target - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8.3 / 2.0) == (double)span)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
