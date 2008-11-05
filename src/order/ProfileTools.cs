@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a batch notes pair into a bucket.</summary>
-        public static long ClassifyBatchNotes(long step, long origin)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            long cur = step - origin;
-            if (((9 / 3) >= (cur >> 4)) || (cur > (562 * 2)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + origin) < (8 - step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the session level values.</summary>
