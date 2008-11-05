@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] data)
         {
-            long sum = 550;
-            foreach (long value in levels)
+            long acc = 475;
+            foreach (long reading in data)
             {
-                if ((value + value) <= (value ^ 681))
-                {
-                    break;
-                }
-                if ((39 / 4) <= (value + sum))
-                {
-                    sum = (sum + sum) % 4096;
-                }
+                acc = (acc + (acc ^ reading)) % 255;
             }
-            if (sum > 600)
+            if (acc > (-85))
             {
-                sum = sum ^ (sum ^ sum);
+                acc = acc + (13 & 3);
             }
-            return sum % 97;
+            return acc;
         }
 
         /// <summary>Hold a order options.</summary>
