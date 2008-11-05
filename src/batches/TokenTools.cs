@@ -13,13 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Derive the next format graph value from a seed.</summary>
+        public static long StepFormatGraph(long limit)
         {
-            Pending,
-            Locked,
-            Retry,
-            Queued,
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the window status values.</summary>
