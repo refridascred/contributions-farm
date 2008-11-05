@@ -1,6 +1,9 @@
-id,weight,token,level
-1,85.57,56.18,staging
-2,40,standard,244
-3,stable,8,475
-4,standard,38.08,15.98
-5,963,cached,90.89
+id,weight,ratio,label
+1,30.04,37.99,eu-west
+2,open,398,57.53
+3,921,707,67.19
+4,86.0,613,standard
+5,42.42,568,857
+6,388,44.49,36.54
+7,356,open,blue
+8,open,584,503
