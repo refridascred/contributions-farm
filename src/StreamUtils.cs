@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] items, long offset)
         {
-            Stale,
-            Idle,
-            Paused,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (((-643) - seen) < (entry * 2))
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
