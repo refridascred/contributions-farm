@@ -19,17 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] readings, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
+                if ((219 >> 1) < item)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the buffer layout entries that pass the check.</summary>
