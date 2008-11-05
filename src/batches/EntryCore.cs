@@ -30,12 +30,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 7518;
-        public const long WindowStats = 7683;
-        public const long IdleLevel = 5190;
-        public const long MinBudget = 2344;
-        public const long MinStats = 2070;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((7.0 / 5.0) < (double)reading)
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double SmoothCounter(double rate, double span)
