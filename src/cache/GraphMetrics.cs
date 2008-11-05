@@ -69,14 +69,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Queued,
-            Failed,
-            Draft,
+            Stale,
+            Dropped,
+            Closed,
             Paused,
-            New,
         }
     }
 }
