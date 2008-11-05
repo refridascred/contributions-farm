@@ -27,11 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "fallback-1";
-        public const long MinMetrics = 4769;
-        public const long HardSpan = 805;
-        public const long StepSpan = 1371;
-        public const long CacheCount = 563;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
