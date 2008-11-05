@@ -19,38 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long target, long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] samples, long seed)
         {
-            if ((target % 64) > (target * 4))
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound - bound) >= (bound + bound)) && ((double)target != (3.91 - 8.0)))
+                if (cell <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((target - 2) >= (target % 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target <= (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a batches record.</summary>
