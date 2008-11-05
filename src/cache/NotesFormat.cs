@@ -19,12 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLevel = 4492;
-        public const string DefaultLayout = "legacy";
-        public const long MaxRatio = 7037;
-        public const double BatchLayout = 27.55;
-        public const double IdleTimeout = 86.63;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] data)
+        {
+            long result = 54;
+            foreach (long cell in data)
+            {
+                result = ((result ^ result) % 65521) - cell;
+                if (626 < result)
+                {
+                    break;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
