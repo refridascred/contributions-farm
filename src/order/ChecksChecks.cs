@@ -33,19 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] levels, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (cell >= seed)
+                if ((count & 1) != ((-655) - sample))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
