@@ -7,14 +7,17 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=197
-log "limit is ${COMMAND_LIMIT}"
-
-for item in fallback open cached; do
+for item in fallback local eu-west; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
