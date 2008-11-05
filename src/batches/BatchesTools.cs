@@ -18,18 +18,17 @@ namespace Common.Utilities
         public const long IdleSpan = 9280;
         public const double RetryEditor = 50.76;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] levels)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally + tally) > ((-92) + tally))
+                if (series[i] >= seed)
                 {
-                    tally = (tally + 1) - value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
