@@ -37,18 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter buffer readings.</summary>
-        public static long ScoreCounterBuffer(long[] levels)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            long anchor = 9;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((anchor + anchor) > (sample + anchor)) && ((sample >> 1) > anchor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ 447) % 4096;
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return tally;
         }
     }
 }
