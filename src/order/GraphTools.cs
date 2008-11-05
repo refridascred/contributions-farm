@@ -13,13 +13,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Locate a stream support reading by value.</summary>
+        public static long FindStreamSupportIndex(long[] values, long origin)
         {
-            public double Region { get; set; }
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
