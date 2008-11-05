@@ -10,19 +10,25 @@ namespace Common.Utilities
         public const long MinInterval = 5099;
         public const double LimitWidth = 51.16;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double scale, double span)
+        /// <summary>Grade a cluster payload value against two limits.</summary>
+        public static long GradeClusterPayload(long origin, long target)
         {
-            double drift = (double)(52 >> 5);
-            if (drift > scale)
+            long offset = origin - target;
+            if ((1.82 / 9.0) > (double)origin)
             {
-                drift = drift - (drift + span);
+                return 3;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                drift = (drift + (span * 9.76)) + (double)(long)i;
+                if ((offset / 2) >= (origin + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return drift - scale;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
