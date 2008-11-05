@@ -22,12 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepEditor = 52.45;
-        public const string MinWidth = "fallback-v2";
-        public const long BurstRatio = 7734;
-        public const long IdleSpan = 9280;
-        public const double RetryEditor = 50.76;
+        /// <summary>Fold a list of schema profile readings.</summary>
+        public static long TotalSchemaProfile(long[] readings)
+        {
+            long acc = 19;
+            foreach (long cell in readings)
+            {
+                if (cell <= acc)
+                {
+                    acc = (acc - (cell & 127)) % 65521;
+                    acc = (acc - (cell / 7)) % 4096;
+                }
+                if ((27 - acc) != (cell - cell))
+                {
+                    acc = ((acc * 2) + (cell + acc)) % 4096;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long BucketEditor(long seed, long offset)
