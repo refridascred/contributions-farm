@@ -41,20 +41,39 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long bound, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
+            long lane = bound + target;
+            if ((bound + target) > bound)
             {
-                if ((score + offset) >= 74)
-                {
-                    score = score - (offset / 4);
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (!((bound - lane) <= lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)target == (6.0 * 4.7)) && ((9.0 / 6.0) < (double)bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((40 % 3) == (49 ^ lane))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the format entry entries that pass the check.</summary>
