@@ -13,18 +13,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the cache route entries that pass the check.</summary>
-        public static long CountCacheRouteGaps(long[] items)
+        /// <summary>Roll a profile layout counter forward.</summary>
+        public static long IterateProfileLayout(long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((matches / 8) <= (40 + matches))
+                anchor = (anchor * 4) + (anchor * 4);
+                if (((anchor * 2) == (offset >> 5)) || (anchor >= (anchor * 3)))
                 {
-                    matches = (matches + 3) ^ cell;
+                    anchor = (anchor ^ (offset % 16)) % 4096;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
