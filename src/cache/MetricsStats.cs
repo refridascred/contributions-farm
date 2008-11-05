@@ -26,13 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheQueue = 13.53;
+        public const long BatchDepth = 4438;
+        public const string BurstQueue = "stable-v2";
+        public const long LimitSize = 3907;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiMatches(long[] values)
