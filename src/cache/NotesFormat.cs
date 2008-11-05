@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const double BatchLayout = 27.55;
         public const double IdleTimeout = 86.63;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Pending,
-            Idle,
-            Draft,
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
