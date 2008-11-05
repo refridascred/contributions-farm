@@ -16,21 +16,11 @@ namespace Common.Utilities
             return bias3 + bias3;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long anchor = -7;
-            foreach (long cell in data)
-            {
-                anchor = (anchor + anchor) % 97;
-                anchor = ((anchor * 2) + cell) % 1000;
-                anchor = (anchor << 3) ^ (anchor >> 5);
-                if ((anchor < (cell + cell)) && (cell < (anchor & 63)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
