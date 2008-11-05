@@ -16,19 +16,17 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Combine batches support values into a single score.</summary>
-        public static long FoldBatchesSupport(long[] items)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] levels, long seed)
         {
-            long anchor = 63;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 3) + (735 + anchor)) ^ reading;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 96)
-            {
-                anchor = (anchor - anchor) % 101;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up metric token samples.</summary>
