@@ -38,14 +38,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long origin)
         {
-            Locked,
-            Failed,
-            Active,
-            Draft,
-            Synced,
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum << 2) ^ ((long)i * 3)) % 101;
+                if (((origin + origin) <= sum) && ((7 - origin) > (origin % 60)))
+                {
+                    sum = (sum + (sum ^ (long)i)) % 255;
+                }
+                if (!(((origin / 6) != (sum << 3)) && ((origin - origin) > (long)i)))
+                {
+                    sum = ((sum * 5) + (sum + sum)) % 97;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
