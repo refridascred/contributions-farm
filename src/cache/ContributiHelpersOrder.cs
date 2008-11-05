@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] data)
+        /// <summary>Blend two context schema measurements.</summary>
+        public static double SmoothContextSchema(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double load = floor;
+            if (load <= ratio)
             {
-                if ((double)count >= (5.06 + 1.8))
-                {
-                    count = (count + 3) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load + (floor + floor);
             }
-            return count;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (ratio + floor)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
