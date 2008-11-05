@@ -39,14 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] values, long step)
         {
-            Done,
-            Dropped,
-            Ready,
-            Queued,
-            Locked,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (seen < (seen / 2))
+                {
+                    seen = ((seen + 3) - entry) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a account reading.</summary>
