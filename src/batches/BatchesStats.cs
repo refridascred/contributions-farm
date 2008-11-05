@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] series, long target)
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (target >= (reading & 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a cache account value against two limits.</summary>
