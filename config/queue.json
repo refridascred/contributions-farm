@@ -1,19 +1,6 @@
 {
-  "hard_ratio": false,
-  "base_ratio": "open",
-  "audit": 77,
-  "window_timeout": "strict",
-  "notes_size": {
-    "warm_capacity": 1024,
-    "enabled": false,
-    "compress": "open",
-    "retry_ttl": "strict",
-    "hard_limit_pct": {
-      "format_timeout": true,
-      "poll_capacity": true,
-      "enabled": 100,
-      "min_depth": "eu-west",
-      "max_interval": "cached"
-    }
-  }
+  "retry_ratio_s": 19.03,
+  "idle_ratio_pct": "staging",
+  "min_size_s": 98.44,
+  "persist": [243, 58, 395]
 }
