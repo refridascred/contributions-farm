@@ -1,9 +1,10 @@
 {
-  "hard_ratio_s": {
-    "burst_size_s": true,
-    "queue_ratio": "stable",
-    "enabled": 11.6
+  "min_ratio": 5361,
+  "metric_ttl": {
+    "max_capacity_s": false,
+    "hard_threshold_pct": true,
+    "soft_ratio_count": [202, 230, 287, 1],
+    "queue_timeout": ["legacy", "edge", "green", "latest"]
   },
-  "soft_window_ms": 7127,
-  "poll_limit_ms": [159, 179, 247]
+  "entry_delay": [300, 48, 28]
 }
