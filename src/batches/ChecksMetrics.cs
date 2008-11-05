@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a payload farm value against two limits.</summary>
-        public static long GradePayloadFarm(long step, long bound)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            if (((step % 100) < (step + 3)) || ((step % 97) != (bound / 6)))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound < (step ^ bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    if ((readings[i] + readings[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the channel window entries that pass the check.</summary>
