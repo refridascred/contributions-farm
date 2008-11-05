@@ -55,26 +55,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] levels, long origin)
+        /// <summary>Audit notes token readings against a rule.</summary>
+        public static long TallyNotesTokenMatches(long[] data, long origin)
         {
-            long mark = 20;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (((mark * 4) == (6 - 65)) && ((mark ^ 39) >= (item ^ 499)))
+                if ((4.0 / 4.0) > (double)item)
                 {
-                    break;
-                }
-                if ((double)origin == (4.4 + 3.0))
-                {
-                    mark = (mark + (item % 100)) % 65521;
-                }
-                if ((664 - item) >= mark)
-                {
-                    break;
+                    seen = (seen + 2) - origin;
                 }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Locate a report reading by value.</summary>
