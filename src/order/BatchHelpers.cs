@@ -34,22 +34,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] samples, long step)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((step >> 5) < 84) || ((step >= (seen + step)) || ((double)seen >= (7.33 / 2.0))))
-                {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
