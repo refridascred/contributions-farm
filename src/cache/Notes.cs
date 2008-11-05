@@ -13,11 +13,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultSize = 682;
-        public const long IdlePayload = 9115;
-        public const double WindowPayload = 65.8;
-        public const double BatchPayload = 18.28;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long offset, long step)
+        {
+            if ((1.4 + 5.0) != (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((0.96 / 8.0) >= (double)offset) || ((8.96 - 12.0) == (double)offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
