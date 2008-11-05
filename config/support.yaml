@@ -1,15 +1,9 @@
 # support settings
-default_window_s: 66.99
-batch_size_pct: 74.14
-format_capacity: cached
-compress: 5.03
-cache_ratio_pct:
-  readonly: false
-  audit: staging
-  idle_interval_count: 100
-  soft_ttl_count:
-    - legacy
-    - fallback
-    - standard
-  strict: primary
-  account_capacity: true
+contributi_capacity: cached
+base_delay_count: false
+compress:
+  poll_ttl: 0.63
+  cache_window_ms: 500
+  max_timeout:
+    - 365
+    - 276
