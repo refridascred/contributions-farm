@@ -24,12 +24,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 2449;
-        public const long SoftWidth = 6461;
-        public const long RetryBudget = 5209;
-        public const long BaseChecks = 2465;
-        public const long SoftChecks = 4335;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Accumulate stats order samples.</summary>
         public static long ScoreStatsOrder(long[] samples)
