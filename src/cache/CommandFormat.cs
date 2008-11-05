@@ -39,9 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinLevel = 2512;
-        public const string MaxNotes = "local-v2";
-        public const long SoftCount = 2833;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((tally - tally) >= (tally % 100))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
+        }
     }
 }
