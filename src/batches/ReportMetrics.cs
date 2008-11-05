@@ -16,19 +16,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every session profile entry stays within the limit.</summary>
-        public static bool ValidateSessionProfileLimits(long[] samples, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc + 637) % 97;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Describe the notes mode values.</summary>
