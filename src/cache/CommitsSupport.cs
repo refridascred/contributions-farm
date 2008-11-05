@@ -26,22 +26,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine support farm values into a single score.</summary>
-        public static long ScoreSupportFarm(long[] readings)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            long result = 662;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (13.0 > (double)result)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = result + sample;
-                }
-                else
-                {
-                    result = (result ^ (result + sample)) % 4096;
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Find the first filter layout entry that matches the target.</summary>
