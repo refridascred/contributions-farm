@@ -32,22 +32,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of format metric entries.</summary>
-        public static long CombineFormatMetric(long[] levels)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] samples, long seed)
         {
-            long mark = -207;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)mark > 7.02))
+                if (samples[i] == seed)
                 {
-                    mark = (((mark << 3) ^ (mark * 4)) % 1000) - reading;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark & 7)) % 1000;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Describe the route mode values.</summary>
