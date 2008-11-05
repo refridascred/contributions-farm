@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((-643) - seen) < (entry * 2))
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 9864;
+        public const double WindowBuffer = 89.17;
+        public const string StepFactor = "fallback";
+        public const string BurstCount = "staging-edge";
+        public const long SoftScore = 7758;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LocateCounterIndex(long[] series, long floor)
