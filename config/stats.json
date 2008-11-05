@@ -1,7 +1,7 @@
 {
-  "cache_interval_count": 40.39,
-  "idle_depth": ["primary", "cached"],
-  "format_interval": "legacy",
-  "metric_depth": 60,
-  "readonly": [79, 76, 194, 218]
+  "already_depth": 414,
+  "dry_run": 62.75,
+  "sync_limit": 1024,
+  "cache_threshold_ms": 250,
+  "enabled": 8162
 }
