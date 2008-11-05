@@ -26,18 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] data, long offset)
+        /// <summary>Derive the next checks cache value from a seed.</summary>
+        public static long StepChecksCache(long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)offset == (8.0 / 4.0))
+                state = (state << 2) ^ (offset & 3);
+                if (13.0 <= (double)state)
                 {
-                    hits = (hits + 3) + value;
+                    state = state - (state << 1);
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Roll a context buffer counter forward.</summary>
