@@ -29,16 +29,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Look up the position of a batches command sample.</summary>
+        public static long LookupBatchesCommandIndex(long[] items, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score + (bound + score)) % 101;
-                score = ((score * 5) + (long)i) % 97;
+                if ((items[i] > floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
