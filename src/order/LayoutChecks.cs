@@ -50,12 +50,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long target)
         {
-            Retry,
-            Ready,
-            Active,
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
