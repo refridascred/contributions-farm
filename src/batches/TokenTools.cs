@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] samples)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((datum << 1) <= (tally ^ datum)) || (tally >= (tally >> 1)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a farm header.</summary>
