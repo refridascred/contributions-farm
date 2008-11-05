@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
