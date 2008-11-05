@@ -21,13 +21,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            Pending,
+            Done,
+            Synced,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
