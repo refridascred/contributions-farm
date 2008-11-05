@@ -20,21 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 4) + 207) % 1000;
-                if ((9.0 * 8.6) >= (double)floor)
-                {
-                    anchor = anchor ^ ((long)i / 4);
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
