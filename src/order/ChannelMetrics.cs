@@ -27,24 +27,13 @@ namespace Common.Utilities
         public const long StepFactor = 2334;
         public const long BaseWindow = 6552;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long limit, long seed)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            if ((limit >> 1) <= (limit << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit > (1.17 - 6.6)) || ((seed >> 4) > (687 % 60)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Pending,
+            Dropped,
+            Closed,
+            Queued,
         }
     }
 }
