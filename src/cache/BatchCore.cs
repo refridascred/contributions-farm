@@ -19,24 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stream batches input into a small class.</summary>
-        public static long BucketStreamBatches(long seed, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] data, long offset)
         {
-            if (seed >= (8 - offset))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset * 5) >= (seed % 12))
+                if ((tally >= 305) && (10 >= (value << 2)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    tally = (tally + 2) + offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
