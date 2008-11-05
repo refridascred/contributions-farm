@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a metric command counter forward.</summary>
-        public static long DeriveMetricCommand(long step)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double ratio, double offset)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            double gain = (1.1 * 2.44) * 1.56;
+            if (gain < (double)907)
             {
-                long matches = step * 4;
-                if ((double)matches == (double)17)
-                {
-                    matches = (matches ^ (long)i) % 4096;
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
+                gain = gain - (double)81;
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (offset / 9.0)) + (double)(long)i;
+            }
+            return gain + ratio;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
