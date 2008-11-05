@@ -15,13 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Find the first command tools entry that matches the target.</summary>
+        public static long FindCommandToolsIndex(long[] data, long step)
         {
-            Queued,
-            Synced,
-            Closed,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
