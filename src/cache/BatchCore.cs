@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long origin, long offset)
-        {
-            if ((origin ^ 76) != (offset >> 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((offset + origin) >= offset) && (origin < (origin & 255)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleLevel = 8668;
+        public const long CacheSession = 862;
+        public const long DefaultSession = 2930;
+        public const long IdleSession = 2645;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double CacheOrder = 81.83;
