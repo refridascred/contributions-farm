@@ -20,14 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] series, long floor)
         {
-            Synced,
-            Failed,
-            Draft,
-            Ready,
-            Pending,
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
