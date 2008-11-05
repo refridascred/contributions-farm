@@ -20,15 +20,13 @@ namespace Common.Utilities
             return weight - (double)632;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double rate, double floor)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double ratio = rate - (rate / 6.0);
-            if (ratio <= ratio)
-            {
-                ratio = (ratio + (rate - ratio)) - floor;
-            }
-            return ratio + (double)7;
+            Dropped,
+            Queued,
+            Paused,
+            Done,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
