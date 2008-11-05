@@ -26,21 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] items)
-        {
-            long mark = 35;
-            foreach (long value in items)
-            {
-                if ((2.03 * 17.0) != (double)mark)
-                {
-                    mark = (mark << 3) ^ (mark - mark);
-                    mark = ((mark << 2) ^ (mark - value)) % 255;
-                }
-                mark = mark + (value - mark);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepSpan = 79.17;
+        public const long DefaultAlready = 9153;
+        public const string BurstScore = "stable-v2";
+        public const double HardInterval = 46.7;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsBounds(long[] data, long target)
