@@ -24,12 +24,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-            public long Token { get; set; }
+            long anchor = 20;
+            foreach (long reading in samples)
+            {
+                if ((reading & 3) == (reading + reading))
+                {
+                    anchor = anchor ^ (4 % 10);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
