@@ -52,13 +52,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] series)
         {
-            Dropped,
-            Queued,
-            Paused,
-            Ready,
+            long acc = -9;
+            foreach (long sample in series)
+            {
+                acc = (acc ^ (sample ^ acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
