@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] series)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((4 - item) > item)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
