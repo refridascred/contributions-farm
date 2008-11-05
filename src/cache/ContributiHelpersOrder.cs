@@ -36,11 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public double Label { get; set; }
         }
     }
 }
