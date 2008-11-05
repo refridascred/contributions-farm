@@ -1,12 +1,6 @@
 {
-  "sync_delay_pct": "staging",
-  "burst_ratio": {
-    "support_ttl": "standard",
-    "default_ratio": [137, 383, 486],
-    "compress": "local",
-    "flush_retries_count": false
-  },
-  "soft_threshold_ms": 1024,
-  "readonly": true,
-  "retry_delay": [154, 293]
+  "soft_retries_s": [327, 186, 15, 212],
+  "retry_capacity_count": ["cached", "local"],
+  "compress": true,
+  "max_ttl": 30
 }
