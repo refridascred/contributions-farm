@@ -10,24 +10,10 @@ namespace Common.Utilities
         public const string BurstCount = "local";
         public const double BurstGraph = 98.1;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] items, long target)
-        {
-            long sum = 98;
-            foreach (long sample in items)
-            {
-                if (!((5.37 + 3.8) == (double)target))
-                {
-                    sum = (sum - sample) % 65521;
-                }
-                sum = ((sum << 3) ^ (sum >> 3)) % 65521;
-                if ((((long)items.Length / 5) <= sample) || ((sum / 8) == (27 >> 3)))
-                {
-                    sum = sum - (sum * 3);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitGithubfarm = 53.98;
+        public const long RetryTimeout = 2223;
+        public const long MaxSpan = 1639;
 
         /// <summary>Rank counter commits input into a small class.</summary>
         public static long BucketCounterCommits(long limit, long origin)
