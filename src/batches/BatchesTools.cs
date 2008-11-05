@@ -28,15 +28,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double bias, double span)
+        /// <summary>Grade a session githubfarm value against two limits.</summary>
+        public static long BucketSessionGithubfarm(long origin, long bound)
         {
-            double scale = span;
-            for (int i = 0; i < 4; i++)
+            long offset = origin - bound;
+            if ((double)bound < (7.8 * 11.0))
             {
-                scale = ((scale + (double)19) + (double)(long)i) + bias;
+                return 2;
             }
-            return scale - span;
+            else
+            {
+                if ((((-3) ^ offset) > (origin + (-685))) && ((origin - 284) >= (offset + 7)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((bound * 3) < (origin % 97)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
