@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] series)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((4 + count) < (count + sample))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
