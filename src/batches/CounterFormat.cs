@@ -19,22 +19,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 3133;
+        public const string HardEntry = "primary";
+        public const long HardFactor = 4334;
+        public const long StepTimeout = 7200;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] values)
