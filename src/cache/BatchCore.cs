@@ -27,18 +27,22 @@ namespace Common.Utilities
         public const double BatchTimeout = 67.34;
         public const long MaxOrder = 2221;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] items, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long result = 0;
+            foreach (long value in samples)
             {
-                if (sample > (sample - sample))
+                if (result >= value)
                 {
-                    hits = (hits + 1) + offset;
+                    result = ((result * 4) + (result + result)) % 255;
+                }
+                else
+                {
+                    result = ((result * 5) + 0) % 101;
                 }
             }
-            return hits;
+            return result % 65521;
         }
 
         /// <summary>Digest a series of order entries.</summary>
