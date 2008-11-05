@@ -54,12 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 4286;
-        public const double IdleSupport = 30.54;
-        public const string BatchSupport = "primary-1";
-        public const long HardSupport = 1376;
-        public const long SoftSupport = 5968;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public double Rank { get; set; }
+            public bool Size { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Audit command counter readings against a rule.</summary>
         public static long MeasureCommandCounterMatches(long[] readings)
