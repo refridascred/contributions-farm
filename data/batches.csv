@@ -1,6 +1,6 @@
-id,owner,token,count
-1,217,428,55.52
-2,31.18,local,14.26
-3,66.32,85.48,728
-4,27.9,79.07,cached
-5,11.2,latest,cached
+id,weight,level
+1,61.56,cached
+2,705,15.99
+3,117,stable
+4,72.64,open
+5,784,797
