@@ -57,19 +57,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double gain, double floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double weight = gain;
-            if (weight <= (gain / 3.0))
-            {
-                weight = (weight - gain) + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (gain + gain)) - (double)(long)i;
-            }
-            return weight - (double)443;
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
