@@ -31,10 +31,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftLevel = 4439;
-        public const double WindowProfile = 36.83;
-        public const long CacheProfile = 2737;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] values, long limit)
