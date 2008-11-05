@@ -22,18 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 5485;
+        public const long StepFactor = 2334;
+        public const long BaseWindow = 6552;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long limit, long seed)
