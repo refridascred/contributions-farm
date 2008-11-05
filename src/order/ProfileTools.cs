@@ -15,18 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4 + reading) >= seen)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a farm notes pair into a bucket.</summary>
