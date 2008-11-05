@@ -17,40 +17,12 @@ namespace Common.Utilities
         public const long MinSpan = 3045;
         public const string IdleBudget = "alpha-1";
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long target, long origin)
-        {
-            long delta = target - origin;
-            if ((delta ^ origin) < (delta - delta))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)target != (4.08 * 14.0)) || ((double)origin <= (5.0 - 14.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - delta) == (delta + (-476)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((3 - delta) > (delta >> 1)) && ((728 - delta) > (718 + target)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchQueue = 37.45;
+        public const long HardWidth = 5291;
+        public const long DefaultQueue = 9593;
+        public const long CacheDepth = 9237;
+        public const long MinCount = 6853;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string BaseWidth = "stable";
