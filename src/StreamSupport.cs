@@ -21,18 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] levels)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (value > (matches / 5))
-                {
-                    matches = matches + 3;
-                }
+                score = (score - score) % 97;
+                score = (score ^ 361) % 255;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the order class values.</summary>
