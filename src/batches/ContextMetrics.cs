@@ -32,19 +32,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] series, long step)
+        /// <summary>Combine command notes values into a single score.</summary>
+        public static long DigestCommandNotes(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long anchor = 280;
+            foreach (long cell in samples)
             {
-                if (reading < step)
+                anchor = ((anchor * 3) + (anchor - anchor)) % 97;
+                anchor = (anchor - (85 + cell)) % 4096;
+                if ((double)anchor < (7.5 / 5.0))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor + (cell + cell)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ cell) % 4096;
                 }
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
