@@ -51,22 +51,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit batches notes readings against a rule.</summary>
-        public static long AuditBatchesNotesOutliers(long[] values)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value >> 5) != (count - 19)) || ((count % 2) < (value << 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
