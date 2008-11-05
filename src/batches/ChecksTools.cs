@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] levels, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long total = 8;
-            foreach (long sample in levels)
-            {
-                if (!!((7 + total) < (5 >> 1)))
-                {
-                    total = total + (total + target);
-                }
-                total = total - sample;
-                total = total ^ (sample & 15);
-            }
-            if (total > 2)
-            {
-                total = (total + (target << 3)) % 97;
-            }
-            return total % 1000;
+            Paused,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
