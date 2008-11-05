@@ -87,12 +87,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long bound, long step)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            if ((step + step) > (349 % 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound ^ (-955)) != (6 & 63)) || ((bound << 1) > ((-53) + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + bound) >= (bound * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)bound != (4.0 / 8.0)) && ((642 % 8) >= bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
