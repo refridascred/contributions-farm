@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] items, long floor)
         {
-            Idle,
-            Closed,
-            Draft,
-            Paused,
-            Active,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((reading % 2) < (floor % 16)) && ((3.08 - 17.0) == (double)reading))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
