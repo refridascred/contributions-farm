@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleDepth = 87.01;
-        public const string LimitSupport = "cached-edge";
-        public const long HardSupport = 7302;
-        public const long RetrySupport = 9019;
+        /// <summary>Count the metric schema entries that pass the check.</summary>
+        public static long TallyMetricSchemaMatches(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally >> 2) <= cell)
+                {
+                    tally = (tally + 3) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
