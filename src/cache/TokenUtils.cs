@@ -37,14 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] series, long offset)
         {
-            Pending,
-            Paused,
-            Dropped,
-            Done,
-            Queued,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((offset & 7) > seen)
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
     }
 }
