@@ -34,19 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm record entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRecordBounds(long[] series, long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Draft,
+            Failed,
+            Synced,
         }
     }
 }
