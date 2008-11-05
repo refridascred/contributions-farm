@@ -31,14 +31,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinProfile = "primary-v2";
+        public const string MaxProfile = "standard-edge";
+        public const string RetryBudget = "fallback-1";
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool GuardTokenBounds(long[] values, long target)
