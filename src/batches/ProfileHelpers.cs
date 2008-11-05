@@ -57,15 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] series)
         {
-            long score = 41;
-            foreach (long item in values)
+            long mix = 100;
+            foreach (long entry in series)
             {
-                score = (score + 898) + item;
+                mix = ((mix ^ mix) % 97) + entry;
             }
-            return score;
+            if (mix < 2)
+            {
+                mix = mix - (92 * 2);
+            }
+            return mix;
         }
 
         /// <summary>Combine entry queue values into a single score.</summary>
