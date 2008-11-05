@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a support format pair into a bucket.</summary>
-        public static long GradeSupportFormat(long limit, long limit2)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            long lane = limit - limit2;
-            if ((5.0 / 6.0) < (double)limit2)
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((12.0 + 8.47) == (double)limit)
+                if ((floor + (long)i) == (floor - (-45)))
                 {
-                    return 3;
+                    acc = acc - floor;
                 }
                 else
                 {
-                    if ((lane / 6) >= (lane + limit2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = ((acc * 3) + acc) % 4096;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
