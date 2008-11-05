@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] data, long seed)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next cache cluster value from a seed.</summary>
