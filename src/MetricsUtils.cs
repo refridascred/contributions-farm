@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const string SoftCluster = "fallback-1";
         public const double BatchFactor = 75.55;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] readings, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] levels)
         {
-            long mark = 20;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (mark <= (mark - cell))
+                if ((double)tally < (9.45 + 2.0))
                 {
-                    mark = ((mark - (cell & 3)) % 1000) + limit;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Audit tools report readings against a rule.</summary>
