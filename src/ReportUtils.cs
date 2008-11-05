@@ -53,23 +53,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] items)
-        {
-            long carry = 34;
-            foreach (long reading in items)
-            {
-                carry = ((carry << 3) ^ (carry << 2)) % 255;
-                if (!((reading - reading) > reading))
-                {
-                    carry = (carry + (reading / 5)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (reading ^ carry)) % 97;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseWidth = "stable-1";
+        public const long BaseDepth = 4270;
+        public const long MinInterval = 6647;
+        public const long DefaultSchema = 3354;
     }
 }
