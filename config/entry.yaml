@@ -1,11 +1,6 @@
 # entry settings
-flush_window_ms: 24.24
-burst_size_ms:
-  - 22
-  - 334
-burst_timeout_pct:
-  - 456
-  - 439
-hard_interval_count: 43
-soft_limit_s: latest
-idle_delay_count: 5957
+persist: true
+burst_limit: latest
+batches_threshold: 60
+idle_ttl: legacy
+order_delay: blue
