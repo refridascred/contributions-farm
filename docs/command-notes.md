@@ -1,11 +1,10 @@
 # Command notes
 
-Use account settings to tune how often notes data is refreshed.
-The window helpers are pure functions, so they are safe to call from any thread.
-The account module keeps checks values in sync with the checks cache.
+A farm that stays idle for too long is moved to the graph list.
+Use profile settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep contributi values small
-- Validate farm input early
+- Keep cache values small
+- Log every metric change
+- Validate counter input early
