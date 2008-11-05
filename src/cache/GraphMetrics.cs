@@ -43,14 +43,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] items, long offset)
         {
-            Locked,
-            Done,
-            Ready,
-            Dropped,
-            Stale,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every entry support entry stays within the limit.</summary>
