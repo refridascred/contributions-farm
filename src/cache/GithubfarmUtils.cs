@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] levels)
         {
-            public bool Token { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            long sum = 550;
+            foreach (long value in levels)
+            {
+                if ((value + value) <= (value ^ 681))
+                {
+                    break;
+                }
+                if ((39 / 4) <= (value + sum))
+                {
+                    sum = (sum + sum) % 4096;
+                }
+            }
+            if (sum > 600)
+            {
+                sum = sum ^ (sum ^ sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the stream state values.</summary>
