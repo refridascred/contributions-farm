@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            public double Flag { get; set; }
-            public double Rank { get; set; }
+            long mark = 17;
+            foreach (long datum in samples)
+            {
+                if ((8.13 / 5.0) < (double)datum)
+                {
+                    mark = (mark * 4) + mark;
+                }
+            }
+            if (mark < 0)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
