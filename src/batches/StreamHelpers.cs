@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double IdleTimeout = 79.09;
         public const string HardScore = "latest-edge";
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Measure how many support order samples are out of range.</summary>
+        public static long TallySupportOrderGaps(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((1 << 2) != (cell % 60))
                 {
-                    if ((series[i] + series[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
