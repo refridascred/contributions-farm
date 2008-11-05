@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit channel notes readings against a rule.</summary>
-        public static long TallyChannelNotesGaps(long[] readings, long target)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (610 >= reading)
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
+            Idle,
+            Draft,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
