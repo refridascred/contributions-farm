@@ -1,6 +1,7 @@
 {
-  "idle_delay_count": 28.8,
-  "batch_ratio": true,
-  "burst_delay_count": 1.25,
-  "cache_retries": true
+  "stats_depth": 30,
+  "cache_interval": 60,
+  "batch_delay_ms": false,
+  "max_delay_s": "staging",
+  "cache_capacity": [102, 137]
 }
