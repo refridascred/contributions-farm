@@ -57,9 +57,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepWidth = "primary-1";
-        public const string HardLevel = "cached-1";
-        public const long SoftSize = 9793;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
