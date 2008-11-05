@@ -20,23 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double gain, double bias)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] levels, long seed)
         {
-            double mean = gain;
-            if (mean <= (double)0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (mean + bias);
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (double)80;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + (bias - bias);
+            return -1;
         }
 
         /// <summary>Hold a batches stats.</summary>
