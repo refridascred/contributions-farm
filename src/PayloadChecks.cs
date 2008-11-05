@@ -89,9 +89,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 5218;
-        public const long HardContext = 9758;
-        public const long DefaultCount = 172;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] series, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
