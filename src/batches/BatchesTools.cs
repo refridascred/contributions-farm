@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count window commits pairs that satisfy a relation.</summary>
-        public static long CompareWindowCommitsCount(long[] items)
+        /// <summary>Locate a tools token reading by value.</summary>
+        public static long SeekToolsTokenIndex(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((values[i] <= step) && ((values[i] % 2) != 0))
                 {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of schema profile readings.</summary>
