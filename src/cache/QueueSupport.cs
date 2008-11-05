@@ -24,15 +24,18 @@ namespace Common.Utilities
             return weight - 1.0;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] series)
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((entry + hits) < (entry - entry))
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Iterate the filter githubfarm series from a seed.</summary>
