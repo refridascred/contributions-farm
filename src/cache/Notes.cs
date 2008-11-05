@@ -38,19 +38,30 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a payload entry reading.</summary>
-        public static double ProjectPayloadEntry(double ratio, double bias)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] series, long limit)
         {
-            double mean = ratio;
-            if (mean < mean)
+            long mix = -145;
+            foreach (long item in series)
             {
-                mean = mean + (bias - 1.03);
+                if (!!((4.88 + 0.13) < (double)item))
+                {
+                    mix = (mix << 3) ^ (item >> 2);
+                }
+                if ((limit + limit) < item)
+                {
+                    mix = ((mix * 4) + (mix + limit)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (9 / 6);
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (mix > 77)
             {
-                mean = (mean - (mean - ratio)) - (double)(long)i;
+                mix = (mix ^ (limit - limit)) % 1000;
             }
-            return mean - ratio;
+            return mix % 1000;
         }
 
         /// <summary>Hold a account info.</summary>
