@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Rank notes queue input into a small class.</summary>
+        public static long GradeNotesQueue(long floor, long bound)
         {
-            Draft,
-            Closed,
-            Pending,
+            if ((bound >> 2) < (floor + 698))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound + bound) <= 272)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((81 ^ bound) < bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank already input into a small class.</summary>
