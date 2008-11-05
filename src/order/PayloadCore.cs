@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public double Rank { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CacheCount = 82.28;
+        public const long BatchPayload = 3590;
+        public const long CachePayload = 8824;
+        public const long StepPayload = 6574;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamHits(long[] series)
