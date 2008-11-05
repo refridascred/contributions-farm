@@ -30,13 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
+            Paused,
+            Locked,
             Synced,
-            Closed,
-            Active,
-            Ready,
+            Dropped,
+            Idle,
         }
     }
 }
