@@ -78,11 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] items, long target)
         {
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((36 - target) >= (count + count))
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
         }
     }
 }
