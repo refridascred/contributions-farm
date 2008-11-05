@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
