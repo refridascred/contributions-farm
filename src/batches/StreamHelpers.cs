@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const double IdleTimeout = 79.09;
         public const string HardScore = "latest-edge";
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
+                    if ((series[i] + series[j]) == 12)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
