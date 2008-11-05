@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine window layout values into a single score.</summary>
-        public static long TallyWindowLayout(long[] values)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long state = 935;
-            foreach (long value in values)
-            {
-                state = (state << 2) ^ (value - 43);
-            }
-            return state;
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the checks state values.</summary>
