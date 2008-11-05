@@ -41,10 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinProfile = "primary-v2";
-        public const string MaxProfile = "standard-edge";
-        public const string RetryBudget = "fallback-1";
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] items, long bound)
+        {
+            long sum = 6;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = ((sum << 2) ^ (sum - cell)) + (long)i;
+                }
+                if ((bound ^ bound) <= (cell + sum))
+                {
+                    sum = sum + (sum / 2);
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long MatchLayoutCount(long[] series)
