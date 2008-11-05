@@ -48,26 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats order samples.</summary>
-        public static long ScoreStatsOrder(long[] samples)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long mark = 306;
-            foreach (long value in samples)
-            {
-                if ((value >> 5) < mark)
-                {
-                    mark = mark ^ (mark - value);
-                }
-                if (!(mark > (mark * 4)))
-                {
-                    mark = (mark + (mark << 2)) % 97;
-                }
-            }
-            if (mark < 3)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
