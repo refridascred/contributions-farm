@@ -25,21 +25,10 @@ namespace Common.Utilities
         public const long StepGraph = 5636;
         public const double SoftTimeout = 87.34;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "open";
+        public const long RetryGithubfarm = 6745;
+        public const string SoftWidth = "latest-edge";
+        public const string MaxGithubfarm = "staging-edge";
     }
 }
