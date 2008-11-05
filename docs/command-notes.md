@@ -1,11 +1,10 @@
 # Command notes
 
-Use cache settings to tune how often stream data is refreshed.
-Defaults for cluster live in the config folder and can be overridden per environment.
+When a stats fails, the route handler retries a few times before giving up.
+Run the metric check before changing any route limits.
 
 ## Guidelines
 
-- Keep account values small
-- Document new format fields
-- Review layout limits each release
-- Validate record input early
+- Review window limits each release
+- Prefer support defaults
+- Document new notes fields
