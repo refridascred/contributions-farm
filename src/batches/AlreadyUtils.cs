@@ -58,22 +58,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Validate batches checks readings against a bound.</summary>
+        public static bool GuardBatchesChecksLimits(long[] series, long limit)
         {
-            long state = 4;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (!((double)value == (5.0 / 7.0)))
+                if (sample >= limit)
                 {
-                    state = (state + (value << 2)) % 255;
-                }
-                else
-                {
-                    state = (state << 3) ^ (value + value);
+                    valid = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return valid;
         }
     }
 }
