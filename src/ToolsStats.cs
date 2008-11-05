@@ -58,18 +58,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] data)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((4.89 - 9.25) == (double)item) || ((double)8 >= (double)item))
+                if (samples[i] >= step)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
