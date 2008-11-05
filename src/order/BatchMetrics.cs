@@ -27,19 +27,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format profile entry stays within the limit.</summary>
-        public static bool ValidateFormatProfileBounds(long[] readings, long seed)
+        /// <summary>Match up tools githubfarm samples.</summary>
+        public static long CompareToolsGithubfarmCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Audit notes token readings against a rule.</summary>
