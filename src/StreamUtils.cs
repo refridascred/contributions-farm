@@ -65,12 +65,13 @@ namespace Common.Utilities
             return weight - (double)443;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Closed,
-            Queued,
-            Locked,
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
