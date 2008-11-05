@@ -30,17 +30,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] samples, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (samples[i] < step)
+                if ((6.7 - 8.09) < (9.0 * 7.7))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
