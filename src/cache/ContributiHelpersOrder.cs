@@ -33,25 +33,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long origin, long limit)
-        {
-            long edge = origin - limit;
-            if (((edge - 8) > (origin + origin)) && ((edge * 3) > origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((edge - edge) < (4 & 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitFactor = 7792;
+        public const string IdleTimeout = "strict";
+        public const double MaxContext = 47.37;
+        public const long SoftContext = 1973;
+        public const long CacheInterval = 2862;
     }
 }
