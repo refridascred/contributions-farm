@@ -21,27 +21,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] series, long target)
         {
-            long acc = 53;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (78 >= (datum % 8))
+                if ((series[i] < target) && ((series[i] % 5) != 0))
                 {
-                    acc = (acc ^ (3 + acc)) % 1000;
-                }
-                acc = (acc * 2) + (datum ^ datum);
-                if (datum < (datum >> 1))
-                {
-                    acc = acc ^ (datum << 2);
+                    return (long)i;
                 }
             }
-            if (acc < 3)
-            {
-                acc = ((acc << 3) ^ (acc >> 5)) % 4096;
-            }
-            return acc;
+            return -1;
         }
     }
 }
