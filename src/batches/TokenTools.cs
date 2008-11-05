@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Count commits metric pairs that satisfy a relation.</summary>
+        public static long MatchCommitsMetricCount(long[] readings)
         {
-            Failed,
-            Draft,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
