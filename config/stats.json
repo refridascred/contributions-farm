@@ -1,6 +1,21 @@
 {
-  "cache_limit": "blue",
-  "sync_delay_s": "blue",
-  "hard_delay": "green",
-  "cache_size_pct": "open"
+  "base_size_count": true,
+  "cache_window": "green",
+  "cache_limit": false,
+  "base_interval_pct": 5695,
+  "entry_depth": ["standard", "legacy", "latest"],
+  "verbose": {
+    "dry_run": {
+      "flush_ratio_ms": true,
+      "retry_capacity": "strict",
+      "editor_capacity": 2257,
+      "idle_threshold": 6.95,
+      "cache_interval_s": 72.04,
+      "min_ratio_s": false
+    },
+    "format_size": "staging",
+    "enabled": false,
+    "audit": "local",
+    "farm_threshold": 57.89
+  }
 }
