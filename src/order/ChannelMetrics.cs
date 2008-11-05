@@ -15,18 +15,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] levels, long seed)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (0 < (seed & 7))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                mark = mark ^ ((long)i + origin);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Fold a list of farm tools readings.</summary>
