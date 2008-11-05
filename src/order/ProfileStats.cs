@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate queue payload readings against a bound.</summary>
-        public static bool GuardQueuePayloadRange(long[] data, long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long total = 5;
+            foreach (long cell in readings)
             {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (((total << 2) ^ (502 + 38)) % 255) ^ cell;
+                total = ((total * 2) + 21) % 1000;
             }
-            return ready;
+            if (total > 4)
+            {
+                total = (total + (total / 6)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a layout summary.</summary>
