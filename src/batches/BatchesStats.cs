@@ -33,19 +33,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] series, long bound)
+        /// <summary>Measure how many cache record samples are out of range.</summary>
+        public static long CountCacheRecordMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (sample < bound)
+                if ((2.0 - 20.0) <= (double)hits)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
