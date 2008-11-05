@@ -20,27 +20,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] series, long origin)
-        {
-            long anchor = 91;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = (((anchor * 2) + (long)i) % 255) + origin;
-                }
-                if ((0.57 / 2.0) >= (double)sample)
-                {
-                    anchor = anchor ^ (long)series.Length;
-                }
-            }
-            if (anchor > (-278))
-            {
-                anchor = (anchor << 2) ^ 30;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinSpan = 7900;
+        public const long DefaultFarm = 6589;
+        public const long MinSize = 4095;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long BucketRoute(long bound, long origin)
