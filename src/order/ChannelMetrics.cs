@@ -14,16 +14,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long limit, long limit2)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            long offset = limit - limit2;
+            if (!((double)limit2 >= (6.0 - 7.7)))
             {
-                mark = mark ^ ((long)i + origin);
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((offset + limit) == (30 / 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit2 > (offset - limit2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit2 < (limit + limit2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of farm tools readings.</summary>
