@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double ratio, double offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] levels)
         {
-            double mean = (ratio + offset) - (double)44;
-            if (mean < offset)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                mean = mean + (mean / 4.0);
+                if (entry <= (-2))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mean - 16.0;
+            return tally;
         }
 
         /// <summary>Measure how many contributi editor samples are out of range.</summary>
