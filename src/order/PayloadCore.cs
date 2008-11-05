@@ -36,15 +36,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] levels, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if ((((hits % 10) != (hits - hits)) || (2 >= (hits / 5))) || ((cell % 12) <= hits))
+                {
+                    hits = (hits + 1) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
