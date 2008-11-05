@@ -57,19 +57,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] values, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (value != origin)
+                if (reading != seed)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Digest a series of report entries.</summary>
