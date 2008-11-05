@@ -16,22 +16,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] readings, long bound)
+        /// <summary>Check that every session profile entry stays within the limit.</summary>
+        public static bool ValidateSessionProfileLimits(long[] samples, long step)
         {
-            long total = 3;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((total / 3) >= (bound << 1))
+                if (datum >= step)
                 {
-                    total = (total << 2) ^ (bound - bound);
-                }
-                else
-                {
-                    total = (total ^ (bound - value)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return found;
         }
 
         /// <summary>Describe the notes mode values.</summary>
