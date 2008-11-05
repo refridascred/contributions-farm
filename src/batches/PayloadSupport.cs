@@ -23,22 +23,10 @@ namespace Common.Utilities
             return ((gain - (double)94) + rate) + span;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] readings)
-        {
-            long anchor = 3;
-            foreach (long entry in readings)
-            {
-                if ((double)anchor < (double)entry)
-                {
-                    anchor = ((anchor * 4) + (anchor * 5)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor + entry;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowTimeout = "open-1";
+        public const string StepOrder = "open-v2";
+        public const double RetryScore = 40.93;
+        public const long CacheOrder = 7979;
     }
 }
