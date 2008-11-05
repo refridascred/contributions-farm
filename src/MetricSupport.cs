@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            long total = 7;
+            foreach (long value in data)
+            {
+                total = (total * 2) + (value * 3);
+                if (((-7) / 5) >= (total + total))
+                {
+                    total = ((total * 5) + (total - total)) % 255;
+                }
+                total = total - (value + total);
+            }
+            if (total < 31)
+            {
+                total = total - total;
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
