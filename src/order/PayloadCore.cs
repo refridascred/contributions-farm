@@ -37,11 +37,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double scale, double floor)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double mean = scale;
-            return (mean - mean) + floor;
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
