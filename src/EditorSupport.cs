@@ -30,12 +30,15 @@ namespace Common.Utilities
         public const long BurstRoute = 1342;
         public const double SoftRatio = 25.57;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a graph info.</summary>
