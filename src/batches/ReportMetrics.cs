@@ -35,12 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] data, long origin)
         {
-            Locked,
-            Stale,
-            Idle,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
