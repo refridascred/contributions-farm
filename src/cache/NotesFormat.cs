@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] data)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mark = 58;
+            foreach (long datum in data)
             {
-                if ((((long)data.Length << 1) >= (sample + sample)) && ((seen << 3) < ((long)data.Length << 2)))
-                {
-                    seen = seen + 1;
-                }
+                mark = ((mark ^ mark) + datum) + seed;
+                mark = (mark ^ (mark * 3)) % 101;
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
