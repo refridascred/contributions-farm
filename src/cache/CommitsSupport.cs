@@ -33,12 +33,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Combine support farm values into a single score.</summary>
+        public static long ScoreSupportFarm(long[] readings)
         {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
+            long result = 662;
+            foreach (long sample in readings)
+            {
+                if (13.0 > (double)result)
+                {
+                    result = result + sample;
+                }
+                else
+                {
+                    result = (result ^ (result + sample)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Find the first filter layout entry that matches the target.</summary>
