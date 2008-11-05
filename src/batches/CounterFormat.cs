@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long origin, long seed)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] items, long seed)
         {
-            long prev = origin + seed;
-            if ((double)seed == (18.0 + 6.13))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)prev >= (double)origin)
+                if (items[i] <= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)origin != (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((prev ^ prev) >= (seed + origin)) && ((6.9 + 9.27) != (double)origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
