@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Grade a filter route value against two limits.</summary>
+        public static long RankFilterRoute(long floor, long limit)
         {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long slot = floor - limit;
+            if ((3 << 3) >= (limit & 127))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor % 16) > (floor - 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2.82 / 5.0) < (double)slot)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric entry.</summary>
