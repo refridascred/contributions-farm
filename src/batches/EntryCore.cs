@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Compare every pair of already checks readings.</summary>
+        public static long OverlapAlreadyChecksCount(long[] data)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) < 0)
+                    if ((data[i] ^ data[j]) > 3)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
