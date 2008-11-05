@@ -24,38 +24,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank counter commits input into a small class.</summary>
-        public static long BucketCounterCommits(long limit, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] data, long seed)
         {
-            if ((limit >> 5) < (limit / 2))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((2 - origin) >= limit) && ((limit * 2) > origin))
+                if (entry != seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit > (double)762)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((1.0 - 5.36) != (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Check that every schema metrics entry stays within the limit.</summary>
