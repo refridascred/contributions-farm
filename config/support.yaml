@@ -1,13 +1,8 @@
 # support settings
-counter_retries: standard
-farm_timeout:
-  - local
-  - standard
-  - local
-cache_delay:
-  strict: 6272
-  default_depth_ms: 89.44
-  flush_depth_ms: 8008
-  retry_limit:
-    - 464
-    - 449
+commits_retries: 1024
+entry_ttl: true
+queue_timeout:
+  - 434
+  - 76
+  - 233
+audit: false
