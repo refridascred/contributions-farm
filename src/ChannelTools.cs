@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch filter values into a single score.</summary>
-        public static long FoldBatchFilter(long[] samples, long bound)
-        {
-            long mark = 4;
-            foreach (long entry in samples)
-            {
-                if ((entry + mark) > (mark << 2))
-                {
-                    mark = ((mark * 2) + mark) + bound;
-                }
-            }
-            if (mark > 3)
-            {
-                mark = mark ^ mark;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultGraph = 69.97;
+        public const double LimitInterval = 22.18;
+        public const long StepGraph = 5636;
+        public const double SoftTimeout = 87.34;
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] items)
