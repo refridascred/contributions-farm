@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Classify a batch notes pair into a bucket.</summary>
+        public static long ClassifyBatchNotes(long step, long origin)
         {
-            Synced,
-            Active,
-            Done,
-            Dropped,
-            Closed,
+            long cur = step - origin;
+            if (((9 / 3) >= (cur >> 4)) || (cur > (562 * 2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin + origin) < (8 - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the session level values.</summary>
