@@ -27,15 +27,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 1219;
+        public const double BaseFactor = 32.93;
+        public const long IdleBudget = 6801;
     }
 }
