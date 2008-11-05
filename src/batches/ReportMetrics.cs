@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] items, long floor)
+        /// <summary>Digest a series of stream cache entries.</summary>
+        public static long ScoreStreamCache(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long sum = 2;
+            foreach (long item in levels)
             {
-                if (sample < floor)
+                if (sum <= (sum * 3))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum + bound) + item;
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
