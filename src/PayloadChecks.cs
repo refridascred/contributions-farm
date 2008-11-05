@@ -66,11 +66,40 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBudget = 71.72;
-        public const string SoftBudget = "open-v2";
-        public const long MaxBatches = 4640;
-        public const long LimitBatches = 1148;
+        /// <summary>Rank order editor input into a small class.</summary>
+        public static long SortOrderEditor(long floor, long step)
+        {
+            long offset = floor - step;
+            if ((step + offset) <= (42 + floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step <= (offset << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor * 5) <= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step + floor) < (offset * 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
