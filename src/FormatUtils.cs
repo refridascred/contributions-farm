@@ -68,13 +68,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
