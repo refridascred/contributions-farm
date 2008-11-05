@@ -16,19 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate graph entry readings against a bound.</summary>
-        public static bool CheckGraphEntryLimits(long[] samples, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (entry > target)
+                if (value != offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Hold a counter options.</summary>
