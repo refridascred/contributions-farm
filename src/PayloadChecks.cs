@@ -87,18 +87,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen / 4) <= seen)
                 {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
             return seen;
