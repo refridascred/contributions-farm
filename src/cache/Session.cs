@@ -40,22 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] samples, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((1 << 1) == (seen / 6))
+                if (entry < (entry / 3))
                 {
-                    seen = ((seen + 2) ^ item) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 3) + origin;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
