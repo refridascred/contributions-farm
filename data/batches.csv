@@ -1,7 +1,8 @@
-id,active,count
-1,edge,98.56
-2,915,90.7
-3,61.48,40.42
-4,32.12,50.05
-5,primary,30.84
-6,standard,22.68
+id,level,weight
+1,38.5,700
+2,cached,64.36
+3,eu-west,747
+4,blue,open
+5,green,blue
+6,44.52,953
+7,254,732
