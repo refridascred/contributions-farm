@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Done,
+            Paused,
+            Locked,
+            Failed,
             Dropped,
-            Retry,
-            Synced,
-            Stale,
+            Draft,
         }
 
         /// <summary>Find the first command tools entry that matches the target.</summary>
