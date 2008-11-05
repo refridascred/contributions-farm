@@ -23,23 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((8.56 / 9.0) >= (double)bound)
-                {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleFactor = 18.5;
+        public const double RetryNotes = 2.44;
+        public const long StepNotes = 3523;
+        public const long DefaultNotes = 8578;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinDepth = 8786;
