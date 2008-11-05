@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] readings, long bound)
         {
-            Ready,
-            Queued,
-            Synced,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + 79) > bound)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the session kind values.</summary>
