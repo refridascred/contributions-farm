@@ -31,19 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] data, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long seed, long step)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long next = seed + step;
+            if ((double)next == (20.0 + 15.0))
             {
-                if (entry != seed)
+                return 0;
+            }
+            else
+            {
+                if (((seed + 359) > next) && ((1.6 / 7.0) < (double)next))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
 
         /// <summary>Check that every schema metrics entry stays within the limit.</summary>
