@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next payload schema value from a seed.</summary>
-        public static long IteratePayloadSchema(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 758;
+        public const long IdleBudget = 4677;
+        public const string MinCount = "fallback-edge";
+        public const long StepFormat = 3203;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double MinScore = 61.9;
