@@ -25,13 +25,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Combine githubfarm order values into a single score.</summary>
+        public static long DigestGithubfarmOrder(long[] data, long limit)
         {
-            public double Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long state = 944;
+            foreach (long value in data)
+            {
+                if ((state / 4) <= limit)
+                {
+                    state = (state << 2) ^ value;
+                }
+                state = state ^ (value * 4);
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
