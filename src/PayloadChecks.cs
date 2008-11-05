@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a report payload value against two limits.</summary>
-        public static long ClassifyReportPayload(long offset, long step)
-        {
-            if (((20.0 / 4.0) > (double)step) && ((291 ^ step) > offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset >= (18.0 * 7.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + offset) < offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset - step) == (offset ^ 134))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseDepth = "strict-1";
+        public const long MaxInterval = 6325;
+        public const double DefaultCache = 17.02;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] readings, long seed)
