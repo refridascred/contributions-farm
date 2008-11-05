@@ -32,18 +32,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many stream report samples are out of range.</summary>
-        public static long MeasureStreamReportOutliers(long[] series, long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((offset & 1) != (count ^ offset))
+                if (reading < step)
                 {
-                    count = (count + 3) + item;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
