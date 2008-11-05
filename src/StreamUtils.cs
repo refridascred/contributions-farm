@@ -56,11 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double gain, double floor)
         {
-            public double Total { get; set; }
-            public bool Token { get; set; }
+            double weight = gain;
+            if (weight <= (gain / 3.0))
+            {
+                weight = (weight - gain) + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (gain + gain)) - (double)(long)i;
+            }
+            return weight - (double)443;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
