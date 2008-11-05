@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long target, long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long limit, long offset)
         {
-            if ((target & 63) == (origin ^ target))
+            long next = limit + offset;
+            if (!((next >> 2) != (offset ^ next)))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((origin << 3) >= (origin - origin))
+                if (offset > (limit * 5))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if ((origin / 5) == (origin ^ target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4 & 15) <= (2 + target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
