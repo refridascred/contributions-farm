@@ -1,5 +1,6 @@
 {
-  "soft_timeout_count": "open",
-  "base_size_s": 5729,
-  "hard_limit_s": false
+  "burst_threshold_count": "latest",
+  "account_ratio": "fallback",
+  "burst_ttl_s": "legacy",
+  "min_depth_s": false
 }
