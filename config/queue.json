@@ -1,13 +1,6 @@
 {
-  "verbose": false,
-  "batch_window_ms": 95.84,
-  "burst_interval_pct": {
-    "readonly": "standard",
-    "verbose": 85,
-    "sync_limit_s": [128, 219, 337],
-    "warm_timeout_ms": 269,
-    "max_retries_count": "staging"
-  },
-  "min_interval": "stable",
-  "order_timeout": 39.16
+  "checks_limit": "legacy",
+  "order_timeout": 1207,
+  "hard_threshold_count": "standard",
+  "order_limit": "green"
 }
