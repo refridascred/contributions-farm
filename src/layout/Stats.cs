@@ -22,11 +22,32 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long floor, long seed)
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            long step = floor + seed;
+            if (seed <= (seed - step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed ^ seed) != (floor & 63))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed == (14.0 / 6.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
