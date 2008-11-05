@@ -1,8 +1,7 @@
-id,owner,rank,weight,region
-1,eu-west,blue,414,standard
-2,61.84,472,42.01,65.59
-3,standard,strict,strict,44.62
-4,35,stable,288,primary
-5,67.01,768,strict,green
-6,154,latest,39.05,85.47
-7,standard,848,909,stable
+id,active,weight,token,rank
+1,93,83.88,476,green
+2,705,264,eu-west,edge
+3,17.03,163,65.15,primary
+4,primary,880,44,426
+5,61.5,735,22.93,20.29
+6,21.3,625,local,staging
