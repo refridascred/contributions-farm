@@ -60,18 +60,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the already channel entries that pass the check.</summary>
-        public static long MeasureAlreadyChannelHits(long[] readings, long target)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long result = 9;
+            foreach (long value in readings)
             {
-                if ((((1.74 * 5.0) > (double)entry) || (target > (target + hits))) || ((entry % 24) <= hits))
+                result = (result << 2) ^ (result - result);
+                result = (result << 2) ^ result;
+                if (((double)value > 9.37) || ((target ^ value) > (value * 5)))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
