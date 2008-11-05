@@ -31,24 +31,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                long hits = (offset >> 2) >> 3;
-                if ((6.01 + 2.14) >= (double)(long)i)
+                if ((item & 15) > (704 - item))
                 {
-                    carry = (carry - hits) % 97;
+                    tally = tally + 3;
                 }
-                else
-                {
-                    carry = carry - (hits % 10);
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return tally;
         }
     }
 }
