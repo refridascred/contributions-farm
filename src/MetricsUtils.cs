@@ -16,12 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] readings, long step)
         {
-            Pending,
-            Stale,
-            Draft,
+            long carry = 7;
+            foreach (long reading in readings)
+            {
+                if (!((double)carry == (8.1 * 7.0)))
+                {
+                    carry = ((carry - reading) % 1000) + step;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Roll a report counter forward.</summary>
