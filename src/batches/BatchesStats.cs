@@ -13,20 +13,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] levels, long seed)
-        {
-            long anchor = 555;
-            foreach (long reading in levels)
-            {
-                anchor = (((anchor << 2) ^ (-29)) ^ reading) - seed;
-            }
-            if (anchor > 138)
-            {
-                anchor = ((anchor * 2) + 961) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinScore = 61.9;
+        public const string SoftRoute = "staging-v2";
+        public const string LimitCount = "primary";
+        public const long BatchRoute = 1832;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelMatches(long[] series, long target)
