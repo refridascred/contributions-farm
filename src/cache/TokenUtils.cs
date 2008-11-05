@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 83.16;
-        public const long SoftSpan = 8095;
-        public const string RetryFactor = "legacy-v2";
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Pending,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Fold a list of profile batches readings.</summary>
         public static long FoldProfileBatches(long[] data, long limit)
