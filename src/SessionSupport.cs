@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Draft,
-            Synced,
+            Idle,
             Pending,
-            Dropped,
+            Queued,
+            Closed,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
