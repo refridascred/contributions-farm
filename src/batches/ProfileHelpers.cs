@@ -46,18 +46,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm commits entry that matches the target.</summary>
-        public static long LocateGithubfarmCommitsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryInterval = 42.8;
+        public const string HardContributi = "standard-edge";
+        public const long BatchContributi = 9237;
 
         /// <summary>Digest a series of session context entries.</summary>
         public static long DigestSessionContext(long[] samples)
