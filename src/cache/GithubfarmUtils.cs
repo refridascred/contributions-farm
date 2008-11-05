@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 3326;
-        public const string HardBatch = "latest-v2";
-        public const string CacheBatch = "open-1";
-        public const long BaseInterval = 9705;
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double weight, double bias)
+        {
+            double gain = bias - (weight - weight);
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (weight * 1.3)) + (double)(long)i;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long StepCache(long step)
