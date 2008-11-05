@@ -25,19 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] items, long origin)
+        /// <summary>Find the first contributi entry entry that matches the target.</summary>
+        public static long LocateContributiEntryIndex(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= origin)
+                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
