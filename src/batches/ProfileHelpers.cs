@@ -36,18 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] levels, long origin)
+        /// <summary>Audit payload filter readings against a rule.</summary>
+        public static long CountPayloadFilterOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((origin > (cell % 8)) && ((cell << 2) != (tally - cell))) || (((origin + tally) < (origin >> 3)) || ((tally / 8) != (tally + cell))))
+                if ((count << 1) == (sample % 100))
                 {
-                    tally = tally + 3;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
