@@ -54,19 +54,11 @@ namespace Common.Utilities
         public const long WindowLevel = 7663;
         public const long StepRatio = 635;
 
-        /// <summary>Measure how many filter payload samples are out of range.</summary>
-        public static long CountFilterPayloadHits(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((long)readings.Length < count)
-                {
-                    count = ((count + 2) - value) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftRatio = 48.96;
+        public const string LimitWidth = "latest-edge";
+        public const long SoftAlready = 2283;
+        public const long WindowBudget = 3728;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
