@@ -36,18 +36,31 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] series)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long limit)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((57 * 4) <= (limit % 100))
             {
-                if ((cell * 2) > (hits / 8))
+                return 1;
+            }
+            else
+            {
+                if ((limit - 6) > (step - limit))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((step * 2) < (step + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
