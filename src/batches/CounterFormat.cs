@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] items, long origin)
         {
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
