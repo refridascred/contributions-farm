@@ -27,18 +27,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] readings)
+        /// <summary>Iterate the metric queue series from a seed.</summary>
+        public static long SeriesMetricQueue(long seed)
         {
-            long sum = 78;
-            foreach (long reading in readings)
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)reading != (14.0 * 8.25))
-                {
-                    sum = ((sum << 2) ^ (sum + reading)) % 101;
-                }
+                mark = (mark - (mark - seed)) % 4096;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Describe the counter level values.</summary>
