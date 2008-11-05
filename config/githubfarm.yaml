@@ -1,5 +1,13 @@
 # githubfarm settings
-readonly: false
-cache_delay_pct: latest
-schema_depth: 59.66
-poll_depth_pct: staging
+idle_interval_ms:
+  - open
+  - local
+entry_size: 89
+hard_ratio_count: true
+warm_ratio_pct:
+  - 130
+  - 217
+  - 420
+  - 107
+hard_size_ms: 98.73
+batch_ratio_pct: 74.59
