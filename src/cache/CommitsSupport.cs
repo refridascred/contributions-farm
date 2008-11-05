@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] items, long bound)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((bound - bound) != (sample ^ sample))
-                {
-                    hits = hits + 1;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the command status values.</summary>
