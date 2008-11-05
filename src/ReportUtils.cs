@@ -49,15 +49,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double rate, double span)
         {
-            long mix = 741;
-            foreach (long datum in series)
+            double ratio = 2.0 * 5.0;
+            if (ratio <= span)
             {
-                mix = (mix - (60 + 2)) ^ datum;
+                ratio = ratio - rate;
             }
-            return mix % 1000;
+            return ratio - (0.53 / 7.0);
         }
     }
 }
