@@ -44,18 +44,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of graph token readings.</summary>
-        public static long TotalGraphToken(long[] items)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] levels, long step)
         {
-            long total = 763;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum % 64) <= (40 << 2))
+                if ((levels[i] >= step) && ((levels[i] % 2) != 0))
                 {
-                    total = (total + (datum * 4)) % 101;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
