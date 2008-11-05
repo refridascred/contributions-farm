@@ -20,22 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] data)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long next = offset + origin;
+            if ((origin > 2) || (9.4 > (double)origin))
             {
-                if (sample <= (68 / 6))
+                return 5;
+            }
+            else
+            {
+                if ((origin < offset) || ((next % 64) <= next))
                 {
-                    hits = hits + 1;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((-3) - origin) > (9 - next))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
