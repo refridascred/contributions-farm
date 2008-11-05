@@ -70,19 +70,13 @@ namespace Common.Utilities
         public const long DefaultStream = 4472;
         public const long BatchStream = 7516;
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double rate, double bias)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double rate2 = 19.0;
-            if (rate2 < (4.9 * 1.44))
-            {
-                rate2 = (rate2 + (double)61) + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - rate) + (double)(long)i;
-            }
-            return rate2 + (double)26;
+            Done,
+            Queued,
+            Active,
+            New,
         }
     }
 }
