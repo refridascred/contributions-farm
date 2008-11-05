@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            long result = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((4.37 - 9.08) == (double)step) || ((step & 63) > (result >> 1)))
+                {
+                    result = ((result << 2) ^ (step ^ (long)i)) % 4096;
+                }
+                else
+                {
+                    result = (result << 2) ^ (step / 6);
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
