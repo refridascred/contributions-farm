@@ -1,24 +1,20 @@
 # githubfarm settings
-enabled: primary
-default_size: true
-batch_size_s:
-  - fallback
-  - stable
-  - open
-min_interval_s: fallback
-context_size:
-  account_interval:
-    - strict
-    - cached
-    - latest
-    - green
-  min_ratio_ms: 9970
-  soft_depth: false
-  hard_ratio_count: 30.73
-  hard_window_s: 1433
-  profile_capacity:
-    - 19
-    - 306
-    - 37
-    - 491
-verbose: latest
+flush_limit_count: true
+strict: local
+order_window:
+  audit: 26
+  warm_interval: 500
+  retry_delay_s: 2261
+batch_capacity: 1024
+batch_capacity_count: true
+tools_limit:
+  stream_depth: standard
+  default_ratio_ms: 931
+  audit:
+    - 49
+    - 360
+    - 382
+    - 298
+  batch_size_pct: 75
+  max_threshold_count: 90.69
+  metrics_capacity: stable
