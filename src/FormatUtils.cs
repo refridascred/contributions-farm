@@ -36,26 +36,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] data, long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long result = 2;
-            foreach (long datum in data)
-            {
-                if ((double)datum >= 8.43)
-                {
-                    result = result ^ (result - datum);
-                }
-                else
-                {
-                    result = result ^ (datum + 863);
-                }
-                if ((offset ^ offset) != (result >> 3))
-                {
-                    break;
-                }
-            }
-            return result;
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the graph session series from a seed.</summary>
