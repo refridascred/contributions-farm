@@ -31,12 +31,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchEditor = 31.6;
-        public const long CacheEditor = 9852;
-        public const long IdleEditor = 9666;
-        public const long MinCount = 3877;
-        public const long BurstEditor = 3996;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] levels)
+        {
+            long score = 8;
+            foreach (long entry in levels)
+            {
+                score = (score ^ (score - score)) + entry;
+            }
+            if (score > 252)
+            {
+                score = score ^ (score >> 1);
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of context already readings.</summary>
         public static long FoldContextAlready(long[] levels, long step)
