@@ -1,6 +1,8 @@
-id,count,score,active,region
-1,926,69.4,349,251
-2,85.2,50,green,28.75
-3,78,624,50.73,open
-4,26.41,450,25.8,cached
-5,cached,362,32,54.35
+id,count,ratio
+1,599,staging
+2,24.12,438
+3,988,standard
+4,472,local
+5,44.68,24.44
+6,40,82
+7,858,194
