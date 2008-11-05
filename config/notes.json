@@ -1,13 +1,12 @@
 {
-  "burst_retries": "local",
-  "entry_window": 100,
-  "persist": 22,
-  "account_retries": {
-    "retry_interval_s": false,
-    "notes_limit": "fallback",
-    "enabled": 7.39,
-    "compress": ["standard", "blue", "local", "blue"],
-    "dry_run": false
-  },
-  "flush_delay_count": "stable"
+  "batch_depth_pct": false,
+  "soft_window": "edge",
+  "queue_capacity": "blue",
+  "window_interval": {
+    "strict": false,
+    "warm_interval_ms": 100,
+    "token_interval": "green",
+    "base_threshold_ms": false,
+    "compress": ["latest", "fallback", "cached", "local"]
+  }
 }
