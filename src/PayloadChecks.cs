@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseDepth = "strict-1";
-        public const long MaxInterval = 6325;
-        public const double DefaultCache = 17.02;
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] readings, long seed)
