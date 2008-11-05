@@ -13,19 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((797 ^ count) == (count & 127))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 5251;
+        public const long StepWidth = 2470;
+        public const long MinFactor = 7704;
+        public const long HardCommand = 938;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long LimitLayout = 6694;
