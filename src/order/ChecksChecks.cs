@@ -19,23 +19,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cluster payload value against two limits.</summary>
-        public static long GradeClusterPayload(long origin, long target)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long target, long target2)
         {
-            long offset = origin - target;
-            if ((1.82 / 9.0) > (double)origin)
+            long slot = target ^ target2;
+            if ((slot + target2) > (0 ^ 3))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((offset / 2) >= (origin + origin))
+                if ((slot * 5) < 405)
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if ((target <= (target2 / 2)) && ((target2 + target) < (target2 * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
