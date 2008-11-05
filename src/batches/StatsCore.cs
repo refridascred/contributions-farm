@@ -13,21 +13,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of metric order readings.</summary>
-        public static long PairMetricOrderCount(long[] values)
+        /// <summary>Digest a series of notes payload entries.</summary>
+        public static long DigestNotesPayload(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 61;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (target > cell)
                 {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum - (sum - sum);
+                }
+                else
+                {
+                    sum = (sum - (sum + target)) % 4096;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Match up payload profile samples.</summary>
