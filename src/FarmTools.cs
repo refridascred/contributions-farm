@@ -20,15 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double rate, double span)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            double mean = 19.0 - (rate + span);
-            if (mean <= rate)
-            {
-                mean = mean + mean;
-            }
-            return mean - (span / 5.0);
+            Closed,
+            Locked,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
