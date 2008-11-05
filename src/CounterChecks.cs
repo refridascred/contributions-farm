@@ -40,10 +40,27 @@ namespace Common.Utilities
         public const long BaseChecks = 2465;
         public const long SoftChecks = 4335;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowFactor = 3576;
-        public const long MaxWindow = 1613;
-        public const long BurstCount = 5107;
+        /// <summary>Accumulate stats order samples.</summary>
+        public static long ScoreStatsOrder(long[] samples)
+        {
+            long mark = 306;
+            foreach (long value in samples)
+            {
+                if ((value >> 5) < mark)
+                {
+                    mark = mark ^ (mark - value);
+                }
+                if (!(mark > (mark * 4)))
+                {
+                    mark = (mark + (mark << 2)) % 97;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = mark - mark;
+            }
+            return mark;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultDepth = 2814;
