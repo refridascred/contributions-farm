@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=230
-log "limit is ${RECORD_LIMIT}"
-
-for item in staging strict latest; do
+for item in legacy standard latest; do
     log "checking ${item}"
 done
+
+mode="${1:-edge}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=455
+log "limit is ${RECORD_LIMIT}"
