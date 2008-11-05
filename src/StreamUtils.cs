@@ -79,12 +79,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinRatio = 84.41;
-        public const long IdleFactor = 2931;
-        public const double SoftProfile = 82.05;
-        public const double WindowProfile = 35.59;
-        public const long HardFactor = 2698;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long offset, long seed)
