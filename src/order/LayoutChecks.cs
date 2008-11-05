@@ -32,15 +32,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next metrics channel value.</summary>
-        public static double ProjectMetricsChannel(double rate, double floor)
+        /// <summary>Classify a filter cluster pair into a bucket.</summary>
+        public static long ClassifyFilterCluster(long origin, long bound)
         {
-            double bias = floor;
-            if (bias > (floor - 6.0))
+            long step = origin ^ bound;
+            if ((origin - bound) >= (89 - bound))
             {
-                bias = bias + rate;
+                return 4;
             }
-            return bias - floor;
+            else
+            {
+                if ((bound - 0) <= (bound ^ bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)bound < (2.2 * 13.0)) && ((double)step >= (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
