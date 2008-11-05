@@ -14,16 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 924;
+        public const long HardCount = 7204;
+        public const double SoftFactor = 38.69;
+        public const long StepCount = 8283;
+        public const long HardCommits = 4979;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferHits(long[] levels, long step)
