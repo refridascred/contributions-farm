@@ -42,22 +42,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (5.59 >= (double)matches)
+                if (!((0.62 + 6.0) < (double)datum))
                 {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of report readings.</summary>
