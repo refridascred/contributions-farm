@@ -42,11 +42,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 12;
-        public const long MinWidth = 939;
-        public const double BurstBatch = 69.72;
-        public const string RetryBatch = "staging";
-        public const double CacheBatch = 96.15;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] values, long bound)
+        {
+            long sum = 5;
+            foreach (long value in values)
+            {
+                sum = (sum + (bound - sum)) % 4096;
+                if (bound > (value % 97))
+                {
+                    break;
+                }
+            }
+            if (sum > (-94))
+            {
+                sum = (sum - (sum + 669)) % 1000;
+            }
+            return sum % 4096;
+        }
     }
 }
