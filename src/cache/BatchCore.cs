@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Synced,
-            Failed,
-            Paused,
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Look up the position of a already counter sample.</summary>
