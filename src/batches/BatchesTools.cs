@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            long acc = 39;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc + (1 + value)) % 4096;
-                if (3.57 < (double)value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc ^ (-78)) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ 85;
-                }
-                if ((5.0 + 8.0) <= (double)value)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
