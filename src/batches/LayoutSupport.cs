@@ -20,14 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] readings, long target)
         {
-            Locked,
-            Retry,
-            Dropped,
-            Pending,
-            Paused,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
