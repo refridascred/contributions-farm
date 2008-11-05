@@ -56,19 +56,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] levels, long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < step)
+                if (samples[i] == seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
