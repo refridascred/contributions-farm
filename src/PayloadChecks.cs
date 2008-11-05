@@ -101,14 +101,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] values)
         {
-            Idle,
-            Closed,
-            Draft,
-            Done,
-            Dropped,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((count - 6) >= cell)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two route measurements.</summary>
