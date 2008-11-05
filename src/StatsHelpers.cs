@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long seed, long limit)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long diff = seed + limit;
-            if ((seed + 36) != (seed >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((3 + limit) >= (diff % 60))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed / 9) >= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit * 2) >= seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
