@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count commits queue pairs that satisfy a relation.</summary>
-        public static long CompareCommitsQueueCount(long[] data)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long prev = origin + seed;
+            if ((double)seed == (18.0 + 6.13))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)prev >= (double)origin)
                 {
-                    if ((data[i] + data[j]) == 15)
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)origin != (double)seed))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((prev ^ prev) >= (seed + origin)) && ((6.9 + 9.27) != (double)origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
