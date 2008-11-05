@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Check that every filter support entry stays within the limit.</summary>
+        public static bool VerifyFilterSupportBounds(long[] items, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (cell > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Hold a channel summary.</summary>
