@@ -54,14 +54,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Draft,
-            Queued,
-            Dropped,
-            Pending,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 5329;
+        public const string MaxCount = "latest-v2";
+        public const long BurstBudget = 7582;
+        public const long MaxChecks = 4123;
+        public const long HardWidth = 6355;
     }
 }
