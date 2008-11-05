@@ -59,11 +59,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBudget = "alpha-edge";
-        public const long BatchRatio = 1466;
-        public const long DefaultDepth = 8557;
-        public const long MinBudget = 8923;
-        public const string BaseFactor = "staging-v2";
+        /// <summary>Compare every pair of graph notes readings.</summary>
+        public static long OverlapGraphNotesCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
