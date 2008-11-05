@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Active,
-            Retry,
-            New,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 1180;
+        public const long LimitInterval = 8325;
+        public const double IdleRoute = 18.26;
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
