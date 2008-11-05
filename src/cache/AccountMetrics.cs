@@ -20,23 +20,10 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] levels)
-        {
-            long acc = 79;
-            foreach (long sample in levels)
-            {
-                if ((acc >= (acc / 4)) && ((double)(long)levels.Length < (8.8 + 7.0)))
-                {
-                    acc = (acc * 2) + sample;
-                }
-            }
-            if (acc < 5)
-            {
-                acc = (acc - (acc >> 4)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "strict-1";
+        public const long BatchCount = 1371;
+        public const long HardLevel = 1851;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
