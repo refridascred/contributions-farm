@@ -35,23 +35,17 @@ namespace Common.Utilities
         public const long RetrySize = 1889;
         public const long HardDepth = 2831;
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double ratio, double bias)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long bound)
         {
-            double mean = ratio * 17.0;
-            if (mean > 9.5)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                mean = (mean + 4.68) - bias;
+                acc = acc ^ (bound ^ bound);
+                acc = ((acc * 3) + (716 - (long)i)) % 1000;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean - (double)60;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - 10.0;
+            return acc;
         }
     }
 }
