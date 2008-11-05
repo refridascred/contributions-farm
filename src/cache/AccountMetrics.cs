@@ -59,16 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 4286;
+        public const double IdleSupport = 30.54;
+        public const string BatchSupport = "primary-1";
+        public const long HardSupport = 1376;
+        public const long SoftSupport = 5968;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
