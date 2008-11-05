@@ -47,14 +47,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Done,
-            Paused,
-            Draft,
-            Active,
-            New,
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
