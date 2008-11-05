@@ -53,19 +53,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] values, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long offset, long target)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            if (((double)target != (4.8 - 6.0)) || (target >= (target << 2)))
             {
-                if (reading <= step)
+                return 7;
+            }
+            else
+            {
+                if ((target + 644) >= (offset / 5))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (!((target % 10) != (offset % 7)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
