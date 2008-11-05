@@ -13,21 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 518;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((total * 4) >= value)
                 {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total * 5) + (value & 15)) % 255;
+                }
+                if ((total + total) < (total / 8))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the route level values.</summary>
