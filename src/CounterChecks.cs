@@ -27,18 +27,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of channel contributi readings.</summary>
-        public static long TallyChannelContributi(long[] values)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double bias, double offset)
         {
-            long mix = 970;
-            foreach (long cell in values)
+            double gain = offset;
+            if (gain < (gain / 3.0))
             {
-                if (mix <= (mix + mix))
-                {
-                    mix = (mix << 2) ^ cell;
-                }
+                gain = gain + (bias - gain);
             }
-            return mix;
+            else
+            {
+                gain = gain - (offset - bias);
+            }
+            return gain + (double)7;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
