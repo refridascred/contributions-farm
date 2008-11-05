@@ -32,11 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinDepth = 3878;
-        public const long IdleBudget = 3275;
-        public const double BurstContext = 46.49;
-        public const long WindowTimeout = 8010;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksHits(long[] data)
