@@ -43,15 +43,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double rate, double floor)
-        {
-            double ratio = (double)(745 ^ 99);
-            if (ratio < (floor / 6.0))
-            {
-                ratio = ratio + rate;
-            }
-            return ratio + (20.0 * 2.0);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 3670;
+        public const long BurstBuffer = 364;
+        public const double BatchRatio = 85.99;
     }
 }
