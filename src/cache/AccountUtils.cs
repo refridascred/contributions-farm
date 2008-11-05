@@ -26,31 +26,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long seed, long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            if ((target % 97) < (target / 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target <= seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed <= 81)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Pending,
+            Done,
+            New,
+            Stale,
+            Synced,
         }
     }
 }
