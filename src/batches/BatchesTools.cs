@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] readings)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5.2 + 7.72) == (double)origin)
                 {
-                    if ((readings[i] + readings[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result - ((long)i - result);
                 }
+                else
+                {
+                    result = (result ^ (long)i) % 97;
+                    result = ((result << 2) ^ origin) % 65521;
+                }
+                result = ((result << 2) ^ (origin + origin)) % 101;
+                if (result <= origin)
+                {
+                    result = ((result << 3) ^ 97) % 4096;
+                    result = (result << 3) ^ (37 % 3);
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
