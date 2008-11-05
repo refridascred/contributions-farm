@@ -47,10 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 9069;
-        public const long IdleChecks = 5357;
-        public const string StepChecks = "primary";
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long WeighFormat(long[] levels, long offset)
