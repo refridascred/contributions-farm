@@ -25,19 +25,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two command checks measurements.</summary>
-        public static double SmoothCommandChecks(double gain, double bias)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] readings)
         {
-            double load = (double)(3 & 255);
-            if (load >= (double)588)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = ((load - (double)2) + gain) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (double)84;
+            return count;
         }
 
         /// <summary>Hold a context info.</summary>
