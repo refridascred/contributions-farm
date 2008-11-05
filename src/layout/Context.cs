@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context helpers.</summary>
     public static class Context
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] readings, long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((datum & 15) < matches)
+                if (item < bound)
                 {
-                    matches = (matches + 1) - target;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
