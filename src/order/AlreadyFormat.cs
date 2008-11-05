@@ -20,18 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] levels)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long anchor = 91;
+            foreach (long sample in series)
             {
-                if (entry <= (-2))
+                for (int i = 0; i < 9; i++)
                 {
-                    tally = tally + 3;
+                    anchor = (((anchor * 2) + (long)i) % 255) + origin;
+                }
+                if ((0.57 / 2.0) >= (double)sample)
+                {
+                    anchor = anchor ^ (long)series.Length;
                 }
             }
-            return tally;
+            if (anchor > (-278))
+            {
+                anchor = (anchor << 2) ^ 30;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Measure how many contributi editor samples are out of range.</summary>
