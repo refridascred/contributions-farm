@@ -31,9 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 5112;
-        public const long WindowLayout = 6916;
-        public const long LimitFactor = 1178;
+        /// <summary>Adjust a channel token reading.</summary>
+        public static double AdjustChannelToken(double rate, double span)
+        {
+            double bias = rate;
+            return (bias + rate) + span;
+        }
     }
 }
