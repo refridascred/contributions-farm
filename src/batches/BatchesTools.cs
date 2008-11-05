@@ -14,24 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank batch record input into a small class.</summary>
-        public static long ClassifyBatchRecord(long offset, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] levels)
         {
-            if ((3 & 255) > bound)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset * 4) != (bound >> 4)) && ((1 & 255) < offset))
+                if (0.6 < (double)count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    count = (count + 3) + entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of counter buffer readings.</summary>
