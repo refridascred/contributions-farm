@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] values, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] values)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long acc = 89;
+            foreach (long value in values)
             {
-                if (16.0 >= (double)count)
-                {
-                    count = ((count + 3) + datum) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (acc - ((long)values.Length << 1)) ^ value;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Classify a farm notes pair into a bucket.</summary>
