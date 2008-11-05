@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double LimitWidth = 66.76;
         public const double RetryCount = 90.15;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] levels, long step)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
