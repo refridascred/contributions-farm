@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double rate, double span)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            double bias = span;
-            if (bias >= (bias - bias))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias - rate;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias - (bias * 5.04);
+            return hits;
         }
 
         /// <summary>Describe the token class values.</summary>
