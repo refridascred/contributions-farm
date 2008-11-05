@@ -1,7 +1,8 @@
 # githubfarm settings
-queue_timeout: green
-base_size_pct: 85.61
-notes_delay: cached
-poll_depth_s: 30
-batch_limit_ms: 100
-batch_size: 7976
+cache_ratio_pct:
+  - 498
+  - 52
+  - 113
+soft_retries: staging
+profile_timeout: 2594
+retry_ttl: latest
