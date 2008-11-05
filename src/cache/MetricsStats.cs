@@ -67,10 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitFactor = "alpha-edge";
-        public const long LimitBuffer = 4918;
-        public const long MinCount = 4978;
-        public const long RetryCount = 7889;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Ready,
+            Retry,
+            Synced,
+        }
     }
 }
