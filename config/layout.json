@@ -1,7 +1,5 @@
 {
-  "min_size_count": 500,
-  "enabled": ["legacy", "green"],
-  "metric_delay": [162, 190],
-  "batch_ttl": "green",
-  "compress": true
+  "contributi_interval": [152, 259, 297, 315],
+  "compress": "strict",
+  "soft_interval_pct": "stable"
 }
