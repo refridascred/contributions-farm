@@ -34,11 +34,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardRatio = 131;
-        public const double BatchEntry = 40.84;
-        public const string LimitSize = "cached-1";
-        public const long BaseLevel = 452;
-        public const double BaseEntry = 14.77;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
