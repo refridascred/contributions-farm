@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long seed, long target)
         {
-            double mean = (1.0 + floor) - (floor / 3.0);
-            return (mean - 6.26) + scale;
+            if ((double)seed >= (2.1 / 9.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((seed / 2) > (target & 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed % 60) > (target << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up farm samples.</summary>
