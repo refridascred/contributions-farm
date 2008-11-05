@@ -23,27 +23,21 @@ namespace Common.Utilities
             return ((gain - (double)94) + rate) + span;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] samples, long bound)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] series)
         {
-            long score = 763;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (((score - (5 / 6)) % 101) - datum) - bound;
-                if (((-3) * 2) != (score * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score + (2 + score);
-                }
-                else
-                {
-                    score = (score ^ (score >> 4)) % 101;
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 778)
-            {
-                score = (score - (score + 802)) % 97;
-            }
-            return score % 1000;
+            return tally;
         }
     }
 }
