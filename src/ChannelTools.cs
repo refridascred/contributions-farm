@@ -39,10 +39,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "open";
-        public const long RetryGithubfarm = 6745;
-        public const string SoftWidth = "latest-edge";
-        public const string MaxGithubfarm = "staging-edge";
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+        }
     }
 }
