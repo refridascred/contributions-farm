@@ -16,17 +16,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] values, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 63;
+            foreach (long cell in samples)
             {
-                if (values[i] < step)
+                if (((acc ^ acc) >= (acc * 3)) || ((cell + 7) <= acc))
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc - 89)) % 255;
+                    continue;
+                }
+                if (57 >= (acc - cell))
+                {
+                    acc = (acc + (acc ^ 8)) % 255;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ acc;
                 }
             }
-            return -1;
+            if (acc > 226)
+            {
+                acc = ((acc * 4) + (acc & 127)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a counter options.</summary>
