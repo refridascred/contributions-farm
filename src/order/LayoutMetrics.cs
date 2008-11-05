@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const double LimitContext = 70.85;
         public const long CacheContext = 3159;
 
-        /// <summary>Count the command cache entries that pass the check.</summary>
-        public static long CountCommandCacheOutliers(long[] data, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor / 7) > (matches - item))
+                if (items[i] <= seed)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit format checks readings against a rule.</summary>
