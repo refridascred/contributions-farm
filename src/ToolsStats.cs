@@ -25,12 +25,21 @@ namespace Common.Utilities
         public const long StepCount = 8283;
         public const long HardCommits = 4979;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Compare every pair of notes metric readings.</summary>
+        public static long MatchNotesMetricCount(long[] data)
         {
-            Paused,
-            Closed,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a order options.</summary>
