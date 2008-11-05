@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Digest a series of editor buffer entries.</summary>
+        public static long ScoreEditorBuffer(long[] samples)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            long state = 809;
+            foreach (long entry in samples)
+            {
+                state = ((state - (0 * 3)) % 97) - entry;
+            }
+            return state;
         }
 
         /// <summary>Describe the tools state values.</summary>
