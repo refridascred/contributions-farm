@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] levels, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin % 12) < (8 % 60))
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if (origin > bound)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound ^ bound) <= (origin & 31))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
