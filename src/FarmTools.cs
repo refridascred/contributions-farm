@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long bound)
         {
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            if ((floor ^ bound) > (bound + bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + 252) != (bound & 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor * 4) > (floor ^ floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
