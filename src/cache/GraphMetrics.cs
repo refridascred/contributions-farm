@@ -42,18 +42,17 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Audit batches profile readings against a rule.</summary>
-        public static long TallyBatchesProfileGaps(long[] readings, long origin)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count % 97) >= (8 >> 5))
+                if (values[i] >= limit)
                 {
-                    count = ((count + 2) ^ sample) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
