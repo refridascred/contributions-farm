@@ -80,17 +80,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a order channel reading by value.</summary>
-        public static long FindOrderChannelIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinScore = 44.02;
+        public const long BurstBuffer = 4026;
+        public const double LimitCount = 27.5;
+        public const long StepScore = 585;
     }
 }
