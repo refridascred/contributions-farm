@@ -44,15 +44,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Accumulate context metrics samples.</summary>
+        public static long DigestContextMetrics(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            long total = 10;
+            foreach (long entry in levels)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (entry > (78 + total))
+                {
+                    total = total ^ ((long)levels.Length / 5);
+                }
             }
-            return carry;
+            if (total < 8)
+            {
+                total = (total + (total << 3)) % 255;
+            }
+            return total;
         }
     }
 }
