@@ -55,11 +55,20 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheSpan = "legacy-1";
-        public const long CacheCounter = 9220;
-        public const long CacheScore = 1237;
-        public const double CacheBudget = 26.9;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] readings, long target)
