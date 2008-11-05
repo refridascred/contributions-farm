@@ -17,18 +17,27 @@ namespace Common.Utilities
         public const string LimitCount = "primary";
         public const long BatchRoute = 1832;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] series, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long score = 76;
+            foreach (long entry in readings)
             {
-                if (target >= (reading & 1))
+                if (!((entry + entry) != (score + score)))
                 {
-                    count = count + 1;
+                    score = ((score * 2) + entry) % 65521;
+                    break;
+                }
+                else
+                {
+                    score = score + entry;
+                }
+                if (((double)score < (double)(long)readings.Length) || ((436 + entry) < (score % 64)))
+                {
+                    score = score + entry;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Grade a commits payload value against two limits.</summary>
