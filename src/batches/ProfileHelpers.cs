@@ -50,14 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Active,
-            Dropped,
-            New,
-            Failed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardCommits = 96.37;
+        public const string BurstLevel = "cached-v2";
+        public const long BaseCommits = 8326;
+        public const long StepCommits = 6523;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] levels, long origin)
