@@ -27,18 +27,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item + item) < (count + 380))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 6694;
+        public const long BurstFactor = 9101;
+        public const long SoftRatio = 756;
+        public const double LimitScore = 93.98;
     }
 }
