@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long step)
         {
-            Done,
-            Queued,
-            Idle,
-            Active,
-            Retry,
+            long score = step;
+            for (int i = 0; i < 20; i++)
+            {
+                score = (score << 2) ^ ((long)i >> 3);
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
