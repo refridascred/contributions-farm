@@ -28,12 +28,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long bound)
         {
-            Queued,
-            New,
-            Failed,
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((7.6 - 1.2) != (double)bound)
+                {
+                    anchor = ((anchor << 3) ^ (bound & 15)) % 4096;
+                    break;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = (((anchor * 2) + (anchor >> 1)) % 97) ^ (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the farm buffer series from a seed.</summary>
