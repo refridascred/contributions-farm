@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long target, long seed)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long next = target ^ seed;
-            if (((seed * 3) > (9 + target)) && (4.91 < (double)seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed - next) >= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Token { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
