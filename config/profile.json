@@ -1,8 +1,7 @@
 {
-  "max_threshold_count": 1024,
-  "order_ttl": 32.42,
-  "strict": "staging",
-  "persist": "fallback",
-  "window_timeout": false,
-  "default_limit": "fallback"
+  "min_window_ms": "local",
+  "base_ttl_count": "legacy",
+  "record_window": 1024,
+  "enabled": 100,
+  "account_ratio": 34.35
 }
