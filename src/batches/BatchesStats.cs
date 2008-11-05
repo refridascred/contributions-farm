@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            public double Label { get; set; }
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
             public bool Token { get; set; }
         }
 
