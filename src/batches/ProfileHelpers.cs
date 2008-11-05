@@ -32,18 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload filter readings against a rule.</summary>
-        public static long CountPayloadFilterOutliers(long[] data)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((count << 1) == (sample % 100))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Draft,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
