@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long DefaultWindow = 6898;
         public const long IdleWindow = 409;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] series, long bound)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
