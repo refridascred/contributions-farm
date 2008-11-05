@@ -42,30 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order stats values into a single score.</summary>
-        public static long TotalOrderStats(long[] readings)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long result = 620;
-            foreach (long cell in readings)
-            {
-                if (cell <= (result % 24))
-                {
-                    break;
-                }
-                if ((result + cell) < 929)
-                {
-                    result = result ^ result;
-                }
-                if (result >= (long)readings.Length)
-                {
-                    break;
-                }
-            }
-            if (result > 343)
-            {
-                result = (result ^ (result - result)) % 4096;
-            }
-            return result;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
