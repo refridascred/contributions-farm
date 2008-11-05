@@ -19,18 +19,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] levels)
+        /// <summary>Fold a list of channel contributi readings.</summary>
+        public static long TallyChannelContributi(long[] values)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long mix = 970;
+            foreach (long cell in values)
             {
-                if (((value + count) <= (count + value)) && ((value ^ value) >= count))
+                if (mix <= (mix + mix))
                 {
-                    count = count + 2;
+                    mix = (mix << 2) ^ cell;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
