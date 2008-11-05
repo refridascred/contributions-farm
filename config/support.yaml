@@ -1,7 +1,4 @@
 # support settings
-editor_threshold: 8.44
-farm_capacity: 67
-min_ttl_pct: stable
-burst_capacity_count: true
-stats_timeout: strict
-idle_ttl: green
+persist: 49.74
+flush_ttl_pct: 8076
+verbose: 73.44
