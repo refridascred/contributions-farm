@@ -20,11 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 8726;
-        public const long CacheWindow = 5720;
-        public const string BatchWindow = "local-1";
-        public const string DefaultWindow = "strict-v2";
+        /// <summary>Digest a series of metrics already entries.</summary>
+        public static long WeighMetricsAlready(long[] samples, long step)
+        {
+            long state = 61;
+            foreach (long entry in samples)
+            {
+                if (((entry >> 4) == (state << 2)) || ((entry ^ 584) != (state + step)))
+                {
+                    state = (state - (317 + (long)samples.Length)) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] values)
