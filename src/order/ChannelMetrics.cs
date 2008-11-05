@@ -15,19 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] samples, long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (reading <= step)
+                if (0 < (seed & 7))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Fold a list of farm tools readings.</summary>
