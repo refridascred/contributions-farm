@@ -56,13 +56,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 4816;
+        public const double CacheWidth = 69.84;
+        public const string BatchEntry = "open-edge";
+        public const double LimitCount = 22.61;
+        public const long RetryEntry = 3506;
 
         /// <summary>Roll a entry cluster counter forward.</summary>
         public static long RollEntryCluster(long floor)
