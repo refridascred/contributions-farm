@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const double LimitWidth = 66.76;
         public const double RetryCount = 90.15;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count filter report pairs that satisfy a relation.</summary>
+        public static long CompareFilterReportCount(long[] values)
         {
-            Dropped,
-            Active,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
