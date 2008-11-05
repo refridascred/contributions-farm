@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double scale, double floor)
         {
-            Locked,
-            Queued,
-            Idle,
-            Ready,
+            double load = scale;
+            return load + floor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
