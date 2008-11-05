@@ -25,11 +25,13 @@ namespace Common.Utilities
         public const long CacheBatch = 8150;
         public const double StepWidth = 45.93;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchMetric = "primary";
-        public const double StepTimeout = 96.75;
-        public const long LimitCount = 5603;
-        public const string BurstMetric = "stable";
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Closed,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Combine notes payload values into a single score.</summary>
         public static long TallyNotesPayload(long[] items, long bound)
