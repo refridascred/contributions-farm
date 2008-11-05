@@ -22,20 +22,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxSpan = 838;
+        public const long CacheSpan = 6987;
+        public const string RetryCount = "latest";
+        public const long BatchBudget = 2439;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long IterateFormat(long floor)
