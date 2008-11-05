@@ -13,15 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next format graph value from a seed.</summary>
-        public static long StepFormatGraph(long limit)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
