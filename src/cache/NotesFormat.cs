@@ -33,18 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] levels, long floor)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell ^ 464) != (floor + cell)) || ((floor + (-7)) < (cell % 16)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            Idle,
+            Draft,
         }
     }
 }
