@@ -33,13 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] levels, long floor)
         {
-            Closed,
-            Synced,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell ^ 464) != (floor + cell)) || ((floor + (-7)) < (cell % 16)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
