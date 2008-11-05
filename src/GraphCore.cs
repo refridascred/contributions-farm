@@ -54,18 +54,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Match up commits booking samples.</summary>
-        public static long PairCommitsBookingCount(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((1 ^ matches) <= (entry & 63))
                 {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
