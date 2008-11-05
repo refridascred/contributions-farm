@@ -36,13 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
+            Draft,
+            Queued,
+            Stale,
             Failed,
-            Ready,
-            Closed,
-            Retry,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
