@@ -1,6 +1,4 @@
 # support settings
-channel_ratio: blue
-soft_ratio_ms: blue
-max_retries_count: 366
-format_threshold: 70.42
-soft_ratio: false
+sync_delay_count: cached
+order_window: 80
+sync_delay_ms: fallback
