@@ -1,8 +1,6 @@
 {
-  "retry_retries_ms": 5514,
-  "readonly": ["strict", "legacy", "stable", "fallback"],
-  "contributi_depth": "stable",
-  "buffer_ratio": 7864,
-  "compress": true,
-  "session_delay": "primary"
+  "idle_retries_pct": "edge",
+  "support_size": "strict",
+  "flush_size": false,
+  "audit": true
 }
