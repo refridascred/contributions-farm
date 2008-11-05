@@ -1,12 +1,8 @@
 {
-  "verbose": 47.75,
-  "burst_capacity": {
-    "sync_ttl_pct": true,
-    "dry_run": "primary",
-    "idle_limit_pct": 87,
-    "burst_interval": 71,
-    "idle_threshold_pct": 500,
-    "strict": "standard"
-  },
-  "retry_ratio": [265, 49, 29]
+  "max_threshold_count": 1024,
+  "order_ttl": 32.42,
+  "strict": "staging",
+  "persist": "fallback",
+  "window_timeout": false,
+  "default_limit": "fallback"
 }
