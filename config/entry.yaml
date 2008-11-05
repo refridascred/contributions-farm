@@ -1,12 +1,5 @@
 # entry settings
-context_interval: 5377
-flush_ttl:
-  - cached
-  - standard
-  - latest
-base_size_ms: 44
-warm_delay_pct:
-  - primary
-  - standard
-  - stable
-  - standard
+hard_threshold_count: 3949
+min_timeout_s: standard
+retry_size_count: 96.6
+batch_retries: 3.62
