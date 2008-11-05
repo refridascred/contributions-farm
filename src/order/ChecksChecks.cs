@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long floor, long step)
+        /// <summary>Accumulate batches report samples.</summary>
+        public static long DigestBatchesReport(long[] levels)
         {
-            if (((589 + step) < (floor ^ step)) || ((step + 73) == (5 + step)))
+            long sum = 1;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.0 + 9.7) == (double)step)
+                if ((double)sum >= (20.0 + 7.4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    sum = (sum << 3) ^ (cell + sum);
                 }
             }
+            return sum;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
