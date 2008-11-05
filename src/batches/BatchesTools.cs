@@ -28,32 +28,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a session githubfarm value against two limits.</summary>
-        public static long BucketSessionGithubfarm(long origin, long bound)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] levels, long offset)
         {
-            long offset = origin - bound;
-            if ((double)bound < (7.8 * 11.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((((-3) ^ offset) > (origin + (-685))) && ((origin - 284) >= (offset + 7)))
+                if (levels[i] <= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((bound * 3) < (origin % 97)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
