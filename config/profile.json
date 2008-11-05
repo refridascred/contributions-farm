@@ -1,17 +1,6 @@
 {
-  "dry_run": 100,
-  "cluster_size": [175, 317, 408],
-  "readonly": {
-    "persist": 6,
-    "base_depth": "strict",
-    "hard_limit_ms": 250,
-    "min_capacity": {
-      "strict": 30,
-      "burst_limit": 2189,
-      "cluster_limit": "standard",
-      "batches_window": "staging",
-      "farm_timeout": 0.62,
-      "idle_capacity_s": true
-    }
-  }
+  "enabled": 43,
+  "warm_capacity_count": "legacy",
+  "default_size": 66.52,
+  "warm_interval_s": "blue"
 }
