@@ -58,22 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] data, long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] series)
         {
-            long acc = 2;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 8; i++)
+                if (((tally + (long)series.Length) <= (6 - tally)) || ((tally % 100) >= (value & 127)))
                 {
-                    acc = (((acc - (49 % 60)) % 1000) ^ (long)i) + limit;
-                }
-                if ((value > (value + acc)) && (value >= acc))
-                {
-                    acc = ((acc * 5) + (value * 3)) % 65521;
+                    tally = tally + 3;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
