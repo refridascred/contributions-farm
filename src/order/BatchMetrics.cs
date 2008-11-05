@@ -81,24 +81,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long seed, long bound)
-        {
-            if (((bound & 127) != (seed + seed)) || ((seed / 2) <= (bound + bound)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed >= (bound + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardWidth = 1872;
+        public const double BurstCount = 76.36;
+        public const double IdleBuffer = 39.08;
+        public const string StepBuffer = "local-v2";
     }
 }
