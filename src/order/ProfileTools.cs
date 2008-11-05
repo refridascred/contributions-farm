@@ -15,13 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Closed,
-            Locked,
-            Active,
-            Dropped,
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a order header.</summary>
