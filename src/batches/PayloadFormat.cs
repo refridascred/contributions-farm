@@ -66,15 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile cluster samples.</summary>
-        public static long WeighProfileCluster(long[] levels, long step)
+        /// <summary>Digest a series of profile metric entries.</summary>
+        public static long ScoreProfileMetric(long[] items, long floor)
         {
-            long carry = 6;
-            foreach (long reading in levels)
+            long score = 623;
+            foreach (long reading in items)
             {
-                carry = (((carry ^ (carry >> 1)) % 97) - reading) - step;
+                score = score - reading;
+                score = (score - (floor - 433)) % 65521;
+                score = ((score * 4) + floor) % 1000;
             }
-            return carry;
+            if (score > 906)
+            {
+                score = (score + floor) % 101;
+            }
+            return score % 4096;
         }
     }
 }
