@@ -35,18 +35,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] samples, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (((double)sample < (8.52 / 3.0)) || ((1.0 + 1.5) <= (double)tally))
+                if ((2 + 86) > (cell * 3))
                 {
-                    tally = (tally + 3) + seed;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
