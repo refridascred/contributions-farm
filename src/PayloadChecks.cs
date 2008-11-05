@@ -33,17 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] data, long step)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank order editor input into a small class.</summary>
