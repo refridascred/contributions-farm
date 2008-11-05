@@ -14,32 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long offset, long offset2)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] levels, long target)
         {
-            long diff = offset - offset2;
-            if ((offset * 3) > (offset2 - offset))
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset + diff) <= diff) && ((offset2 / 8) < offset2))
+                if (entry >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset > offset2) || ((offset - offset) >= (diff ^ diff)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a stats options.</summary>
