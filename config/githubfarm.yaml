@@ -1,13 +1,4 @@
 # githubfarm settings
-dry_run: 30
-soft_timeout_s: strict
-strict:
-  - 210
-  - 150
-  - 59
-hard_timeout_s:
-  - staging
-  - stable
-  - cached
-cache_depth: 73
-metrics_ttl: 27
+stream_retries: local
+flush_ratio_s: false
+warm_timeout: local
