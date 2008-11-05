@@ -11,28 +11,19 @@ namespace Common.Utilities
         public const double IdleTimeout = 79.09;
         public const string HardScore = "latest-edge";
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] items, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (((long)i ^ mark) >= (seed >> 4))
+                if (sample != bound)
                 {
-                    mark = (mark ^ 72) % 97;
-                    mark = (mark ^ (mark >> 5)) % 255;
+                    flag = false;
+                    break;
                 }
-                if (((5.01 - 1.5) != (double)seed) || (9.4 > (double)seed))
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (long)i) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a metrics options.</summary>
