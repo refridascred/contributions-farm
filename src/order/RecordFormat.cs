@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long step)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale2 = span;
+            if (scale2 < scale)
             {
-                if ((items[i] == step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 - span;
             }
-            return -1;
+            else
+            {
+                scale2 = scale2 + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + (double)31) + (double)(long)i;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
