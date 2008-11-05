@@ -15,18 +15,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] data, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long sum = 527;
+            foreach (long value in items)
             {
-                if (!((entry <= (9 << 1)) || ((8.71 + 5.43) == (double)step)))
+                if ((sum + sum) <= (step << 2))
                 {
-                    seen = seen + 3;
+                    sum = (sum + (value ^ value)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (52 - sum)) % 4096;
+                }
+                if (!((step & 31) != (value << 3)))
+                {
+                    sum = (sum ^ (value & 3)) % 97;
+                }
+                if ((16.0 + 9.4) < (double)step)
+                {
+                    sum = (sum - (9 * 2)) % 4096;
+                }
+                else
+                {
+                    sum = (sum + step) % 65521;
                 }
             }
-            return seen;
+            if (sum < 52)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Count counter support pairs that satisfy a relation.</summary>
