@@ -16,31 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long step, long bound)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            if (((bound * 2) < (bound << 2)) || ((double)bound == (2.8 - 5.1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((bound ^ 19) < (step + bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.0 / 4.0) == (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the window status values.</summary>
