@@ -41,13 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Accumulate counter context samples.</summary>
+        public static long DigestCounterContext(long[] items, long floor)
         {
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public bool Offset { get; set; }
+            long result = 578;
+            foreach (long cell in items)
+            {
+                if ((double)result > 8.79)
+                {
+                    result = (result - ((-3) + floor)) - cell;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
