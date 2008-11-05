@@ -16,10 +16,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleWidth = 5769;
-        public const long LimitProfile = 1042;
-        public const long BaseTimeout = 7604;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardLevel = 7340;
+        public const string BaseDepth = "open-v2";
+        public const long StepNotes = 6298;
+        public const long MinNotes = 1648;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long OverlapSchemaCount(long[] levels)
