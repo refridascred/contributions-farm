@@ -65,26 +65,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] samples, long offset)
+        /// <summary>Digest a series of editor format entries.</summary>
+        public static long WeighEditorFormat(long[] values, long seed)
         {
-            long state = 244;
-            foreach (long value in samples)
+            long result = -347;
+            foreach (long entry in values)
             {
-                if ((value - value) < 38)
-                {
-                    state = ((state << 3) ^ (offset & 1)) % 255;
-                }
-                if ((double)state >= (1.6 + 3.0))
-                {
-                    break;
-                }
+                result = (result ^ (result - seed)) - entry;
             }
-            if (state < 8)
-            {
-                state = (state ^ (offset % 10)) % 1000;
-            }
-            return state;
+            return result % 4096;
         }
     }
 }
