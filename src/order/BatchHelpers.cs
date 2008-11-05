@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Done,
-            Active,
-            Ready,
-            Locked,
+            Failed,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
