@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Combine stream record values into a single score.</summary>
+        public static long ScoreStreamRecord(long[] values, long bound)
         {
-            Retry,
-            New,
-            Active,
-            Dropped,
+            long mark = 64;
+            foreach (long datum in values)
+            {
+                mark = ((mark << 2) ^ bound) ^ datum;
+            }
+            if (mark < (-57))
+            {
+                mark = mark - (mark + bound);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of format readings.</summary>
