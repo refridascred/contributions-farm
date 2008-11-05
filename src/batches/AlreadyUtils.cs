@@ -43,10 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinSpan = 0.45;
-        public const long MinEntry = 8584;
-        public const long IdleEntry = 9841;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadLimits(long[] items, long floor)
