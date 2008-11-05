@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum - sum) % 4096;
-                sum = ((sum * 2) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
