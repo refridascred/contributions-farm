@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] samples, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (cell <= seed)
+                if (item <= limit)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
