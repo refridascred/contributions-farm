@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const string MinCount = "fallback-edge";
         public const long StepFormat = 3203;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinScore = 61.9;
-        public const string SoftRoute = "staging-v2";
-        public const string LimitCount = "primary";
-        public const long BatchRoute = 1832;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long WeighBatch(long[] readings)
