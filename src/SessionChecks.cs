@@ -24,26 +24,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] values, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                carry = ((carry << 2) ^ (carry + 858)) % 65521;
-                carry = carry - (bound * 5);
-                if (!(((long)i / 3) < (long)i))
+                if (3.74 > (double)seed)
                 {
-                    carry = carry ^ carry;
-                    continue;
+                    matches = (matches + 1) + value;
                 }
-                else
-                {
-                    carry = ((carry << 3) ^ bound) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
