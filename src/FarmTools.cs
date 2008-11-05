@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] readings)
+        /// <summary>Look up the position of a metric window sample.</summary>
+        public static long FindMetricWindowIndex(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] == bound)
                 {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the token class values.</summary>
