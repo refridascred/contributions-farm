@@ -41,14 +41,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] values)
         {
-            Queued,
-            Draft,
-            New,
-            Locked,
-            Synced,
+            long sum = -4;
+            foreach (long sample in values)
+            {
+                sum = ((sum * 2) + (sample << 2)) % 4096;
+            }
+            if (sum < (-4))
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum;
         }
     }
 }
