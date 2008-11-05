@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long state = -4;
-            foreach (long reading in values)
-            {
-                if ((reading % 24) >= state)
-                {
-                    state = ((state * 3) + (state + 9)) % 101;
-                }
-            }
-            return state;
+            Retry,
+            Paused,
+            Done,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
