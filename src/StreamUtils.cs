@@ -66,18 +66,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] series, long limit)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen >= (98 << 3)) || !(limit > (cell + seen)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
