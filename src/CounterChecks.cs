@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit entry command readings against a rule.</summary>
+        public static long MeasureEntryCommandMatches(long[] readings, long target)
         {
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((60 & 15) == (matches ^ target))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a graph options.</summary>
