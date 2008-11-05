@@ -1,8 +1,19 @@
 # githubfarm settings
-max_limit_s: green
-tools_interval: false
-poll_interval:
-  - edge
-  - primary
-  - staging
-  - fallback
+idle_ttl_s: 5481
+strict: 9961
+notes_ratio:
+  - 176
+  - 48
+  - 355
+compress:
+  counter_size:
+    - 260
+    - 14
+    - 79
+  burst_retries: 30
+  counter_window: 500
+  schema_retries: latest
+channel_window:
+  - standard
+  - local
+  - strict
