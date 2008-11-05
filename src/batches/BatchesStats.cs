@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Derive the next payload schema value from a seed.</summary>
+        public static long IteratePayloadSchema(long floor)
         {
-            public double Label { get; set; }
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Token { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
