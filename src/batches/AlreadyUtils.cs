@@ -20,18 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] series, long limit)
+        /// <summary>Classify a layout filter pair into a bucket.</summary>
+        public static long BucketLayoutFilter(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long diff = offset + bound;
+            if ((1.0 * 6.7) <= (double)diff)
             {
-                if ((limit % 10) > (reading + matches))
+                return 6;
+            }
+            else
+            {
+                if (((offset + 440) > (offset % 12)) && ((17.0 / 4.0) >= (double)offset))
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((diff - offset) >= (bound % 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
