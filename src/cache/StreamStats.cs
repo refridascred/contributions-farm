@@ -16,18 +16,23 @@ namespace Common.Utilities
         public const double LimitCommits = 60.18;
         public const double BatchCommits = 33.7;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] values)
+        /// <summary>Digest a series of format contributi entries.</summary>
+        public static long WeighFormatContributi(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mark = 62;
+            foreach (long reading in series)
             {
-                if (!(((matches + sample) > matches) && ((sample >> 3) > (matches + matches))))
+                if (((9.99 - 0.5) <= (double)reading) && (reading >= (reading - mark)))
                 {
-                    matches = matches + 3;
+                    mark = ((mark * 2) + (reading + 909)) % 4096;
                 }
+                if (!(((long)series.Length & 7) > reading))
+                {
+                    mark = (mark * 2) + reading;
+                }
+                mark = (mark << 3) ^ (reading - (long)series.Length);
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
