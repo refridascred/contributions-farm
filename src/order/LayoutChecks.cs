@@ -25,19 +25,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] data, long floor)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Retry,
+            Synced,
+            Queued,
+            Done,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
