@@ -26,13 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
+            Locked,
+            Draft,
+            Failed,
+            Done,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
