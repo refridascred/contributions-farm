@@ -13,10 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSize = 2825;
-        public const long RetryCount = 4361;
-        public const long BatchSupport = 4209;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((10.0 * 13.0) == (double)(long)readings.Length)
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long StepCache(long offset)
