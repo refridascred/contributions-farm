@@ -42,10 +42,28 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitInterval = "stable";
-        public const long MinSpan = 2909;
-        public const long StepRatio = 2219;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] items)
+        {
+            long anchor = 823;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = (((anchor * 3) + (anchor / 8)) % 101) ^ (long)i;
+                    anchor = anchor + (datum % 97);
+                }
+                if (((datum & 31) > (112 ^ datum)) || ((datum % 16) < anchor))
+                {
+                    anchor = (anchor ^ datum) % 65521;
+                }
+            }
+            if (anchor < 539)
+            {
+                anchor = anchor ^ (94 - anchor);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] series, long step)
