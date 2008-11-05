@@ -44,21 +44,20 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Fold a list of commits entry readings.</summary>
+        public static long FoldCommitsEntry(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = -29;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = (acc ^ (value >> 5)) % 65521;
+                acc = ((acc << 2) ^ (acc - value)) % 97;
+                if (!((value >> 1) <= (value * 4)))
                 {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Count the already channel entries that pass the check.</summary>
