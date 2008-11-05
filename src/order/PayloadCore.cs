@@ -37,18 +37,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] levels, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long sum = 3;
+            foreach (long datum in series)
             {
-                if (((double)datum > (3.51 + 2.18)) && ((seen - datum) == (67 * 4)))
-                {
-                    seen = (seen + 3) + origin;
-                }
+                sum = sum ^ (datum ^ target);
             }
-            return seen;
+            return sum % 97;
         }
     }
 }
