@@ -75,30 +75,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] values, long target)
         {
-            long acc = 25;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((acc << 2) != (393 + acc))
+                if (((double)target <= (double)tally) || ((double)tally != (double)target))
                 {
-                    break;
+                    tally = (tally + 2) + datum;
                 }
                 else
                 {
-                    acc = (acc - (acc / 9)) % 255;
-                }
-                if ((54 - cell) <= (acc & 1))
-                {
-                    acc = ((acc * 2) + (4 + acc)) % 97;
-                }
-                if ((double)acc > 2.2)
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
