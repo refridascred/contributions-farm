@@ -16,21 +16,12 @@ namespace Common.Utilities
         public const long SoftContext = 6526;
         public const string IdleContext = "cached-edge";
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] values)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
