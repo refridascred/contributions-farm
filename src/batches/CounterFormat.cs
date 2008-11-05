@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count profile report pairs that satisfy a relation.</summary>
-        public static long MatchProfileReportCount(long[] values)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Synced,
+            Active,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
