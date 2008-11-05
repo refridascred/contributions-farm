@@ -37,39 +37,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long bound, long target)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long lane = bound + target;
-            if ((bound + target) > bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((bound - lane) <= lane))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)target == (6.0 * 4.7)) && ((9.0 / 6.0) < (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((40 % 3) == (49 ^ lane))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Count the format entry entries that pass the check.</summary>
