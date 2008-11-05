@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of stream cache entries.</summary>
-        public static long ScoreStreamCache(long[] levels, long bound)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long sum = 2;
-            foreach (long item in levels)
-            {
-                if (sum <= (sum * 3))
-                {
-                    sum = (sum + bound) + item;
-                }
-            }
-            return sum;
+            Stale,
+            New,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define record limits and defaults.</summary>
