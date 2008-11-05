@@ -1,6 +1,5 @@
 {
-  "max_size_ms": 53,
-  "poll_depth": "cached",
-  "poll_retries_ms": 65,
-  "idle_ttl_pct": "stable"
+  "graph_ttl": ["local", "standard", "eu-west", "green"],
+  "cache_capacity_ms": 21.79,
+  "warm_window_s": 72
 }
