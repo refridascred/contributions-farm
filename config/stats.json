@@ -1,7 +1,19 @@
 {
-  "min_retries_s": "standard",
-  "strict": "fallback",
-  "hard_ttl_s": 6861,
-  "soft_threshold": [364, 489, 74],
-  "channel_depth": ["edge", "legacy"]
+  "batch_ttl_count": [492, 287, 290, 145],
+  "enabled": 7.84,
+  "warm_limit_count": {
+    "burst_ratio_s": 1595,
+    "profile_limit": {
+      "token_retries": false,
+      "flush_depth_s": 12,
+      "enabled": 1024,
+      "burst_size": 97.16
+    },
+    "record_size": "open",
+    "enabled": [145, 57, 306],
+    "metrics_ttl": 57
+  },
+  "retry_size_s": 60,
+  "warm_threshold_count": "standard",
+  "audit": 1170
 }
