@@ -31,32 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long floor, long offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] readings, long bound)
         {
-            long gap = floor ^ offset;
-            if ((gap * 4) > offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((17.0 * 0.3) != (double)offset)
+                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((13 + floor) <= (offset - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
