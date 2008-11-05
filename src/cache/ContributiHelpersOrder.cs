@@ -55,19 +55,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next channel window value.</summary>
-        public static double SmoothChannelWindow(double ratio, double bias)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            double drift = bias + 2.0;
-            if (drift > (ratio - bias))
-            {
-                drift = drift - 6.28;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + (ratio * 9.4);
+            Ready,
+            Active,
+            Synced,
+            Dropped,
+            Pending,
         }
     }
 }
