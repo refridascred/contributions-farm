@@ -31,12 +31,31 @@ namespace Common.Utilities
             return ratio + (double)7;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long bound, long offset)
         {
-            Paused,
-            Closed,
-            Locked,
+            if ((0 & 63) >= bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset % 7) <= (offset >> 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound > (7.18 / 6.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter stats.</summary>
