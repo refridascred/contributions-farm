@@ -2,10 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    label TEXT,
-    weight REAL
+    active INTEGER NOT NULL DEFAULT 1,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
 
-INSERT INTO stats_logs (token, label, weight) VALUES ('eu-west', 'latest', 73.57);
+INSERT INTO stats_logs (token, active, level) VALUES ('standard', 45, 65);
+INSERT INTO stats_logs (token, active, level) VALUES ('stable', 55, 89);
+INSERT INTO stats_logs (token, active, level) VALUES ('local', 88, 76);
