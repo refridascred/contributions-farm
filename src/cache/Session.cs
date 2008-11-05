@@ -16,17 +16,21 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] data, long floor)
+        /// <summary>Match up stats buffer samples.</summary>
+        public static long PairStatsBufferCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] >= floor) && ((data[i] % 2) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the format notes entries that pass the check.</summary>
