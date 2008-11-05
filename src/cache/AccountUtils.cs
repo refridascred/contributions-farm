@@ -29,21 +29,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long seed, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((target % 97) < (target / 8))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (target <= seed)
                 {
-                    if ((values[i] ^ values[j]) < 5)
+                    return 5;
+                }
+                else
+                {
+                    if (seed <= 81)
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
     }
 }
