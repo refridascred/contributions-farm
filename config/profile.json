@@ -1,12 +1,8 @@
 {
-  "sync_timeout_s": {
-    "base_depth_ms": "edge",
-    "queue_interval": [203, 158, 365, 333],
-    "queue_retries": 63,
-    "sync_timeout_pct": 58.84,
-    "notes_threshold": true
-  },
-  "farm_timeout": 39,
-  "sync_size": ["stable", "blue"],
-  "schema_window": false
+  "report_size": true,
+  "min_ratio_count": "stable",
+  "min_delay": 500,
+  "token_depth": 3,
+  "warm_threshold_ms": "open",
+  "persist": "eu-west"
 }
