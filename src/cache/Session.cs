@@ -40,16 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next queue window value from a seed.</summary>
-        public static long StepQueueWindow(long step)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = (mark + (step / 8)) % 65521;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            New,
+            Retry,
+            Draft,
+            Active,
         }
     }
 }
