@@ -38,18 +38,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] samples)
+        /// <summary>Check that every channel checks entry stays within the limit.</summary>
+        public static bool VerifyChannelChecksBounds(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((double)seen <= 6.73)
+                if (item > offset)
                 {
-                    seen = (seen + 2) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
