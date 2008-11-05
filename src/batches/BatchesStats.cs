@@ -33,10 +33,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 1026;
-        public const string IdleWidth = "stable";
-        public const long WindowGraph = 3129;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long PairMetricsCount(long[] values)
