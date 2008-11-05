@@ -37,21 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes metric readings.</summary>
-        public static long MatchNotesMetricCount(long[] data)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((reading + seen) <= (floor ^ floor)) && (63 < (reading % 64))) && !((floor >> 2) <= 19))
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a order options.</summary>
