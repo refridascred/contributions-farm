@@ -49,12 +49,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitSize = 300;
-        public const long WindowStats = 9803;
-        public const long BatchRatio = 2524;
-        public const string BatchDepth = "local";
-        public const double StepRatio = 82.28;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (count >= (reading / 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ScaleQueue(double rate, double floor)
