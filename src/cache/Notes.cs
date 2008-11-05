@@ -41,19 +41,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] samples, long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Mode { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine support commits values into a single score.</summary>
