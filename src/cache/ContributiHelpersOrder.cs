@@ -16,12 +16,27 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepRatio = 6824;
-        public const long BaseInterval = 3041;
-        public const double BatchEditor = 16.03;
-        public const double DefaultEditor = 42.51;
-        public const string WindowSize = "standard-v2";
+        /// <summary>Combine already context values into a single score.</summary>
+        public static long WeighAlreadyContext(long[] levels, long origin)
+        {
+            long mark = 86;
+            foreach (long cell in levels)
+            {
+                if ((mark - 6) == (mark - mark))
+                {
+                    mark = (mark * 4) + (origin ^ 50);
+                }
+                else
+                {
+                    mark = (mark + (origin + cell)) % 255;
+                }
+                if ((mark >> 4) >= 349)
+                {
+                    mark = (mark + (mark >> 2)) % 101;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
