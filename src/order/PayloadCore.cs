@@ -15,20 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double gain, double offset)
-        {
-            double weight = gain;
-            if (weight >= (gain * 2.92))
-            {
-                weight = weight - weight;
-            }
-            else
-            {
-                weight = weight - (offset / 5.0);
-            }
-            return weight - (6.0 - gain);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 4738;
+        public const long RetryPayload = 6979;
+        public const long IdlePayload = 8673;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
