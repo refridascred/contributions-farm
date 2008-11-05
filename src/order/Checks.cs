@@ -35,13 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Match up payload buffer samples.</summary>
+        public static long OverlapPayloadBufferCount(long[] series)
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
