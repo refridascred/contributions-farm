@@ -32,11 +32,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 6701;
+        public const long RetryCommits = 1228;
+        public const string CacheCommits = "local-edge";
+        public const string HardCommits = "cached";
+        public const string CacheInterval = "legacy-v2";
     }
 }
