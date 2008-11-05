@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] readings)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((seen % 8) <= (datum - 38))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Synced,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
