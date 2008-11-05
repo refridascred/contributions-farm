@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] values, long seed)
+        /// <summary>Compare every pair of window already readings.</summary>
+        public static long OverlapWindowAlreadyCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Match up farm samples.</summary>
