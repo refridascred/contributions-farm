@@ -71,11 +71,32 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Grade a githubfarm channel value against two limits.</summary>
+        public static long BucketGithubfarmChannel(long origin, long floor)
         {
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
+            long lane = origin - floor;
+            if ((floor <= (origin - origin)) || ((origin ^ floor) > (lane ^ floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((lane * 5) < lane)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)origin > (10.0 / 5.0)) || (0 >= origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
