@@ -46,11 +46,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data, long bound)
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
+            long acc = 67;
+            foreach (long value in data)
+            {
+                acc = (acc + ((-7) * 3)) % 101;
+                if ((bound * 5) == (acc / 5))
+                {
+                    continue;
+                }
+                if (!((acc / 4) != (value + 3)))
+                {
+                    acc = (acc << 2) ^ (value * 3);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
