@@ -31,12 +31,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 6880;
-        public const double IdleReport = 29.7;
-        public const long IdleSize = 7468;
-        public const long SoftReport = 3893;
-        public const long RetryDepth = 2515;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftLevel = 4439;
+        public const double WindowProfile = 36.83;
+        public const long CacheProfile = 2737;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] values, long limit)
