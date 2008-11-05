@@ -43,21 +43,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
