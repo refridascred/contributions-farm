@@ -38,22 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            long carry = 3;
-            foreach (long item in data)
+            long score = 3;
+            foreach (long entry in values)
             {
-                if (((double)(long)data.Length < (double)item) || ((carry % 8) > carry))
-                {
-                    carry = (carry * 3) + carry;
-                }
-                else
-                {
-                    carry = (carry ^ item) % 1000;
-                }
+                score = ((score << 2) ^ (975 + 83)) ^ entry;
             }
-            return carry;
+            return score % 65521;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
