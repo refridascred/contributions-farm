@@ -38,30 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate record channel samples.</summary>
-        public static long CombineRecordChannel(long[] samples, long offset)
-        {
-            long anchor = 88;
-            foreach (long cell in samples)
-            {
-                anchor = (anchor ^ cell) % 97;
-                if ((double)anchor > (20.0 + 8.0))
-                {
-                    anchor = ((anchor << 2) ^ (offset + cell)) % 101;
-                    anchor = ((anchor << 3) ^ (anchor & 127)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor + (96 >> 3)) % 97;
-                }
-                anchor = ((anchor << 3) ^ (cell + cell)) % 255;
-            }
-            if (anchor < (-914))
-            {
-                anchor = ((anchor * 3) + (70 % 12)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowDepth = "stable-edge";
+        public const long HardStats = 9763;
+        public const double BaseSpan = 14.68;
+        public const double BatchSpan = 22.5;
+        public const string HardTimeout = "latest-1";
 
         /// <summary>Accumulate context metrics samples.</summary>
         public static long DigestContextMetrics(long[] levels)
