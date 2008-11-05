@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 7329;
-        public const double IdleScore = 31.53;
-        public const long RetryScore = 2379;
+        /// <summary>Derive the next githubfarm window value from a seed.</summary>
+        public static long RollGithubfarmWindow(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = (acc * 4) + ((long)i - acc);
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long OverlapSessionCount(long[] readings)
