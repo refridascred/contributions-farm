@@ -41,12 +41,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            Done,
+            Dropped,
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
