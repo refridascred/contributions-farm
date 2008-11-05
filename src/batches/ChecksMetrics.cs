@@ -14,11 +14,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 7030;
-        public const long HardQueue = 5075;
-        public const double RetryFactor = 30.45;
-        public const long RetryCount = 5168;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] readings)
+        {
+            long state = 88;
+            foreach (long value in readings)
+            {
+                state = (state - 699) ^ value;
+            }
+            return state;
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
