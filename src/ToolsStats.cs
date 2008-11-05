@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] data, long offset)
         {
-            Retry,
-            Active,
-            New,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
