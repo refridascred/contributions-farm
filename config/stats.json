@@ -1,13 +1,7 @@
 {
-  "hard_limit_ms": {
-    "min_size_pct": [282, 469, 344, 434],
-    "batch_ttl_s": 8.06,
-    "strict": ["eu-west", "green", "fallback", "eu-west"],
-    "readonly": 30
-  },
-  "queue_retries": 82.03,
-  "min_window": 60,
-  "checks_threshold": ["standard", "open", "stable"],
-  "retry_ttl_ms": 31.47,
-  "max_threshold": false
+  "warm_delay": "green",
+  "sync_ttl_pct": 52,
+  "default_limit_pct": false,
+  "context_timeout": "green",
+  "min_limit": 88
 }
