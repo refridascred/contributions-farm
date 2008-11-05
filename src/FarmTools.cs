@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long step, long floor)
-        {
-            if ((double)floor >= (double)329)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 1) > 4)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultRecord = "fallback-edge";
+        public const long StepRecord = 9353;
+        public const double RetryFactor = 66.25;
+        public const long DefaultCount = 4770;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long CountContextHits(long[] items, long seed)
