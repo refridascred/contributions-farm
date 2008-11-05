@@ -16,19 +16,23 @@ namespace Common.Utilities
             return rate2 + (rate2 - rate2);
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] series, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long sum = 98;
+            foreach (long sample in items)
             {
-                if (value < step)
+                if (!((5.37 + 3.8) == (double)target))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum - sample) % 65521;
+                }
+                sum = ((sum << 3) ^ (sum >> 3)) % 65521;
+                if ((((long)items.Length / 5) <= sample) || ((sum / 8) == (27 >> 3)))
+                {
+                    sum = sum - (sum * 3);
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Rank counter commits input into a small class.</summary>
