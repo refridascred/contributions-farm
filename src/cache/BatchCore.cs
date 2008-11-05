@@ -47,22 +47,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] data, long limit)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long step, long step2)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            if ((double)1 <= (double)step2)
             {
-                if (!((double)limit >= (7.9 / 4.0)))
+                return 2;
+            }
+            else
+            {
+                if (step >= step2)
                 {
-                    matches = (matches + 2) + reading;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
