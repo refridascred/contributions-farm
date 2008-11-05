@@ -38,24 +38,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] data)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            long carry = 3;
+            foreach (long item in data)
             {
-                sum = ((sum << 2) ^ ((long)i * 3)) % 101;
-                if (((origin + origin) <= sum) && ((7 - origin) > (origin % 60)))
+                if (((double)(long)data.Length < (double)item) || ((carry % 8) > carry))
                 {
-                    sum = (sum + (sum ^ (long)i)) % 255;
+                    carry = (carry * 3) + carry;
                 }
-                if (!(((origin / 6) != (sum << 3)) && ((origin - origin) > (long)i)))
+                else
                 {
-                    sum = ((sum * 5) + (sum + sum)) % 97;
+                    carry = (carry ^ item) % 1000;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
