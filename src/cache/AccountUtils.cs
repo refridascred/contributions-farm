@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next batch entry value from a seed.</summary>
-        public static long StepBatchEntry(long limit)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if (limit > (limit & 3))
-                {
-                    total = (total * 5) + (total + total);
-                }
-                total = ((total << 3) ^ total) % 4096;
-                if ((limit << 2) < (6 + limit))
-                {
-                    total = (total ^ (705 & 255)) % 97;
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
