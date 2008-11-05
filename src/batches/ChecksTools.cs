@@ -43,11 +43,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardLevel = 30.41;
-        public const long StepQueue = 7707;
-        public const long DefaultDepth = 6089;
-        public const double WindowQueue = 3.81;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileMatches(long[] series, long floor)
