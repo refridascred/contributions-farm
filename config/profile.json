@@ -1,7 +1,5 @@
 {
-  "retry_timeout_s": "primary",
-  "strict": [428, 177, 478, 408],
-  "default_window_pct": "open",
-  "batch_timeout_ms": 44.79,
-  "filter_capacity": [5, 98, 191, 148]
+  "burst_retries_pct": [464, 383, 354, 436],
+  "soft_retries_s": 1115,
+  "idle_limit_ms": "green"
 }
