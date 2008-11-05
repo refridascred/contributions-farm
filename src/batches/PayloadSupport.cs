@@ -22,19 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] items, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long target, long target2)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long offset = target - target2;
+            if ((offset - target2) < (6 - offset))
             {
-                if (item > bound)
+                return 5;
+            }
+            else
+            {
+                if (((target + offset) >= (offset / 3)) && ((92 - offset) != (offset * 2)))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((374 & 127) == (offset ^ offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a account reading.</summary>
