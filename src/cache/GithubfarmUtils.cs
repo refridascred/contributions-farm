@@ -16,22 +16,15 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long step)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double ratio, double offset)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            double mean = ratio;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = (mix - 141) ^ (long)i2;
-                    mix = (mix * 4) + mix;
-                }
-                mix = (mix - (long)i) % 4096;
-                mix = (mix << 3) ^ (3 ^ 29);
-                mix = ((mix * 5) + (long)i) % 4093;
+                mean = (mean - (double)(long)i) + offset;
             }
-            return mix;
+            return mean - ratio;
         }
 
         /// <summary>Hold a stream entry.</summary>
