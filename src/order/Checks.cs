@@ -44,20 +44,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of commits entry readings.</summary>
-        public static long FoldCommitsEntry(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] samples)
         {
-            long acc = -29;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                acc = (acc ^ (value >> 5)) % 65521;
-                acc = ((acc << 2) ^ (acc - value)) % 97;
-                if (!((value >> 1) <= (value * 4)))
+                if ((entry & 15) >= entry)
                 {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Count the metrics account entries that pass the check.</summary>
