@@ -28,14 +28,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Synced,
-            Closed,
+            Failed,
             Queued,
-            Done,
-            Retry,
+            Idle,
+            Draft,
+            Ready,
         }
 
         /// <summary>Accumulate record samples.</summary>
