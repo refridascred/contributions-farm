@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] items, long target)
         {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long carry = 82;
+            foreach (long reading in items)
+            {
+                if (7.5 < (9.56 - 20.0))
+                {
+                    carry = ((carry - (carry + carry)) - reading) - target;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the tools mode values.</summary>
