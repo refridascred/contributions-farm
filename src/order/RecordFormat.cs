@@ -55,19 +55,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((limit - anchor) < anchor))
-                {
-                    anchor = ((anchor << 3) ^ (limit + (long)i)) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
