@@ -58,39 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long seed, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] data)
         {
-            long cur = seed - bound;
-            if (!(4 < (38 + cur)))
+            long state = 4;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (cur < (cur - 15))
+                if (!((double)value == (5.0 / 7.0)))
                 {
-                    return 5;
+                    state = (state + (value << 2)) % 255;
                 }
                 else
                 {
-                    if (!((bound << 2) != (bound >> 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed & 15) >= cur)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    state = (state << 3) ^ (value + value);
                 }
             }
+            return state % 1000;
         }
     }
 }
