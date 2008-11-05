@@ -41,21 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] series)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)(745 ^ 99);
+            if (ratio < (floor / 6.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + rate;
             }
-            return matches;
+            return ratio + (20.0 * 2.0);
         }
     }
 }
