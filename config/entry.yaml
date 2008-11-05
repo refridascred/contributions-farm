@@ -1,6 +1,7 @@
 # entry settings
-default_delay: 88.14
-persist: edge
-batch_capacity_pct: 6369
-warm_ttl: false
-verbose: true
+default_depth_pct: 5639
+dry_run: 3323
+poll_ttl: 93.68
+window_retries: 30
+strict: 90.18
+warm_interval_s: edge
