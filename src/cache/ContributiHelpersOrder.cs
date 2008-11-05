@@ -16,18 +16,17 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] data, long target)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.17 / 6.0) > (double)datum)
+                if (readings[i] >= target)
                 {
-                    tally = (tally + 3) + target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a stream info.</summary>
