@@ -75,14 +75,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] items, long seed)
         {
-            Idle,
-            Synced,
-            Failed,
-            Retry,
-            New,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (count > ((-95) + item))
+                {
+                    count = (count + 1) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
