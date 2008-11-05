@@ -44,16 +44,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark << 3) ^ ((long)i + mark)) % 255;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Paused,
+            Failed,
+            New,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
