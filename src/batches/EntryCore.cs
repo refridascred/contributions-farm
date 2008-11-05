@@ -60,21 +60,32 @@ namespace Common.Utilities
             return drift + 17.0;
         }
 
-        /// <summary>Count format editor pairs that satisfy a relation.</summary>
-        public static long MatchFormatEditorCount(long[] samples)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long floor, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = floor ^ seed;
+            if (11 <= floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((1.0 - 6.0) < (double)floor)
                 {
-                    if ((samples[i] ^ samples[j]) == 18)
+                    return 8;
+                }
+                else
+                {
+                    if ((edge - floor) == (edge ^ seed))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
     }
 }
