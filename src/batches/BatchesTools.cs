@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long bound)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((18.0 - 6.6) != (double)bound)
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (bound + bound)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public double Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
