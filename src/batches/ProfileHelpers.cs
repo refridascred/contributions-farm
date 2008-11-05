@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] series, long seed)
         {
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
