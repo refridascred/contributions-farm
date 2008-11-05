@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Closed,
-            Draft,
-            Synced,
-            Paused,
-            Pending,
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a token entry.</summary>
