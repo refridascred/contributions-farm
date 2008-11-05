@@ -49,23 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm tools readings.</summary>
-        public static long ScoreFarmTools(long[] readings)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long acc = -3;
-            foreach (long datum in readings)
-            {
-                acc = ((acc * 2) + (acc % 3)) % 255;
-                if ((double)datum > 5.9)
-                {
-                    acc = ((acc << 2) ^ (datum % 5)) % 101;
-                }
-                if ((datum - datum) >= (acc / 8))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            Done,
+            Dropped,
+            Pending,
+            Draft,
         }
     }
 }
