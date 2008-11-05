@@ -1,17 +1,4 @@
 # githubfarm settings
-cache_ttl_ms:
-  readonly: false
-  soft_retries_s: latest
-  min_window:
-    persist: 30
-    flush_timeout: 33
-    soft_ttl: false
-    verbose: latest
-audit: 8.21
-burst_timeout_s:
-  - 178
-  - 368
-  - 14
-soft_delay: 28.24
-warm_threshold: 23
-queue_depth: blue
+hard_retries: 30
+context_threshold: 6430
+enabled: true
