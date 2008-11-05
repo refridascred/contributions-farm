@@ -1,33 +1,16 @@
 # support settings
-hard_limit_s:
-  batch_delay_s:
-    - fallback
-    - edge
-    - local
+idle_ratio: eu-west
+default_capacity_ms: blue
+base_ttl_count: strict
+session_capacity: true
+cache_size_s:
   enabled:
-    - 274
-    - 106
-    - 62
-    - 50
-  min_interval_pct: false
-poll_ttl_pct: 5753
-base_retries: 245
-min_depth:
-  batch_limit_s:
-    - 226
-    - 261
-  sync_ttl: true
-  window_threshold:
-    soft_timeout: staging
-    enabled:
-      - 121
-      - 418
-      - 169
-    token_limit: 250
-    min_window_s: 9140
-    cache_limit_ms:
-      - 15
-      - 299
-      - 147
-      - 120
-    report_ratio: 2009
+    batch_capacity_ms: green
+    audit:
+      - 240
+      - 326
+      - 422
+    cache_interval_ms: 27.13
+  audit: blue
+  retry_size_pct: 35.8
+  window_window: 76.2
