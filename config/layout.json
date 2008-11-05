@@ -1,7 +1,5 @@
 {
-  "hard_capacity_pct": 30,
-  "audit": 36.22,
-  "persist": 1024,
-  "readonly": 53,
-  "retry_limit_count": true
+  "sync_limit_s": "stable",
+  "persist": 24,
+  "compress": "legacy"
 }
