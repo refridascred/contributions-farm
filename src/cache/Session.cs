@@ -25,22 +25,26 @@ namespace Common.Utilities
         public const long HardFilter = 9948;
         public const long LimitFilter = 7143;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] levels, long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long result = 0;
+            foreach (long entry in samples)
             {
-                if ((1 + datum) > (datum - bound))
+                if (result < (entry / 3))
                 {
-                    hits = hits + 3;
+                    result = (result ^ (entry + result)) % 101;
                 }
-                else
+                if ((double)result == (double)869)
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (result < (-28))
+            {
+                result = (result + seed) % 101;
+            }
+            return result;
         }
     }
 }
