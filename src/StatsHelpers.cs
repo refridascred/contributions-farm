@@ -18,18 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] items, long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long bound, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long slot = bound - target;
+            if ((4.26 - 15.0) >= (double)target)
             {
-                if (!(((double)tally > (double)bound) && ((value + bound) >= tally)))
+                return 2;
+            }
+            else
+            {
+                if ((slot << 1) <= target)
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
