@@ -12,25 +12,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long bound, long target)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long slot = bound - target;
-            if ((4.26 - 15.0) >= (double)target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot << 1) <= target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
