@@ -1,9 +1,10 @@
 # entry settings
-support_window: 100
-flush_ttl_count:
-  - open
+persist: 1024
+channel_size: primary
+schema_interval:
+  - standard
+  - primary
   - blue
-  - legacy
-dry_run: 9909
-base_interval: local
-report_size: 1024
+  - green
+flush_depth_s: green
+burst_capacity: 60
