@@ -1,7 +1,15 @@
 {
-  "channel_interval": "edge",
-  "strict": 500,
-  "base_ratio": [251, 171, 285, 494],
-  "burst_threshold": [306, 138, 22, 72],
-  "compress": "staging"
+  "dry_run": "fallback",
+  "sync_timeout": 100,
+  "warm_ratio": 6973,
+  "batch_window": "cached",
+  "max_interval_ms": ["standard", "legacy", "local", "fallback"],
+  "default_window_pct": {
+    "audit": 15,
+    "channel_threshold": 76,
+    "stats_ttl": 100,
+    "compress": false,
+    "cache_timeout_s": true,
+    "batch_window": "open"
+  }
 }
