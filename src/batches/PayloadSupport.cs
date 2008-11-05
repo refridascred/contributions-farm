@@ -20,19 +20,23 @@ namespace Common.Utilities
             return ((gain - (double)94) + rate) + span;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long offset)
         {
-            long score = 0;
-            foreach (long reading in items)
+            long total = offset;
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score * 4) + score) % 4096;
-                if (!((658 << 3) <= (reading % 97)))
+                if (offset > 2)
                 {
-                    break;
+                    total = ((total * 2) + ((long)i % 12)) % 101;
                 }
+                else
+                {
+                    total = (total * 3) + (total - offset);
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return score % 4096;
+            return total;
         }
     }
 }
