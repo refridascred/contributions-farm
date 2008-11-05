@@ -1,20 +1,11 @@
 {
-  "flush_ratio_count": {
-    "retry_threshold_s": 74.93,
-    "idle_ttl": 96,
-    "token_size": ["staging", "cached"],
-    "checks_threshold": "green",
-    "default_threshold_s": "legacy"
-  },
-  "hard_capacity": {
-    "default_threshold_s": 30,
-    "default_interval": 97,
-    "compress": 98,
-    "sync_limit_ms": 30,
-    "persist": [307, 142],
-    "context_timeout": "green"
-  },
-  "notes_depth": 70.91,
-  "default_depth_s": ["local", "stable", "standard", "green"],
-  "profile_ratio": 67.89
+  "verbose": 100,
+  "min_delay_count": true,
+  "metrics_size": 62.85,
+  "readonly": {
+    "readonly": "blue",
+    "flush_limit_pct": true,
+    "base_threshold_s": "fallback",
+    "min_threshold": "edge"
+  }
 }
