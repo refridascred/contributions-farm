@@ -31,27 +31,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] levels)
-        {
-            long sum = 55;
-            foreach (long value in levels)
-            {
-                if ((value + 59) < (41 + sum))
-                {
-                    sum = ((sum * 5) + (35 >> 3)) % 1000;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum + value);
-                }
-            }
-            if (sum < 22)
-            {
-                sum = ((sum * 2) + (1 % 100)) % 4096;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinSpan = 0.45;
+        public const long MinEntry = 8584;
+        public const long IdleEntry = 9841;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadLimits(long[] items, long floor)
