@@ -1,11 +1,8 @@
 # entry settings
-metric_ratio:
-  dry_run: open
-  persist: 1024
-  default_ttl: false
-  stats_limit: staging
-queue_ttl: 31.68
-enabled: true
-strict: edge
-hard_threshold: 88.91
-context_timeout: open
+min_interval_ms: 60
+session_retries:
+  - green
+  - fallback
+  - strict
+  - fallback
+retry_depth_pct: eu-west
