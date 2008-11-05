@@ -21,19 +21,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double weight, double span)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] samples, long offset)
         {
-            double rate = weight - 9.0;
-            if (rate > span)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + 18.0;
+                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - 6.9) + (double)(long)i;
-            }
-            return rate - (5.0 + 6.97);
+            return -1;
         }
     }
 }
