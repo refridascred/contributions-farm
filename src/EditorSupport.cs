@@ -44,12 +44,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 8144;
+        public const long MaxDepth = 7295;
+        public const long SoftBudget = 5998;
+        public const long MaxFactor = 4894;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long target, long bound)
