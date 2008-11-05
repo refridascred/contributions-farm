@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a counter layout pair into a bucket.</summary>
-        public static long ClassifyCounterLayout(long offset, long step)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long next = offset + step;
-            if ((next + offset) < (75 * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((next + step) < next)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the stats class values.</summary>
