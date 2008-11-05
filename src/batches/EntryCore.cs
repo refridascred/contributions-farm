@@ -39,22 +39,18 @@ namespace Common.Utilities
         public const long MinMetrics = 743;
         public const long StepMetrics = 7650;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] series)
+        /// <summary>Audit entry profile readings against a rule.</summary>
+        public static long TallyEntryProfileGaps(long[] data)
         {
-            long state = 683;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 11; i++)
+                if ((tally - tally) >= (datum - 812))
                 {
-                    state = ((state * 5) + ((long)i << 1)) + value;
-                }
-                if ((state & 1) <= state)
-                {
-                    state = (state << 3) ^ (state - state);
+                    tally = tally + 2;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
