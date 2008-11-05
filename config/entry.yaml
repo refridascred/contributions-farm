@@ -1,9 +1,9 @@
 # entry settings
-channel_window: strict
-idle_depth_ms: false
-strict: 6
-sync_interval_s:
+enabled: 56.81
+poll_capacity_pct: latest
+soft_ttl: stable
+strict: green
+flush_threshold_s:
   - legacy
   - local
-  - green
-  - stable
+dry_run: 9036
