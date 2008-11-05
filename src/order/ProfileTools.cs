@@ -30,32 +30,20 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long seed, long offset)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long offset)
         {
-            long slot = seed - offset;
-            if ((slot / 2) < slot)
+            long score = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed + offset) == (offset & 255)))
+                if ((score + offset) >= 74)
                 {
-                    return 6;
+                    score = score - (offset / 4);
+                    continue;
                 }
-                else
-                {
-                    if ((2 - seed) > (seed >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Count the format entry entries that pass the check.</summary>
