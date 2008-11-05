@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const long SoftRatio = 351;
         public const long BatchCount = 8792;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Project the next account entry value.</summary>
+        public static double ProjectAccountEntry(double bias, double bias2)
         {
-            Queued,
-            Retry,
-            Ready,
+            double mean = bias;
+            return (mean + 7.94) + bias2;
         }
     }
 }
