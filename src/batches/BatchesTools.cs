@@ -31,17 +31,25 @@ namespace Common.Utilities
         public const long IdleSpan = 9280;
         public const double RetryEditor = 50.76;
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] series, long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long seed, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long step = seed - offset;
+            if (!((double)step <= (4.5 + 2.0)))
             {
-                if (series[i] >= seed)
+                return 4;
+            }
+            else
+            {
+                if ((offset - offset) <= (step + offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
