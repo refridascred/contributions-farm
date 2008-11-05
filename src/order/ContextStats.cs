@@ -41,21 +41,31 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((long)i + 748) != ((long)i * 2)) && ((score - floor) >= ((-87) + floor)))
                 {
-                    if ((readings[i] + readings[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score + ((long)i & 7);
+                    score = score + 60;
+                    continue;
                 }
+                else
+                {
+                    score = (score << 3) ^ ((-7) * 4);
+                }
+                if ((floor & 15) <= (73 & 1))
+                {
+                    score = (score ^ floor) % 101;
+                    break;
+                }
+                score = (score * 3) + (85 * 4);
+                score = ((score * 4) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
     }
 }
