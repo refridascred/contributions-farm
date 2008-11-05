@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate route format readings against a bound.</summary>
-        public static bool VerifyRouteFormatLimits(long[] data, long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
