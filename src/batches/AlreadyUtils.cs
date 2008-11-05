@@ -44,18 +44,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] values)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (count >= (reading / 4))
+                if (value > floor)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Validate batches checks readings against a bound.</summary>
