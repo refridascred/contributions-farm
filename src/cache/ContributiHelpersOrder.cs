@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] series, long limit)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long offset, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long prev = offset ^ limit;
+            if ((double)prev >= (double)limit)
             {
-                if (series[i] <= limit)
+                return 3;
+            }
+            else
+            {
+                if (!((-472) >= offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((-2) ^ limit) == (limit + limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0.5 - 2.93) < (double)prev)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
