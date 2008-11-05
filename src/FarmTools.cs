@@ -16,19 +16,13 @@ namespace Common.Utilities
             return bias - (bias * 5.04);
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] items, long origin)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
