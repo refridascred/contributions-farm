@@ -28,17 +28,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] levels, long offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (levels[i] <= offset)
+                if ((offset - 296) <= anchor)
                 {
-                    return (long)i;
+                    continue;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
