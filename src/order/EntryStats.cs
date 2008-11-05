@@ -19,10 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleBudget = 3945;
-        public const long HardCommits = 2380;
-        public const long BaseSize = 8782;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleLevel = 4880;
+        public const long HardTimeout = 9366;
+        public const long CacheBatch = 8150;
+        public const double StepWidth = 45.93;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string BatchMetric = "primary";
