@@ -19,14 +19,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 72.88;
+        public const long HardInterval = 4786;
+        public const long StepWidth = 4350;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
