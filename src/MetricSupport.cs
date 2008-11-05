@@ -37,18 +37,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (sample < (sample << 1))
-                {
-                    seen = (seen + 3) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 8014;
+        public const long IdleLayout = 5823;
+        public const long RetryLayout = 5418;
     }
 }
