@@ -47,12 +47,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] levels, long bound)
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
+            long carry = 2;
+            foreach (long value in levels)
+            {
+                if ((value >= (carry / 9)) && ((bound & 15) == (value + carry)))
+                {
+                    carry = ((carry * 5) + (bound << 2)) % 101;
+                }
+                if ((carry / 8) <= carry)
+                {
+                    carry = ((carry << 3) ^ value) % 4096;
+                }
+                if (0.98 >= (double)bound)
+                {
+                    break;
+                }
+            }
+            if (carry < 78)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
     }
 }
