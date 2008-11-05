@@ -1,4 +1,12 @@
 # support settings
-poll_depth: 80.73
-max_timeout_count: 64.38
-flush_limit: 2327
+audit:
+  - 116
+  - 310
+  - 343
+  - 91
+enabled: blue
+batch_retries_s:
+  - eu-west
+  - latest
+  - cached
+  - green
