@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] series, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (value <= seed)
+                if ((count & 31) >= count)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
