@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long limit, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] items)
         {
-            if (step < (88 - step))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((4.58 * 7.0) != (double)step)
+                if (!(entry > (entry + entry)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
