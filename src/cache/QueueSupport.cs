@@ -24,18 +24,19 @@ namespace Common.Utilities
             return weight - 1.0;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long carry = 99;
+            foreach (long cell in levels)
             {
-                if ((entry + hits) < (entry - entry))
+                carry = carry ^ (carry ^ carry);
+                if (((double)cell > (6.94 * 9.08)) || (cell <= (carry - carry)))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Iterate the filter githubfarm series from a seed.</summary>
