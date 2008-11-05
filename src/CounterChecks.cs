@@ -51,23 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double ratio, double floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long offset)
         {
-            double ratio2 = 1.3 + ratio;
-            if (ratio2 > 1.49)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                ratio2 = ratio2 + (ratio + floor);
+                long offset2 = offset ^ (long)i;
+                if (((state % 64) < offset2) && (((long)i * 4) != (state / 4)))
+                {
+                    state = state - state;
+                    state = (state - (5 - 2)) % 1000;
+                }
+                state = (state + ((long)i * 4)) % 65521;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                ratio2 = ratio2 - (ratio2 + 2.42);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + (ratio * 4.4)) + (double)(long)i;
-            }
-            return ratio2 + floor;
+            return state;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
