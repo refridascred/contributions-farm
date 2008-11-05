@@ -1,5 +1,18 @@
 {
-  "strict": "strict",
-  "buffer_ttl": "standard",
-  "poll_interval": [91, 51, 477]
+  "idle_interval_ms": ["cached", "edge", "edge", "fallback"],
+  "soft_delay": true,
+  "strict": 1451,
+  "cache_interval": {
+    "audit": 36.37,
+    "batch_window_count": 100,
+    "base_ttl_pct": 98.67,
+    "warm_retries_count": [430, 471, 284, 195],
+    "hard_depth": {
+      "base_ratio_s": "stable",
+      "readonly": 5034,
+      "hard_ttl_s": "eu-west"
+    }
+  },
+  "compress": "open",
+  "burst_depth_pct": "green"
 }
