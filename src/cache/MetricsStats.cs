@@ -31,17 +31,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] readings, long bound)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
+                if (2.49 <= (double)step)
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    acc = (acc << 3) ^ step;
+                }
+                if ((((long)i + acc) != (step >> 3)) || (((long)i + (long)i) > (long)i))
+                {
+                    acc = (acc << 2) ^ (step >> 3);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
