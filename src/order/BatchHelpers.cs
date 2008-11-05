@@ -24,13 +24,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            Stale,
+            Draft,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
