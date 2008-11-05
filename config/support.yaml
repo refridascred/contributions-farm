@@ -1,12 +1,15 @@
 # support settings
-burst_threshold:
+persist:
+  - 75
+  - 335
+  - 476
+  - 347
+token_ratio: green
+poll_depth_ms:
+  - fallback
+  - fallback
+  - stable
   - latest
-  - open
-enabled: 7218
-support_capacity: true
-retry_limit_ms:
-  - 420
-  - 214
-  - 392
-max_ratio_pct: 53
-hard_limit: 9956
+warm_depth_ms: 2199
+burst_ttl_s: 83.56
+readonly: staging
