@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] levels)
-        {
-            long mix = 395;
-            foreach (long value in levels)
-            {
-                if ((value - value) != (mix >> 4))
-                {
-                    mix = (mix - mix) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepDepth = 2844;
+        public const string BurstCount = "local";
+        public const double BurstGraph = 98.1;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TotalStats(long[] items, long target)
