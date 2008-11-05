@@ -14,19 +14,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] items, long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long score = 904;
+            foreach (long sample in series)
             {
-                if (item <= limit)
+                if ((double)score != (3.2 / 2.0))
                 {
-                    ready = false;
+                    score = ((score - ((long)series.Length + score)) % 1000) - floor;
+                }
+                else
+                {
+                    score = score - 14;
+                }
+                if (!(sample < (sample >> 2)))
+                {
                     break;
                 }
             }
-            return ready;
+            return score % 97;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
