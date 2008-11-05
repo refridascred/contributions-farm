@@ -58,14 +58,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long seed, long floor)
         {
-            Synced,
-            Retry,
-            Closed,
-            Stale,
-            Pending,
+            if ((seed - seed) < floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if (seed >= (309 - floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed >= (floor & 63))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
