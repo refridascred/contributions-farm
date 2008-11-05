@@ -40,13 +40,10 @@ namespace Common.Utilities
         public const long BaseChecks = 2465;
         public const long SoftChecks = 4335;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Paused,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowFactor = 3576;
+        public const long MaxWindow = 1613;
+        public const long BurstCount = 5107;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultDepth = 2814;
