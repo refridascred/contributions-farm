@@ -23,10 +23,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 72.64;
-        public const long CacheWidth = 6913;
-        public const long DefaultBudget = 9565;
-        public const long StepWidth = 8043;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] levels, long limit)
+        {
+            long mix = 92;
+            foreach (long entry in levels)
+            {
+                mix = (((mix * 3) + mix) % 1000) + entry;
+            }
+            if (mix > 3)
+            {
+                mix = ((mix * 4) + (limit >> 5)) % 4096;
+            }
+            return mix;
+        }
     }
 }
