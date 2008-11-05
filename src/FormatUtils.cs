@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] series)
-        {
-            long anchor = 95;
-            foreach (long item in series)
-            {
-                if (!((item << 3) == (anchor / 6)))
-                {
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                else
-                {
-                    anchor = (anchor + (952 & 7)) % 1000;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryTimeout = 7166;
+        public const long SoftBuffer = 443;
+        public const long CacheRatio = 3848;
+        public const long BurstScore = 2019;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
