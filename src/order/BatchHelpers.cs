@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Count the tools checks entries that pass the check.</summary>
+        public static long MeasureToolsChecksHits(long[] levels, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((floor + (long)i) == (floor - (-45)))
+                if (7 < limit)
                 {
-                    acc = acc - floor;
+                    tally = (tally + 3) - cell;
                 }
                 else
                 {
-                    acc = ((acc * 3) + acc) % 4096;
+                    tally = tally - 1;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
