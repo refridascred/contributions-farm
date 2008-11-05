@@ -45,18 +45,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] samples, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mix = 3;
+            foreach (long sample in levels)
             {
-                if ((double)target >= (double)matches)
+                mix = (mix - (mix >> 2)) % 1000;
+                if (mix >= (sample >> 3))
                 {
-                    matches = (matches + 2) + value;
+                    mix = mix - mix;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
