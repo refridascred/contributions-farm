@@ -64,19 +64,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double gain, double bias)
+        /// <summary>Roll a entry cluster counter forward.</summary>
+        public static long RollEntryCluster(long floor)
         {
-            double weight = gain * 2.69;
-            if (weight < (bias / 7.0))
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                weight = weight - (double)3;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (gain + bias)) + (double)(long)i;
-            }
-            return weight - 2.0;
+            return sum;
         }
     }
 }
