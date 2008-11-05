@@ -1,7 +1,10 @@
-id,count,label
-1,standard,standard
-2,9.61,31.98
-3,staging,local
-4,edge,edge
-5,352,strict
-6,124,674
+id,active,level
+1,955,40.56
+2,340,standard
+3,543,strict
+4,blue,primary
+5,823,69.81
+6,primary,76.78
+7,eu-west,38.52
+8,75.72,904
+9,94.87,fallback
