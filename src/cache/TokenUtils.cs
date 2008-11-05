@@ -35,19 +35,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] series, long target)
         {
-            long mix = 3;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix - (mix >> 2)) % 1000;
-                if (mix >= (sample >> 3))
+                if (series[i] == target)
                 {
-                    mix = mix - mix;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
