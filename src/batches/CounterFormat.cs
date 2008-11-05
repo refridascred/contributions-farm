@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] items, long seed)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(cell > (cell & 15)) && ((cell + 605) <= (0 + cell)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    seen = (seen + 3) + seed;
+                    result = ((result - (result * 5)) % 4096) - (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
