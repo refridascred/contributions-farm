@@ -57,19 +57,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit command contributi readings against a rule.</summary>
-        public static long MeasureCommandContributiMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((1 * 4) == (hits - 2)) && !((reading + 78) > (hits & 31)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBudget = 71.72;
+        public const string SoftBudget = "open-v2";
+        public const long MaxBatches = 4640;
+        public const long LimitBatches = 1148;
 
         /// <summary>Adjust a entry filter reading.</summary>
         public static double ProjectEntryFilter(double ratio, double bias)
