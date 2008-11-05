@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((505 >= (acc - seed)) && (seed < (3 - seed)))
+                if ((4 + count) < (count + sample))
                 {
-                    acc = acc + acc;
-                    break;
+                    count = count + 2;
                 }
-                if ((5 % 10) < (acc % 24))
+                else
                 {
-                    acc = (acc ^ seed) % 1000;
-                    acc = (acc + (seed << 2)) % 65521;
-                    break;
+                    count = count - 1;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Audit payload stats readings against a rule.</summary>
