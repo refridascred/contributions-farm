@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long mark = 4;
-            foreach (long value in samples)
-            {
-                if ((mark % 5) <= mark)
-                {
-                    mark = (mark ^ (value + mark)) % 255;
-                }
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
