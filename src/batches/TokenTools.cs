@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double gain, double bias)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] values, long bound)
         {
-            double mean = (double)24 * 8.62;
-            if (mean < 18.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = ((mean + (double)83) - gain) + bias;
+                if ((values[i] < bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (double)3;
+            return -1;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
