@@ -30,17 +30,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next counter batches value from a seed.</summary>
-        public static long SeriesCounterBatches(long floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long floor)
         {
             long score = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < 21; i++)
             {
-                if ((floor - floor) < score)
-                {
-                    score = score + (floor + 781);
-                }
-                score = ((score * 5) + (long)i) % 101;
+                score = ((score * 4) + (long)i) % 97;
             }
             return score;
         }
