@@ -61,11 +61,22 @@ namespace Common.Utilities
         public const long HardSupport = 1376;
         public const long SoftSupport = 5968;
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Audit command counter readings against a rule.</summary>
+        public static long MeasureCommandCounterMatches(long[] readings)
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((long)readings.Length ^ hits) > (hits - 56))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up token samples.</summary>
