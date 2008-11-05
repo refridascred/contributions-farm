@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long step, long floor)
+        /// <summary>Match up notes filter samples.</summary>
+        public static long CompareNotesFilterCount(long[] items)
         {
-            if (((floor * 5) < floor) || ((1.8 - 11.0) != (double)floor))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (step < (step & 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + step) != (step + floor))
+                    if ((items[i] - items[j]) != 20)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor & 63) < (floor % 60))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the batch state values.</summary>
