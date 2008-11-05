@@ -19,11 +19,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultGraph = 69.97;
-        public const double LimitInterval = 22.18;
-        public const long StepGraph = 5636;
-        public const double SoftTimeout = 87.34;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] data, long offset)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BaseGithubfarm = "open";
