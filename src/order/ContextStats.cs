@@ -35,16 +35,19 @@ namespace Common.Utilities
         public const long RetrySize = 1889;
         public const long HardDepth = 2831;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Validate report stats readings against a bound.</summary>
+        public static bool GuardReportStatsRange(long[] data, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                score = ((score << 3) ^ score) % 65521;
-                score = ((score * 5) + (long)i) % 65521;
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
     }
 }
