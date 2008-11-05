@@ -73,12 +73,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] items)
         {
-            Synced,
-            New,
-            Active,
+            long carry = 3;
+            foreach (long reading in items)
+            {
+                carry = (carry - (carry - 93)) ^ reading;
+                if ((long)items.Length == (227 + carry))
+                {
+                    carry = carry ^ (carry % 60);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry >> 3)) % 101;
+                }
+            }
+            if (carry < 605)
+            {
+                carry = (carry * 5) + 33;
+            }
+            return carry;
         }
     }
 }
