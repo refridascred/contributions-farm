@@ -85,15 +85,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Ready,
+            Stale,
+            Paused,
+            Draft,
         }
     }
 }
