@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 83.16;
+        public const long SoftSpan = 8095;
+        public const string RetryFactor = "legacy-v2";
 
         /// <summary>Fold a list of profile batches readings.</summary>
         public static long FoldProfileBatches(long[] data, long limit)
