@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] samples, long origin)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (item > origin)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    ok = false;
-                    break;
+                    sum = (((sum << 3) ^ ((long)i - sum)) % 101) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
