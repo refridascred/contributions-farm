@@ -15,22 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] series)
+        /// <summary>Locate a format filter reading by value.</summary>
+        public static long SeekFormatFilterIndex(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)2 >= (double)reading)
+                if ((items[i] <= bound) && ((items[i] % 2) != 0))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate account samples.</summary>
