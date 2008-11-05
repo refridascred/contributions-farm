@@ -23,21 +23,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up stats buffer samples.</summary>
-        public static long PairStatsBufferCount(long[] items)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Synced,
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Count the format notes entries that pass the check.</summary>
