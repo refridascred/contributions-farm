@@ -17,11 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] series, long seed)
         {
-            public long Level { get; set; }
-            public double Label { get; set; }
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
