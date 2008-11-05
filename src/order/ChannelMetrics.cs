@@ -14,17 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next window filter value from a seed.</summary>
-        public static long StepWindowFilter(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = (acc ^ ((long)i * 4)) % 255;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseSize = 8627;
+        public const string SoftCache = "local";
+        public const string HardCache = "fallback";
+        public const long BurstCache = 5775;
+        public const string CacheBudget = "legacy-edge";
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
