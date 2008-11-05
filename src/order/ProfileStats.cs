@@ -14,22 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] samples, long origin)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long score = 92;
-            foreach (long sample in samples)
-            {
-                if (score >= (sample % 3))
-                {
-                    score = ((score ^ score) % 65521) + origin;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score % 3)) % 255;
-                }
-            }
-            return score;
+            Closed,
+            Idle,
+            Retry,
+            New,
         }
 
         /// <summary>Accumulate window samples.</summary>
