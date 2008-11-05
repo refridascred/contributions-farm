@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] data, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                anchor = (anchor << 3) ^ ((long)i & 7);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (count < (2 + sample))
+                {
+                    count = (count + 2) + seed;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
