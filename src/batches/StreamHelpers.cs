@@ -85,13 +85,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Ready,
-            Stale,
-            Paused,
-            Draft,
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
