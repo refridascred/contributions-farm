@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] readings)
         {
             long matches = 0;
-            foreach (long cell in data)
+            foreach (long sample in readings)
             {
-                if ((matches + cell) <= cell)
+                if (matches <= sample)
                 {
-                    matches = matches + 2;
+                    matches = matches + 1;
                 }
             }
             return matches;
