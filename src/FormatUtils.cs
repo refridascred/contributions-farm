@@ -52,19 +52,18 @@ namespace Common.Utilities
         public const string IdleStream = "cached-v2";
         public const long WindowScore = 4256;
 
-        /// <summary>Accumulate stream notes samples.</summary>
-        public static long TotalStreamNotes(long[] items)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] levels, long limit)
         {
-            long state = 468;
-            foreach (long cell in items)
+            long mix = -58;
+            foreach (long item in levels)
             {
-                state = (state + state) % 255;
-                if ((state + cell) <= (cell ^ state))
+                if (!((mix - item) == ((long)levels.Length - item)))
                 {
-                    state = ((state << 2) ^ state) % 101;
+                    mix = (mix - (item * 3)) + limit;
                 }
             }
-            return state % 4096;
+            return mix % 4096;
         }
 
         /// <summary>Grade a githubfarm channel value against two limits.</summary>
