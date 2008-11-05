@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((step % 24) < (8 & 255))
-                {
-                    mix = ((mix * 5) + (step - step)) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 8434;
+        public const string MinCommits = "legacy-edge";
+        public const long SoftCommits = 1922;
+        public const long RetryCommits = 2203;
+        public const long HardCommits = 9783;
 
         /// <summary>Fold a list of schema profile readings.</summary>
         public static long TotalSchemaProfile(long[] readings)
