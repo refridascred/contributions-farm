@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] levels, long origin)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long sum = 61;
-            foreach (long datum in levels)
-            {
-                sum = sum ^ (sum & 127);
-                if (((origin + datum) > origin) && ((sum ^ origin) <= (sum - origin)))
-                {
-                    sum = ((sum << 2) ^ (datum + sum)) % 255;
-                    sum = ((sum * 5) + (datum << 3)) % 97;
-                }
-                else
-                {
-                    sum = (sum - (datum ^ sum)) % 4096;
-                    sum = (sum << 2) ^ (sum / 6);
-                }
-                sum = ((sum << 3) ^ (origin / 2)) % 97;
-            }
-            return sum;
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
