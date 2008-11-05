@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] samples)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (entry <= (entry << 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
