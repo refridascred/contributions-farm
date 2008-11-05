@@ -64,19 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] values, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long seed)
         {
-            long total = 0;
-            foreach (long item in values)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                total = ((total * 4) + (item >> 5)) % 97;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (total < 1)
-            {
-                total = (total << 3) ^ (total - target);
-            }
-            return total % 1000;
+            return state;
         }
 
         /// <summary>Describe the channel status values.</summary>
