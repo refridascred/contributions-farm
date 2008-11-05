@@ -1,11 +1,13 @@
 # support settings
-poll_delay_ms: 8819
-session_limit:
-  - legacy
-  - fallback
-  - blue
-  - strict
-tools_threshold: 15.96
-command_retries: latest
-dry_run: 97.71
-metrics_capacity: open
+default_ratio_s:
+  strict: 50
+  cache_ratio: true
+  checks_ttl: blue
+  entry_size:
+    - standard
+    - eu-west
+    - blue
+    - legacy
+  default_window_s: 78.93
+retry_limit: 37.16
+min_interval_s: 79.23
