@@ -24,18 +24,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] values, long seed)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (3.74 > (double)seed)
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
