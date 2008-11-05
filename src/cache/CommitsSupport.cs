@@ -46,17 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first filter layout entry that matches the target.</summary>
-        public static long LookupFilterLayoutIndex(long[] series, long seed)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] == seed) && ((series[i] % 5) != 0))
+                if (!((origin % 7) > origin))
                 {
-                    return (long)i;
+                    sum = (sum - (sum & 255)) % 101;
+                    sum = (sum ^ 3) % 97;
                 }
+                sum = ((sum << 3) ^ (origin ^ (long)i)) % 4096;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Fold a list of report readings.</summary>
