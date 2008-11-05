@@ -48,22 +48,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftRatio = 16.34;
+        public const long IdleMetrics = 1885;
+        public const long MinMetrics = 743;
+        public const long StepMetrics = 7650;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long FoldLayout(long[] series)
