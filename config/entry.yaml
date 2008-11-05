@@ -1,5 +1,7 @@
 # entry settings
-hard_threshold_count: 3949
-min_timeout_s: standard
-retry_size_count: 96.6
-batch_retries: 3.62
+batch_ratio: local
+batch_size:
+  - strict
+  - fallback
+  - blue
+sync_window_count: 250
