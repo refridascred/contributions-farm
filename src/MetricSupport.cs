@@ -20,11 +20,20 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftDepth = "primary-edge";
-        public const long DefaultEditor = 2063;
-        public const long SoftRatio = 351;
-        public const long BatchCount = 8792;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double scale, double bias)
+        {
+            double weight = (bias + scale) - bias;
+            if (weight >= (bias / 9.0))
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + scale) + (double)(long)i;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double BlendChannel(double weight, double offset)
