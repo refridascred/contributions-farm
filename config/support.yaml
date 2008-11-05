@@ -1,12 +1,9 @@
 # support settings
-audit:
-  - 116
-  - 310
-  - 343
-  - 91
-enabled: blue
-batch_retries_s:
-  - eu-west
-  - latest
-  - cached
-  - green
+soft_retries_pct: 17.59
+command_interval:
+  - 166
+  - 255
+  - 332
+default_capacity:
+  - 496
+  - 156
