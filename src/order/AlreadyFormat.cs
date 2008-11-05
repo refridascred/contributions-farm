@@ -52,18 +52,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] samples)
+        /// <summary>Count tools batch pairs that satisfy a relation.</summary>
+        public static long MatchToolsBatchCount(long[] values)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.1 / 2.0) > (double)count)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + cell;
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine stream support values into a single score.</summary>
