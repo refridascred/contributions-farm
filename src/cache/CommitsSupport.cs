@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] data, long floor)
         {
-            Failed,
-            Stale,
-            Paused,
-            Synced,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
