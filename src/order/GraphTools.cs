@@ -35,12 +35,39 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowTimeout = 25.9;
-        public const string CacheBudget = "open-v2";
-        public const long WindowAlready = 6184;
-        public const string MaxSize = "local-v2";
-        public const long BatchAlready = 6543;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long target, long target2)
+        {
+            if (((double)target <= (4.6 + 13.0)) && ((double)target2 > (4.64 / 2.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((5.0 / 8.0) > (double)target2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)target2 < 8.2) && ((target << 2) >= target2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)target2 != (double)(-760)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
