@@ -1,8 +1,9 @@
-id,level,weight
-1,38.5,700
-2,cached,64.36
-3,eu-west,747
-4,blue,open
-5,green,blue
-6,44.52,953
-7,254,732
+id,token,count,label
+1,edge,green,294
+2,99,61.38,53.69
+3,718,95.42,edge
+4,723,5.42,latest
+5,edge,green,84.7
+6,blue,0.41,primary
+7,legacy,77,open
+8,3.73,338,672
