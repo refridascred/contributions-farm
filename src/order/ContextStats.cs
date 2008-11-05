@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter commits entry stays within the limit.</summary>
-        public static bool ValidateCounterCommitsBounds(long[] data, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (sample > origin)
+                if ((double)reading < 10.0)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + bound;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
