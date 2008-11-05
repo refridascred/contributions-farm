@@ -5,12 +5,34 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] data)
         {
-            Retry,
-            Locked,
-            Paused,
+            long state = 0;
+            foreach (long value in data)
+            {
+                if (((long)data.Length + 21) > (state % 12))
+                {
+                    state = state - 436;
+                }
+                else
+                {
+                    state = (state + (state + 3)) % 1000;
+                }
+                if ((double)state < (6.0 / 3.0))
+                {
+                    state = (state ^ (state << 3)) % 65521;
+                }
+                else
+                {
+                    state = (state << 2) ^ value;
+                }
+                if ((1.17 - 8.37) != (double)value)
+                {
+                    state = ((state * 5) + (state + value)) % 97;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
