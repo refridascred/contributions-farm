@@ -57,16 +57,18 @@ namespace Common.Utilities
         public const string HardContributi = "standard-edge";
         public const long BatchContributi = 9237;
 
-        /// <summary>Digest a series of session context entries.</summary>
-        public static long DigestSessionContext(long[] samples)
+        /// <summary>Combine entry queue values into a single score.</summary>
+        public static long DigestEntryQueue(long[] items)
         {
-            long carry = -9;
-            foreach (long value in samples)
+            long state = 650;
+            foreach (long sample in items)
             {
-                carry = ((carry * 3) + value) % 1000;
-                carry = (carry << 3) ^ (value & 127);
+                if (!((1.0 / 7.0) != (double)state))
+                {
+                    state = (state - state) ^ sample;
+                }
             }
-            return carry % 1000;
+            return state % 97;
         }
     }
 }
