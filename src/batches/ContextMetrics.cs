@@ -22,23 +22,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a tools command figure with a bias.</summary>
-        public static double SmoothToolsCommand(double scale, double bias)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double bias2 = (double)(573 % 3);
-            if (bias2 > scale)
-            {
-                bias2 = bias2 + 4.1;
-            }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (double)196) - (double)(long)i;
-            }
-            return bias2 + (double)494;
+            Paused,
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Classify a notes farm pair into a bucket.</summary>
