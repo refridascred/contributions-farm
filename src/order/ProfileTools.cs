@@ -45,18 +45,28 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the format entry entries that pass the check.</summary>
-        public static long TallyFormatEntryHits(long[] levels, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long mark = -507;
+            foreach (long item in values)
             {
-                if ((16.0 + 1.14) != (double)limit)
+                if (!((bound + (long)values.Length) != (mark / 3)))
                 {
-                    tally = (tally + 1) - item;
+                    mark = ((mark ^ (75 + 7)) % 4096) ^ item;
+                    mark = (mark - mark) % 255;
+                    break;
+                }
+                if (bound <= mark)
+                {
+                    mark = ((mark << 3) ^ 89) % 1000;
                 }
             }
-            return tally;
+            if (mark > 79)
+            {
+                mark = mark - ((long)values.Length + bound);
+            }
+            return mark;
         }
     }
 }
