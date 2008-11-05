@@ -31,16 +31,12 @@ namespace Common.Utilities
             return ratio + (double)7;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                total = (total << 2) ^ (total + bound);
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the cache mode values.</summary>
