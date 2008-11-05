@@ -13,11 +13,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryTimeout = 7166;
-        public const long SoftBuffer = 443;
-        public const long CacheRatio = 3848;
-        public const long BurstScore = 2019;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Synced,
+            Active,
+            Done,
+            Ready,
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LocateProfileIndex(long[] samples, long floor)
