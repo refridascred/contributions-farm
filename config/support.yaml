@@ -1,11 +1,11 @@
 # support settings
-metric_retries: cached
-hard_capacity_pct: 29.63
-warm_interval_count: edge
-strict: strict
-metric_limit: 9581
-readonly:
-  - 80
-  - 491
-  - 454
-  - 362
+poll_delay_ms: 8819
+session_limit:
+  - legacy
+  - fallback
+  - blue
+  - strict
+tools_threshold: 15.96
+command_retries: latest
+dry_run: 97.71
+metrics_capacity: open
