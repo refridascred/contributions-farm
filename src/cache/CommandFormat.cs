@@ -27,22 +27,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] samples, long origin)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long limit, long limit2)
         {
-            long carry = 39;
-            foreach (long value in samples)
+            long diff = limit - limit2;
+            if ((7.9 - 6.0) > (double)limit)
             {
-                if ((value % 10) >= carry)
+                return 6;
+            }
+            else
+            {
+                if ((limit * 4) == (limit << 2))
                 {
-                    carry = (carry * 4) + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit2 - diff) > limit2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)diff <= (20.0 - 2.0)) && (limit2 <= (6 - 4)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (carry < 97)
-            {
-                carry = (carry - (origin + 82)) % 65521;
-            }
-            return carry;
         }
 
         /// <summary>Adjust a stream reading.</summary>
