@@ -35,22 +35,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] levels, long origin)
+        /// <summary>Digest a series of graph order entries.</summary>
+        public static long DigestGraphOrder(long[] data)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long carry = 1;
+            foreach (long item in data)
             {
-                if ((cell ^ cell) != (cell / 4))
+                if ((item << 1) >= (item >> 1))
                 {
-                    count = (count + 2) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = (carry + (carry + carry)) % 97;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
