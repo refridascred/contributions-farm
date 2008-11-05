@@ -42,23 +42,31 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] samples, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long bound, long origin)
         {
-            long mix = 698;
-            foreach (long item in samples)
+            if ((double)736 > (double)origin)
             {
-                mix = ((mix * 5) + offset) % 4096;
-                if (((15 % 8) > (item & 3)) || ((offset / 5) <= (95 - offset)))
+                return 5;
+            }
+            else
+            {
+                if (((bound * 5) >= (bound - bound)) || ((origin * 3) < (bound - bound)))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound % 2) > bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (mix < 5)
-            {
-                mix = mix + (mix ^ mix);
-            }
-            return mix;
         }
 
         /// <summary>Blend two editor measurements.</summary>
