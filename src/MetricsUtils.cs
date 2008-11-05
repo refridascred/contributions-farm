@@ -30,19 +30,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] samples)
+        /// <summary>Audit tools report readings against a rule.</summary>
+        public static long TallyToolsReportOutliers(long[] series)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long entry in series)
             {
-                if ((((datum & 1) < (datum - datum)) && ((datum >> 4) >= (matches - datum))) && ((datum < (134 + matches)) && ((168 + 93) <= matches)))
+                if ((344 & 31) < entry)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 1;
                 }
             }
             return matches;
