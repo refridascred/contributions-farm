@@ -1,5 +1,7 @@
 {
-  "strict": 43.03,
-  "max_capacity": true,
-  "retry_capacity_ms": ["primary", "edge", "staging"]
+  "retry_timeout_s": "primary",
+  "strict": [428, 177, 478, 408],
+  "default_window_pct": "open",
+  "batch_timeout_ms": 44.79,
+  "filter_capacity": [5, 98, 191, 148]
 }
