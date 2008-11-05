@@ -33,18 +33,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((datum + 638) < (tally + datum))
+                if ((cell ^ cell) != (cell / 4))
                 {
-                    tally = tally + 1;
+                    count = (count + 2) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
