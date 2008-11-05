@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryEditor = "staging-v2";
-        public const string DefaultWidth = "primary";
-        public const string RetryCount = "latest-v2";
-        public const long HardRatio = 631;
+        /// <summary>Roll a payload checks counter forward.</summary>
+        public static long IteratePayloadChecks(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if (target < (result * 5))
+                {
+                    result = (result * 5) + (long)i;
+                }
+                else
+                {
+                    result = (result ^ (target / 5)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCount = 2431;
