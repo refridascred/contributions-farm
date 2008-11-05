@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 5237;
-        public const long IdleCount = 4718;
-        public const long RetryOrder = 9962;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (entry >= (matches + offset))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string MaxLevel = "stable-v2";
