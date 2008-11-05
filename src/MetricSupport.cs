@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every profile report entry stays within the limit.</summary>
-        public static bool GuardProfileReportBounds(long[] readings, long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (entry < floor)
+                if (reading > floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
