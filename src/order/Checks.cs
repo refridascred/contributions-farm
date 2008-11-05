@@ -56,16 +56,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] items, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long total = 922;
+            foreach (long entry in items)
             {
-                total = total + total;
-                total = ((total * 3) + (long)i) % 4093;
+                total = (total ^ (limit << 3)) - entry;
             }
-            return total;
+            return total % 1000;
         }
     }
 }
