@@ -25,19 +25,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] series, long step)
+        /// <summary>Find the first counter route entry that matches the target.</summary>
+        public static long SeekCounterRouteIndex(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != step)
+                if ((samples[i] < target) && ((samples[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
