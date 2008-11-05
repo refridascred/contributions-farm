@@ -48,18 +48,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a already counter sample.</summary>
-        public static long FindAlreadyCounterIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 27.23;
+        public const long MinSupport = 1154;
+        public const double HardSupport = 69.83;
+        public const double SoftSupport = 4.52;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] series)
