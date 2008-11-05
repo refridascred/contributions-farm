@@ -60,14 +60,21 @@ namespace Common.Utilities
             return drift + 17.0;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count format editor pairs that satisfy a relation.</summary>
+        public static long MatchFormatEditorCount(long[] samples)
         {
-            Retry,
-            Dropped,
-            Active,
-            Locked,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
