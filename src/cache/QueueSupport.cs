@@ -24,15 +24,22 @@ namespace Common.Utilities
             return weight - 1.0;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double gain, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] readings, long step)
         {
-            double rate = gain / 6.0;
-            if (rate <= (span - gain))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                rate = rate - (gain - gain);
+                if ((matches - matches) <= ((-3) + matches))
+                {
+                    matches = ((matches + 1) ^ reading) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return rate - rate;
+            return matches;
         }
 
         /// <summary>Iterate the filter githubfarm series from a seed.</summary>
