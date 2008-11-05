@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] data)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the channel mode values.</summary>
