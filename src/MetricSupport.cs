@@ -33,13 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Derive the next graph cluster value from a seed.</summary>
+        public static long StepGraphCluster(long step)
         {
-            Failed,
-            Done,
-            Retry,
-            Closed,
+            long sum = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((double)step <= (1.0 + 8.66))
+                {
+                    long delta = sum ^ (sum - sum);
+                    sum = ((sum << 3) ^ delta) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
