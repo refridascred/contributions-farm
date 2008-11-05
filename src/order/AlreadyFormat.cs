@@ -52,16 +52,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] items, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            long anchor = -77;
+            foreach (long reading in items)
             {
-                acc = (acc + ((long)i % 7)) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((double)bound == (double)anchor)
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor - reading) % 97;
+                }
+                anchor = ((anchor * 2) + (6 + bound)) % 4096;
             }
-            return acc;
+            return anchor % 1000;
         }
 
         /// <summary>Count tools batch pairs that satisfy a relation.</summary>
