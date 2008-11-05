@@ -33,18 +33,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] items)
+        /// <summary>Fold a list of counter buffer readings.</summary>
+        public static long ScoreCounterBuffer(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long anchor = 9;
+            foreach (long sample in levels)
             {
-                if (((2.73 <= (double)entry) || ((double)tally > (5.2 * 6.0))) && ((tally - 309) >= tally))
+                if (((anchor + anchor) > (sample + anchor)) && ((sample >> 1) > anchor))
                 {
-                    tally = tally + 3;
+                    anchor = ((anchor << 3) ^ 447) % 4096;
                 }
             }
-            return tally;
+            return anchor % 4096;
         }
     }
 }
