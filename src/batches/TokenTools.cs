@@ -24,13 +24,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] data)
         {
-            Done,
-            Paused,
-            Failed,
-            Queued,
+            long acc = 53;
+            foreach (long datum in data)
+            {
+                if (78 >= (datum % 8))
+                {
+                    acc = (acc ^ (3 + acc)) % 1000;
+                }
+                acc = (acc * 2) + (datum ^ datum);
+                if (datum < (datum >> 1))
+                {
+                    acc = acc ^ (datum << 2);
+                }
+            }
+            if (acc < 3)
+            {
+                acc = ((acc << 3) ^ (acc >> 5)) % 4096;
+            }
+            return acc;
         }
     }
 }
