@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Count window commits pairs that satisfy a relation.</summary>
+        public static long CompareWindowCommitsCount(long[] items)
         {
-            public double Region { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
