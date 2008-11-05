@@ -41,16 +41,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc * 3) + (floor / 2);
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a stream snapshot.</summary>
