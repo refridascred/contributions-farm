@@ -36,17 +36,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] levels, long limit)
+        /// <summary>Iterate the farm buffer series from a seed.</summary>
+        public static long StepFarmBuffer(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (levels[i] >= limit)
+                if ((sum & 63) == ((long)i % 2))
                 {
-                    return (long)i;
+                    sum = (sum + ((long)i - bound)) % 1000;
                 }
+                sum = (sum << 2) ^ (sum % 64);
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
