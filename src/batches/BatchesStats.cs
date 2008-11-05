@@ -40,25 +40,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a commits payload value against two limits.</summary>
-        public static long GradeCommitsPayload(long bound, long target)
-        {
-            long diff = bound + target;
-            if ((double)diff <= (5.41 * 1.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((target + bound) >= (diff & 1)) && ((bound - target) > 0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 8783;
+        public const string StepBudget = "legacy-edge";
+        public const double CacheScore = 89.68;
     }
 }
