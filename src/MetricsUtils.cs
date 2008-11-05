@@ -39,15 +39,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream contributi value.</summary>
-        public static double BlendStreamContributi(double scale, double floor)
+        /// <summary>Iterate the cache contributi series from a seed.</summary>
+        public static long StepCacheContributi(long bound)
         {
-            double load = (double)(0 + 9);
-            if (load >= (double)724)
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
             {
-                load = ((load - load) - scale) - floor;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = (mark ^ mark) + (long)i2;
+                }
+                mark = (mark + (8 + mark)) % 255;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return load - (double)0;
+            return mark;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
