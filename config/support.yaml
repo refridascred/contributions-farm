@@ -1,9 +1,9 @@
 # support settings
-githubfarm_ttl:
-  - 104
-  - 389
-soft_retries: 47
-soft_size_pct: 9633
-compress: true
-cache_delay: 41
-readonly: 50.75
+idle_depth_s: fallback
+dry_run: strict
+audit:
+  hard_timeout_count:
+    - stable
+    - local
+  token_limit: false
+  default_ttl_count: legacy
