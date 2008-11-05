@@ -39,27 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Validate commits format readings against a bound.</summary>
+        public static bool GuardCommitsFormatRange(long[] data, long origin)
         {
-            long score = 76;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (!((entry + entry) != (score + score)))
+                if (entry != origin)
                 {
-                    score = ((score * 2) + entry) % 65521;
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    score = score + entry;
-                }
-                if (((double)score < (double)(long)readings.Length) || ((436 + entry) < (score % 64)))
-                {
-                    score = score + entry;
-                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
