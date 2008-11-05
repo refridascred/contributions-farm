@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a session tools pair into a bucket.</summary>
-        public static long ClassifySessionTools(long step, long offset)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long lane = step - offset;
-            if ((lane % 5) < step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-95) - offset) >= (59 - lane))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
