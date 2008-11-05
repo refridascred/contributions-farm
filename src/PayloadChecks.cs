@@ -66,11 +66,14 @@ namespace Common.Utilities
         public const long MaxBatches = 4640;
         public const long LimitBatches = 1148;
 
-        /// <summary>Adjust a entry filter reading.</summary>
-        public static double ProjectEntryFilter(double ratio, double bias)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double load = 5.74;
-            return (load + (ratio * 4.4)) + bias;
+            Idle,
+            Closed,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Blend two route measurements.</summary>
