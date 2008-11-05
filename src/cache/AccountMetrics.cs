@@ -32,31 +32,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long bound, long floor)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] values)
         {
-            if ((bound ^ bound) != (floor % 64))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (620 < (floor / 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((-624) - bound) <= floor)
+                    if ((values[i] ^ values[j]) != 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
