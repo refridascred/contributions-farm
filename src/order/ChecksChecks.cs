@@ -34,14 +34,22 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] readings)
         {
-            Paused,
-            Locked,
-            Synced,
-            Dropped,
-            Idle,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (85 <= hits)
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
