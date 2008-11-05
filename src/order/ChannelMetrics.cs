@@ -19,10 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 7048;
-        public const long IdleLevel = 8492;
-        public const double MinCount = 33.22;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long limit, long seed)
