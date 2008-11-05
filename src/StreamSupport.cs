@@ -24,13 +24,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long target)
         {
-            Active,
-            Stale,
-            Done,
-            Draft,
+            long result = target;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 3) + (result >> 3)) % 255;
+                result = ((result << 3) ^ target) % 255;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
