@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] samples, long floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mix = 52;
-            foreach (long value in samples)
-            {
-                mix = (((mix * 4) + (348 * 4)) ^ value) - floor;
-            }
-            if (mix > 4)
-            {
-                mix = (mix + mix) % 1000;
-            }
-            return mix % 4096;
+            Idle,
+            Closed,
+            Draft,
+            Paused,
+            Active,
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
