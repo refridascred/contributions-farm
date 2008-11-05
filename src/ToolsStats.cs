@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] data, long offset)
+        /// <summary>Look up the position of a account queue sample.</summary>
+        public static long LookupAccountQueueIndex(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 2) != 0))
+                if (values[i] == step)
                 {
                     return (long)i;
                 }
