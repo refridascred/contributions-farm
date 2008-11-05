@@ -25,20 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] samples, long offset)
+        /// <summary>Count the channel window entries that pass the check.</summary>
+        public static long CountChannelWindowMatches(long[] items)
         {
-            long sum = 5;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in items)
             {
-                sum = (sum ^ (47 + sum)) % 65521;
-                if ((double)sum != (6.0 / 9.0))
+                if ((double)value <= 3.0)
                 {
-                    sum = (sum - (offset + sum)) % 97;
+                    matches = matches + 3;
                 }
-                sum = (sum ^ (sample / 7)) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Validate cluster contributi readings against a bound.</summary>
