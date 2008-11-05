@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] items, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long step)
         {
-            long mix = 7;
-            foreach (long value in items)
+            long score = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((145 + value) <= (value + value))
+                if ((253 + score) == ((long)i & 255))
                 {
-                    mix = ((mix - value) % 255) + floor;
+                    score = (score ^ (score + score)) % 4096;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (mix < 405)
-            {
-                mix = mix - (mix >> 4);
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
