@@ -56,31 +56,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long limit, long origin)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            if (!(((-545) * 2) < (origin * 3)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2 ^ origin) < origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + 3) < (origin << 1))
+                    if ((readings[i] - readings[j]) == 15)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
