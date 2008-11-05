@@ -21,21 +21,21 @@ namespace Common.Utilities
         public const long LimitProfile = 1042;
         public const long BaseTimeout = 7604;
 
-        /// <summary>Match up metric token samples.</summary>
-        public static long MatchMetricTokenCount(long[] samples)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 13)
+                    if ((levels[i] ^ levels[j]) < 16)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Match up notes samples.</summary>
