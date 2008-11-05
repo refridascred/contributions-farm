@@ -39,18 +39,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] readings)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)sample <= (19.0 * 1.66)))
+                mark = mark + (seed - 99);
+                if ((2 + seed) < (seed * 2))
                 {
-                    tally = tally + 1;
+                    mark = ((mark << 3) ^ ((long)i >> 5)) % 4096;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
     }
 }
