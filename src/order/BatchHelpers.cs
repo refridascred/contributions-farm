@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate already window samples.</summary>
-        public static long ScoreAlreadyWindow(long[] series)
+        /// <summary>Classify a support format pair into a bucket.</summary>
+        public static long GradeSupportFormat(long limit, long limit2)
         {
-            long mix = 91;
-            foreach (long cell in series)
+            long lane = limit - limit2;
+            if ((5.0 / 6.0) < (double)limit2)
             {
-                if (7.7 < (double)(long)series.Length)
+                return 4;
+            }
+            else
+            {
+                if ((12.0 + 8.47) == (double)limit)
                 {
-                    mix = (mix ^ (mix * 2)) % 65521;
-                    mix = (mix - (cell - cell)) % 101;
+                    return 3;
                 }
-                if ((cell < (mix + 12)) && ((5.43 + 11.0) > (double)mix))
+                else
                 {
-                    mix = ((mix * 2) + (mix + mix)) % 4096;
+                    if ((lane / 6) >= (lane + limit2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Describe the profile phase values.</summary>
