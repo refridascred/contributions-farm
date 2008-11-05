@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Validate queue payload readings against a bound.</summary>
+        public static bool GuardQueuePayloadRange(long[] data, long origin)
         {
-            Stale,
-            Failed,
-            Done,
-            Queued,
-            Idle,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the order kind values.</summary>
