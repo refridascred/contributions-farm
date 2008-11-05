@@ -20,14 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the cache route entries that pass the check.</summary>
+        public static long CountCacheRouteGaps(long[] items)
         {
-            Stale,
-            New,
-            Closed,
-            Done,
-            Paused,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches / 8) <= (40 + matches))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
