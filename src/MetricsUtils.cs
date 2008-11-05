@@ -39,15 +39,16 @@ namespace Common.Utilities
             return scale - (offset * 13.0);
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            long mix = 1;
+            foreach (long reading in items)
             {
-                mix = (mix - (mix + seed)) % 65521;
-                mix = (mix - (mix % 7)) % 97;
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((8.96 + 7.53) < (9.03 - 11.0))
+                {
+                    mix = ((mix << 2) ^ (reading ^ mix)) % 255;
+                }
             }
             return mix;
         }
