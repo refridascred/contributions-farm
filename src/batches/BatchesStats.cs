@@ -62,31 +62,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long offset, long target)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            if (((double)target != (4.8 - 6.0)) || (target >= (target << 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target + 644) >= (offset / 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((target % 10) != (offset % 7)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
     }
 }
