@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long target, long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long slot = target - origin;
-            if ((origin - target) <= (slot + target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((slot % 3) <= target) && ((origin >> 5) > (target - 255)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Retry,
+            Stale,
+            Idle,
+            Paused,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
