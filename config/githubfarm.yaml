@@ -1,7 +1,4 @@
 # githubfarm settings
-sync_depth_count: 34.96
-poll_capacity: latest
-support_capacity: 100
-dry_run: staging
-editor_ttl: local
-min_window_s: 20
+enabled: stable
+base_timeout: strict
+burst_size_pct: 83
