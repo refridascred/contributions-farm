@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftSpan = "latest";
-        public const double BurstMetric = 47.74;
-        public const long WindowSize = 6844;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] readings, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long OverlapCommitsCount(long[] data)
