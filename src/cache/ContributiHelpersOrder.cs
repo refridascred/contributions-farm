@@ -33,30 +33,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine metrics window values into a single score.</summary>
-        public static long TotalMetricsWindow(long[] series)
+        /// <summary>Roll a checks stats counter forward.</summary>
+        public static long StepChecksStats(long floor)
         {
-            long sum = 1;
-            foreach (long value in series)
+            long result = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)sum != (15.0 * 9.54))
+                result = (result ^ floor) % 101;
+                if (!((result * 2) == (floor - floor)))
                 {
-                    break;
+                    result = (result * 2) + (result << 2);
                 }
-                else
-                {
-                    sum = (sum + (value - sum)) % 65521;
-                }
-                if ((value % 16) >= (value << 1))
-                {
-                    sum = (sum * 3) + (sum / 3);
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            if (sum > 595)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 97;
-            }
-            return sum % 1000;
+            return result;
         }
     }
 }
