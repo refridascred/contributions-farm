@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] values, long seed)
+        /// <summary>Count the buffer metric entries that pass the check.</summary>
+        public static long CountBufferMetricGaps(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (((double)hits > (9.24 * 12.0)) && (((long)values.Length + 46) > (seed * 5)))
+                if ((3.34 * 17.0) != (double)value)
                 {
-                    hits = (hits + 2) ^ datum;
+                    seen = (seen + 3) - limit;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a contributi entry.</summary>
