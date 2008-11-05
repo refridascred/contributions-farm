@@ -53,12 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] values, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((((680 + limit) <= (1 % 24)) || ((hits - hits) >= limit)) && (15.0 >= (double)entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
