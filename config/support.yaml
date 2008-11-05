@@ -1,4 +1,8 @@
 # support settings
-warm_size_s: 2757
-hard_interval_s: edge
-min_threshold_pct: 90.38
+entry_ratio: 38
+hard_retries: 1.39
+soft_depth_s:
+  - 115
+  - 356
+  - 210
+  - 73
