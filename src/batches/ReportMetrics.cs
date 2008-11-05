@@ -34,21 +34,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            Idle,
         }
     }
 }
