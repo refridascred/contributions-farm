@@ -80,21 +80,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of graph notes readings.</summary>
-        public static long OverlapGraphNotesCount(long[] series)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
     }
 }
