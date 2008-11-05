@@ -49,19 +49,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate schema graph readings against a bound.</summary>
-        public static bool VerifySchemaGraphRange(long[] data, long floor)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
