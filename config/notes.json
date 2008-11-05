@@ -1,6 +1,8 @@
 {
-  "readonly": 30,
-  "base_capacity_ms": 250,
-  "default_timeout": "standard",
-  "flush_threshold_s": "edge"
+  "retry_retries_ms": 5514,
+  "readonly": ["strict", "legacy", "stable", "fallback"],
+  "contributi_depth": "stable",
+  "buffer_ratio": 7864,
+  "compress": true,
+  "session_delay": "primary"
 }
