@@ -1,4 +1,9 @@
 # githubfarm settings
-warm_delay_pct: 90.1
-batch_depth_s: primary
-contributi_limit: 83.2
+default_threshold: false
+verbose:
+  - staging
+  - open
+batch_threshold_pct: green
+base_size_count: 250
+idle_retries_ms: 32.93
+min_delay_count: latest
