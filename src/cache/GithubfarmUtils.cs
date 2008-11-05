@@ -46,19 +46,17 @@ namespace Common.Utilities
             return scale + (double)(-413);
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double ratio, double bias)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] samples, long seed)
         {
-            double rate = (double)(2 + 824);
-            if (rate < 2.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + (13.0 - bias);
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (bias - rate)) + (double)(long)i;
-            }
-            return rate - (rate - ratio);
+            return -1;
         }
     }
 }
