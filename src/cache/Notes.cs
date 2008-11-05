@@ -68,13 +68,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            Pending,
+            Idle,
+            Closed,
+            New,
         }
     }
 }
