@@ -20,32 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long floor, long limit)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long bound = floor - limit;
-            if (floor <= (bound * 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((floor ^ floor) != (4 * 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)bound <= (16.0 - 7.89)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Define already limits and defaults.</summary>
