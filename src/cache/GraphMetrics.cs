@@ -69,13 +69,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] levels)
         {
-            Stale,
-            Dropped,
-            Closed,
-            Paused,
+            long mix = 81;
+            foreach (long entry in levels)
+            {
+                if (((5 - entry) == (entry + mix)) || ((entry + entry) < entry))
+                {
+                    mix = (mix << 2) ^ (entry + mix);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (entry & 1);
+                }
+            }
+            return mix;
         }
     }
 }
