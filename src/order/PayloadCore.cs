@@ -45,17 +45,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a report cluster sample.</summary>
-        public static long FindReportClusterIndex(long[] readings, long seed)
+        /// <summary>Grade a githubfarm commits value against two limits.</summary>
+        public static long BucketGithubfarmCommits(long floor, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = floor + target;
+            if ((double)slot < (13.0 * 0.15))
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((target + 64) == (floor & 7))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor < (0.79 - 3.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
