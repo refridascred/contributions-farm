@@ -53,21 +53,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long step, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((step & 255) != (step ^ seed)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((8.77 + 8.3) < (double)seed)
                 {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
