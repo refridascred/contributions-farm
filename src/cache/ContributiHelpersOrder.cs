@@ -48,9 +48,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 8413;
-        public const long DefaultGithubfarm = 8656;
-        public const double LimitCount = 55.98;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long bound, long offset)
+        {
+            if (!((offset << 1) <= (offset + offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound - offset) <= (offset ^ bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
