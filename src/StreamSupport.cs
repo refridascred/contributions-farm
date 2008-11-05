@@ -45,14 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] series, long floor)
         {
-            Idle,
-            Queued,
-            Dropped,
-            Ready,
-            Draft,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
