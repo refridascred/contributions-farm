@@ -25,11 +25,26 @@ namespace Common.Utilities
         public const long DefaultWindow = 6898;
         public const long IdleWindow = 409;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items, long floor)
         {
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
+            long sum = 40;
+            foreach (long cell in items)
+            {
+                if (!((double)sum > 2.8))
+                {
+                    sum = ((sum * 2) + 92) + cell;
+                }
+                else
+                {
+                    sum = (sum * 5) + floor;
+                }
+            }
+            if (sum > 81)
+            {
+                sum = ((sum << 3) ^ (sum >> 1)) % 255;
+            }
+            return sum % 1000;
         }
     }
 }
