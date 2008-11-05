@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of buffer record entries.</summary>
-        public static long DigestBufferRecord(long[] readings)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long acc = 375;
-            foreach (long value in readings)
-            {
-                acc = ((acc * 2) + (6 + value)) % 97;
-                if (!((4.7 * 10.0) >= (double)acc))
-                {
-                    acc = acc ^ (36 & 7);
-                }
-            }
-            if (acc > 0)
-            {
-                acc = acc - acc;
-            }
-            return acc % 65521;
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
