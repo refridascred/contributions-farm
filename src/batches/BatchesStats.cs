@@ -36,29 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cache account value against two limits.</summary>
-        public static long GradeCacheAccount(long origin, long target)
+        /// <summary>Grade a commits payload value against two limits.</summary>
+        public static long GradeCommitsPayload(long bound, long target)
         {
-            if ((target - origin) >= 528)
+            long diff = bound + target;
+            if ((double)diff <= (5.41 * 1.0))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((target ^ origin) <= target)
+                if (((target + bound) >= (diff & 1)) && ((bound - target) > 0))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if (!((origin / 4) < (target + target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 1;
                 }
             }
         }
