@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a contributi farm value against two limits.</summary>
-        public static long ClassifyContributiFarm(long floor, long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double gain, double floor)
         {
-            long edge = floor + bound;
-            if ((edge * 4) != ((-85) / 7))
+            double mean = 9.9;
+            if (mean < floor)
             {
-                return 0;
+                mean = (mean + (floor * 8.4)) - gain;
             }
             else
             {
-                if ((double)floor > (double)edge)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((edge + floor) <= ((-6) << 2)) && (floor < edge))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)edge >= 1.46))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mean = mean - floor;
             }
+            return mean + floor;
         }
 
         /// <summary>Accumulate entry samples.</summary>
