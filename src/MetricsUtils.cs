@@ -24,19 +24,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double rate, double offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long target)
         {
-            double scale = rate;
-            if (scale > rate)
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                scale = scale + 9.78;
+                if (!((876 + mark) >= (target << 2)))
+                {
+                    mark = ((mark * 3) + target) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (offset * 13.0);
+            return mark;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
