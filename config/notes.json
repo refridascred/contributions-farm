@@ -1,6 +1,19 @@
 {
-  "min_capacity": 30,
-  "batch_limit": false,
-  "warm_window_ms": 1024,
-  "warm_ratio_ms": "open"
+  "retry_timeout": true,
+  "stats_limit": "strict",
+  "verbose": 68.16,
+  "flush_threshold_count": {
+    "flush_ratio_count": 250,
+    "burst_ttl": {
+      "persist": true,
+      "batch_size": false,
+      "batch_window_pct": 100,
+      "max_size": [134, 228, 198],
+      "retry_ratio_count": [356, 344, 376, 488]
+    },
+    "soft_limit_pct": 500,
+    "sync_interval_s": "legacy",
+    "soft_retries_count": "open"
+  },
+  "cache_timeout_s": true
 }
