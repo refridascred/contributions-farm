@@ -1,18 +1,15 @@
 # support settings
-enabled: eu-west
-idle_limit_count: open
-retry_threshold_pct: 57
-default_ratio_count:
-  metric_ratio:
-    - 103
-    - 469
-    - 266
-    - 31
-  compress: false
-  context_timeout: 8784
-  burst_timeout_pct: 92.98
-  persist: 93
-  base_interval_s:
-    - standard
+default_window_s: 66.99
+batch_size_pct: 74.14
+format_capacity: cached
+compress: 5.03
+cache_ratio_pct:
+  readonly: false
+  audit: staging
+  idle_interval_count: 100
+  soft_ttl_count:
     - legacy
-    - cached
+    - fallback
+    - standard
+  strict: primary
+  account_capacity: true
