@@ -22,14 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitScore = "alpha";
+        public const double DefaultCommits = 97.68;
+        public const double BatchCommits = 44.82;
+        public const long RetryCommits = 4874;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long limit, long seed)
