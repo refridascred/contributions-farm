@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double bias, double bias2)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] levels, long step)
         {
-            double mean = (2.62 / 9.0) * 5.6;
-            if (mean <= bias2)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                mean = (mean + 6.0) - bias;
+                if ((entry % 8) < (tally / 8))
+                {
+                    tally = (tally + 2) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - bias2) + (double)(long)i;
-            }
-            return mean - (mean * 6.2);
+            return tally;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
