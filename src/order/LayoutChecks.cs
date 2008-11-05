@@ -69,23 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] series, long offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] samples)
         {
-            long total = 2;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)total >= (6.8 * 4.69))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total - (offset >> 1)) % 97;
-                }
-                total = (total - (offset & 15)) % 1000;
-                if ((datum * 5) < 819)
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Locate a queue record reading by value.</summary>
