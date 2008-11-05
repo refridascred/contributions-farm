@@ -1,14 +1,12 @@
 # Command notes
 
-Each batch is validated before it reaches the tools queue.
-Each metric is validated before it reaches the layout queue.
-Keep token and farm names short and lowercase.
-
-A channel that stays idle for too long is moved to the support list.
-Run the commits check before changing any cluster limits.
+Keep command and queue names short and lowercase.
+The contributi report groups every account by context.
+Each profile is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Review profile limits each release
-- Validate queue input early
-- Keep record values small
+- Log every contributi change
+- Keep queue values small
+- Review channel limits each release
+- Validate stream input early
