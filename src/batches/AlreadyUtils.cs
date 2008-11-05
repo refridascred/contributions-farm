@@ -68,22 +68,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] readings)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long acc = 99;
+            foreach (long item in readings)
             {
-                if (!((value >> 2) < tally))
+                if ((item + acc) >= (item << 2))
                 {
-                    tally = tally + 2;
+                    acc = acc - acc;
                 }
-                else
+                if ((7.8 + 6.7) != (double)acc)
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
     }
 }
