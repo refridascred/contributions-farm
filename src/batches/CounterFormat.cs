@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] samples, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (samples[i] > target)
+                if ((77 + reading) >= count)
                 {
-                    return (long)i;
+                    count = (count + 2) - limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the token mode values.</summary>
