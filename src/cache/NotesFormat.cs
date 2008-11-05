@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] readings, long seed)
         {
-            long result = 54;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                result = ((result ^ result) % 65521) - cell;
-                if (626 < result)
+                if (entry < seed)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return result % 65521;
+            return valid;
         }
 
         /// <summary>Hold a editor summary.</summary>
