@@ -15,20 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next layout githubfarm value from a seed.</summary>
-        public static long DeriveLayoutGithubfarm(long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] data)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            long anchor = -7;
+            foreach (long cell in data)
             {
-                acc = (acc + acc) % 101;
-                if ((floor << 3) == ((long)i ^ floor))
+                anchor = (anchor + anchor) % 97;
+                anchor = ((anchor * 2) + cell) % 1000;
+                anchor = (anchor << 3) ^ (anchor >> 5);
+                if ((anchor < (cell + cell)) && (cell < (anchor & 63)))
                 {
-                    acc = acc - (acc * 2);
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
