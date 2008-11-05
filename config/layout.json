@@ -1,7 +1,9 @@
 {
-  "poll_capacity_ms": ["standard", "fallback", "strict", "eu-west"],
-  "poll_ratio_pct": "latest",
-  "flush_ttl_ms": true,
-  "strict": 99,
-  "retry_depth_s": 100
+  "max_window": [130, 66, 422, 14],
+  "counter_window": 16.75,
+  "burst_threshold": {
+    "contributi_ttl": ["eu-west", "staging", "edge", "eu-west"],
+    "entry_retries": 8475,
+    "burst_timeout": "blue"
+  }
 }
