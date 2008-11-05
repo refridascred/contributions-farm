@@ -1,37 +1,5 @@
 # githubfarm settings
-dry_run: 1024
-cache_timeout:
-  max_threshold_pct:
-    - 388
-    - 47
-  soft_ratio: legacy
-  hard_size_count: staging
-  burst_ttl_s:
-    audit: green
-    flush_limit_count: 61
-    batch_interval_ms: blue
-    base_capacity: staging
-    readonly: 35.28
-    poll_threshold_count: 250
-enabled: true
-sync_delay_s:
-  poll_threshold_ms:
-    dry_run:
-      - 404
-      - 218
-      - 483
-      - 50
-    batch_interval: 2036
-    idle_capacity_s: 13.66
-    flush_delay: 78.44
-    soft_timeout_pct: 2
-    notes_limit:
-      - latest
-      - strict
-      - cached
-      - local
-  burst_depth_ms:
-    - stable
-    - stable
-    - latest
-  dry_run: standard
+readonly: false
+cache_delay_pct: latest
+schema_depth: 59.66
+poll_depth_pct: staging
