@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Derive the next record report value from a seed.</summary>
+        public static long SeriesRecordReport(long limit)
         {
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((limit - result) < (limit + (long)i))
+                {
+                    result = (result + (limit / 4)) % 101;
+                    result = (result << 2) ^ (67 % 7);
+                }
+                if (limit <= (limit / 6))
+                {
+                    result = ((result << 2) ^ ((long)i & 255)) % 97;
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
