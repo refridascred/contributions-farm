@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already editor readings against a rule.</summary>
-        public static long MeasureAlreadyEditorOutliers(long[] levels)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum < (8.67 * 20.0))
+                if (values[i] <= floor)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
