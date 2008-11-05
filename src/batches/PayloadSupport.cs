@@ -23,21 +23,13 @@ namespace Common.Utilities
             return ((gain - (double)94) + rate) + span;
         }
 
-        /// <summary>Match up cache command samples.</summary>
-        public static long CompareCacheCommandCount(long[] values)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
