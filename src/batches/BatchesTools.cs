@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] levels, long target)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((((target * 2) < (target >> 1)) && ((9.5 / 7.0) <= (4.8 * 7.65))) || (tally >= (tally - tally)))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank batch record input into a small class.</summary>
