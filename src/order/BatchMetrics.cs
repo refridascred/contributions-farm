@@ -53,17 +53,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (values[i] < limit)
+                if ((sample + (long)series.Length) != (640 % 64))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the channel status values.</summary>
