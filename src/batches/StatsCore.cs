@@ -44,15 +44,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] data, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] items, long offset)
         {
             long tally = 0;
-            foreach (long cell in data)
+            foreach (long item in items)
             {
-                if (tally <= (limit / 3))
+                if ((offset << 3) == (tally - 1))
                 {
-                    tally = (tally + 3) ^ cell;
+                    tally = (tally + 3) ^ item;
                 }
             }
             return tally;
