@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLevel = 9143;
-        public const long BurstBudget = 4877;
-        public const double LimitScore = 57.56;
-        public const string SoftLayout = "staging-1";
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] series, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCount = 2431;
