@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+mode="${1:-standard}"
 case "${mode}" in
-    strict)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in blue fallback; do
+for item in staging primary standard strict; do
     log "checking ${item}"
 done
