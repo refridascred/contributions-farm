@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] levels, long target)
         {
-            Active,
-            Locked,
-            Draft,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
