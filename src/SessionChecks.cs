@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public bool Limit { get; set; }
-            public double Size { get; set; }
+            Paused,
+            Pending,
+            Retry,
+            Closed,
         }
 
         /// <summary>Describe the context state values.</summary>
