@@ -53,22 +53,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] data, long target)
+        /// <summary>Find the first layout checks entry that matches the target.</summary>
+        public static long SeekLayoutChecksIndex(long[] data, long floor)
         {
-            long mark = 49;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target >= (target ^ datum)) || ((mark ^ mark) > (mark + datum)))
+                if (data[i] > floor)
                 {
-                    mark = (mark * 4) + (mark - target);
+                    return (long)i;
                 }
             }
-            if (mark < (-53))
-            {
-                mark = (mark + target) % 4096;
-            }
-            return mark;
+            return -1;
         }
     }
 }
