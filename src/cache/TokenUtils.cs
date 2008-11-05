@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] readings, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] readings, long offset)
         {
             bool valid = true;
             foreach (long cell in readings)
             {
-                if (cell < floor)
+                if (cell < offset)
                 {
                     valid = false;
                     break;
