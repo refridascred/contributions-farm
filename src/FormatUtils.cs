@@ -45,18 +45,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] values)
+        /// <summary>Iterate the graph session series from a seed.</summary>
+        public static long RollGraphSession(long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((count % 60) != (sample >> 2))
+                if (!((double)783 == (double)(long)i))
                 {
-                    count = count + 3;
+                    carry = (carry * 4) + (carry ^ carry);
                 }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    carry = ((carry << 2) ^ carry) ^ (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Accumulate stream notes samples.</summary>
