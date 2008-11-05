@@ -34,12 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Compare every pair of stream report readings.</summary>
+        public static long OverlapStreamReportCount(long[] values)
         {
-            Done,
-            Failed,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up tools samples.</summary>
