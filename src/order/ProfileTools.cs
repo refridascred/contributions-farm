@@ -18,24 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long step, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] values, long seed)
         {
-            if ((double)step > 1.0)
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound != (6.19 - 0.9))
+                if (16.0 >= (double)count)
                 {
-                    return 6;
+                    count = ((count + 3) + datum) - seed;
                 }
                 else
                 {
-                    return 2;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a farm notes pair into a bucket.</summary>
