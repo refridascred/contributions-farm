@@ -16,11 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double rate, double span)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double gain = 13.0;
-            return ((gain - (double)94) + rate) + span;
+            public double Level { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the channel kind values.</summary>
