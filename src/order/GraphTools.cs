@@ -26,20 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks cache value from a seed.</summary>
-        public static long StepChecksCache(long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state << 2) ^ (offset & 3);
-                if (13.0 <= (double)state)
-                {
-                    state = state - (state << 1);
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Retry,
+            Idle,
+            Synced,
         }
 
         /// <summary>Roll a context buffer counter forward.</summary>
