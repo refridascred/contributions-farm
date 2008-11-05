@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] series)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (!(cell < (8 - cell)))
+                if ((tally + tally) == (tally & 255))
                 {
-                    count = count + 1;
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
