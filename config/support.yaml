@@ -1,7 +1,33 @@
 # support settings
-min_depth: 41
-default_size_s: 250
-retry_window_count: true
-githubfarm_ratio: 100
-readonly: 14.4
-strict: legacy
+hard_limit_s:
+  batch_delay_s:
+    - fallback
+    - edge
+    - local
+  enabled:
+    - 274
+    - 106
+    - 62
+    - 50
+  min_interval_pct: false
+poll_ttl_pct: 5753
+base_retries: 245
+min_depth:
+  batch_limit_s:
+    - 226
+    - 261
+  sync_ttl: true
+  window_threshold:
+    soft_timeout: staging
+    enabled:
+      - 121
+      - 418
+      - 169
+    token_limit: 250
+    min_window_s: 9140
+    cache_limit_ms:
+      - 15
+      - 299
+      - 147
+      - 120
+    report_ratio: 2009
