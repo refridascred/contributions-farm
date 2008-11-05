@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry >= limit)
                 {
-                    if ((items[i] + items[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
