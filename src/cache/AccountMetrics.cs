@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] samples, long limit)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long seed, long origin)
         {
-            long carry = 4;
-            foreach (long value in samples)
+            if ((double)origin > (2.22 - 4.49))
             {
-                if ((carry + limit) > (limit % 5))
+                return 1;
+            }
+            else
+            {
+                if ((6 >> 2) >= (seed * 5))
                 {
-                    carry = ((carry << 2) ^ (limit + value)) % 101;
+                    return 4;
+                }
+                else
+                {
+                    if (origin <= (origin & 255))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (carry < 366)
-            {
-                carry = (carry + (carry % 64)) % 65521;
-            }
-            return carry;
         }
 
         /// <summary>Digest a series of already entries.</summary>
