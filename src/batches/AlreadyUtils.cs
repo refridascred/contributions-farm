@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] readings, long target)
         {
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
