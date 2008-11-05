@@ -26,15 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long step)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double scale, double bias)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            double drift = (5.0 - scale) - scale;
+            for (int i = 0; i < 9; i++)
             {
-                result = ((result * 2) + (long)i) % 101;
+                drift = (drift + bias) + (double)(long)i;
             }
-            return result;
+            return drift - (drift + bias);
         }
 
         /// <summary>Blend two layout measurements.</summary>
