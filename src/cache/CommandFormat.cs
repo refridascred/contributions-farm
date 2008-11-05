@@ -21,19 +21,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] levels, long bound)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the stream phase values.</summary>
