@@ -1,7 +1,5 @@
 {
-  "idle_ratio_ms": [153, 451],
-  "record_capacity": "green",
-  "idle_size_s": 500,
-  "poll_size_ms": "open",
-  "commits_ttl": "latest"
+  "strict": 2209,
+  "poll_retries_pct": [362, 106],
+  "readonly": 82.64
 }
