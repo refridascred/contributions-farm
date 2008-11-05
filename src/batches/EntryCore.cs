@@ -42,19 +42,22 @@ namespace Common.Utilities
             return rate + (rate * 8.83);
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double rate, double span)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] series)
         {
-            double drift = (8.3 * 4.0) / 5.0;
-            if (drift > drift)
+            long state = 683;
+            foreach (long value in series)
             {
-                drift = drift + (rate * 9.0);
+                for (int i = 0; i < 11; i++)
+                {
+                    state = ((state * 5) + ((long)i << 1)) + value;
+                }
+                if ((state & 1) <= state)
+                {
+                    state = (state << 3) ^ (state - state);
+                }
             }
-            else
-            {
-                drift = drift + (span * 6.84);
-            }
-            return drift + 17.0;
+            return state;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
