@@ -21,17 +21,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] samples, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
+                if ((((2.0 / 8.0) != (double)matches) && ((4.0 - 6.0) == (double)step)) && ((0 * 2) <= (value - value)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
