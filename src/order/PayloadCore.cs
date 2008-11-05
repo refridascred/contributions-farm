@@ -28,27 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] data, long floor)
         {
-            long result = 80;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((double)result <= 8.91)
+                if ((floor + floor) < 5)
                 {
-                    result = result - (cell << 2);
-                    result = ((result << 2) ^ result) % 4096;
-                }
-                if ((double)cell == (0.4 + 16.0))
-                {
-                    result = ((result * 5) + (result + 70)) % 101;
-                }
-                else
-                {
-                    result = result - (result + result);
+                    count = (count + 3) - entry;
                 }
             }
-            return result % 65521;
+            return count;
         }
     }
 }
