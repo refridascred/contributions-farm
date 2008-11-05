@@ -17,19 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] levels)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] series, long step)
         {
-            long state = 20;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                state = ((state * 3) + (state - state)) % 1000;
-                if (((state - value) <= (34 >> 5)) && ((double)value < (1.4 * 4.0)))
+                if (sample > step)
                 {
-                    state = (state + (value - state)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return valid;
         }
 
         /// <summary>Match up tools githubfarm samples.</summary>
