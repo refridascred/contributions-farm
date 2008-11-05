@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] series)
         {
-            Paused,
-            Failed,
-            Pending,
-            Stale,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!(value <= (value >> 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
