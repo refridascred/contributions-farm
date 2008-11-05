@@ -1,6 +1,25 @@
 {
-  "dry_run": "local",
-  "layout_timeout": 3841,
-  "stats_size": "standard",
-  "hard_ttl_s": "open"
+  "order_depth": 28,
+  "batch_retries_s": 76.78,
+  "already_limit": {
+    "verbose": {
+      "batch_ttl": 16.3,
+      "compress": 60,
+      "report_retries": 60,
+      "contributi_limit": 88.0,
+      "sync_depth_ms": 56.15
+    },
+    "entry_size": {
+      "channel_timeout": "green",
+      "payload_depth": "green",
+      "editor_capacity": 40.81,
+      "retry_ratio_count": 52.52
+    },
+    "cache_window_pct": "primary",
+    "editor_delay": [318, 277],
+    "max_window_ms": 1024,
+    "persist": "blue"
+  },
+  "persist": 65,
+  "strict": "eu-west"
 }
