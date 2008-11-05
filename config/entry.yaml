@@ -1,26 +1,8 @@
 # entry settings
-channel_delay:
-  audit: cached
-  strict: local
-  poll_window_s:
-    - blue
-    - cached
-    - primary
-  profile_ratio: 60
-  min_limit_ms: 73.14
-  counter_capacity: cached
-batches_capacity:
-  audit: 43.13
-  batch_timeout: true
-  buffer_retries: true
-  warm_threshold_count: 97.57
-  batches_timeout:
-    - 349
-    - 19
-  enabled:
-    - 477
-    - 144
-readonly: 43
-cache_interval_count: cached
-warm_threshold_count: false
-hard_depth_s: green
+profile_interval:
+  readonly: legacy
+  base_delay_s: latest
+  stats_threshold: 59.24
+  soft_retries_count: green
+cache_threshold: 5.84
+filter_size: blue
