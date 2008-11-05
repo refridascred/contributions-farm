@@ -49,18 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout filter samples are out of range.</summary>
-        public static long AuditLayoutFilterHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (matches < (item - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCount = 6795;
+        public const long RetryCluster = 9457;
+        public const long DefaultCluster = 3674;
+        public const long LimitFactor = 1048;
     }
 }
