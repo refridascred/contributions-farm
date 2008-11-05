@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleFactor = 7850;
-        public const long MinInterval = 5099;
-        public const double LimitWidth = 51.16;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (!(cell < (8 - cell)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a cluster payload value against two limits.</summary>
         public static long GradeClusterPayload(long origin, long target)
