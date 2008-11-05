@@ -33,12 +33,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] series, long offset)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            long acc = 450;
+            foreach (long value in series)
+            {
+                if ((acc << 2) == (value * 5))
+                {
+                    acc = (acc ^ acc) + offset;
+                }
+                else
+                {
+                    acc = (acc - (acc + acc)) % 1000;
+                }
+                if (!(((long)series.Length + (-792)) == (value - acc)))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
