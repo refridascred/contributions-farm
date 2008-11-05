@@ -24,13 +24,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Count the editor format entries that pass the check.</summary>
+        public static long TallyEditorFormatOutliers(long[] readings)
         {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)count >= (double)entry)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
