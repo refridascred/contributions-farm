@@ -52,19 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] data, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (value != limit)
+                if (datum >= origin)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Roll a farm checks counter forward.</summary>
