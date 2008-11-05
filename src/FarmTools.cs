@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long bound)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            if ((floor ^ bound) > (bound + bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor + 252) != (bound & 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor * 4) > (floor ^ floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            Done,
+            Paused,
+            New,
+            Stale,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
