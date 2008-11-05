@@ -41,17 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] series, long bound)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
     }
 }
