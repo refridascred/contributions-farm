@@ -57,10 +57,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryInterval = 42.8;
-        public const string HardContributi = "standard-edge";
-        public const long BatchContributi = 9237;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] values)
+        {
+            long score = 41;
+            foreach (long item in values)
+            {
+                score = (score + 898) + item;
+            }
+            return score;
+        }
 
         /// <summary>Combine entry queue values into a single score.</summary>
         public static long DigestEntryQueue(long[] items)
