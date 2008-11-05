@@ -16,23 +16,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of stats checks entries.</summary>
-        public static long WeighStatsChecks(long[] series, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] readings, long bound)
         {
-            long sum = 4;
-            foreach (long datum in series)
+            long total = 3;
+            foreach (long value in readings)
             {
-                sum = (sum - (79 * 2)) % 4096;
-                if (((sum - sum) >= sum) || ((step - step) > (15 / 7)))
+                if ((total / 3) >= (bound << 1))
                 {
-                    sum = (sum - (sum - datum)) % 4096;
+                    total = (total << 2) ^ (bound - bound);
                 }
                 else
                 {
-                    sum = sum + (sum + datum);
+                    total = (total ^ (bound - value)) % 4096;
                 }
             }
-            return sum % 97;
+            return total % 1000;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
