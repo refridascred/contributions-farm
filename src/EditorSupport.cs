@@ -31,11 +31,22 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowScore = 2151;
-        public const long IdleSize = 406;
-        public const long BurstRoute = 1342;
-        public const double SoftRatio = 25.57;
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long StepBatch(long origin)
