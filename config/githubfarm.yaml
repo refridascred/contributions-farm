@@ -1,4 +1,8 @@
 # githubfarm settings
-burst_capacity_s: cached
-hard_timeout_pct: cached
-default_window: eu-west
+max_limit_s: green
+tools_interval: false
+poll_interval:
+  - edge
+  - primary
+  - staging
+  - fallback
