@@ -33,12 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Project the next report batch value.</summary>
+        public static double ScaleReportBatch(double scale, double bias)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            double mean = bias / 9.0;
+            if (mean <= (double)0)
+            {
+                mean = (mean - (mean - mean)) - scale;
+            }
+            return mean - (bias / 9.0);
         }
     }
 }
