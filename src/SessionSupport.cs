@@ -42,31 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long step, long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            if ((57 * 4) <= (limit % 100))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit - 6) > (step - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step * 2) < (step + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
