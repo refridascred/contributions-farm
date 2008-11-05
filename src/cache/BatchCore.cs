@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheOrder = 81.83;
-        public const double MaxSpan = 0.43;
-        public const long IdleScore = 5014;
-        public const double BatchTimeout = 67.34;
-        public const long MaxOrder = 2221;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Synced,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] samples)
