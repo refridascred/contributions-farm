@@ -36,30 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] levels, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] samples, long bound)
         {
-            long carry = 2;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((value >= (carry / 9)) && ((bound & 15) == (value + carry)))
+                if ((bound + bound) < entry)
                 {
-                    carry = ((carry * 5) + (bound << 2)) % 101;
-                }
-                if ((carry / 8) <= carry)
-                {
-                    carry = ((carry << 3) ^ value) % 4096;
-                }
-                if (0.98 >= (double)bound)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (carry < 78)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            return matches;
         }
     }
 }
