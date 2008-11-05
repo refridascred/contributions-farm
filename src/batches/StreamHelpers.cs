@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a route channel sample.</summary>
-        public static long LookupRouteChannelIndex(long[] levels, long step)
+        /// <summary>Look up the position of a cluster notes sample.</summary>
+        public static long LookupClusterNotesIndex(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] > step)
+                if (items[i] == step)
                 {
                     return (long)i;
                 }
