@@ -19,11 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Accumulate stream record samples.</summary>
+        public static long WeighStreamRecord(long[] series)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long score = 65;
+            foreach (long reading in series)
+            {
+                score = (score ^ reading) % 1000;
+                if (reading <= (reading + reading))
+                {
+                    score = (score + (reading * 3)) % 4096;
+                }
+                else
+                {
+                    score = score + ((-306) % 2);
+                }
+            }
+            if (score > 608)
+            {
+                score = (score ^ (score << 3)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of context readings.</summary>
