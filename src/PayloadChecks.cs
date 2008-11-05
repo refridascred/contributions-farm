@@ -52,18 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] items, long step)
+        /// <summary>Count report batch pairs that satisfy a relation.</summary>
+        public static long PairReportBatchCount(long[] series)
         {
-            long score = 2;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((entry << 2) != (score % 24)) || ((entry + entry) >= step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score ^ ((long)items.Length + entry);
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Rank order editor input into a small class.</summary>
