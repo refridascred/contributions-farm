@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many notes stats samples are out of range.</summary>
-        public static long TallyNotesStatsGaps(long[] items, long limit)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)(long)items.Length < (7.72 - 0.2))
-                {
-                    tally = ((tally + 3) + cell) - limit;
-                }
-            }
-            return tally;
+            Idle,
+            Failed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Accumulate schema samples.</summary>
