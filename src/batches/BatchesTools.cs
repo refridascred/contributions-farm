@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            long acc = 39;
+            foreach (long value in samples)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                acc = (acc + (1 + value)) % 4096;
+                if (3.57 < (double)value)
+                {
+                    acc = (acc ^ (-78)) % 1000;
+                }
+                else
+                {
+                    acc = acc ^ 85;
+                }
+                if ((5.0 + 8.0) <= (double)value)
+                {
+                    break;
+                }
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
