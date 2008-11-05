@@ -12,22 +12,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 7880;
+        public const double SoftFactor = 4.84;
+        public const double LimitSize = 70.58;
+        public const double LimitAlready = 36.42;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepChannel = 3352;
