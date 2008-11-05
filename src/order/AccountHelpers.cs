@@ -73,38 +73,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a cache profile value against two limits.</summary>
-        public static long SortCacheProfile(long seed, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] readings, long target)
         {
-            if ((offset - seed) == (seed % 12))
+            long sum = 4;
+            foreach (long cell in readings)
             {
-                return 0;
+                sum = ((sum + (target / 9)) % 97) + cell;
             }
-            else
-            {
-                if (!((seed - seed) > 27))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed ^ seed) != (seed >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1.85 - 5.0) == (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
