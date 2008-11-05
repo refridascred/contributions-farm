@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((bound + item) != (tally % 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardCount = 2183;
+        public const long WindowFilter = 2657;
+        public const long RetryFilter = 430;
+        public const long CacheDepth = 2506;
+        public const string MaxFilter = "latest-edge";
 
         /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
         public static long TallyChannelGithubfarmOutliers(long[] data, long step)
