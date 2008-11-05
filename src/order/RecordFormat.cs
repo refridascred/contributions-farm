@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstCount = 3553;
+        public const long DefaultScore = 8177;
+        public const long StepRatio = 7314;
 
         /// <summary>Find the first report layout entry that matches the target.</summary>
         public static long FindReportLayoutIndex(long[] series, long bound)
