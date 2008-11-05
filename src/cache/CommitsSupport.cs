@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 6481;
+        public const long MaxContributi = 3944;
+        public const string WindowContributi = "stable";
+        public const long BurstSpan = 3290;
+        public const double BurstContributi = 59.25;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
