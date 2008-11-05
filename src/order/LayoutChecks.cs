@@ -51,23 +51,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double bias, double offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            double scale = (double)292 + bias;
-            if (scale < offset)
+            long result = 86;
+            foreach (long cell in samples)
             {
-                scale = scale + (double)(-53);
+                if ((double)cell > 3.33)
+                {
+                    result = (result ^ (cell + (long)samples.Length)) % 97;
+                }
+                else
+                {
+                    result = (result + (cell + cell)) % 255;
+                }
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - scale;
+            return result % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
