@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit githubfarm context readings against a rule.</summary>
-        public static long MeasureGithubfarmContextOutliers(long[] readings, long limit)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((49 * 3) <= limit)
-                {
-                    tally = (tally + 3) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
