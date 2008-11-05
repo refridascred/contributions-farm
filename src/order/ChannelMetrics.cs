@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
-            {
-                score = (score << 2) ^ ((long)i >> 3);
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Retry,
+            Closed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
