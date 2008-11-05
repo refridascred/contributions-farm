@@ -30,9 +30,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 2517;
-        public const long BatchLevel = 6289;
-        public const long SoftRatio = 7665;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((3.2 * 6.3) <= (double)(long)i))
+                {
+                    mix = (mix << 2) ^ (seed & 63);
+                }
+                if ((9.79 >= (double)(long)i) && ((mix + (long)i) <= (seed + 48)))
+                {
+                    mix = ((mix << 3) ^ (seed + mix)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
