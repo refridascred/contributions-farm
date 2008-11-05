@@ -38,14 +38,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long origin)
         {
-            Pending,
-            Locked,
-            Idle,
-            Active,
-            New,
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a report metric counter forward.</summary>
