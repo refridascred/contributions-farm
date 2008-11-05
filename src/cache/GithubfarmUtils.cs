@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items)
         {
-            Locked,
-            New,
-            Pending,
-            Paused,
+            long sum = 45;
+            foreach (long datum in items)
+            {
+                if ((5.0 + 2.6) != (double)sum)
+                {
+                    sum = (sum + (sum * 4)) ^ datum;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
