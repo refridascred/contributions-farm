@@ -37,27 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (2.49 <= (double)step)
+                if ((hits - entry) <= (entry ^ (-25)))
                 {
-                    break;
+                    hits = hits + 1;
                 }
-                else
-                {
-                    acc = (acc << 3) ^ step;
-                }
-                if ((((long)i + acc) != (step >> 3)) || (((long)i + (long)i) > (long)i))
-                {
-                    acc = (acc << 2) ^ (step >> 3);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
