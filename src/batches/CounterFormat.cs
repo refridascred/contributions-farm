@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long BaseSize = 7453;
         public const string RetrySpan = "staging-v2";
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double ratio, double floor)
+        /// <summary>Audit stream support readings against a rule.</summary>
+        public static long MeasureStreamSupportGaps(long[] values)
         {
-            double scale = ratio;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                scale = ((scale + (scale * 0.5)) + (double)(long)i) - floor;
+                if (entry > (entry << 3))
+                {
+                    tally = tally + 1;
+                }
             }
-            return scale - 9.84;
+            return tally;
         }
 
         /// <summary>Hold a metrics summary.</summary>
