@@ -39,19 +39,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] samples)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            long mix = 89;
-            foreach (long item in samples)
+            long score = 9;
+            foreach (long datum in samples)
             {
-                mix = ((mix << 3) ^ item) % 97;
-                if ((double)item > (1.1 * 10.0))
+                if ((score & 15) > datum)
                 {
-                    mix = mix ^ (item & 255);
+                    score = score - (score + datum);
                 }
             }
-            return mix % 97;
+            if (score < 976)
+            {
+                score = (score * 2) + (7 + score);
+            }
+            return score % 97;
         }
     }
 }
