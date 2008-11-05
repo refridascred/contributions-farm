@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            Failed,
-            Paused,
-            Active,
-            Idle,
-            Queued,
+            long sum = 803;
+            foreach (long entry in levels)
+            {
+                sum = ((sum + sum) % 4096) ^ entry;
+            }
+            if (sum > 54)
+            {
+                sum = (sum + 57) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
