@@ -37,11 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinFactor = "fallback-1";
-        public const long BatchFactor = 4994;
-        public const long CacheSize = 7881;
-        public const long RetryInterval = 5699;
-        public const long StepStream = 424;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleSpan = 1329;
+        public const long SoftMetrics = 2824;
+        public const long MaxMetrics = 6884;
+        public const long CacheMetrics = 1926;
     }
 }
