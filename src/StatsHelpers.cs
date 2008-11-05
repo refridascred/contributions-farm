@@ -20,16 +20,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = mix - mix;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Retry,
+            Active,
+            Dropped,
+            Paused,
+            Failed,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
