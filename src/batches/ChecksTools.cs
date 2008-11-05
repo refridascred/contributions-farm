@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Rank context entry input into a small class.</summary>
+        public static long RankContextEntry(long offset, long offset2)
         {
-            Paused,
-            Ready,
-            Dropped,
+            long next = offset - offset2;
+            if ((offset <= (offset + offset)) || (offset <= (offset - next)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((12.0 / 3.0) < (double)offset2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
