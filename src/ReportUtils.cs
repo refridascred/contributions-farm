@@ -15,12 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public long Region { get; set; }
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
+            Locked,
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Iterate the metric queue series from a seed.</summary>
