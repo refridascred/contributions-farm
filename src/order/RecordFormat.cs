@@ -19,17 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first report layout entry that matches the target.</summary>
-        public static long FindReportLayoutIndex(long[] series, long bound)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
