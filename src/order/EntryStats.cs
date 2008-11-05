@@ -59,18 +59,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] series, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mix = 5;
+            foreach (long datum in samples)
             {
-                if ((((-2) ^ count) <= (5 + 8)) && (entry > (floor / 2)))
+                if ((mix & 15) < (551 % 5))
                 {
-                    count = count + 3;
+                    mix = (((mix << 2) ^ (mix >> 1)) % 4096) + datum;
+                }
+                else
+                {
+                    mix = (mix + (mix << 2)) % 4096;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
