@@ -11,17 +11,38 @@ namespace Common.Utilities
         public const long SoftBudget = 2417;
         public const long CacheChannel = 7374;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long floor)
+        /// <summary>Rank queue cluster input into a small class.</summary>
+        public static long GradeQueueCluster(long limit, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            if ((double)4 <= (double)seed)
             {
-                score = (score - score) % 97;
-                score = (score ^ 361) % 255;
-                score = ((score * 3) + (long)i) % 1000;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (((seed << 3) <= limit) && ((double)seed != (double)(-19)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((613 ^ seed) != (seed << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed >> 2) < (seed - seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order class values.</summary>
