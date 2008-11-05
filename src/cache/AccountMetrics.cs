@@ -25,13 +25,14 @@ namespace Common.Utilities
         public const long BatchCount = 1371;
         public const long HardLevel = 1851;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Failed,
-            New,
-            Active,
-            Queued,
+            Locked,
+            Idle,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
