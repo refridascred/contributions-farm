@@ -42,31 +42,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the filter githubfarm series from a seed.</summary>
-        public static long RollFilterGithubfarm(long seed)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((-2) - anchor) < 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor * 3) + (42 % 10);
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((anchor ^ anchor) != (seed & 15))
-                {
-                    anchor = (anchor * 2) + (anchor * 3);
-                }
-                if (anchor <= (seed + (long)i))
-                {
-                    anchor = (anchor ^ ((long)i % 97)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor % 97)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return tally;
         }
     }
 }
