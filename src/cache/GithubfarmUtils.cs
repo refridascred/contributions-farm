@@ -49,19 +49,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double rate, double bias)
-        {
-            double drift = rate;
-            if (drift > (rate * 12.0))
-            {
-                drift = drift + 7.39;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - (4.98 / 2.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinDepth = "open-edge";
+        public const double HardRoute = 26.17;
+        public const long DefaultRoute = 4831;
+        public const long CacheRoute = 6827;
     }
 }
