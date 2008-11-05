@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Iterate the already support series from a seed.</summary>
+        public static long IterateAlreadySupport(long origin)
         {
-            Pending,
-            New,
-            Done,
-            Failed,
+            long score = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((origin + origin) >= score) && (score <= (score >> 2)))
+                {
+                    score = ((score * 3) + (origin % 3)) % 4096;
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
