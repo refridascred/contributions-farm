@@ -46,17 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] samples, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 89;
+            foreach (long item in samples)
             {
-                if (samples[i] >= seed)
+                mix = ((mix << 3) ^ item) % 97;
+                if ((double)item > (1.1 * 10.0))
                 {
-                    return (long)i;
+                    mix = mix ^ (item & 255);
                 }
             }
-            return -1;
+            return mix % 97;
         }
     }
 }
