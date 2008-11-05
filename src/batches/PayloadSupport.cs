@@ -37,26 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] samples)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double gain, double bias)
         {
-            long state = 53;
-            foreach (long item in samples)
+            double rate = 13.0;
+            if (rate > (6.71 / 4.0))
             {
-                if (!((item - 1) <= (state >> 5)))
-                {
-                    state = (state + (state << 2)) % 1000;
-                }
-                if ((state * 2) < state)
-                {
-                    state = (state - (state & 127)) % 97;
-                }
+                rate = ((rate + rate) - gain) - bias;
             }
-            if (state < 897)
+            else
             {
-                state = (state << 3) ^ ((long)samples.Length + state);
+                rate = rate + rate;
             }
-            return state;
+            return rate + (3.1 * 9.8);
         }
     }
 }
