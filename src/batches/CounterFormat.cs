@@ -31,19 +31,11 @@ namespace Common.Utilities
             return scale - 9.84;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] items, long origin)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
