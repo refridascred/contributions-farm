@@ -33,12 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
