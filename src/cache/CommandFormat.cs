@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 802;
-        public const long StepCount = 4655;
-        public const double MaxOrder = 29.17;
-        public const long BurstOrder = 4679;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] values)
+        {
+            long mark = 556;
+            foreach (long reading in values)
+            {
+                if (mark >= reading)
+                {
+                    mark = mark + 134;
+                }
+                if ((6.95 / 3.0) >= (double)(long)values.Length)
+                {
+                    continue;
+                }
+                if ((double)reading < (0.1 * 2.0))
+                {
+                    mark = ((mark * 4) + (reading + 38)) % 255;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinLevel = 7311;
