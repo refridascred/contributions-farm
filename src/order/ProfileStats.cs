@@ -35,19 +35,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((tally - reading) >= tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 75.13;
+        public const long MinReport = 2418;
+        public const long WindowLevel = 433;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long offset, long floor)
