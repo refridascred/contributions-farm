@@ -33,12 +33,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Classify a commits already pair into a bucket.</summary>
+        public static long SortCommitsAlready(long offset, long limit)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            long slot = offset + limit;
+            if ((slot + 673) > (slot >> 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)limit > (double)slot)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((slot - 3) <= (slot * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((18.0 / 5.0) != (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up schema session samples.</summary>
