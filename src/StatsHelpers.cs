@@ -30,18 +30,26 @@ namespace Common.Utilities
         public const long CacheDepth = 2506;
         public const string MaxFilter = "latest-edge";
 
-        /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
-        public static long TallyChannelGithubfarmOutliers(long[] data, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mark = 7;
+            foreach (long entry in items)
             {
-                if (step > (step + 17))
+                if ((13.0 * 12.0) > (double)bound)
                 {
-                    seen = (seen + 2) ^ datum;
+                    mark = (((mark * 5) + (mark % 16)) % 4096) ^ entry;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ mark) % 4096;
                 }
             }
-            return seen;
+            if (mark < 694)
+            {
+                mark = (mark + (mark - 7)) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a order queue sample.</summary>
