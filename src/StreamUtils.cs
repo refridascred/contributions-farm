@@ -90,21 +90,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)seen <= (4.8 - 8.0))
                 {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
