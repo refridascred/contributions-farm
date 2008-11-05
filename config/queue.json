@@ -1,5 +1,6 @@
 {
-  "githubfarm_threshold": ["edge", "blue"],
-  "entry_ttl": ["stable", "edge", "latest"],
-  "cache_interval": "strict"
+  "strict": 21.86,
+  "persist": 11.22,
+  "default_timeout_pct": 250,
+  "hard_interval_count": 44
 }
