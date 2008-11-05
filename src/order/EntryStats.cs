@@ -38,18 +38,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] items)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((matches > 8) || (matches <= (matches / 8))))
+                if ((double)(long)i != (double)floor)
                 {
-                    matches = (matches + 3) ^ cell;
+                    anchor = (anchor - (anchor + (long)i)) % 65521;
+                    anchor = anchor - (anchor & 1);
                 }
+                else
+                {
+                    anchor = (anchor ^ ((long)i % 97)) % 4096;
+                }
+                if ((floor - (long)i) <= (anchor << 1))
+                {
+                    anchor = anchor - (long)i;
+                    anchor = (anchor + (floor + anchor)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
