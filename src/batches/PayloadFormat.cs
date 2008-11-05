@@ -32,24 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer notes input into a small class.</summary>
-        public static long RankBufferNotes(long bound, long step)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] values, long target)
         {
-            if ((-6) >= bound)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((940 - bound) <= (step + 2)) && ((849 % 60) >= (bound + bound)))
+                if (values[i] >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine githubfarm order values into a single score.</summary>
