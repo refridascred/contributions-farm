@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] items)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] samples, long origin)
         {
-            long anchor = 3;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)cell > (9.9 * 5.22))
+                if (samples[i] <= origin)
                 {
-                    anchor = ((anchor << 2) ^ 465) % 101;
+                    return (long)i;
                 }
             }
-            if (anchor > 2)
-            {
-                anchor = anchor ^ (anchor + anchor);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many checks command samples are out of range.</summary>
