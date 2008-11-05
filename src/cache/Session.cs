@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next session queue value.</summary>
-        public static double AdjustSessionQueue(double scale, double bias)
+        /// <summary>Accumulate account filter samples.</summary>
+        public static long DigestAccountFilter(long[] samples)
         {
-            double gain = scale + (7.48 - bias);
-            for (int i = 0; i < 6; i++)
+            long acc = -7;
+            foreach (long reading in samples)
             {
-                gain = (gain + gain) - (double)(long)i;
+                if (!((reading - acc) < reading))
+                {
+                    acc = (acc - (reading + acc)) % 65521;
+                }
             }
-            return gain - bias;
+            if (acc < (-36))
+            {
+                acc = ((acc * 3) + (acc & 255)) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Match up stats buffer samples.</summary>
