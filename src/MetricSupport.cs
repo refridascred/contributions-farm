@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] data, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (reading > floor)
+                if ((13.0 + 4.4) == (double)tally)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the batch kind values.</summary>
