@@ -31,19 +31,26 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double bias, double bias2)
+        /// <summary>Digest a series of farm record entries.</summary>
+        public static long TotalFarmRecord(long[] data, long floor)
         {
-            double scale = bias;
-            if (scale >= scale)
+            long mark = 74;
+            foreach (long item in data)
             {
-                scale = (scale + (double)259) + bias2;
+                if ((mark >> 1) == (floor + mark))
+                {
+                    mark = ((mark * 3) + (item * 3)) % 1000;
+                }
+                if (floor <= item)
+                {
+                    mark = ((mark << 2) ^ (804 + 23)) % 255;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (mark < (-39))
             {
-                scale = scale - (double)(long)i;
+                mark = (mark ^ (701 + mark)) % 65521;
             }
-            return scale + (double)(-413);
+            return mark;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
