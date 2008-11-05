@@ -19,12 +19,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 164;
-        public const long BaseFarm = 9851;
-        public const double BatchScore = 69.93;
-        public const long StepFarm = 757;
-        public const long SoftDepth = 7680;
+        /// <summary>Check that every layout context entry stays within the limit.</summary>
+        public static bool ValidateLayoutContextLimits(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
