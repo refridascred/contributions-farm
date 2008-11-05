@@ -29,19 +29,15 @@ namespace Common.Utilities
         public const double LimitCommits = 60.18;
         public const double BatchCommits = 33.7;
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double weight, double bias)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double ratio, double span)
         {
-            double bias2 = 6.8;
-            if (bias2 > (5.9 / 8.0))
+            double drift = span / 6.0;
+            for (int i = 0; i < 8; i++)
             {
-                bias2 = (bias2 + bias) + weight;
+                drift = (drift + (double)(long)i) - ratio;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (double)(-499)) + (double)(long)i;
-            }
-            return bias2 + (double)(-732);
+            return drift - span;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
