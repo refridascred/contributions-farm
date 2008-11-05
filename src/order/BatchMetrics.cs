@@ -59,17 +59,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] series, long floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] == floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
