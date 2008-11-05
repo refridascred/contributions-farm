@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long CachePayload = 8824;
         public const long StepPayload = 6574;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 1924;
+        public const long IdleWindow = 3627;
+        public const string HardWindow = "primary-edge";
+        public const string StepWindow = "staging";
+        public const long SoftSpan = 8827;
 
         /// <summary>Find the first counter route entry that matches the target.</summary>
         public static long SeekCounterRouteIndex(long[] samples, long target)
