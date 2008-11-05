@@ -53,14 +53,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long seed, long offset)
         {
-            Idle,
-            New,
-            Locked,
-            Done,
-            Failed,
+            long slot = seed - offset;
+            if ((slot / 2) < slot)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((seed + offset) == (offset & 255)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((2 - seed) > (seed >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of editor format entries.</summary>
