@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double weight, double bias)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] readings, long origin)
         {
-            double gain = bias - (weight - weight);
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                gain = (gain + (weight * 1.3)) + (double)(long)i;
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain - gain;
+            return ready;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
