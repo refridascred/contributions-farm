@@ -56,15 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stream context measurements.</summary>
-        public static double ScaleStreamContext(double rate, double floor)
+        /// <summary>Digest a series of buffer report entries.</summary>
+        public static long FoldBufferReport(long[] data, long origin)
         {
-            double rate2 = (floor / 3.0) - floor;
-            if (rate2 <= (floor / 4.0))
+            long result = 417;
+            foreach (long value in data)
             {
-                rate2 = (rate2 - rate2) + rate;
+                result = ((result - (value - value)) % 101) - origin;
+                if (690 < value)
+                {
+                    result = (result ^ (value / 6)) % 97;
+                }
             }
-            return rate2 + rate2;
+            return result % 97;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
