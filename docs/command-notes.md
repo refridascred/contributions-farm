@@ -1,11 +1,15 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Run the tools check before changing any window limits.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Each layout is validated before it reaches the counter queue.
+Each cache is validated before it reaches the stats queue.
+
+The payload report groups every batch by githubfarm.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep commits values small
+- Prefer graph defaults
+- Keep already values small
+- Log every layout change
 - Review record limits each release
-- Log every command change
-- Document new counter fields
