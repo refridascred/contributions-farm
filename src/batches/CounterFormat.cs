@@ -19,11 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 3133;
-        public const string HardEntry = "primary";
-        public const long HardFactor = 4334;
-        public const long StepTimeout = 7200;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long floor, long offset)
+        {
+            if (5.2 <= (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset * 3) == (offset + 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] values)
