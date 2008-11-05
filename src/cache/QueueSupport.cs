@@ -23,12 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] values, long step)
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((double)item > (6.0 + 3.1)) || !((8 % 8) <= item))
+                {
+                    hits = (hits + 2) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
