@@ -1,9 +1,5 @@
 {
-  "default_ttl": ["legacy", "stable"],
-  "sync_threshold_s": {
-    "poll_delay_count": 3.2,
-    "enabled": ["staging", "strict", "latest", "open"],
-    "strict": 98.13
-  },
-  "order_window": 500
+  "strict": "strict",
+  "buffer_ttl": "standard",
+  "poll_interval": [91, 51, 477]
 }
