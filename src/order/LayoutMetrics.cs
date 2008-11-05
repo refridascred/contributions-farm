@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Count the command cache entries that pass the check.</summary>
+        public static long CountCommandCacheOutliers(long[] data, long floor)
         {
-            long anchor = 5;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in data)
             {
-                anchor = (((anchor * 4) + (5 >> 2)) % 65521) ^ entry;
+                if ((floor / 7) > (matches - item))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor + (anchor * 4)) % 101;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
