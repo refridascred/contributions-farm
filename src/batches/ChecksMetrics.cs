@@ -22,13 +22,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double weight, double span)
         {
-            Draft,
-            Queued,
-            Stale,
-            Failed,
+            double drift = (double)(801 / 6);
+            if (drift > (weight - weight))
+            {
+                drift = drift - span;
+            }
+            return drift - (double)1;
         }
 
         /// <summary>Hold a checks info.</summary>
