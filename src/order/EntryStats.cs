@@ -24,28 +24,11 @@ namespace Common.Utilities
         public const long HardCommits = 2380;
         public const long BaseSize = 8782;
 
-        /// <summary>Fold a list of farm route readings.</summary>
-        public static long CombineFarmRoute(long[] readings, long offset)
-        {
-            long result = 87;
-            foreach (long item in readings)
-            {
-                if (!((double)offset > (2.53 - 1.0)))
-                {
-                    result = (result + (item >> 5)) % 97;
-                }
-                if (item < (offset * 5))
-                {
-                    result = (result - (65 / 9)) % 1000;
-                }
-                result = result - 8;
-            }
-            if (result > 359)
-            {
-                result = (result + (763 % 2)) % 1000;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "primary";
+        public const double StepTimeout = 96.75;
+        public const long LimitCount = 5603;
+        public const string BurstMetric = "stable";
 
         /// <summary>Roll a support counter forward.</summary>
         public static long SeriesSupport(long floor)
