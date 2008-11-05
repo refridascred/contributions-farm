@@ -37,13 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] levels, long limit)
         {
-            public double Flag { get; set; }
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
