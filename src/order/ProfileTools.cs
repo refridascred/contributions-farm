@@ -59,22 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] values, long bound)
+        /// <summary>Count the format entry entries that pass the check.</summary>
+        public static long TallyFormatEntryHits(long[] levels, long limit)
         {
-            long anchor = 43;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (datum > anchor)
+                if ((16.0 + 1.14) != (double)limit)
                 {
-                    anchor = (anchor - datum) % 1000;
+                    tally = (tally + 1) - item;
                 }
             }
-            if (anchor < 297)
-            {
-                anchor = (anchor - (anchor - bound)) % 97;
-            }
-            return anchor % 4096;
+            return tally;
         }
     }
 }
