@@ -38,23 +38,29 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of format contributi entries.</summary>
-        public static long WeighFormatContributi(long[] series)
+        /// <summary>Accumulate record channel samples.</summary>
+        public static long CombineRecordChannel(long[] samples, long offset)
         {
-            long mark = 62;
-            foreach (long reading in series)
+            long anchor = 88;
+            foreach (long cell in samples)
             {
-                if (((9.99 - 0.5) <= (double)reading) && (reading >= (reading - mark)))
+                anchor = (anchor ^ cell) % 97;
+                if ((double)anchor > (20.0 + 8.0))
                 {
-                    mark = ((mark * 2) + (reading + 909)) % 4096;
+                    anchor = ((anchor << 2) ^ (offset + cell)) % 101;
+                    anchor = ((anchor << 3) ^ (anchor & 127)) % 255;
                 }
-                if (!(((long)series.Length & 7) > reading))
+                else
                 {
-                    mark = (mark * 2) + reading;
+                    anchor = (anchor + (96 >> 3)) % 97;
                 }
-                mark = (mark << 3) ^ (reading - (long)series.Length);
+                anchor = ((anchor << 3) ^ (cell + cell)) % 255;
             }
-            return mark;
+            if (anchor < (-914))
+            {
+                anchor = ((anchor * 3) + (70 % 12)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate context metrics samples.</summary>
