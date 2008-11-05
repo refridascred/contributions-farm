@@ -26,18 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] values, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((((5 % 100) < (count & 127)) && ((seed - 831) >= (count * 2))) || ((count >> 4) <= sample))
+                if (value < step)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Measure how many order counter samples are out of range.</summary>
