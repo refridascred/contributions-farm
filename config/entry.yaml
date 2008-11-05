@@ -1,10 +1,12 @@
 # entry settings
-persist: 1024
-channel_size: primary
-schema_interval:
+context_interval: 5377
+flush_ttl:
+  - cached
   - standard
+  - latest
+base_size_ms: 44
+warm_delay_pct:
   - primary
-  - blue
-  - green
-flush_depth_s: green
-burst_capacity: 60
+  - standard
+  - stable
+  - standard
