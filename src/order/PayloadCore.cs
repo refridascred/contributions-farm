@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Stale,
-            New,
-            Paused,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowSize = 5152;
+        public const double IdleSize = 42.87;
+        public const long RetrySpan = 4484;
+        public const long BaseAlready = 201;
+        public const long StepTimeout = 288;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadGaps(long[] items)
