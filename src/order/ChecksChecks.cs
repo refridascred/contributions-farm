@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] series)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double scale, double span)
         {
-            long total = 518;
-            foreach (long value in series)
+            double drift = (double)(52 >> 5);
+            if (drift > scale)
             {
-                if ((total * 4) >= value)
-                {
-                    total = ((total * 5) + (value & 15)) % 255;
-                }
-                if ((total + total) < (total / 8))
-                {
-                    break;
-                }
+                drift = drift - (drift + span);
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (span * 9.76)) + (double)(long)i;
+            }
+            return drift - scale;
         }
 
         /// <summary>Describe the route level values.</summary>
