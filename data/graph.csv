@@ -1,9 +1,8 @@
-id,active,level,score
-1,staging,224,legacy
-2,eu-west,eu-west,strict
-3,blue,505,519
-4,cached,standard,legacy
-5,primary,latest,760
-6,90.02,green,648
-7,788,stable,edge
-8,685,fallback,29.44
+id,ratio,region
+1,primary,1.54
+2,standard,60.03
+3,green,96.59
+4,open,830
+5,2.92,479
+6,56.04,38.55
+7,470,815
