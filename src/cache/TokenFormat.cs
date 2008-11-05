@@ -31,17 +31,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a commits graph sample.</summary>
-        public static long FindCommitsGraphIndex(long[] data, long step)
+        /// <summary>Count the graph entry entries that pass the check.</summary>
+        public static long MeasureGraphEntryHits(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((data[i] == step) && ((data[i] % 5) != 0))
+                if ((double)tally != (double)cell)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
