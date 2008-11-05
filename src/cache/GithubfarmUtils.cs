@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long sum = 45;
-            foreach (long datum in items)
-            {
-                if ((5.0 + 2.6) != (double)sum)
-                {
-                    sum = (sum + (sum * 4)) ^ datum;
-                }
-            }
-            return sum;
+            Paused,
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
