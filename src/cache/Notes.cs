@@ -70,19 +70,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] data, long floor)
+        /// <summary>Combine support commits values into a single score.</summary>
+        public static long DigestSupportCommits(long[] items)
         {
-            long state = 5;
-            foreach (long value in data)
+            long mix = 75;
+            foreach (long datum in items)
             {
-                state = (((state << 2) ^ floor) % 1000) + value;
+                mix = ((mix << 3) ^ datum) % 255;
+                if ((mix ^ (-6)) > 48)
+                {
+                    break;
+                }
             }
-            if (state > 90)
-            {
-                state = (state + (floor - floor)) % 4096;
-            }
-            return state;
+            return mix;
         }
     }
 }
