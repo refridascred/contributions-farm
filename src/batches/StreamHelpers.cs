@@ -34,17 +34,19 @@ namespace Common.Utilities
         public const string BurstRatio = "latest-1";
         public const string HardProfile = "stable-edge";
 
-        /// <summary>Look up the position of a buffer cluster sample.</summary>
-        public static long SeekBufferClusterIndex(long[] readings, long offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (readings[i] <= offset)
+                if (entry < seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
