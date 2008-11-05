@@ -1,35 +1,7 @@
 # githubfarm settings
-dry_run: fallback
-strict: 250
-command_limit:
-  - 62
-  - 198
-min_interval_ms:
-  order_window:
-    retry_interval:
-      - blue
-      - cached
-      - stable
-      - standard
-    warm_window_pct: 60
-    soft_window_s: green
-    idle_timeout_pct: true
-  channel_limit: fallback
-  soft_interval_ms:
-    - 341
-    - 346
-    - 195
-  strict: false
-  verbose: 100
-  flush_threshold:
-    stats_interval:
-      - primary
-      - staging
-      - eu-west
-    soft_depth_count: 59
-    stream_threshold: false
-    compress: staging
-    audit:
-      - 440
-      - 114
-      - 153
+queue_timeout: green
+base_size_pct: 85.61
+notes_delay: cached
+poll_depth_s: 30
+batch_limit_ms: 100
+batch_size: 7976
