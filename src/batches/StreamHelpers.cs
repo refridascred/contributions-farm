@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 26.57;
-        public const double StepPayload = 65.72;
-        public const double IdleTimeout = 79.09;
-        public const string HardScore = "latest-edge";
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series)
+        {
+            long anchor = 62;
+            foreach (long item in series)
+            {
+                anchor = (anchor * 2) + item;
+            }
+            if (anchor < 910)
+            {
+                anchor = (anchor << 3) ^ 4;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many support order samples are out of range.</summary>
         public static long TallySupportOrderGaps(long[] readings)
