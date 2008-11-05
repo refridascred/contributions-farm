@@ -1,9 +1,4 @@
 # support settings
-sync_timeout: primary
-batch_capacity: open
-metric_capacity: true
-strict:
-  - eu-west
-  - local
-  - latest
-  - staging
+verbose: 90
+base_window_ms: 84
+notes_timeout: open
