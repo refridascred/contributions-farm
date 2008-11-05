@@ -52,24 +52,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long step, long seed)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] levels, long target)
         {
-            if (!((step & 255) != (step ^ seed)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((8.77 + 8.3) < (double)seed)
+                if (levels[i] >= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
