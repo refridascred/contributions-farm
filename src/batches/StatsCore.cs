@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryInterval = 8237;
-        public const long MaxAccount = 3988;
-        public const long HardInterval = 791;
-        public const string RetryFactor = "open-1";
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsGaps(long[] values, long offset)
