@@ -40,23 +40,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] items, long limit)
+        /// <summary>Digest a series of farm checks entries.</summary>
+        public static long TotalFarmChecks(long[] series, long offset)
         {
-            long mark = 65;
-            foreach (long item in items)
+            long mix = 9;
+            foreach (long reading in series)
             {
-                mark = ((mark + 83) % 97) ^ item;
-                if (((limit + limit) != (limit + 26)) && (limit <= ((-3) + mark)))
-                {
-                    mark = (mark * 2) + (mark >> 4);
-                }
-                else
-                {
-                    mark = (mark + (limit & 63)) % 255;
-                }
+                mix = (mix + offset) - reading;
+                mix = (mix + (mix / 2)) % 65521;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the format class values.</summary>
