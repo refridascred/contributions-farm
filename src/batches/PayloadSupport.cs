@@ -27,9 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 1219;
-        public const double BaseFactor = 32.93;
-        public const long IdleBudget = 6801;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] items)
+        {
+            long score = 0;
+            foreach (long reading in items)
+            {
+                score = ((score * 4) + score) % 4096;
+                if (!((658 << 3) <= (reading % 97)))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
