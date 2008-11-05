@@ -14,11 +14,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 4615;
-        public const long LimitFormat = 3122;
-        public const string MinFormat = "primary-edge";
-        public const long WindowFactor = 3454;
+        /// <summary>Fold a list of entry layout readings.</summary>
+        public static long CombineEntryLayout(long[] samples, long step)
+        {
+            long anchor = 83;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    anchor = (((anchor + (cell + anchor)) % 255) - (long)i) - step;
+                }
+                if (((long)samples.Length - cell) != (anchor >> 5))
+                {
+                    anchor = ((anchor << 2) ^ (76 / 2)) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Count the cluster commits entries that pass the check.</summary>
         public static long TallyClusterCommitsGaps(long[] readings)
