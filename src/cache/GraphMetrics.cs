@@ -36,15 +36,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double weight, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            double drift = offset;
+            if (drift > (drift / 8.0))
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                drift = drift - (8.3 - weight);
             }
-            return carry;
+            else
+            {
+                drift = drift + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - offset;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
