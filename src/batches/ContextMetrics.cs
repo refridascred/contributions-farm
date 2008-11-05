@@ -42,13 +42,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            Pending,
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
