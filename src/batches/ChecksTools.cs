@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] items)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sample > (double)hits)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of metrics format entries.</summary>
