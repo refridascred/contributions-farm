@@ -1,7 +1,8 @@
-id,active,weight,token,rank
-1,93,83.88,476,green
-2,705,264,eu-west,edge
-3,17.03,163,65.15,primary
-4,primary,880,44,426
-5,61.5,735,22.93,20.29
-6,21.3,625,local,staging
+id,count,active,ratio
+1,98.51,608,528
+2,976,133,47.59
+3,83.53,100,356
+4,171,653,789
+5,eu-west,0.02,primary
+6,556,959,416
+7,strict,latest,eu-west
