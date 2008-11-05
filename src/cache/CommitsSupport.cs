@@ -13,11 +13,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultSize = 8444;
-        public const long MaxFarm = 84;
-        public const string IdleSpan = "staging-edge";
-        public const string DefaultFarm = "staging-edge";
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Done,
+            Locked,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
