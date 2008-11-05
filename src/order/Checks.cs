@@ -58,18 +58,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics account entries that pass the check.</summary>
-        public static long AuditMetricsAccountMatches(long[] series, long seed)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((entry + entry) > entry)
-                {
-                    seen = (seen + 1) + seed;
-                }
+                total = total + total;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
     }
 }
