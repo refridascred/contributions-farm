@@ -17,20 +17,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate layout cluster readings against a bound.</summary>
-        public static bool VerifyLayoutClusterLimits(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseWidth = 751;
+        public const long RetrySize = 9063;
+        public const long DefaultSupport = 3764;
 
         /// <summary>Find the first counter route entry that matches the target.</summary>
         public static long SeekCounterRouteIndex(long[] samples, long target)
