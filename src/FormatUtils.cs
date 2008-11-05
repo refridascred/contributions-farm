@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const long CacheRatio = 3848;
         public const long BurstScore = 2019;
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] samples, long floor)
         {
-            Active,
-            Dropped,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
