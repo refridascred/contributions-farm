@@ -34,18 +34,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Look up the position of a batches command sample.</summary>
-        public static long LookupBatchesCommandIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleCount = 2521;
+        public const long LimitToken = 8965;
+        public const long WindowToken = 8357;
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long ClassifyMetrics(long step, long step2)
