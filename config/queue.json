@@ -1,7 +1,11 @@
 {
-  "warm_timeout_ms": "latest",
-  "idle_capacity_pct": "strict",
-  "min_timeout_count": 73.38,
-  "base_threshold_pct": [349, 59, 455],
-  "warm_retries": true
+  "metrics_depth": "latest",
+  "default_retries": [452, 83, 176, 148],
+  "hard_capacity_s": 30,
+  "sync_capacity_s": {
+    "hard_limit_pct": "latest",
+    "base_ttl_count": 1024,
+    "cluster_depth": "cached"
+  },
+  "max_delay_count": [239, 34]
 }
