@@ -23,18 +23,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload stats readings against a rule.</summary>
-        public static long TallyPayloadStatsGaps(long[] data)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = -1;
+            foreach (long cell in series)
             {
-                if ((tally / 7) < (815 / 4))
+                if ((cell + anchor) == (4 & 31))
                 {
-                    tally = (tally + 2) ^ cell;
+                    anchor = anchor ^ (82 + anchor);
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (cell + anchor);
+                    anchor = (anchor * 2) + (766 / 2);
+                }
+                if ((cell / 2) >= (anchor << 3))
+                {
+                    anchor = (anchor ^ (cell << 2)) % 65521;
                 }
             }
-            return tally;
+            if (anchor > 6)
+            {
+                anchor = (anchor + (anchor - anchor)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the report class values.</summary>
