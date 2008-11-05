@@ -14,21 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmBufferCount(long[] readings)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 92;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (score >= (sample % 3))
                 {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score ^ score) % 65521) + origin;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score % 3)) % 255;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Accumulate window samples.</summary>
