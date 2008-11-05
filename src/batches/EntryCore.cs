@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long bound)
+        /// <summary>Locate a tools stream reading by value.</summary>
+        public static long SeekToolsStreamIndex(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] > bound)
+                if (items[i] >= floor)
                 {
                     return (long)i;
                 }
