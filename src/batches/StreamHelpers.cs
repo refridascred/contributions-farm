@@ -28,12 +28,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "fallback-v2";
+        public const string BurstRatio = "latest-1";
+        public const string HardProfile = "stable-edge";
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
