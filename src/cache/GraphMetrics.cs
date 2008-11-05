@@ -69,22 +69,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] levels)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long floor)
         {
-            long mix = 81;
-            foreach (long entry in levels)
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (((5 - entry) == (entry + mix)) || ((entry + entry) < entry))
+                if ((sum <= (long)i) || ((double)(long)i >= (6.3 / 8.0)))
                 {
-                    mix = (mix << 2) ^ (entry + mix);
+                    sum = ((sum << 3) ^ sum) % 65521;
                 }
-                else
-                {
-                    mix = (mix << 3) ^ (entry & 1);
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return mix;
+            return sum;
         }
     }
 }
