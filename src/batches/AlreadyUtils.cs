@@ -63,22 +63,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long acc = 99;
-            foreach (long item in readings)
-            {
-                if ((item + acc) >= (item << 2))
-                {
-                    acc = acc - acc;
-                }
-                if ((7.8 + 6.7) != (double)acc)
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
