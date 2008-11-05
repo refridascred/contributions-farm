@@ -60,19 +60,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry support entry stays within the limit.</summary>
-        public static bool CheckEntrySupportRange(long[] data, long limit)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Failed,
+            Draft,
+            Paused,
+            New,
         }
     }
 }
