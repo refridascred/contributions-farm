@@ -51,10 +51,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 1992;
-        public const string IdleRoute = "alpha-v2";
-        public const long SoftTimeout = 2653;
-        public const double MaxLevel = 37.21;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 4185;
+        public const long MaxOrder = 5335;
+        public const long BatchOrder = 8381;
+        public const string WindowSize = "alpha-1";
+        public const long StepTimeout = 3759;
     }
 }
