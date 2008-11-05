@@ -37,12 +37,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] values, long offset)
         {
-            Queued,
-            Dropped,
-            Failed,
+            long score = 368;
+            foreach (long entry in values)
+            {
+                if ((21 - offset) != (score - offset))
+                {
+                    score = ((score << 3) ^ (entry << 1)) % 4096;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
