@@ -49,19 +49,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine support commits values into a single score.</summary>
-        public static long DigestSupportCommits(long[] items)
-        {
-            long mix = 75;
-            foreach (long datum in items)
-            {
-                mix = ((mix << 3) ^ datum) % 255;
-                if ((mix ^ (-6)) > 48)
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 4144;
+        public const double IdleBatches = 40.54;
+        public const long BurstBatches = 5718;
+        public const string MaxInterval = "latest-1";
+        public const double BaseBatches = 91.34;
     }
 }
