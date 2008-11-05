@@ -28,18 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools report readings against a rule.</summary>
-        public static long TallyToolsReportOutliers(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long acc = 8;
+            foreach (long reading in levels)
             {
-                if ((344 & 31) < entry)
+                if (!(floor > ((-597) >> 1)))
                 {
-                    matches = matches + 1;
+                    acc = acc - 25;
+                    acc = (acc ^ (reading + floor)) % 97;
+                }
+                if ((acc * 5) <= (acc - floor))
+                {
+                    acc = (acc << 3) ^ (441 - reading);
                 }
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Describe the batches level values.</summary>
