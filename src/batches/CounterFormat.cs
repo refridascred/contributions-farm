@@ -20,14 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] values, long floor)
         {
-            Locked,
-            Retry,
-            Done,
-            Failed,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
