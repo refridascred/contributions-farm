@@ -50,18 +50,38 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] data)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long target, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            if ((5.62 * 0.83) < (double)bound)
             {
-                if (((tally % 64) >= tally) && ((item - item) < tally))
+                return 6;
+            }
+            else
+            {
+                if (bound >= (target >> 4))
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((target & 255) <= bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(6.0 >= (double)bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
