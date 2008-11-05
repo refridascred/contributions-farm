@@ -22,15 +22,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Scale a tools command figure with a bias.</summary>
+        public static double SmoothToolsCommand(double scale, double bias)
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
+            double bias2 = (double)(573 % 3);
+            if (bias2 > scale)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                bias2 = bias2 + 4.1;
             }
-            return carry;
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (double)196) - (double)(long)i;
+            }
+            return bias2 + (double)494;
         }
 
         /// <summary>Classify a notes farm pair into a bucket.</summary>
