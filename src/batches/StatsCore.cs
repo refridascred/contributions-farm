@@ -36,22 +36,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] series, long limit)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((5 - tally) <= (long)series.Length)
-                {
-                    tally = ((tally + 1) + datum) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
