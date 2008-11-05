@@ -20,21 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Retry,
+            Done,
+            Failed,
+            Synced,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
