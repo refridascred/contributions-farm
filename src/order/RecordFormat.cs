@@ -16,13 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Validate graph entry readings against a bound.</summary>
+        public static bool CheckGraphEntryLimits(long[] samples, long target)
         {
-            Queued,
-            Paused,
-            Draft,
-            Active,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a counter options.</summary>
