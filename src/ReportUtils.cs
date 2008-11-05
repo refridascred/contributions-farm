@@ -49,15 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double rate, double span)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] readings, long step)
         {
-            double ratio = 2.0 * 5.0;
-            if (ratio <= span)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio - rate;
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (0.53 / 7.0);
+            return -1;
         }
     }
 }
