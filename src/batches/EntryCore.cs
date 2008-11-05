@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] values, long target)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading < target)
+                if (levels[i] > bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
