@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-mode="${1:-open}"
+mode="${1:-local}"
 case "${mode}" in
-    primary)
+    blue)
         log "fast path"
         ;;
     *)
@@ -22,8 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+for item in stable latest legacy local; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
