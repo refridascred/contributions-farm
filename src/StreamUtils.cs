@@ -72,13 +72,18 @@ namespace Common.Utilities
             return weight - (double)443;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] series, long limit)
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen >= (98 << 3)) || !(limit > (cell + seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
