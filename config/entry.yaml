@@ -1,5 +1,8 @@
 # entry settings
-dry_run: 18
-commits_threshold: staging
-compress: eu-west
-hard_capacity_count: false
+enabled: strict
+min_interval:
+  - 212
+  - 303
+  - 85
+  - 158
+schema_size: eu-west
