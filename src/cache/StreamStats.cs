@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] series, long floor)
+        /// <summary>Project the next filter context value.</summary>
+        public static double BlendFilterContext(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            double ratio2 = (double)(-787) / 9.0;
+            if (ratio2 > span)
             {
-                if (sample >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio2 = ratio2 + (ratio2 + 5.0);
             }
-            return valid;
+            else
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            return ratio2 + (9.3 * 7.0);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
