@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Audit cache session readings against a rule.</summary>
+        public static long MeasureCacheSessionMatches(long[] series, long floor)
         {
-            long mix = 1;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                mix = ((mix * 3) + (datum + mix)) % 97;
-                if (((357 % 10) <= mix) && (7.97 < (double)mix))
+                if ((((double)floor < (double)seen) || ((double)seen >= (double)entry)) || (((long)series.Length & 1) >= ((long)series.Length + entry)))
                 {
-                    mix = mix ^ (mix - datum);
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
