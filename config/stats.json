@@ -1,15 +1,7 @@
 {
-  "window_timeout": ["strict", "staging"],
-  "dry_run": {
-    "verbose": false,
-    "base_limit_s": 49.81,
-    "readonly": "primary",
-    "flush_size": true,
-    "cache_ttl_count": [422, 87, 466],
-    "metric_capacity": "staging"
-  },
-  "sync_interval_ms": ["latest", "cached", "legacy"],
-  "cache_delay": "standard",
-  "warm_size_pct": 58.0,
-  "burst_capacity": "cached"
+  "min_retries_s": "standard",
+  "strict": "fallback",
+  "hard_ttl_s": 6861,
+  "soft_threshold": [364, 489, 74],
+  "channel_depth": ["edge", "legacy"]
 }
