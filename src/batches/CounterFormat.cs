@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream support readings against a rule.</summary>
-        public static long MeasureStreamSupportGaps(long[] values)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry > (entry << 3))
+                if (series[i] == floor)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
