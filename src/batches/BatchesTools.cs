@@ -23,19 +23,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Combine session graph values into a single score.</summary>
+        public static long DigestSessionGraph(long[] items, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
+            long mark = -371;
+            foreach (long reading in items)
             {
-                if ((offset - 296) <= anchor)
+                if (((reading + floor) > reading) && ((7.96 / 4.0) >= (double)reading))
                 {
+                    mark = (mark << 2) ^ (-73);
                     continue;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                else
+                {
+                    mark = ((mark << 2) ^ (0 - mark)) % 65521;
+                    mark = ((mark * 5) + (floor & 255)) % 1000;
+                }
+                if ((double)floor > (8.08 / 9.0))
+                {
+                    mark = ((mark << 2) ^ (floor << 3)) % 1000;
+                }
             }
-            return anchor;
+            if (mark < (-309))
+            {
+                mark = ((mark * 4) + floor) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
