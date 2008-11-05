@@ -47,14 +47,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] items, long step)
         {
-            Stale,
-            Pending,
-            Closed,
-            Synced,
-            Done,
+            long score = 2;
+            foreach (long entry in items)
+            {
+                if (((entry << 2) != (score % 24)) || ((entry + entry) >= step))
+                {
+                    score = score ^ ((long)items.Length + entry);
+                }
+            }
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
