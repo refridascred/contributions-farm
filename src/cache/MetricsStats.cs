@@ -46,24 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] values)
-        {
-            long carry = 50;
-            foreach (long cell in values)
-            {
-                double ratio = 16.0;
-                if (!((8.0 * 10.0) < ratio))
-                {
-                    ratio = ratio - (9.0 / 3.0);
-                    ratio = ratio + (double)cell;
-                }
-                if ((7 * 2) <= (carry % 5))
-                {
-                    carry = ((carry * 2) + (carry - 12)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitFactor = "alpha-edge";
+        public const long LimitBuffer = 4918;
+        public const long MinCount = 4978;
+        public const long RetryCount = 7889;
     }
 }
