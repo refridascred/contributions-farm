@@ -23,14 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Rank batch record input into a small class.</summary>
+        public static long ClassifyBatchRecord(long offset, long bound)
         {
-            Locked,
-            Paused,
-            Closed,
-            Synced,
-            Stale,
+            if ((3 & 255) > bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset * 4) != (bound >> 4)) && ((1 & 255) < offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of counter buffer readings.</summary>
