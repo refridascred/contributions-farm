@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next record report value from a seed.</summary>
-        public static long SeriesRecordReport(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((limit - result) < (limit + (long)i))
-                {
-                    result = (result + (limit / 4)) % 101;
-                    result = (result << 2) ^ (67 % 7);
-                }
-                if (limit <= (limit / 6))
-                {
-                    result = ((result << 2) ^ ((long)i & 255)) % 97;
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 1439;
+        public const double BurstGraph = 16.06;
+        public const long StepLevel = 8610;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool ValidateFormatBounds(long[] series, long step)
