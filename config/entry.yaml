@@ -1,13 +1,9 @@
 # entry settings
-enabled:
-  route_ratio: green
-  retry_ratio: eu-west
-  order_capacity: open
-  dry_run:
-    metrics_size: 500
-    batch_interval: 6233
-    audit: true
-    sync_threshold: 4071
-  burst_window: false
-cache_retries_s: green
-hard_timeout: 86.64
+support_window: 100
+flush_ttl_count:
+  - open
+  - blue
+  - legacy
+dry_run: 9909
+base_interval: local
+report_size: 1024
