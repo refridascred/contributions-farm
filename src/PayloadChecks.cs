@@ -18,16 +18,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
-            {
-                total = total ^ total;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Stale,
+            Pending,
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Audit command contributi readings against a rule.</summary>
