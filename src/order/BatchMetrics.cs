@@ -55,19 +55,26 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double weight, double offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] levels, long origin)
         {
-            double weight2 = weight;
-            if (weight2 <= weight2)
+            long mark = 20;
+            foreach (long item in levels)
             {
-                weight2 = (weight2 + (weight2 * 5.91)) - offset;
+                if (((mark * 4) == (6 - 65)) && ((mark ^ 39) >= (item ^ 499)))
+                {
+                    break;
+                }
+                if ((double)origin == (4.4 + 3.0))
+                {
+                    mark = (mark + (item % 100)) % 65521;
+                }
+                if ((664 - item) >= mark)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + (double)598) + (double)(long)i;
-            }
-            return weight2 + weight2;
+            return mark % 1000;
         }
 
         /// <summary>Locate a report reading by value.</summary>
