@@ -53,12 +53,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstInterval = 79.75;
-        public const long MinChecks = 213;
-        public const long BurstChecks = 9125;
-        public const long RetrySpan = 9224;
-        public const string RetrySize = "primary";
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Grade a githubfarm channel value against two limits.</summary>
         public static long BucketGithubfarmChannel(long origin, long floor)
