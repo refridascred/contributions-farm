@@ -1,11 +1,8 @@
 {
-  "metrics_depth": "latest",
-  "default_retries": [452, 83, 176, 148],
-  "hard_capacity_s": 30,
-  "sync_capacity_s": {
-    "hard_limit_pct": "latest",
-    "base_ttl_count": 1024,
-    "cluster_depth": "cached"
-  },
-  "max_delay_count": [239, 34]
+  "poll_ratio_pct": "local",
+  "flush_delay": 95.24,
+  "idle_capacity_ms": "blue",
+  "min_window": 30,
+  "hard_threshold_count": "blue",
+  "cache_depth_count": true
 }
