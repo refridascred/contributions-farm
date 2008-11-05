@@ -18,11 +18,18 @@ namespace Common.Utilities
         public const long RetryDepth = 2056;
         public const long BatchRecord = 9506;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheQueue = 13.53;
-        public const long BatchDepth = 4438;
-        public const string BurstQueue = "stable-v2";
-        public const long LimitSize = 3907;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long RankAlready(long floor, long offset)
