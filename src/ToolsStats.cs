@@ -50,12 +50,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Done,
-            Dropped,
-            New,
+            public double Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
