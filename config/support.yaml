@@ -1,13 +1,9 @@
 # support settings
-default_ratio_s:
-  strict: 50
-  cache_ratio: true
-  checks_ttl: blue
-  entry_size:
-    - standard
-    - eu-west
-    - blue
-    - legacy
-  default_window_s: 78.93
-retry_limit: 37.16
-min_interval_s: 79.23
+githubfarm_ttl:
+  - 104
+  - 389
+soft_retries: 47
+soft_size_pct: 9633
+compress: true
+cache_delay: 41
+readonly: 50.75
