@@ -13,17 +13,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] levels, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 555;
+            foreach (long reading in levels)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor << 2) ^ (-29)) ^ reading) - seed;
             }
-            return -1;
+            if (anchor > 138)
+            {
+                anchor = ((anchor * 2) + 961) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
