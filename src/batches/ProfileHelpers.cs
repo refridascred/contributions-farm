@@ -50,18 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] data)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)seen <= (3.0 / 4.0))
-                {
-                    seen = (seen + 1) - reading;
-                }
-            }
-            return seen;
+            Active,
+            Dropped,
+            New,
+            Failed,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
