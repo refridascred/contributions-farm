@@ -1,8 +1,9 @@
-id,level,active,region,weight
-1,legacy,primary,404,staging
-2,stable,90.14,15,941
-3,706,90.33,614,75.71
-4,150,open,362,primary
-5,green,993,strict,40.6
-6,98.13,85.26,139,fallback
-7,990,38,blue,410
+id,rank,label
+1,612,142
+2,28.14,97.93
+3,33.75,659
+4,72,local
+5,586,45.6
+6,eu-west,351
+7,171,green
+8,415,811
