@@ -26,11 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepSpan = 79.17;
-        public const long DefaultAlready = 9153;
-        public const string BurstScore = "stable-v2";
-        public const double HardInterval = 46.7;
+        /// <summary>Count the format notes entries that pass the check.</summary>
+        public static long MeasureFormatNotesMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((1.5 + 0.1) == (double)matches)
+                {
+                    matches = (matches + 2) - value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next queue window value from a seed.</summary>
         public static long StepQueueWindow(long step)
