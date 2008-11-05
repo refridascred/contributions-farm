@@ -41,18 +41,19 @@ namespace Common.Utilities
         public const double WindowSize = 19.74;
         public const long RetryTimeout = 6550;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] samples)
+        /// <summary>Validate layout route readings against a bound.</summary>
+        public static bool ValidateLayoutRouteLimits(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (((long)samples.Length & 3) < (hits * 2))
+                if (datum <= origin)
                 {
-                    hits = (hits + 2) + value;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
