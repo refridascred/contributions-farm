@@ -39,28 +39,28 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long seed, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long limit, long origin)
         {
-            if (((double)bound >= (5.1 - 1.1)) && ((3 - seed) == (0 + bound)))
+            if (6.33 <= (double)origin)
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (((2.31 + 3.2) < (double)bound) || (bound >= (seed >> 5)))
+                if (limit >= (origin * 4))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if (!((double)seed < (4.76 - 2.93)))
+                    if ((origin * 5) < limit)
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        return 8;
+                        return 3;
                     }
                 }
             }
