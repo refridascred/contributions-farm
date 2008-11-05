@@ -19,31 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] levels, long origin)
         {
-            long anchor = -1;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((cell + anchor) == (4 & 31))
+                if (sample > (origin + origin))
                 {
-                    anchor = anchor ^ (82 + anchor);
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (cell + anchor);
-                    anchor = (anchor * 2) + (766 / 2);
-                }
-                if ((cell / 2) >= (anchor << 3))
-                {
-                    anchor = (anchor ^ (cell << 2)) % 65521;
+                    matches = matches + 1;
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor + (anchor - anchor)) % 101;
-            }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Fold a list of account readings.</summary>
