@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a account queue sample.</summary>
-        public static long LookupAccountQueueIndex(long[] values, long step)
+        /// <summary>Audit format order readings against a rule.</summary>
+        public static long MeasureFormatOrderGaps(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (values[i] == step)
+                if (cell >= (seen + 53))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit payload stats readings against a rule.</summary>
