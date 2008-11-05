@@ -25,21 +25,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] levels)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long origin, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long edge = origin - limit;
+            if (((edge - 8) > (origin + origin)) && ((edge * 3) > origin))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((edge - edge) < (4 & 1)))
                 {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
