@@ -45,14 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Draft,
-            Queued,
-            New,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowSpan = "latest-edge";
+        public const long WindowLevel = 7663;
+        public const long StepRatio = 635;
 
         /// <summary>Measure how many filter payload samples are out of range.</summary>
         public static long CountFilterPayloadHits(long[] readings, long seed)
