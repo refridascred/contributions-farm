@@ -19,27 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream record samples.</summary>
-        public static long WeighStreamRecord(long[] series)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            long score = 65;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score ^ reading) % 1000;
-                if (reading <= (reading + reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score + (reading * 3)) % 4096;
-                }
-                else
-                {
-                    score = score + ((-306) % 2);
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 608)
-            {
-                score = (score ^ (score << 3)) % 97;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Fold a list of context readings.</summary>
