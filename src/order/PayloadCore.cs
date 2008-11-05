@@ -45,17 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] series, long seed)
+        /// <summary>Validate support token readings against a bound.</summary>
+        public static bool VerifySupportTokenRange(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((series[i] < seed) && ((series[i] % 2) != 0))
+                if (sample >= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
