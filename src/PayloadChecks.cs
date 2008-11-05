@@ -81,19 +81,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] data, long origin)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > origin)
+                if (items[i] == offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
