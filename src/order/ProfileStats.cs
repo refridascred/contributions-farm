@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double ratio, double span)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double rate = span;
-            if (rate >= 2.98)
-            {
-                rate = (rate + (span + rate)) + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (rate / 6.0)) + (double)(long)i;
-            }
-            return rate + (rate * 1.9);
+            Stale,
+            Failed,
+            Done,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the order kind values.</summary>
