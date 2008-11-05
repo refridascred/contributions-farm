@@ -50,32 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long limit, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long cur = limit - step;
-            if ((limit & 127) > (cur + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step % 64) <= (cur + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step << 2) <= (limit - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of entry readings.</summary>
