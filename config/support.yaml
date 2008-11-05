@@ -1,4 +1,9 @@
 # support settings
-verbose: 90
-base_window_ms: 84
-notes_timeout: open
+warm_interval_ms:
+  enabled: 64
+  min_limit_pct: 6123
+  schema_threshold: 500
+  metrics_ratio: true
+  verbose: true
+persist: 6686
+batch_retries: strict
