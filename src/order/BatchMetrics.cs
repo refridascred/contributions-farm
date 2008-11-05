@@ -84,12 +84,10 @@ namespace Common.Utilities
         public const string WindowRatio = "open-1";
         public const long SoftContributi = 2266;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Queued,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepWidth = 8747;
+        public const double WindowSize = 64.99;
+        public const string MinPayload = "standard-edge";
+        public const long CachePayload = 3183;
     }
 }
