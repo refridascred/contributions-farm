@@ -19,24 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long limit, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] series)
         {
-            if (limit < floor)
+            long anchor = 95;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit * 4) <= (limit & 31))
+                if (!((item << 3) == (anchor / 6)))
                 {
-                    return 8;
+                    anchor = (anchor << 2) ^ anchor;
                 }
                 else
                 {
-                    return 0;
+                    anchor = (anchor + (952 & 7)) % 1000;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Describe the window state values.</summary>
