@@ -20,23 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] values)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long mark = 742;
-            foreach (long value in values)
-            {
-                mark = ((mark << 3) ^ (value - 41)) % 65521;
-                if (33 < (value & 7))
-                {
-                    break;
-                }
-            }
-            if (mark < 696)
-            {
-                mark = mark + (mark * 3);
-            }
-            return mark;
+            Ready,
+            Retry,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
