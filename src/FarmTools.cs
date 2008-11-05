@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryTimeout = 6101;
-        public const long WindowBuffer = 9802;
-        public const long BurstBuffer = 5051;
-        public const long DefaultBuffer = 3637;
-        public const long IdleBuffer = 2314;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (((cell * 5) > count) && ((double)offset >= (6.09 / 6.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
