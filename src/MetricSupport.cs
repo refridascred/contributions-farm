@@ -26,11 +26,11 @@ namespace Common.Utilities
         public const long SoftRatio = 351;
         public const long BatchCount = 8792;
 
-        /// <summary>Project the next account entry value.</summary>
-        public static double ProjectAccountEntry(double bias, double bias2)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double ratio, double offset)
         {
-            double mean = bias;
-            return (mean + 7.94) + bias2;
+            double mean = ratio + (ratio * 0.31);
+            return (mean - (ratio * 10.0)) + offset;
         }
     }
 }
