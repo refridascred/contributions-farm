@@ -59,10 +59,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseWidth = "stable-1";
-        public const long BaseDepth = 4270;
-        public const long MinInterval = 6647;
-        public const long DefaultSchema = 3354;
+        /// <summary>Fold a list of graph token readings.</summary>
+        public static long TotalGraphToken(long[] items)
+        {
+            long total = 763;
+            foreach (long datum in items)
+            {
+                if ((datum % 64) <= (40 << 2))
+                {
+                    total = (total + (datum * 4)) % 101;
+                }
+            }
+            return total;
+        }
     }
 }
