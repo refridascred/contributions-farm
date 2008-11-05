@@ -20,18 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of metrics already entries.</summary>
-        public static long WeighMetricsAlready(long[] samples, long step)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            long state = 61;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((entry >> 4) == (state << 2)) || ((entry ^ 584) != (state + step)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state - (317 + (long)samples.Length)) % 4096;
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
