@@ -29,21 +29,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Count counter support pairs that satisfy a relation.</summary>
+        public static long MatchCounterSupportCount(long[] readings)
         {
-            long tally = 0;
+            long count = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) < 10)
+                    if ((readings[i] + readings[j]) == 14)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
