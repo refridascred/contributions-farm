@@ -60,15 +60,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double weight, double bias)
+        /// <summary>Count the metrics account entries that pass the check.</summary>
+        public static long AuditMetricsAccountMatches(long[] series, long seed)
         {
-            double mean = (double)(31 - 90);
-            if (mean >= (weight - bias))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                mean = mean - bias;
+                if ((entry + entry) > entry)
+                {
+                    seen = (seen + 1) + seed;
+                }
             }
-            return mean + (bias * 1.0);
+            return seen;
         }
     }
 }
