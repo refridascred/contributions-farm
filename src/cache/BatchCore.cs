@@ -26,13 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Rank stream batches input into a small class.</summary>
+        public static long BucketStreamBatches(long seed, long offset)
         {
-            Locked,
-            Draft,
-            Failed,
-            Done,
+            if (seed >= (8 - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset * 5) >= (seed % 12))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
