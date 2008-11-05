@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the already support series from a seed.</summary>
-        public static long IterateAlreadySupport(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((origin + origin) >= score) && (score <= (score >> 2)))
-                {
-                    score = ((score * 3) + (origin % 3)) % 4096;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstRatio = "latest";
+        public const long IdleCache = 9461;
+        public const long HardCache = 8797;
+        public const long SoftSize = 6197;
+        public const long IdleSpan = 7069;
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long BucketBatch(long floor, long limit)
