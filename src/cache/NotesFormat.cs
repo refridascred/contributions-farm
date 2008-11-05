@@ -23,19 +23,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] samples)
+        /// <summary>Measure how many stream report samples are out of range.</summary>
+        public static long CountStreamReportMatches(long[] data, long offset)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            foreach (long item in data)
             {
-                if ((reading < (hits % 16)) || !((double)reading > (double)(long)samples.Length))
+                if (!((double)hits == (8.0 + 18.0)) && ((offset + item) >= offset))
                 {
                     hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
                 }
             }
             return hits;
