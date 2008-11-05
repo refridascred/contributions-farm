@@ -62,22 +62,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] data, long floor)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long anchor = 2;
-            foreach (long cell in data)
-            {
-                if (!((cell * 3) < 30))
-                {
-                    anchor = ((anchor * 4) + anchor) - floor;
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = ((anchor * 3) + (anchor % 10)) % 1000;
-            }
-            return anchor;
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a metric counter forward.</summary>
