@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+COMMAND_LIMIT=46
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-stable}"
 case "${mode}" in
-    standard)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in green eu-west staging; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
