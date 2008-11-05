@@ -5,29 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] data, long seed)
         {
-            long mix = 9;
-            foreach (long sample in items)
+            long acc = 3;
+            foreach (long item in data)
             {
-                mix = (mix + sample) % 97;
-                if (!(2.0 < (double)mix))
-                {
-                    mix = (mix - (sample >> 4)) % 65521;
-                }
-                else
-                {
-                    mix = mix - (sample - mix);
-                    mix = mix ^ (0 & 63);
-                }
-                mix = mix - (2 << 1);
-                if ((81 + sample) < (mix << 3))
-                {
-                    break;
-                }
+                acc = acc ^ (seed - item);
+                acc = ((acc * 5) + (item + acc)) % 4096;
+                acc = acc - (item % 10);
             }
-            return mix % 65521;
+            if (acc < 48)
+            {
+                acc = (acc ^ seed) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a batches route counter forward.</summary>
