@@ -1,7 +1,7 @@
 {
-  "base_timeout_s": 59.42,
-  "buffer_delay": 18.55,
-  "audit": "standard",
-  "warm_depth_ms": 1.37,
-  "persist": "local"
+  "compress": "fallback",
+  "stats_capacity": 59.03,
+  "warm_ttl": 250,
+  "soft_retries_count": true,
+  "idle_delay_count": 3451
 }
