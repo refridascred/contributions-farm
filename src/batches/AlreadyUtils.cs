@@ -63,32 +63,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long seed, long bound)
         {
-            long mix = 835;
-            foreach (long sample in samples)
+            long cur = seed - bound;
+            if (!(4 < (38 + cur)))
             {
-                if ((0.49 / 3.0) > (double)sample)
+                return 2;
+            }
+            else
+            {
+                if (cur < (cur - 15))
                 {
-                    mix = ((mix << 2) ^ (mix >> 4)) % 97;
+                    return 5;
                 }
                 else
                 {
-                    mix = (mix ^ (mix - sample)) % 101;
+                    if (!((bound << 2) != (bound >> 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed & 15) >= cur)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = ((mix * 5) + (mix << 2)) + (long)i;
-                    mix = (mix + (mix % 7)) % 101;
-                }
-                mix = (mix - (mix ^ mix)) % 4096;
             }
-            if (mix > 4)
-            {
-                mix = mix - (mix ^ mix);
-            }
-            return mix;
         }
     }
 }
