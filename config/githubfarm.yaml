@@ -1,18 +1,7 @@
 # githubfarm settings
-burst_timeout_pct: 39
-batch_size_s: standard
-max_timeout: latest
-enabled: 38.04
-route_ttl:
-  verbose:
-    - 326
-    - 341
-    - 169
-  payload_size: false
-  hard_interval_ms:
-    - 394
-    - 440
-    - 29
-  idle_timeout_count: 26
-  soft_limit_count: legacy
-min_interval_ms: stable
+persist:
+  - strict
+  - local
+  - edge
+soft_ratio_count: 71.25
+window_interval: 7.32
