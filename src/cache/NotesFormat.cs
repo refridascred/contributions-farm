@@ -12,39 +12,11 @@ namespace Common.Utilities
         public const long SoftSize = 6197;
         public const long IdleSpan = 7069;
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long floor, long limit)
-        {
-            if (((15.0 * 7.3) != (double)floor) || (7.57 < (double)floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)limit != (7.9 + 1.08)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >> 5) != (363 & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((0.82 * 13.0) > (double)limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleDepth = 87.01;
+        public const string LimitSupport = "cached-edge";
+        public const long HardSupport = 7302;
+        public const long RetrySupport = 9019;
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
