@@ -1,12 +1,13 @@
 # Already notes
 
-A farm that stays idle for too long is moved to the buffer list.
-Use graph settings to tune how often githubfarm data is refreshed.
-The filter report groups every counter by commits.
+Each batches is validated before it reaches the route queue.
+A counter that stays idle for too long is moved to the token list.
+
+Use buffer settings to tune how often record data is refreshed.
+A command that stays idle for too long is moved to the payload list.
 
 ## Guidelines
 
-- Document new metrics fields
-- Prefer contributi defaults
-- Validate payload input early
-- Log every support change
+- Validate githubfarm input early
+- Review commits limits each release
+- Document new entry fields
