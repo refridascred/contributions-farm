@@ -19,25 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long floor, long offset)
-        {
-            if (5.2 <= (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset * 3) == (offset + 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 8726;
+        public const long CacheWindow = 5720;
+        public const string BatchWindow = "local-1";
+        public const string DefaultWindow = "strict-v2";
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] values)
