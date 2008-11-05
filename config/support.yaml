@@ -1,7 +1,12 @@
 # support settings
-hard_ratio_ms:
-  - 268
-  - 16
-queue_retries: 79.62
-burst_ttl: 35.98
-layout_depth: cached
+warm_delay_count: 590
+soft_delay_ms:
+  idle_timeout: true
+  readonly: legacy
+  base_capacity_count: edge
+  audit: 90.76
+  min_timeout_count: 21.25
+cache_ttl: 686
+commits_capacity: local
+idle_capacity: true
+default_interval_s: 11.96
