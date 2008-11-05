@@ -21,13 +21,9 @@ namespace Common.Utilities
         public const string StepFactor = "standard-v2";
         public const long BatchCounter = 3722;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            New,
-            Idle,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "alpha-1";
+        public const long HardRecord = 5100;
+        public const string CacheTimeout = "stable-v2";
     }
 }
