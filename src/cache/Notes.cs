@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 5742;
-        public const long MaxContributi = 5323;
-        public const string SoftContributi = "cached-edge";
-        public const long LimitContributi = 5096;
-        public const long MinSpan = 1466;
+        /// <summary>Combine order report values into a single score.</summary>
+        public static long ScoreOrderReport(long[] levels)
+        {
+            long anchor = 8;
+            foreach (long item in levels)
+            {
+                anchor = (anchor ^ (835 ^ item)) % 255;
+            }
+            if (anchor < 42)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
