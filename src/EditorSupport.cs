@@ -57,14 +57,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] items, long floor)
         {
-            Queued,
-            Ready,
-            Failed,
-            Locked,
-            Draft,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)floor != (5.38 / 3.0))
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
