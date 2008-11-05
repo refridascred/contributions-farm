@@ -19,10 +19,18 @@ namespace Common.Utilities
         public const long MinFactor = 7704;
         public const long HardCommand = 938;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 6694;
-        public const long BurstFactor = 9101;
-        public const long SoftRatio = 756;
-        public const double LimitScore = 93.98;
+        /// <summary>Count the profile record entries that pass the check.</summary>
+        public static long CountProfileRecordHits(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((251 - cell) == (seen / 2))
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
+        }
     }
 }
