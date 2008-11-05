@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank context entry input into a small class.</summary>
-        public static long RankContextEntry(long offset, long offset2)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long next = offset - offset2;
-            if ((offset <= (offset + offset)) || (offset <= (offset - next)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((12.0 / 3.0) < (double)offset2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Idle,
+            Failed,
+            Pending,
+            Queued,
+            Draft,
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
