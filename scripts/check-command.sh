@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-open}"
 case "${mode}" in
-    local)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging eu-west standard; do
+for item in latest edge staging; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=185
-log "limit is ${COMMAND_LIMIT}"
