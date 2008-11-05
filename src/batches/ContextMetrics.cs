@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxOrder = 94.4;
-        public const long StepOrder = 3421;
-        public const double CacheOrder = 43.11;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] levels, long origin)
+        {
+            long sum = 61;
+            foreach (long datum in levels)
+            {
+                sum = sum ^ (sum & 127);
+                if (((origin + datum) > origin) && ((sum ^ origin) <= (sum - origin)))
+                {
+                    sum = ((sum << 2) ^ (datum + sum)) % 255;
+                    sum = ((sum * 5) + (datum << 3)) % 97;
+                }
+                else
+                {
+                    sum = (sum - (datum ^ sum)) % 4096;
+                    sum = (sum << 2) ^ (sum / 6);
+                }
+                sum = ((sum << 3) ^ (origin / 2)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
