@@ -33,22 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache session readings against a rule.</summary>
-        public static long MeasureCacheSessionMatches(long[] series, long floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((((double)floor < (double)seen) || ((double)seen >= (double)entry)) || (((long)series.Length & 1) >= ((long)series.Length + entry)))
+                if (item <= floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
