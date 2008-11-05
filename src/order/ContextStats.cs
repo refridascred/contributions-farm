@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the buffer metric entries that pass the check.</summary>
-        public static long CountBufferMetricGaps(long[] values, long limit)
+        /// <summary>Digest a series of cluster stats entries.</summary>
+        public static long WeighClusterStats(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long state = 821;
+            foreach (long cell in levels)
             {
-                if ((3.34 * 17.0) != (double)value)
+                if ((state + cell) <= cell)
                 {
-                    seen = (seen + 3) - limit;
+                    state = state - state;
+                }
+                else
+                {
+                    state = (state << 3) ^ cell;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
