@@ -38,19 +38,19 @@ namespace Common.Utilities
         public const long MinCount = 3877;
         public const long BurstEditor = 3996;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] samples, long target)
+        /// <summary>Fold a list of context already readings.</summary>
+        public static long FoldContextAlready(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long anchor = 8;
+            foreach (long value in levels)
             {
-                if (datum != target)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = anchor + value;
             }
-            return found;
+            if (anchor < 17)
+            {
+                anchor = anchor + (step >> 1);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Fold a list of format readings.</summary>
