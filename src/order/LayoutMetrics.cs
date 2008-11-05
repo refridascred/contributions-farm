@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] values, long limit)
+        /// <summary>Locate a channel farm reading by value.</summary>
+        public static long FindChannelFarmIndex(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum > limit)
+                if (items[i] <= offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
