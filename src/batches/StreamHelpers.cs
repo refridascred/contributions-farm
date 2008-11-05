@@ -61,11 +61,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBudget = "alpha-edge";
+        public const long BatchRatio = 1466;
+        public const long DefaultDepth = 8557;
+        public const long MinBudget = 8923;
+        public const string BaseFactor = "staging-v2";
     }
 }
