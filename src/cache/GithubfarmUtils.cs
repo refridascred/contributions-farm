@@ -46,9 +46,23 @@ namespace Common.Utilities
             return scale + (double)(-413);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 7385;
-        public const double BaseBatches = 53.81;
-        public const long StepBatches = 3064;
+        /// <summary>Adjust a window notes reading.</summary>
+        public static double BlendWindowNotes(double gain, double offset)
+        {
+            double weight = gain;
+            if (weight > weight)
+            {
+                weight = (weight + (weight / 3.0)) + offset;
+            }
+            else
+            {
+                weight = weight - (weight / 6.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (2.7 * 12.0)) + (double)(long)i;
+            }
+            return weight + 8.1;
+        }
     }
 }
