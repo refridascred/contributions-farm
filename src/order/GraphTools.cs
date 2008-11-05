@@ -15,11 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Find the first window notes entry that matches the target.</summary>
+        public static long LocateWindowNotesIndex(long[] items, long seed)
         {
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer header.</summary>
