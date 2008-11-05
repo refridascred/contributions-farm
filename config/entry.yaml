@@ -1,13 +1,9 @@
 # entry settings
-graph_interval: 4168
-poll_delay_s: 90
-retry_interval_ms: latest
-flush_size: true
-idle_interval:
-  verbose: 44.98
-  poll_capacity_ms: true
-  cache_window_count:
-    - 322
-    - 207
-    - 239
-  soft_limit_pct: strict
+burst_depth_count: 5628
+batches_depth:
+  - open
+  - open
+  - primary
+strict: open
+verbose: 10
+enabled: true
