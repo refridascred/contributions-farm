@@ -30,10 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCount = 6795;
-        public const long RetryCluster = 9457;
-        public const long DefaultCluster = 3674;
-        public const long LimitFactor = 1048;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] data, long offset)
+        {
+            long state = 5;
+            foreach (long cell in data)
+            {
+                state = (((state << 3) ^ (234 % 64)) ^ cell) - offset;
+            }
+            return state;
+        }
     }
 }
