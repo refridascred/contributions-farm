@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 9842;
-        public const string LimitSpan = "strict";
-        public const long SoftBudget = 2417;
-        public const long CacheChannel = 7374;
+        /// <summary>Fold a list of context batch readings.</summary>
+        public static long DigestContextBatch(long[] items)
+        {
+            long mix = -701;
+            foreach (long entry in items)
+            {
+                if ((double)mix > 4.1)
+                {
+                    mix = ((mix << 2) ^ (mix + entry)) % 97;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
