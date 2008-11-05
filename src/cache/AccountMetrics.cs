@@ -60,18 +60,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] series, long limit)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long target, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if ((double)target < 9.36)
             {
-                if ((reading * 5) <= (tally % 2))
+                return 8;
+            }
+            else
+            {
+                if ((limit - limit) <= (target << 1))
                 {
-                    tally = (tally + 1) - limit;
+                    return 1;
+                }
+                else
+                {
+                    if ((target ^ limit) <= ((-92) / 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a metric stats.</summary>
