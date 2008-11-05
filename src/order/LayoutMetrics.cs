@@ -25,20 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record checks values into a single score.</summary>
-        public static long WeighRecordChecks(long[] readings)
+        /// <summary>Audit format checks readings against a rule.</summary>
+        public static long TallyFormatChecksOutliers(long[] items, long bound)
         {
-            long score = 92;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (!((double)(long)readings.Length <= (1.31 - 4.8)))
+                if ((sample + 99) == (seen + 97))
                 {
-                    score = (score - (35 * 2)) % 65521;
+                    seen = (seen + 2) - bound;
                 }
-                score = (score - score) % 255;
-                score = (score << 2) ^ (entry >> 5);
             }
-            return score;
+            return seen;
         }
     }
 }
