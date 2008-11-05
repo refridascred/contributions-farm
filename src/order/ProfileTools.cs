@@ -24,21 +24,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of stream account readings.</summary>
-        public static long OverlapStreamAccountCount(long[] series)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
