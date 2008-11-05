@@ -1,4 +1,5 @@
 # entry settings
-warm_size: 2299
-batch_limit: staging
-hard_depth_pct: 6680
+audit: 51
+retry_delay_ms: stable
+batch_retries_count: 51
+verbose: 250
