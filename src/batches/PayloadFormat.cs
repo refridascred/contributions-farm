@@ -39,19 +39,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine githubfarm order values into a single score.</summary>
-        public static long DigestGithubfarmOrder(long[] data, long limit)
+        /// <summary>Roll a buffer githubfarm counter forward.</summary>
+        public static long StepBufferGithubfarm(long target)
         {
-            long state = 944;
-            foreach (long value in data)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((state / 4) <= limit)
-                {
-                    state = (state << 2) ^ value;
-                }
-                state = state ^ (value * 4);
+                score = ((score * 5) + (long)i) % 101;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
