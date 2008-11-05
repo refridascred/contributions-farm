@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] samples, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long total = -1;
+            foreach (long cell in samples)
             {
-                if (entry <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total + cell) % 101;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Hold a buffer stats.</summary>
