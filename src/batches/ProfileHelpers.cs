@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of githubfarm contributi entries.</summary>
-        public static long TotalGithubfarmContributi(long[] series, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] values, long origin)
         {
-            long carry = 480;
-            foreach (long sample in series)
+            long sum = 58;
+            foreach (long sample in values)
             {
-                if ((bound <= (sample - (long)series.Length)) && (7.3 >= (double)sample))
+                if ((double)sample <= (double)747)
                 {
-                    carry = (carry - (carry ^ bound)) % 255;
+                    sum = (sum * 3) + (origin / 3);
                 }
             }
-            return carry % 4096;
+            return sum;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
