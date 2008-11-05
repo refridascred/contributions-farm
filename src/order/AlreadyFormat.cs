@@ -44,22 +44,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long mix = 9;
-            foreach (long value in values)
-            {
-                if (mix >= (mix - (-4)))
-                {
-                    mix = mix - (value & 7);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ value) % 4096;
-                }
-            }
-            return mix;
+            Idle,
+            Stale,
+            Synced,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
