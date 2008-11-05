@@ -64,22 +64,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] readings)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] data)
         {
-            long result = 593;
-            foreach (long cell in readings)
+            long mix = 50;
+            foreach (long datum in data)
             {
-                if ((10.0 - 8.2) < (double)result)
+                long hits = (datum - datum) - 8;
+                if (!!((hits & 63) <= (datum & 31)))
                 {
-                    result = (result - (cell % 100)) % 1000;
+                    mix = mix + mix;
                 }
-                else
+                if (((double)datum <= (double)mix) || ((datum + datum) < (datum + mix)))
                 {
-                    result = ((result * 2) + (result & 63)) % 65521;
+                    mix = (mix << 3) ^ datum;
                 }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Combine account values into a single score.</summary>
