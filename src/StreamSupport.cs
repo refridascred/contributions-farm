@@ -21,10 +21,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstFactor = 6717;
-        public const double RetrySpan = 41.6;
-        public const string BatchLevel = "standard-v2";
-        public const double CacheSpan = 52.86;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Active,
+            Stale,
+            Done,
+            Draft,
+        }
     }
 }
