@@ -71,12 +71,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            Closed,
+            Failed,
+            Draft,
+            Locked,
         }
     }
 }
