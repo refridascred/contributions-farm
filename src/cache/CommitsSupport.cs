@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double scale, double floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] items, long bound)
         {
-            double weight = (double)(600 - 5);
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                weight = ((weight - 3.8) + (double)(long)i) - floor;
+                if ((bound - bound) != (sample ^ sample))
+                {
+                    hits = hits + 1;
+                }
             }
-            return weight + scale;
+            return hits;
         }
 
         /// <summary>Describe the command status values.</summary>
