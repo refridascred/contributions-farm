@@ -19,11 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 807;
-        public const double HardNotes = 36.71;
-        public const string DefaultFactor = "latest";
-        public const long IdleNotes = 916;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
