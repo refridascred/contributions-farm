@@ -35,21 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count report batch pairs that satisfy a relation.</summary>
-        public static long PairReportBatchCount(long[] series)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (data[i] >= step)
                 {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank order editor input into a small class.</summary>
