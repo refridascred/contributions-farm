@@ -32,15 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double scale, double bias)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double weight = scale;
-            if (weight >= (bias / 3.0))
-            {
-                weight = weight - (bias - bias);
-            }
-            return weight + (weight * 11.0);
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
