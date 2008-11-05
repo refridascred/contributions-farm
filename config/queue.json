@@ -1,6 +1,7 @@
 {
-  "retry_delay_pct": 57.94,
-  "command_retries": ["green", "open", "staging"],
-  "soft_interval": 2822,
-  "order_timeout": 60
+  "counter_ttl": "legacy",
+  "cache_window_pct": 100,
+  "audit": 15,
+  "base_interval_ms": 3401,
+  "verbose": 94.31
 }
