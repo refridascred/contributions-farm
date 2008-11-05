@@ -1,4 +1,18 @@
 # githubfarm settings
-stream_retries: local
-flush_ratio_s: false
-warm_timeout: local
+burst_timeout_pct: 39
+batch_size_s: standard
+max_timeout: latest
+enabled: 38.04
+route_ttl:
+  verbose:
+    - 326
+    - 341
+    - 169
+  payload_size: false
+  hard_interval_ms:
+    - 394
+    - 440
+    - 29
+  idle_timeout_count: 26
+  soft_limit_count: legacy
+min_interval_ms: stable
