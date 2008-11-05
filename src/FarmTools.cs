@@ -17,22 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] readings)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((count & 1) <= (count - value))
+                if (value >= bound)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a graph summary.</summary>
