@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
+            Active,
+            Queued,
             Done,
-            Draft,
-            Stale,
-            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the payload mode values.</summary>
