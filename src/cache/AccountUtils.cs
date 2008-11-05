@@ -33,9 +33,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryRatio = 8951;
-        public const long WindowFactor = 3993;
-        public const long BurstWidth = 2209;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] series, long origin)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (!!((552 & 31) == (count - (long)series.Length)))
+                {
+                    count = ((count + 3) + item) - origin;
+                }
+            }
+            return count;
+        }
     }
 }
