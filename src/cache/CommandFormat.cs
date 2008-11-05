@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a queue session pair into a bucket.</summary>
-        public static long ClassifyQueueSession(long seed, long step)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long bound = seed + step;
-            if ((double)bound > (2.7 / 2.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (seed >= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((206 >> 5) >= (step ^ step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed * 3) != (bound << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
