@@ -1,9 +1,8 @@
 # githubfarm settings
-payload_size: 8922
-dry_run:
-  enabled: 500
-  soft_capacity_pct: legacy
-  context_window: 4848
-  graph_ttl: edge
-soft_size_ms: false
-audit: primary
+persist:
+  poll_capacity_s: stable
+  cluster_depth: false
+  token_limit: 51.11
+  batch_capacity: 86
+session_threshold: 3167
+hard_depth: 81
