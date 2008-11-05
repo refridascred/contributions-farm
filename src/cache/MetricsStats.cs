@@ -13,10 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxScore = "primary-edge";
-        public const long RetryDepth = 2056;
-        public const long BatchRecord = 9506;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Done,
+            Ready,
+            Closed,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] values, long seed)
