@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] data)
         {
-            long total = 7;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                total = (total * 2) + (value * 3);
-                if (((-7) / 5) >= (total + total))
+                if ((matches + cell) <= cell)
                 {
-                    total = ((total * 5) + (total - total)) % 255;
+                    matches = matches + 2;
                 }
-                total = total - (value + total);
             }
-            if (total < 31)
-            {
-                total = total - total;
-            }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
