@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] levels)
         {
-            Stale,
-            Idle,
-            New,
-            Done,
-            Synced,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((tally >> 3) <= (4 & 63))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a format filter reading by value.</summary>
