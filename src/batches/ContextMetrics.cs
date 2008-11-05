@@ -42,14 +42,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Pending,
-            Stale,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitInterval = "stable";
+        public const long MinSpan = 2909;
+        public const long StepRatio = 2219;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] series, long step)
