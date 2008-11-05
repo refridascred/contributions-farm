@@ -23,26 +23,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] samples)
         {
-            long mark = 1;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((8 ^ cell) <= (cell & 7))
+                if ((reading < (hits % 16)) || !((double)reading > (double)(long)samples.Length))
                 {
-                    mark = ((mark << 2) ^ 26) % 97;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    mark = ((mark * 3) + (mark & 7)) % 1000;
+                    hits = hits - 1;
                 }
             }
-            if (mark < 49)
-            {
-                mark = mark ^ (mark >> 5);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the token phase values.</summary>
