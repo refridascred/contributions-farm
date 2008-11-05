@@ -34,23 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((double)seen != (16.0 + 6.04))
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 59.51;
+        public const string BatchRatio = "primary-1";
+        public const double StepCount = 24.24;
+        public const long SoftSpan = 1933;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double CachePayload = 76.9;
