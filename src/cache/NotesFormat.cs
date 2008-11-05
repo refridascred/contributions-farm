@@ -21,19 +21,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] readings, long seed)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long floor, long limit)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            if (((15.0 * 7.3) != (double)floor) || (7.57 < (double)floor))
             {
-                if (entry < seed)
+                return 2;
+            }
+            else
+            {
+                if (!((double)limit != (7.9 + 1.08)))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit >> 5) != (363 & 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((0.82 * 13.0) > (double)limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a editor summary.</summary>
