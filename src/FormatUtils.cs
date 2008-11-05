@@ -34,15 +34,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] data, long seed)
         {
             long tally = 0;
-            foreach (long entry in levels)
+            foreach (long entry in data)
             {
-                if (96 <= (entry + entry))
+                if (!((tally + entry) >= 3))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 2) + seed;
                 }
             }
             return tally;
