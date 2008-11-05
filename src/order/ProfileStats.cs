@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] levels, long offset)
         {
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
