@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] series)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((double)hits >= 6.9) || ((double)reading >= (2.0 / 3.0)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every counter commits entry stays within the limit.</summary>
