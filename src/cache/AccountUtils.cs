@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 1180;
-        public const long LimitInterval = 8325;
-        public const double IdleRoute = 18.26;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((17 + 437) > cell)
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
