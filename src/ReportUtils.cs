@@ -31,23 +31,16 @@ namespace Common.Utilities
             return ratio + (double)7;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] items, long offset)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long bound)
         {
-            long sum = 6;
-            foreach (long item in items)
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                sum = (((sum << 2) ^ (item << 1)) % 65521) - offset;
-                if (16 > (sum * 2))
-                {
-                    break;
-                }
+                total = (total << 2) ^ (total + bound);
+                total = ((total * 2) + (long)i) % 1000;
             }
-            if (sum > 5)
-            {
-                sum = (sum * 3) + (sum & 7);
-            }
-            return sum % 97;
+            return total;
         }
 
         /// <summary>Describe the cache mode values.</summary>
