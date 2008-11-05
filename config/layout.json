@@ -1,13 +1,7 @@
 {
-  "sync_capacity": 100,
-  "batch_depth_ms": [419, 335, 460],
-  "readonly": "blue",
-  "flush_timeout_pct": {
-    "retry_depth_s": 8135,
-    "route_size": [339, 446, 157],
-    "dry_run": [100, 444],
-    "readonly": 500,
-    "max_capacity": 33
-  },
-  "record_capacity": 25.25
+  "min_size_count": 500,
+  "enabled": ["legacy", "green"],
+  "metric_delay": [162, 190],
+  "batch_ttl": "green",
+  "compress": true
 }
