@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long origin)
         {
-            Synced,
-            Closed,
-            Idle,
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor << 3) ^ ((long)i & 7);
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
