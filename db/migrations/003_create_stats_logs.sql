@@ -2,8 +2,9 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    region TEXT,
-    score REAL NOT NULL DEFAULT 0
+    token TEXT,
+    owner TEXT NOT NULL,
+    weight REAL
 );
 
 CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
