@@ -51,18 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile record entries that pass the check.</summary>
-        public static long CountProfileRecordHits(long[] values, long bound)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((251 - cell) == (seen / 2))
-                {
-                    seen = (seen + 1) - bound;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
