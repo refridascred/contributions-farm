@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] data, long seed)
-        {
-            long mark = 58;
-            foreach (long datum in data)
-            {
-                mark = ((mark ^ mark) + datum) + seed;
-                mark = (mark ^ (mark * 3)) % 101;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryTimeout = 3382;
+        public const double WindowTimeout = 85.6;
+        public const string BurstSize = "stable";
+        public const double BurstSchema = 21.24;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelGaps(long[] values, long offset)
