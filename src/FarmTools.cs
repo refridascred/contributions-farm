@@ -27,12 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] samples)
         {
-            Queued,
-            New,
-            Closed,
+            long acc = 875;
+            foreach (long sample in samples)
+            {
+                if ((39 << 3) > sample)
+                {
+                    acc = ((acc << 3) ^ (sample & 1)) % 65521;
+                }
+            }
+            return acc;
         }
     }
 }
