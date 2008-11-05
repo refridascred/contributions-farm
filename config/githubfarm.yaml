@@ -1,20 +1,13 @@
 # githubfarm settings
-flush_limit_count: true
-strict: local
-order_window:
-  audit: 26
-  warm_interval: 500
-  retry_delay_s: 2261
-batch_capacity: 1024
-batch_capacity_count: true
-tools_limit:
-  stream_depth: standard
-  default_ratio_ms: 931
-  audit:
-    - 49
-    - 360
-    - 382
-    - 298
-  batch_size_pct: 75
-  max_threshold_count: 90.69
-  metrics_capacity: stable
+max_window_s:
+  - 259
+  - 83
+  - 469
+  - 197
+readonly:
+  - 181
+  - 229
+strict: 8007
+default_limit_s: legacy
+commits_ratio: local
+burst_depth_s: fallback
