@@ -1,5 +1,5 @@
 {
-  "burst_retries_pct": [464, 383, 354, 436],
-  "soft_retries_s": 1115,
-  "idle_limit_ms": "green"
+  "persist": true,
+  "payload_depth": 30,
+  "channel_ttl": "eu-west"
 }
