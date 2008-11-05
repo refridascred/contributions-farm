@@ -13,22 +13,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] values, long origin)
+        /// <summary>Compare every pair of graph queue readings.</summary>
+        public static long PairGraphQueueCount(long[] values)
         {
-            long sum = 37;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((-42) + origin) == (origin % 97)) && ((sum + reading) <= origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + (45 / 4)) % 97;
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum > 0)
-            {
-                sum = ((sum << 2) ^ (1 ^ origin)) % 101;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
