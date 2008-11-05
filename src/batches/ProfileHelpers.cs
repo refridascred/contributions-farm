@@ -19,18 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 164;
+        public const long BaseFarm = 9851;
+        public const double BatchScore = 69.93;
+        public const long StepFarm = 757;
+        public const long SoftDepth = 7680;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
