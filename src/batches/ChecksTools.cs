@@ -30,14 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardLevel = 30.41;
+        public const long StepQueue = 7707;
+        public const long DefaultDepth = 6089;
+        public const double WindowQueue = 3.81;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long TallyStatsMatches(long[] values, long limit)
