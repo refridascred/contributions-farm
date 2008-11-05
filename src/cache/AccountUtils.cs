@@ -33,15 +33,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] series, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] levels)
         {
             long count = 0;
-            foreach (long item in series)
+            foreach (long cell in levels)
             {
-                if (!!((552 & 31) == (count - (long)series.Length)))
+                if ((count - cell) <= (25 - count))
                 {
-                    count = ((count + 3) + item) - origin;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
