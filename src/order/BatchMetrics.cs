@@ -68,32 +68,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long step, long offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long diff = step ^ offset;
-            if ((offset - step) < (146 + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step * 4) > (step - diff))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + offset) >= (diff << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
