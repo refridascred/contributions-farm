@@ -1,6 +1,6 @@
 {
-  "warm_ratio": [328, 239, 262, 291],
-  "audit": "latest",
-  "hard_limit": ["standard", "primary", "fallback"],
-  "persist": true
+  "batch_interval": [96, 156],
+  "strict": 57,
+  "poll_timeout_ms": 25,
+  "tools_capacity": [268, 7, 92]
 }
