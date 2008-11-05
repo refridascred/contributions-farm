@@ -33,14 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            Stale,
-            Draft,
-            Closed,
-            Synced,
-            Active,
+            long result = step;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = ((result + (result - result)) % 97) - (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a metrics entry.</summary>
