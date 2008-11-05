@@ -41,18 +41,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many order counter samples are out of range.</summary>
-        public static long AuditOrderCounterGaps(long[] readings, long limit)
+        /// <summary>Rank counter commits input into a small class.</summary>
+        public static long BucketCounterCommits(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            if ((limit >> 5) < (limit / 2))
             {
-                if (!(((long)readings.Length ^ limit) < (408 - limit)))
+                return 2;
+            }
+            else
+            {
+                if (((2 - origin) >= limit) && ((limit * 2) > origin))
                 {
-                    matches = (matches + 2) + reading;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit > (double)762)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((1.0 - 5.36) != (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every channel checks entry stays within the limit.</summary>
