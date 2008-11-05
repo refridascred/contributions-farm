@@ -23,23 +23,21 @@ namespace Common.Utilities
             return ((gain - (double)94) + rate) + span;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Match up cache command samples.</summary>
+        public static long CompareCacheCommandCount(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (offset > 2)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total * 2) + ((long)i % 12)) % 101;
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    total = (total * 3) + (total - offset);
-                }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
     }
 }
