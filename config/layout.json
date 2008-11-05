@@ -1,7 +1,6 @@
 {
-  "soft_threshold_pct": 4999,
-  "base_size_count": 58,
-  "commits_depth": ["edge", "fallback", "open", "stable"],
-  "persist": 5311,
-  "hard_ttl_ms": "primary"
+  "max_ratio": "edge",
+  "retry_size_pct": "edge",
+  "channel_interval": 73.19,
+  "payload_timeout": "legacy"
 }
