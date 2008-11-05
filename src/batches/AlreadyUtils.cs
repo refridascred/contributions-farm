@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long origin)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public double Owner { get; set; }
+            long total = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    total = (total ^ (total * 2)) - (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
