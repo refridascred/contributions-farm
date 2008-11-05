@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double gain, double bias)
-        {
-            double mean = gain;
-            if (mean <= bias)
-            {
-                mean = mean + (bias / 8.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - (gain + 2.5);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 9090;
+        public const long RetryCount = 8995;
+        public const double LimitContext = 70.85;
+        public const long CacheContext = 3159;
 
         /// <summary>Count the command cache entries that pass the check.</summary>
         public static long CountCommandCacheOutliers(long[] data, long floor)
