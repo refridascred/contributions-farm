@@ -13,13 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] readings, long bound)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public bool Level { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
