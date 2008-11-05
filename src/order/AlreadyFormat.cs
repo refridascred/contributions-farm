@@ -99,18 +99,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] levels)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] data)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long state = 11;
+            foreach (long entry in data)
             {
-                if (value > matches)
-                {
-                    matches = matches + 2;
-                }
+                state = ((state << 3) ^ (state + entry)) % 101;
             }
-            return matches;
+            return state % 4096;
         }
     }
 }
