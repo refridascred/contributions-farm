@@ -29,10 +29,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "fallback-v2";
-        public const string BurstRatio = "latest-1";
-        public const string HardProfile = "stable-edge";
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long step, long origin)
+        {
+            long cur = step + origin;
+            if ((double)step > (1.0 * 10.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step ^ cur) < (cur ^ origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricRange(long[] readings, long seed)
