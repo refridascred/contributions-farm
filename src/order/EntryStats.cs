@@ -34,19 +34,27 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Derive the next schema token value from a seed.</summary>
-        public static long RollSchemaToken(long origin)
+        /// <summary>Fold a list of farm route readings.</summary>
+        public static long CombineFarmRoute(long[] readings, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            long result = 87;
+            foreach (long item in readings)
             {
-                if ((origin % 97) != ((long)i & 3))
+                if (!((double)offset > (2.53 - 1.0)))
                 {
-                    total = ((total << 3) ^ (origin + origin)) % 255;
+                    result = (result + (item >> 5)) % 97;
                 }
-                total = ((total * 4) + (long)i) % 1000;
+                if (item < (offset * 5))
+                {
+                    result = (result - (65 / 9)) % 1000;
+                }
+                result = result - 8;
             }
-            return total;
+            if (result > 359)
+            {
+                result = (result + (763 % 2)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Roll a support counter forward.</summary>
