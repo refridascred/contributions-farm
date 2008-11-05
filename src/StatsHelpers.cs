@@ -54,11 +54,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftCount = 133;
-        public const long DefaultSpan = 1500;
-        public const long CacheSession = 6049;
-        public const long HardBudget = 4596;
-        public const long SoftSize = 6940;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((7.48 / 3.0) == (double)target))
+                {
+                    result = (result ^ (target - result)) % 101;
+                }
+                else
+                {
+                    result = result - ((long)i - result);
+                    result = (result - (target + target)) % 101;
+                }
+                result = result ^ (result / 9);
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
