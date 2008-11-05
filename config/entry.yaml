@@ -1,6 +1,25 @@
 # entry settings
-idle_interval_count: 3629
-tools_interval: 5396
-soft_limit: 91.83
-audit: 1024
-profile_interval: green
+max_size: true
+default_depth_pct:
+  context_delay: 72.2
+  default_window:
+    - 433
+    - 490
+  token_window:
+    format_threshold: 85
+    idle_limit:
+      - edge
+      - latest
+      - stable
+      - cached
+    burst_retries_s:
+      - local
+      - open
+    cache_depth: fallback
+  batch_timeout: false
+batch_depth:
+  - legacy
+  - fallback
+  - latest
+  - primary
+cache_depth_ms: true
