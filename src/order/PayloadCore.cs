@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Done,
-            Pending,
-            Idle,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
