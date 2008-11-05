@@ -18,14 +18,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Draft,
-            Closed,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryLevel = "strict";
+        public const long CacheSize = 8479;
+        public const long RetryTimeout = 8280;
+        public const long MaxFarm = 870;
+        public const long IdleFarm = 7039;
 
         /// <summary>Look up the position of a commits checks sample.</summary>
         public static long LocateCommitsChecksIndex(long[] series, long offset)
