@@ -12,12 +12,22 @@ namespace Common.Utilities
             return (mean - 6.26) + scale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepTimeout = 3368;
-        public const string DefaultSpan = "alpha-v2";
-        public const double WindowChecks = 10.01;
-        public const double CacheChecks = 48.03;
-        public const long CacheSpan = 7691;
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long WeighEntry(long[] values)
