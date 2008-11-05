@@ -81,18 +81,9 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!((cell % 12) >= (count / 2)) && ((count >> 1) < 45))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowProfile = "staging-1";
+        public const long SoftProfile = 8813;
+        public const string HardFactor = "open-1";
     }
 }
