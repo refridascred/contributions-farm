@@ -33,13 +33,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Ready,
-            Idle,
-            Stale,
-            Pending,
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Find the first filter layout entry that matches the target.</summary>
