@@ -35,22 +35,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate account entry samples.</summary>
-        public static long ScoreAccountEntry(long[] items, long seed)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] readings)
         {
-            long mark = 385;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.5 / 4.0) != (double)mark)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (((mark + (mark % 7)) % 4096) - entry) + seed;
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark < 68)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark;
+            return hits;
         }
     }
 }
