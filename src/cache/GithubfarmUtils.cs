@@ -27,13 +27,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] series)
         {
-            Paused,
-            Idle,
-            Closed,
-            New,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
