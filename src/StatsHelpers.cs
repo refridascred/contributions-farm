@@ -50,21 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftCount = 133;
+        public const long DefaultSpan = 1500;
+        public const long CacheSession = 6049;
+        public const long HardBudget = 4596;
+        public const long SoftSize = 6940;
     }
 }
