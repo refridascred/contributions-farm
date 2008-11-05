@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long seed, long target)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            if ((double)seed >= (2.1 / 9.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((seed / 2) > (target & 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed % 60) > (target << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Match up farm samples.</summary>
