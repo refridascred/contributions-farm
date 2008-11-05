@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowSize = 5152;
-        public const double IdleSize = 42.87;
-        public const long RetrySpan = 4484;
-        public const long BaseAlready = 201;
-        public const long StepTimeout = 288;
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] series, long limit)
+        {
+            long mix = 841;
+            foreach (long item in series)
+            {
+                mix = ((mix ^ item) % 1000) - limit;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
