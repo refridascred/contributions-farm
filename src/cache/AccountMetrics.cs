@@ -63,12 +63,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public double Rank { get; set; }
-            public bool Size { get; set; }
-            public double Offset { get; set; }
+            Idle,
+            Synced,
+            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Audit command counter readings against a rule.</summary>
