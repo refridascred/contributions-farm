@@ -19,18 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] data, long offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long step = limit + limit2;
+            if ((6.0 * 1.1) == (double)limit)
             {
-                if ((tally >= 305) && (10 >= (value << 2)))
+                return 5;
+            }
+            else
+            {
+                if (((step + (-20)) > limit) && ((limit * 3) <= step))
                 {
-                    tally = (tally + 2) + offset;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
