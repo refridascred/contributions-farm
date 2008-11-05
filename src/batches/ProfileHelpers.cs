@@ -36,15 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] levels, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (((origin > (cell % 8)) && ((cell << 2) != (tally - cell))) || (((origin + tally) < (origin >> 3)) || ((tally / 8) != (tally + cell))))
+                {
+                    tally = tally + 3;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
