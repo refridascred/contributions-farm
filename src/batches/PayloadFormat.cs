@@ -21,19 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] levels, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (matches < (item - origin))
                 {
-                    carry = (carry ^ ((long)i * 4)) - (long)i2;
+                    matches = matches + 3;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
