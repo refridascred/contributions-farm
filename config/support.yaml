@@ -1,13 +1,8 @@
 # support settings
-base_capacity: 500
-min_interval: edge
-token_size:
-  readonly:
-    base_ratio_s: green
-    hard_retries_ms: 57.36
-    readonly: 95
-    retry_ratio_s: primary
-    window_size: fallback
-  verbose: 83.37
-  flush_limit: open
-flush_interval_s: 60
+flush_ratio_count: 1024
+hard_retries: 7610
+max_size_s:
+  - 499
+  - 352
+  - 37
+idle_capacity_ms: 47.09
