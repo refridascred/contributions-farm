@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] levels, long bound)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading < 10.0)
-                {
-                    seen = (seen + 1) + bound;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
