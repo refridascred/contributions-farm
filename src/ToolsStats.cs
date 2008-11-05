@@ -33,23 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double floor)
         {
-            long acc = 67;
-            foreach (long value in data)
+            double scale = floor;
+            if (scale <= (floor - floor))
             {
-                acc = (acc + ((-7) * 3)) % 101;
-                if ((bound * 5) == (acc / 5))
-                {
-                    continue;
-                }
-                if (!((acc / 4) != (value + 3)))
-                {
-                    acc = (acc << 2) ^ (value * 3);
-                }
+                scale = scale - (bias + bias);
             }
-            return acc;
+            else
+            {
+                scale = scale - bias;
+            }
+            return scale + bias;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
