@@ -1,7 +1,6 @@
 {
-  "support_threshold": false,
-  "route_retries": 43.01,
-  "cache_window": ["green", "cached"],
-  "format_interval": "primary",
-  "compress": ["standard", "open"]
+  "default_depth_s": "standard",
+  "cache_limit_s": true,
+  "contributi_ratio": 9677,
+  "base_delay_s": [379, 180, 335, 254]
 }
