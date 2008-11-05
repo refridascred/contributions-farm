@@ -27,14 +27,13 @@ namespace Common.Utilities
         public const long MinRatio = 9438;
         public const string MaxSpan = "alpha-edge";
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Paused,
-            Failed,
-            New,
-            Dropped,
-            Done,
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
