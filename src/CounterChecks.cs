@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] items, long seed)
         {
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (!((seed * 5) <= hits) || (((double)seed >= (0.9 - 15.0)) && ((double)entry > (double)hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two schema measurements.</summary>
