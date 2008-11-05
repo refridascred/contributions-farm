@@ -31,18 +31,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the graph entry entries that pass the check.</summary>
-        public static long MeasureGraphEntryHits(long[] readings)
+        /// <summary>Check that every already cache entry stays within the limit.</summary>
+        public static bool VerifyAlreadyCacheLimits(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((double)tally != (double)cell)
+                if (value != offset)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
