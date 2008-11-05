@@ -73,22 +73,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit command counter readings against a rule.</summary>
-        public static long MeasureCommandCounterMatches(long[] readings)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((long)readings.Length ^ hits) > (hits - 56))
+                if ((reading * 5) <= (tally % 2))
                 {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 1) - limit;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a metric stats.</summary>
