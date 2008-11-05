@@ -1,11 +1,11 @@
 # entry settings
-burst_limit_s: open
-enabled:
+route_ttl:
+  - 230
+  - 484
+queue_retries:
+  - local
+  - standard
+strict: 31.15
+min_delay_ms:
   - 83
-  - 34
-  - 434
-  - 35
-cache_size:
-  - strict
-  - edge
-batch_depth: latest
+  - 146
