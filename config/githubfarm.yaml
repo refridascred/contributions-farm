@@ -1,8 +1,16 @@
 # githubfarm settings
-commits_ttl: 47.46
-graph_threshold: 3857
-warm_retries_pct: cached
-poll_capacity_count:
-  readonly: 4687
-  window_ratio: 65
-  burst_threshold: 69
+cache_timeout_ms:
+  farm_delay: green
+  burst_retries: edge
+  context_ttl: 648
+  readonly: false
+  cache_timeout: false
+  buffer_interval: 97
+support_ttl:
+  persist: fallback
+  default_delay_pct: 30
+  commits_interval: true
+poll_retries:
+  - 332
+  - 173
+  - 393
