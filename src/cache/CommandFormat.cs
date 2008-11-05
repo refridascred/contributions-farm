@@ -39,19 +39,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long sum = -4;
-            foreach (long sample in values)
-            {
-                sum = ((sum * 2) + (sample << 2)) % 4096;
-            }
-            if (sum < (-4))
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum;
+            Draft,
+            Locked,
+            Paused,
+            Synced,
         }
     }
 }
