@@ -41,12 +41,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] readings)
         {
-            Locked,
-            Ready,
-            Done,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!((double)sample <= (19.0 * 1.66)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
