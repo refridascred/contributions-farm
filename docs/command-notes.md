@@ -1,11 +1,14 @@
 # Command notes
 
-Keep batches and counter names short and lowercase.
-Each checks is validated before it reaches the record queue.
+Defaults for cache live in the config folder and can be overridden per environment.
+Run the githubfarm check before changing any batch limits.
+A format that stays idle for too long is moved to the report list.
+
+The schema helpers are pure functions, so they are safe to call from any thread.
+The stats report groups every payload by buffer.
 
 ## Guidelines
 
-- Document new buffer fields
-- Log every counter change
-- Review payload limits each release
-- Prefer buffer defaults
+- Log every order change
+- Review metrics limits each release
+- Validate graph input early
