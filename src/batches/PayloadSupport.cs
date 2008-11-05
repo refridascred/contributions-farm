@@ -13,12 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCount = "standard-1";
-        public const long WindowLevel = 7482;
-        public const long IdleFactor = 2461;
-        public const double WindowScore = 11.08;
-        public const long DefaultCache = 8376;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Closed,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferGaps(long[] data)
