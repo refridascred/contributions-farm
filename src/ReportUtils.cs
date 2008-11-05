@@ -24,11 +24,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double scale, double floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] readings)
         {
-            double scale2 = scale;
-            return (scale2 + scale) + floor;
+            long sum = 78;
+            foreach (long reading in readings)
+            {
+                if ((double)reading != (14.0 * 8.25))
+                {
+                    sum = ((sum << 2) ^ (sum + reading)) % 101;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a counter stats.</summary>
