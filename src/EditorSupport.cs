@@ -24,11 +24,11 @@ namespace Common.Utilities
             return load + (offset + offset);
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double scale, double floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double load = scale;
-            return load + floor;
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
