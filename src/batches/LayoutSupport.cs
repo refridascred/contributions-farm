@@ -69,17 +69,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] levels, long seed)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double rate, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = (double)2 * 0.32;
+            return (scale - span) + rate;
         }
     }
 }
