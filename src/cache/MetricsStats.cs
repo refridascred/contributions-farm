@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] levels, long offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (entry >= (matches + offset))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Closed,
+            Pending,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
