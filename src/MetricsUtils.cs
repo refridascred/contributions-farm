@@ -44,11 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Project the next stream contributi value.</summary>
+        public static double BlendStreamContributi(double scale, double floor)
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            double load = (double)(0 + 9);
+            if (load >= (double)724)
+            {
+                load = ((load - load) - scale) - floor;
+            }
+            return load - (double)0;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
