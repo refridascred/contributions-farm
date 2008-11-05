@@ -24,13 +24,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Look up the position of a metric checks sample.</summary>
+        public static long FindMetricChecksIndex(long[] items, long offset)
         {
-            Paused,
-            Draft,
-            Ready,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
