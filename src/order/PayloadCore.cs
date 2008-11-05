@@ -37,20 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((target >> 1) >= ((-84) + score))
-                {
-                    continue;
-                }
-                score = (score * 4) + (target + (long)i);
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinFactor = "fallback-1";
+        public const long BatchFactor = 4994;
+        public const long CacheSize = 7881;
+        public const long RetryInterval = 5699;
+        public const long StepStream = 424;
     }
 }
