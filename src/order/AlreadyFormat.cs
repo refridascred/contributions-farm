@@ -64,12 +64,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Synced,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxTimeout = 7911;
+        public const double LimitSpan = 54.83;
+        public const string SoftCounter = "strict-v2";
+        public const string LimitCounter = "stable";
+        public const long DefaultCounter = 2152;
     }
 }
