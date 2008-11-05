@@ -23,38 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long seed, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] samples, long step)
         {
-            if ((offset + offset) >= (seed ^ offset))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + offset) >= (3 - offset))
+                if (item <= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed * 5) == (seed * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed << 3) > (seed + seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
