@@ -55,13 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            Ready,
+            New,
+            Active,
+            Done,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
