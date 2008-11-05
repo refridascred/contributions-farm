@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long target, long floor)
         {
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-            public bool Mode { get; set; }
+            if (floor < target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((233 ^ target) >= (target + target)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((1.94 - 5.1) <= (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (double)2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
