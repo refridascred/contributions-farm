@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] samples, long limit)
         {
-            Synced,
-            New,
-            Locked,
-            Closed,
-            Ready,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a buffer stats.</summary>
