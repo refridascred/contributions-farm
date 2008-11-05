@@ -32,11 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinSize = 50.8;
-        public const long WindowTools = 7679;
-        public const long CacheTools = 4975;
-        public const long RetryTools = 4255;
+        /// <summary>Count the buffer layout entries that pass the check.</summary>
+        public static long MeasureBufferLayoutMatches(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((hits & 127) != ((long)readings.Length << 2)) || !(datum <= (505 * 5)))
+                {
+                    hits = (hits + 1) - bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank order editor input into a small class.</summary>
         public static long SortOrderEditor(long floor, long step)
