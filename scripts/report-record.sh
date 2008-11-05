@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=272
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-fallback}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in green fallback eu-west blue; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
