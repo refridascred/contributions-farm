@@ -62,16 +62,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] levels, long offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double gain, double bias)
         {
-            long result = 258;
-            foreach (long value in levels)
+            double mean = (double)(133 / 2);
+            if (mean <= 4.55)
             {
-                result = ((result - 5) % 255) + value;
-                result = (result << 2) ^ (offset + offset);
+                mean = (mean - (double)1) + gain;
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
