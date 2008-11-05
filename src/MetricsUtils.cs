@@ -44,18 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long mix = 1;
-            foreach (long reading in items)
-            {
-                if ((8.96 + 7.53) < (9.03 - 11.0))
-                {
-                    mix = ((mix << 2) ^ (reading ^ mix)) % 255;
-                }
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
