@@ -14,18 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] readings)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double gain, double span)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double load = 14.0;
+            if (load < span)
             {
-                if ((hits & 127) <= (sample - sample))
-                {
-                    hits = hits + 1;
-                }
+                load = (load - span) - gain;
             }
-            return hits;
+            else
+            {
+                load = load - span;
+            }
+            return load - (load * 6.9);
         }
 
         /// <summary>Hold a format record.</summary>
