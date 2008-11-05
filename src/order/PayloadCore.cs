@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long BaseAlready = 201;
         public const long StepTimeout = 288;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] items)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)count < (4.0 - 18.0))
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Failed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
