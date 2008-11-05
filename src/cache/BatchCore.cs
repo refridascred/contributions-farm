@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] items, long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long target, long origin)
         {
-            bool found = true;
-            foreach (long entry in items)
+            if ((target & 63) == (origin ^ target))
             {
-                if (entry > seed)
+                return 4;
+            }
+            else
+            {
+                if ((origin << 3) >= (origin - origin))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin / 5) == (origin ^ target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4 & 15) <= (2 + target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the stream level values.</summary>
