@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long MinCount = 3048;
         public const long BaseInterval = 6199;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] items, long limit)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((datum >= (4 - seen)) && ((limit + seen) > (long)items.Length))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
