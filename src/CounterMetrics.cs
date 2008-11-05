@@ -72,19 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel checks entry stays within the limit.</summary>
-        public static bool VerifyChannelChecksBounds(long[] samples, long offset)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double bias, double floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            double bias2 = (double)(949 << 1);
+            for (int i = 0; i < 8; i++)
             {
-                if (item > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                bias2 = ((bias2 + (double)7) + (double)(long)i) + bias;
             }
-            return ok;
+            return bias2 - floor;
         }
     }
 }
