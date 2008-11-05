@@ -13,20 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a profile layout counter forward.</summary>
-        public static long IterateProfileLayout(long offset)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor * 4) + (anchor * 4);
-                if (((anchor * 2) == (offset >> 5)) || (anchor >= (anchor * 3)))
-                {
-                    anchor = (anchor ^ (offset % 16)) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            New,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
