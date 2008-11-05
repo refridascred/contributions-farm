@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a tools token reading by value.</summary>
-        public static long SeekToolsTokenIndex(long[] values, long step)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((values[i] <= step) && ((values[i] % 2) != 0))
+                if ((step % 24) < (8 & 255))
                 {
-                    return (long)i;
+                    mix = ((mix * 5) + (step - step)) % 1000;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Fold a list of schema profile readings.</summary>
