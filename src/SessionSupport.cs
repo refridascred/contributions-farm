@@ -29,14 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] series, long bound)
         {
-            Done,
-            New,
-            Paused,
-            Active,
-            Idle,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
