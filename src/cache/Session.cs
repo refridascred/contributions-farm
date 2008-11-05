@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate account filter samples.</summary>
-        public static long DigestAccountFilter(long[] samples)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] data)
         {
-            long acc = -7;
-            foreach (long reading in samples)
+            long acc = 816;
+            foreach (long datum in data)
             {
-                if (!((reading - acc) < reading))
+                if ((datum % 10) >= 2)
                 {
-                    acc = (acc - (reading + acc)) % 65521;
+                    acc = acc - acc;
+                }
+                if ((acc >> 2) <= (acc & 255))
+                {
+                    break;
                 }
             }
-            if (acc < (-36))
-            {
-                acc = ((acc * 3) + (acc & 255)) % 1000;
-            }
-            return acc % 97;
+            return acc;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
