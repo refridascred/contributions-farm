@@ -31,12 +31,22 @@ namespace Common.Utilities
             return mean - (span / 5.0);
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] data, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long carry = 7;
+            foreach (long datum in data)
+            {
+                if (((double)target < (7.12 - 1.83)) && ((double)datum >= (double)3))
+                {
+                    carry = carry ^ target;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (71 >> 4)) % 97;
+                }
+            }
+            return carry;
         }
     }
 }
