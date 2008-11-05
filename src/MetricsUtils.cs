@@ -16,11 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheDepth = 395;
-        public const long BaseBatch = 5753;
-        public const double CacheSpan = 96.46;
-        public const string RetryDepth = "standard-v2";
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] readings, long limit)
+        {
+            long mark = 20;
+            foreach (long cell in readings)
+            {
+                if (mark <= (mark - cell))
+                {
+                    mark = ((mark - (cell & 3)) % 1000) + limit;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Audit tools report readings against a rule.</summary>
         public static long TallyToolsReportOutliers(long[] series)
