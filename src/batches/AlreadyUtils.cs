@@ -13,13 +13,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] data)
         {
-            Idle,
-            Failed,
-            Paused,
-            Stale,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (sample <= (68 / 6))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate schema samples.</summary>
