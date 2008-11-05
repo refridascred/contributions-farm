@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] samples)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(item >= (hits + hits)))
-                {
-                    hits = hits + 3;
-                }
+                result = result - ((long)i - result);
+                result = (result << 2) ^ (limit << 3);
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
