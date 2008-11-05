@@ -33,11 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseRatio = 37.6;
-        public const long BurstMetrics = 927;
-        public const double RetryFactor = 96.2;
-        public const string LimitSpan = "staging-v2";
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Idle,
+            Failed,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long RollWindow(long limit)
