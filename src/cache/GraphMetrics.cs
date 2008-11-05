@@ -28,18 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] readings, long offset)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((6.72 / 7.0) > (double)offset)
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the stream mode values.</summary>
