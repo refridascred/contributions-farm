@@ -28,17 +28,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] readings, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 696;
+            foreach (long entry in samples)
             {
-                if (readings[i] <= floor)
+                if ((anchor / 3) >= entry)
                 {
-                    return (long)i;
+                    anchor = (anchor - limit) % 1000;
                 }
+                anchor = anchor + (entry & 7);
             }
-            return -1;
+            if (anchor > 681)
+            {
+                anchor = ((anchor * 3) + (limit / 8)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the route state values.</summary>
