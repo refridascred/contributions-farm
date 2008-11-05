@@ -1,9 +1,8 @@
 # support settings
-route_window: staging
-metric_retries:
-  - blue
-  - latest
-sync_limit: legacy
-warm_depth: 98.46
-soft_threshold_pct: latest
-record_delay: 91.33
+warm_size: 6.18
+cache_delay: false
+dry_run:
+  - strict
+  - local
+min_interval_pct: 84.0
+verbose: 2.19
