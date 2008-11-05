@@ -1,6 +1,18 @@
 {
-  "notes_limit": false,
-  "default_window_ms": 1024,
-  "soft_limit_ms": true,
-  "readonly": 5.83
+  "retry_window_pct": 50,
+  "batch_ratio_pct": {
+    "buffer_size": 6,
+    "editor_ratio": 89.16,
+    "verbose": {
+      "command_retries": "green",
+      "graph_size": 8788,
+      "cache_retries_ms": "open",
+      "strict": 91.42,
+      "batch_ratio": 55,
+      "support_size": 56
+    },
+    "sync_threshold_count": 2351,
+    "stream_limit": 250
+  },
+  "tools_ttl": 87.07
 }
