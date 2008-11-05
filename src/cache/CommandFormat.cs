@@ -14,25 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] items, long offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] readings, long seed)
         {
-            long anchor = 39;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (anchor > (offset ^ anchor))
+                if (readings[i] == seed)
                 {
-                    anchor = ((anchor << 3) ^ (offset >> 5)) % 255;
-                    anchor = anchor + (item + item);
+                    return (long)i;
                 }
-                anchor = (anchor - (offset / 2)) % 65521;
-                anchor = ((anchor << 2) ^ item) % 4096;
             }
-            if (anchor < (-35))
-            {
-                anchor = anchor ^ (offset % 8);
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
