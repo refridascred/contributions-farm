@@ -15,38 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] items, long step)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] data, long offset)
         {
-            long sum = 527;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum + sum) <= (step << 2))
+                if ((data[i] <= offset) && ((data[i] % 3) != 0))
                 {
-                    sum = (sum + (value ^ value)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (52 - sum)) % 4096;
-                }
-                if (!((step & 31) != (value << 3)))
-                {
-                    sum = (sum ^ (value & 3)) % 97;
-                }
-                if ((16.0 + 9.4) < (double)step)
-                {
-                    sum = (sum - (9 * 2)) % 4096;
-                }
-                else
-                {
-                    sum = (sum + step) % 65521;
+                    return (long)i;
                 }
             }
-            if (sum < 52)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Look up the position of a commits checks sample.</summary>
