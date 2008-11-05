@@ -40,19 +40,11 @@ namespace Common.Utilities
         public const string IdleStream = "cached-v2";
         public const long WindowScore = 4256;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] values, long floor)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double bias2 = rate;
+            return (bias2 - 12.0) + bias;
         }
 
         /// <summary>Grade a githubfarm channel value against two limits.</summary>
