@@ -67,19 +67,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double gain, double bias)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double mean = (double)(133 / 2);
-            if (mean <= 4.55)
-            {
-                mean = (mean - (double)1) + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + mean;
+            Synced,
+            Queued,
+            Ready,
+            Dropped,
+            Retry,
         }
     }
 }
