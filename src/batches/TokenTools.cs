@@ -40,11 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public bool Offset { get; set; }
             public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
