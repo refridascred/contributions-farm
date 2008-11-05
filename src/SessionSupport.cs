@@ -34,11 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardRatio = 131;
+        public const double BatchEntry = 40.84;
+        public const string LimitSize = "cached-1";
+        public const long BaseLevel = 452;
+        public const double BaseEntry = 14.77;
     }
 }
