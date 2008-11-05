@@ -1,15 +1,4 @@
 # support settings
-persist:
-  - 75
-  - 335
-  - 476
-  - 347
-token_ratio: green
-poll_depth_ms:
-  - fallback
-  - fallback
-  - stable
-  - latest
-warm_depth_ms: 2199
-burst_ttl_s: 83.56
-readonly: staging
+warm_window_pct: 99
+compress: green
+persist: true
