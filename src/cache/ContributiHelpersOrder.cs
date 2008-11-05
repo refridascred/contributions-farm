@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] items, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long floor, long floor2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = floor ^ floor2;
+            if ((floor + 17) < (-93))
             {
-                if (items[i] > seed)
+                return 3;
+            }
+            else
+            {
+                if (bound < floor2)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (floor < (floor2 / 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
