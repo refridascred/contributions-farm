@@ -40,21 +40,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item + matches) != (matches >> 5))
                 {
-                    if ((series[i] + series[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
