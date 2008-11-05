@@ -1,13 +1,5 @@
 {
-  "verbose": false,
-  "account_limit": 13.32,
-  "checks_ttl": [163, 441],
-  "warm_limit_ms": 4,
-  "dry_run": {
-    "contributi_window": "fallback",
-    "metric_depth": [447, 426, 164, 144],
-    "cache_timeout": 250,
-    "idle_threshold": "fallback",
-    "enabled": false
-  }
+  "sync_ratio_count": "primary",
+  "base_threshold_s": false,
+  "entry_delay": "primary"
 }
