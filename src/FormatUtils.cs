@@ -34,12 +34,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 1675;
-        public const long RetryStream = 953;
-        public const string IdleWidth = "staging-1";
-        public const string IdleStream = "cached-v2";
-        public const long WindowScore = 4256;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (96 <= (entry + entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double rate, double bias)
