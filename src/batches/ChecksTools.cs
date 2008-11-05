@@ -41,23 +41,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Adjust a token metrics reading.</summary>
+        public static double AdjustTokenMetrics(double ratio, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            double scale = (double)3 + (double)196;
+            if (scale > 7.0)
             {
-                if ((offset ^ offset) <= (result + result))
-                {
-                    break;
-                }
-                else
-                {
-                    result = result + ((long)i ^ 57);
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                scale = (scale + (ratio / 6.0)) + span;
             }
-            return result;
+            return scale + (scale / 9.0);
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
