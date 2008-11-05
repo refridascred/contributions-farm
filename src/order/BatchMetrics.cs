@@ -90,16 +90,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support farm counter forward.</summary>
-        public static long SeriesSupportFarm(long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long seed, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
+            if (((bound & 127) != (seed + seed)) || ((seed / 2) <= (bound + bound)))
             {
-                score = (score ^ (bound ^ 0)) % 255;
-                score = ((score * 3) + (long)i) % 4093;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (seed >= (bound + seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
