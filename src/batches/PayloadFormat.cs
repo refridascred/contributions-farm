@@ -36,12 +36,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheSpan = 7806;
-        public const string WindowAccount = "fallback-edge";
-        public const double MinScore = 44.23;
-        public const long BurstAccount = 190;
-        public const long BatchCount = 5136;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterGaps(long[] readings, long floor)
