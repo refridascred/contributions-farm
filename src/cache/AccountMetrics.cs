@@ -56,14 +56,11 @@ namespace Common.Utilities
         public const long HardSupport = 1376;
         public const long SoftSupport = 5968;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Done,
-            Stale,
-            Pending,
-            Active,
-            Locked,
+            public long Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Iterate the metric batch series from a seed.</summary>
