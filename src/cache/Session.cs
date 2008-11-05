@@ -33,19 +33,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the format notes entries that pass the check.</summary>
-        public static long MeasureFormatNotesMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((1.5 + 0.1) == (double)matches)
-                {
-                    matches = (matches + 2) - value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 5691;
+        public const long RetryWidth = 2877;
+        public const string DefaultWidth = "local-edge";
+        public const string DefaultRatio = "open";
+        public const long BatchQueue = 3111;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long StepChecks(long offset)
