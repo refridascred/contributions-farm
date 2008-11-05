@@ -1,6 +1,11 @@
-id,level,region,label
-1,987,staging,legacy
-2,81.01,819,157
-3,604,673,latest
-4,blue,staging,29.81
-5,760,88.17,77.62
+id,region,ratio,rank
+1,eu-west,latest,544
+2,17.38,294,685
+3,738,544,fallback
+4,legacy,eu-west,94.86
+5,30.07,81.46,93
+6,471,69.4,fallback
+7,eu-west,30.4,706
+8,352,standard,edge
+9,edge,fallback,eu-west
+10,26.85,17.39,52.97
