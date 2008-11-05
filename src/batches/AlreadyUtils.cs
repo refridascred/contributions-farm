@@ -58,12 +58,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] readings)
         {
-            New,
-            Queued,
-            Dropped,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((value >> 2) < tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
