@@ -52,11 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseTimeout = "open-1";
-        public const long SoftContext = 603;
-        public const double SoftInterval = 4.19;
-        public const double BurstCount = 22.91;
-        public const long DefaultCount = 8150;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseWidth = "stable";
+        public const long RetryTimeout = 7555;
+        public const long StepAlready = 2935;
+        public const long CacheAlready = 9521;
+        public const long BatchAlready = 7399;
     }
 }
