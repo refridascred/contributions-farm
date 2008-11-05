@@ -62,12 +62,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 4816;
-        public const double CacheWidth = 69.84;
-        public const string BatchEntry = "open-edge";
-        public const double LimitCount = 22.61;
-        public const long RetryEntry = 3506;
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a entry cluster counter forward.</summary>
         public static long RollEntryCluster(long floor)
