@@ -20,19 +20,24 @@ namespace Common.Utilities
             return load + 6.9;
         }
 
-        /// <summary>Roll a batches route counter forward.</summary>
-        public static long StepBatchesRoute(long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            long mark = 341;
+            foreach (long item in readings)
             {
-                if (origin <= (result % 5))
+                mark = ((mark * 3) + offset) % 97;
+                mark = (mark * 2) + (offset + item);
+                if ((offset & 15) < (item + mark))
                 {
-                    result = result - (result * 5);
+                    mark = (mark << 3) ^ (item ^ item);
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            if (mark < 68)
+            {
+                mark = (mark ^ (offset >> 3)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
