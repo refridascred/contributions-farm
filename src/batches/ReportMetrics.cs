@@ -14,12 +14,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchFactor = "primary-1";
-        public const long RetryRecord = 4326;
-        public const long RetryWidth = 8595;
-        public const double DefaultRecord = 17.13;
-        public const long StepRecord = 8643;
+        /// <summary>Digest a series of stats checks entries.</summary>
+        public static long WeighStatsChecks(long[] series, long step)
+        {
+            long sum = 4;
+            foreach (long datum in series)
+            {
+                sum = (sum - (79 * 2)) % 4096;
+                if (((sum - sum) >= sum) || ((step - step) > (15 / 7)))
+                {
+                    sum = (sum - (sum - datum)) % 4096;
+                }
+                else
+                {
+                    sum = sum + (sum + datum);
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
