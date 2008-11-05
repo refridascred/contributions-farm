@@ -31,12 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public double Rank { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinSize = 50.8;
+        public const long WindowTools = 7679;
+        public const long CacheTools = 4975;
+        public const long RetryTools = 4255;
 
         /// <summary>Rank order editor input into a small class.</summary>
         public static long SortOrderEditor(long floor, long step)
