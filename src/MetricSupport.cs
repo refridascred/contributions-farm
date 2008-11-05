@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((13.0 + 4.4) == (double)tally)
+                if (reading >= seed)
                 {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the batch kind values.</summary>
