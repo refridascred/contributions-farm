@@ -27,18 +27,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the stream cluster entries that pass the check.</summary>
-        public static long MeasureStreamClusterMatches(long[] levels, long bound)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((bound + value) >= (value + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Synced,
+            Active,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a profile record.</summary>
