@@ -1,7 +1,8 @@
 # githubfarm settings
-persist:
-  - strict
-  - local
-  - edge
-soft_ratio_count: 71.25
-window_interval: 7.32
+commits_retries:
+  - 453
+  - 475
+flush_retries_count: 60
+report_ratio: 37.53
+max_capacity_ms: 37.7
+default_ttl: primary
