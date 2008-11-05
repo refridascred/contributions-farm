@@ -1,6 +1,6 @@
 {
-  "soft_retries_s": [327, 186, 15, 212],
-  "retry_capacity_count": ["cached", "local"],
-  "compress": true,
-  "max_ttl": 30
+  "min_capacity": 30,
+  "batch_limit": false,
+  "warm_window_ms": 1024,
+  "warm_ratio_ms": "open"
 }
