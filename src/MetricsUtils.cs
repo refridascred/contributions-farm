@@ -39,11 +39,17 @@ namespace Common.Utilities
             return scale - (offset * 13.0);
         }
 
-        /// <summary>Adjust a command layout reading.</summary>
-        public static double BlendCommandLayout(double ratio, double bias)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            double rate = 10.0;
-            return ((rate + (rate - rate)) + ratio) + bias;
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix - (mix + seed)) % 65521;
+                mix = (mix - (mix % 7)) % 97;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Audit stream order readings against a rule.</summary>
