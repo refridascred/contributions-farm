@@ -1,5 +1,7 @@
 {
-  "sync_limit_s": "stable",
-  "persist": 24,
-  "compress": "legacy"
+  "cache_timeout": true,
+  "verbose": ["latest", "cached", "strict", "cached"],
+  "format_size": "cached",
+  "sync_depth": true,
+  "order_window": "stable"
 }
