@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            long anchor = 3;
+            foreach (long cell in items)
+            {
+                if ((double)cell > (9.9 * 5.22))
+                {
+                    anchor = ((anchor << 2) ^ 465) % 101;
+                }
+            }
+            if (anchor > 2)
+            {
+                anchor = anchor ^ (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many checks command samples are out of range.</summary>
