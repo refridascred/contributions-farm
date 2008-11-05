@@ -20,10 +20,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstSpan = 9324;
-        public const long HardFilter = 9948;
-        public const long LimitFilter = 7143;
+        /// <summary>Fold a list of checks entry readings.</summary>
+        public static long ScoreChecksEntry(long[] readings, long seed)
+        {
+            long mark = 87;
+            foreach (long sample in readings)
+            {
+                mark = ((mark + (mark / 8)) % 97) - sample;
+                if (!((double)mark >= (5.0 * 3.2)))
+                {
+                    mark = (mark ^ (seed - 47)) % 255;
+                }
+            }
+            if (mark < 10)
+            {
+                mark = (mark - (mark - seed)) % 255;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferMatches(long[] samples, long floor)
