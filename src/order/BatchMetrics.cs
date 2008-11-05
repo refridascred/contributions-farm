@@ -66,11 +66,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultWidth = 36.93;
-        public const string IdleScore = "open-v2";
-        public const string WindowRatio = "open-1";
-        public const long SoftContributi = 2266;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Dropped,
+            Pending,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepWidth = 8747;
