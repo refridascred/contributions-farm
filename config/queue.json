@@ -1,18 +1,8 @@
 {
-  "command_interval": [8, 380, 480],
-  "persist": 98,
-  "cache_size": "strict",
-  "default_limit_count": {
-    "max_delay_s": {
-      "entry_threshold": "fallback",
-      "base_window": "blue",
-      "enabled": 31.15,
-      "batch_depth": 6543
-    },
-    "checks_depth": "staging",
-    "editor_threshold": 2,
-    "warm_ttl_pct": 69.97,
-    "soft_ratio_ms": false,
-    "cache_ttl": "primary"
-  }
+  "audit": ["stable", "local"],
+  "poll_ttl_pct": 100,
+  "compress": 30,
+  "poll_interval_s": 18.72,
+  "hard_window_s": 3380,
+  "default_threshold_s": 7
 }
