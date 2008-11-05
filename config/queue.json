@@ -1,8 +1,5 @@
 {
-  "audit": ["stable", "local"],
-  "poll_ttl_pct": 100,
-  "compress": 30,
-  "poll_interval_s": 18.72,
-  "hard_window_s": 3380,
-  "default_threshold_s": 7
+  "enabled": 48.74,
+  "strict": 70,
+  "sync_window_pct": true
 }
