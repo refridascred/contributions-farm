@@ -57,19 +57,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] items, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)floor != (5.38 / 3.0))
-                {
-                    hits = (hits + 2) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxInterval = 5693;
+        public const double SoftAccount = 25.9;
+        public const double BaseFactor = 19.76;
+        public const string IdleCount = "strict-edge";
+        public const string MaxAccount = "standard-1";
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long target, long bound)
