@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] values, long bound)
+        /// <summary>Validate stats metrics readings against a bound.</summary>
+        public static bool ValidateStatsMetricsRange(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((values[i] < bound) && ((values[i] % 5) == 0))
+                if (item != offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
