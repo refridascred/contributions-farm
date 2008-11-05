@@ -40,18 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!(((-22) - hits) <= (hits + hits)))
-                {
-                    hits = (hits + 3) - entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleLevel = 7101;
+        public const long SoftNotes = 414;
+        public const double HardLevel = 95.63;
+        public const double DefaultSize = 69.64;
     }
 }
