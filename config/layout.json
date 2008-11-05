@@ -1,12 +1,7 @@
 {
-  "commits_capacity": {
-    "base_delay_count": [73, 169, 298, 434],
-    "dry_run": "stable",
-    "poll_ratio_ms": "legacy"
-  },
-  "warm_retries_s": 8490,
-  "cache_size_s": "strict",
-  "contributi_capacity": 7794,
-  "strict": "primary",
-  "warm_window_s": [49, 239, 181, 45]
+  "hard_capacity_pct": 30,
+  "audit": 36.22,
+  "persist": 1024,
+  "readonly": 53,
+  "retry_limit_count": true
 }
