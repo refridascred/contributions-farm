@@ -25,23 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] readings)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long seed)
         {
-            long acc = 9;
-            foreach (long item in readings)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (acc ^ (acc + item)) % 255;
-                if ((acc - acc) >= (item << 2))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    acc = (acc + (item / 8)) % 97;
+                    long span = mark;
+                    mark = (((mark << 2) ^ (mark + span)) % 97) ^ (long)i2;
+                }
+                mark = (mark + seed) % 4096;
+                if ((((long)i << 1) > (seed * 5)) || ((seed - seed) >= mark))
+                {
+                    mark = (mark + (mark - 476)) % 1000;
+                    mark = (mark + (26 + seed)) % 1000;
                 }
                 else
                 {
-                    acc = (acc * 5) + (205 * 2);
+                    mark = (mark * 5) + (mark & 63);
+                    mark = (mark - (seed % 64)) % 1000;
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return acc % 65521;
+            return mark;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
