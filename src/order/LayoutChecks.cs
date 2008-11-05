@@ -69,10 +69,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinScore = 44.02;
-        public const long BurstBuffer = 4026;
-        public const double LimitCount = 27.5;
-        public const long StepScore = 585;
+        /// <summary>Audit counter support readings against a rule.</summary>
+        public static long CountCounterSupportHits(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum * 4) >= (datum * 5))
+                {
+                    tally = (tally + 2) - seed;
+                }
+            }
+            return tally;
+        }
     }
 }
