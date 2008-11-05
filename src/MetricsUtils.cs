@@ -30,13 +30,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((((datum & 1) < (datum - datum)) && ((datum >> 4) >= (matches - datum))) && ((datum < (134 + matches)) && ((168 + 93) <= matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
