@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=497
+RECORD_LIMIT=491
 log "limit is ${RECORD_LIMIT}"
 
-for item in eu-west fallback green latest; do
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in cached green; do
     log "checking ${item}"
 done
