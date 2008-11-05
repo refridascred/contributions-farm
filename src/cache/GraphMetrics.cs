@@ -31,11 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the stream mode values.</summary>
