@@ -31,25 +31,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long seed, long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] items, long bound)
         {
-            long step = seed - offset;
-            if (!((double)step <= (4.5 + 2.0)))
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset - offset) <= (step + offset))
+                if (value < bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
