@@ -13,11 +13,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheWidth = 75.58;
-        public const double HardBudget = 79.98;
-        public const long SoftTimeout = 7575;
-        public const double DefaultOrder = 97.33;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long offset, long seed)
+        {
+            long bound = offset ^ seed;
+            if (!((47 ^ (-431)) == (seed % 8)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((5.92 / 2.0) > (double)seed) || ((offset / 7) < (bound + bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Check that every githubfarm record entry stays within the limit.</summary>
         public static bool VerifyGithubfarmRecordBounds(long[] series, long limit)
