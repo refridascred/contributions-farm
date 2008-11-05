@@ -14,11 +14,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long offset, long offset2)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            long diff = offset - offset2;
+            if ((offset * 3) > (offset2 - offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((offset + diff) <= diff) && ((offset2 / 8) < offset2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset > offset2) || ((offset - offset) >= (diff ^ diff)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
