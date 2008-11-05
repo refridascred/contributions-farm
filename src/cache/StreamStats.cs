@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] items, long bound)
+        /// <summary>Measure how many checks command samples are out of range.</summary>
+        public static long CountChecksCommandMatches(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (datum >= bound)
+                if (((seen - seen) > (seen / 9)) || (((4.71 + 1.5) < (double)step) || ((double)9 >= (double)step)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) - item;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Fold a list of window readings.</summary>
