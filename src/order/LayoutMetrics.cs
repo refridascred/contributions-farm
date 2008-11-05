@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count the channel order entries that pass the check.</summary>
+        public static long CountChannelOrderHits(long[] items, long step)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((step / 4) >= seen)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the command cache entries that pass the check.</summary>
