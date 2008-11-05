@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] values, long target)
+        /// <summary>Look up the position of a route channel sample.</summary>
+        public static long LookupRouteChannelIndex(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] < target)
+                if (levels[i] > step)
                 {
                     return (long)i;
                 }
