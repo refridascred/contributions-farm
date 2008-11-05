@@ -29,19 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] values)
+        /// <summary>Measure how many layout filter samples are out of range.</summary>
+        public static long AuditLayoutFilterHits(long[] values)
         {
-            long score = 62;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                score = score - (9 ^ score);
-                if ((datum < score) && ((94 + score) >= (score << 1)))
+                if (matches < (item - matches))
                 {
-                    score = score ^ ((-2) / 4);
+                    matches = matches + 3;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
