@@ -71,21 +71,32 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count tools batch pairs that satisfy a relation.</summary>
-        public static long MatchToolsBatchCount(long[] values)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long limit, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = limit - step;
+            if ((limit & 127) > (cur + limit))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step % 64) <= (cur + limit))
                 {
-                    if ((values[i] - values[j]) == 17)
+                    return 2;
+                }
+                else
+                {
+                    if ((step << 2) <= (limit - step))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
