@@ -97,18 +97,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window layout entries that pass the check.</summary>
-        public static long TallyWindowLayoutHits(long[] levels, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((double)seed > (8.0 / 9.0))
+                if (((double)seen >= 7.61) && ((double)seen >= (9.39 / 6.0)))
                 {
-                    matches = (matches + 1) ^ datum;
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
