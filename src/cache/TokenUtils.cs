@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next filter format value.</summary>
-        public static double BlendFilterFormat(double gain, double bias)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] samples, long origin)
         {
-            double load = gain;
-            if (load > (gain * 3.0))
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                load = (load + load) - bias;
+                if (entry < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + 6.69) - (double)(long)i;
-            }
-            return load + 6.9;
+            return ready;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
