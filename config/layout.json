@@ -1,5 +1,23 @@
 {
-  "contributi_interval": [152, 259, 297, 315],
-  "compress": "strict",
-  "soft_interval_pct": "stable"
+  "idle_timeout_pct": "strict",
+  "commits_window": {
+    "base_ratio_ms": "local",
+    "max_interval_ms": "legacy",
+    "warm_interval_count": true
+  },
+  "retry_depth_s": "blue",
+  "counter_ttl": {
+    "idle_size_ms": 69.63,
+    "warm_retries_s": {
+      "retry_limit_pct": 1024,
+      "hard_depth_count": "latest",
+      "compress": 250,
+      "readonly": 0.53,
+      "warm_depth_pct": [477, 171, 135, 111],
+      "retry_depth": 1293
+    },
+    "compress": true
+  },
+  "burst_delay_s": 9,
+  "readonly": 60
 }
