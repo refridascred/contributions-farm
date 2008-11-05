@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] data, long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double rate, double span)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            double rate2 = rate;
+            if (rate2 <= (double)(-744))
             {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                rate2 = (rate2 - (double)11) + span;
             }
-            return ready;
+            return rate2 + (rate2 - rate2);
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
