@@ -17,12 +17,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 1924;
-        public const long IdleWindow = 3627;
-        public const string HardWindow = "primary-edge";
-        public const string StepWindow = "staging";
-        public const long SoftSpan = 8827;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] series, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Find the first counter route entry that matches the target.</summary>
         public static long SeekCounterRouteIndex(long[] samples, long target)
