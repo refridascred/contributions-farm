@@ -1,4 +1,15 @@
 # support settings
-persist: 49.74
-flush_ttl_pct: 8076
-verbose: 73.44
+sync_capacity_count: 14.92
+min_depth:
+  burst_ttl: false
+  verbose: 4433
+  notes_threshold: legacy
+githubfarm_ratio:
+  - 9
+  - 456
+  - 433
+persist:
+  - 188
+  - 246
+  - 51
+  - 264
