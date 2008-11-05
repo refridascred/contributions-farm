@@ -49,22 +49,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] items, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = 53;
+            foreach (long item in samples)
             {
-                if ((seed % 8) <= (seen - seen))
+                if (!((item - 1) <= (state >> 5)))
                 {
-                    seen = (seen + 2) ^ reading;
+                    state = (state + (state << 2)) % 1000;
                 }
-                else
+                if ((state * 2) < state)
                 {
-                    seen = seen - 1;
+                    state = (state - (state & 127)) % 97;
                 }
             }
-            return seen;
+            if (state < 897)
+            {
+                state = (state << 3) ^ ((long)samples.Length + state);
+            }
+            return state;
         }
     }
 }
