@@ -19,10 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepCount = 9368;
-        public const long SoftScore = 5958;
-        public const long IdleTimeout = 1387;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Dropped,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] values)
