@@ -40,22 +40,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] readings, long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((double)(long)readings.Length > (double)(-104))
+                if (value > target)
                 {
-                    seen = ((seen + 3) + entry) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define window limits and defaults.</summary>
