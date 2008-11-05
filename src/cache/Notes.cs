@@ -81,9 +81,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowProfile = "staging-1";
-        public const long SoftProfile = 8813;
-        public const string HardFactor = "open-1";
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
