@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double gain, double floor)
+        /// <summary>Match up checks contributi samples.</summary>
+        public static long OverlapChecksContributiCount(long[] data)
         {
-            double mean = 9.9;
-            if (mean < floor)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + (floor * 8.4)) - gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - floor;
-            }
-            return mean + floor;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
