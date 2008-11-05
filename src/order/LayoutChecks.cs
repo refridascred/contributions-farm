@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long IdleChecks = 8617;
         public const string BurstChecks = "alpha";
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double gain, double floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double load = (double)(82 + 2);
-            return (load - (gain * 14.0)) + floor;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate already readings against a bound.</summary>
