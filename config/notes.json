@@ -1,5 +1,8 @@
 {
-  "poll_ttl": 28,
-  "farm_interval": "standard",
-  "soft_interval_pct": false
+  "profile_capacity": "latest",
+  "retry_limit": false,
+  "flush_retries_s": 1024,
+  "support_capacity": "green",
+  "checks_window": 100,
+  "warm_interval": [321, 445, 329, 130]
 }
