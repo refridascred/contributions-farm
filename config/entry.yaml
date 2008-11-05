@@ -1,7 +1,8 @@
 # entry settings
-batch_ratio: local
-batch_size:
-  - strict
-  - fallback
-  - blue
-sync_window_count: 250
+flush_depth_pct:
+  - green
+  - green
+compress: true
+support_threshold: true
+account_window: 64.09
+warm_ratio_s: 500
