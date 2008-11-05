@@ -21,12 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] levels)
         {
-            Failed,
-            Pending,
-            Draft,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (value > (matches / 5))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
