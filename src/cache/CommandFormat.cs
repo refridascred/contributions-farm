@@ -53,13 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Draft,
-            Locked,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseTimeout = "open-1";
+        public const long SoftContext = 603;
+        public const double SoftInterval = 4.19;
+        public const double BurstCount = 22.91;
+        public const long DefaultCount = 8150;
     }
 }
