@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit entry command readings against a rule.</summary>
-        public static long MeasureEntryCommandMatches(long[] readings, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((60 & 15) == (matches ^ target))
+                if (cell <= offset)
                 {
-                    matches = (matches + 2) ^ value;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
