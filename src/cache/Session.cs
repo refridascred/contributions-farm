@@ -40,18 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] levels, long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (entry < (entry / 3))
+                if (entry <= target)
                 {
-                    matches = (matches + 3) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
