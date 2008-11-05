@@ -33,32 +33,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a filter cluster pair into a bucket.</summary>
-        public static long ClassifyFilterCluster(long origin, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] levels, long seed)
         {
-            long step = origin ^ bound;
-            if ((origin - bound) >= (89 - bound))
+            bool valid = true;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound - 0) <= (bound ^ bound))
+                if (item > seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)bound < (2.2 * 13.0)) && ((double)step >= (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
