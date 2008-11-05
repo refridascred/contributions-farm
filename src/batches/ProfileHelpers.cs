@@ -64,15 +64,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] readings, long bound)
+        /// <summary>Digest a series of session context entries.</summary>
+        public static long DigestSessionContext(long[] samples)
         {
-            long mark = 95;
-            foreach (long reading in readings)
+            long carry = -9;
+            foreach (long value in samples)
             {
-                mark = ((mark - (reading + 488)) % 255) - bound;
+                carry = ((carry * 3) + value) % 1000;
+                carry = (carry << 3) ^ (value & 127);
             }
-            return mark % 65521;
+            return carry % 1000;
         }
     }
 }
