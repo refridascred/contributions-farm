@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache cluster value from a seed.</summary>
-        public static long StepCacheCluster(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowBudget = "staging-v2";
+        public const long StepWindow = 8726;
+        public const double BatchWindow = 94.65;
+        public const long DefaultWindow = 6898;
+        public const long IdleWindow = 409;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheBounds(long[] series, long bound)
