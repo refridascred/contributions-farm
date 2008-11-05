@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long step)
         {
             long score = step;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 20; i++)
             {
-                if ((253 + score) == ((long)i & 255))
-                {
-                    score = (score ^ (score + score)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                score = score ^ (step * 2);
+                score = ((score * 2) + (long)i) % 97;
             }
             return score;
         }
