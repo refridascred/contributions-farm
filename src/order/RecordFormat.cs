@@ -19,14 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 3300;
+        public const long CacheQueue = 5079;
+        public const long LimitQueue = 217;
+        public const double SoftTimeout = 63.43;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long TotalReport(long[] series)
