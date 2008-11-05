@@ -14,31 +14,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Find the first report layout entry that matches the target.</summary>
+        public static long FindReportLayoutIndex(long[] series, long bound)
         {
-            long acc = 63;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((acc ^ acc) >= (acc * 3)) || ((cell + 7) <= acc))
+                if (series[i] == bound)
                 {
-                    acc = (acc ^ (acc - 89)) % 255;
-                    continue;
-                }
-                if (57 >= (acc - cell))
-                {
-                    acc = (acc + (acc ^ 8)) % 255;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ acc;
+                    return (long)i;
                 }
             }
-            if (acc > 226)
-            {
-                acc = ((acc * 4) + (acc & 127)) % 4096;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Describe the checks kind values.</summary>
