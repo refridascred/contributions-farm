@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] series)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long limit, long step)
         {
-            long anchor = 6;
-            foreach (long cell in series)
+            if (step < (88 - step))
             {
-                anchor = ((anchor << 2) ^ (cell & 127)) % 97;
+                return 7;
             }
-            return anchor % 65521;
+            else
+            {
+                if ((4.58 * 7.0) != (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
