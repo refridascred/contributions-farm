@@ -47,22 +47,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Look up the position of a already counter sample.</summary>
+        public static long FindAlreadyCounterIndex(long[] levels, long step)
         {
-            long result = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (result >= value)
+                if (levels[i] >= step)
                 {
-                    result = ((result * 4) + (result + result)) % 255;
-                }
-                else
-                {
-                    result = ((result * 5) + 0) % 101;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
