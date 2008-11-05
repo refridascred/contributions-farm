@@ -20,22 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of profile batches readings.</summary>
-        public static long FoldProfileBatches(long[] data, long limit)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] readings)
         {
-            long state = 4;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((limit >> 5) > state) || ((sample & 7) != (limit << 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state - (state * 5);
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 2)
-            {
-                state = state + (limit << 2);
-            }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Combine session values into a single score.</summary>
