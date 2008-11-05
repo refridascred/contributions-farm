@@ -1,23 +1,9 @@
 # githubfarm settings
-flush_timeout: 100
-compress: 500
-session_size:
-  min_capacity_s: 3051
-  hard_ttl_pct: blue
-  poll_size_count: false
-  notes_window: 79.44
-buffer_depth: true
-audit:
-  cache_size_count: 60
-  persist: legacy
-  verbose:
-    - open
-    - standard
-  warm_timeout_count: 30
-  record_size:
-    - green
-    - eu-west
-    - eu-west
-    - cached
-  already_interval: cached
-default_ttl_ms: 66
+payload_size: 8922
+dry_run:
+  enabled: 500
+  soft_capacity_pct: legacy
+  context_window: 4848
+  graph_ttl: edge
+soft_size_ms: false
+audit: primary
