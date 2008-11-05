@@ -33,27 +33,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] readings, long floor)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long result = 943;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    result = ((result << 3) ^ result) + (long)i;
-                }
-                result = (result + (long)readings.Length) % 65521;
-                if ((double)floor > (8.0 + 6.82))
-                {
-                    result = result - (floor / 7);
-                }
-                else
-                {
-                    result = (result + (sample + floor)) % 4096;
-                }
-            }
-            return result;
+            Paused,
+            Done,
+            New,
+            Idle,
+            Closed,
         }
     }
 }
