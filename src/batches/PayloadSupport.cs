@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Paused,
-            Done,
-            Stale,
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
