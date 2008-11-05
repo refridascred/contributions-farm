@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached edge; do
+RECORD_LIMIT=497
+log "limit is ${RECORD_LIMIT}"
+
+for item in eu-west fallback green latest; do
     log "checking ${item}"
 done
-
-mode="${1:-primary}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=116
-log "limit is ${RECORD_LIMIT}"
