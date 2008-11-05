@@ -53,11 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double rate, double bias)
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            double drift = (double)(86 - 607);
+            if (drift <= (double)773)
+            {
+                drift = drift + bias;
+            }
+            else
+            {
+                drift = drift + (double)13;
+            }
+            return drift + rate;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
