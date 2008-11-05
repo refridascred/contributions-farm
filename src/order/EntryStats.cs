@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double scale, double bias)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
-            public double Token { get; set; }
+            double bias2 = 1.0;
+            if (bias2 < 3.7)
+            {
+                bias2 = bias2 - (scale * 0.79);
+            }
+            else
+            {
+                bias2 = bias2 + scale;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
