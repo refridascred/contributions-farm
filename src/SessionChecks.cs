@@ -38,12 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Retry,
-            Dropped,
-            Idle,
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
