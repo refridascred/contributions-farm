@@ -36,10 +36,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchSpan = 1209;
-        public const string LimitCache = "stable-1";
-        public const long MinCache = 932;
-        public const long BurstWidth = 1575;
+        /// <summary>Look up the position of a report cluster sample.</summary>
+        public static long FindReportClusterIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
