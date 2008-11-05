@@ -19,13 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long origin, long floor)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public double Size { get; set; }
+            if (origin >= floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor < (origin - floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Check that every counter commits entry stays within the limit.</summary>
