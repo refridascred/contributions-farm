@@ -22,18 +22,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] items, long limit)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((value << 1) < (limit & 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Queued,
+            New,
+            Closed,
         }
     }
 }
