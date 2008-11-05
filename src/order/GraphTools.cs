@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Locate a stream support reading by value.</summary>
-        public static long FindStreamSupportIndex(long[] values, long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] values, long limit)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                if ((values[i] > limit) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
