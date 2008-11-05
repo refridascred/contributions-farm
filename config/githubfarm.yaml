@@ -1,10 +1,4 @@
 # githubfarm settings
-channel_ttl: standard
-hard_retries_pct: true
-session_capacity: open
-enabled:
-  - edge
-  - green
-  - staging
-order_capacity: true
-min_limit_ms: stable
+warm_delay_pct: 90.1
+batch_depth_s: primary
+contributi_limit: 83.2
