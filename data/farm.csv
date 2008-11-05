@@ -1,7 +1,6 @@
-id,token,score,owner
-1,822,602,61.09
-2,646,latest,56.79
-3,stable,456,strict
-4,59.71,18.04,845
-5,4.01,edge,73.35
-6,29.22,standard,cached
+id,label,rank,region,owner
+1,469,668,primary,328
+2,stable,451,staging,open
+3,238,16.43,822,green
+4,79.74,28.03,63.53,322
+5,standard,652,edge,strict
