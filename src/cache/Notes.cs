@@ -22,11 +22,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultFactor = 2487;
-        public const long StepSchema = 803;
-        public const long HardDepth = 2716;
-        public const long BatchSchema = 680;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long IterateFormat(long floor)
