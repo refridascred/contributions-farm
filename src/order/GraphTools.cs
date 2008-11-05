@@ -38,38 +38,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long target, long target2)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] items, long limit)
         {
-            if (((double)target <= (4.6 + 13.0)) && ((double)target2 > (4.64 / 2.0)))
+            long mark = 65;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5.0 / 8.0) > (double)target2)
+                mark = ((mark + 83) % 97) ^ item;
+                if (((limit + limit) != (limit + 26)) && (limit <= ((-3) + mark)))
                 {
-                    return 6;
+                    mark = (mark * 2) + (mark >> 4);
                 }
                 else
                 {
-                    if (((double)target2 < 8.2) && ((target << 2) >= target2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)target2 != (double)(-760)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mark = (mark + (limit & 63)) % 255;
                 }
             }
+            return mark;
         }
 
         /// <summary>Describe the window class values.</summary>
