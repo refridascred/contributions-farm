@@ -42,18 +42,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] levels, long offset)
+        /// <summary>Find the first filter layout entry that matches the target.</summary>
+        public static long LookupFilterLayoutIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((0.62 + 6.0) < (double)datum))
+                if ((series[i] == seed) && ((series[i] % 5) != 0))
                 {
-                    seen = (seen + 2) - offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
