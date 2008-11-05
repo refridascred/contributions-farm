@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next filter context value.</summary>
-        public static double BlendFilterContext(double ratio, double span)
+        /// <summary>Look up the position of a token metric sample.</summary>
+        public static long SeekTokenMetricIndex(long[] readings, long offset)
         {
-            double ratio2 = (double)(-787) / 9.0;
-            if (ratio2 > span)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = ratio2 + (ratio2 + 5.0);
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            return ratio2 + (9.3 * 7.0);
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
