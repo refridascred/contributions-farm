@@ -1,19 +1,7 @@
 {
-  "flush_threshold_pct": "primary",
-  "max_retries_count": "local",
-  "compress": {
-    "burst_limit": [59, 397, 248],
-    "strict": {
-      "soft_ratio": 4.45,
-      "readonly": 843,
-      "default_retries_s": true,
-      "base_threshold_s": 30
-    },
-    "min_interval_ms": 39,
-    "support_delay": "edge",
-    "sync_capacity": true
-  },
-  "poll_retries_ms": "local",
-  "notes_ratio": true,
-  "hard_ratio": 76.02
+  "cache_interval_count": 40.39,
+  "idle_depth": ["primary", "cached"],
+  "format_interval": "legacy",
+  "metric_depth": 60,
+  "readonly": [79, 76, 194, 218]
 }
