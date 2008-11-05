@@ -30,12 +30,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Derive the next counter batches value from a seed.</summary>
+        public static long SeriesCounterBatches(long floor)
         {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
+            long score = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((floor - floor) < score)
+                {
+                    score = score + (floor + 781);
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
