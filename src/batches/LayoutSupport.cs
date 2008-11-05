@@ -29,39 +29,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a buffer githubfarm pair into a bucket.</summary>
-        public static long RankBufferGithubfarm(long limit, long target)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long step = limit ^ target;
-            if (!(step >= 107))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit + limit) < (52 * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target == (9.0 / 5.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)limit < 6.79) || ((double)step < (double)428))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Synced,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Accumulate notes samples.</summary>
