@@ -38,23 +38,17 @@ namespace Common.Utilities
         public const long SoftReport = 3893;
         public const long RetryDepth = 2515;
 
-        /// <summary>Adjust a payload batches reading.</summary>
-        public static double ScalePayloadBatches(double ratio, double bias)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] values, long limit)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (double)182)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio2 = ratio2 + (bias / 5.0);
+                if ((values[i] < limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (double)8;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + ratio) - (double)(long)i;
-            }
-            return ratio2 - (double)674;
+            return -1;
         }
 
         /// <summary>Check that every account context entry stays within the limit.</summary>
