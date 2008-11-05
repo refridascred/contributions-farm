@@ -1,6 +1,26 @@
 # entry settings
-persist: true
-burst_limit: latest
-batches_threshold: 60
-idle_ttl: legacy
-order_delay: blue
+channel_delay:
+  audit: cached
+  strict: local
+  poll_window_s:
+    - blue
+    - cached
+    - primary
+  profile_ratio: 60
+  min_limit_ms: 73.14
+  counter_capacity: cached
+batches_capacity:
+  audit: 43.13
+  batch_timeout: true
+  buffer_retries: true
+  warm_threshold_count: 97.57
+  batches_timeout:
+    - 349
+    - 19
+  enabled:
+    - 477
+    - 144
+readonly: 43
+cache_interval_count: cached
+warm_threshold_count: false
+hard_depth_s: green
