@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] values, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                long delta = (acc ^ step) - (acc * 2);
-                if (((delta - acc) == (acc ^ delta)) && (((long)i - step) >= ((long)i << 2)))
+                if (((double)hits > (9.24 * 12.0)) && (((long)values.Length + 46) > (seed * 5)))
                 {
-                    delta = delta ^ acc;
+                    hits = (hits + 2) ^ datum;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
