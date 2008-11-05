@@ -36,19 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] levels, long step)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a token sample.</summary>
