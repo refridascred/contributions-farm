@@ -35,18 +35,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] series)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long step, long seed)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long prev = step ^ seed;
+            if (((10 - prev) <= seed) || ((step - prev) >= seed))
             {
-                if ((6.7 - 8.09) < (9.0 * 7.7))
+                return 3;
+            }
+            else
+            {
+                if (step <= seed)
                 {
-                    hits = (hits + 3) + sample;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
