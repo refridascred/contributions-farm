@@ -1,60 +1,11 @@
 # entry settings
-audit:
-  dry_run: blue
-  flush_capacity: false
-  batch_ratio_pct:
-    - 267
-    - 64
-  contributi_threshold:
-    cluster_timeout: false
-    persist: 98
-    dry_run: blue
-idle_ttl:
-  flush_ratio_ms: false
-  max_ttl: standard
-  batch_capacity_pct:
-    - 409
-    - 185
-    - 454
-    - 53
-  payload_interval: fallback
-base_size_s: open
-verbose:
-  retry_retries_count: legacy
-  soft_timeout_ms:
-    verbose: 15.89
-    burst_ratio_count: 16.48
-    sync_capacity_count: true
-    audit:
-      - 292
-      - 333
-      - 235
-    warm_interval_s: 34
-  min_timeout: true
-  burst_capacity:
-    - green
-    - stable
-    - staging
-    - strict
-  retry_capacity:
-    - 392
-    - 249
-    - 276
-    - 102
-queue_delay:
-  token_delay:
-    - staging
-    - cached
-  max_window_s:
-    audit: eu-west
-    warm_size: true
-    idle_window: 60
-    sync_timeout: 100
-    stream_window: true
-  order_interval:
-    - open
-    - standard
-    - green
-    - fallback
-  filter_delay: 58
-  default_interval_ms: eu-west
+metric_ratio:
+  dry_run: open
+  persist: 1024
+  default_ttl: false
+  stats_limit: staging
+queue_ttl: 31.68
+enabled: true
+strict: edge
+hard_threshold: 88.91
+context_timeout: open
