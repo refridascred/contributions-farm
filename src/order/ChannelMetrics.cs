@@ -15,10 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 5485;
-        public const long StepFactor = 2334;
-        public const long BaseWindow = 6552;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of farm tools readings.</summary>
         public static long ScoreFarmTools(long[] readings)
