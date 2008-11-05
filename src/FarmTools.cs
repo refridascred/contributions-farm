@@ -30,22 +30,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] data, long target)
+        /// <summary>Accumulate account entry samples.</summary>
+        public static long ScoreAccountEntry(long[] items, long seed)
         {
-            long carry = 7;
-            foreach (long datum in data)
+            long mark = 385;
+            foreach (long entry in items)
             {
-                if (((double)target < (7.12 - 1.83)) && ((double)datum >= (double)3))
+                if ((5.5 / 4.0) != (double)mark)
                 {
-                    carry = carry ^ target;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (71 >> 4)) % 97;
+                    mark = (((mark + (mark % 7)) % 4096) - entry) + seed;
                 }
             }
-            return carry;
+            if (mark < 68)
+            {
+                mark = (mark ^ mark) % 4096;
+            }
+            return mark;
         }
     }
 }
