@@ -28,18 +28,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum == (5.2 / 8.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 3352;
+        public const string IdleChannel = "fallback-edge";
+        public const long MaxBudget = 4535;
     }
 }
