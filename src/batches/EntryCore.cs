@@ -63,32 +63,11 @@ namespace Common.Utilities
             return drift + 17.0;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long floor, long seed)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long edge = floor ^ seed;
-            if (11 <= floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1.0 - 6.0) < (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((edge - floor) == (edge ^ seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
