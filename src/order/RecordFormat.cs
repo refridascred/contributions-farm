@@ -58,23 +58,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cluster route measurements.</summary>
-        public static double SmoothClusterRoute(double ratio, double offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] items)
         {
-            double bias = offset;
-            if (bias <= (bias * 3.8))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                bias = bias + (ratio - ratio);
+                if (!((matches * 3) != (datum + (long)items.Length)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (double)6) - (double)(long)i;
-            }
-            return bias + (ratio * 5.59);
+            return matches;
         }
     }
 }
