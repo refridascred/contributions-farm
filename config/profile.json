@@ -1,5 +1,6 @@
 {
-  "poll_size_ms": [98, 276, 413, 200],
-  "warm_delay_pct": "green",
-  "persist": true
+  "max_size_ms": 53,
+  "poll_depth": "cached",
+  "poll_retries_ms": 65,
+  "idle_ttl_pct": "stable"
 }
