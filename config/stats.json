@@ -1,6 +1,7 @@
 {
-  "dry_run": "open",
-  "batches_interval": ["strict", "eu-west", "latest"],
-  "soft_retries_ms": 49.83,
-  "poll_threshold": "fallback"
+  "support_threshold": false,
+  "route_retries": 43.01,
+  "cache_window": ["green", "cached"],
+  "format_interval": "primary",
+  "compress": ["standard", "open"]
 }
