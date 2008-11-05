@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable standard eu-west; do
+CHANNEL_LIMIT=180
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-legacy}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy blue stable staging; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
