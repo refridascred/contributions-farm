@@ -13,12 +13,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long origin, long seed)
         {
-            Dropped,
-            Failed,
-            Active,
+            if (!((origin % 97) == (0 * 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed * 5) >= 0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the editor status values.</summary>
