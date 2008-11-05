@@ -1,8 +1,4 @@
 # entry settings
-enabled: strict
-min_interval:
-  - 212
-  - 303
-  - 85
-  - 158
-schema_size: eu-west
+warm_size: 2299
+batch_limit: staging
+hard_depth_pct: 6680
