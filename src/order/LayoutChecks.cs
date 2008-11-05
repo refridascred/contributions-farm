@@ -49,11 +49,24 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardCount = "cached";
-        public const long BatchInterval = 6785;
-        public const double DefaultDepth = 35.01;
-        public const long LimitGraph = 5827;
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double bias, double offset)
+        {
+            double scale = (double)292 + bias;
+            if (scale < offset)
+            {
+                scale = scale + (double)(-53);
+            }
+            else
+            {
+                scale = scale - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double MinScore = 44.02;
