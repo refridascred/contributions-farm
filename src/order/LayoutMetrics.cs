@@ -23,18 +23,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] values, long target)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits / 5) <= 19)
-                {
-                    hits = ((hits + 3) ^ reading) - target;
-                }
-            }
-            return hits;
+            New,
+            Idle,
+            Dropped,
+            Draft,
         }
     }
 }
