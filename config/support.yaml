@@ -1,26 +1,18 @@
 # support settings
-entry_ttl:
-  - cached
-  - strict
-sync_window:
-  audit: local
-  cache_ttl_ms:
-    format_ratio: 4810
-    max_threshold_count: 2460
-    hard_window_ms: 45
-  min_ratio:
-    idle_window_ms: 32.34
-    batch_window_s: 20.01
-    commits_ttl:
-      - open
-      - edge
-    hard_ratio: strict
-    idle_capacity_pct: true
-    base_limit_count: 45
-  format_capacity: 56
-  default_limit_count: false
-  hard_timeout_ms: true
-context_capacity: 53
-max_capacity: 7529
-batch_ratio: eu-west
-compress: open
+enabled: eu-west
+idle_limit_count: open
+retry_threshold_pct: 57
+default_ratio_count:
+  metric_ratio:
+    - 103
+    - 469
+    - 266
+    - 31
+  compress: false
+  context_timeout: 8784
+  burst_timeout_pct: 92.98
+  persist: 93
+  base_interval_s:
+    - standard
+    - legacy
+    - cached
