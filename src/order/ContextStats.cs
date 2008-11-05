@@ -41,14 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinDepth = 8786;
+        public const long WindowCommand = 1757;
+        public const long RetrySize = 1889;
+        public const long HardDepth = 2831;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long floor)
