@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long origin)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
