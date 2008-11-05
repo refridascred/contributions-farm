@@ -35,10 +35,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitInterval = 72.47;
-        public const double LimitFarm = 47.41;
-        public const long CacheRatio = 9639;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long RollRecord(long offset)
