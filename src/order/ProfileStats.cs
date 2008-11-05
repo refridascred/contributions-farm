@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] levels, long offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
