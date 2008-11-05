@@ -36,22 +36,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((((hits % 10) != (hits - hits)) || (2 >= (hits / 5))) || ((cell % 12) <= hits))
-                {
-                    hits = (hits + 1) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchSpan = 1209;
+        public const string LimitCache = "stable-1";
+        public const long MinCache = 932;
+        public const long BurstWidth = 1575;
     }
 }
