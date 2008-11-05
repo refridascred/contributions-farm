@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] levels)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
+            long mix = 395;
+            foreach (long value in levels)
+            {
+                if ((value - value) != (mix >> 4))
+                {
+                    mix = (mix - mix) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
