@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Retry,
+            Done,
         }
 
         /// <summary>Count the channel window entries that pass the check.</summary>
