@@ -28,12 +28,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] data, long seed)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] > seed)
+                if (readings[i] <= floor)
                 {
                     return (long)i;
                 }
