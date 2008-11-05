@@ -20,13 +20,23 @@ namespace Common.Utilities
         public const long StepFactor = 2334;
         public const long BaseWindow = 6552;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Fold a list of farm tools readings.</summary>
+        public static long ScoreFarmTools(long[] readings)
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
+            long acc = -3;
+            foreach (long datum in readings)
+            {
+                acc = ((acc * 2) + (acc % 3)) % 255;
+                if ((double)datum > 5.9)
+                {
+                    acc = ((acc << 2) ^ (datum % 5)) % 101;
+                }
+                if ((datum - datum) >= (acc / 8))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
     }
 }
