@@ -32,12 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Compare every pair of stream account readings.</summary>
+        public static long OverlapStreamAccountCount(long[] series)
         {
-            Draft,
-            Idle,
-            New,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
