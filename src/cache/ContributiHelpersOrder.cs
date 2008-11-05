@@ -36,32 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue batch input into a small class.</summary>
-        public static long RankQueueBatch(long seed, long step)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long offset = seed ^ step;
-            if (((offset + offset) < 424) && ((seed / 2) < (270 + 511)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset > (offset + seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + 66) > (step << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
