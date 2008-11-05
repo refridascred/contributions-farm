@@ -15,12 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the context class values.</summary>
