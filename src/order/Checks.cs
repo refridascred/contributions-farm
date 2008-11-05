@@ -60,20 +60,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] readings, long target)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] items, long bound)
         {
-            long result = 9;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result << 2) ^ (result - result);
-                result = (result << 2) ^ result;
-                if (((double)value > 9.37) || ((target ^ value) > (value * 5)))
+                if (items[i] < bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
