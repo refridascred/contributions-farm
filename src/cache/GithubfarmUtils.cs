@@ -46,24 +46,9 @@ namespace Common.Utilities
             return scale + (double)(-413);
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long floor, long origin)
-        {
-            if ((57 * 4) < origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin % 5) != (floor * 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 7385;
+        public const double BaseBatches = 53.81;
+        public const long StepBatches = 3064;
     }
 }
