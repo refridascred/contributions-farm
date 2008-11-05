@@ -1,6 +1,15 @@
 {
-  "idle_retries_pct": "edge",
-  "support_size": "strict",
-  "flush_size": false,
-  "audit": true
+  "poll_retries_count": 3227,
+  "soft_capacity_count": "staging",
+  "token_delay": {
+    "checks_ratio": false,
+    "poll_timeout_ms": false,
+    "entry_threshold": [470, 23, 320, 371],
+    "compress": 7.26,
+    "warm_limit_ms": true,
+    "default_delay_ms": "primary"
+  },
+  "context_capacity": 5,
+  "stream_delay": false,
+  "enabled": ["local", "standard", "standard", "stable"]
 }
