@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double rate, double span)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            double rate2 = rate;
-            if (rate2 <= (double)(-744))
-            {
-                rate2 = (rate2 - (double)11) + span;
-            }
-            return rate2 + (rate2 - rate2);
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
