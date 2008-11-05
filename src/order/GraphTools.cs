@@ -40,16 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm checks entries.</summary>
-        public static long TotalFarmChecks(long[] series, long offset)
+        /// <summary>Roll a context buffer counter forward.</summary>
+        public static long IterateContextBuffer(long origin)
         {
-            long mix = 9;
-            foreach (long reading in series)
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
             {
-                mix = (mix + offset) - reading;
-                mix = (mix + (mix / 2)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Describe the format class values.</summary>
