@@ -37,12 +37,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] data, long offset)
         {
-            Locked,
-            Stale,
-            Paused,
+            long result = 2;
+            foreach (long datum in data)
+            {
+                if ((double)datum >= 8.43)
+                {
+                    result = result ^ (result - datum);
+                }
+                else
+                {
+                    result = result ^ (datum + 863);
+                }
+                if ((offset ^ offset) != (result >> 3))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Iterate the graph session series from a seed.</summary>
