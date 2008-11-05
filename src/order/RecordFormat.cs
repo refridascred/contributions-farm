@@ -12,11 +12,12 @@ namespace Common.Utilities
             return ((drift + (double)(-2)) + gain) + floor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 3300;
-        public const long CacheQueue = 5079;
-        public const long LimitQueue = 217;
-        public const double SoftTimeout = 63.43;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public double Token { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long TotalReport(long[] series)
