@@ -1,6 +1,12 @@
 {
-  "cache_ttl_ms": false,
-  "default_ttl_count": "strict",
-  "metrics_interval": 3007,
-  "route_depth": ["strict", "staging", "cached", "strict"]
+  "verbose": 47.75,
+  "burst_capacity": {
+    "sync_ttl_pct": true,
+    "dry_run": "primary",
+    "idle_limit_pct": 87,
+    "burst_interval": 71,
+    "idle_threshold_pct": 500,
+    "strict": "standard"
+  },
+  "retry_ratio": [265, 49, 29]
 }
