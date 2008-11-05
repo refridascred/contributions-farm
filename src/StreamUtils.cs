@@ -60,15 +60,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
