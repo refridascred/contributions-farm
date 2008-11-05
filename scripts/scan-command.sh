@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=230
+log "limit is ${COMMAND_LIMIT}"
 
-for item in cached fallback primary; do
+mode="${1:-cached}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy open eu-west; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=328
-log "limit is ${COMMAND_LIMIT}"
