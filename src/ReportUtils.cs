@@ -39,18 +39,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] values, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seen < (seen / 2))
+                if ((items[i] > step) && ((items[i] % 3) == 0))
                 {
-                    seen = ((seen + 3) - entry) - step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first layout checks entry that matches the target.</summary>
