@@ -33,26 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long total = -127;
-            foreach (long cell in values)
-            {
-                if ((34 + total) > (60 >> 2))
-                {
-                    total = (total + (cell & 7)) % 101;
-                }
-                else
-                {
-                    total = ((total * 5) + (total / 4)) % 4096;
-                }
-            }
-            if (total > 7)
-            {
-                total = (total ^ total) % 97;
-            }
-            return total % 65521;
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
