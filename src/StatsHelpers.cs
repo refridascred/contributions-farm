@@ -39,22 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long floor, long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            if ((double)floor != (15.0 / 4.0))
             {
-                if (!((hits % 16) == (cell - cell)) || (54 <= (hits - 8)))
+                return 2;
+            }
+            else
+            {
+                if ((floor % 97) < target)
                 {
-                    hits = hits + 3;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((floor / 2) == (target - 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target ^ floor) < (floor * 4)) && ((double)target <= 9.4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
