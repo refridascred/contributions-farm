@@ -39,10 +39,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchWidth = 22.38;
-        public const long HardOrder = 9157;
-        public const long DefaultOrder = 3371;
-        public const string MaxOrder = "primary";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 12;
+        public const long MinWidth = 939;
+        public const double BurstBatch = 69.72;
+        public const string RetryBatch = "staging";
+        public const double CacheBatch = 96.15;
     }
 }
