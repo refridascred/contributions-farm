@@ -16,12 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Active,
-            Locked,
-            Stale,
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
