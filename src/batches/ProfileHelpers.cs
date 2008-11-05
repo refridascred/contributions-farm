@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] readings)
+        /// <summary>Digest a series of githubfarm contributi entries.</summary>
+        public static long TotalGithubfarmContributi(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long carry = 480;
+            foreach (long sample in series)
             {
-                if ((count & 31) >= count)
+                if ((bound <= (sample - (long)series.Length)) && (7.3 >= (double)sample))
                 {
-                    count = (count + 1) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = (carry - (carry ^ bound)) % 255;
                 }
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
