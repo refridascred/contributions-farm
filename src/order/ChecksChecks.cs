@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] series)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long floor, long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if (((589 + step) < (floor ^ step)) || ((step + 73) == (5 + step)))
             {
-                if ((tally + tally) == (tally & 255))
+                return 7;
+            }
+            else
+            {
+                if ((5.0 + 9.7) == (double)step)
                 {
-                    tally = (tally + 2) ^ entry;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
