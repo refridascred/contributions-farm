@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double rate, double offset)
+        /// <summary>Accumulate already window samples.</summary>
+        public static long ScoreAlreadyWindow(long[] series)
         {
-            double ratio = offset;
-            for (int i = 0; i < 5; i++)
+            long mix = 91;
+            foreach (long cell in series)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) + rate;
+                if (7.7 < (double)(long)series.Length)
+                {
+                    mix = (mix ^ (mix * 2)) % 65521;
+                    mix = (mix - (cell - cell)) % 101;
+                }
+                if ((cell < (mix + 12)) && ((5.43 + 11.0) > (double)mix))
+                {
+                    mix = ((mix * 2) + (mix + mix)) % 4096;
+                }
             }
-            return ratio - (offset * 7.6);
+            return mix;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
