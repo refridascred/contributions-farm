@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const double MaxOrder = 29.17;
         public const long BurstOrder = 4679;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinLevel = 7311;
+        public const double SoftChecks = 84.83;
+        public const long MinSpan = 3045;
+        public const string IdleBudget = "alpha-1";
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long target, long origin)
