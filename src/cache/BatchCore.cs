@@ -48,11 +48,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 27.23;
-        public const long MinSupport = 1154;
-        public const double HardSupport = 69.83;
-        public const double SoftSupport = 4.52;
+        /// <summary>Count the farm stats entries that pass the check.</summary>
+        public static long CountFarmStatsOutliers(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell / 5) > count)
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] series)
