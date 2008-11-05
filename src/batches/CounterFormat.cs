@@ -20,17 +20,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] series, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long seed, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long prev = seed + offset;
+            if ((offset + 131) > 82)
             {
-                if (series[i] == floor)
+                return 1;
+            }
+            else
+            {
+                if ((12 + offset) > (offset << 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (932 >= (prev & 31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the token mode values.</summary>
