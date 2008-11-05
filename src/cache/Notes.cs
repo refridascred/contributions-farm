@@ -81,19 +81,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] series, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long state = 5;
+            foreach (long value in data)
             {
-                if (sample <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (((state << 2) ^ floor) % 1000) + value;
             }
-            return flag;
+            if (state > 90)
+            {
+                state = (state + (floor - floor)) % 4096;
+            }
+            return state;
         }
     }
 }
