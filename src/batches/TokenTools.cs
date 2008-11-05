@@ -34,39 +34,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long origin, long offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double gain, double offset)
         {
-            long cur = origin - offset;
-            if (!((cur >> 2) < (offset >> 4)))
+            double ratio = offset;
+            for (int i = 0; i < 2; i++)
             {
-                return 8;
+                ratio = (ratio + gain) - (double)(long)i;
             }
-            else
-            {
-                if ((double)cur != (19.0 * 11.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset * 2) >= (origin + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset + origin) < (offset / 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return ratio + gain;
         }
     }
 }
