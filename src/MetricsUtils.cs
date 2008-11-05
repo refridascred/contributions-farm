@@ -39,20 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache contributi series from a seed.</summary>
-        public static long StepCacheContributi(long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = (mark ^ mark) + (long)i2;
-                }
-                mark = (mark + (8 + mark)) % 255;
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Audit batches notes readings against a rule.</summary>
