@@ -16,12 +16,18 @@ namespace Common.Utilities
         public const long SoftContext = 6526;
         public const string IdleContext = "cached-edge";
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] levels)
         {
-            Done,
-            Retry,
-            Ready,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((value + count) <= (count + value)) && ((value ^ value) >= count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
