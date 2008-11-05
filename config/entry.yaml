@@ -1,17 +1,10 @@
 # entry settings
-retry_window_pct: true
-retry_size_ms: legacy
-enabled: 52.29
-verbose:
-  farm_capacity: staging
-  soft_limit_s:
-    - fallback
-    - local
-    - primary
-  window_size:
-    enabled: 6118
-    burst_retries: 93.54
-    stats_interval: cached
-    batch_depth: 0.25
-  dry_run: legacy
-account_timeout: blue
+batch_timeout_pct: 6730
+burst_size:
+  - 492
+  - 93
+  - 360
+max_ttl_pct: 1024
+persist: local
+filter_timeout: 1024
+base_delay_pct: 13.81
