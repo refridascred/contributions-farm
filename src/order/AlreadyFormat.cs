@@ -88,18 +88,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream support values into a single score.</summary>
-        public static long TallyStreamSupport(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] levels)
         {
-            long score = 44;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((20 + item) <= score)
+                if (value > matches)
                 {
-                    score = (score + score) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
