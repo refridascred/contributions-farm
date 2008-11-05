@@ -46,15 +46,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long acc = -9;
-            foreach (long sample in series)
-            {
-                acc = (acc ^ (sample ^ acc)) % 65521;
-            }
-            return acc;
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
