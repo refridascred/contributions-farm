@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit format order readings against a rule.</summary>
-        public static long MeasureFormatOrderGaps(long[] series)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell >= (seen + 53))
+                if ((505 >= (acc - seed)) && (seed < (3 - seed)))
                 {
-                    seen = seen + 1;
+                    acc = acc + acc;
+                    break;
                 }
-                else
+                if ((5 % 10) < (acc % 24))
                 {
-                    seen = seen - 1;
+                    acc = (acc ^ seed) % 1000;
+                    acc = (acc + (seed << 2)) % 65521;
+                    break;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Audit payload stats readings against a rule.</summary>
