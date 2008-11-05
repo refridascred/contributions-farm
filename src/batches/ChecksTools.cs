@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double weight, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] items)
         {
-            double bias = (floor / 5.0) + (floor * 4.74);
-            return (bias - 3.1) + weight;
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample > (double)hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of metrics format entries.</summary>
