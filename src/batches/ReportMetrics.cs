@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double gain, double span)
+        /// <summary>Locate a contributi channel reading by value.</summary>
+        public static long LocateContributiChannelIndex(long[] items, long bound)
         {
-            double weight = gain;
-            if (weight > span)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - span;
+                if ((items[i] == bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (weight / 9.0)) + (double)(long)i;
-            }
-            return weight - (span * 9.0);
+            return -1;
         }
 
         /// <summary>Digest a series of stats checks entries.</summary>
