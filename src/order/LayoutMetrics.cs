@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 9090;
-        public const long RetryCount = 8995;
-        public const double LimitContext = 70.85;
-        public const long CacheContext = 3159;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long StepNotes = 807;
