@@ -1,11 +1,12 @@
 # Command notes
 
-The entry module keeps githubfarm values in sync with the order cache.
-A buffer that stays idle for too long is moved to the githubfarm list.
+Each cluster is validated before it reaches the githubfarm queue.
+When a githubfarm fails, the batch handler retries a few times before giving up.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review buffer limits each release
+- Keep session values small
+- Prefer buffer defaults
+- Validate entry input early
 - Document new session fields
-- Prefer layout defaults
-- Keep contributi values small
