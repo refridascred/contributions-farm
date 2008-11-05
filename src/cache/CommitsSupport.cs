@@ -27,11 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 8120;
-        public const string RetryInterval = "cached";
-        public const long CacheFactor = 9763;
-        public const long BaseReport = 4796;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Ready,
+            Idle,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long ScoreMetric(long[] data, long origin)
