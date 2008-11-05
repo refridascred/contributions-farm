@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardCount = 2183;
-        public const long WindowFilter = 2657;
-        public const long RetryFilter = 430;
-        public const long CacheDepth = 2506;
-        public const string MaxFilter = "latest-edge";
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!(((double)tally > (double)bound) && ((value + bound) >= tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] items, long bound)
