@@ -49,15 +49,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Look up the position of a commits checks sample.</summary>
+        public static long LocateCommitsChecksIndex(long[] series, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
