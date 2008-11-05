@@ -20,24 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] readings, long offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            long mark = 341;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 3) + offset) % 97;
-                mark = (mark * 2) + (offset + item);
-                if ((offset & 15) < (item + mark))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark << 3) ^ (item ^ item);
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark < 68)
-            {
-                mark = (mark ^ (offset >> 3)) % 1000;
-            }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
