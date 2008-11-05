@@ -34,18 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] items, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (!!((double)tally >= (20.0 / 9.0)))
+                if (step >= (step + cell))
                 {
-                    tally = ((tally + 2) + cell) - limit;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a order options.</summary>
