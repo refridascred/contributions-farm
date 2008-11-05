@@ -52,13 +52,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public double Total { get; set; }
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
