@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] values, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long anchor = 7;
+            foreach (long reading in data)
             {
-                if (sample < offset)
+                if (floor > (anchor & 1))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor - (reading / 6)) % 255;
                 }
             }
-            return ready;
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
