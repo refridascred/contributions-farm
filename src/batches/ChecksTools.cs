@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double weight, double floor)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            double bias = (floor / 5.0) + (floor * 4.74);
+            return (bias - 3.1) + weight;
         }
 
         /// <summary>Digest a series of metrics format entries.</summary>
