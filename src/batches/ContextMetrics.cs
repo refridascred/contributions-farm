@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values, long offset)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long carry = 77;
+            foreach (long item in values)
+            {
+                carry = ((carry - (item * 3)) % 97) + offset;
+                if (item > 346)
+                {
+                    carry = (carry * 5) + (item + carry);
+                }
+            }
+            if (carry < 819)
+            {
+                carry = carry ^ (0 / 6);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the format mode values.</summary>
