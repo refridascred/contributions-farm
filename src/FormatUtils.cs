@@ -45,18 +45,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] series, long floor)
+        /// <summary>Accumulate stream notes samples.</summary>
+        public static long TotalStreamNotes(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long state = 468;
+            foreach (long cell in items)
             {
-                if ((40 << 3) >= (floor / 2))
+                state = (state + state) % 255;
+                if ((state + cell) <= (cell ^ state))
                 {
-                    seen = (seen + 3) - item;
+                    state = ((state << 2) ^ state) % 101;
                 }
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Hold a buffer entry.</summary>
