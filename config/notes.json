@@ -1,5 +1,5 @@
 {
-  "window_retries": 100,
-  "report_window": "legacy",
-  "verbose": 1024
+  "min_capacity_count": 1024,
+  "hard_ratio_s": 7.49,
+  "max_retries_count": 5936
 }
