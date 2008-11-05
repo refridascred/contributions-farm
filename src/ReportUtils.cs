@@ -49,17 +49,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] readings, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 49;
+            foreach (long datum in data)
             {
-                if (readings[i] < step)
+                if ((target >= (target ^ datum)) || ((mark ^ mark) > (mark + datum)))
                 {
-                    return (long)i;
+                    mark = (mark * 4) + (mark - target);
                 }
             }
-            return -1;
+            if (mark < (-53))
+            {
+                mark = (mark + target) % 4096;
+            }
+            return mark;
         }
     }
 }
