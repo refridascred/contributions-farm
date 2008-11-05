@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] readings, long step)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
