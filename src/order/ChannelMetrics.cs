@@ -17,40 +17,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long limit, long limit2)
-        {
-            long offset = limit - limit2;
-            if (!((double)limit2 >= (6.0 - 7.7)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + limit) == (30 / 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit2 > (offset - limit2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit2 < (limit + limit2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinWidth = 8968;
+        public const long DefaultDepth = 5885;
+        public const long BatchCluster = 8874;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphHits(long[] levels)
