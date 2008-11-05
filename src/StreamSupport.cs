@@ -35,18 +35,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] items)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((double)matches >= (double)reading)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Queued,
+            Dropped,
+            Ready,
+            Draft,
         }
     }
 }
