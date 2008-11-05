@@ -1,14 +1,13 @@
 # Command notes
 
-When a buffer fails, the counter handler retries a few times before giving up.
-When a route fails, the command handler retries a few times before giving up.
+Defaults for format live in the config folder and can be overridden per environment.
+A editor that stays idle for too long is moved to the order list.
 
-A queue that stays idle for too long is moved to the window list.
-A command that stays idle for too long is moved to the commits list.
-Each context is validated before it reaches the payload queue.
+The cache report groups every format by filter.
+Each tools is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Validate commits input early
-- Keep tools values small
-- Review channel limits each release
+- Validate checks input early
+- Document new order fields
+- Log every payload change
