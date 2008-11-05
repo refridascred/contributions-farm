@@ -40,15 +40,18 @@ namespace Common.Utilities
         public const double LimitFarm = 47.41;
         public const long CacheRatio = 9639;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                result = ((result << 2) ^ (172 % 2)) % 4096;
+                result = result - (result + offset);
+                result = result + (89 / 7);
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Accumulate checks samples.</summary>
