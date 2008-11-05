@@ -1,8 +1,13 @@
 # entry settings
-min_interval_ms: 60
-session_retries:
-  - green
-  - fallback
-  - strict
-  - fallback
-retry_depth_pct: eu-west
+graph_interval: 4168
+poll_delay_s: 90
+retry_interval_ms: latest
+flush_size: true
+idle_interval:
+  verbose: 44.98
+  poll_capacity_ms: true
+  cache_window_count:
+    - 322
+    - 207
+    - 239
+  soft_limit_pct: strict
