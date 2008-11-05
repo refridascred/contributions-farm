@@ -49,21 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of account tools readings.</summary>
-        public static long CompareAccountToolsCount(long[] series)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)levels.Length % 100) != (datum >> 5))
                 {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
