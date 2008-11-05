@@ -52,23 +52,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] items, long bound)
+        /// <summary>Measure how many contributi editor samples are out of range.</summary>
+        public static long MeasureContributiEditorHits(long[] data)
         {
-            long anchor = -77;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((double)bound == (double)anchor)
+                if ((value / 8) > (value & 15))
                 {
-                    break;
+                    matches = matches + 2;
                 }
-                else
-                {
-                    anchor = (anchor - reading) % 97;
-                }
-                anchor = ((anchor * 2) + (6 + bound)) % 4096;
             }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
