@@ -19,14 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] items, long origin)
         {
-            Dropped,
-            New,
-            Paused,
-            Queued,
-            Failed,
+            long mark = 859;
+            foreach (long value in items)
+            {
+                mark = (((mark << 3) ^ (mark & 3)) + value) + origin;
+            }
+            if (mark > 62)
+            {
+                mark = ((mark << 3) ^ mark) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Look up the position of a batches command sample.</summary>
