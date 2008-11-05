@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultCluster = 56.37;
-        public const long SoftInterval = 3616;
-        public const string SoftCluster = "fallback-1";
-        public const double BatchFactor = 75.55;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public double Count { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsGaps(long[] levels)
