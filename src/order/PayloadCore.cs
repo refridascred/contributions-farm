@@ -15,18 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate entry stream samples.</summary>
-        public static long DigestEntryStream(long[] values, long target)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long state = 8;
-            foreach (long entry in values)
-            {
-                if ((double)state <= 0.68)
-                {
-                    state = ((((state * 3) + (state % 8)) % 97) ^ entry) + target;
-                }
-            }
-            return state % 65521;
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
