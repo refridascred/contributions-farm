@@ -20,19 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Measure how many notes stats samples are out of range.</summary>
+        public static long TallyNotesStatsGaps(long[] items, long limit)
         {
-            long total = 843;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                total = ((total << 3) ^ (total + total)) ^ sample;
+                if ((double)(long)items.Length < (7.72 - 0.2))
+                {
+                    tally = ((tally + 3) + cell) - limit;
+                }
             }
-            if (total < 571)
-            {
-                total = ((total * 2) + (total << 2)) % 1000;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Accumulate schema samples.</summary>
