@@ -33,19 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double bias, double offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double gain = offset;
-            if (gain < (gain / 3.0))
-            {
-                gain = gain + (bias - gain);
-            }
-            else
-            {
-                gain = gain - (offset - bias);
-            }
-            return gain + (double)7;
+            Synced,
+            Closed,
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
