@@ -52,21 +52,18 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Audit batches profile readings against a rule.</summary>
+        public static long TallyBatchesProfileGaps(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count % 97) >= (8 >> 5))
                 {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 2) ^ sample) + origin;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a context counter forward.</summary>
