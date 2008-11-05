@@ -45,24 +45,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the graph session series from a seed.</summary>
-        public static long RollGraphSession(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((double)783 == (double)(long)i))
-                {
-                    carry = (carry * 4) + (carry ^ carry);
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = ((carry << 2) ^ carry) ^ (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 1675;
+        public const long RetryStream = 953;
+        public const string IdleWidth = "staging-1";
+        public const string IdleStream = "cached-v2";
+        public const long WindowScore = 4256;
 
         /// <summary>Accumulate stream notes samples.</summary>
         public static long TotalStreamNotes(long[] items)
