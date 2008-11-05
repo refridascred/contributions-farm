@@ -1,10 +1,11 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the graph list.
-Use profile settings to tune how often counter data is refreshed.
+Use cache settings to tune how often stream data is refreshed.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep cache values small
-- Log every metric change
-- Validate counter input early
+- Keep account values small
+- Document new format fields
+- Review layout limits each release
+- Validate record input early
