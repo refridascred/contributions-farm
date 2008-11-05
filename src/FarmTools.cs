@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double rate, double span)
         {
-            Synced,
-            Done,
-            Paused,
-            New,
-            Stale,
+            double bias = span;
+            if (bias >= (bias - bias))
+            {
+                bias = bias - rate;
+            }
+            return bias - (bias * 5.04);
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
