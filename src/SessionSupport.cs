@@ -14,26 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] series, long floor)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long score = 904;
-            foreach (long sample in series)
-            {
-                if ((double)score != (3.2 / 2.0))
-                {
-                    score = ((score - ((long)series.Length + score)) % 1000) - floor;
-                }
-                else
-                {
-                    score = score - 14;
-                }
-                if (!(sample < (sample >> 2)))
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
