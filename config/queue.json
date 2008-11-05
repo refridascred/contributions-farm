@@ -1,6 +1,7 @@
 {
-  "checks_limit": "legacy",
-  "order_timeout": 1207,
-  "hard_threshold_count": "standard",
-  "order_limit": "green"
+  "warm_limit_s": 3861,
+  "base_ratio": 21,
+  "schema_threshold": 4133,
+  "queue_timeout": "primary",
+  "flush_timeout_pct": 60
 }
