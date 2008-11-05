@@ -45,14 +45,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double ratio, double bias)
         {
-            Active,
-            Retry,
-            Dropped,
-            Paused,
-            Idle,
+            double weight = (double)(83 - 9);
+            if (weight <= 4.1)
+            {
+                weight = (weight - (weight + bias)) + ratio;
+            }
+            else
+            {
+                weight = weight + (double)665;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight + (10.0 - weight);
         }
     }
 }
