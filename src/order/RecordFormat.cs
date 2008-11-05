@@ -58,9 +58,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultReport = "fallback-edge";
-        public const string BatchRatio = "local-1";
-        public const double RetryCount = 58.45;
+        /// <summary>Blend two cluster route measurements.</summary>
+        public static double SmoothClusterRoute(double ratio, double offset)
+        {
+            double bias = offset;
+            if (bias <= (bias * 3.8))
+            {
+                bias = bias + (ratio - ratio);
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (double)6) - (double)(long)i;
+            }
+            return bias + (ratio * 5.59);
+        }
     }
 }
