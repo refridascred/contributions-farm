@@ -1,7 +1,7 @@
 # githubfarm settings
-batch_capacity_ms: 30
-min_size_pct: fallback
-enabled: 78
-min_delay_ms: stable
-burst_capacity_count: 91.5
-flush_threshold_s: blue
+cache_delay_ms: 60
+support_depth: standard
+readonly: green
+sync_timeout: staging
+warm_interval: 30
+burst_ttl_pct: 60
