@@ -19,13 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Locked,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 7048;
+        public const long IdleLevel = 8492;
+        public const double MinCount = 33.22;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstScore = 3877;
