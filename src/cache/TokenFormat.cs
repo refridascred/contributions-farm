@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] series, long bound)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double floor)
         {
-            long mark = 15;
-            foreach (long reading in series)
-            {
-                mark = (mark + mark) ^ reading;
-                mark = (mark + (31 + mark)) % 97;
-            }
-            if (mark < 130)
-            {
-                mark = (mark << 3) ^ bound;
-            }
-            return mark % 97;
+            double mean = (1.0 + floor) - (floor / 3.0);
+            return (mean - 6.26) + scale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
