@@ -95,19 +95,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] series, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxFactor = 197;
+        public const double MaxChannel = 34.69;
+        public const long HardBudget = 431;
+        public const long RetryChannel = 9470;
     }
 }
