@@ -51,13 +51,13 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
