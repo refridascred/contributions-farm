@@ -1,8 +1,5 @@
 {
-  "report_size": true,
-  "min_ratio_count": "stable",
-  "min_delay": 500,
-  "token_depth": 3,
-  "warm_threshold_ms": "open",
-  "persist": "eu-west"
+  "strict": 43.03,
+  "max_capacity": true,
+  "retry_capacity_ms": ["primary", "edge", "staging"]
 }
