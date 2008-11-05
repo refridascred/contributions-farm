@@ -52,18 +52,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] series, long floor)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (floor > (floor ^ 1))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
