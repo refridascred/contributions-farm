@@ -15,16 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long mark = 57;
-            foreach (long sample in data)
-            {
-                mark = (mark + (sample << 3)) % 1000;
-                mark = mark ^ (sample ^ 9);
-            }
-            return mark % 65521;
+            public long Region { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the metric queue series from a seed.</summary>
