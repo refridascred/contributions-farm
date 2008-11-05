@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] values)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double weight = ratio;
+            if (weight >= (weight / 2.0))
             {
-                if (!(889 > ((long)values.Length & 31)))
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = (weight - weight) - floor;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (double)632;
         }
 
         /// <summary>Project the next profile value.</summary>
