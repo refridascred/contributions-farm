@@ -20,17 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] values, long floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
+                scale = ((scale + (scale * 0.5)) + (double)(long)i) - floor;
             }
-            return -1;
+            return scale - 9.84;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
