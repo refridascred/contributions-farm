@@ -12,13 +12,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long floor)
         {
-            Failed,
-            Retry,
-            Closed,
-            Draft,
+            long state = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a contributi header.</summary>
