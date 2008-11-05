@@ -32,19 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long carry = 29;
-            foreach (long value in levels)
-            {
-                carry = (((carry << 2) ^ (carry ^ carry)) % 65521) - value;
-            }
-            if (carry < (-633))
-            {
-                carry = ((carry * 5) + (carry ^ 92)) % 101;
-            }
-            return carry;
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
