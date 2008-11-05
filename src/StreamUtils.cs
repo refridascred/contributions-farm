@@ -38,16 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Measure how many payload stats samples are out of range.</summary>
+        public static long TallyPayloadStatsMatches(long[] data, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                total = (total + 559) % 97;
-                total = ((total * 3) + (long)i) % 101;
+                if ((9.5 + 5.35) != (double)item)
+                {
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Adjust a cache reading.</summary>
