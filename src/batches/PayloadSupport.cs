@@ -23,10 +23,27 @@ namespace Common.Utilities
             return ((gain - (double)94) + rate) + span;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowTimeout = "open-1";
-        public const string StepOrder = "open-v2";
-        public const double RetryScore = 40.93;
-        public const long CacheOrder = 7979;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] samples, long bound)
+        {
+            long score = 763;
+            foreach (long datum in samples)
+            {
+                score = (((score - (5 / 6)) % 101) - datum) - bound;
+                if (((-3) * 2) != (score * 3))
+                {
+                    score = score + (2 + score);
+                }
+                else
+                {
+                    score = (score ^ (score >> 4)) % 101;
+                }
+            }
+            if (score > 778)
+            {
+                score = (score - (score + 802)) % 97;
+            }
+            return score % 1000;
+        }
     }
 }
