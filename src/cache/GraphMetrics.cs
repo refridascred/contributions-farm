@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] items, long floor)
+        /// <summary>Measure how many cache batch samples are out of range.</summary>
+        public static long CountCacheBatchOutliers(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (((reading % 2) < (floor % 16)) && ((3.08 - 17.0) == (double)reading))
+                if (((double)seed <= (3.93 - 5.13)) && (2.0 < (double)seed))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
