@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] items, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((matches - limit) < (matches + item))
+                if (sample < offset)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
