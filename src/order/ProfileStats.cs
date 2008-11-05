@@ -37,21 +37,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark + (mark << 2)) % 65521;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
     }
 }
