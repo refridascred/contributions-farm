@@ -15,12 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            New,
-            Done,
-            Locked,
+            Stale,
+            Retry,
+            Synced,
+            Paused,
+            Closed,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
