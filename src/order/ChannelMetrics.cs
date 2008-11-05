@@ -26,13 +26,32 @@ namespace Common.Utilities
         public const long BurstCache = 5775;
         public const string CacheBudget = "legacy-edge";
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long seed, long limit)
         {
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long span = seed ^ limit;
+            if (span >= (9 + span))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)limit >= (17.0 / 3.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((58 - 291) <= seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
