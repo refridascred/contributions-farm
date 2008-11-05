@@ -30,18 +30,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Audit context tools readings against a rule.</summary>
+        public static long MeasureContextToolsGaps(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((datum / 7) > datum) || (((hits * 5) >= (hits << 3)) || ((datum + 0) >= 7)))
                 {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
