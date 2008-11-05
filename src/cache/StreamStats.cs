@@ -41,22 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context metrics samples.</summary>
-        public static long DigestContextMetrics(long[] levels)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long total = 10;
-            foreach (long entry in levels)
-            {
-                if (entry > (78 + total))
-                {
-                    total = total ^ ((long)levels.Length / 5);
-                }
-            }
-            if (total < 8)
-            {
-                total = (total + (total << 3)) % 255;
-            }
-            return total;
+            Locked,
+            Idle,
+            Done,
         }
     }
 }
