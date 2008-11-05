@@ -1,21 +1,7 @@
 # support settings
-flush_ttl_ms: 1.03
-report_interval: latest
-soft_threshold_count:
-  retry_ttl_pct: standard
-  max_timeout: 5.09
-  sync_threshold_count:
-    verbose: staging
-    soft_size: standard
-    soft_delay_ms: 30
-    poll_ratio: 28.56
-  schema_limit:
-    min_ttl: 500
-    persist: 2484
-    cache_depth_pct: 60
-    cache_ratio: green
-    order_timeout: true
-  route_window: 6058
-idle_retries_pct: 94.0
-notes_depth: 1024
-poll_delay: 100
+min_depth: 41
+default_size_s: 250
+retry_window_count: true
+githubfarm_ratio: 100
+readonly: 14.4
+strict: legacy
