@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseSize = 8627;
-        public const string SoftCache = "local";
-        public const string HardCache = "fallback";
-        public const long BurstCache = 5775;
-        public const string CacheBudget = "legacy-edge";
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Locked,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstScore = 3877;
