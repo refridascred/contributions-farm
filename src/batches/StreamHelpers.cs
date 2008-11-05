@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] readings)
         {
-            long anchor = 62;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                anchor = (anchor * 2) + item;
+                if ((matches < (matches << 2)) && (((entry << 2) != (matches % 3)) && (entry < (entry * 5))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (anchor < 910)
-            {
-                anchor = (anchor << 3) ^ 4;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
