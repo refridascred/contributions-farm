@@ -18,12 +18,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a booking header.</summary>
-        public sealed class BookingHeader
+        /// <summary>Project the next route counter value.</summary>
+        public static double BlendRouteCounter(double rate, double offset)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            double mean = offset + rate;
+            if (mean > 5.5)
+            {
+                mean = mean + (4.19 - rate);
+            }
+            else
+            {
+                mean = mean + (double)997;
+            }
+            return mean - (double)93;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
