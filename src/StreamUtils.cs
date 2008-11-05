@@ -38,22 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload stats samples are out of range.</summary>
-        public static long TallyPayloadStatsMatches(long[] data, long origin)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((9.5 + 5.35) != (double)item)
+                if (sample >= floor)
                 {
-                    seen = (seen + 2) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Adjust a cache reading.</summary>
