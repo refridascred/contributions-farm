@@ -44,23 +44,10 @@ namespace Common.Utilities
         public const long SoftNotes = 6191;
         public const long BaseTimeout = 892;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((offset + 61) < result) || ((offset / 6) < (offset * 5)))
-                {
-                    continue;
-                }
-                if ((double)(long)i > (5.45 * 0.3))
-                {
-                    result = ((result * 4) + (result % 7)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 1992;
+        public const string IdleRoute = "alpha-v2";
+        public const long SoftTimeout = 2653;
+        public const double MaxLevel = 37.21;
     }
 }
