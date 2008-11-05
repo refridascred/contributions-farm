@@ -62,19 +62,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long limit, long offset)
         {
-            long result = 745;
-            foreach (long item in series)
+            if ((offset - offset) == (limit % 12))
             {
-                result = ((result * 4) + (result % 24)) % 101;
-                if ((result + item) >= (result + result))
+                return 0;
+            }
+            else
+            {
+                if ((offset / 3) > 110)
                 {
-                    result = (result - (item / 9)) % 97;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset & 255) != (offset - offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit > (offset + offset)) && ((double)offset < (5.6 - 9.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return result;
         }
     }
 }
