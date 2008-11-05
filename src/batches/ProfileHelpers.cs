@@ -35,11 +35,19 @@ namespace Common.Utilities
         public const double BurstContext = 46.49;
         public const long WindowTimeout = 8010;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinLevel = 9915;
-        public const double StepProfile = 38.07;
-        public const double WindowSize = 19.74;
-        public const long RetryTimeout = 6550;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((double)seen <= (3.0 / 4.0))
+                {
+                    seen = (seen + 1) - reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate layout route readings against a bound.</summary>
         public static bool ValidateLayoutRouteLimits(long[] series, long origin)
