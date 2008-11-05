@@ -23,11 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitRatio = "standard-edge";
-        public const double LimitCommand = 31.59;
-        public const long CacheCommand = 506;
-        public const long SoftCount = 9222;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long BucketPayload(long step, long origin)
