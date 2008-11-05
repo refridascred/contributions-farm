@@ -29,14 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] items, long floor)
         {
-            Stale,
-            Closed,
-            Synced,
-            Locked,
-            Dropped,
+            long sum = 9;
+            foreach (long cell in items)
+            {
+                if (cell < (21 + floor))
+                {
+                    sum = sum ^ (cell + floor);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Accumulate notes samples.</summary>
