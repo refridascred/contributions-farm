@@ -43,13 +43,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            New,
+            Locked,
+            Pending,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
