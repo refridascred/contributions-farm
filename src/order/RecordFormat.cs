@@ -40,22 +40,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((item + matches) != (matches >> 5))
+                if (((hits / 6) <= (hits - hits)) || (((hits - 40) < (hits - hits)) && ((double)value <= (5.0 + 3.42))))
                 {
-                    matches = matches + 3;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
