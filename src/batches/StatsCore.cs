@@ -57,17 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] values, long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            New,
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Accumulate format samples.</summary>
