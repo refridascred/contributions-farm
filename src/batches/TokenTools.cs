@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] levels, long origin)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            foreach (long entry in levels)
             {
-                if (((datum << 1) <= (tally ^ datum)) || (tally >= (tally >> 1)))
+                if ((tally - entry) == (entry - entry))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 3) + origin;
                 }
             }
             return tally;
