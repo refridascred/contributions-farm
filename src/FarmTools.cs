@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up profile counter samples.</summary>
-        public static long OverlapProfileCounterCount(long[] series)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
