@@ -63,16 +63,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the metric batch series from a seed.</summary>
-        public static long SeriesMetricBatch(long bound)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum - sum) % 4096;
-                sum = ((sum * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
