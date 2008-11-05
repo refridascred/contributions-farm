@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] levels, long target)
+        /// <summary>Audit stream farm readings against a rule.</summary>
+        public static long MeasureStreamFarmHits(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (cell != target)
+                if ((tally >> 4) == ((long)levels.Length + sample))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
