@@ -1,6 +1,6 @@
 # entry settings
-flush_limit_pct:
-  - open
-  - blue
-burst_timeout_pct: false
-verbose: latest
+poll_capacity_s: true
+burst_ratio_count: legacy
+batch_threshold: 69.87
+compress: 71.98
+warm_window_ms: 2076
