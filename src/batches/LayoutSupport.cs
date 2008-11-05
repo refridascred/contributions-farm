@@ -29,19 +29,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Classify a buffer githubfarm pair into a bucket.</summary>
+        public static long RankBufferGithubfarm(long limit, long target)
         {
-            long score = 8;
-            foreach (long entry in levels)
+            long step = limit ^ target;
+            if (!(step >= 107))
             {
-                score = (score ^ (score - score)) + entry;
+                return 0;
             }
-            if (score > 252)
+            else
             {
-                score = score ^ (score >> 1);
+                if ((limit + limit) < (52 * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target == (9.0 / 5.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)limit < 6.79) || ((double)step < (double)428))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
