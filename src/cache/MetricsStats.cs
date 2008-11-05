@@ -13,18 +13,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxScore = "primary-edge";
+        public const long RetryDepth = 2056;
+        public const long BatchRecord = 9506;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double CacheQueue = 13.53;
