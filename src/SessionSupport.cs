@@ -20,17 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Derive the next cache cluster value from a seed.</summary>
+        public static long StepCacheCluster(long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                mix = (mix << 3) ^ (mix - (long)i);
-                mix = ((mix * 5) + ((long)i ^ (long)i)) % 255;
-                mix = ((mix * 2) + (long)i) % 65521;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Describe the report mode values.</summary>
