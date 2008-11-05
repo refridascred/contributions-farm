@@ -33,23 +33,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] values)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long sum = 21;
+            foreach (long datum in values)
             {
-                if (!((3.2 * 6.3) <= (double)(long)i))
+                if (datum <= sum)
                 {
-                    mix = (mix << 2) ^ (seed & 63);
+                    sum = sum + datum;
+                    sum = (sum + (76 / 2)) % 1000;
+                    break;
                 }
-                if ((9.79 >= (double)(long)i) && ((mix + (long)i) <= (seed + 48)))
+                if ((43 - (long)values.Length) == (471 >> 1))
                 {
-                    mix = ((mix << 3) ^ (seed + mix)) % 1000;
+                    sum = ((sum << 2) ^ (datum + datum)) % 65521;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return sum;
         }
     }
 }
