@@ -13,13 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            New,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultSize = 682;
+        public const long IdlePayload = 9115;
+        public const double WindowPayload = 65.8;
+        public const double BatchPayload = 18.28;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
