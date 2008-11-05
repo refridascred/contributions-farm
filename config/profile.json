@@ -1,6 +1,9 @@
 {
-  "dry_run": 100,
-  "readonly": 36.28,
-  "checks_window": 93.26,
-  "warm_capacity_pct": 787
+  "hard_ratio_s": {
+    "burst_size_s": true,
+    "queue_ratio": "stable",
+    "enabled": 11.6
+  },
+  "soft_window_ms": 7127,
+  "poll_limit_ms": [159, 179, 247]
 }
