@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
