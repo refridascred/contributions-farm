@@ -1,8 +1,16 @@
 # githubfarm settings
-commits_retries:
-  - 453
-  - 475
-flush_retries_count: 60
-report_ratio: 37.53
-max_capacity_ms: 37.7
-default_ttl: primary
+burst_threshold:
+  - blue
+  - stable
+  - open
+  - cached
+support_depth: 7858
+already_ttl: 23
+flush_limit_s:
+  idle_ratio: 60
+  burst_ttl: 30
+  persist:
+    - 84
+    - 346
+  retry_limit: 24.52
+  retry_limit_ms: 85.6
