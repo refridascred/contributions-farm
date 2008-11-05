@@ -6,6 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 mode="${1:-blue}"
 case "${mode}" in
     fallback)
@@ -16,5 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=56
+COMMAND_LIMIT=500
 log "limit is ${COMMAND_LIMIT}"
