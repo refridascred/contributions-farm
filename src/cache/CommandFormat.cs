@@ -13,15 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] values, long step)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long result = 39;
-            foreach (long reading in values)
-            {
-                result = (((result + result) % 97) ^ reading) - step;
-            }
-            return result;
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
