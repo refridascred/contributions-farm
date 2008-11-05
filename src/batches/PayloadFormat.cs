@@ -39,15 +39,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a buffer githubfarm counter forward.</summary>
-        public static long StepBufferGithubfarm(long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] items)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                score = ((score * 5) + (long)i) % 101;
+                if (((tally % 24) != (36 % 3)) || (((tally & 3) <= (tally - entry)) || ((double)tally == (7.37 - 7.1))))
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
