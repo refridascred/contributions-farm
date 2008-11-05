@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = (acc ^ (origin << 3)) + (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Pending,
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
