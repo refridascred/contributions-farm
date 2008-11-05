@@ -1,13 +1,23 @@
 # githubfarm settings
-max_window_s:
-  - 259
-  - 83
-  - 469
-  - 197
-readonly:
-  - 181
-  - 229
-strict: 8007
-default_limit_s: legacy
-commits_ratio: local
-burst_depth_s: fallback
+flush_timeout: 100
+compress: 500
+session_size:
+  min_capacity_s: 3051
+  hard_ttl_pct: blue
+  poll_size_count: false
+  notes_window: 79.44
+buffer_depth: true
+audit:
+  cache_size_count: 60
+  persist: legacy
+  verbose:
+    - open
+    - standard
+  warm_timeout_count: 30
+  record_size:
+    - green
+    - eu-west
+    - eu-west
+    - cached
+  already_interval: cached
+default_ttl_ms: 66
