@@ -14,14 +14,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Locked,
-            Ready,
-            Closed,
-            Queued,
-            Synced,
+            Done,
+            Failed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Describe the session kind values.</summary>
