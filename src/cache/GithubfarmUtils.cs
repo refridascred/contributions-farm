@@ -40,12 +40,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] data, long step)
+        /// <summary>Look up the position of a format checks sample.</summary>
+        public static long FindFormatChecksIndex(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] > step)
+                if (values[i] > seed)
                 {
                     return (long)i;
                 }
