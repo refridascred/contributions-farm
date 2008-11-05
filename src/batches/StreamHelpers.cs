@@ -20,22 +20,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many support order samples are out of range.</summary>
-        public static long TallySupportOrderGaps(long[] readings)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long mark = 742;
+            foreach (long value in values)
             {
-                if ((1 << 2) != (cell % 60))
+                mark = ((mark << 3) ^ (value - 41)) % 65521;
+                if (33 < (value & 7))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (mark < 696)
+            {
+                mark = mark + (mark * 3);
+            }
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
