@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long origin, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] samples, long origin)
         {
-            if (!((limit & 7) > limit))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0.69 - 2.0) == (double)origin)
+                if (item > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
