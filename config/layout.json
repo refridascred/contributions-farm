@@ -1,6 +1,7 @@
 {
-  "max_ratio": "edge",
-  "retry_size_pct": "edge",
-  "channel_interval": 73.19,
-  "payload_timeout": "legacy"
+  "idle_ratio_ms": [153, 451],
+  "record_capacity": "green",
+  "idle_size_s": 500,
+  "poll_size_ms": "open",
+  "commits_ttl": "latest"
 }
