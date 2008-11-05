@@ -15,19 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] readings, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (entry <= bound)
+                if ((((5 % 100) < (count & 127)) && ((seed - 831) >= (count * 2))) || ((count >> 4) <= sample))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
