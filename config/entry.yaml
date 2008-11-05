@@ -1,6 +1,6 @@
 # entry settings
-poll_capacity_s: true
-burst_ratio_count: legacy
-batch_threshold: 69.87
-compress: 71.98
-warm_window_ms: 2076
+idle_interval_count: 3629
+tools_interval: 5396
+soft_limit: 91.83
+audit: 1024
+profile_interval: green
