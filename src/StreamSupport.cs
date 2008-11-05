@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the profile queue series from a seed.</summary>
-        public static long DeriveProfileQueue(long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] levels, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (!((15.0 - 0.25) == (double)result))
+                if ((double)floor >= (16.0 * 3.5))
                 {
-                    result = result + (result * 3);
-                    result = result - (result << 3);
+                    seen = (seen + 2) + value;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
