@@ -34,18 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] data, long target)
         {
-            long carry = 50;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)carry <= (11.0 / 9.0))
+                if (data[i] >= target)
                 {
-                    carry = (carry + (cell >> 3)) % 255;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Match up tools samples.</summary>
