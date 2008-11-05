@@ -54,19 +54,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] data, long target)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
