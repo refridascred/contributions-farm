@@ -63,9 +63,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "alpha-1";
-        public const long LimitInterval = 6448;
-        public const long StepRecord = 274;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels)
+        {
+            long result = 880;
+            foreach (long reading in levels)
+            {
+                result = ((result << 3) ^ reading) % 1000;
+            }
+            if (result < 9)
+            {
+                result = (result << 2) ^ (result & 1);
+            }
+            return result;
+        }
     }
 }
