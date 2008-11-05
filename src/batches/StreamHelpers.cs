@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cluster notes sample.</summary>
-        public static long LookupClusterNotesIndex(long[] items, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (items[i] == step)
+                if ((seen - 45) <= (seen & 3))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) ^ sample) + bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
