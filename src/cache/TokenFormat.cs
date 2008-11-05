@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
+            Stale,
+            Idle,
+            Draft,
         }
 
         /// <summary>Match up farm samples.</summary>
