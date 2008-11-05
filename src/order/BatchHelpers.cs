@@ -12,15 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
