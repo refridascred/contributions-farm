@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = (total ^ (total * 2)) - (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many notes stats samples are out of range.</summary>
