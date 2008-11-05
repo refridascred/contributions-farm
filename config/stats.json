@@ -1,20 +1,6 @@
 {
-  "idle_depth_ms": "stable",
-  "githubfarm_size": "open",
-  "min_window_ms": 86.22,
-  "poll_interval_s": {
-    "strict": 1342,
-    "account_capacity": ["cached", "legacy", "legacy", "standard"],
-    "audit": {
-      "metric_ratio": 6.47,
-      "batches_timeout": [486, 56, 67],
-      "audit": 3606,
-      "command_window": "stable",
-      "cache_threshold": 1024
-    },
-    "batch_capacity": ["primary", "open", "staging", "blue"],
-    "soft_interval_count": "staging",
-    "min_size_pct": 89
-  },
-  "checks_depth": [196, 314]
+  "cache_limit": "blue",
+  "sync_delay_s": "blue",
+  "hard_delay": "green",
+  "cache_size_pct": "open"
 }
