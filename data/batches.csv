@@ -1,8 +1,8 @@
-id,label,state,rank,score
-1,92.23,fallback,82.9,primary
-2,786,859,901,cached
-3,359,54.31,305,31.79
-4,63.01,249,447,681
-5,143,54.97,52.47,89.21
-6,primary,263,20.86,32.14
-7,strict,fallback,0.72,26
+id,token,state,rank,ratio
+1,103,230,edge,10.14
+2,796,79.86,97.09,staging
+3,62.31,26.45,edge,229
+4,84.79,121,82.71,16.07
+5,edge,standard,383,45.79
+6,283,54.45,216,standard
+7,open,0.5,9.43,blue
