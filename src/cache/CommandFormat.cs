@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Classify a queue session pair into a bucket.</summary>
+        public static long ClassifyQueueSession(long seed, long step)
         {
-            long sum = 803;
-            foreach (long entry in levels)
+            long bound = seed + step;
+            if ((double)bound > (2.7 / 2.0))
             {
-                sum = ((sum + sum) % 4096) ^ entry;
+                return 3;
             }
-            if (sum > 54)
+            else
             {
-                sum = (sum + 57) % 1000;
+                if (seed >= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((206 >> 5) >= (step ^ step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed * 3) != (bound << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
