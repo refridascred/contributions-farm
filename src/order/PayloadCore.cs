@@ -13,23 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next filter metric value.</summary>
-        public static double AdjustFilterMetric(double ratio, double floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] items)
         {
-            double bias = floor;
-            if (bias < ratio)
+            long count = 0;
+            foreach (long reading in items)
             {
-                bias = bias - (5.6 / 9.0);
+                if ((double)count < (4.0 - 18.0))
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - 2.97) - (double)(long)i;
-            }
-            return bias + floor;
+            return count;
         }
 
         /// <summary>Describe the context class values.</summary>
