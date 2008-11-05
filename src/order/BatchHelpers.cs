@@ -24,15 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
