@@ -25,39 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long limit, long limit2)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] levels)
         {
-            long diff = limit - limit2;
-            if ((7.9 - 6.0) > (double)limit)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit * 4) == (limit << 2))
+                if (9.42 > (double)hits)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit2 - diff) > limit2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)diff <= (20.0 - 2.0)) && (limit2 <= (6 - 4)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 2) ^ sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
