@@ -1,8 +1,6 @@
 # entry settings
-already_threshold:
-  - 415
-  - 33
-  - 132
-  - 215
-batches_interval: false
-retry_ratio: 6877
+default_delay: 88.14
+persist: edge
+batch_capacity_pct: 6369
+warm_ttl: false
+verbose: true
