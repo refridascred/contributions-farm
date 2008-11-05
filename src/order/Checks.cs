@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchBuffer = 86.38;
-        public const long DefaultBuffer = 9240;
-        public const long IdleFactor = 8440;
-        public const long MinRatio = 9438;
-        public const string MaxSpan = "alpha-edge";
+        /// <summary>Validate window batches readings against a bound.</summary>
+        public static bool VerifyWindowBatchesBounds(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
