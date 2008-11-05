@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 6488;
-        public const string HardDepth = "latest-1";
-        public const long HardWindow = 5614;
-        public const long DefaultWindow = 1916;
-        public const long CacheBudget = 1202;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Synced,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsOutliers(long[] readings)
