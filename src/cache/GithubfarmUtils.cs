@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long target, long floor)
+        /// <summary>Find the first cache batch entry that matches the target.</summary>
+        public static long FindCacheBatchIndex(long[] levels, long seed)
         {
-            if (floor < target)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((233 ^ target) >= (target + target)))
+                if (levels[i] >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((1.94 - 5.1) <= (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (double)2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
