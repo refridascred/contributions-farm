@@ -31,29 +31,21 @@ namespace Common.Utilities
         public const long LimitCount = 5603;
         public const string BurstMetric = "stable";
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)(long)i != (double)floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor - (anchor + (long)i)) % 65521;
-                    anchor = anchor - (anchor & 1);
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor ^ ((long)i % 97)) % 4096;
-                }
-                if ((floor - (long)i) <= (anchor << 1))
-                {
-                    anchor = anchor - (long)i;
-                    anchor = (anchor + (floor + anchor)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
