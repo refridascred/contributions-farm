@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardCount = 17.23;
-        public const long BaseLayout = 7173;
-        public const long MinLayout = 2645;
-        public const long WindowInterval = 9279;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
