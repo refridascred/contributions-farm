@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 474;
+        public const string DefaultLevel = "strict";
+        public const string LimitStats = "standard-edge";
+        public const long MaxStats = 7282;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long DefaultSize = 8444;
