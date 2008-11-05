@@ -37,15 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] data, long offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] items, long seed)
         {
-            long state = 5;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (((state << 3) ^ (234 % 64)) ^ cell) - offset;
+                if ((items[i] > seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
