@@ -66,19 +66,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long origin)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long step, long limit)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long slot = step - limit;
+            if ((step >> 4) != (slot % 60))
             {
-                if (reading != origin)
+                return 0;
+            }
+            else
+            {
+                if ((limit - slot) != (7 + slot))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((19.0 * 0.1) >= (13.0 + 6.38)) || ((double)step <= (5.7 + 1.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((limit ^ (-941)) <= step) && ((limit >> 2) < (step % 8)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
