@@ -12,12 +12,8 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-for item in standard green strict stable; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
