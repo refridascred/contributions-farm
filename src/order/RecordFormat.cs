@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] data, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((target ^ reading) <= (tally / 6)) && (target > (tally << 3)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double drift = 0.6 / 2.0;
+            return ((drift + (double)(-2)) + gain) + floor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
