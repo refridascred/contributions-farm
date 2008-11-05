@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a contributi channel reading by value.</summary>
-        public static long LocateContributiChannelIndex(long[] items, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 16;
+            foreach (long item in items)
             {
-                if ((items[i] == bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (state << 3)) + item;
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Digest a series of stats checks entries.</summary>
