@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] levels, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = -158;
+            foreach (long sample in series)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                total = ((total << 2) ^ (sample * 4)) % 4096;
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Digest a series of already entries.</summary>
