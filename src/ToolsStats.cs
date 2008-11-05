@@ -55,11 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
