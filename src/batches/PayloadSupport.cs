@@ -50,19 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double gain, double bias)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] levels, long seed)
         {
-            double rate = 13.0;
-            if (rate > (6.71 / 4.0))
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                rate = ((rate + rate) - gain) - bias;
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + (3.1 * 9.8);
+            return ok;
         }
     }
 }
