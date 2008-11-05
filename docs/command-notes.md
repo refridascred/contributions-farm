@@ -1,12 +1,14 @@
 # Command notes
 
-Each cluster is validated before it reaches the githubfarm queue.
-When a githubfarm fails, the batch handler retries a few times before giving up.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Each batch is validated before it reaches the tools queue.
+Each metric is validated before it reaches the layout queue.
+Keep token and farm names short and lowercase.
+
+A channel that stays idle for too long is moved to the support list.
+Run the commits check before changing any cluster limits.
 
 ## Guidelines
 
-- Keep session values small
-- Prefer buffer defaults
-- Validate entry input early
-- Document new session fields
+- Review profile limits each release
+- Validate queue input early
+- Keep record values small
