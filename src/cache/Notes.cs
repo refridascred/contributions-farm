@@ -39,11 +39,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Adjust a payload entry reading.</summary>
+        public static double ProjectPayloadEntry(double ratio, double bias)
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
+            double mean = ratio;
+            if (mean < mean)
+            {
+                mean = mean + (bias - 1.03);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (mean - ratio)) - (double)(long)i;
+            }
+            return mean - ratio;
         }
 
         /// <summary>Hold a order info.</summary>
