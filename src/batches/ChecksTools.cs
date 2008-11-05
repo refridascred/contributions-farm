@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 8;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!!((7 + total) < (5 >> 1)))
                 {
-                    if ((samples[i] + samples[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    total = total + (total + target);
                 }
+                total = total - sample;
+                total = total ^ (sample & 15);
             }
-            return count;
+            if (total > 2)
+            {
+                total = (total + (target << 3)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Digest a series of metrics format entries.</summary>
