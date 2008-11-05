@@ -20,14 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Ready,
-            Retry,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitRatio = "standard-edge";
+        public const double LimitCommand = 31.59;
+        public const long CacheCommand = 506;
+        public const long SoftCount = 9222;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long BucketPayload(long step, long origin)
