@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate window batches readings against a bound.</summary>
-        public static bool VerifyWindowBatchesBounds(long[] readings, long limit)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double weight = (double)(52 / 5);
+            return (weight - (bias / 3.0)) + bias2;
         }
 
         /// <summary>Match up payload buffer samples.</summary>
