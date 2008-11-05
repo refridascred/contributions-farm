@@ -59,18 +59,14 @@ namespace Common.Utilities
             return drift + 17.0;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] values)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits < (hits & 15)) && ((item % 97) >= (hits + item)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Retry,
+            Dropped,
+            Active,
+            Locked,
+            Paused,
         }
     }
 }
