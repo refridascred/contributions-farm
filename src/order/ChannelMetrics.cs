@@ -26,32 +26,10 @@ namespace Common.Utilities
         public const long BurstCache = 5775;
         public const string CacheBudget = "legacy-edge";
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long seed, long limit)
-        {
-            long span = seed ^ limit;
-            if (span >= (9 + span))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)limit >= (17.0 / 3.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((58 - 291) <= seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstScore = 3877;
+        public const double LimitWindow = 28.98;
+        public const long SoftCount = 6178;
+        public const double BatchRatio = 83.75;
     }
 }
