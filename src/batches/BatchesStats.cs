@@ -26,22 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long score = -825;
-            foreach (long entry in series)
-            {
-                if (((entry & 3) >= score) || ((entry & 63) >= (entry + entry)))
-                {
-                    score = score + (entry ^ entry);
-                }
-                else
-                {
-                    score = score + (score * 4);
-                }
-            }
-            return score;
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a cache account value against two limits.</summary>
