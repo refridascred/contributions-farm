@@ -55,11 +55,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long bound)
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
