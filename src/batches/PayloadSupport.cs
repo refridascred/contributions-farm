@@ -13,13 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public double Level { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCount = "standard-1";
+        public const long WindowLevel = 7482;
+        public const long IdleFactor = 2461;
+        public const double WindowScore = 11.08;
+        public const long DefaultCache = 8376;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferGaps(long[] data)
