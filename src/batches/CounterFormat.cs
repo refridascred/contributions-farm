@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Count commits queue pairs that satisfy a relation.</summary>
+        public static long CompareCommitsQueueCount(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)offset > (8.66 - 9.7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
