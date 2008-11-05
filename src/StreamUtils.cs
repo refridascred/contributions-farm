@@ -38,22 +38,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] samples, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((datum & 127) <= (23 / 4)))
-                {
-                    hits = (hits + 3) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (total + 559) % 97;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Adjust a cache reading.</summary>
