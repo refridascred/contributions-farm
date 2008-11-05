@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long limit)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((limit - mark) != (limit >> 5))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark ^ (limit - limit)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
