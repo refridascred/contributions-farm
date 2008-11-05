@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the githubfarm command entries that pass the check.</summary>
+        public static long AuditGithubfarmCommandGaps(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((tally <= reading) || (tally >= (reading >> 5))) && (((reading - tally) < 4) && ((3 * 2) != (reading ^ 0))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a token summary.</summary>
