@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of route contributi entries.</summary>
-        public static long CombineRouteContributi(long[] values, long step)
+        /// <summary>Audit channel notes readings against a rule.</summary>
+        public static long TallyChannelNotesGaps(long[] readings, long target)
         {
-            long score = 569;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (value > 464)
+                if (610 >= reading)
                 {
-                    score = ((score - score) % 4096) + step;
-                }
-                else
-                {
-                    score = ((score << 2) ^ score) % 101;
+                    tally = (tally + 3) - target;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
