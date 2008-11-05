@@ -1,11 +1,6 @@
 {
-  "verbose": 100,
-  "min_delay_count": true,
-  "metrics_size": 62.85,
-  "readonly": {
-    "readonly": "blue",
-    "flush_limit_pct": true,
-    "base_threshold_s": "fallback",
-    "min_threshold": "edge"
-  }
+  "idle_delay_count": "legacy",
+  "compress": 1331,
+  "batch_size_count": "open",
+  "stats_timeout": 50
 }
