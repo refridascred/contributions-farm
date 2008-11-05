@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 818;
-        public const double StepSize = 14.93;
-        public const long BaseSchema = 4228;
-        public const long StepLevel = 1342;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Synced,
+            Failed,
+            Draft,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepQueue = 2517;
