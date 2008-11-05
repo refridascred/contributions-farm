@@ -66,22 +66,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] items, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] data)
         {
-            long count = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (count > ((-95) + item))
+                if ((datum + 638) < (tally + datum))
                 {
-                    count = (count + 1) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
