@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Validate metric token readings against a bound.</summary>
+        public static bool ValidateMetricTokenBounds(long[] values, long origin)
         {
-            Closed,
-            Draft,
-            Stale,
-            Paused,
-            Ready,
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the channel level values.</summary>
