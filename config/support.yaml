@@ -1,8 +1,7 @@
 # support settings
-warm_size: 6.18
-cache_delay: false
-dry_run:
-  - strict
-  - local
-min_interval_pct: 84.0
-verbose: 2.19
+editor_threshold: 8.44
+farm_capacity: 67
+min_ttl_pct: stable
+burst_capacity_count: true
+stats_timeout: strict
+idle_ttl: green
