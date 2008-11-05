@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long floor, long floor2)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            if ((floor2 << 2) > (floor + 748))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((376 + 3) >= floor2) && ((floor2 - floor2) <= (679 & 63)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
