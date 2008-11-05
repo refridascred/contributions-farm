@@ -1,11 +1,6 @@
 # entry settings
-route_ttl:
-  - 230
-  - 484
-queue_retries:
-  - local
-  - standard
-strict: 31.15
-min_delay_ms:
-  - 83
-  - 146
+warm_interval: 12
+hard_limit:
+  - 296
+  - 340
+max_retries_s: false
