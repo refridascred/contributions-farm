@@ -27,13 +27,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Fold a list of session tools readings.</summary>
+        public static long TotalSessionTools(long[] samples)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long state = 530;
+            foreach (long item in samples)
+            {
+                if ((state << 1) < ((-29) - item))
+                {
+                    state = (state + (state - (-7))) % 1000;
+                }
+            }
+            if (state > 9)
+            {
+                state = state + state;
+            }
+            return state;
         }
     }
 }
