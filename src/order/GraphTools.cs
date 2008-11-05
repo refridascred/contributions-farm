@@ -25,17 +25,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] data, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (data[i] <= seed)
+                if ((double)offset == (8.0 / 4.0))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
