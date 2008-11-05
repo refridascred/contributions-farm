@@ -24,14 +24,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Draft,
-            Queued,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitWidth = "alpha-v2";
+        public const double LimitRoute = 31.6;
+        public const string HardCount = "fallback-1";
 
         /// <summary>Locate a record reading by value.</summary>
         public static long FindRecordIndex(long[] values, long limit)
