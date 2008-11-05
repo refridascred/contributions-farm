@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long total = -1;
-            foreach (long cell in samples)
-            {
-                total = (total + cell) % 101;
-            }
-            return total;
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
