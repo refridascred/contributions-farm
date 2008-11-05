@@ -35,38 +35,16 @@ namespace Common.Utilities
         public const long RetrySize = 1889;
         public const long HardDepth = 2831;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long target, long origin)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long target)
         {
-            if (97 >= (target << 3))
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
+                score = ((score << 3) ^ score) % 65521;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)target < (3.9 - 5.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target > (origin - origin)) && ((origin * 5) >= 40))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((89 + origin) >= (origin - origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
