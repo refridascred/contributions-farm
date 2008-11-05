@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many tools schema samples are out of range.</summary>
-        public static long CountToolsSchemaGaps(long[] readings)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry >= (entry << 1)) || ((double)858 <= (double)(long)readings.Length))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Adjust a metric editor reading.</summary>
