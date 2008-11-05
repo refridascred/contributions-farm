@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const long RetryCommits = 2203;
         public const long HardCommits = 9783;
 
-        /// <summary>Fold a list of schema profile readings.</summary>
-        public static long TotalSchemaProfile(long[] readings)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] readings)
         {
-            long acc = 19;
-            foreach (long cell in readings)
+            long sum = 6;
+            foreach (long datum in readings)
             {
-                if (cell <= acc)
+                if ((sum & 1) < sum)
                 {
-                    acc = (acc - (cell & 127)) % 65521;
-                    acc = (acc - (cell / 7)) % 4096;
-                }
-                if ((27 - acc) != (cell - cell))
-                {
-                    acc = ((acc * 2) + (cell + acc)) % 4096;
+                    sum = (((sum * 4) + sum) % 101) ^ datum;
                 }
             }
-            return acc % 1000;
+            return sum;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
