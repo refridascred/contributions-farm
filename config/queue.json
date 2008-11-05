@@ -1,6 +1,6 @@
 {
-  "retry_ratio_s": 19.03,
-  "idle_ratio_pct": "staging",
-  "min_size_s": 98.44,
-  "persist": [243, 58, 395]
+  "retry_delay_pct": 57.94,
+  "command_retries": ["green", "open", "staging"],
+  "soft_interval": 2822,
+  "order_timeout": 60
 }
