@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] values, long limit)
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
