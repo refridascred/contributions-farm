@@ -1,6 +1,6 @@
 {
-  "default_depth_s": "standard",
-  "cache_limit_s": true,
-  "contributi_ratio": 9677,
-  "base_delay_s": [379, 180, 335, 254]
+  "flush_retries_pct": true,
+  "dry_run": 500,
+  "cache_depth": false,
+  "strict": 11.85
 }
