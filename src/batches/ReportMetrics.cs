@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const double DefaultRecord = 17.13;
         public const long StepRecord = 8643;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long target)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
