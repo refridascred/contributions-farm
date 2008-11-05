@@ -23,12 +23,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 3201;
-        public const string RetryTimeout = "fallback-v2";
-        public const long WindowScore = 2273;
-        public const double MaxScore = 74.08;
-        public const long StepProfile = 6321;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Draft,
+            Queued,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long FindRecordIndex(long[] values, long limit)
