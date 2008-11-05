@@ -1,12 +1,7 @@
 {
-  "enabled": "strict",
-  "idle_delay": 46,
-  "entry_ratio": "stable",
-  "tools_threshold": {
-    "audit": 5504,
-    "batch_ttl_pct": 250,
-    "batch_limit": 5746
-  },
-  "report_capacity": "eu-west",
-  "hard_interval": ["strict", "primary", "stable"]
+  "channel_interval": "edge",
+  "strict": 500,
+  "base_ratio": [251, 171, 285, 494],
+  "burst_threshold": [306, 138, 22, 72],
+  "compress": "staging"
 }
