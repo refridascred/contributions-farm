@@ -41,15 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 18)
+                    if ((readings[i] - readings[j]) < 10)
                     {
                         tally = tally + 1;
                     }
