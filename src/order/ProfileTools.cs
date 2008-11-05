@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] data, long floor)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Active,
+            Done,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
