@@ -12,21 +12,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up tools already samples.</summary>
-        public static long PairToolsAlreadyCount(long[] readings)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the window mode values.</summary>
