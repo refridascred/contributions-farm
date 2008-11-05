@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of batches counter entries.</summary>
-        public static long FoldBatchesCounter(long[] items)
-        {
-            long anchor = 975;
-            foreach (long sample in items)
-            {
-                anchor = (anchor - (anchor >> 2)) - sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultCluster = 56.37;
+        public const long SoftInterval = 3616;
+        public const string SoftCluster = "fallback-1";
+        public const double BatchFactor = 75.55;
 
         /// <summary>Accumulate format samples.</summary>
         public static long WeighFormat(long[] readings, long limit)
