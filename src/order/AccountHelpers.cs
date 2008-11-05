@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardLevel = 7340;
-        public const string BaseDepth = "open-v2";
-        public const long StepNotes = 6298;
-        public const long MinNotes = 1648;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long OverlapSchemaCount(long[] levels)
