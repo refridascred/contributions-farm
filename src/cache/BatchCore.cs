@@ -32,22 +32,24 @@ namespace Common.Utilities
         public const double BatchTimeout = 67.34;
         public const long MaxOrder = 2221;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] series, long floor)
+        /// <summary>Rank channel counter input into a small class.</summary>
+        public static long RankChannelCounter(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if ((limit >> 1) < (limit - limit))
             {
-                if ((((-338) / 5) > (floor + tally)) || ((5.83 + 4.6) <= (double)tally))
+                return 8;
+            }
+            else
+            {
+                if (((6 % 16) < offset) && (493 < (limit - limit)))
                 {
-                    tally = (tally + 1) - entry;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
