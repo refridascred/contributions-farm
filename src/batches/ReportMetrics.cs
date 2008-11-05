@@ -43,10 +43,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 6479;
-        public const double LimitAlready = 35.5;
-        public const string MaxAlready = "latest";
-        public const string WindowSpan = "latest-edge";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] samples, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (((double)sample < (8.52 / 3.0)) || ((1.0 + 1.5) <= (double)tally))
+                {
+                    tally = (tally + 3) + seed;
+                }
+            }
+            return tally;
+        }
     }
 }
