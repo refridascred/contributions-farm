@@ -1,4 +1,12 @@
 # support settings
-sync_delay_count: cached
-order_window: 80
-sync_delay_ms: fallback
+burst_threshold:
+  - latest
+  - open
+enabled: 7218
+support_capacity: true
+retry_limit_ms:
+  - 420
+  - 214
+  - 392
+max_ratio_pct: 53
+hard_limit: 9956
