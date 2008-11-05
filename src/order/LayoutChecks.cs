@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
