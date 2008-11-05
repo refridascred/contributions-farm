@@ -1,4 +1,24 @@
 # githubfarm settings
-enabled: stable
-base_timeout: strict
-burst_size_pct: 83
+enabled: primary
+default_size: true
+batch_size_s:
+  - fallback
+  - stable
+  - open
+min_interval_s: fallback
+context_size:
+  account_interval:
+    - strict
+    - cached
+    - latest
+    - green
+  min_ratio_ms: 9970
+  soft_depth: false
+  hard_ratio_count: 30.73
+  hard_window_s: 1433
+  profile_capacity:
+    - 19
+    - 306
+    - 37
+    - 491
+verbose: latest
