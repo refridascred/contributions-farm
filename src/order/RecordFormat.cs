@@ -32,14 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] series)
         {
-            New,
-            Locked,
-            Pending,
-            Synced,
-            Dropped,
+            long total = -594;
+            foreach (long sample in series)
+            {
+                if ((double)total <= (20.0 / 7.0))
+                {
+                    total = ((total * 3) + (sample - total)) % 101;
+                    total = (total ^ total) % 65521;
+                }
+                if (17.0 <= (double)sample)
+                {
+                    total = (total ^ total) % 255;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
