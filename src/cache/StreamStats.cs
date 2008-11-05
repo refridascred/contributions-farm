@@ -38,12 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowDepth = "stable-edge";
-        public const long HardStats = 9763;
-        public const double BaseSpan = 14.68;
-        public const double BatchSpan = 22.5;
-        public const string HardTimeout = "latest-1";
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate context metrics samples.</summary>
         public static long DigestContextMetrics(long[] levels)
