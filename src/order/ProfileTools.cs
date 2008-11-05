@@ -54,15 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Idle,
+            New,
+            Locked,
+            Done,
+            Failed,
         }
 
         /// <summary>Digest a series of editor format entries.</summary>
