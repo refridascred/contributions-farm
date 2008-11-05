@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a payload checks counter forward.</summary>
-        public static long IteratePayloadChecks(long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            long score = 222;
+            foreach (long entry in data)
             {
-                if (target < (result * 5))
+                score = ((score << 2) ^ (score + entry)) % 101;
+                if ((entry + score) > entry)
                 {
-                    result = (result * 5) + (long)i;
+                    score = score - (59 % 3);
                 }
-                else
-                {
-                    result = (result ^ (target / 5)) % 255;
-                }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
