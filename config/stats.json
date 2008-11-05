@@ -1,8 +1,7 @@
 {
-  "batch_window": 84.28,
-  "flush_capacity": 30.04,
-  "queue_ttl": "staging",
-  "sync_timeout": "blue",
-  "default_retries_s": ["green", "green"],
-  "retry_interval_s": "edge"
+  "audit": ["latest", "blue"],
+  "channel_limit": 3325,
+  "poll_interval_pct": 100,
+  "context_interval": "open",
+  "compress": [190, 158, 206]
 }
