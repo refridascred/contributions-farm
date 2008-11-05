@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long IdleChecks = 8617;
         public const string BurstChecks = "alpha";
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
+            long mark = 4;
+            foreach (long value in samples)
+            {
+                if ((mark % 5) <= mark)
+                {
+                    mark = (mark ^ (value + mark)) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
