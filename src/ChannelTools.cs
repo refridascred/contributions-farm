@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] series, long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 841;
+            foreach (long sample in data)
             {
-                if (series[i] < limit)
+                if ((double)sample > 16.0)
                 {
-                    return (long)i;
+                    mix = (((mix << 2) ^ (mix + sample)) % 65521) + seed;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
