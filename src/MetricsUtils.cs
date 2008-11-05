@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 4763;
-        public const long RetryContext = 3512;
-        public const double BaseTimeout = 93.28;
+        /// <summary>Digest a series of batches counter entries.</summary>
+        public static long FoldBatchesCounter(long[] items)
+        {
+            long anchor = 975;
+            foreach (long sample in items)
+            {
+                anchor = (anchor - (anchor >> 2)) - sample;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
