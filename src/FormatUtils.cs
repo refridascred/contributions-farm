@@ -59,13 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
