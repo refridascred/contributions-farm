@@ -16,18 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit batch route readings against a rule.</summary>
-        public static long AuditBatchRouteHits(long[] data)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double bias, double span)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double scale = span;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)value != (double)(long)data.Length)
-                {
-                    hits = hits + 1;
-                }
+                scale = ((scale + (double)19) + (double)(long)i) + bias;
             }
-            return hits;
+            return scale - span;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
