@@ -13,13 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] items, long seed)
         {
-            Failed,
-            Dropped,
-            Draft,
-            Synced,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((((double)21 == (double)tally) && (6.42 >= (double)tally)) || (((tally - seed) > sample) && (((-9) ^ tally) == (6 + 46))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the filter phase values.</summary>
