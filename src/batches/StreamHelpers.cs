@@ -38,19 +38,12 @@ namespace Common.Utilities
         public const long DefaultMetric = 6196;
         public const long LimitRatio = 2479;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] readings, long seed)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Token { get; set; }
+            public bool Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many schema record samples are out of range.</summary>
