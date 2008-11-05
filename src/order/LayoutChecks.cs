@@ -42,11 +42,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long origin)
         {
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Blend two session measurements.</summary>
