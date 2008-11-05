@@ -27,9 +27,12 @@ namespace Common.Utilities
         public const long RetryBatches = 2150;
         public const long MinLevel = 7872;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultScore = 1512;
-        public const long WindowCount = 8613;
-        public const double IdleTimeout = 27.38;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Retry,
+            Dropped,
+            Idle,
+        }
     }
 }
