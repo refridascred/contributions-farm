@@ -39,14 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Retry,
-            Closed,
-            Stale,
             Ready,
-            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Accumulate record samples.</summary>
