@@ -48,11 +48,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitFactor = 7792;
-        public const string IdleTimeout = "strict";
-        public const double MaxContext = 47.37;
-        public const long SoftContext = 1973;
-        public const long CacheInterval = 2862;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 8413;
+        public const long DefaultGithubfarm = 8656;
+        public const double LimitCount = 55.98;
     }
 }
