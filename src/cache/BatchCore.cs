@@ -51,21 +51,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)limit >= (7.9 / 4.0)))
                 {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
