@@ -1,25 +1,13 @@
 # entry settings
-max_size: true
-default_depth_pct:
-  context_delay: 72.2
-  default_window:
-    - 433
-    - 490
-  token_window:
-    format_threshold: 85
-    idle_limit:
-      - edge
-      - latest
-      - stable
-      - cached
-    burst_retries_s:
-      - local
-      - open
-    cache_depth: fallback
-  batch_timeout: false
-batch_depth:
-  - legacy
-  - fallback
-  - latest
-  - primary
-cache_depth_ms: true
+enabled:
+  route_ratio: green
+  retry_ratio: eu-west
+  order_capacity: open
+  dry_run:
+    metrics_size: 500
+    batch_interval: 6233
+    audit: true
+    sync_threshold: 4071
+  burst_window: false
+cache_retries_s: green
+hard_timeout: 86.64
