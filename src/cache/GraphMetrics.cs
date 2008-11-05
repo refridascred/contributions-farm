@@ -37,17 +37,19 @@ namespace Common.Utilities
         public const double LimitRoute = 31.6;
         public const string HardCount = "fallback-1";
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] values, long limit)
+        /// <summary>Digest a series of metric graph entries.</summary>
+        public static long DigestMetricGraph(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 444;
+            foreach (long entry in items)
             {
-                if (values[i] >= limit)
+                anchor = (anchor - (long)items.Length) % 65521;
+                if (anchor > entry)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
