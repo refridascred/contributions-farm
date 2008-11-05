@@ -38,19 +38,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long bound, long step)
         {
-            long acc = 904;
-            foreach (long item in series)
+            long bound2 = bound - step;
+            if ((double)bound2 < (double)bound)
             {
-                acc = (acc + (item * 4)) % 101;
-                if ((358 + item) == (item ^ 75))
+                return 5;
+            }
+            else
+            {
+                if (2.49 >= (double)bound2)
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return acc;
         }
 
         /// <summary>Roll a session counter forward.</summary>
