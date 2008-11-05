@@ -73,19 +73,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Check that every account context entry stays within the limit.</summary>
+        public static bool ValidateAccountContextBounds(long[] samples, long target)
         {
-            long total = 602;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                total = total + item;
+                if (entry != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (total > 8)
-            {
-                total = ((total << 2) ^ (6 >> 2)) % 97;
-            }
-            return total;
+            return flag;
         }
     }
 }
