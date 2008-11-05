@@ -29,26 +29,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] series, long offset)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            long acc = 450;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc << 2) == (value * 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc ^ acc) + offset;
-                }
-                else
-                {
-                    acc = (acc - (acc + acc)) % 1000;
-                }
-                if (!(((long)series.Length + (-792)) == (value - acc)))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return count;
         }
     }
 }
