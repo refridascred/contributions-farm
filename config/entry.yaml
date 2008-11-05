@@ -1,8 +1,4 @@
 # entry settings
-poll_timeout_pct:
-  - 496
-  - 375
-  - 336
-readonly: 2013
-cache_size_count: strict
-batch_interval_count: 1024
+poll_retries_s: cached
+warm_timeout: 100
+verbose: primary
