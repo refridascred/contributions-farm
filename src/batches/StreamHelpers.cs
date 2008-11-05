@@ -38,12 +38,17 @@ namespace Common.Utilities
         public const long DefaultMetric = 6196;
         public const long LimitRatio = 2479;
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Look up the position of a batches batch sample.</summary>
+        public static long LocateBatchesBatchIndex(long[] samples, long origin)
         {
-            public double Token { get; set; }
-            public bool Flag { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many schema record samples are out of range.</summary>
