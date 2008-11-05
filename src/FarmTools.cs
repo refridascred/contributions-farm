@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] readings, long target)
+        /// <summary>Match up profile counter samples.</summary>
+        public static long OverlapProfileCounterCount(long[] series)
         {
-            long sum = 839;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum - (item << 3)) % 255) + target;
-                sum = sum - (561 * 4);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
