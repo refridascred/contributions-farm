@@ -32,16 +32,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] values)
-        {
-            long score = 3;
-            foreach (long entry in values)
-            {
-                score = ((score << 2) ^ (975 + 83)) ^ entry;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchAlready = "stable-1";
+        public const long HardSize = 8383;
+        public const string HardAlready = "legacy";
 
         /// <summary>Check that every channel checks entry stays within the limit.</summary>
         public static bool VerifyChannelChecksBounds(long[] samples, long offset)
