@@ -13,13 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] readings)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
