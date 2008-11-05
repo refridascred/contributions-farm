@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double ratio, double offset)
-        {
-            double mean = ratio;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (double)(long)i) + offset;
-            }
-            return mean - ratio;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardCount = 8206;
+        public const long MinRecord = 8183;
+        public const double HardRecord = 2.0;
+        public const long IdleRecord = 4141;
 
         /// <summary>Digest a series of farm record entries.</summary>
         public static long TotalFarmRecord(long[] data, long floor)
