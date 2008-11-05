@@ -17,17 +17,31 @@ namespace Common.Utilities
         public const string DefaultFactor = "latest";
         public const long IdleNotes = 916;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] values, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 25;
+            foreach (long datum in series)
             {
-                if (values[i] < origin)
+                mix = mix ^ (datum / 4);
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    mix = (((mix * 5) + (target - 5)) % 101) ^ (long)i;
+                }
+                if ((mix / 4) > (target & 15))
+                {
+                    mix = ((mix << 2) ^ (mix + 793)) % 101;
+                }
+                if ((double)mix > (3.0 * 3.8))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 3)
+            {
+                mix = (mix - (target / 9)) % 65521;
+            }
+            return mix;
         }
     }
 }
