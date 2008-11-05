@@ -39,20 +39,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long seed)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = mark + (seed - 99);
-                if ((2 + seed) < (seed * 2))
-                {
-                    mark = ((mark << 3) ^ ((long)i >> 5)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Queued,
+            Draft,
+            New,
+            Locked,
+            Synced,
         }
     }
 }
