@@ -13,25 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long offset, long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long bound = offset ^ seed;
-            if (!((47 ^ (-431)) == (seed % 8)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((5.92 / 2.0) > (double)seed) || ((offset / 7) < (bound + bound)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            New,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the format kind values.</summary>
