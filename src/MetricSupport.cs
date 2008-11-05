@@ -26,12 +26,9 @@ namespace Common.Utilities
         public const long BaseSchema = 4228;
         public const long StepLevel = 1342;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 2517;
+        public const long BatchLevel = 6289;
+        public const long SoftRatio = 7665;
     }
 }
