@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] data, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
