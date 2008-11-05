@@ -1,7 +1,7 @@
-id,level,label
-1,94.54,standard
-2,21.6,6.16
-3,25.2,stable
-4,270,52.56
-5,147,896
-6,19.17,fallback
+id,score,region,level
+1,stable,93,14.36
+2,910,338,20.18
+3,legacy,433,staging
+4,96.31,603,408
+5,blue,local,194
+6,436,42.85,155
