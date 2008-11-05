@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 474;
-        public const string DefaultLevel = "strict";
-        public const string LimitStats = "standard-edge";
-        public const long MaxStats = 7282;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long DefaultSize = 8444;
