@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] samples, long seed)
+        /// <summary>Look up the position of a buffer filter sample.</summary>
+        public static long LocateBufferFilterIndex(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != seed)
+                if ((values[i] > floor) && ((values[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
