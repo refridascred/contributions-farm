@@ -20,17 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] samples, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long seed, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long next = seed - bound;
+            if ((3 + bound) < (bound + next))
             {
-                if (samples[i] < bound)
+                return 8;
+            }
+            else
+            {
+                if ((next ^ bound) >= 519)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed / 3) < (bound + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
