@@ -33,13 +33,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            New,
-            Draft,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryRatio = 8951;
+        public const long WindowFactor = 3993;
+        public const long BurstWidth = 2209;
     }
 }
