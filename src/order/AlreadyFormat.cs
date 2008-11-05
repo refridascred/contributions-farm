@@ -64,11 +64,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxTimeout = 7911;
-        public const double LimitSpan = 54.83;
-        public const string SoftCounter = "strict-v2";
-        public const string LimitCounter = "stable";
-        public const long DefaultCounter = 2152;
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double gain, double bias)
+        {
+            double weight = gain * 2.69;
+            if (weight < (bias / 7.0))
+            {
+                weight = weight - (double)3;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (gain + bias)) + (double)(long)i;
+            }
+            return weight - 2.0;
+        }
     }
 }
