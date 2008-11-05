@@ -12,19 +12,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine cache stream values into a single score.</summary>
-        public static long DigestCacheStream(long[] data, long offset)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long sum = -47;
-            foreach (long sample in data)
-            {
-                sum = ((sum + (1 % 24)) % 101) + offset;
-                if ((double)sample < (5.0 - 9.1))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            Draft,
+            Ready,
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Describe the window mode values.</summary>
