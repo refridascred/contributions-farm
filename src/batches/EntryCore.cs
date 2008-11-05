@@ -52,15 +52,18 @@ namespace Common.Utilities
             return drift + 17.0;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double bias, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] values)
         {
-            double mean = span;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                mean = ((mean + (mean + mean)) + (double)(long)i) + bias;
+                if ((hits < (hits & 15)) && ((item % 97) >= (hits + item)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mean + (mean / 5.0);
+            return hits;
         }
     }
 }
