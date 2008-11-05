@@ -31,18 +31,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] levels)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] series)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long result = 62;
+            foreach (long reading in series)
             {
-                if ((item & 15) > (704 - item))
+                if (((7 + reading) == (53 & 31)) || (result >= (result >> 3)))
                 {
-                    tally = tally + 3;
+                    result = ((result * 4) + (492 + result)) % 1000;
                 }
             }
-            return tally;
+            if (result < 2)
+            {
+                result = result ^ (result % 97);
+            }
+            return result % 1000;
         }
     }
 }
