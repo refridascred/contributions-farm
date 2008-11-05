@@ -17,12 +17,39 @@ namespace Common.Utilities
         public const long BurstSpan = 8904;
         public const long BaseFactor = 9248;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long target, long origin)
         {
-            Idle,
-            Dropped,
-            Active,
+            long delta = target - origin;
+            if ((delta ^ origin) < (delta - delta))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)target != (4.08 * 14.0)) || ((double)origin <= (5.0 - 14.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin - delta) == (delta + (-476)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((3 - delta) > (delta >> 1)) && ((728 - delta) > (718 + target)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream status values.</summary>
