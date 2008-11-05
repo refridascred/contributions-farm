@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)floor >= (16.0 * 3.5))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 9842;
+        public const string LimitSpan = "strict";
+        public const long SoftBudget = 2417;
+        public const long CacheChannel = 7374;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long IterateMetrics(long floor)
