@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstRatio = "latest";
-        public const long IdleCache = 9461;
-        public const long HardCache = 8797;
-        public const long SoftSize = 6197;
-        public const long IdleSpan = 7069;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double IdleDepth = 87.01;
