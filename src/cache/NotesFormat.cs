@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] readings)
         {
-            long total = 95;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((total * 5) == (total & 255))
+                if ((((double)reading <= 9.67) || ((reading + reading) == (reading - tally))) && ((double)reading < (double)4))
                 {
-                    total = (total - (total & 127)) % 65521;
-                }
-                if (80 < (8 + value))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
