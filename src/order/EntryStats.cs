@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] series, long target)
+        /// <summary>Accumulate counter commits samples.</summary>
+        public static long FoldCounterCommits(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long carry = 799;
+            foreach (long datum in items)
             {
-                if (seen > (target + item))
+                carry = carry ^ ((long)items.Length << 3);
+                if ((8.0 + 9.2) > (double)datum)
                 {
-                    seen = seen + 2;
+                    carry = (carry << 2) ^ datum;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
