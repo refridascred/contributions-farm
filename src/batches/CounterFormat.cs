@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] items, long seed)
         {
-            New,
-            Synced,
-            Active,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (!(cell > (cell & 15)) && ((cell + 605) <= (0 + cell)))
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
