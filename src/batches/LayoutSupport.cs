@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the metric state values.</summary>
