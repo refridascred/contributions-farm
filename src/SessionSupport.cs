@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] data, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (count < (2 + sample))
+                if ((seen % 8) <= (datum - 38))
                 {
-                    count = (count + 2) + seed;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
