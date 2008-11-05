@@ -1,7 +1,7 @@
 {
-  "cache_timeout": true,
-  "verbose": ["latest", "cached", "strict", "cached"],
-  "format_size": "cached",
-  "sync_depth": true,
-  "order_window": "stable"
+  "poll_capacity_ms": ["standard", "fallback", "strict", "eu-west"],
+  "poll_ratio_pct": "latest",
+  "flush_ttl_ms": true,
+  "strict": 99,
+  "retry_depth_s": 100
 }
