@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] readings, long target)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Active,
+            Idle,
+            Pending,
+            Draft,
         }
 
         /// <summary>Classify a layout filter pair into a bucket.</summary>
