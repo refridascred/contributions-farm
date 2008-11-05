@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] data)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (993 <= (sample - sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric entry.</summary>
