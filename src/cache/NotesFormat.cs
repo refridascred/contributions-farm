@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] levels, long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (((hits - 8) > target) && !((double)hits == (double)11))
+                if (value != bound)
                 {
-                    hits = (hits + 2) ^ datum;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Count the metric schema entries that pass the check.</summary>
