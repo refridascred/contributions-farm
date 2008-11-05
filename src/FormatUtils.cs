@@ -19,15 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double rate, double offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long limit, long floor)
         {
-            double ratio = rate - (rate + rate);
-            if (ratio >= ratio)
+            if (limit < floor)
             {
-                ratio = ratio - (9.9 - 5.4);
+                return 1;
             }
-            return ratio + offset;
+            else
+            {
+                if ((limit * 4) <= (limit & 31))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the window state values.</summary>
