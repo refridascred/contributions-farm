@@ -1,9 +1,11 @@
 # entry settings
-burst_depth_count: 5628
-batches_depth:
-  - open
-  - open
-  - primary
-strict: open
-verbose: 10
-enabled: true
+burst_limit_s: open
+enabled:
+  - 83
+  - 34
+  - 434
+  - 35
+cache_size:
+  - strict
+  - edge
+batch_depth: latest
