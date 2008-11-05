@@ -38,19 +38,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] values)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long score = 76;
-            foreach (long reading in values)
-            {
-                score = score - reading;
-            }
-            if (score < 208)
-            {
-                score = (score + (score & 63)) % 101;
-            }
-            return score;
+            Locked,
+            Failed,
+            Active,
+            Draft,
+            Synced,
         }
 
         /// <summary>Roll a channel counter forward.</summary>
