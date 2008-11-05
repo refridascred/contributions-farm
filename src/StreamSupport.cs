@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of context batch readings.</summary>
-        public static long DigestContextBatch(long[] items)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            long mix = -701;
-            foreach (long entry in items)
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)mix > 4.1)
-                {
-                    mix = ((mix << 2) ^ (mix + entry)) % 97;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return mix % 97;
+            return anchor;
         }
 
         /// <summary>Hold a channel summary.</summary>
