@@ -44,28 +44,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank graph checks input into a small class.</summary>
-        public static long GradeGraphChecks(long seed, long step)
+        /// <summary>Grade a cache account value against two limits.</summary>
+        public static long GradeCacheAccount(long origin, long target)
         {
-            if ((step + step) >= seed)
+            if ((target - origin) >= 528)
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (!((seed * 5) >= 43))
+                if ((target ^ origin) <= target)
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    if (step >= (step & 7))
+                    if (!((origin / 4) < (target + target)))
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        return 8;
+                        return 4;
                     }
                 }
             }
