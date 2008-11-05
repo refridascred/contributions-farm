@@ -49,11 +49,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] series)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long sum = 90;
+            foreach (long datum in series)
+            {
+                sum = ((sum << 3) ^ (3 % 2)) % 1000;
+                sum = ((sum * 2) + (datum >> 3)) % 65521;
+            }
+            if (sum < 0)
+            {
+                sum = sum ^ (33 + sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
