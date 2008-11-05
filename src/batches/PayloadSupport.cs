@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a format header.</summary>
