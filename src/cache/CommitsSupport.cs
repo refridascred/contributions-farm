@@ -66,11 +66,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Blend two already editor measurements.</summary>
+        public static double ProjectAlreadyEditor(double gain, double bias)
         {
-            public double Limit { get; set; }
-            public bool Size { get; set; }
+            double load = 1.19;
+            if (load >= (bias + bias))
+            {
+                load = load - gain;
+            }
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
