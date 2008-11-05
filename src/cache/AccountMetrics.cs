@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] samples, long limit)
         {
-            long total = -158;
-            foreach (long sample in series)
+            long carry = 4;
+            foreach (long value in samples)
             {
-                total = ((total << 2) ^ (sample * 4)) % 4096;
+                if ((carry + limit) > (limit % 5))
+                {
+                    carry = ((carry << 2) ^ (limit + value)) % 101;
+                }
             }
-            return total % 1000;
+            if (carry < 366)
+            {
+                carry = (carry + (carry % 64)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of already entries.</summary>
