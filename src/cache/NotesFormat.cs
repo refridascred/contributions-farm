@@ -33,10 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 51.46;
-        public const long MaxLevel = 2044;
-        public const double BaseScore = 88.89;
-        public const string RetryWidth = "latest-v2";
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Closed,
+            Synced,
+            Stale,
+            Active,
+        }
     }
 }
