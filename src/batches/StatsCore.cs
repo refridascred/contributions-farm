@@ -31,21 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up payload profile samples.</summary>
-        public static long PairPayloadProfileCount(long[] series)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = weight;
+            if (scale >= (bias - 3.8))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale - bias;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (bias / 5.0)) - (double)(long)i;
+            }
+            return scale + (double)(-9);
         }
 
         /// <summary>Hold a window options.</summary>
