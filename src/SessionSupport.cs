@@ -13,11 +13,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 5251;
-        public const long StepWidth = 2470;
-        public const long MinFactor = 7704;
-        public const long HardCommand = 938;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long target, long bound)
+        {
+            if ((target % 64) > (target * 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound - bound) >= (bound + bound)) && ((double)target != (3.91 - 8.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((target - 2) >= (target % 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target <= (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the profile record entries that pass the check.</summary>
         public static long CountProfileRecordHits(long[] values, long bound)
