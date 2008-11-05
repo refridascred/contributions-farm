@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long CachePayload = 8824;
         public const long StepPayload = 6574;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] series)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!(value <= (value >> 3)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first counter route entry that matches the target.</summary>
