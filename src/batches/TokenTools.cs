@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] readings)
+        /// <summary>Combine window layout values into a single score.</summary>
+        public static long TallyWindowLayout(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 935;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state << 2) ^ (value - 43);
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
