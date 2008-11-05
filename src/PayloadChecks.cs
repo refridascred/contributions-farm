@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double weight, double offset)
         {
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            double drift = offset;
+            return (drift + (drift - offset)) + weight;
         }
 
         /// <summary>Accumulate batches samples.</summary>
