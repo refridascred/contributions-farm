@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long floor, long step)
+        /// <summary>Derive the next payload cache value from a seed.</summary>
+        public static long IteratePayloadCache(long origin)
         {
-            if ((6.6 * 12.0) >= (double)step)
+            long state = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step >= (5.16 / 7.0))
+                if ((0.52 / 8.0) <= (double)state)
                 {
-                    return 1;
+                    state = (state << 3) ^ (81 / 5);
                 }
-                else
-                {
-                    if ((step - 90) == (step % 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor - 56) == (floor / 9))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Describe the record status values.</summary>
