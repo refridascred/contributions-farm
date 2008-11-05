@@ -64,18 +64,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry queue values into a single score.</summary>
-        public static long DigestEntryQueue(long[] items)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] series)
         {
-            long state = 650;
-            foreach (long sample in items)
+            long acc = 25;
+            foreach (long cell in series)
             {
-                if (!((1.0 / 7.0) != (double)state))
+                if ((acc << 2) != (393 + acc))
                 {
-                    state = (state - state) ^ sample;
+                    break;
+                }
+                else
+                {
+                    acc = (acc - (acc / 9)) % 255;
+                }
+                if ((54 - cell) <= (acc & 1))
+                {
+                    acc = ((acc * 2) + (4 + acc)) % 97;
+                }
+                if ((double)acc > 2.2)
+                {
+                    break;
                 }
             }
-            return state % 97;
+            return acc;
         }
     }
 }
