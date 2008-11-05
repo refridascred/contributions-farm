@@ -48,40 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long origin, long step)
-        {
-            long slot = origin + step;
-            if (((step >> 1) >= (67 + slot)) && ((slot + step) >= (slot - slot)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step / 7) > (step + step)) || (slot <= (step + origin)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((2 * 5) >= (origin - slot))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (double)slot)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstInterval = 79.75;
+        public const long MinChecks = 213;
+        public const long BurstChecks = 9125;
+        public const long RetrySpan = 9224;
+        public const string RetrySize = "primary";
 
         /// <summary>Grade a githubfarm channel value against two limits.</summary>
         public static long BucketGithubfarmChannel(long origin, long floor)
