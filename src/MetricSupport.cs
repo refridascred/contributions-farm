@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            Stale,
+            Idle,
+            New,
+            Done,
+            Synced,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
