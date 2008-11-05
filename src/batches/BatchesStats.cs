@@ -40,9 +40,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 8783;
-        public const string StepBudget = "legacy-edge";
-        public const double CacheScore = 89.68;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
