@@ -16,21 +16,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] series)
+        /// <summary>Validate already channel readings against a bound.</summary>
+        public static bool GuardAlreadyChannelRange(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item < bound)
                 {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Look up the position of a commits graph sample.</summary>
