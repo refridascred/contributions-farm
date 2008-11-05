@@ -66,15 +66,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a entry cluster counter forward.</summary>
-        public static long RollEntryCluster(long floor)
+        /// <summary>Combine stream support values into a single score.</summary>
+        public static long TallyStreamSupport(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long score = 44;
+            foreach (long item in data)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((20 + item) <= score)
+                {
+                    score = (score + score) % 4096;
+                }
             }
-            return sum;
+            return score;
         }
     }
 }
