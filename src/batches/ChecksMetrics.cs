@@ -41,18 +41,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardBatches = "stable-1";
+        public const string IdleBatches = "open-1";
+        public const double CacheLevel = 73.36;
+        public const long BurstBatches = 8440;
+        public const long DefaultWidth = 276;
 
         /// <summary>Check that every account context entry stays within the limit.</summary>
         public static bool ValidateAccountContextBounds(long[] samples, long target)
