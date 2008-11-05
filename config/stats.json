@@ -1,7 +1,7 @@
 {
-  "warm_delay": "green",
-  "sync_ttl_pct": 52,
-  "default_limit_pct": false,
-  "context_timeout": "green",
-  "min_limit": 88
+  "warm_ratio": [73, 363, 306, 148],
+  "hard_capacity_pct": "local",
+  "session_retries": "cached",
+  "flush_retries_count": "cached",
+  "enabled": 55.08
 }
