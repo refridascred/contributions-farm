@@ -47,13 +47,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Synced,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 9069;
+        public const long IdleChecks = 5357;
+        public const string StepChecks = "primary";
 
         /// <summary>Accumulate format samples.</summary>
         public static long WeighFormat(long[] levels, long offset)
