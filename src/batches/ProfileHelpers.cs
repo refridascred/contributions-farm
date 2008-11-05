@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long offset, long target)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long edge = offset - target;
+            if ((double)target < 19.0)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)edge <= (9.4 / 6.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - offset) >= (offset >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
