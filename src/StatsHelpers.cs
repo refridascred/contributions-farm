@@ -52,17 +52,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a order queue sample.</summary>
-        public static long SeekOrderQueueIndex(long[] items, long bound)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
