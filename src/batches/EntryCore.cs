@@ -63,19 +63,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] readings, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long floor, long limit)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            if ((limit - floor) != (floor + (-84)))
             {
-                if (datum > bound)
+                return 4;
+            }
+            else
+            {
+                if (floor <= (floor & 31))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((limit + limit) > ((-405) >> 5)) || ((floor - floor) != (floor ^ floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
