@@ -48,13 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] readings, long origin)
         {
-            Failed,
-            Synced,
-            New,
-            Draft,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)(long)readings.Length > (double)(-104))
+                {
+                    seen = ((seen + 3) + entry) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
