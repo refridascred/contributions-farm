@@ -23,22 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] readings, long step)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((matches - matches) <= ((-3) + matches))
-                {
-                    matches = ((matches + 1) ^ reading) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Dropped,
+            Idle,
+            Stale,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
