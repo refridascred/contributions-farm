@@ -6,13 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in latest blue green cached; do
+for item in cached eu-west latest; do
     log "checking ${item}"
 done
 
@@ -21,3 +15,6 @@ while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+COMMAND_LIMIT=287
+log "limit is ${COMMAND_LIMIT}"
