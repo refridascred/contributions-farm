@@ -32,26 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long step, long origin)
-        {
-            long cur = step + origin;
-            if ((double)step > (1.0 * 10.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step ^ cur) < (cur ^ origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 6763;
+        public const double HardBudget = 75.39;
+        public const long DefaultMetric = 6196;
+        public const long LimitRatio = 2479;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricRange(long[] readings, long seed)
