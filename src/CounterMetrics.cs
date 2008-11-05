@@ -63,23 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double ratio, double floor)
+        /// <summary>Check that every schema metrics entry stays within the limit.</summary>
+        public static bool VerifySchemaMetricsRange(long[] samples, long bound)
         {
-            double weight = floor;
-            if (weight < 16.0)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                weight = weight - (double)30;
+                if (entry < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (double)8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight + (floor - ratio);
+            return flag;
         }
     }
 }
