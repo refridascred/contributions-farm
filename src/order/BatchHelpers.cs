@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            public bool Region { get; set; }
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
