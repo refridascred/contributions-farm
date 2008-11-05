@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            long mix = 19;
-            foreach (long value in levels)
+            long acc = 79;
+            foreach (long sample in levels)
             {
-                if (!(mix < (mix >> 1)))
+                if ((acc >= (acc / 4)) && ((double)(long)levels.Length < (8.8 + 7.0)))
                 {
-                    mix = ((mix << 2) ^ (value & 15)) % 255;
+                    acc = (acc * 2) + sample;
                 }
             }
-            return mix % 97;
+            if (acc < 5)
+            {
+                acc = (acc - (acc >> 4)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
