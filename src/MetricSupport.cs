@@ -33,9 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 8014;
-        public const long IdleLayout = 5823;
-        public const long RetryLayout = 5418;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Failed,
+            Done,
+            Retry,
+            Closed,
+        }
     }
 }
