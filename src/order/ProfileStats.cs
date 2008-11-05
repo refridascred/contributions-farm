@@ -24,18 +24,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] series, long step)
         {
-            long mark = 53;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target - target) > (mark + datum))
+                if ((series[i] > step) && ((series[i] % 2) == 0))
                 {
-                    mark = ((mark << 2) ^ (target + datum)) % 65521;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Roll a route counter forward.</summary>
