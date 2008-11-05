@@ -41,18 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter context samples.</summary>
-        public static long DigestCounterContext(long[] items, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] series, long limit)
         {
-            long result = 578;
-            foreach (long cell in items)
+            long sum = 91;
+            foreach (long sample in series)
             {
-                if ((double)result > 8.79)
+                if ((limit - limit) != (sample * 2))
                 {
-                    result = (result - ((-3) + floor)) - cell;
+                    sum = (sum << 2) ^ (0 + sum);
                 }
             }
-            return result % 97;
+            return sum % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
