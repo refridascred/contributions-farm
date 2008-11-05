@@ -48,15 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Failed,
+            Synced,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the batch kind values.</summary>
