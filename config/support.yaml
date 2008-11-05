@@ -1,8 +1,9 @@
 # support settings
-commits_retries: 1024
-entry_ttl: true
-queue_timeout:
-  - 434
-  - 76
-  - 233
-audit: false
+route_window: staging
+metric_retries:
+  - blue
+  - latest
+sync_limit: legacy
+warm_depth: 98.46
+soft_threshold_pct: latest
+record_delay: 91.33
