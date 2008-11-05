@@ -43,9 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 3670;
-        public const long BurstBuffer = 364;
-        public const double BatchRatio = 85.99;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
