@@ -15,13 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Dropped,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetrySpan = "cached";
+        public const long MinCounter = 2154;
+        public const string StepFactor = "standard-v2";
+        public const long BatchCounter = 3722;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
