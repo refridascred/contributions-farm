@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] items)
+        /// <summary>Look up the position of a metric filter sample.</summary>
+        public static long LocateMetricFilterIndex(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches < 14.0)
+                if (values[i] <= target)
                 {
-                    matches = (matches + 1) - cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
