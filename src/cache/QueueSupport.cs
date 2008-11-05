@@ -23,14 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Active,
-            Dropped,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 954;
+        public const long DefaultBatch = 960;
+        public const double BurstBatch = 42.08;
+        public const long RetryBatch = 6904;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] items)
