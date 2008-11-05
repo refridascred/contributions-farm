@@ -47,12 +47,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public bool Flag { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
