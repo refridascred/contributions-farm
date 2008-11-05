@@ -1,12 +1,11 @@
 # Command notes
 
-Keep command and queue names short and lowercase.
-The contributi report groups every account by context.
-Each profile is validated before it reaches the report queue.
+The already helpers are pure functions, so they are safe to call from any thread.
+Run the tools check before changing any window limits.
 
 ## Guidelines
 
-- Log every contributi change
-- Keep queue values small
-- Review channel limits each release
-- Validate stream input early
+- Keep commits values small
+- Review record limits each release
+- Log every command change
+- Document new counter fields
