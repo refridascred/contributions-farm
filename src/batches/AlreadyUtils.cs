@@ -63,11 +63,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double rate, double floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            double ratio = (rate * 9.1) * 8.67;
-            return (ratio + (16.0 * 2.58)) + floor;
+            long mix = 835;
+            foreach (long sample in samples)
+            {
+                if ((0.49 / 3.0) > (double)sample)
+                {
+                    mix = ((mix << 2) ^ (mix >> 4)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (mix - sample)) % 101;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = ((mix * 5) + (mix << 2)) + (long)i;
+                    mix = (mix + (mix % 7)) % 101;
+                }
+                mix = (mix - (mix ^ mix)) % 4096;
+            }
+            if (mix > 4)
+            {
+                mix = mix - (mix ^ mix);
+            }
+            return mix;
         }
     }
 }
