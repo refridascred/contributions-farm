@@ -13,18 +13,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] items, long target)
+        /// <summary>Compare every pair of metric order readings.</summary>
+        public static long PairMetricOrderCount(long[] values)
         {
-            long carry = 82;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (7.5 < (9.56 - 20.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = ((carry - (carry + carry)) - reading) - target;
+                    if ((values[i] ^ values[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the tools mode values.</summary>
