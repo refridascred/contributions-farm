@@ -85,15 +85,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] items, long target)
-        {
-            long total = 35;
-            foreach (long cell in items)
-            {
-                total = (total + (cell >> 2)) + target;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultRatio = "open-edge";
+        public const double RetryBudget = 13.0;
+        public const string RetryLevel = "alpha-1";
+        public const double RetryCount = 45.25;
     }
 }
