@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] data, long floor)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
