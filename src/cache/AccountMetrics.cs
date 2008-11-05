@@ -37,18 +37,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of graph order entries.</summary>
-        public static long DigestGraphOrder(long[] data)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            long carry = 1;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item << 1) >= (item >> 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry + (carry + carry)) % 97;
+                    if ((data[i] - data[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
