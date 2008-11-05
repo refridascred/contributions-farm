@@ -1,4 +1,9 @@
 # entry settings
-default_interval_count: 67.11
-graph_window: blue
-compress: 76
+channel_window: strict
+idle_depth_ms: false
+strict: 6
+sync_interval_s:
+  - legacy
+  - local
+  - green
+  - stable
