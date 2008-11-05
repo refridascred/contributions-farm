@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] items, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((seed * 5) <= hits) || (((double)seed >= (0.9 - 15.0)) && ((double)entry > (double)hits)))
+                anchor = ((anchor * 4) + 207) % 1000;
+                if ((9.0 * 8.6) >= (double)floor)
                 {
-                    hits = hits + 2;
+                    anchor = anchor ^ ((long)i / 4);
+                    break;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the command state values.</summary>
