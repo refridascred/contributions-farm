@@ -34,18 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] readings, long target)
+        /// <summary>Check that every counter commits entry stays within the limit.</summary>
+        public static bool ValidateCounterCommitsBounds(long[] data, long origin)
         {
-            long state = 73;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((double)target <= 1.23)
+                if (sample > origin)
                 {
-                    state = ((state << 3) ^ (sample - state)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
