@@ -46,11 +46,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] readings, long seed)
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
