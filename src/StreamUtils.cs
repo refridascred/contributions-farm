@@ -90,38 +90,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long offset, long seed)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            if (((offset - seed) <= (seed + offset)) || ((seed & 3) == (0 + seed)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed > (1 + offset))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)offset == (double)9))
+                    if ((values[i] ^ values[j]) > 0)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed % 3) != (offset - 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
