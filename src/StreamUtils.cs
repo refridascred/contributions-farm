@@ -39,38 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long step, long step2)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            if ((step2 ^ step2) >= 8)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step ^ step2) >= (step - 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step < (0.5 * 9.9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((step2 + step2) == (step2 + step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a window record.</summary>
