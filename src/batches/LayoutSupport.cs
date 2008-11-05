@@ -22,19 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] readings, long target)
+        /// <summary>Find the first window metrics entry that matches the target.</summary>
+        public static long LocateWindowMetricsIndex(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < target)
+                if ((items[i] > origin) && ((items[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
