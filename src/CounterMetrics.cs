@@ -20,19 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] samples, long step)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
