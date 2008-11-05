@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long bound, long limit)
+        /// <summary>Look up the position of a window notes sample.</summary>
+        public static long FindWindowNotesIndex(long[] levels, long target)
         {
-            if (((double)bound == (1.9 / 2.0)) || ((double)limit <= (double)bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit >> 3) != (limit + bound))
+                if (levels[i] <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >= (84 % 64)) && ((9 << 1) > (bound + limit)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a buffer info.</summary>
