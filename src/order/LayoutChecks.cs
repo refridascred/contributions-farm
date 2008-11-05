@@ -27,20 +27,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] data, long floor)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitInterval = 72.47;
+        public const double LimitFarm = 47.41;
+        public const long CacheRatio = 9639;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long RollFilter(long origin)
