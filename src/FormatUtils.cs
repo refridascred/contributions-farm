@@ -26,13 +26,12 @@ namespace Common.Utilities
         public const long CacheRatio = 3848;
         public const long BurstScore = 2019;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            Active,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
