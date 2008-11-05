@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchSize = 3362;
-        public const long MinDepth = 6469;
-        public const double MaxTimeout = 69.16;
-        public const double RetryCount = 85.41;
-        public const string LimitScore = "standard-v2";
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double CacheOrder = 81.83;
