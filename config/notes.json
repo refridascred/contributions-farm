@@ -1,5 +1,8 @@
 {
-  "min_capacity_count": 1024,
-  "hard_ratio_s": 7.49,
-  "max_retries_count": 5936
+  "soft_capacity_s": "fallback",
+  "stream_capacity": 9811,
+  "burst_threshold": 16,
+  "audit": "staging",
+  "session_limit": 31,
+  "batch_window_ms": true
 }
