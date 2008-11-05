@@ -1,7 +1,4 @@
 # entry settings
-flush_ttl_count: true
-persist: green
-contributi_depth: true
-base_threshold_ms: local
-base_retries_s: primary
-soft_limit_pct: staging
+counter_limit: fallback
+idle_threshold_count: 4715
+max_limit: false
