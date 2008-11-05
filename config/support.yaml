@@ -1,16 +1,13 @@
 # support settings
-idle_ratio: eu-west
-default_capacity_ms: blue
-base_ttl_count: strict
-session_capacity: true
-cache_size_s:
-  enabled:
-    batch_capacity_ms: green
-    audit:
-      - 240
-      - 326
-      - 422
-    cache_interval_ms: 27.13
-  audit: blue
-  retry_size_pct: 35.8
-  window_window: 76.2
+counter_retries: standard
+farm_timeout:
+  - local
+  - standard
+  - local
+cache_delay:
+  strict: 6272
+  default_depth_ms: 89.44
+  flush_depth_ms: 8008
+  retry_limit:
+    - 464
+    - 449
