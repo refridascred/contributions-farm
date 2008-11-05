@@ -15,21 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of graph queue readings.</summary>
-        public static long PairGraphQueueCount(long[] values)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Synced,
+            Closed,
+            Paused,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
