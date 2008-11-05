@@ -20,23 +20,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of checks entry readings.</summary>
-        public static long ScoreChecksEntry(long[] readings, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] data, long origin)
         {
-            long mark = 87;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                mark = ((mark + (mark / 8)) % 97) - sample;
-                if (!((double)mark >= (5.0 * 3.2)))
+                if (origin < (seen - item))
                 {
-                    mark = (mark ^ (seed - 47)) % 255;
+                    seen = seen + 3;
                 }
             }
-            if (mark < 10)
-            {
-                mark = (mark - (mark - seed)) % 255;
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
