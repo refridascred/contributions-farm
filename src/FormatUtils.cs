@@ -19,13 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double rate, double offset)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            double ratio = rate - (rate + rate);
+            if (ratio >= ratio)
+            {
+                ratio = ratio - (9.9 - 5.4);
+            }
+            return ratio + offset;
         }
 
         /// <summary>Describe the window state values.</summary>
