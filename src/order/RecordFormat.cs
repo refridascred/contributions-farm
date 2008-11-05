@@ -16,19 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] values, long offset)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value != offset)
+                if (values[i] < step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a counter options.</summary>
