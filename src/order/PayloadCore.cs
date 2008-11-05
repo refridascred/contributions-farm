@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Retry,
-            Queued,
-            Failed,
-            Draft,
-            Locked,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Project the next filter metric value.</summary>
