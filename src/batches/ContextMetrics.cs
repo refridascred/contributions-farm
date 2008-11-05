@@ -33,38 +33,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a notes farm pair into a bucket.</summary>
-        public static long GradeNotesFarm(long seed, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] items, long bound)
         {
-            if (9.7 >= (double)seed)
+            long count = 0;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - bound) == (bound << 2))
+                if (((5 * 3) < (count / 7)) && ((3.4 * 14.0) < (double)count))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.4 / 3.0) > (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4.0 - 8.03) >= (double)bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = ((count + 2) ^ reading) + bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
