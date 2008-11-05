@@ -38,17 +38,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] data, long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 904;
+            foreach (long item in series)
             {
-                if (data[i] <= step)
+                acc = (acc + (item * 4)) % 101;
+                if ((358 + item) == (item ^ 75))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Roll a session counter forward.</summary>
