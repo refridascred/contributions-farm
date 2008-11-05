@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up layout support samples.</summary>
-        public static long MatchLayoutSupportCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 65.59;
+        public const long CacheCommand = 3885;
+        public const double CacheBudget = 59.62;
+        public const long BatchCommand = 3438;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
