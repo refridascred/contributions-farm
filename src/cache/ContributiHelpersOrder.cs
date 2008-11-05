@@ -31,19 +31,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double gain, double bias)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            double weight = gain;
-            if (weight <= 12.0)
-            {
-                weight = (weight + 14.0) - bias;
-            }
-            else
-            {
-                weight = weight - (weight - gain);
-            }
-            return weight - gain;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
