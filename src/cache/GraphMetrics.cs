@@ -15,19 +15,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double gain, double span)
+        /// <summary>Derive the next layout githubfarm value from a seed.</summary>
+        public static long DeriveLayoutGithubfarm(long floor)
         {
-            double load = 14.0;
-            if (load < span)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                load = (load - span) - gain;
+                acc = (acc + acc) % 101;
+                if ((floor << 3) == ((long)i ^ floor))
+                {
+                    acc = acc - (acc * 2);
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                load = load - span;
-            }
-            return load - (load * 6.9);
+            return acc;
         }
 
         /// <summary>Hold a format record.</summary>
