@@ -49,18 +49,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] samples)
+        /// <summary>Match up already order samples.</summary>
+        public static long OverlapAlreadyOrderCount(long[] values)
         {
-            long acc = 875;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((39 << 3) > sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (sample & 1)) % 65521;
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
