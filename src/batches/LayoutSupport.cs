@@ -53,23 +53,24 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] items, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] items, long seed)
         {
-            long mix = 3;
-            foreach (long datum in items)
+            long mix = -89;
+            foreach (long entry in items)
             {
-                if (!((bound % 60) == (mix - mix)))
+                if ((mix >= (entry * 4)) && ((3.4 * 1.0) >= (7.07 / 7.0)))
                 {
-                    mix = mix ^ (mix % 64);
-                    mix = (mix * 3) + (datum % 3);
+                    mix = mix - mix;
                 }
-                mix = (mix - (datum - bound)) % 97;
-                mix = ((mix * 4) + (bound >> 3)) % 97;
+                else
+                {
+                    mix = ((mix * 3) + seed) % 101;
+                }
             }
-            if (mix < 2)
+            if (mix > 0)
             {
-                mix = ((mix * 5) + bound) % 4096;
+                mix = ((mix * 3) + (seed >> 1)) % 97;
             }
             return mix;
         }
