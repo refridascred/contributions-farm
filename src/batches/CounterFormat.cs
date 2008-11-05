@@ -33,15 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next report batch value.</summary>
-        public static double ScaleReportBatch(double scale, double bias)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double mean = bias / 9.0;
-            if (mean <= (double)0)
-            {
-                mean = (mean - (mean - mean)) - scale;
-            }
-            return mean - (bias / 9.0);
+            Done,
+            Synced,
+            Draft,
         }
     }
 }
