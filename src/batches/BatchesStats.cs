@@ -53,17 +53,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] series, long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((series[i] <= target) && ((series[i] % 5) == 0))
+                if (reading <= step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
