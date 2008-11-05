@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const long SoftRatio = 351;
         public const long BatchCount = 8792;
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double ratio, double offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double weight, double offset)
         {
-            double mean = ratio + (ratio * 0.31);
-            return (mean - (ratio * 10.0)) + offset;
+            double gain = offset;
+            if (gain <= 14.0)
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain + (weight - gain);
+            }
+            return gain + (double)40;
         }
     }
 }
