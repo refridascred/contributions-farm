@@ -33,13 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Classify a farm notes pair into a bucket.</summary>
+        public static long RankFarmNotes(long bound, long bound2)
         {
-            Idle,
-            Failed,
-            Locked,
-            Retry,
+            long delta = bound ^ bound2;
+            if ((2.0 - 10.0) == (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound2 * 3) == (bound2 + delta))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
