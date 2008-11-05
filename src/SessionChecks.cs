@@ -24,12 +24,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Compare every pair of command editor readings.</summary>
+        public static long OverlapCommandEditorCount(long[] levels)
         {
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
