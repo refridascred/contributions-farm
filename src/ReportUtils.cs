@@ -24,16 +24,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the metric queue series from a seed.</summary>
-        public static long SeriesMetricQueue(long seed)
+        /// <summary>Validate record format readings against a bound.</summary>
+        public static bool VerifyRecordFormatBounds(long[] data, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                mark = (mark - (mark - seed)) % 4096;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (entry != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
