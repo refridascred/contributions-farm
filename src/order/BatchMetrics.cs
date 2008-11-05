@@ -70,13 +70,17 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] series, long floor)
         {
-            Dropped,
-            Pending,
-            Queued,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
