@@ -32,19 +32,16 @@ namespace Common.Utilities
         public const string BurstScore = "stable-v2";
         public const double HardInterval = 46.7;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] data, long target)
+        /// <summary>Derive the next queue window value from a seed.</summary>
+        public static long StepQueueWindow(long step)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry <= target)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark + (step / 8)) % 65521;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return found;
+            return mark;
         }
     }
 }
