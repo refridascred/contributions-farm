@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long floor, long limit)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double ratio, double offset)
         {
-            if ((floor + floor) == (982 * 5))
+            double mean = ratio / 2.0;
+            if (mean <= offset)
             {
-                return 1;
+                mean = mean + 7.0;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((976 * 2) == (limit << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit ^ 5) >= limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                mean = (mean - (offset * 8.92)) + (double)(long)i;
             }
+            return mean - (double)671;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
