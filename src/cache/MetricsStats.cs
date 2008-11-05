@@ -13,14 +13,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long seed, long floor)
         {
-            Done,
-            Ready,
-            Closed,
-            Synced,
-            Idle,
+            if ((double)seed != (1.6 / 6.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed & 1) >= 0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
