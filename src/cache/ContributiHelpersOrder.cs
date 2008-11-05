@@ -14,17 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] readings, long target)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a stream info.</summary>
