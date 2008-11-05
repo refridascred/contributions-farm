@@ -32,15 +32,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] items, long bound)
+        /// <summary>Measure how many stream report samples are out of range.</summary>
+        public static long MeasureStreamReportOutliers(long[] series, long offset)
         {
             long count = 0;
-            foreach (long reading in items)
+            foreach (long item in series)
             {
-                if (((5 * 3) < (count / 7)) && ((3.4 * 14.0) < (double)count))
+                if ((offset & 1) != (count ^ offset))
                 {
-                    count = ((count + 2) ^ reading) + bound;
+                    count = (count + 3) + item;
                 }
             }
             return count;
