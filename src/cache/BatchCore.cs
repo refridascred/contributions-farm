@@ -35,15 +35,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the farm stats entries that pass the check.</summary>
-        public static long CountFarmStatsOutliers(long[] levels, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] series, long bound)
         {
             long count = 0;
-            foreach (long cell in levels)
+            foreach (long datum in series)
             {
-                if ((cell / 5) > count)
+                if ((datum << 3) < 766)
                 {
-                    count = (count + 1) + origin;
+                    count = (count + 2) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
