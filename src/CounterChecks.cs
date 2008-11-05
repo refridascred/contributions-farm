@@ -44,19 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm entry readings against a rule.</summary>
-        public static long MeasureFarmEntryHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum * 4) == (50 & 127))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 2449;
+        public const long SoftWidth = 6461;
+        public const long RetryBudget = 5209;
+        public const long BaseChecks = 2465;
+        public const long SoftChecks = 4335;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
