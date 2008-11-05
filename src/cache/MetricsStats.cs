@@ -16,31 +16,12 @@ namespace Common.Utilities
         public const string BatchInterval = "legacy-v2";
         public const long StepScore = 6629;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long target, long origin)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            if (((target / 9) >= (12 % 60)) || ((target + origin) > (origin + 5)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-1) % 5) != (target * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - origin) < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
