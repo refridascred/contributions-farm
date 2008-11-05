@@ -66,17 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] data, long floor)
+        /// <summary>Accumulate profile cluster samples.</summary>
+        public static long WeighProfileCluster(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 6;
+            foreach (long reading in levels)
             {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
+                carry = (((carry ^ (carry >> 1)) % 97) - reading) - step;
             }
-            return -1;
+            return carry;
         }
     }
 }
