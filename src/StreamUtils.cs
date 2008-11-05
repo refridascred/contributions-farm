@@ -65,22 +65,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] data)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)seen <= (4.8 - 8.0))
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Queued,
+            Locked,
         }
     }
 }
