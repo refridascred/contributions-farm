@@ -35,19 +35,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine notes payload values into a single score.</summary>
-        public static long TallyNotesPayload(long[] items, long bound)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long mix = 69;
-            foreach (long value in items)
-            {
-                mix = ((mix << 3) ^ mix) ^ value;
-            }
-            if (mix > 729)
-            {
-                mix = ((mix << 3) ^ (25 + bound)) % 1000;
-            }
-            return mix % 1000;
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
