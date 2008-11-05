@@ -73,27 +73,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Grade a cache profile value against two limits.</summary>
+        public static long SortCacheProfile(long seed, long offset)
         {
-            long carry = 3;
-            foreach (long reading in items)
+            if ((offset - seed) == (seed % 12))
             {
-                carry = (carry - (carry - 93)) ^ reading;
-                if ((long)items.Length == (227 + carry))
+                return 0;
+            }
+            else
+            {
+                if (!((seed - seed) > 27))
                 {
-                    carry = carry ^ (carry % 60);
+                    return 8;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (carry >> 3)) % 101;
+                    if ((seed ^ seed) != (seed >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1.85 - 5.0) == (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (carry < 605)
-            {
-                carry = (carry * 5) + 33;
-            }
-            return carry;
         }
     }
 }
