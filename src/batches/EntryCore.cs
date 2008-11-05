@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a filter route value against two limits.</summary>
-        public static long RankFilterRoute(long floor, long limit)
+        /// <summary>Adjust a command window reading.</summary>
+        public static double ProjectCommandWindow(double rate, double span)
         {
-            long slot = floor - limit;
-            if ((3 << 3) >= (limit & 127))
+            double gain = span;
+            if (gain < (span / 6.0))
             {
-                return 0;
+                gain = (gain - (gain / 5.0)) + rate;
             }
             else
             {
-                if ((floor % 16) > (floor - 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2.82 / 5.0) < (double)slot)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                gain = gain - 0.16;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 5.6) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
