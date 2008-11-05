@@ -40,12 +40,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            Locked,
-            Stale,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
