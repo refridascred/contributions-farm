@@ -35,21 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "fallback-1";
+        public const long MinMetrics = 4769;
+        public const long HardSpan = 805;
+        public const long StepSpan = 1371;
+        public const long CacheCount = 563;
     }
 }
