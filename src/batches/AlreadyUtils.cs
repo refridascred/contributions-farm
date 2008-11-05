@@ -30,22 +30,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of farm graph readings.</summary>
-        public static long FoldFarmGraph(long[] values)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long result = 65;
-            foreach (long entry in values)
+            long sum = 55;
+            foreach (long value in levels)
             {
-                if (((double)entry < (2.78 - 12.0)) || ((3.0 / 9.0) != (double)result))
+                if ((value + 59) < (41 + sum))
                 {
-                    result = result + ((long)values.Length >> 5);
+                    sum = ((sum * 5) + (35 >> 3)) % 1000;
                 }
-                if (((entry + entry) == ((long)values.Length + result)) || (((-35) >> 3) >= (result + result)))
+                else
                 {
-                    break;
+                    sum = (sum << 3) ^ (sum + value);
                 }
             }
-            return result;
+            if (sum < 22)
+            {
+                sum = ((sum * 2) + (1 % 100)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
