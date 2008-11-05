@@ -1,8 +1,4 @@
 # entry settings
-profile_interval:
-  readonly: legacy
-  base_delay_s: latest
-  stats_threshold: 59.24
-  soft_retries_count: green
-cache_threshold: 5.84
-filter_size: blue
+base_retries: cached
+window_timeout: 76.03
+idle_capacity_pct: 2404
