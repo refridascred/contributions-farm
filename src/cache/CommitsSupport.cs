@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long BurstSpan = 3290;
         public const double BurstContributi = 59.25;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] readings, long target)
         {
-            New,
-            Active,
-            Stale,
-            Done,
-            Dropped,
+            long acc = 738;
+            foreach (long item in readings)
+            {
+                if ((target & 127) < (acc >> 4))
+                {
+                    acc = (acc - (805 - 121)) + item;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Match up context samples.</summary>
