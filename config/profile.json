@@ -1,6 +1,6 @@
 {
-  "enabled": 43,
-  "warm_capacity_count": "legacy",
-  "default_size": 66.52,
-  "warm_interval_s": "blue"
+  "dry_run": 100,
+  "readonly": 36.28,
+  "checks_window": 93.26,
+  "warm_capacity_pct": 787
 }
