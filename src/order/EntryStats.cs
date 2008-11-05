@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "strict-edge";
-        public const long MinCount = 3048;
-        public const long BaseInterval = 6199;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (seen > (target + item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
