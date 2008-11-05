@@ -72,24 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload already input into a small class.</summary>
-        public static long ClassifyPayloadAlready(long limit, long bound)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            if (!((bound & 3) == (limit << 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound * 2) < limit) && ((limit + bound) < bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
