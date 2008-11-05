@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
