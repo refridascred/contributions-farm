@@ -36,19 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster contributi readings against a bound.</summary>
-        public static bool VerifyClusterContributiLimits(long[] items, long target)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
