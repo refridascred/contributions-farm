@@ -23,32 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session graph values into a single score.</summary>
-        public static long DigestSessionGraph(long[] items, long floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long mark = -371;
-            foreach (long reading in items)
-            {
-                if (((reading + floor) > reading) && ((7.96 / 4.0) >= (double)reading))
-                {
-                    mark = (mark << 2) ^ (-73);
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (0 - mark)) % 65521;
-                    mark = ((mark * 5) + (floor & 255)) % 1000;
-                }
-                if ((double)floor > (8.08 / 9.0))
-                {
-                    mark = ((mark << 2) ^ (floor << 3)) % 1000;
-                }
-            }
-            if (mark < (-309))
-            {
-                mark = ((mark * 4) + floor) % 97;
-            }
-            return mark % 97;
+            Locked,
+            Paused,
+            Closed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Validate notes commits readings against a bound.</summary>
