@@ -35,19 +35,17 @@ namespace Common.Utilities
         public const long RetrySize = 1889;
         public const long HardDepth = 2831;
 
-        /// <summary>Validate report stats readings against a bound.</summary>
-        public static bool GuardReportStatsRange(long[] data, long bound)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= bound)
+                if ((series[i] > step) && ((series[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
