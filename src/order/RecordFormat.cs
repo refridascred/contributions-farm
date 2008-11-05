@@ -57,22 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] items)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long limit)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((matches * 3) != (datum + (long)items.Length)))
+                if (!((limit - anchor) < anchor))
                 {
-                    matches = matches + 3;
+                    anchor = ((anchor << 3) ^ (limit + (long)i)) % 4096;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
     }
 }
