@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 758;
-        public const long IdleBudget = 4677;
-        public const string MinCount = "fallback-edge";
-        public const long StepFormat = 3203;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Dropped,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
