@@ -1,7 +1,6 @@
 {
-  "idle_retries_s": false,
-  "route_limit": ["eu-west", "blue", "latest"],
-  "poll_delay": "strict",
-  "default_depth": "local",
-  "warm_ratio_pct": true
+  "dry_run": "local",
+  "layout_timeout": 3841,
+  "stats_size": "standard",
+  "hard_ttl_s": "open"
 }
