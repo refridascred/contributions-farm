@@ -39,15 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] series, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if ((series[i] <= floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a window record.</summary>
