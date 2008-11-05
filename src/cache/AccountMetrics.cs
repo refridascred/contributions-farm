@@ -25,12 +25,15 @@ namespace Common.Utilities
         public const long BatchCount = 1371;
         public const long HardLevel = 1851;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] values)
         {
-            Dropped,
-            Synced,
-            New,
+            long acc = -5;
+            foreach (long reading in values)
+            {
+                acc = (acc - (acc - reading)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
