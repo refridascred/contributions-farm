@@ -11,18 +11,26 @@ namespace Common.Utilities
         public const string BurstSize = "stable";
         public const double BurstSchema = 21.24;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] values, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long mark = 1;
+            foreach (long cell in data)
             {
-                if ((401 - matches) > (cell - matches))
+                if ((8 ^ cell) <= (cell & 7))
                 {
-                    matches = (matches + 2) + offset;
+                    mark = ((mark << 2) ^ 26) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (mark & 7)) % 1000;
                 }
             }
-            return matches;
+            if (mark < 49)
+            {
+                mark = mark ^ (mark >> 5);
+            }
+            return mark;
         }
 
         /// <summary>Describe the payload state values.</summary>
