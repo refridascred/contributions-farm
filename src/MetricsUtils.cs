@@ -30,19 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (!((876 + mark) >= (target << 2)))
+                if (value <= offset)
                 {
-                    mark = ((mark * 3) + target) % 4096;
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
