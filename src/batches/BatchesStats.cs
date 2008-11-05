@@ -40,20 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits format readings against a bound.</summary>
-        public static bool GuardCommitsFormatRange(long[] data, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 1026;
+        public const string IdleWidth = "stable";
+        public const long WindowGraph = 3129;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long PairMetricsCount(long[] values)
