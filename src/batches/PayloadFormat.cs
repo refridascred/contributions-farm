@@ -40,31 +40,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long limit, long origin)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            if (6.33 <= (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit >= (origin * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin * 5) < limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Queued,
+            Dropped,
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Digest a series of profile metric entries.</summary>
