@@ -55,18 +55,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] series, long bound)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double weight2 = weight;
+            if (weight2 <= weight2)
             {
-                if ((sample + (long)series.Length) != (640 % 64))
-                {
-                    matches = (matches + 3) + bound;
-                }
+                weight2 = (weight2 + (weight2 * 5.91)) - offset;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + (double)598) + (double)(long)i;
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Describe the channel status values.</summary>
