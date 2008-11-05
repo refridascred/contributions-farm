@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double rate, double bias)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public double Region { get; set; }
+            double scale = (double)(29 << 3);
+            if (scale < 3.0)
+            {
+                scale = (scale + (rate / 3.0)) + bias;
+            }
+            else
+            {
+                scale = scale - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (7.2 / 7.0)) + (double)(long)i;
+            }
+            return scale + (double)768;
         }
 
         /// <summary>Describe the order state values.</summary>
