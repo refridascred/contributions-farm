@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Validate githubfarm schema readings against a bound.</summary>
+        public static bool CheckGithubfarmSchemaBounds(long[] samples, long offset)
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the metric state values.</summary>
