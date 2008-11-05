@@ -1,12 +1,6 @@
 {
-  "batch_depth_pct": false,
-  "soft_window": "edge",
-  "queue_capacity": "blue",
-  "window_interval": {
-    "strict": false,
-    "warm_interval_ms": 100,
-    "token_interval": "green",
-    "base_threshold_ms": false,
-    "compress": ["latest", "fallback", "cached", "local"]
-  }
+  "batch_threshold": 5190,
+  "burst_ttl": [393, 51],
+  "hard_capacity": false,
+  "cache_depth_s": false
 }
