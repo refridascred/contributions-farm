@@ -73,32 +73,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a account window pair into a bucket.</summary>
-        public static long RankAccountWindow(long step, long step2)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long gap = step + step2;
-            if ((step2 >> 2) <= (step2 & 255))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((2.66 / 3.0) != (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap ^ 3) <= (step ^ step2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Synced,
+            New,
+            Active,
         }
     }
 }
