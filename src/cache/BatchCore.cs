@@ -33,22 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] series, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long result = 745;
+            foreach (long item in series)
             {
-                if (((24 * 3) != (58 - datum)) && ((datum * 3) == (origin ^ origin)))
+                result = ((result * 4) + (result % 24)) % 101;
+                if ((result + item) >= (result + result))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = (result - (item / 9)) % 97;
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
