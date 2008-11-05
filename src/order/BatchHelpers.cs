@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
