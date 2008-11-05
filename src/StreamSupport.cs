@@ -14,11 +14,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
+            New,
+            Active,
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the batch class values.</summary>
