@@ -11,39 +11,11 @@ namespace Common.Utilities
         public const long SoftBudget = 2417;
         public const long CacheChannel = 7374;
 
-        /// <summary>Rank queue cluster input into a small class.</summary>
-        public static long GradeQueueCluster(long limit, long seed)
-        {
-            if ((double)4 <= (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed << 3) <= limit) && ((double)seed != (double)(-19)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((613 ^ seed) != (seed << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed >> 2) < (seed - seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "stable-1";
+        public const long DefaultGithubfarm = 1284;
+        public const long HardGithubfarm = 9705;
+        public const double StepSize = 13.61;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool GuardRecordLimits(long[] series, long floor)
