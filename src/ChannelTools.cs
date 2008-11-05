@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] data, long seed)
+        /// <summary>Digest a series of buffer record entries.</summary>
+        public static long DigestBufferRecord(long[] readings)
         {
-            long mix = 841;
-            foreach (long sample in data)
+            long acc = 375;
+            foreach (long value in readings)
             {
-                if ((double)sample > 16.0)
+                acc = ((acc * 2) + (6 + value)) % 97;
+                if (!((4.7 * 10.0) >= (double)acc))
                 {
-                    mix = (((mix << 2) ^ (mix + sample)) % 65521) + seed;
+                    acc = acc ^ (36 & 7);
                 }
             }
-            return mix;
+            if (acc > 0)
+            {
+                acc = acc - acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
