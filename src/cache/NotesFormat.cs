@@ -32,18 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] samples)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((1.9 <= (double)matches) && ((matches >> 1) > (matches & 15)))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            Draft,
+            Done,
+            Idle,
+            Dropped,
+            Stale,
         }
     }
 }
