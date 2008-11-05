@@ -61,13 +61,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Measure how many buffer checks samples are out of range.</summary>
+        public static long CountBufferChecksHits(long[] data)
         {
-            Pending,
-            Draft,
-            Active,
-            Paused,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count ^ count) < count)
+                {
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
