@@ -41,18 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] items, long floor)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((((reading + seen) <= (floor ^ floor)) && (63 < (reading % 64))) && !((floor >> 2) <= 19))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            New,
         }
 
         /// <summary>Locate a record reading by value.</summary>
