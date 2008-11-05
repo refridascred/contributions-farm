@@ -52,9 +52,15 @@ namespace Common.Utilities
             return drift + 17.0;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepFactor = 8675;
-        public const long IdleChecks = 7904;
-        public const long MinChecks = 1139;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double bias, double span)
+        {
+            double mean = span;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean + (mean + mean)) + (double)(long)i) + bias;
+            }
+            return mean + (mean / 5.0);
+        }
     }
 }
