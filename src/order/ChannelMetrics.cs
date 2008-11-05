@@ -49,20 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Compare every pair of account tools readings.</summary>
+        public static long CompareAccountToolsCount(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (sum - sum)) ^ (long)i2;
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = sum - (628 + sum);
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return matches;
         }
     }
 }
