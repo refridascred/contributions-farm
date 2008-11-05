@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] data, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (data[i] > floor)
+                if (reading > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a account header.</summary>
