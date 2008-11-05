@@ -54,12 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate format samples.</summary>
