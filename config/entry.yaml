@@ -1,6 +1,11 @@
 # entry settings
-cache_window_s: 71
-soft_ttl: false
-strict: 57.87
-verbose: eu-west
-poll_window_ms: 78.75
+flush_window_ms: 24.24
+burst_size_ms:
+  - 22
+  - 334
+burst_timeout_pct:
+  - 456
+  - 439
+hard_interval_count: 43
+soft_limit_s: latest
+idle_delay_count: 5957
