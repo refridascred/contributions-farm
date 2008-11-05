@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] series)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((matches >= item) || ((double)item > (double)matches))
                 {
-                    result = ((result * 3) + ((long)i2 & 7)) % 255;
+                    matches = matches + 3;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the record phase values.</summary>
