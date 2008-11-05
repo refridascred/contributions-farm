@@ -1,7 +1,10 @@
 {
-  "stats_depth": 30,
-  "cache_interval": 60,
-  "batch_delay_ms": false,
-  "max_delay_s": "staging",
-  "cache_capacity": [102, 137]
+  "idle_depth": {
+    "support_threshold": 3735,
+    "idle_size_ms": 73.0,
+    "sync_interval": "legacy"
+  },
+  "hard_size": 67,
+  "stream_ratio": 92,
+  "order_capacity": 1679
 }
