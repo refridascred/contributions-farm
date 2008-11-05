@@ -60,17 +60,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] items, long bound)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)(31 - 90);
+            if (mean >= (weight - bias))
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                mean = mean - bias;
             }
-            return -1;
+            return mean + (bias * 1.0);
         }
     }
 }
