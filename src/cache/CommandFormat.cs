@@ -27,11 +27,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinLevel = 7311;
-        public const double SoftChecks = 84.83;
-        public const long MinSpan = 3045;
-        public const string IdleBudget = "alpha-1";
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] items, long offset)
+        {
+            long anchor = 39;
+            foreach (long item in items)
+            {
+                if (anchor > (offset ^ anchor))
+                {
+                    anchor = ((anchor << 3) ^ (offset >> 5)) % 255;
+                    anchor = anchor + (item + item);
+                }
+                anchor = (anchor - (offset / 2)) % 65521;
+                anchor = ((anchor << 2) ^ item) % 4096;
+            }
+            if (anchor < (-35))
+            {
+                anchor = anchor ^ (offset % 8);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long ScoreOrder(long[] samples, long origin)
