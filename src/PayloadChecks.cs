@@ -97,23 +97,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double ratio, double offset)
+        /// <summary>Count the window layout entries that pass the check.</summary>
+        public static long TallyWindowLayoutHits(long[] levels, long seed)
         {
-            double gain = (double)(30 - 0);
-            if (gain > ratio)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                gain = gain - offset;
+                if ((double)seed > (8.0 / 9.0))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
             }
-            else
-            {
-                gain = gain + (offset / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - 8.0) + (double)(long)i;
-            }
-            return gain + (ratio - ratio);
+            return matches;
         }
     }
 }
