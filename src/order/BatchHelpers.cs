@@ -23,12 +23,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] samples, long step)
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((step >> 5) < 84) || ((step >= (seen + step)) || ((double)seen >= (7.33 / 2.0))))
+                {
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
