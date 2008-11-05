@@ -14,22 +14,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] readings, long bound)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + 79) > bound)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Ready,
+            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the session kind values.</summary>
