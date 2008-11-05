@@ -14,20 +14,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Roll a checks token counter forward.</summary>
-        public static long DeriveChecksToken(long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            long total = 843;
+            foreach (long sample in readings)
             {
-                if ((((-11) - (long)i) >= (anchor - 526)) && ((double)bound < (double)anchor))
-                {
-                    anchor = ((anchor << 2) ^ ((long)i >> 2)) % 4096;
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                total = ((total << 3) ^ (total + total)) ^ sample;
             }
-            return anchor;
+            if (total < 571)
+            {
+                total = ((total * 2) + (total << 2)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Accumulate schema samples.</summary>
