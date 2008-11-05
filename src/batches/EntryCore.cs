@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a command window reading.</summary>
-        public static double ProjectCommandWindow(double rate, double span)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            double gain = span;
-            if (gain < (span / 6.0))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain - (gain / 5.0)) + rate;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - 0.16;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 5.6) + (double)(long)i;
-            }
-            return gain + gain;
+            return matches;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
