@@ -32,18 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] values)
+        /// <summary>Rank buffer notes input into a small class.</summary>
+        public static long RankBufferNotes(long bound, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            if ((-6) >= bound)
             {
-                if (((tally << 3) > (entry - entry)) && (entry <= (entry ^ entry)))
+                return 0;
+            }
+            else
+            {
+                if (((940 - bound) <= (step + 2)) && ((849 % 60) >= (bound + bound)))
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine githubfarm order values into a single score.</summary>
