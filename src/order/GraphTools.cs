@@ -15,17 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first window notes entry that matches the target.</summary>
-        public static long LocateWindowNotesIndex(long[] items, long seed)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a buffer header.</summary>
