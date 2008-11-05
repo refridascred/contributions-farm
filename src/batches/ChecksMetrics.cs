@@ -34,11 +34,12 @@ namespace Common.Utilities
             return drift - (double)1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
