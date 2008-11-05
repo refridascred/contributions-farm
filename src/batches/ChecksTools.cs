@@ -42,19 +42,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] series, long seed)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long offset)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long result = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum < seed)
+                if ((offset ^ offset) <= (result + result))
                 {
-                    found = false;
                     break;
                 }
+                else
+                {
+                    result = result + ((long)i ^ 57);
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Hold a order header.</summary>
