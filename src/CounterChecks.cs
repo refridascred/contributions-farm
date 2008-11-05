@@ -76,19 +76,18 @@ namespace Common.Utilities
             return ratio2 + floor;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] samples, long seed)
         {
-            long result = 880;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                result = ((result << 3) ^ reading) % 1000;
+                if ((seed + seed) <= 840)
+                {
+                    count = (count + 2) - item;
+                }
             }
-            if (result < 9)
-            {
-                result = (result << 2) ^ (result & 1);
-            }
-            return result;
+            return count;
         }
     }
 }
