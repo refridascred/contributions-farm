@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double bias, double bias2)
-        {
-            double bias3 = (double)4 * 2.87;
-            for (int i = 0; i < 5; i++)
-            {
-                bias3 = (((bias3 + 8.0) + (double)(long)i) + bias) + bias2;
-            }
-            return bias3 + bias3;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "primary";
+        public const long IdleStream = 5952;
+        public const long WindowStream = 7802;
+        public const double WindowSpan = 5.3;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
