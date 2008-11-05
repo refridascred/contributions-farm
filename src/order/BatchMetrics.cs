@@ -90,10 +90,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepWidth = 8747;
-        public const double WindowSize = 64.99;
-        public const string MinPayload = "standard-edge";
-        public const long CachePayload = 3183;
+        /// <summary>Roll a support farm counter forward.</summary>
+        public static long SeriesSupportFarm(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                score = (score ^ (bound ^ 0)) % 255;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
