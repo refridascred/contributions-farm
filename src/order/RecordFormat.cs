@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double scale, double span)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] data)
         {
-            double scale2 = span;
-            if (scale2 < scale)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = scale2 - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + (double)31) + (double)(long)i;
-            }
-            return scale2 + scale;
+            return matches;
         }
 
         /// <summary>Describe the channel mode values.</summary>
