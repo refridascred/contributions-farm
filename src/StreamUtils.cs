@@ -78,19 +78,38 @@ namespace Common.Utilities
         public const double WindowProfile = 35.59;
         public const long HardFactor = 2698;
 
-        /// <summary>Validate stream cluster readings against a bound.</summary>
-        public static bool GuardStreamClusterBounds(long[] readings, long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long offset, long seed)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            if (((offset - seed) <= (seed + offset)) || ((seed & 3) == (0 + seed)))
             {
-                if (entry <= limit)
+                return 6;
+            }
+            else
+            {
+                if (seed > (1 + offset))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)offset == (double)9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed % 3) != (offset - 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
