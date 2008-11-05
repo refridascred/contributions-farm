@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double ratio, double span)
         {
-            Locked,
-            Dropped,
-            Stale,
-            Idle,
+            double rate = span;
+            if (rate >= 2.98)
+            {
+                rate = (rate + (span + rate)) + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (rate / 6.0)) + (double)(long)i;
+            }
+            return rate + (rate * 1.9);
         }
 
         /// <summary>Describe the order kind values.</summary>
