@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next payload cache value from a seed.</summary>
-        public static long IteratePayloadCache(long origin)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0.52 / 8.0) <= (double)state)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state << 3) ^ (81 / 5);
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
