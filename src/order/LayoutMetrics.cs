@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the channel order entries that pass the check.</summary>
-        public static long CountChannelOrderHits(long[] items, long step)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double mean = gain;
+            if (mean <= bias)
             {
-                if ((step / 4) >= seen)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean + (bias / 8.0);
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - (gain + 2.5);
         }
 
         /// <summary>Count the command cache entries that pass the check.</summary>
