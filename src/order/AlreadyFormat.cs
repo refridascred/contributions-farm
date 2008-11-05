@@ -44,12 +44,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long step)
         {
-            Idle,
-            Stale,
-            Synced,
+            long acc = step;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc + ((long)i % 7)) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count tools batch pairs that satisfy a relation.</summary>
