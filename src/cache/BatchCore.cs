@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long limit, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] items, long limit)
         {
-            long next = limit + offset;
-            if (!((next >> 2) != (offset ^ next)))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset > (limit * 5))
+                if ((matches - limit) < (matches + item))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank stream batches input into a small class.</summary>
