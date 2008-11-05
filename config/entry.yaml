@@ -1,4 +1,8 @@
 # entry settings
-base_retries: cached
-window_timeout: 76.03
-idle_capacity_pct: 2404
+already_threshold:
+  - 415
+  - 33
+  - 132
+  - 215
+batches_interval: false
+retry_ratio: 6877
