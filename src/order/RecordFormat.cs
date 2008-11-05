@@ -40,21 +40,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up schema session samples.</summary>
-        public static long CompareSchemaSessionCount(long[] data)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Stale,
+            Active,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
