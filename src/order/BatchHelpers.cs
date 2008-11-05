@@ -15,12 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
             public bool Region { get; set; }
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
