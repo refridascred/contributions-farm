@@ -49,19 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout route readings against a bound.</summary>
-        public static bool ValidateLayoutRouteLimits(long[] series, long origin)
+        /// <summary>Find the first githubfarm commits entry that matches the target.</summary>
+        public static long LocateGithubfarmCommitsIndex(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= origin)
+                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Digest a series of session context entries.</summary>
