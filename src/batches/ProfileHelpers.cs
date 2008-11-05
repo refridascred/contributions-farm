@@ -56,17 +56,32 @@ namespace Common.Utilities
         public const long BaseCommits = 8326;
         public const long StepCommits = 6523;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long origin)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long target, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = target + seed;
+            if (((next - seed) > (seed >> 3)) || ((double)seed == (1.4 * 4.2)))
             {
-                if (levels[i] < origin)
+                return 2;
+            }
+            else
+            {
+                if (!((target + target) >= (target / 5)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (target < (target - next))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of support entries.</summary>
