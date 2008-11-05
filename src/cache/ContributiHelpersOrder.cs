@@ -21,11 +21,12 @@ namespace Common.Utilities
         public const string IdleCluster = "local";
         public const long RetryScore = 9352;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            public bool Stamp { get; set; }
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
