@@ -43,20 +43,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the farm buffer series from a seed.</summary>
-        public static long StepFarmBuffer(long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long offset, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            if (((double)floor >= (5.6 - 4.6)) && ((offset + floor) <= floor))
             {
-                if ((sum & 63) == ((long)i % 2))
-                {
-                    sum = (sum + ((long)i - bound)) % 1000;
-                }
-                sum = (sum << 2) ^ (sum % 64);
-                sum = ((sum * 3) + (long)i) % 97;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (offset < (701 + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset < (floor << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor > (offset - floor)) && (3 > (floor ^ offset)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
