@@ -38,16 +38,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                mark = (mark + (mark << 2)) % 65521;
-                mark = ((mark * 4) + (long)i) % 97;
+                if (!((double)limit <= 6.0))
+                {
+                    sum = (sum + (sum + sum)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 4) + limit) % 101;
+                    sum = sum - (long)i;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return mark;
+            return sum;
         }
     }
 }
