@@ -33,11 +33,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 6701;
-        public const long RetryCommits = 1228;
-        public const string CacheCommits = "local-edge";
-        public const string HardCommits = "cached";
-        public const string CacheInterval = "legacy-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultScore = 1512;
+        public const long WindowCount = 8613;
+        public const double IdleTimeout = 27.38;
     }
 }
