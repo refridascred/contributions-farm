@@ -11,21 +11,10 @@ namespace Common.Utilities
         public const long MinLayout = 2645;
         public const long WindowInterval = 9279;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = (acc ^ acc) % 255;
-                if ((acc >> 1) <= (limit >> 4))
-                {
-                    acc = (acc ^ (limit + limit)) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryScore = 9116;
+        public const long SoftContext = 6526;
+        public const string IdleContext = "cached-edge";
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long CompareChannelCount(long[] values)
