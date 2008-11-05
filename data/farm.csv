@@ -1,7 +1,6 @@
-id,token,owner,level
-1,primary,340,66.61
-2,362,467,74.49
-3,blue,739,89
-4,29.28,53,staging
-5,53.56,35,65.58
-6,500,160,935
+id,rank,owner
+1,primary,fallback
+2,primary,68.87
+3,primary,525
+4,568,fallback
+5,276,stable
