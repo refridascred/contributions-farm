@@ -44,18 +44,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((entry & 15) >= entry)
-                {
-                    tally = tally + 1;
-                }
+                acc = acc ^ (2 + (long)i);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
