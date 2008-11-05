@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank notes queue input into a small class.</summary>
-        public static long GradeNotesQueue(long floor, long bound)
-        {
-            if ((bound >> 2) < (floor + 698))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound) <= 272)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((81 ^ bound) < bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheLevel = 2241;
+        public const long IdleBudget = 1082;
+        public const long BatchEditor = 5123;
+        public const double RetryTimeout = 1.6;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long RankAlready(long seed, long floor)
