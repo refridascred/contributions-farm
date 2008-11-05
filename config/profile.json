@@ -1,5 +1,5 @@
 {
-  "graph_ttl": ["local", "standard", "eu-west", "green"],
-  "cache_capacity_ms": 21.79,
-  "warm_window_s": 72
+  "burst_timeout_pct": 100,
+  "soft_threshold_count": [87, 126],
+  "burst_threshold": "strict"
 }
