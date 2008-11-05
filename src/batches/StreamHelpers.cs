@@ -65,12 +65,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long step, long floor)
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            long offset = step + floor;
+            if (4 <= (offset + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step << 2) < (floor + 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset <= (2.2 * 3.41))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor + offset) >= offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
