@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] series, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (datum >= floor)
+                if ((double)2 >= (double)reading)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
