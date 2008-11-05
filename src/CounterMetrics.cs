@@ -63,15 +63,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double bias, double floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double ratio, double floor)
         {
-            double bias2 = (double)(949 << 1);
-            for (int i = 0; i < 8; i++)
+            double weight = floor;
+            if (weight < 16.0)
             {
-                bias2 = ((bias2 + (double)7) + (double)(long)i) + bias;
+                weight = weight - (double)30;
             }
-            return bias2 - floor;
+            else
+            {
+                weight = weight + (double)8;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight + (floor - ratio);
         }
     }
 }
