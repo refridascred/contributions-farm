@@ -48,12 +48,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
