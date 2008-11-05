@@ -1,8 +1,6 @@
 {
-  "enabled": 8778,
-  "dry_run": 100,
-  "already_size": "standard",
-  "poll_threshold_pct": ["legacy", "green", "local"],
-  "batch_ttl_pct": "stable",
-  "base_interval": 75.42
+  "cache_retries": ["green", "stable", "eu-west"],
+  "dry_run": 30.03,
+  "flush_size": "standard",
+  "compress": "legacy"
 }
