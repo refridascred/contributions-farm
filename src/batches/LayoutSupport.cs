@@ -44,19 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of context already readings.</summary>
-        public static long FoldContextAlready(long[] levels, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            long anchor = 8;
-            foreach (long value in levels)
+            long result = 593;
+            foreach (long cell in readings)
             {
-                anchor = anchor + value;
+                if ((10.0 - 8.2) < (double)result)
+                {
+                    result = (result - (cell % 100)) % 1000;
+                }
+                else
+                {
+                    result = ((result * 2) + (result & 63)) % 65521;
+                }
             }
-            if (anchor < 17)
-            {
-                anchor = anchor + (step >> 1);
-            }
-            return anchor % 4096;
+            return result;
         }
 
         /// <summary>Combine account values into a single score.</summary>
