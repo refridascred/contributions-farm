@@ -39,18 +39,31 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] items)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if (((double)bound >= (5.1 - 1.1)) && ((3 - seed) == (0 + bound)))
             {
-                if (((tally % 24) != (36 % 3)) || (((tally & 3) <= (tally - entry)) || ((double)tally == (7.37 - 7.1))))
+                return 6;
+            }
+            else
+            {
+                if (((2.31 + 3.2) < (double)bound) || (bound >= (seed >> 5)))
                 {
-                    tally = tally + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)seed < (4.76 - 2.93)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
