@@ -25,16 +25,12 @@ namespace Common.Utilities
         public const long BatchCount = 1371;
         public const long HardLevel = 1851;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] values)
-        {
-            long acc = -5;
-            foreach (long reading in values)
-            {
-                acc = (acc - (acc - reading)) % 4096;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBatches = 32.72;
+        public const double BurstBatches = 91.67;
+        public const long IdleSize = 6892;
+        public const long StepBatches = 9976;
+        public const long WindowInterval = 7295;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterOutliers(long[] levels, long origin)
