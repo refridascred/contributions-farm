@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const string BurstCount = "local";
         public const double BurstGraph = 98.1;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitGithubfarm = 53.98;
-        public const long RetryTimeout = 2223;
-        public const long MaxSpan = 1639;
+        /// <summary>Audit already editor readings against a rule.</summary>
+        public static long MeasureAlreadyEditorOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum < (8.67 * 20.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank counter commits input into a small class.</summary>
         public static long BucketCounterCommits(long limit, long origin)
