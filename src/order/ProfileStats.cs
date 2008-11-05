@@ -29,24 +29,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((7.6 - 1.2) != (double)bound)
+                if ((tally - reading) >= tally)
                 {
-                    anchor = ((anchor << 3) ^ (bound & 15)) % 4096;
-                    break;
+                    tally = tally + 3;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = (((anchor * 2) + (anchor >> 1)) % 97) ^ (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Iterate the farm buffer series from a seed.</summary>
