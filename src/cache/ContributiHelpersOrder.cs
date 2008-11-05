@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a record notes pair into a bucket.</summary>
-        public static long ClassifyRecordNotes(long target, long target2)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            if (target2 <= (target2 / 6))
-            {
-                return 6;
-            }
-            else
-            {
-                if (396 > (target + target2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Done,
+            Closed,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a batch info.</summary>
