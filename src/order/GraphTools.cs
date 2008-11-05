@@ -26,28 +26,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long total = 70;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = (total << 3) ^ ((long)i >> 4);
-                    total = total - datum;
-                }
-                total = (total ^ (total << 3)) % 1000;
-                if ((total - 32) < (datum + (-34)))
-                {
-                    total = (total - (total / 5)) % 4096;
-                }
-                if (total < (datum + total))
-                {
-                    break;
-                }
-            }
-            return total;
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
