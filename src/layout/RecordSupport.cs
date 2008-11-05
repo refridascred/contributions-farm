@@ -40,11 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] items, long target)
         {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((1 >= (long)items.Length) && (((-154) + (-50)) <= (target + target))) || (seen > value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank batches format input into a small class.</summary>
