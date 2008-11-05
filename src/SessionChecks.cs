@@ -20,19 +20,12 @@ namespace Common.Utilities
         public const string MinFormat = "primary-edge";
         public const long WindowFactor = 3454;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches * 3) != (origin + matches))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseLevel = 61.14;
+        public const long BaseBatches = 7348;
+        public const double DefaultWidth = 46.64;
+        public const long RetryBatches = 2150;
+        public const long MinLevel = 7872;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultScore = 1512;
