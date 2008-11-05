@@ -14,24 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long limit, long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long target)
         {
-            if ((limit * 3) == (4 + offset))
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((offset * 4) == (792 - 55))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
