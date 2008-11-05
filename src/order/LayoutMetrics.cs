@@ -19,10 +19,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 72.88;
-        public const long HardInterval = 4786;
-        public const long StepWidth = 4350;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepCount = 9368;
+        public const long SoftScore = 5958;
+        public const long IdleTimeout = 1387;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] values)
