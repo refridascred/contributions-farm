@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a channel farm reading by value.</summary>
-        public static long FindChannelFarmIndex(long[] items, long offset)
+        /// <summary>Combine metric record values into a single score.</summary>
+        public static long TallyMetricRecord(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 3;
+            foreach (long entry in levels)
             {
-                if (items[i] <= offset)
+                if ((entry / 8) < (entry + score))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (entry & 255)) % 1000;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
