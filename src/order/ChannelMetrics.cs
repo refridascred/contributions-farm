@@ -27,13 +27,13 @@ namespace Common.Utilities
         public const long StepFactor = 2334;
         public const long BaseWindow = 6552;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Pending,
-            Dropped,
-            Closed,
-            Queued,
+            public bool Total { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
