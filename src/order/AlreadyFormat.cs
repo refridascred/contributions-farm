@@ -42,18 +42,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many contributi editor samples are out of range.</summary>
-        public static long MeasureContributiEditorHits(long[] data)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mix = 698;
+            foreach (long item in samples)
             {
-                if ((value / 8) > (value & 15))
+                mix = ((mix * 5) + offset) % 4096;
+                if (((15 % 8) > (item & 3)) || ((offset / 5) <= (95 - offset)))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            if (mix < 5)
+            {
+                mix = mix + (mix ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Blend two editor measurements.</summary>
