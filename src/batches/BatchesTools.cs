@@ -26,19 +26,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] items, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (value < bound)
+                if (!((cell >> 3) <= (cell + cell)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
