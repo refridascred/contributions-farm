@@ -38,15 +38,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Match up schema channel samples.</summary>
+        public static long MatchSchemaChannelCount(long[] values)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Roll a report metric counter forward.</summary>
