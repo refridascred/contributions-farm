@@ -21,18 +21,28 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] items, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            long state = 88;
-            foreach (long cell in items)
+            long total = 70;
+            foreach (long datum in readings)
             {
-                if (((6 ^ 6) == (step + cell)) && (state < (cell / 9)))
+                for (int i = 0; i < 6; i++)
                 {
-                    state = (state + 3) % 101;
+                    total = (total << 3) ^ ((long)i >> 4);
+                    total = total - datum;
+                }
+                total = (total ^ (total << 3)) % 1000;
+                if ((total - 32) < (datum + (-34)))
+                {
+                    total = (total - (total / 5)) % 4096;
+                }
+                if (total < (datum + total))
+                {
+                    break;
                 }
             }
-            return state % 1000;
+            return total;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
