@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitWidth = 8012;
-        public const long LimitMetric = 3130;
-        public const long BaseSize = 7453;
-        public const string RetrySpan = "staging-v2";
+        /// <summary>Count the tools order entries that pass the check.</summary>
+        public static long MeasureToolsOrderMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((19.0 + 8.8) > (double)(long)levels.Length) && ((1 & 1) > (sample - sample)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit stream support readings against a rule.</summary>
         public static long MeasureStreamSupportGaps(long[] values)
