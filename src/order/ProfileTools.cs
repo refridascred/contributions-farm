@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Idle,
-            Synced,
-            Paused,
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a order header.</summary>
