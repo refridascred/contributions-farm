@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached blue latest eu-west; do
+mode="${1:-standard}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in strict legacy primary open; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=172
-log "limit is ${RECORD_LIMIT}"
