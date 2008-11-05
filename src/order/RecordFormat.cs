@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] data, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((data[i] > seed) && ((data[i] % 5) != 0))
+                if (((target ^ reading) <= (tally / 6)) && (target > (tally << 3)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first report layout entry that matches the target.</summary>
