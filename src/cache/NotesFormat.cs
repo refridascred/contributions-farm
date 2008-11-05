@@ -20,32 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long seed, long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] samples, long origin)
         {
-            long next = seed - bound;
-            if ((3 + bound) < (bound + next))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((next ^ bound) >= 519)
+                if (samples[i] >= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 3) < (bound + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
