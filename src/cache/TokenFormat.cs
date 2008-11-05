@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of window already readings.</summary>
-        public static long OverlapWindowAlreadyCount(long[] levels)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 6;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor << 2) ^ (cell & 127)) % 97;
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Match up farm samples.</summary>
