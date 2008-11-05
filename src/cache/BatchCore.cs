@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleLevel = 8668;
-        public const long CacheSession = 862;
-        public const long DefaultSession = 2930;
-        public const long IdleSession = 2645;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchSize = 3362;
+        public const long MinDepth = 6469;
+        public const double MaxTimeout = 69.16;
+        public const double RetryCount = 85.41;
+        public const string LimitScore = "standard-v2";
 
         /// <summary>Define order limits and defaults.</summary>
         public const double CacheOrder = 81.83;
