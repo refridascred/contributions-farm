@@ -53,17 +53,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] readings, long target)
+        /// <summary>Check that every entry support entry stays within the limit.</summary>
+        public static bool CheckEntrySupportRange(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (readings[i] == target)
+                if (cell >= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
