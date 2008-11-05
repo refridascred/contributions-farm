@@ -1,9 +1,4 @@
 # support settings
-warm_interval_ms:
-  enabled: 64
-  min_limit_pct: 6123
-  schema_threshold: 500
-  metrics_ratio: true
-  verbose: true
-persist: 6686
-batch_retries: strict
+poll_depth: 80.73
+max_timeout_count: 64.38
+flush_limit: 2327
