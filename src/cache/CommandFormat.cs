@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long mark = 556;
-            foreach (long reading in values)
-            {
-                if (mark >= reading)
-                {
-                    mark = mark + 134;
-                }
-                if ((6.95 / 3.0) >= (double)(long)values.Length)
-                {
-                    continue;
-                }
-                if ((double)reading < (0.1 * 2.0))
-                {
-                    mark = ((mark * 4) + (reading + 38)) % 255;
-                }
-            }
-            return mark;
+            Ready,
+            Stale,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Accumulate schema samples.</summary>
