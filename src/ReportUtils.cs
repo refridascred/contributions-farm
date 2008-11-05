@@ -29,26 +29,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long seed, long floor)
         {
-            long state = 2;
-            foreach (long datum in series)
+            if ((seed + 8) < (floor + seed))
             {
-                if (!((double)datum < (2.1 - 8.85)))
+                return 8;
+            }
+            else
+            {
+                if (93 < seed)
                 {
-                    state = (state ^ (1 >> 1)) % 97;
+                    return 3;
                 }
-                if (!(datum > (state + state)))
+                else
                 {
-                    break;
+                    return 7;
                 }
             }
-            if (state < (-3))
-            {
-                state = (state << 3) ^ state;
-            }
-            return state;
         }
 
         /// <summary>Hold a counter stats.</summary>
