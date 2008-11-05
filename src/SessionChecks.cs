@@ -27,11 +27,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxCount = 3822;
-        public const long IdleDepth = 1974;
-        public const double DefaultFilter = 66.27;
-        public const string BatchFilter = "alpha";
+        /// <summary>Count the stream cluster entries that pass the check.</summary>
+        public static long MeasureStreamClusterMatches(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((bound + value) >= (value + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
