@@ -39,17 +39,26 @@ namespace Common.Utilities
         public const long DefaultMetric = 6196;
         public const long LimitRatio = 2479;
 
-        /// <summary>Look up the position of a batches batch sample.</summary>
-        public static long LocateBatchesBatchIndex(long[] samples, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 8;
+            foreach (long datum in data)
             {
-                if (samples[i] < origin)
+                if ((datum ^ step) < (step & 1))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ datum) % 65521;
+                }
+                if ((anchor - anchor) <= datum)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 75)
+            {
+                anchor = (anchor - 6) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many schema record samples are out of range.</summary>
