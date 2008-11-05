@@ -1,7 +1,6 @@
 # entry settings
-default_depth_pct: 5639
-dry_run: 3323
-poll_ttl: 93.68
-window_retries: 30
-strict: 90.18
-warm_interval_s: edge
+flush_limit_pct:
+  - open
+  - blue
+burst_timeout_pct: false
+verbose: latest
