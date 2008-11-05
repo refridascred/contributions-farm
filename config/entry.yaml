@@ -1,32 +1,7 @@
 # entry settings
-verbose:
-  githubfarm_timeout: latest
-  soft_interval:
-    - 440
-    - 435
-  metrics_limit:
-    compress: eu-west
-    retry_interval: local
-    burst_capacity: true
-    idle_capacity: false
-    dry_run:
-      - 463
-      - 349
-      - 158
-      - 276
-  poll_depth: staging
-audit: false
-cache_capacity:
-  persist: 91.14
-  hard_threshold_pct: 88
-  sync_window_ms: true
-  flush_capacity_pct: 94.05
-cluster_capacity: local
-queue_threshold:
-  - 370
-  - 423
-  - 278
-batches_capacity:
-  max_capacity: eu-west
-  warm_size_ms: 57
-  max_ttl: edge
+flush_ttl_count: true
+persist: green
+contributi_depth: true
+base_threshold_ms: local
+base_retries_s: primary
+soft_limit_pct: staging
