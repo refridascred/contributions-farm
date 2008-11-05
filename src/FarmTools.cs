@@ -17,20 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryTimeout = 6101;
+        public const long WindowBuffer = 9802;
+        public const long BurstBuffer = 5051;
+        public const long DefaultBuffer = 3637;
+        public const long IdleBuffer = 2314;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
