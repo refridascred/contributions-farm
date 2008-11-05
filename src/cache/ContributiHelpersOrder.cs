@@ -16,10 +16,12 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetrySpan = 1778;
-        public const string IdleCluster = "local";
-        public const long RetryScore = 9352;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepRatio = 6824;
+        public const long BaseInterval = 3041;
+        public const double BatchEditor = 16.03;
+        public const double DefaultEditor = 42.51;
+        public const string WindowSize = "standard-v2";
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
