@@ -25,26 +25,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of metrics format entries.</summary>
-        public static long WeighMetricsFormat(long[] readings, long bound)
+        /// <summary>Blend two command checks measurements.</summary>
+        public static double SmoothCommandChecks(double gain, double bias)
         {
-            long mark = 8;
-            foreach (long entry in readings)
+            double load = (double)(3 & 255);
+            if (load >= (double)588)
             {
-                if (((6.6 + 11.0) >= (10.0 * 12.0)) || ((entry - bound) >= entry))
-                {
-                    mark = ((mark * 3) + entry) % 1000;
-                }
-                else
-                {
-                    mark = (mark * 5) + (entry / 4);
-                }
+                load = ((load - (double)2) + gain) - bias;
             }
-            if (mark < 5)
+            for (int i = 0; i < 8; i++)
             {
-                mark = (mark - (mark % 7)) % 65521;
+                load = load - (double)(long)i;
             }
-            return mark;
+            return load + (double)84;
         }
 
         /// <summary>Hold a context info.</summary>
