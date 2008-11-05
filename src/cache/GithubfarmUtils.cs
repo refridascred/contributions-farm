@@ -36,22 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] samples)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double rate, double bias)
         {
-            long score = 9;
-            foreach (long datum in samples)
+            double drift = rate;
+            if (drift > (rate * 12.0))
             {
-                if ((score & 15) > datum)
-                {
-                    score = score - (score + datum);
-                }
+                drift = drift + 7.39;
             }
-            if (score < 976)
+            for (int i = 0; i < 6; i++)
             {
-                score = (score * 2) + (7 + score);
+                drift = (drift + bias) + (double)(long)i;
             }
-            return score % 97;
+            return drift - (4.98 / 2.0);
         }
     }
 }
