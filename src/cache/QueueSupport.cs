@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Iterate the route githubfarm series from a seed.</summary>
+        public static long RollRouteGithubfarm(long offset)
         {
-            Idle,
-            Draft,
-            Ready,
-            Synced,
-            Closed,
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = sum - sum;
+                sum = (sum - offset) % 101;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the checks class values.</summary>
