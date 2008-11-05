@@ -52,13 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] data, long limit)
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a farm checks counter forward.</summary>
