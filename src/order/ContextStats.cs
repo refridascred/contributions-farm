@@ -34,23 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double rate, double span)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] readings, long target)
         {
-            double rate2 = rate;
-            if (rate2 >= (double)(-63))
+            long state = 73;
+            foreach (long sample in readings)
             {
-                rate2 = rate2 + (rate + rate2);
+                if ((double)target <= 1.23)
+                {
+                    state = ((state << 3) ^ (sample - state)) % 65521;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (span + rate2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = rate2 + (double)(long)i;
-            }
-            return rate2 - (double)189;
+            return state;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
