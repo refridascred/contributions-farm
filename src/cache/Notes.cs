@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine order report values into a single score.</summary>
-        public static long ScoreOrderReport(long[] levels)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long anchor = 8;
-            foreach (long item in levels)
-            {
-                anchor = (anchor ^ (835 ^ item)) % 255;
-            }
-            if (anchor < 42)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 255;
-            }
-            return anchor;
+            Ready,
+            Pending,
+            Done,
         }
 
         /// <summary>Count the cache route entries that pass the check.</summary>
