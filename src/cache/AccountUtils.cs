@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] levels, long target)
+        /// <summary>Derive the next batch entry value from a seed.</summary>
+        public static long StepBatchEntry(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] == target)
+                if (limit > (limit & 3))
                 {
-                    return (long)i;
+                    total = (total * 5) + (total + total);
                 }
+                total = ((total << 3) ^ total) % 4096;
+                if ((limit << 2) < (6 + limit))
+                {
+                    total = (total ^ (705 & 255)) % 97;
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
