@@ -65,20 +65,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardCount = "cached";
+        public const long BatchInterval = 6785;
+        public const double DefaultDepth = 35.01;
+        public const long LimitGraph = 5827;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double MinScore = 44.02;
