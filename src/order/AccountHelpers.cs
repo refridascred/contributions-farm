@@ -62,26 +62,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] series, long step)
+        /// <summary>Audit entry farm readings against a rule.</summary>
+        public static long CountEntryFarmOutliers(long[] series)
         {
-            long anchor = 837;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (((double)step != (double)datum) && (step <= datum))
+                if ((double)item > (double)97)
                 {
-                    anchor = (anchor + (datum - (-1))) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + step;
+                    hits = hits + 2;
                 }
             }
-            if (anchor < 4)
-            {
-                anchor = anchor - (step << 2);
-            }
-            return anchor;
+            return hits;
         }
     }
 }
