@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double ratio, double floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double weight = ratio;
-            if (weight >= (weight / 2.0))
-            {
-                weight = (weight - weight) - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (double)632;
+            Locked,
+            Done,
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the batch state values.</summary>
