@@ -70,11 +70,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxRatio = "primary-edge";
-        public const string StepReport = "open-edge";
-        public const double HardInterval = 85.21;
-        public const double BurstRatio = 43.73;
-        public const long DefaultScore = 9155;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Synced,
+            Retry,
+            Closed,
+            Stale,
+            Pending,
+        }
     }
 }
