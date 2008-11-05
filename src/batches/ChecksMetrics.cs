@@ -14,19 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the channel window entries that pass the check.</summary>
-        public static long CountChannelWindowMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((double)value <= 3.0)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 7030;
+        public const long HardQueue = 5075;
+        public const double RetryFactor = 30.45;
+        public const long RetryCount = 5168;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
