@@ -20,18 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultSize = 8444;
+        public const long MaxFarm = 84;
+        public const string IdleSpan = "staging-edge";
+        public const string DefaultFarm = "staging-edge";
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
