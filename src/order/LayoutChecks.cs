@@ -25,14 +25,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            Failed,
-            Retry,
-            Synced,
-            Queued,
-            Done,
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc * 3) + (floor / 2);
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
