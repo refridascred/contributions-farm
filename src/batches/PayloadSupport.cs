@@ -13,18 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] readings)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double rate, double span)
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((10.0 * 13.0) == (double)(long)readings.Length)
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
+            double gain = 13.0;
+            return ((gain - (double)94) + rate) + span;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
