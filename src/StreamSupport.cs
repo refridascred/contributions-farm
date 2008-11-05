@@ -23,19 +23,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] levels, long limit)
-        {
-            long mix = 92;
-            foreach (long entry in levels)
-            {
-                mix = (((mix * 3) + mix) % 1000) + entry;
-            }
-            if (mix > 3)
-            {
-                mix = ((mix * 4) + (limit >> 5)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstFactor = 6717;
+        public const double RetrySpan = 41.6;
+        public const string BatchLevel = "standard-v2";
+        public const double CacheSpan = 52.86;
     }
 }
