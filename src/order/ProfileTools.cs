@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings)
         {
-            long acc = 89;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                acc = (acc - ((long)values.Length << 1)) ^ value;
+                if ((4 + reading) >= seen)
+                {
+                    seen = seen + 3;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Classify a farm notes pair into a bucket.</summary>
