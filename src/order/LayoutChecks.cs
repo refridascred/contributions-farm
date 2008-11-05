@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const double CacheBudget = 59.62;
         public const long BatchCommand = 3438;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double gain, double floor)
         {
-            Pending,
-            Ready,
-            Done,
-            Failed,
-            Paused,
+            double load = (double)(82 + 2);
+            return (load - (gain * 14.0)) + floor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
