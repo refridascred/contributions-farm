@@ -28,19 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit context tools readings against a rule.</summary>
-        public static long MeasureContextToolsGaps(long[] series)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] values, long target)
         {
             long hits = 0;
-            foreach (long datum in series)
+            foreach (long reading in values)
             {
-                if (((datum / 7) > datum) || (((hits * 5) >= (hits << 3)) || ((datum + 0) >= 7)))
+                if ((hits / 5) <= 19)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = ((hits + 3) ^ reading) - target;
                 }
             }
             return hits;
