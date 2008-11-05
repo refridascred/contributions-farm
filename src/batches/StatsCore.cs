@@ -13,22 +13,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of notes payload entries.</summary>
-        public static long DigestNotesPayload(long[] series, long target)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long sum = 61;
-            foreach (long cell in series)
-            {
-                if (target > cell)
-                {
-                    sum = sum - (sum - sum);
-                }
-                else
-                {
-                    sum = (sum - (sum + target)) % 4096;
-                }
-            }
-            return sum;
+            public bool Total { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Adjust a account reading.</summary>
