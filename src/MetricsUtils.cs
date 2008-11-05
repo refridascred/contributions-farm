@@ -14,18 +14,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] levels)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long result = 42;
+            foreach (long value in series)
             {
-                if ((double)tally < (9.45 + 2.0))
-                {
-                    tally = (tally + 3) + datum;
-                }
+                result = ((result ^ (value << 1)) % 4096) - seed;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Accumulate already samples.</summary>
