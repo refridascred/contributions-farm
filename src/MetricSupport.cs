@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double ratio, double offset)
+        /// <summary>Check that every profile report entry stays within the limit.</summary>
+        public static bool GuardProfileReportBounds(long[] readings, long floor)
         {
-            double gain = (1.1 * 2.44) * 1.56;
-            if (gain < (double)907)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                gain = gain - (double)81;
+                if (entry < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (offset / 9.0)) + (double)(long)i;
-            }
-            return gain + ratio;
+            return stale;
         }
 
         /// <summary>Adjust a schema reading.</summary>
