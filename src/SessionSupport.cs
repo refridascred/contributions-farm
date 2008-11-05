@@ -31,14 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Paused,
-            Done,
-            New,
-            Idle,
-            Closed,
+            public double Score { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
