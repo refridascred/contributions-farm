@@ -1,12 +1,4 @@
 # support settings
-default_threshold: 70
-compress:
-  sync_capacity_pct: 100
-  dry_run: standard
-  profile_delay: 6237
-base_ttl: cached
-verbose: standard
-batch_size_count: 4069
-poll_capacity_s:
-  - 304
-  - 107
+warm_size_s: 2757
+hard_interval_s: edge
+min_threshold_pct: 90.38
