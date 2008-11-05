@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 924;
-        public const long HardCount = 7204;
-        public const double SoftFactor = 38.69;
-        public const long StepCount = 8283;
-        public const long HardCommits = 4979;
+        /// <summary>Audit payload stats readings against a rule.</summary>
+        public static long TallyPayloadStatsGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally / 7) < (815 / 4))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of notes metric readings.</summary>
         public static long MatchNotesMetricCount(long[] data)
