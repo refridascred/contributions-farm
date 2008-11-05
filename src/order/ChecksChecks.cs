@@ -19,32 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long target, long target2)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long slot = target ^ target2;
-            if ((slot + target2) > (0 ^ 3))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((slot * 5) < 405)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target <= (target2 / 2)) && ((target2 + target) < (target2 * 2)))
+                    if ((values[i] - values[j]) == 3)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of context readings.</summary>
