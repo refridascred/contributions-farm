@@ -30,17 +30,13 @@ namespace Common.Utilities
             return mean - (double)3;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] series, long target)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
