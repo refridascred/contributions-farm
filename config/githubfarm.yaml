@@ -1,13 +1,20 @@
 # githubfarm settings
-idle_interval_ms:
-  - open
-  - local
-entry_size: 89
-hard_ratio_count: true
-warm_ratio_pct:
-  - 130
-  - 217
-  - 420
-  - 107
-hard_size_ms: 98.73
-batch_ratio_pct: 74.59
+persist: 51
+retry_window: 22
+max_threshold_ms:
+  poll_capacity_count:
+    - cached
+    - eu-west
+  metric_retries: staging
+  max_ttl:
+    strict: false
+    verbose: false
+    compress: 30
+    window_window: eu-west
+    batch_window: cached
+  default_depth_count:
+    idle_limit: primary
+    hard_interval_s: 66.35
+    verbose: fallback
+cluster_ttl: 29.44
+farm_ttl: open
