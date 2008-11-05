@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Classify a session tools pair into a bucket.</summary>
+        public static long ClassifySessionTools(long step, long offset)
         {
-            Ready,
-            Pending,
-            Done,
+            long lane = step - offset;
+            if ((lane % 5) < step)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((-95) - offset) >= (59 - lane))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
