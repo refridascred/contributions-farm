@@ -49,9 +49,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 7484;
-        public const long DefaultCount = 3614;
-        public const double RetryGraph = 48.76;
+        /// <summary>Locate a schema channel reading by value.</summary>
+        public static long SeekSchemaChannelIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
