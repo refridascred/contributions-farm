@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback cached blue; do
+CHANNEL_LIMIT=75
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in edge latest open legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
