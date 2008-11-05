@@ -25,31 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double ratio, double offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            double mean = (ratio + offset) - (double)44;
+            if (mean < offset)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    long span = mark;
-                    mark = (((mark << 2) ^ (mark + span)) % 97) ^ (long)i2;
-                }
-                mark = (mark + seed) % 4096;
-                if ((((long)i << 1) > (seed * 5)) || ((seed - seed) >= mark))
-                {
-                    mark = (mark + (mark - 476)) % 1000;
-                    mark = (mark + (26 + seed)) % 1000;
-                }
-                else
-                {
-                    mark = (mark * 5) + (mark & 63);
-                    mark = (mark - (seed % 64)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
+                mean = mean + (mean / 4.0);
             }
-            return mark;
+            return mean - 16.0;
         }
 
         /// <summary>Measure how many contributi editor samples are out of range.</summary>
