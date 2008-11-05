@@ -23,12 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] data, long step)
         {
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry <= (9 << 1)) || ((8.71 + 5.43) == (double)step)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
