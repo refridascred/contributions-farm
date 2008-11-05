@@ -30,24 +30,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] items, long target)
         {
-            long sum = 21;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (datum <= sum)
+                if (sample < (sample << 1))
                 {
-                    sum = sum + datum;
-                    sum = (sum + (76 / 2)) % 1000;
-                    break;
-                }
-                if ((43 - (long)values.Length) == (471 >> 1))
-                {
-                    sum = ((sum << 2) ^ (datum + datum)) % 65521;
+                    seen = (seen + 3) + target;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
