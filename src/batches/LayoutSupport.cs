@@ -56,17 +56,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] values, long bound)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((values[i] <= bound) && ((values[i] % 3) == 0))
+                if (datum != target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Adjust a graph reading.</summary>
