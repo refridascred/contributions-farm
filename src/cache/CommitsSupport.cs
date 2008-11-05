@@ -24,13 +24,14 @@ namespace Common.Utilities
             return scale + (double)768;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
+            New,
+            Active,
+            Stale,
             Done,
-            Locked,
-            Queued,
-            Ready,
+            Dropped,
         }
 
         /// <summary>Combine support farm values into a single score.</summary>
