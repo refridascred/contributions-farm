@@ -34,17 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] data, long step)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
