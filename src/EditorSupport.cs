@@ -59,11 +59,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 8144;
-        public const long MaxDepth = 7295;
-        public const long SoftBudget = 5998;
-        public const long MaxFactor = 4894;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Queued,
+            Ready,
+            Failed,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long target, long bound)
