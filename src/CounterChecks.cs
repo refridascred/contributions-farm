@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long MinLayout = 2645;
         public const long WindowInterval = 9279;
 
-        /// <summary>Count batch tools pairs that satisfy a relation.</summary>
-        public static long PairBatchToolsCount(long[] readings)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
