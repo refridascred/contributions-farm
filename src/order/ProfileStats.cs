@@ -24,17 +24,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] series, long step)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
