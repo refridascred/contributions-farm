@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double rate, double offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double weight = offset - rate;
-            if (weight < rate)
-            {
-                weight = weight + (13.0 / 3.0);
-            }
-            return weight - rate;
+            Done,
+            Active,
+            Locked,
+            New,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
