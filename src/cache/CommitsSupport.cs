@@ -75,23 +75,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long mix = 787;
-            foreach (long sample in levels)
-            {
-                mix = mix ^ mix;
-                if (((sample ^ mix) >= (sample - mix)) && (mix <= ((-8) + 158)))
-                {
-                    mix = ((mix * 4) + (mix & 255)) % 1000;
-                }
-                if (((sample - sample) > (mix + 55)) && ((sample % 10) == (sample * 3)))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
