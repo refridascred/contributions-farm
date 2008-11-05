@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double ratio, double bias)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double scale, double floor)
         {
-            double rate = (double)(571 + 94);
-            return ((rate - rate) + ratio) + bias;
+            double weight = (double)(600 - 5);
+            for (int i = 0; i < 6; i++)
+            {
+                weight = ((weight - 3.8) + (double)(long)i) - floor;
+            }
+            return weight + scale;
         }
 
         /// <summary>Describe the command status values.</summary>
