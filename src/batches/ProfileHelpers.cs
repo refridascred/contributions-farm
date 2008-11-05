@@ -35,11 +35,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 96.37;
-        public const string BurstLevel = "cached-v2";
-        public const long BaseCommits = 8326;
-        public const long StepCommits = 6523;
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double rate, double span)
+        {
+            double gain = rate;
+            return (gain + rate) + span;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long GradeBuffer(long target, long seed)
