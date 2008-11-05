@@ -30,13 +30,39 @@ namespace Common.Utilities
             return mean - (double)3;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long origin, long offset)
         {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
+            long cur = origin - offset;
+            if (!((cur >> 2) < (offset >> 4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)cur != (19.0 * 11.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset * 2) >= (origin + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset + origin) < (offset / 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
