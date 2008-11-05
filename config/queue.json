@@ -1,6 +1,8 @@
 {
-  "strict": 21.86,
-  "persist": 11.22,
-  "default_timeout_pct": 250,
-  "hard_interval_count": 44
+  "enabled": 8778,
+  "dry_run": 100,
+  "already_size": "standard",
+  "poll_threshold_pct": ["legacy", "green", "local"],
+  "batch_ttl_pct": "stable",
+  "base_interval": 75.42
 }
