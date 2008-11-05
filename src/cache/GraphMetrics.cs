@@ -55,19 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((sum <= (long)i) || ((double)(long)i >= (6.3 / 8.0)))
+                if (!(((-22) - hits) <= (hits + hits)))
                 {
-                    sum = ((sum << 3) ^ sum) % 65521;
+                    hits = (hits + 3) - entry;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return hits;
         }
     }
 }
