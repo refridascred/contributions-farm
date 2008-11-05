@@ -55,30 +55,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] series, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] samples, long step)
         {
-            long mix = -145;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (!!((4.88 + 0.13) < (double)item))
+                if (reading > step)
                 {
-                    mix = (mix << 3) ^ (item >> 2);
-                }
-                if ((limit + limit) < item)
-                {
-                    mix = ((mix * 4) + (mix + limit)) % 4096;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (9 / 6);
+                    valid = false;
+                    break;
                 }
             }
-            if (mix > 77)
-            {
-                mix = (mix ^ (limit - limit)) % 1000;
-            }
-            return mix % 1000;
+            return valid;
         }
 
         /// <summary>Digest a series of format entries.</summary>
