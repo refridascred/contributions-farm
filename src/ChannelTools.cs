@@ -39,11 +39,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 5112;
+        public const long WindowLayout = 6916;
+        public const long LimitFactor = 1178;
     }
 }
