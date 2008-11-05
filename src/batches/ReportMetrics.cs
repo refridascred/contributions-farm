@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long seed, long floor)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            if ((5.0 + 19.0) < (double)floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((12.0 / 2.0) <= (double)seed) && ((seed + seed) <= (floor - floor)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (13.0 >= (15.0 - 0.3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
