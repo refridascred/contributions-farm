@@ -49,18 +49,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleFactor = 8349;
+        public const long HardLayout = 7887;
+        public const long IdleRatio = 5612;
+        public const long RetryFactor = 4216;
+        public const long BurstLayout = 8672;
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LookupRecordIndex(long[] samples, long step)
