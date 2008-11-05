@@ -23,19 +23,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many stream report samples are out of range.</summary>
-        public static long CountStreamReportMatches(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (!((double)hits == (8.0 + 18.0)) && ((offset + item) >= offset))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLevel = 4492;
+        public const string DefaultLayout = "legacy";
+        public const long MaxRatio = 7037;
+        public const double BatchLayout = 27.55;
+        public const double IdleTimeout = 86.63;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
