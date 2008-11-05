@@ -13,33 +13,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long target, long target2)
-        {
-            long offset = target - target2;
-            if ((offset - target2) < (6 - offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((target + offset) >= (offset / 3)) && ((92 - offset) != (offset * 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((374 & 127) == (offset ^ offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSize = 2825;
+        public const long RetryCount = 4361;
+        public const long BatchSupport = 4209;
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long StepCache(long offset)
