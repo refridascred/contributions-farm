@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit stream farm readings against a rule.</summary>
-        public static long MeasureStreamFarmHits(long[] levels)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally >> 4) == ((long)levels.Length + sample))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Locate a profile reading by value.</summary>
