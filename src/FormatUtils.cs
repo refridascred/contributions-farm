@@ -54,12 +54,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] series, long floor)
         {
-            Synced,
-            Retry,
-            Done,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((40 << 3) >= (floor / 2))
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a contributi info.</summary>
