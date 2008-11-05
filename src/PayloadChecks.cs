@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] series, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 7;
+            foreach (long datum in readings)
             {
-                if (series[i] == origin)
+                if (((datum / 3) <= (datum + sum)) || ((sum / 8) != (sum / 5)))
                 {
-                    return (long)i;
+                    sum = (sum - (sum + 8)) % 255;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
