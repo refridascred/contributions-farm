@@ -20,15 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] levels, long origin)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double gain, double bias)
         {
-            long anchor = 160;
-            foreach (long item in levels)
+            double mean = gain;
+            if (mean <= (double)0)
             {
-                anchor = ((anchor << 2) ^ origin) - item;
+                mean = mean - (mean + bias);
             }
-            return anchor % 4096;
+            else
+            {
+                mean = mean - (double)80;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + (bias - bias);
         }
 
         /// <summary>Hold a batches stats.</summary>
