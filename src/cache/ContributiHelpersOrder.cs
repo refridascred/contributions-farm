@@ -31,14 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double gain, double bias)
         {
-            Ready,
-            Active,
-            Synced,
-            Dropped,
-            Pending,
+            double weight = gain;
+            if (weight <= 12.0)
+            {
+                weight = (weight + 14.0) - bias;
+            }
+            else
+            {
+                weight = weight - (weight - gain);
+            }
+            return weight - gain;
         }
     }
 }
