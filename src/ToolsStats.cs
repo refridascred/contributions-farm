@@ -85,13 +85,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Rank payload already input into a small class.</summary>
+        public static long ClassifyPayloadAlready(long limit, long bound)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            if (!((bound & 3) == (limit << 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound * 2) < limit) && ((limit + bound) < bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
