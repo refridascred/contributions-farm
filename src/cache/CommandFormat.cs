@@ -28,13 +28,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] levels, long bound)
         {
-            Failed,
-            New,
-            Stale,
-            Synced,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the filter state values.</summary>
