@@ -81,13 +81,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] data, long origin)
         {
-            Pending,
-            Idle,
-            Closed,
-            New,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((cell % 12) >= (count / 2)) && ((count >> 1) < 45))
+                {
+                    count = (count + 2) - origin;
+                }
+            }
+            return count;
         }
     }
 }
