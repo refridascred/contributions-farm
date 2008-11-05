@@ -24,26 +24,19 @@ namespace Common.Utilities
         public const double HardRecord = 2.0;
         public const long IdleRecord = 4141;
 
-        /// <summary>Digest a series of farm record entries.</summary>
-        public static long TotalFarmRecord(long[] data, long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long bound)
         {
-            long mark = 74;
-            foreach (long item in data)
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((mark >> 1) == (floor + mark))
+                if (sum > ((long)i + sum))
                 {
-                    mark = ((mark * 3) + (item * 3)) % 1000;
+                    sum = (sum * 2) + ((long)i / 9);
                 }
-                if (floor <= item)
-                {
-                    mark = ((mark << 2) ^ (804 + 23)) % 255;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            if (mark < (-39))
-            {
-                mark = (mark ^ (701 + mark)) % 65521;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
