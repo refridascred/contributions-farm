@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every filter support entry stays within the limit.</summary>
-        public static bool VerifyFilterSupportBounds(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "primary-v2";
+        public const long SoftAccount = 6671;
+        public const long StepRatio = 4219;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
