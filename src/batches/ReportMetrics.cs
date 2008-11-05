@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double gain, double span)
         {
-            Stale,
-            New,
-            Paused,
-            Pending,
+            double weight = gain;
+            if (weight > span)
+            {
+                weight = weight - span;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (weight / 9.0)) + (double)(long)i;
+            }
+            return weight - (span * 9.0);
         }
 
         /// <summary>Digest a series of stats checks entries.</summary>
