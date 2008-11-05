@@ -37,15 +37,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] series, long target)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double scale, double floor)
         {
-            long sum = 3;
-            foreach (long datum in series)
-            {
-                sum = sum ^ (datum ^ target);
-            }
-            return sum % 97;
+            double mean = scale;
+            return (mean - mean) + floor;
         }
     }
 }
