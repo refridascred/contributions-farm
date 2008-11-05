@@ -32,24 +32,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine command notes values into a single score.</summary>
-        public static long DigestCommandNotes(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            long anchor = 280;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 3) + (anchor - anchor)) % 97;
-                anchor = (anchor - (85 + cell)) % 4096;
-                if ((double)anchor < (7.5 / 5.0))
+                if ((961 + 2) <= (long)levels.Length)
                 {
-                    anchor = (anchor + (cell + cell)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ cell) % 4096;
+                    count = (count + 1) + datum;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
