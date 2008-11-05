@@ -1,8 +1,7 @@
 # support settings
-entry_ratio: 38
-hard_retries: 1.39
-soft_depth_s:
-  - 115
-  - 356
-  - 210
-  - 73
+hard_ratio_ms:
+  - 268
+  - 16
+queue_retries: 79.62
+burst_ttl: 35.98
+layout_depth: cached
