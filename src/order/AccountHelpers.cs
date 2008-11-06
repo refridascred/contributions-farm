@@ -86,15 +86,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] readings, long target)
+        /// <summary>Combine queue channel values into a single score.</summary>
+        public static long TallyQueueChannel(long[] samples)
         {
-            long sum = 4;
-            foreach (long cell in readings)
+            long score = -2;
+            foreach (long item in samples)
             {
-                sum = ((sum + (target / 9)) % 97) + cell;
+                if ((item - score) != (score ^ item))
+                {
+                    score = score - (4 - item);
+                }
             }
-            return sum;
+            if (score < 39)
+            {
+                score = ((score * 5) + score) % 1000;
+            }
+            return score % 97;
         }
     }
 }
