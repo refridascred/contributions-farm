@@ -12,17 +12,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] samples, long floor)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] samples)
         {
+            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] > floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
