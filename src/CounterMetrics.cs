@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 3467;
-        public const double MinMetrics = 95.94;
-        public const string StepScore = "stable-v2";
-        public const long CacheMetrics = 717;
-        public const long MaxMetrics = 1359;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] levels, long step)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count cache editor pairs that satisfy a relation.</summary>
         public static long PairCacheEditorCount(long[] samples)
