@@ -34,23 +34,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of graph farm entries.</summary>
-        public static long WeighGraphFarm(long[] data)
+        /// <summary>Measure how many order editor samples are out of range.</summary>
+        public static long TallyOrderEditorMatches(long[] series, long origin)
         {
-            long state = 5;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 5; i++)
+                if ((count - origin) <= count)
                 {
-                    state = (state - (9 << 2)) + (long)i;
+                    count = (count + 3) - reading;
                 }
-                state = ((state << 3) ^ (sample << 2)) % 1000;
-                if ((double)(long)data.Length > 2.58)
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
