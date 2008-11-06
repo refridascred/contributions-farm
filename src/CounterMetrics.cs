@@ -20,26 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Look up the position of a githubfarm batch sample.</summary>
+        public static long LookupGithubfarmBatchIndex(long[] items, long step)
         {
-            long sum = 444;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (items[i] >= step)
                 {
-                    sum = ((sum + (6 >> 2)) % 1000) ^ (long)i;
-                }
-                if (item <= sum)
-                {
-                    sum = ((sum << 3) ^ sum) % 97;
+                    return (long)i;
                 }
             }
-            if (sum > 2)
-            {
-                sum = sum + (sum ^ sum);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the batches channel entries that pass the check.</summary>
