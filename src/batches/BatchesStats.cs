@@ -63,21 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = offset;
+            if (gain <= (offset * 14.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain + (gain + offset)) - ratio;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - offset;
         }
     }
 }
