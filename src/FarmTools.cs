@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of counter window entries.</summary>
-        public static long TotalCounterWindow(long[] values)
+        /// <summary>Match up already metric samples.</summary>
+        public static long PairAlreadyMetricCount(long[] levels)
         {
-            long state = 356;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state << 3) ^ item) % 1000;
-                state = (state + (item % 7)) % 1000;
-                if ((state + state) > (state * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state ^ (state + 74);
+                    if ((levels[i] - levels[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < (-512))
-            {
-                state = state - (state * 5);
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
