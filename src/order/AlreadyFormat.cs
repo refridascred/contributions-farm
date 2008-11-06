@@ -60,12 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Validate filter notes readings against a bound.</summary>
+        public static bool ValidateFilterNotesLimits(long[] levels, long seed)
         {
-            Dropped,
-            Queued,
-            Active,
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
