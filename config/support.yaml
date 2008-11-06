@@ -1,7 +1,9 @@
 # support settings
-cache_threshold_count: 53.28
-base_delay_ms: standard
-dry_run: 60
-flush_interval_pct: false
-burst_delay: local
-verbose: legacy
+persist: 13.92
+sync_retries_s: true
+order_size:
+  - staging
+  - open
+  - standard
+  - green
+enabled: edge
