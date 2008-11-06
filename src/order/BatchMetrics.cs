@@ -28,13 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
+            long result = 53;
+            foreach (long reading in samples)
+            {
+                result = ((result + (result * 5)) % 4096) + reading;
+            }
+            if (result > 38)
+            {
+                result = ((result * 4) + (long)samples.Length) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the payload kind values.</summary>
