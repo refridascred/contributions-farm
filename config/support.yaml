@@ -1,5 +1,9 @@
 # support settings
-max_ratio: 2
-persist: local
-entry_ratio: 9358
-batch_size: true
+burst_delay_pct: edge
+max_window_s: standard
+sync_ttl_s:
+  - 303
+  - 379
+  - 194
+sync_ttl_ms: true
+burst_retries_pct: false
