@@ -25,22 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] series)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long origin)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally << 1) != (tally % 24))
+                if (!(((origin - anchor) == (anchor + origin)) && ((long)i >= (anchor - origin))))
                 {
-                    tally = (tally + 3) + datum;
+                    anchor = anchor ^ (origin % 64);
                 }
-                else
+                if (!(origin > (anchor - 0)))
                 {
-                    tally = tally - 1;
+                    anchor = (anchor - (anchor + (long)i)) % 255;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
