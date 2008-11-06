@@ -32,10 +32,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 75.13;
-        public const long MinReport = 2418;
-        public const long WindowLevel = 433;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((84 ^ target) < 140) || ((entry ^ target) > (count + target)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
