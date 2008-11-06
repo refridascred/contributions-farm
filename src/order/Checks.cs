@@ -33,20 +33,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double ratio, double floor)
-        {
-            double ratio2 = floor;
-            if (ratio2 <= 8.8)
-            {
-                ratio2 = (ratio2 - 7.0) + ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 - 9.46;
-            }
-            return ratio2 - (double)7;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "local-v2";
+        public const long LimitWidth = 1252;
+        public const string IdleInterval = "strict";
+        public const long CacheRatio = 7952;
+        public const long IdleDepth = 497;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
