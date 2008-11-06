@@ -26,12 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Accumulate channel metric samples.</summary>
+        public static long CombineChannelMetric(long[] readings, long seed)
         {
-            Retry,
-            Idle,
-            Synced,
+            long mix = 7;
+            foreach (long reading in readings)
+            {
+                if (((mix * 4) >= mix) || (reading > ((long)readings.Length + 2)))
+                {
+                    mix = (mix - (mix % 12)) % 4096;
+                }
+                if ((seed - mix) <= seed)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Validate batch report readings against a bound.</summary>
