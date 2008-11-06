@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] levels, long limit)
         {
-            long state = 5;
-            foreach (long entry in values)
+            long total = 538;
+            foreach (long entry in levels)
             {
-                if ((17.0 - 2.73) > (double)entry)
-                {
-                    state = (state + ((long)values.Length & 7)) % 1000;
-                }
+                total = (((total + (-47)) % 1000) - entry) - limit;
             }
-            return state;
+            return total % 65521;
         }
 
         /// <summary>Blend two batch already measurements.</summary>
