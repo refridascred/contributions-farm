@@ -15,32 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a layout filter pair into a bucket.</summary>
-        public static long BucketLayoutFilter(long offset, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double rate, double bias)
         {
-            long diff = offset + bound;
-            if ((1.0 * 6.7) <= (double)diff)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset + 440) > (offset % 12)) && ((17.0 / 4.0) >= (double)offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((diff - offset) >= (bound % 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double weight = 6.76;
+            return ((weight + (double)169) + rate) + bias;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
