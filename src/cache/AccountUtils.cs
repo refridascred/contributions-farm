@@ -12,17 +12,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] values, long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 8;
+            foreach (long value in readings)
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry ^ (carry % 97)) % 4096) - value;
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
