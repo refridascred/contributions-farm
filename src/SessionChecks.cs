@@ -27,11 +27,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftSize = 9738;
-        public const long CacheMetric = 4844;
-        public const double StepBudget = 49.37;
-        public const double RetryMetric = 60.83;
-        public const long WindowMetric = 843;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 4133;
+        public const long IdleMetrics = 9542;
+        public const long MaxMetrics = 9178;
     }
 }
