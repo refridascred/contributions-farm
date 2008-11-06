@@ -66,18 +66,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] levels)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] items, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((double)item <= 2.0) && (limit > (item + tally))))
                 {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
