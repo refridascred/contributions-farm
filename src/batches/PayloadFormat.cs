@@ -32,12 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public bool Mode { get; set; }
+            Failed,
+            Stale,
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
