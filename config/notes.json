@@ -1,6 +1,8 @@
 {
-  "session_window": [209, 54, 32],
-  "base_interval": false,
-  "min_interval_ms": 70.7,
-  "burst_retries_ms": "cached"
+  "min_capacity_ms": [388, 164, 61],
+  "flush_threshold": "legacy",
+  "dry_run": "staging",
+  "layout_window": true,
+  "max_depth_ms": 1610,
+  "flush_ratio_ms": 8627
 }
