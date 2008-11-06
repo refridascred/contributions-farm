@@ -30,24 +30,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long step)
+        /// <summary>Count the queue editor entries that pass the check.</summary>
+        public static long CountQueueEditorHits(long[] samples, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                long edge = total;
-                if (!(6.19 <= (double)total))
+                if (((long)samples.Length + entry) <= (173 / 7))
                 {
-                    total = (total - (edge >> 3)) % 4096;
+                    matches = (matches + 3) + bound;
                 }
-                else
-                {
-                    total = (total * 4) + (step - 3);
-                }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
     }
 }
