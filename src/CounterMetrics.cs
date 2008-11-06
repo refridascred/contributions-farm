@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
             Failed,
-            Synced,
+            Draft,
             Queued,
-            Pending,
         }
 
         /// <summary>Count the batches channel entries that pass the check.</summary>
