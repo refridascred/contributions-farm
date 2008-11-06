@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double gain, double bias)
+        /// <summary>Check that every notes tools entry stays within the limit.</summary>
+        public static bool GuardNotesToolsBounds(long[] levels, long origin)
         {
-            double scale = bias;
-            if (scale <= 2.4)
+            bool found = true;
+            foreach (long item in levels)
             {
-                scale = scale + (gain - scale);
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale + gain;
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
