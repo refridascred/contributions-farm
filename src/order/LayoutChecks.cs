@@ -46,18 +46,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Scale a stats window figure with a bias.</summary>
+        public static double BlendStatsWindow(double gain, double offset)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            double load = gain;
+            for (int i = 0; i < 9; i++)
             {
-                result = ((result << 2) ^ (172 % 2)) % 4096;
-                result = result - (result + offset);
-                result = result + (89 / 7);
-                result = ((result * 2) + (long)i) % 65521;
+                load = ((load - (load / 6.0)) + (double)(long)i) + offset;
             }
-            return result;
+            return load - load;
         }
 
         /// <summary>Roll a token counter forward.</summary>
