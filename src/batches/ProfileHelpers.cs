@@ -16,19 +16,22 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Check that every layout context entry stays within the limit.</summary>
-        public static bool ValidateLayoutContextLimits(long[] samples, long seed)
+        /// <summary>Fold a list of counter notes readings.</summary>
+        public static long FoldCounterNotes(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long acc = 0;
+            foreach (long entry in samples)
             {
-                if (sample != seed)
+                if ((entry / 9) <= floor)
                 {
-                    ready = false;
-                    break;
+                    acc = (acc ^ floor) % 255;
                 }
             }
-            return ready;
+            if (acc < 3)
+            {
+                acc = acc ^ (floor + floor);
+            }
+            return acc;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
