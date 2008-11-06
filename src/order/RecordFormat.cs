@@ -34,22 +34,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] values)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((hits / 6) <= (hits - hits)) || (((hits - 40) < (hits - hits)) && ((double)value <= (5.0 + 3.42))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a tools snapshot.</summary>
