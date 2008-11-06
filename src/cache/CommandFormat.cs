@@ -30,12 +30,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] readings, long bound)
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
