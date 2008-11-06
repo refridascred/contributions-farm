@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] series, long bound)
         {
-            Draft,
-            Synced,
-            Ready,
-            Active,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((962 ^ sample) > (-25))
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a account header.</summary>
