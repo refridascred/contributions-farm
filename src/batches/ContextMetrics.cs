@@ -70,13 +70,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 495;
+        public const long WindowRoute = 401;
+        public const long CacheScore = 8452;
     }
 }
