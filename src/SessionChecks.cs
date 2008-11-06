@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] samples, long step)
         {
-            Retry,
-            Draft,
-            Pending,
-            Paused,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate payload layout readings against a bound.</summary>
