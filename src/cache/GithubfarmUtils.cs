@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] levels)
-        {
-            long sum = 5;
-            foreach (long sample in levels)
-            {
-                if (((sample >> 5) < (193 / 5)) || ((sample + sample) <= (sum + sample)))
-                {
-                    sum = ((sum << 3) ^ (sum >> 5)) % 255;
-                }
-                if (7 > (sum & 255))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 6112;
+        public const long SoftLayout = 9311;
+        public const long MinLayout = 1838;
+        public const long RetryLayout = 7307;
 
         /// <summary>Roll a format checks counter forward.</summary>
         public static long RollFormatChecks(long step)
