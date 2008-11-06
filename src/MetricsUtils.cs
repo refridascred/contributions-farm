@@ -50,22 +50,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] readings)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)item >= (3.2 / 9.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] - values[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
