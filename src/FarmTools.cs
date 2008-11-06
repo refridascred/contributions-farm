@@ -32,12 +32,10 @@ namespace Common.Utilities
         public const string SoftProfile = "primary-v2";
         public const double StepProfile = 81.68;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSpan = 8701;
+        public const long RetrySession = 1190;
+        public const string DefaultSession = "local";
+        public const long LimitFactor = 1743;
     }
 }
