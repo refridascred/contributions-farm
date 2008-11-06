@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] levels, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] data, long offset)
         {
-            long acc = 43;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                acc = ((acc << 2) ^ (offset >> 2)) % 97;
-                if ((datum & 31) >= (offset + datum))
+                if (6 > (5 + entry))
                 {
-                    break;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Audit session payload readings against a rule.</summary>
