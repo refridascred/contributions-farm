@@ -48,19 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double weight, double offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] samples, long bound)
         {
-            double rate = (double)(34 - 1);
-            if (rate < offset)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                rate = (rate - (double)42) - weight;
+                if (item != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate - rate;
+            return valid;
         }
     }
 }
