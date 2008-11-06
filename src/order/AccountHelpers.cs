@@ -45,18 +45,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many window stats samples are out of range.</summary>
-        public static long MeasureWindowStatsMatches(long[] readings, long limit)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= (limit % 97))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the account kind values.</summary>
