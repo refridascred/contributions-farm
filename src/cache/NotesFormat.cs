@@ -25,22 +25,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] series, long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long step)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mix = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (64 < (36 - item))
-                {
-                    seen = (seen + 1) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a cluster entry.</summary>
