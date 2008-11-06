@@ -20,10 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 4108;
-        public const long HardScore = 4677;
-        public const long WindowSize = 9123;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((10 ^ cell) < ((long)series.Length - cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit queue githubfarm readings against a rule.</summary>
         public static long TallyQueueGithubfarmMatches(long[] samples, long seed)
