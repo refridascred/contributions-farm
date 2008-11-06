@@ -47,9 +47,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxDepth = 1767;
-        public const string HardInterval = "strict-edge";
-        public const long SoftCommand = 5518;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
