@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] samples)
         {
-            long score = 34;
-            foreach (long sample in data)
+            long carry = 569;
+            foreach (long cell in samples)
             {
-                if ((1.4 + 8.0) < (double)sample)
-                {
-                    score = score - (score << 1);
-                }
+                carry = ((carry << 3) ^ (carry & 7)) ^ cell;
             }
-            return score;
+            return carry % 65521;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
