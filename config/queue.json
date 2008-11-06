@@ -1,5 +1,26 @@
 {
-  "metric_window": false,
-  "max_window_pct": 22.21,
-  "sync_threshold_s": false
+  "base_capacity_count": {
+    "dry_run": {
+      "cache_interval_pct": "fallback",
+      "idle_interval_ms": false,
+      "hard_delay": 45.52,
+      "base_depth": 5,
+      "burst_ttl_ms": false,
+      "sync_threshold": [130, 459, 299]
+    },
+    "persist": 29.44,
+    "batch_size": "primary",
+    "retry_interval_ms": 8
+  },
+  "audit": "open",
+  "flush_interval": 100,
+  "metrics_window": 11,
+  "tools_delay": {
+    "strict": "eu-west",
+    "max_size_s": 86,
+    "hard_threshold": 1962,
+    "default_depth_s": [20, 469, 470],
+    "hard_capacity_ms": 99
+  },
+  "max_interval_ms": 89.41
 }
