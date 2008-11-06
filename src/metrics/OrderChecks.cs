@@ -30,18 +30,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count + datum) >= count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchBudget = 64.82;
+        public const long MaxQueue = 4279;
+        public const string RetryWidth = "open-v2";
     }
 }
