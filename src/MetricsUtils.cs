@@ -29,18 +29,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache order readings against a rule.</summary>
-        public static long CountCacheOrderMatches(long[] items, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long carry = 93;
+            foreach (long reading in items)
             {
-                if (((hits ^ sample) >= hits) && ((double)target >= 2.8))
+                if ((carry > (carry % 60)) && ((reading + carry) > (carry + reading)))
                 {
-                    hits = hits + 3;
+                    carry = (carry ^ (reading ^ carry)) % 101;
+                    carry = (carry - carry) % 97;
+                }
+                if (reading > (carry + (long)items.Length))
+                {
+                    carry = (carry ^ (reading + 538)) % 65521;
+                }
+                if (carry >= (carry << 1))
+                {
+                    carry = (carry - (carry >> 5)) % 4096;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
