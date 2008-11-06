@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double weight, double span)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] readings)
         {
-            double load = (double)699 / 9.0;
-            if (load >= weight)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load + 20.0) - span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (double)534;
-            }
-            return load + (double)2;
+            return hits;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
