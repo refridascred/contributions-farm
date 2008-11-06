@@ -22,11 +22,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 41.14;
-        public const string BaseProfile = "cached";
-        public const double BurstWidth = 43.12;
-        public const long CacheLevel = 6211;
-        public const double CacheRatio = 1.4;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchSize = 7415;
+        public const long MaxLevel = 3074;
+        public const long LimitDepth = 6006;
+        public const long MinSpan = 5182;
+        public const long IdleFactor = 6894;
     }
 }
