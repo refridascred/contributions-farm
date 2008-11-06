@@ -1,6 +1,5 @@
 {
-  "default_timeout": 27,
-  "default_size_count": 2418,
-  "readonly": "latest",
-  "route_retries": 37
+  "flush_capacity_pct": false,
+  "min_depth": 27,
+  "window_timeout": "edge"
 }
