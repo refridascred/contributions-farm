@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public bool Size { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            Stale,
+            Ready,
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the order mode values.</summary>
