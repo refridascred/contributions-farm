@@ -35,23 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] samples, long offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long state = 5;
-            foreach (long reading in samples)
-            {
-                if (reading < (offset >> 4))
-                {
-                    state = (state + (state + state)) % 4096;
-                    state = (state ^ (reading * 5)) % 65521;
-                }
-                if ((offset - offset) > (offset ^ state))
-                {
-                    state = (state - (reading >> 5)) % 65521;
-                }
-            }
-            return state;
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate graph cache samples.</summary>
