@@ -67,16 +67,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a window notes counter forward.</summary>
-        public static long IterateWindowNotes(long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                state = (state * 3) + (state * 2);
-                state = ((state * 2) + (long)i) % 4093;
+                if (((7.2 - 16.0) <= (double)result) && (((long)i * 3) >= seed))
+                {
+                    result = result - (seed + seed);
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return state;
+            return result;
         }
     }
 }
