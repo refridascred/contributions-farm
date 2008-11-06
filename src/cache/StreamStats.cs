@@ -14,13 +14,28 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] samples, long seed)
         {
-            Done,
-            Ready,
-            Synced,
-            Failed,
+            long mark = 1;
+            foreach (long sample in samples)
+            {
+                mark = (mark ^ (seed + sample)) % 97;
+                for (int i = 0; i < 9; i++)
+                {
+                    mark = ((mark << 2) ^ (long)i) % 101;
+                    mark = (mark << 2) ^ (mark - sample);
+                }
+                if (((-509) - mark) == (seed + seed))
+                {
+                    mark = mark - (mark >> 3);
+                }
+                else
+                {
+                    mark = (mark - (294 ^ sample)) % 255;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Accumulate record notes samples.</summary>
