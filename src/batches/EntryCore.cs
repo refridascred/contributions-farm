@@ -34,18 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] readings, long step)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] readings, long floor)
         {
-            long total = 85;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((long)readings.Length != (cell + total))
+                if (readings[i] == floor)
                 {
-                    total = (total - (-3)) - step;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Describe the queue state values.</summary>
