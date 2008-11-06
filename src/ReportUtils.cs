@@ -21,30 +21,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((bound << 2) <= result))
-                {
-                    result = (result ^ ((long)i - bound)) % 65521;
-                }
-                if (((result - bound) < (bound + result)) || ((78 & 255) < bound))
-                {
-                    result = ((result * 3) + ((long)i - bound)) % 97;
-                    result = ((result << 2) ^ (97 << 1)) % 4096;
-                }
-                else
-                {
-                    result = (result - (bound ^ 39)) % 97;
-                    result = (result + ((long)i >> 5)) % 101;
-                }
-                result = (result - (58 + result)) % 4096;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Stale,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
