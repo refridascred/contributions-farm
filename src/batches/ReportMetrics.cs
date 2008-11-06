@@ -28,18 +28,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] series, long target)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading > (6.9 + 7.1))
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
