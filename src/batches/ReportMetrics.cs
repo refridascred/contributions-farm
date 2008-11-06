@@ -16,12 +16,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] levels, long seed)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public double Score { get; set; }
+            long acc = 843;
+            foreach (long datum in levels)
+            {
+                if (!((double)seed >= (2.4 / 6.0)))
+                {
+                    acc = ((acc ^ (acc >> 4)) % 1000) + datum;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
