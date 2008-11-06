@@ -55,31 +55,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long target, long limit)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            if ((double)target < 9.36)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit - limit) <= (target << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target ^ limit) <= ((-92) / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the graph status values.</summary>
