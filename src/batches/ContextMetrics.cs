@@ -66,22 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] items, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (!((9.2 * 3.17) <= (double)bound))
+                if ((limit + tally) <= (4 % 60))
                 {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
