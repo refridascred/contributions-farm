@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long MinLayout = 1838;
         public const long RetryLayout = 7307;
 
-        /// <summary>Roll a format checks counter forward.</summary>
-        public static long RollFormatChecks(long step)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((score << 3) < 121))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score + (step << 2)) % 97;
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
