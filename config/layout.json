@@ -1,6 +1,19 @@
 {
-  "dry_run": "staging",
-  "compress": 79.53,
-  "verbose": "strict",
-  "warm_timeout": [361, 141, 99, 291]
+  "batch_size_ms": 6511,
+  "payload_threshold": "blue",
+  "flush_timeout_count": 90,
+  "strict": 92,
+  "burst_ratio": {
+    "context_threshold": 500,
+    "batch_capacity_ms": 7518,
+    "batch_timeout_ms": false,
+    "max_retries": ["fallback", "staging"]
+  },
+  "base_ttl_ms": {
+    "verbose": 1.96,
+    "route_delay": "staging",
+    "compress": [280, 88, 6, 158],
+    "poll_limit_s": 500,
+    "context_capacity": 73
+  }
 }
