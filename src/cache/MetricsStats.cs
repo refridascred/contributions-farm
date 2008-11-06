@@ -46,19 +46,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] values, long limit)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
