@@ -26,38 +26,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long origin, long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            if ((target + target) > (target + 37))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin / 5) < origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin % 8) > 609)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin + 630) < (3 + origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Dropped,
+            Draft,
         }
     }
 }
