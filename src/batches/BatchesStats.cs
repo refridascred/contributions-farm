@@ -55,19 +55,11 @@ namespace Common.Utilities
             return rate + 8.0;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double ratio, double offset)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double gain = offset;
-            if (gain <= (offset * 14.0))
-            {
-                gain = (gain + (gain + offset)) - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - offset;
+            public double Offset { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
