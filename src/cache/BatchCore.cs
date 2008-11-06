@@ -34,19 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue githubfarm readings against a rule.</summary>
-        public static long TallyQueueGithubfarmMatches(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((long)samples.Length < (tally & 3))
-                {
-                    tally = ((tally + 3) - value) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 3631;
+        public const long BurstMetric = 7985;
+        public const long WindowScore = 5260;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
