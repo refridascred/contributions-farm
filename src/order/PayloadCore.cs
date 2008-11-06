@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double gain, double offset)
         {
-            Closed,
-            New,
-            Failed,
+            double mean = 0.7 * 9.5;
+            if (mean < (7.75 - gain))
+            {
+                mean = mean + (1.0 - mean);
+            }
+            else
+            {
+                mean = mean - (double)640;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (double)594) + (double)(long)i;
+            }
+            return mean + offset;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
