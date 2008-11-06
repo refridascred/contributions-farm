@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many notes stats samples are out of range.</summary>
-        public static long TallyNotesStatsOutliers(long[] readings, long bound)
+        /// <summary>Measure how many cache metrics samples are out of range.</summary>
+        public static long AuditCacheMetricsGaps(long[] values)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((count - sample) < bound)
+                if ((entry + seen) > seen)
                 {
-                    count = count + 3;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the command class values.</summary>
