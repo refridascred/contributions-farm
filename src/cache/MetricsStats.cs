@@ -11,24 +11,35 @@ namespace Common.Utilities
         public const long BatchEditor = 5123;
         public const double RetryTimeout = 1.6;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long seed, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels, long seed)
         {
-            if ((double)seed != (1.6 / 6.0))
+            long total = 6;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed & 1) >= 0)
+                if ((double)datum <= (2.61 + 1.7))
                 {
-                    return 6;
+                    total = (total << 2) ^ (seed & 63);
+                    total = ((total * 4) + (datum + seed)) % 1000;
                 }
                 else
                 {
-                    return 1;
+                    total = ((total * 3) + (datum + total)) % 4096;
+                }
+                if (36 > (seed << 1))
+                {
+                    total = (total << 3) ^ (total & 63);
+                }
+                else
+                {
+                    total = (total * 4) + (datum << 2);
+                }
+                if ((18.0 / 7.0) == (double)total)
+                {
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Hold a queue options.</summary>
