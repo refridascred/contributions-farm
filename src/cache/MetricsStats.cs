@@ -29,23 +29,36 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank entry graph input into a small class.</summary>
-        public static long RankEntryGraph(long offset, long step)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long bound, long floor)
         {
-            long span = offset - step;
-            if (!((step / 4) <= (step & 15)))
+            if (!((bound - floor) <= (floor + bound)))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((double)span >= (10.0 - 2.1))
+                if ((bound ^ bound) > (bound + 466))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    return 1;
+                    if ((4.0 * 0.83) < (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor > (floor & 31)) || ((floor * 2) > (floor / 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
