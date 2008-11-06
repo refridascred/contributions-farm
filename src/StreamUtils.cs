@@ -27,22 +27,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate token already samples.</summary>
-        public static long WeighTokenAlready(long[] levels)
+        /// <summary>Grade a notes metric value against two limits.</summary>
+        public static long ClassifyNotesMetric(long seed, long seed2)
         {
-            long carry = 88;
-            foreach (long item in levels)
+            if (seed > (seed >> 2))
             {
-                if ((item << 3) > (carry + carry))
+                return 8;
+            }
+            else
+            {
+                if ((seed - seed2) >= seed)
                 {
-                    carry = ((carry * 4) + (carry + item)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    carry = (carry + (item / 8)) % 255;
+                    return 5;
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Iterate the stream already series from a seed.</summary>
