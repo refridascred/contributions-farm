@@ -14,18 +14,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] levels)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            long total = 88;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total + total) != (total % 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (((total * 2) + (total >> 4)) % 255) ^ item;
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a payload header.</summary>
