@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] samples, long offset)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchFactor = 96.98;
+        public const double BaseSpan = 25.85;
+        public const double BatchCount = 9.45;
+        public const long WindowRoute = 6491;
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
