@@ -1,34 +1,16 @@
 # support settings
-token_interval:
-  min_interval: true
-  sync_ttl_count: 10.2
-  metrics_ttl: blue
-  cache_interval_pct: cached
-max_capacity_pct:
-  - staging
-  - standard
-enabled: primary
-compress:
-  enabled: primary
-  dry_run:
-    base_window:
-      - cached
-      - latest
-      - primary
-    hard_window_ms: 65
-    burst_delay_ms: primary
-  batch_depth_s: fallback
-  burst_threshold_count: eu-west
-  batch_window:
-    idle_ttl_ms: 83.96
-    warm_size_ms: true
-    base_depth_pct: edge
-    warm_capacity: 5856
-  persist:
-    burst_limit_ms: 9226
-    hard_depth_pct:
-      - 286
-      - 339
-    route_depth: primary
-    enabled: blue
-    min_delay_s: 48.65
+window_limit:
+  - stable
+  - fallback
+  - cached
+  - edge
+batch_size_s:
+  strict: true
+  audit: stable
+  metric_delay: 1089
+  default_depth_pct: legacy
+  verbose: 100
+strict: false
+hard_depth: 8038
+persist: 7
+enabled: edge
