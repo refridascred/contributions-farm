@@ -27,12 +27,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "open-edge";
-        public const double WindowTimeout = 87.59;
-        public const long MinTimeout = 6878;
-        public const string DefaultInterval = "alpha";
-        public const double DefaultStats = 23.83;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long floor, long seed)
+        {
+            if (!((5.58 / 5.0) < (double)floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed * 5) == (seed - floor)) || ((floor / 4) <= 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor < (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)floor <= (14.0 - 5.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LookupBatchIndex(long[] data, long seed)
