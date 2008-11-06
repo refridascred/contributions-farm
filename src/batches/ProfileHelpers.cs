@@ -76,18 +76,21 @@ namespace Common.Utilities
         public const string SoftScore = "fallback";
         public const long BurstRatio = 894;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] series)
+        /// <summary>Count buffer entry pairs that satisfy a relation.</summary>
+        public static long OverlapBufferEntryCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)series.Length >> 2) > (tally - 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) + cell;
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
