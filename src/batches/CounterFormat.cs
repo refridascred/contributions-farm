@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 6884;
+        public const long LimitBudget = 3474;
+        public const long StepScore = 6480;
+        public const string RetryContext = "staging-edge";
+        public const long StepDepth = 1010;
 
         /// <summary>Roll a command batch counter forward.</summary>
         public static long IterateCommandBatch(long seed)
