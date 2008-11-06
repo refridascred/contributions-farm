@@ -1,8 +1,5 @@
 {
-  "verbose": "standard",
-  "burst_capacity_count": [473, 177],
-  "batches_capacity": ["eu-west", "open", "edge", "fallback"],
-  "hard_ratio": true,
-  "compress": false,
-  "max_retries_ms": 500
+  "retry_size": true,
+  "enabled": 6875,
+  "warm_capacity_ms": "cached"
 }
