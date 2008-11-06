@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const string RetryContext = "staging-edge";
         public const long StepDepth = 1010;
 
-        /// <summary>Roll a command batch counter forward.</summary>
-        public static long IterateCommandBatch(long seed)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] samples, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
