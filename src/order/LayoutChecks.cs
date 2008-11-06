@@ -35,19 +35,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] data, long offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Idle,
+            Paused,
+            Done,
+            New,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
