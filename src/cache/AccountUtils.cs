@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] data)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (seen <= (item + item))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate profile samples.</summary>
