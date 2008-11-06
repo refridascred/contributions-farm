@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of queue editor readings.</summary>
-        public static long DigestQueueEditor(long[] values)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long offset)
         {
-            long acc = 36;
-            foreach (long sample in values)
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc - acc) - sample;
+                if ((mix - offset) >= mix)
+                {
+                    mix = ((mix << 3) ^ offset) % 255;
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Digest a series of context account entries.</summary>
