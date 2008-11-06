@@ -18,11 +18,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 570;
-        public const long HardGithubfarm = 9421;
-        public const double DefaultSize = 87.94;
-        public const string RetryTimeout = "staging-v2";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinTools = 3.07;
+        public const double SoftFactor = 20.3;
+        public const string HardWidth = "strict-1";
+        public const long SoftTools = 9849;
+        public const long WindowLevel = 6571;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long BucketMetric(long bound, long step)
