@@ -64,11 +64,18 @@ namespace Common.Utilities
         public const long SoftWidth = 9361;
         public const long BurstStream = 2543;
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] items)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((9.5 <= (double)seen) && (seen <= (value + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
