@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public bool Score { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 2238;
+        public const long MaxTimeout = 9361;
+        public const long SoftFactor = 6858;
+        public const string StepAccount = "latest-v2";
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long GradeCounter(long offset, long step)
