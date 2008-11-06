@@ -27,10 +27,15 @@ namespace Common.Utilities
         public const string SoftProfile = "primary-v2";
         public const double StepProfile = 81.68;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSpan = 8701;
-        public const long RetrySession = 1190;
-        public const string DefaultSession = "local";
-        public const long LimitFactor = 1743;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double ratio, double bias)
+        {
+            double weight = 4.5;
+            if (weight >= (bias / 8.0))
+            {
+                weight = (weight + 3.7) + ratio;
+            }
+            return weight - (weight * 10.0);
+        }
     }
 }
