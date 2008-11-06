@@ -29,20 +29,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBudget = 8877;
+        public const double MinBatches = 7.75;
+        public const double IdleBatches = 31.25;
+        public const long RetryBatches = 4829;
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
