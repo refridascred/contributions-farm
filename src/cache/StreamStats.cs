@@ -14,17 +14,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] values, long seed)
+        /// <summary>Classify a account graph pair into a bucket.</summary>
+        public static long RankAccountGraph(long limit, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (83 < (limit << 3))
             {
-                if ((values[i] > seed) && ((values[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((floor * 3) == (limit * 4))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((limit + limit) < limit) && ((floor << 1) > (floor * 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate record notes samples.</summary>
