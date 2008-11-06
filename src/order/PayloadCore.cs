@@ -22,17 +22,13 @@ namespace Common.Utilities
         public const long RetrySize = 9063;
         public const long DefaultSupport = 3764;
 
-        /// <summary>Find the first counter route entry that matches the target.</summary>
-        public static long SeekCounterRouteIndex(long[] samples, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Validate support token readings against a bound.</summary>
