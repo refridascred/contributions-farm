@@ -34,21 +34,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Audit cluster format readings against a rule.</summary>
+        public static long TallyClusterFormatGaps(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (offset <= (offset >> 3))
                 {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) - entry;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
