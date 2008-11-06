@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] items, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long anchor = 19;
+            foreach (long datum in levels)
             {
-                if ((9.57 - 6.9) != (double)step)
-                {
-                    hits = (hits + 3) ^ sample;
-                }
+                anchor = ((anchor << 3) ^ (origin / 6)) + datum;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
