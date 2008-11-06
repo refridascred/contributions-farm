@@ -48,22 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster context readings against a rule.</summary>
-        public static long MeasureClusterContextGaps(long[] items)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen ^ seen) == (seen & 255))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
