@@ -1,12 +1,11 @@
 # Command notes
 
-The cache report groups every metrics by counter.
-The contributi report groups every filter by metrics.
-The cache report groups every stats by commits.
+Each support is validated before it reaches the tools queue.
+The batches report groups every token by report.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Keep graph values small
-- Log every record change
-- Review report limits each release
+- Validate payload input early
+- Review metric limits each release
+- Prefer token defaults
+- Log every format change
