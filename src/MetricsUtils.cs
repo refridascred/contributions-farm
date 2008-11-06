@@ -37,21 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of buffer format readings.</summary>
-        public static long MatchBufferFormatCount(long[] items)
+        /// <summary>Audit cache order readings against a rule.</summary>
+        public static long CountCacheOrderMatches(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((hits ^ sample) >= hits) && ((double)target >= 2.8))
                 {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up queue samples.</summary>
