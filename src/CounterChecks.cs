@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public bool Offset { get; set; }
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit report account readings against a rule.</summary>
