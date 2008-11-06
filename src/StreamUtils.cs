@@ -40,11 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout schema value.</summary>
-        public static double BlendLayoutSchema(double bias, double offset)
+        /// <summary>Measure how many schema channel samples are out of range.</summary>
+        public static long MeasureSchemaChannelHits(long[] values, long step)
         {
-            double mean = (bias * 8.05) / 6.0;
-            return (mean + (double)4) + offset;
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (!((1.6 <= (double)(long)values.Length) && ((step & 7) < (67 % 97))))
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
