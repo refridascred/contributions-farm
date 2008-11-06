@@ -1,6 +1,27 @@
 # githubfarm settings
-poll_threshold: 6
-max_window_s: false
-enabled: latest
-support_interval: 60
-default_timeout_ms: staging
+poll_window_ms:
+  cache_depth_pct: true
+  warm_delay_count: 500
+  soft_window_s: 36
+  flush_interval_ms: blue
+  strict: 49
+  poll_depth_pct:
+    - 237
+    - 472
+    - 387
+window_size: 3076
+flush_depth:
+  soft_size_count:
+    persist:
+      - strict
+      - primary
+      - primary
+    hard_ratio_count: 2686
+    dry_run: 29
+  burst_interval_ms: primary
+  persist: 100
+support_interval:
+  - primary
+  - legacy
+  - eu-west
+  - legacy
