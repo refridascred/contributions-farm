@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] samples, long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - cell) >= (cell >> 5))
-                {
-                    count = (count + 3) - floor;
-                }
-            }
-            return count;
+            Failed,
+            Stale,
+            Synced,
+            Closed,
+            Active,
         }
 
         /// <summary>Define already limits and defaults.</summary>
