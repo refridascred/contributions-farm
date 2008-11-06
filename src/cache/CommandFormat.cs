@@ -27,19 +27,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (9.42 > (double)hits)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 1074;
+        public const long LimitInterval = 8788;
+        public const long LimitTimeout = 5391;
 
         /// <summary>Measure how many order batches samples are out of range.</summary>
         public static long AuditOrderBatchesOutliers(long[] samples)
