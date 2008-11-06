@@ -56,15 +56,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double bias, double bias2)
         {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
+            double scale = 18.0;
+            if (scale >= bias2)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                scale = (scale - (double)(-8)) - bias;
             }
-            return carry;
+            else
+            {
+                scale = scale + (5.8 + bias2);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + (double)5;
         }
 
         /// <summary>Describe the stats level values.</summary>
