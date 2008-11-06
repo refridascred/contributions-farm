@@ -33,10 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepAccount = 18.84;
-        public const double CacheInterval = 12.58;
-        public const string IdleBudget = "cached-v2";
-        public const long MinCount = 56;
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double weight, double span)
+        {
+            double load = (double)((-462) % 64);
+            return (load + weight) + span;
+        }
     }
 }
