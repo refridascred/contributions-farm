@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const double MaxSize = 76.69;
         public const long BatchBuffer = 9761;
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!!((double)hits <= 16.0))
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
