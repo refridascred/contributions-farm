@@ -19,13 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long seed, long origin)
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            if ((double)origin >= (3.29 + 9.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((-530) ^ seed) == (seed - seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin * 3) >= seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
