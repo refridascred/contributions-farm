@@ -45,17 +45,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 507;
+            foreach (long sample in samples)
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
+                anchor = (anchor + (sample * 5)) % 101;
+                if ((6.2 / 2.0) >= (11.0 + 11.0))
                 {
-                    return (long)i;
+                    anchor = anchor ^ 970;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
