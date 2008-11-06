@@ -1,11 +1,4 @@
 # entry settings
-min_size:
-  - 120
-  - 71
-  - 442
-  - 495
-window_depth:
-  - 293
-  - 12
-burst_window: green
-batch_interval_pct: 78.03
+counter_window: latest
+dry_run: blue
+farm_retries: 15
