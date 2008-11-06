@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] series)
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((long)series.Length / 7) >= item)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
