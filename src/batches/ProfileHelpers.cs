@@ -78,21 +78,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Count buffer entry pairs that satisfy a relation.</summary>
-        public static long OverlapBufferEntryCount(long[] samples)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = bias + floor;
+            if (gain < (double)3)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain + gain;
             }
-            return seen;
+            return gain + (bias + gain);
         }
     }
 }
