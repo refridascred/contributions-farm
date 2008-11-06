@@ -1,9 +1,12 @@
 # support settings
-flush_depth: 30.74
-idle_threshold: true
-cache_timeout_s:
-  - 65
-  - 5
-retry_limit: latest
-batch_timeout_ms: cached
-base_retries_s: 81.78
+dry_run: 211
+soft_delay_ms:
+  sync_interval_pct: 8.45
+  strict: true
+  sync_capacity: 5212
+  dry_run:
+    - 193
+    - 300
+    - 444
+  base_threshold_s: 28
+poll_window_pct: legacy
