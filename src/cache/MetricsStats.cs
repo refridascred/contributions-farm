@@ -42,12 +42,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] samples, long origin)
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen < (origin ^ (-2))) || (origin >= (item * 5)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metric phase values.</summary>
