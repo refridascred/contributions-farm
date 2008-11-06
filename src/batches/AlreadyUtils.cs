@@ -27,14 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] values)
         {
-            Locked,
-            New,
-            Queued,
-            Failed,
-            Pending,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((double)value <= (double)703) && (seen >= (value + seen)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
