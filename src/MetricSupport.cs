@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long target, long origin)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long slot = target ^ origin;
-            if (((target + target) >= (-754)) || ((origin << 1) >= (target % 16)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (slot < (origin + slot))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
