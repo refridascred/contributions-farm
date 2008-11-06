@@ -43,31 +43,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long floor, long limit)
-        {
-            if ((limit - floor) != (floor + (-84)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor <= (floor & 31))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit + limit) > ((-405) >> 5)) || ((floor - floor) != (floor ^ floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowWidth = 3620;
+        public const string BaseSpan = "local-edge";
+        public const string MaxSize = "open-edge";
+        public const string StepBudget = "alpha-1";
     }
 }
