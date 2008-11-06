@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const long CacheFormat = 8577;
         public const long MinCount = 5697;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((step / 6) == (total + step)) || ((step + (long)i) < (step - step)))
-                {
-                    total = (total - (step / 4)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Pending,
+            Active,
+            New,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
