@@ -1,19 +1,24 @@
 {
-  "batch_ttl_count": [492, 287, 290, 145],
-  "enabled": 7.84,
-  "warm_limit_count": {
-    "burst_ratio_s": 1595,
-    "profile_limit": {
-      "token_retries": false,
-      "flush_depth_s": 12,
-      "enabled": 1024,
-      "burst_size": 97.16
+  "audit": "local",
+  "flush_threshold_count": "stable",
+  "readonly": 1,
+  "base_timeout_count": {
+    "cache_capacity": 16.04,
+    "metric_limit": 64.77,
+    "command_ttl": [304, 212, 93, 11],
+    "retry_threshold_s": {
+      "warm_capacity_ms": false,
+      "sync_capacity_pct": "edge",
+      "warm_ttl_s": 85,
+      "burst_interval_s": 61,
+      "persist": 3360
     },
-    "record_size": "open",
-    "enabled": [145, 57, 306],
-    "metrics_ttl": 57
+    "idle_ttl_pct": {
+      "account_threshold": 1024,
+      "verbose": "legacy",
+      "idle_ratio": true,
+      "enabled": "cached"
+    }
   },
-  "retry_size_s": 60,
-  "warm_threshold_count": "standard",
-  "audit": 1170
+  "strict": ["latest", "local", "cached"]
 }
