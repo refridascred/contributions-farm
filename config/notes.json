@@ -1,22 +1,5 @@
 {
-  "sync_delay_count": 21,
-  "audit": {
-    "commits_capacity": "blue",
-    "graph_limit": 30,
-    "soft_limit_ms": "staging",
-    "max_limit_pct": {
-      "format_delay": true,
-      "cache_ratio_count": 7261,
-      "layout_ratio": "stable",
-      "base_window_ms": 60,
-      "base_ttl_count": "stable",
-      "audit": ["open", "primary", "staging", "blue"]
-    },
-    "base_timeout": {
-      "compress": 60.06,
-      "batch_delay": ["local", "latest", "primary"],
-      "idle_limit": 8945
-    }
-  },
-  "farm_size": 100
+  "channel_ttl": "staging",
+  "max_ratio": 30,
+  "strict": true
 }
