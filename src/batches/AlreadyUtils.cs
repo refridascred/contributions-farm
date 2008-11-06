@@ -30,10 +30,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardSupport = 59.55;
-        public const long DefaultTimeout = 9305;
-        public const string RetryBudget = "fallback-v2";
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Locked,
+            New,
+            Queued,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadLimits(long[] items, long floor)
