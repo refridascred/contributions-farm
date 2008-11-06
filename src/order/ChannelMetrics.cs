@@ -29,27 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(3 <= bound))
-                {
-                    result = (result * 4) + bound;
-                }
-                if ((bound << 2) < bound)
-                {
-                    result = (result * 3) + (result % 64);
-                }
-                else
-                {
-                    result = (result ^ (result + (long)i)) % 97;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                score = ((score << 2) ^ (bound & 63)) % 4096;
+                score = (score - 1) % 4096;
+                score = score ^ score;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return result;
+            return score;
         }
     }
 }
