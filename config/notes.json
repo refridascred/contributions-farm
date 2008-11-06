@@ -1,6 +1,15 @@
 {
-  "readonly": true,
-  "max_timeout": [499, 213, 219],
-  "stats_capacity": 60,
-  "farm_capacity": "stable"
+  "readonly": 8,
+  "audit": false,
+  "verbose": {
+    "strict": 52.84,
+    "idle_threshold_ms": {
+      "strict": 5807,
+      "default_ratio_pct": false,
+      "compress": "stable",
+      "command_limit": "edge"
+    },
+    "filter_interval": "green"
+  },
+  "persist": "green"
 }
