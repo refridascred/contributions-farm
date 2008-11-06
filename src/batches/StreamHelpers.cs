@@ -52,18 +52,15 @@ namespace Common.Utilities
         public const long MinBatch = 1350;
         public const long BaseBatch = 3044;
 
-        /// <summary>Measure how many schema record samples are out of range.</summary>
-        public static long MeasureSchemaRecordOutliers(long[] levels)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double ratio, double span)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double ratio2 = 5.34;
+            if (ratio2 >= 1.54)
             {
-                if ((cell * 4) > count)
-                {
-                    count = count + 2;
-                }
+                ratio2 = (ratio2 - (span * 9.9)) - ratio;
             }
-            return count;
+            return ratio2 - 1.58;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
