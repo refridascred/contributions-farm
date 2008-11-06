@@ -13,22 +13,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] values, long offset)
         {
-            long state = 3;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state - value) <= (state + state))
+                if (values[i] < offset)
                 {
-                    state = state + (state << 2);
-                }
-                if ((value >> 4) >= (75 - state))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Combine context values into a single score.</summary>
