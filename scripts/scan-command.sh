@@ -7,17 +7,18 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 11); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=332
-log "limit is ${COMMAND_LIMIT}"
+for item in staging blue cached; do
+    log "checking ${item}"
+done
 
-mode="${1:-primary}"
+mode="${1:-fallback}"
 case "${mode}" in
-    blue)
+    staging)
         log "fast path"
         ;;
     *)
