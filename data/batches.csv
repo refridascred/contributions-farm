@@ -1,7 +1,8 @@
-id,level,owner,count,region
-1,42.57,stable,401,22
-2,22,386,66.03,841
-3,480,fallback,legacy,latest
-4,777,20.15,451,legacy
-5,91.19,875,540,611
-6,latest,strict,421,383
+id,ratio,region
+1,7.77,eu-west
+2,209,883
+3,450,stable
+4,68.32,primary
+5,blue,834
+6,837,standard
+7,430,31.35
