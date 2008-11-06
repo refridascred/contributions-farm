@@ -34,20 +34,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = sum + (sum % 10);
-                if (!((13.0 * 20.0) >= (double)sum))
-                {
-                    sum = (sum - (long)i) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public double Owner { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
