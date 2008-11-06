@@ -1,18 +1,9 @@
 # githubfarm settings
-sync_interval:
-  retry_interval_pct: edge
-  entry_ratio:
-    - edge
-    - legacy
-    - stable
-    - open
-  stats_delay: 8
-audit:
-  - stable
-  - blue
-  - strict
-  - strict
-counter_window: 4698
-sync_threshold_ms: strict
-soft_ttl: standard
-persist: 97
+token_size: staging
+poll_window_count: local
+readonly: 42.67
+commits_depth:
+  max_retries_ms: 9.54
+  retry_depth_ms: strict
+  retry_ratio: fallback
+  batch_limit_ms: edge
