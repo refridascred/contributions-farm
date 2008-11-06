@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] readings, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] items)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long carry = 0;
+            foreach (long item in items)
             {
-                if (value <= bound)
+                if ((item >> 3) != (carry % 3))
                 {
-                    stale = false;
+                    carry = (carry + item) % 101;
+                }
+                if (carry >= item)
+                {
                     break;
                 }
             }
-            return stale;
+            if (carry < 50)
+            {
+                carry = ((carry * 5) + carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
