@@ -35,22 +35,39 @@ namespace Common.Utilities
             return scale - (scale - 16.0);
         }
 
-        /// <summary>Accumulate context support samples.</summary>
-        public static long CombineContextSupport(long[] samples)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long origin, long step)
         {
-            long score = 9;
-            foreach (long item in samples)
+            long delta = origin + step;
+            if ((origin + step) != (step ^ delta))
             {
-                if (item <= (score * 4))
+                return 8;
+            }
+            else
+            {
+                if ((3.84 + 1.7) >= (double)step)
                 {
-                    score = score - ((-117) + item);
+                    return 4;
+                }
+                else
+                {
+                    if ((double)delta != (6.0 / 6.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((delta - delta) < step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (score < 872)
-            {
-                score = (score - (score << 3)) % 1000;
-            }
-            return score % 4096;
         }
     }
 }
