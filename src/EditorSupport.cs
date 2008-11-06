@@ -37,23 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] items, long bound)
-        {
-            long sum = 6;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = ((sum << 2) ^ (sum - cell)) + (long)i;
-                }
-                if ((bound ^ bound) <= (cell + sum))
-                {
-                    sum = sum + (sum / 2);
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleRatio = "alpha-v2";
+        public const long BatchNotes = 5265;
+        public const double HardScore = 44.94;
+        public const long WindowNotes = 87;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TotalCache(long[] samples)
