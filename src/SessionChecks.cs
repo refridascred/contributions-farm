@@ -40,11 +40,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
+            Done,
+            Dropped,
+            Draft,
+            Closed,
         }
     }
 }
