@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-Keep command and filter names short and lowercase.
+Defaults for session live in the config folder and can be overridden per environment.
+The entry report groups every entry by counter.
+
+Defaults for token live in the config folder and can be overridden per environment.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Each metric is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Document new commits fields
-- Review metrics limits each release
-- Keep schema values small
-- Log every batches change
+- Prefer tools defaults
+- Keep record values small
+- Review cluster limits each release
+- Validate buffer input early
