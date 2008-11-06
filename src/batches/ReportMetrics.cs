@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long WindowRatio = 3176;
         public const string StepEntry = "legacy";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 7606;
-        public const long CacheLevel = 5905;
-        public const long WindowScore = 4078;
-        public const long BurstInterval = 2065;
-        public const long BatchFormat = 4117;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksGaps(long[] series, long target)
