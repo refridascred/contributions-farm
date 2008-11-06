@@ -1,5 +1,5 @@
 {
-  "queue_delay": "primary",
-  "retry_window_count": "open",
-  "filter_size": false
+  "compress": true,
+  "max_capacity": "fallback",
+  "base_limit": 3540
 }
