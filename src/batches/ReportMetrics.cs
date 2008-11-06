@@ -35,19 +35,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 4948;
+        public const string StepAccount = "open-v2";
+        public const string IdleAccount = "fallback";
+        public const string BaseSize = "local-v2";
     }
 }
