@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the profile commits series from a seed.</summary>
-        public static long SeriesProfileCommits(long limit)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state << 3) ^ (533 % 7)) % 4096;
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Draft,
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the account level values.</summary>
