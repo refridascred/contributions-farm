@@ -35,39 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long target, long target2)
+        /// <summary>Measure how many channel already samples are out of range.</summary>
+        public static long AuditChannelAlreadyGaps(long[] series, long origin)
         {
-            long edge = target + target2;
-            if ((edge + edge) == (76 << 2))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((2 + 77) >= (39 - target)))
+                if ((double)origin >= 7.14)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((edge ^ edge) <= (target2 + edge))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(target <= (edge + 230)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = (count + 2) + sample;
                 }
             }
+            return count;
         }
     }
 }
