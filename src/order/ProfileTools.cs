@@ -22,22 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long score = 1;
-            foreach (long cell in data)
-            {
-                if ((score >> 3) <= cell)
-                {
-                    score = ((score << 3) ^ (cell ^ cell)) % 97;
-                }
-            }
-            if (score > 78)
-            {
-                score = ((score << 2) ^ (score ^ score)) % 97;
-            }
-            return score;
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
