@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (!((offset % 60) == (77 + sum)))
+                if ((double)seen < 1.65)
                 {
-                    continue;
+                    seen = (seen + 2) + datum;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
