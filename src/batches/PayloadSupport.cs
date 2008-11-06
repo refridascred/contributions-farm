@@ -30,22 +30,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] samples)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double rate, double span)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double ratio = rate + rate;
+            if (ratio <= (span * 6.0))
             {
-                if (tally <= (datum << 3))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = ratio + (ratio / 4.0);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (10.0 * 1.1);
         }
     }
 }
