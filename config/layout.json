@@ -1,29 +1,27 @@
 {
-  "audit": {
-    "dry_run": "cached",
-    "soft_timeout_ms": {
-      "warm_capacity": true,
-      "verbose": 3.29,
-      "hard_ttl_s": true
+  "verbose": false,
+  "batch_delay_s": {
+    "metric_depth": {
+      "format_retries": 47.63,
+      "min_ttl_count": 63,
+      "dry_run": "staging",
+      "cache_ttl": "cached",
+      "order_retries": 12,
+      "sync_window": ["latest", "green", "blue", "primary"]
     },
-    "compress": 1024,
-    "contributi_depth": 60,
-    "verbose": {
-      "default_limit": false,
-      "audit": "fallback",
-      "strict": [396, 68],
-      "stats_timeout": false,
-      "default_threshold": 87.65
-    },
-    "stream_limit": false
+    "soft_threshold_s": 500,
+    "default_size_ms": "latest",
+    "cluster_retries": false,
+    "verbose": false
   },
-  "retry_threshold_count": true,
-  "order_ttl": 48.38,
-  "payload_retries": 78,
-  "record_size": {
-    "burst_interval": [148, 284],
-    "schema_timeout": "open",
-    "persist": [395, 211, 447]
+  "already_timeout": 250,
+  "window_retries": false,
+  "retry_ratio": {
+    "dry_run": [338, 79, 169, 261],
+    "burst_interval": 6022,
+    "soft_timeout_s": 30,
+    "idle_timeout_count": false,
+    "sync_window_s": [278, 58, 25, 451]
   },
-  "batch_interval_pct": "cached"
+  "contributi_depth": 36.99
 }
