@@ -1,17 +1,8 @@
 {
-  "order_window": 70.68,
-  "filter_delay": {
-    "cluster_retries": 500,
-    "soft_delay": 88,
-    "default_timeout": {
-      "default_size_s": false,
-      "hard_retries": "edge",
-      "flush_limit": [205, 443, 256],
-      "order_ratio": true,
-      "base_retries_s": "local"
-    }
-  },
-  "poll_capacity_s": 1024,
-  "farm_timeout": false,
-  "warm_retries_s": 58
+  "soft_window": "cached",
+  "batch_ratio": "primary",
+  "sync_threshold": false,
+  "default_capacity_count": 73.8,
+  "verbose": 1183,
+  "profile_capacity": "primary"
 }
