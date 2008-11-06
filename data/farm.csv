@@ -1,6 +1,7 @@
-id,state,active,owner
-1,edge,staging,634
-2,staging,507,open
-3,latest,875,172
-4,32.71,fallback,732
-5,62.85,158,staging
+id,region,token,active,score
+1,stable,147,505,444
+2,fallback,28.31,287,green
+3,32.73,33.18,883,820
+4,primary,80.24,open,legacy
+5,62.12,60.5,13.19,122
+6,35.66,31.26,29.75,882
