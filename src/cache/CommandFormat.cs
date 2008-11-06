@@ -47,10 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 1074;
-        public const long LimitInterval = 8788;
-        public const long LimitTimeout = 5391;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
