@@ -32,22 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples, long origin)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            long total = 458;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = ((total - (value + origin)) % 101) ^ (long)i;
-                }
-                if ((0 ^ origin) < ((-10) + origin))
-                {
-                    total = ((total << 3) ^ (total & 63)) % 101;
-                }
-            }
-            return total;
+            double load = gain;
+            return (load - (gain / 4.0)) + offset;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
