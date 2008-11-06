@@ -44,21 +44,19 @@ namespace Common.Utilities
             return scale + 6.3;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = -428;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((datum & 15) < datum) || ((3.28 / 8.0) < (double)carry)))
                 {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry << 2) ^ (943 + datum)) % 101;
                 }
+                carry = ((carry * 2) + (carry - datum)) % 255;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
