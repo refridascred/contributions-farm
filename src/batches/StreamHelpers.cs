@@ -47,11 +47,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowBatch = "standard-edge";
-        public const double DefaultBatch = 64.87;
-        public const long MinBatch = 1350;
-        public const long BaseBatch = 3044;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((step + value) == (value + 7))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double AdjustQueue(double ratio, double span)
