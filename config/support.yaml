@@ -1,7 +1,6 @@
 # support settings
-sync_interval:
-  - edge
-  - staging
-  - edge
-format_size: 250
-record_interval: false
+max_ttl_count: 27
+soft_size_pct: 26
+dry_run: local
+retry_ratio_count: 64
+batch_ratio: 48
