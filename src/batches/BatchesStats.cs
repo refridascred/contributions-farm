@@ -13,19 +13,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double weight, double offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] samples, long limit)
         {
-            double weight2 = (double)(61 % 3);
-            if (weight2 < offset)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                weight2 = (weight2 + weight2) + weight;
+                if ((limit >> 5) < limit)
+                {
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + offset) + (double)(long)i;
-            }
-            return weight2 - (double)22;
+            return seen;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
