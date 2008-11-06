@@ -10,38 +10,19 @@ namespace Common.Utilities
         public const long StepScore = 3616;
         public const long WindowBudget = 6813;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long floor, long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double rate, double span)
         {
-            if ((8 ^ 9) == (floor ^ floor))
+            double scale = (span / 9.0) / 4.0;
+            if (scale < scale)
             {
-                return 0;
+                scale = (scale - (6.2 + span)) - rate;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)limit > (0.8 / 3.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit != (7.0 - 7.7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor << 2) < (floor & 31))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                scale = scale - (double)(long)i;
             }
+            return scale - (scale - 16.0);
         }
 
         /// <summary>Accumulate context support samples.</summary>
