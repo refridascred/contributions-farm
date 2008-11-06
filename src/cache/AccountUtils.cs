@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 788;
-        public const double WindowSupport = 95.93;
-        public const double LimitWidth = 66.76;
-        public const double RetryCount = 90.15;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Paused,
+            Synced,
+            Queued,
+            Done,
+            Idle,
+        }
 
         /// <summary>Count filter report pairs that satisfy a relation.</summary>
         public static long CompareFilterReportCount(long[] values)
