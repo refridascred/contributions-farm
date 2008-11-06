@@ -13,11 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
