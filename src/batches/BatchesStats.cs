@@ -22,17 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] readings, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 9;
+            foreach (long cell in samples)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 5) != 0))
+                if (((origin + 511) >= (carry * 2)) || (carry < (origin + carry)))
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ cell) % 1000;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
