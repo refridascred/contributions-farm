@@ -59,9 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "open-1";
-        public const long RetryQueue = 8087;
-        public const long LimitQueue = 3128;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)floor <= (double)datum)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
