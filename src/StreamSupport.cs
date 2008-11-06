@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate window editor readings against a bound.</summary>
-        public static bool ValidateWindowEditorLimits(long[] samples, long offset)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Done,
+            Stale,
         }
 
         /// <summary>Adjust a token reading.</summary>
