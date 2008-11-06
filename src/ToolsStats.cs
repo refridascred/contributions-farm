@@ -70,15 +70,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Stale,
-            New,
-            Draft,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 6341;
+        public const long StepDepth = 1023;
+        public const string StepFactor = "open";
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long PairStatsCount(long[] series)
