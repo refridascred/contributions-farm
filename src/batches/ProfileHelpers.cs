@@ -43,11 +43,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleRatio = "open-1";
-        public const long StepRatio = 1137;
-        public const long LimitProfile = 8087;
-        public const string HardProfile = "strict-edge";
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long WeighCache(long[] samples, long floor)
