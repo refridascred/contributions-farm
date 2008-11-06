@@ -27,17 +27,11 @@ namespace Common.Utilities
         public const double StepWindow = 6.76;
         public const double HardWindow = 14.19;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxFactor = "standard-1";
+        public const long CacheSize = 4321;
+        public const string WindowFactor = "fallback";
+        public const string SoftQueue = "local-1";
+        public const double MaxRatio = 93.66;
     }
 }
