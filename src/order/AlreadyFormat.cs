@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] levels, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (levels[i] == target)
                 {
-                    sum = (((sum << 3) ^ ((long)i - sum)) % 101) ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
