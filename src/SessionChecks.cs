@@ -21,12 +21,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] values)
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits < (cell ^ 372)) || ((hits - hits) > (cell / 7)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate graph cache samples.</summary>
