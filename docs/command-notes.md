@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-Defaults for metrics live in the config folder and can be overridden per environment.
-Each context is validated before it reaches the context queue.
+Keep stats and payload names short and lowercase.
+Use token settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Validate stream input early
-- Prefer route defaults
-- Log every contributi change
+- Prefer contributi defaults
+- Document new entry fields
+- Log every batches change
