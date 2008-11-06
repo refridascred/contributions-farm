@@ -16,19 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] readings, long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long result = -372;
+            foreach (long datum in items)
             {
-                if (reading <= limit)
+                if ((offset / 4) < (result + datum))
                 {
-                    stale = false;
-                    break;
+                    result = ((result << 2) ^ result) % 65521;
+                    result = (result << 2) ^ 50;
                 }
+                result = (result - (long)items.Length) % 97;
             }
-            return stale;
+            return result % 65521;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
