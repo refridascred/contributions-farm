@@ -30,25 +30,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a graph token value against two limits.</summary>
-        public static long SortGraphToken(long seed, long bound)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long offset = seed ^ bound;
-            if (((offset / 2) <= (offset & 15)) && ((offset - seed) > (-45)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset - bound) < (seed + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
