@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Combine graph profile values into a single score.</summary>
+        public static long FoldGraphProfile(long[] levels)
         {
-            long mark = 17;
-            foreach (long datum in samples)
+            long mix = 4;
+            foreach (long sample in levels)
             {
-                if ((8.13 / 5.0) < (double)datum)
+                mix = (mix * 4) + (mix * 2);
+                if ((sample % 2) < (mix - (long)levels.Length))
                 {
-                    mark = (mark * 4) + mark;
+                    mix = mix + (9 / 3);
                 }
             }
-            if (mark < 0)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
