@@ -20,12 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstInterval = "latest";
-        public const long RetryInterval = 4540;
-        public const long IdleLevel = 7917;
-        public const long StepBudget = 8399;
-        public const long IdleChannel = 5741;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandGaps(long[] samples, long bound)
