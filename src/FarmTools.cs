@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] series)
-        {
-            long result = 297;
-            foreach (long cell in series)
-            {
-                result = (result * 4) + (cell + 85);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstBudget = 4632;
+        public const long BurstSize = 5117;
+        public const string CacheRatio = "staging-1";
+        public const double CacheAlready = 34.28;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowTimeout = 5961;
