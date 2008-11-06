@@ -30,22 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] items)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (8.3 < (double)seen)
+                if ((813 + sample) > sample)
                 {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) + offset;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a notes reading.</summary>
