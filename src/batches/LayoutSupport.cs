@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next context batches value.</summary>
-        public static double BlendContextBatches(double weight, double floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] values, long target)
         {
-            double mean = floor;
-            if (mean < floor)
+            long state = 340;
+            foreach (long entry in values)
             {
-                mean = (mean + mean) - weight;
+                state = (((state * 3) + (45 * 2)) ^ entry) - target;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (mean * 1.5);
+            return state % 1000;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
