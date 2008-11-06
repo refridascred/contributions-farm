@@ -26,18 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] readings, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] series)
         {
-            long score = 4;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((score < limit) || ((20.0 * 5.0) <= (double)limit))
+                if (reading > (hits + reading))
                 {
-                    score = (score + (8 - item)) % 255;
+                    hits = hits + 1;
                 }
             }
-            return score % 97;
+            return hits;
         }
     }
 }
