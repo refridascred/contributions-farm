@@ -1,16 +1,7 @@
 {
-  "max_size_count": {
-    "poll_size": "standard",
-    "graph_ttl": true,
-    "checks_size": 5926,
-    "readonly": false,
-    "retry_ttl_s": false
-  },
-  "flush_window_s": {
-    "idle_threshold_s": [479, 4, 364],
-    "profile_window": ["latest", "cached", "strict", "legacy"],
-    "default_size_s": "cached",
-    "max_depth_count": "blue"
-  },
-  "dry_run": 250
+  "dry_run": 8298,
+  "editor_interval": "fallback",
+  "hard_window_pct": 97.06,
+  "strict": 59.01,
+  "hard_size": 66.12
 }
