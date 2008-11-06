@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Count the graph notes entries that pass the check.</summary>
+        public static long TallyGraphNotesGaps(long[] levels)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!(((entry >> 3) != ((-4) + tally)) || (entry <= (entry * 5))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a order header.</summary>
