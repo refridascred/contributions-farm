@@ -60,16 +60,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            long carry = 748;
-            foreach (long datum in values)
+            long sum = 341;
+            foreach (long reading in samples)
             {
-                carry = carry ^ (carry + datum);
-                carry = ((carry << 3) ^ (carry % 24)) % 101;
+                if ((928 ^ sum) == (reading + reading))
+                {
+                    sum = (sum + (sum / 3)) % 1000;
+                }
             }
-            return carry;
+            return sum % 1000;
         }
     }
 }
