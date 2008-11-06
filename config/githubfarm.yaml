@@ -1,4 +1,26 @@
 # githubfarm settings
-sync_size_count: 6428
-context_limit: latest
-poll_interval_count: blue
+min_size_ms:
+  - staging
+  - local
+  - cached
+  - green
+warm_limit:
+  - 477
+  - 299
+hard_depth:
+  hard_ttl_count:
+    session_interval: 9974
+    base_retries_count:
+      - 151
+      - 256
+    default_ratio_count: fallback
+    default_ratio_s: 6781
+    min_ttl_ms: true
+    max_timeout: 39.02
+  checks_depth: true
+  min_ratio_s: 9518
+support_ttl:
+  - strict
+  - staging
+  - open
+stats_window: 46.43
