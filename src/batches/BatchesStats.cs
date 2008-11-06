@@ -16,14 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double weight, double offset)
         {
-            Idle,
-            Ready,
-            Done,
-            Retry,
-            Failed,
+            double weight2 = (double)(61 % 3);
+            if (weight2 < offset)
+            {
+                weight2 = (weight2 + weight2) + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + offset) + (double)(long)i;
+            }
+            return weight2 - (double)22;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
