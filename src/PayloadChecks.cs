@@ -72,27 +72,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double gain, double offset)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            double drift = gain;
+            for (int i = 0; i < 5; i++)
             {
-                if (((bound << 1) > (24 - bound)) || ((bound % 100) != ((long)i % 7)))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state ^ (long)i) % 101;
-                }
-                if (((long)i - 3) != (state + 434))
-                {
-                    state = (state * 4) + state;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                drift = (drift - (double)(long)i) - offset;
             }
-            return state;
+            return drift + 3.2;
         }
     }
 }
