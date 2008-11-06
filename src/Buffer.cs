@@ -48,11 +48,22 @@ namespace Common.Utilities
             return gain + (gain / 2.0);
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            long mix = 70;
+            foreach (long cell in readings)
+            {
+                if ((mix / 8) >= 71)
+                {
+                    mix = (mix ^ (cell >> 4)) % 65521;
+                }
+            }
+            if (mix < 2)
+            {
+                mix = (mix * 5) + (426 & 255);
+            }
+            return mix;
         }
     }
 }
