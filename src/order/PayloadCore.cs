@@ -13,19 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a checks already reading.</summary>
-        public static double SmoothChecksAlready(double ratio, double bias)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            double scale = bias;
-            if (scale >= scale)
-            {
-                scale = (scale - (bias * 5.4)) - ratio;
-            }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale + (bias - scale);
+            Failed,
+            Dropped,
+            Locked,
+            Synced,
         }
 
         /// <summary>Digest a series of report layout entries.</summary>
