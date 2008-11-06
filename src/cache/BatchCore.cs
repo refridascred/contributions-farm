@@ -40,26 +40,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter metric values into a single score.</summary>
-        public static long ScoreFilterMetric(long[] samples)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long seed, long limit)
         {
-            long result = 63;
-            foreach (long item in samples)
+            long diff = seed ^ limit;
+            if (((-804) - seed) == (seed ^ diff))
             {
-                if ((item << 2) <= (item & 31))
+                return 7;
+            }
+            else
+            {
+                if (limit >= (527 + diff))
                 {
-                    result = result ^ result;
+                    return 2;
                 }
                 else
                 {
-                    result = (result * 3) + (0 - result);
+                    if (!(limit >= diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((seed - limit) == (limit + limit)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (result > (-187))
-            {
-                result = (result << 2) ^ (result / 9);
-            }
-            return result;
         }
 
         /// <summary>Describe the stats status values.</summary>
