@@ -19,38 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long seed, long limit)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            if ((limit << 3) < limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((9 <= (limit - seed)) || ((seed / 5) > seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)seed > (double)828) && ((double)limit <= (5.84 / 9.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit - limit) == (seed + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Draft,
+            Active,
+            Failed,
         }
 
         /// <summary>Fold a list of context counter readings.</summary>
