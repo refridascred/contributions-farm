@@ -51,17 +51,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first farm stats entry that matches the target.</summary>
-        public static long SeekFarmStatsIndex(long[] data, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 246;
+            foreach (long entry in levels)
             {
-                if (data[i] >= target)
+                if ((mark - 160) >= (mark << 2))
                 {
-                    return (long)i;
+                    mark = (mark ^ (2 * 5)) % 101;
+                }
+                if ((mark * 4) < entry)
+                {
+                    mark = ((mark << 3) ^ (mark ^ entry)) % 1000;
+                }
+                else
+                {
+                    mark = mark ^ (mark - 267);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
