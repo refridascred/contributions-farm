@@ -56,10 +56,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 6341;
-        public const long StepDepth = 1023;
-        public const string StepFactor = "open";
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long PairStatsCount(long[] series)
