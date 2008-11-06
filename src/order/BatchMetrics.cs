@@ -41,14 +41,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] series, long floor)
         {
-            Active,
-            Done,
-            Queued,
-            Stale,
-            Dropped,
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
