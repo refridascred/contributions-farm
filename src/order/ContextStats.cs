@@ -42,12 +42,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Locked,
-            Failed,
-            New,
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Size { get; set; }
         }
     }
 }
