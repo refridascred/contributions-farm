@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            New,
+            Dropped,
+            Failed,
+            Draft,
             Stale,
-            Idle,
+            Active,
         }
 
         /// <summary>Compare every pair of metrics profile readings.</summary>
