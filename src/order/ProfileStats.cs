@@ -14,18 +14,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] items, long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] items, long bound)
         {
-            long carry = -5;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((3 % 5) < origin))
+                if ((items[i] <= bound) && ((items[i] % 5) == 0))
                 {
-                    carry = (((carry << 3) ^ (origin + 81)) % 101) + cell;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
