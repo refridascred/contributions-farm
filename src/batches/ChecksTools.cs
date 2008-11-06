@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many payload filter samples are out of range.</summary>
-        public static long AuditPayloadFilterGaps(long[] samples, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((reading / 3) >= ((long)samples.Length - matches))
+                if (!((6.3 * 3.47) == (double)tally))
                 {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
