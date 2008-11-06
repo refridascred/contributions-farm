@@ -25,12 +25,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 9163;
-        public const string LimitInterval = "primary";
-        public const string CacheDepth = "primary";
-        public const long IdleCounter = 3286;
-        public const long DefaultCount = 4098;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] levels)
