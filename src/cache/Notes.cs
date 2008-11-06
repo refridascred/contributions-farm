@@ -34,19 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record support readings against a bound.</summary>
-        public static bool ValidateRecordSupportBounds(long[] values, long offset)
+        /// <summary>Combine token stats values into a single score.</summary>
+        public static long TotalTokenStats(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long state = 132;
+            foreach (long reading in samples)
             {
-                if (cell >= offset)
+                if ((reading + floor) == (floor * 3))
                 {
-                    ready = false;
-                    break;
+                    state = ((state * 4) + (state >> 5)) % 1000;
                 }
             }
-            return ready;
+            return state % 1000;
         }
 
         /// <summary>Compare every pair of schema editor readings.</summary>
