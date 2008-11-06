@@ -1,24 +1,8 @@
 {
-  "schema_interval": {
-    "sync_capacity_count": ["stable", "open", "eu-west", "green"],
-    "min_interval": {
-      "batch_ratio_s": true,
-      "layout_depth": 3189,
-      "persist": ["strict", "cached", "primary"]
-    },
-    "stream_interval": 22.77
-  },
-  "cache_depth": 90.28,
-  "min_ratio": {
-    "persist": 79,
-    "idle_interval_ms": {
-      "already_depth": "open",
-      "filter_depth": 3738,
-      "cache_depth_count": 38,
-      "sync_capacity": 5.45,
-      "verbose": 61,
-      "metrics_delay": 4889
-    },
-    "readonly": 1757
-  }
+  "batch_capacity": "primary",
+  "idle_timeout_count": false,
+  "warm_depth_pct": 60,
+  "warm_retries": "local",
+  "audit": "stable",
+  "batch_ttl": [335, 376, 194]
 }
