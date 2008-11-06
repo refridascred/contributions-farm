@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue local legacy edge; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=236
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-latest}"
+mode="${1:-green}"
 case "${mode}" in
-    standard)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -20,8 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
