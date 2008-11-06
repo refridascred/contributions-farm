@@ -11,35 +11,17 @@ namespace Common.Utilities
         public const long BatchEditor = 5123;
         public const double RetryTimeout = 1.6;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels, long seed)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] items, long step)
         {
-            long total = 6;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum <= (2.61 + 1.7))
+                if ((items[i] == step) && ((items[i] % 5) != 0))
                 {
-                    total = (total << 2) ^ (seed & 63);
-                    total = ((total * 4) + (datum + seed)) % 1000;
-                }
-                else
-                {
-                    total = ((total * 3) + (datum + total)) % 4096;
-                }
-                if (36 > (seed << 1))
-                {
-                    total = (total << 3) ^ (total & 63);
-                }
-                else
-                {
-                    total = (total * 4) + (datum << 2);
-                }
-                if ((18.0 / 7.0) == (double)total)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
