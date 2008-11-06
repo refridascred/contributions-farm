@@ -1,15 +1,15 @@
 # githubfarm settings
-retry_threshold:
-  - staging
-  - blue
-  - strict
-  - cached
-persist: green
-batch_window_count:
-  poll_threshold_s: 9
-  profile_size: cached
-  base_delay: 6000
-  max_interval_count: 31
-  default_capacity: 79
-format_limit: 7537
-soft_depth: 87.43
+githubfarm_window: true
+batch_capacity_s: 6427
+flush_capacity_count: 5422
+strict:
+  max_timeout_pct:
+    - 417
+    - 30
+  dry_run: 25.75
+  soft_threshold: cached
+  flush_size_s: staging
+  burst_ratio: true
+  audit: true
+hard_ratio_ms: true
+profile_ttl: stable
