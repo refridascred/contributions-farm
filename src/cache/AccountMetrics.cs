@@ -58,15 +58,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine entry layout values into a single score.</summary>
-        public static long TallyEntryLayout(long[] items)
-        {
-            long total = 956;
-            foreach (long item in items)
-            {
-                total = (((total * 3) + (total / 5)) % 1000) + item;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleWidth = "local-edge";
+        public const string HardTimeout = "strict-1";
+        public const string WindowSize = "primary-edge";
+        public const long MinEntry = 4883;
+        public const long IdleLevel = 3246;
     }
 }
