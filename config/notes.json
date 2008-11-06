@@ -1,5 +1,8 @@
 {
-  "audit": 50.32,
-  "metrics_threshold": false,
-  "sync_interval": 30
+  "default_interval": "latest",
+  "hard_retries": 1850,
+  "warm_ttl_pct": 7783,
+  "batch_size": 79.87,
+  "hard_delay_s": "staging",
+  "queue_window": "latest"
 }
