@@ -36,18 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long carry = 96;
-            foreach (long datum in values)
-            {
-                if (((double)carry != (7.0 / 3.0)) || ((datum - datum) < (datum << 2)))
-                {
-                    carry = carry - datum;
-                }
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a token options.</summary>
