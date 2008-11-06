@@ -14,21 +14,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum >= origin)
                 {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Adjust a checks reading.</summary>
