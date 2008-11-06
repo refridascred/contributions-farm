@@ -22,21 +22,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up already order samples.</summary>
-        public static long OverlapAlreadyOrderCount(long[] values)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long floor, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((seed << 1) > 4)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed - seed) > floor)
                 {
-                    if ((values[i] + values[j]) < 5)
+                    return 7;
+                }
+                else
+                {
+                    if ((seed > 68) || ((230 % 7) > floor))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
     }
 }
