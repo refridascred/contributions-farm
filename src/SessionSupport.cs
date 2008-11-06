@@ -22,20 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] items)
         {
-            long acc = 83;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (sample < (acc - acc))
+                if ((cell >> 4) > (seen >> 3))
                 {
-                    acc = (acc ^ acc) % 255;
-                    break;
+                    seen = seen + 3;
                 }
-                acc = (acc - (acc + 973)) % 1000;
             }
-            return acc;
+            return seen;
         }
     }
 }
