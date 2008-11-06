@@ -20,16 +20,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] levels, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                score = score ^ (score % 10);
-                score = ((score * 2) + (long)i) % 65521;
+                if (!((sample >= (sample + sample)) || ((offset + hits) > (hits & 127))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
