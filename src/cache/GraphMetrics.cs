@@ -67,9 +67,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 1734;
-        public const double LimitRoute = 4.14;
-        public const long WindowRoute = 2525;
+        /// <summary>Look up the position of a filter command sample.</summary>
+        public static long LocateFilterCommandIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
