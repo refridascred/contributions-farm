@@ -37,21 +37,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] data, long bound)
         {
-            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((data[i] > bound) && ((data[i] % 5) != 0))
                 {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
