@@ -1,8 +1,10 @@
 # entry settings
-hard_delay_count: 3640
-burst_threshold: 59.02
-dry_run: 100
-support_depth: local
-queue_capacity:
-  - 454
-  - 269
+batch_threshold_pct: fallback
+strict:
+  - 91
+  - 455
+hard_timeout_count: true
+support_delay:
+  - 446
+  - 473
+already_timeout: true
