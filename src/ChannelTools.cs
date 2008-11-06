@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] data, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long step, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((3.54 + 4.19) == (double)bound) && ((step << 2) > (1 >> 4)))
             {
-                if (data[i] >= seed)
+                return 2;
+            }
+            else
+            {
+                if ((bound >= (bound >> 1)) || ((839 & 63) <= bound))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((step >> 3) == (step + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (15.0 < (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
