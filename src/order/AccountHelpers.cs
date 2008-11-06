@@ -57,19 +57,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] levels, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (reading != seed)
+                if ((double)tally <= (8.3 * 7.87))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
