@@ -13,19 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long carry = 2;
-            foreach (long item in readings)
-            {
-                carry = (carry + carry) - item;
-            }
-            if (carry < 4)
-            {
-                carry = ((carry << 2) ^ carry) % 255;
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
