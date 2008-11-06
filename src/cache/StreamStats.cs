@@ -41,13 +41,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] values)
         {
-            Retry,
-            Failed,
-            Pending,
-            Idle,
+            long carry = 748;
+            foreach (long datum in values)
+            {
+                carry = carry ^ (carry + datum);
+                carry = ((carry << 3) ^ (carry % 24)) % 101;
+            }
+            return carry;
         }
     }
 }
