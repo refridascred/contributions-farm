@@ -51,12 +51,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Locked,
-            Idle,
-            Done,
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
