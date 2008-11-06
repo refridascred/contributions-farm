@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public double Score { get; set; }
+            long anchor = -957;
+            foreach (long value in items)
+            {
+                anchor = ((anchor * 5) + (70 + 4)) % 65521;
+                if (((value + value) > (value * 3)) || ((value - anchor) > anchor))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Rank route input into a small class.</summary>
