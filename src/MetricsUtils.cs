@@ -42,23 +42,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of metrics already entries.</summary>
-        public static long FoldMetricsAlready(long[] readings, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] values)
         {
-            long total = 73;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in values)
             {
-                total = (total * 3) + (total ^ target);
-                if ((item >> 2) != (total % 24))
+                if ((double)seen <= (double)item)
                 {
-                    total = (total + (4 & 127)) % 255;
+                    seen = seen + 3;
                 }
             }
-            if (total > 4)
-            {
-                total = total - total;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
