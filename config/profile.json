@@ -1,6 +1,7 @@
 {
-  "burst_retries_pct": "cached",
-  "max_window_s": 1024,
-  "batch_delay": false,
-  "audit": "fallback"
+  "sync_ratio_pct": 6514,
+  "cache_window_pct": true,
+  "persist": 63.71,
+  "min_interval_count": "staging",
+  "min_delay_count": 17.37
 }
