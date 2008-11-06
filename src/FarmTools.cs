@@ -20,13 +20,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Closed,
-            Active,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 681;
+        public const long MinTimeout = 275;
+        public const long MaxMetrics = 5683;
+        public const long SoftMetrics = 3110;
 
         /// <summary>Iterate the commits batches series from a seed.</summary>
         public static long SeriesCommitsBatches(long offset)
