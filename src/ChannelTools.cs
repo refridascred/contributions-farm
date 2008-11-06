@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long origin)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((4.94 < (double)origin) && ((acc >> 1) < (acc ^ acc)))
+                {
+                    acc = acc + (origin ^ origin);
+                    acc = acc - ((long)i % 2);
+                    continue;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = (acc ^ (origin % 12)) - (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a filter entry.</summary>
