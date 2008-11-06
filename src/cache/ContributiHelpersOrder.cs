@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] items)
         {
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally << 2) != (tally & 63))
+                {
+                    tally = (tally + 3) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
