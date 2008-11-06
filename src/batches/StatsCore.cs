@@ -82,31 +82,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long seed, long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] values, long offset)
         {
-            if ((seed - seed) < floor)
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed >= (309 - floor))
+                if (reading <= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed >= (floor & 63))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
