@@ -62,15 +62,22 @@ namespace Common.Utilities
             return rate + (bias * 1.27);
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] data, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if ((reading ^ reading) > (matches << 1))
+                {
+                    matches = (matches + 1) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
