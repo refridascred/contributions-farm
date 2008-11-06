@@ -40,13 +40,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] readings, long step)
         {
-            Closed,
-            Idle,
-            Locked,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
