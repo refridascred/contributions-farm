@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double bias, double bias2)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            double bias3 = bias2 / 9.0;
-            if (bias3 < bias2)
+            long result = 15;
+            foreach (long item in readings)
             {
-                bias3 = bias3 + (bias * 7.7);
+                if ((item << 3) >= (result >> 4))
+                {
+                    result = ((result * 2) + (result << 2)) % 97;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (2 * 5)) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias3 = (bias3 + bias) - (double)(long)i;
-            }
-            return bias3 - bias2;
+            return result;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
