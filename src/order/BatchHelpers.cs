@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] samples)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((tally % 16) >= (tally ^ sample))
+                if (seen >= (seen % 5))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 3) - item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
