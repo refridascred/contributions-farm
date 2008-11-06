@@ -41,12 +41,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftCount = 7879;
-        public const double BaseContributi = 18.46;
-        public const double WindowContributi = 3.72;
-        public const double LimitSpan = 20.02;
-        public const string BatchRatio = "legacy-1";
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] samples)
+        {
+            long anchor = -646;
+            foreach (long reading in samples)
+            {
+                if (!((539 - (long)samples.Length) <= anchor))
+                {
+                    anchor = anchor ^ (anchor + anchor);
+                }
+                if (((anchor ^ reading) >= (anchor / 2)) || ((double)anchor == (0.3 - 9.0)))
+                {
+                    anchor = anchor + (reading << 1);
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Adjust a notes reading.</summary>
         public static double ScaleNotes(double ratio, double bias)
