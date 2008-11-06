@@ -82,19 +82,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double scale, double span)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double scale, double bias)
         {
-            double weight = span + (8.5 + 18.0);
-            if (weight > span)
+            double load = bias;
+            if (load > (bias * 0.6))
             {
-                weight = (weight - (span * 3.0)) + scale;
+                load = load + scale;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                weight = (weight - (double)8) - (double)(long)i;
+                load = load + (load / 6.0);
             }
-            return weight - (9.2 / 2.0);
+            return load - 8.5;
         }
     }
 }
