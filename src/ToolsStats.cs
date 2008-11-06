@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] samples)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            long carry = 569;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry << 3) ^ (carry & 7)) ^ cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
