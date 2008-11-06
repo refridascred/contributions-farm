@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] items)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long carry = 96;
-            foreach (long item in items)
-            {
-                if ((item ^ item) > (item - item))
-                {
-                    carry = ((carry * 5) + item) % 65521;
-                }
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a payload header.</summary>
