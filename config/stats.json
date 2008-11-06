@@ -1,20 +1,16 @@
 {
-  "dry_run": {
-    "audit": "local",
-    "burst_interval_ms": {
-      "audit": "fallback",
-      "default_window_count": false,
-      "base_window_count": ["open", "cached", "blue", "local"],
-      "hard_capacity": false,
-      "idle_delay_s": 15
-    },
-    "max_ttl_count": 53,
-    "batches_limit": 94.0,
-    "queue_limit": 500,
-    "default_limit_ms": 60
+  "poll_interval": {
+    "filter_limit": 1024,
+    "batches_limit": "edge",
+    "burst_ratio": [364, 91],
+    "cluster_ttl": "green"
   },
-  "verbose": "strict",
-  "persist": 8403,
-  "metric_size": [153, 268, 163],
-  "soft_timeout_pct": 9.12
+  "batch_delay_ms": {
+    "burst_limit_pct": 30,
+    "default_window": "local",
+    "strict": "strict"
+  },
+  "compress": false,
+  "poll_depth": "stable",
+  "flush_threshold": false
 }
