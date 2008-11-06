@@ -1,24 +1,6 @@
 # githubfarm settings
-session_window:
-  - 164
-  - 312
-max_ratio:
-  cache_retries: true
-  soft_depth:
-    max_ttl: fallback
-    report_interval: 1024
-    min_interval_s:
-      - green
-      - standard
-      - green
-      - open
-    warm_ratio_pct: 40
-    hard_capacity_s: staging
-    cache_size_s: 49.14
-  batch_limit:
-    - 383
-    - 343
-  strict: 250
-  batch_retries: latest
-flush_ttl: 100
-already_ttl: local
+poll_threshold: 6
+max_window_s: false
+enabled: latest
+support_interval: 60
+default_timeout_ms: staging
