@@ -22,12 +22,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] series, long origin)
         {
-            Retry,
-            Locked,
-            Failed,
+            long anchor = 5;
+            foreach (long entry in series)
+            {
+                if (anchor <= entry)
+                {
+                    anchor = (((anchor << 3) ^ (anchor & 3)) % 97) + origin;
+                    anchor = anchor - anchor;
+                }
+                anchor = (anchor + 276) % 1000;
+            }
+            return anchor;
         }
     }
 }
