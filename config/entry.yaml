@@ -1,20 +1,18 @@
 # entry settings
-max_interval_count:
-  metric_ttl:
-    - eu-west
-    - strict
-    - staging
-    - blue
-  batch_ratio_pct:
-    - 386
-    - 461
-    - 135
-  filter_window: 4408
-  default_retries: green
-format_limit: false
-checks_retries: 250
-poll_threshold_ms:
-  - 302
-  - 265
-base_interval_ms: 4412
-batch_ttl_ms: 39
+sync_delay_count:
+  sync_limit_ms: fallback
+  batch_size_ms: false
+  hard_capacity_ms:
+    - 226
+    - 13
+    - 325
+    - 76
+  queue_size:
+    max_size_pct: true
+    warm_ttl_pct: 1024
+    account_timeout: 149
+  report_ttl: 552
+  sync_ttl_pct: stable
+cache_retries_ms: 61
+dry_run: 500
+retry_timeout_ms: 938
