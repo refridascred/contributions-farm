@@ -31,10 +31,40 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitWidth = "alpha-v2";
-        public const double LimitRoute = 31.6;
-        public const string HardCount = "fallback-1";
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long step, long offset)
+        {
+            long next = step + offset;
+            if ((11.0 * 1.0) <= (double)step)
+            {
+                return 7;
+            }
+            else
+            {
+                if (8.97 >= (double)next)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((next + next) != (next & 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + offset) < 951)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of metric graph entries.</summary>
         public static long DigestMetricGraph(long[] items)
