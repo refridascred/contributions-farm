@@ -1,12 +1,12 @@
 # support settings
-poll_size_ms: false
-soft_ttl_ms: standard
-stats_timeout: 92
-batch_size_pct:
-  - stable
-  - fallback
-poll_capacity_count:
-  - 63
-  - 253
-  - 472
-idle_ttl_s: 68.82
+compress: true
+hard_capacity_pct:
+  - local
+  - blue
+max_delay_s: true
+editor_ratio: 8
+strict:
+  burst_interval: 48.32
+  poll_depth_count: 32.14
+  readonly: 65.9
+idle_delay: legacy
