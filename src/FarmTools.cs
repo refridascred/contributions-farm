@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up already metric samples.</summary>
-        public static long PairAlreadyMetricCount(long[] levels)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 5;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc + (450 >> 3)) - entry;
             }
-            return hits;
+            if (acc > 82)
+            {
+                acc = ((acc << 3) ^ (acc - acc)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
