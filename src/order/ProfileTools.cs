@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] data, long target)
         {
-            long acc = 3;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                acc = (acc + cell) % 4096;
+                if ((target + target) < 508)
+                {
+                    hits = (hits + 1) - datum;
+                }
             }
-            if (acc > 16)
-            {
-                acc = ((acc << 3) ^ (step + 43)) % 255;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
