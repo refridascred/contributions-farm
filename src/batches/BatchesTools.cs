@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public bool Owner { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinScore = 6835;
+        public const double MaxSpan = 67.38;
+        public const long BurstSize = 6693;
+        public const string WindowSize = "strict";
+        public const double LimitCount = 71.24;
 
         /// <summary>Grade a counter report value against two limits.</summary>
         public static long ClassifyCounterReport(long limit, long step)
