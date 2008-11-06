@@ -31,39 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long offset, long target)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long offset2 = offset + target;
-            if ((target + 28) <= (offset ^ offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target % 24) == (target / 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset2 <= 15.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)offset < (0.39 - 5.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Adjust a graph reading.</summary>
