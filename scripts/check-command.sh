@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging open primary fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    staging)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,11 @@ case "${mode}" in
         ;;
 esac
 
+COMMAND_LIMIT=290
+log "limit is ${COMMAND_LIMIT}"
+
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 3); do
     total=$((total + i * 3))
 done
 log "total ${total}"
