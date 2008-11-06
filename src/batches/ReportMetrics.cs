@@ -16,18 +16,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] levels, long seed)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long acc = 843;
-            foreach (long datum in levels)
-            {
-                if (!((double)seed >= (2.4 / 6.0)))
-                {
-                    acc = ((acc ^ (acc >> 4)) % 1000) + datum;
-                }
-            }
-            return acc;
+            Pending,
+            Closed,
+            Active,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
