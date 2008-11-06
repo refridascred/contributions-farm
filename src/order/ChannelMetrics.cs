@@ -17,14 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleLevel = "fallback";
+        public const long BaseWidth = 6810;
+        public const long HardProfile = 2091;
+        public const long WindowProfile = 9602;
+        public const long MaxFactor = 4041;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long IterateToken(long bound)
