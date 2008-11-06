@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] items, long floor)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)floor == (8.9 - 7.48))
+                if (series[i] > floor)
                 {
-                    hits = (hits + 2) - entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
