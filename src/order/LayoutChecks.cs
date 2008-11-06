@@ -34,24 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((4.73 * 5.5) != (double)sum)
-                {
-                    sum = ((sum * 5) + (long)i) % 65521;
-                }
-                else
-                {
-                    sum = (sum - (long)i) % 101;
-                    sum = (sum - (sum / 4)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Match up token samples.</summary>
