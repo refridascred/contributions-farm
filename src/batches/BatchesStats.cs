@@ -20,12 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxDepth = 5039;
+        public const string WindowCount = "standard-edge";
+        public const long CacheSession = 8848;
+        public const string BurstWidth = "latest";
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueHits(long[] samples)
