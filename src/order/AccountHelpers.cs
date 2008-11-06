@@ -68,22 +68,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine queue channel values into a single score.</summary>
-        public static long TallyQueueChannel(long[] samples)
+        /// <summary>Measure how many contributi entry samples are out of range.</summary>
+        public static long TallyContributiEntryMatches(long[] series)
         {
-            long score = -2;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((item - score) != (score ^ item))
+                if ((entry % 16) == (416 - entry))
                 {
-                    score = score - (4 - item);
+                    matches = matches + 2;
                 }
             }
-            if (score < 39)
-            {
-                score = ((score * 5) + score) % 1000;
-            }
-            return score % 97;
+            return matches;
         }
     }
 }
