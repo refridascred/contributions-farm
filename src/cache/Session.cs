@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double gain, double floor)
         {
-            Pending,
-            Ready,
-            Retry,
+            double drift = floor;
+            if (drift < (gain / 8.0))
+            {
+                drift = drift - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)4) - (double)(long)i;
+            }
+            return drift + (gain + 2.98);
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
