@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double rate, double span)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] values, long limit)
         {
-            double load = rate;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                load = (load + (rate - span)) - (double)(long)i;
+                if ((count % 60) >= (entry + entry))
+                {
+                    count = (count + 3) - limit;
+                }
             }
-            return load - (span / 5.0);
+            return count;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
