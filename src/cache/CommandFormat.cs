@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Stale,
-            Dropped,
-            Active,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 0.63;
+        public const long MinRatio = 9221;
+        public const long MinWidth = 9182;
+        public const long HardRecord = 4500;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
