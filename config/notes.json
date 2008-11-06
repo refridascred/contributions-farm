@@ -1,7 +1,26 @@
 {
-  "base_ttl_pct": ["fallback", "eu-west", "fallback"],
-  "burst_limit_pct": true,
-  "burst_size_s": "strict",
-  "audit": 89.62,
-  "burst_retries_count": 45
+  "schema_limit": 500,
+  "base_limit": 8958,
+  "batch_ttl_ms": false,
+  "soft_interval": true,
+  "sync_window": {
+    "cache_depth_count": true,
+    "max_retries": {
+      "flush_window_count": 60,
+      "window_size": "cached",
+      "compress": [428, 305, 336],
+      "batch_timeout": false
+    },
+    "record_capacity": 95.05,
+    "queue_window": {
+      "stats_delay": 60,
+      "flush_threshold": 500,
+      "idle_interval_pct": 500,
+      "record_limit": 100,
+      "route_size": ["open", "staging", "legacy"]
+    },
+    "max_ttl_count": 20,
+    "dry_run": [279, 483]
+  },
+  "verbose": false
 }
