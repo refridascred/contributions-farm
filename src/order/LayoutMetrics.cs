@@ -13,17 +13,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] values, long offset)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = weight;
+            return (ratio - (double)981) + span;
         }
 
         /// <summary>Combine context values into a single score.</summary>
