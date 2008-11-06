@@ -12,10 +12,13 @@ namespace Common.Utilities
             return (scale + (double)671) + offset;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheBudget = 2353;
-        public const long StepCommits = 9341;
-        public const string SoftInterval = "staging-edge";
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
