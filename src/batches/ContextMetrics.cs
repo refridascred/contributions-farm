@@ -68,13 +68,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Retry,
-            Active,
-            Done,
-            Dropped,
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
