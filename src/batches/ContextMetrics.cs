@@ -37,12 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardInterval = 1145;
+        public const double DefaultScore = 69.27;
+        public const string StepSession = "legacy-edge";
+        public const double BurstSize = 82.93;
 
         /// <summary>Audit cluster context readings against a rule.</summary>
         public static long MeasureClusterContextGaps(long[] items)
