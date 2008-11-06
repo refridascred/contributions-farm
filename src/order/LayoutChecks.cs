@@ -84,19 +84,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] data)
         {
-            long result = 41;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                result = (result << 2) ^ (91 >> 2);
-                if ((item * 3) < (2 + result))
+                if (!(((double)785 != (double)count) && (count > (count & 7))))
                 {
-                    result = (result * 2) + result;
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
