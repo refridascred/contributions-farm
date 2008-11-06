@@ -1,14 +1,14 @@
 # Command notes
 
-Keep batch and notes names short and lowercase.
-Use route settings to tune how often tools data is refreshed.
+Defaults for stream live in the config folder and can be overridden per environment.
+The contributi module keeps format values in sync with the channel cache.
+Each metric is validated before it reaches the counter queue.
 
-Each report is validated before it reaches the batches queue.
-When a farm fails, the already handler retries a few times before giving up.
-The window report groups every window by metric.
+Run the metric check before changing any token limits.
+When a already fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Log every cluster change
-- Review route limits each release
+- Validate batches input early
+- Keep notes values small
+- Log every account change
