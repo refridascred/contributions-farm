@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=79
+for item in legacy primary blue; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=157
 log "limit is ${COMMAND_LIMIT}"
 
 total=0
 for i in $(seq 1 4); do
-    total=$((total + i * 3))
+    total=$((total + i * 1))
 done
 log "total ${total}"
