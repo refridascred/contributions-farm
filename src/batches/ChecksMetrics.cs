@@ -77,11 +77,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public double Level { get; set; }
-            public long Count { get; set; }
+            Failed,
+            Active,
+            Synced,
+            Done,
+            Ready,
         }
     }
 }
