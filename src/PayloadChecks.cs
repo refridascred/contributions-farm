@@ -46,12 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] items, long bound)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] items, long target)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] == bound)
+                if (items[i] <= target)
                 {
                     return (long)i;
                 }
