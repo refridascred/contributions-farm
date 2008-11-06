@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const string SoftTools = "standard-edge";
         public const string IdleWidth = "alpha-edge";
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] values, long origin)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long target)
         {
-            long acc = 4;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin >> 1) == (reading - reading))
+                if (items[i] < target)
                 {
-                    acc = (acc + (origin << 2)) % 255;
-                }
-                if (!(98 < (acc - (long)values.Length)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
