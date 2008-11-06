@@ -27,20 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "open-edge";
+        public const double WindowTimeout = 87.59;
+        public const long MinTimeout = 6878;
+        public const string DefaultInterval = "alpha";
+        public const double DefaultStats = 23.83;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LookupBatchIndex(long[] data, long seed)
