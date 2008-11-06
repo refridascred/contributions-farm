@@ -16,11 +16,20 @@ namespace Common.Utilities
             return load - (span / 5.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 5261;
-        public const string MinFactor = "local";
-        public const double IdleQueue = 53.11;
-        public const long SoftQueue = 7534;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] levels, long seed)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of metric record readings.</summary>
         public static long ScoreMetricRecord(long[] values)
