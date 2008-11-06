@@ -1,9 +1,8 @@
-id,token,level
-1,standard,stable
-2,staging,621
-3,434,64.66
-4,998,47.64
-5,stable,blue
-6,592,812
-7,2.76,83.53
-8,2.23,856
+id,score,rank
+1,legacy,487
+2,41.06,80.74
+3,631,182
+4,58.3,strict
+5,92.79,green
+6,primary,565
+7,91.95,219
