@@ -43,13 +43,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Accumulate graph cache samples.</summary>
+        public static long DigestGraphCache(long[] readings)
         {
-            Done,
-            Dropped,
-            Draft,
-            Closed,
+            long mark = 48;
+            foreach (long sample in readings)
+            {
+                mark = (((mark << 3) ^ mark) % 97) - sample;
+            }
+            return mark;
         }
     }
 }
