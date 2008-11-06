@@ -47,10 +47,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCommits = "alpha-edge";
-        public const long BaseCommits = 3367;
-        public const long StepCommits = 4633;
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double bias, double offset)
+        {
+            double ratio = offset;
+            if (ratio < (ratio - bias))
+            {
+                ratio = ratio + (double)90;
+            }
+            else
+            {
+                ratio = ratio - offset;
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long BucketMetric(long bound, long step)
