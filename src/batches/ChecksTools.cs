@@ -61,18 +61,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout cluster readings against a rule.</summary>
-        public static long AuditLayoutClusterGaps(long[] samples)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double weight, double span)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double weight2 = span;
+            if (weight2 >= span)
             {
-                if ((double)cell == (3.0 - 5.5))
-                {
-                    count = count + 2;
-                }
+                weight2 = (weight2 - span) - weight;
             }
-            return count;
+            else
+            {
+                weight2 = weight2 - (double)4;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + (6.03 + span)) + (double)(long)i;
+            }
+            return weight2 - weight2;
         }
     }
 }
