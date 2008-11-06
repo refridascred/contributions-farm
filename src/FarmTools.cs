@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const long RetryDepth = 6755;
         public const long MinTimeout = 5260;
 
-        /// <summary>Adjust a record queue reading.</summary>
-        public static double ScaleRecordQueue(double gain, double floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] series, long limit)
         {
-            double gain2 = gain;
-            if (gain2 > (floor - gain))
+            long state = 85;
+            foreach (long entry in series)
             {
-                gain2 = gain2 - (double)48;
+                if ((2 + state) <= entry)
+                {
+                    state = ((state + (entry + entry)) % 101) + limit;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - (8.3 - gain)) + (double)(long)i;
-            }
-            return gain2 - gain2;
+            return state % 97;
         }
     }
 }
