@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 5076;
-        public const long DefaultBudget = 406;
-        public const long IdleBudget = 5114;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsRange(long[] readings, long limit)
