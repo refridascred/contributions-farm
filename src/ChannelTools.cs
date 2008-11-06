@@ -39,38 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long floor, long offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if ((offset - 18) <= (floor & 15))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor <= (floor + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor >= (offset ^ floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor / 9) <= floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Draft,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a schema summary.</summary>
