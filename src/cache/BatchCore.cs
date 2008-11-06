@@ -20,21 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(floor <= score))
-                {
-                    score = ((score * 5) + score) % 97;
-                    continue;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 4108;
+        public const long HardScore = 4677;
+        public const long WindowSize = 9123;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long MeasureRecordMatches(long[] items)
