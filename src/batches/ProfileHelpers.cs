@@ -78,22 +78,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] values, long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((double)target <= (double)tally) || ((double)tally != (double)target))
-                {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Closed,
+            Synced,
+            New,
+            Failed,
         }
     }
 }
