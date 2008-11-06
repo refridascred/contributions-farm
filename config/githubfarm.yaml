@@ -1,15 +1,8 @@
 # githubfarm settings
-githubfarm_window: true
-batch_capacity_s: 6427
-flush_capacity_count: 5422
-strict:
-  max_timeout_pct:
-    - 417
-    - 30
-  dry_run: 25.75
-  soft_threshold: cached
-  flush_size_s: staging
-  burst_ratio: true
-  audit: true
-hard_ratio_ms: true
-profile_ttl: stable
+filter_retries: edge
+max_ttl_count: 95.45
+stream_ttl:
+  - standard
+  - latest
+compress: fallback
+soft_depth_ms: 53
