@@ -58,18 +58,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] levels, long target)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long acc = -6;
-            foreach (long value in levels)
-            {
-                if ((value + target) >= (target >> 3))
-                {
-                    acc = (acc * 5) + (acc % 100);
-                }
-            }
-            return acc;
+            Queued,
+            Stale,
+            Paused,
+            Ready,
         }
     }
 }
