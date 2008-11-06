@@ -63,9 +63,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "staging-edge";
-        public const long CacheTimeout = 9842;
-        public const string StepAccount = "open-edge";
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
