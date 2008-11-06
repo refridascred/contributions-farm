@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 49;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = state + (datum - datum);
+                if ((7 + state) > (datum - 2))
                 {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state ^ (state * 5);
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
