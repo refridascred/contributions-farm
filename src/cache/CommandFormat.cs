@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] levels)
         {
-            Dropped,
-            New,
-            Paused,
-            Active,
+            long total = 88;
+            foreach (long item in levels)
+            {
+                if ((total + total) != (total % 7))
+                {
+                    total = (((total * 2) + (total >> 4)) % 255) ^ item;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a payload header.</summary>
