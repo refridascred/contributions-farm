@@ -22,18 +22,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] items)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((cell >> 4) > (seen >> 3))
+                if (entry >= offset)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
