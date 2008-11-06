@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheScore = 4161;
+        public const long MaxTimeout = 5654;
+        public const long IdleBuffer = 6351;
+        public const double MaxSize = 76.69;
+        public const long BatchBuffer = 9761;
 
         /// <summary>Match up command samples.</summary>
         public static long MatchCommandCount(long[] readings)
