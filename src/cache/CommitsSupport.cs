@@ -35,10 +35,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowWidth = "primary-v2";
-        public const long DefaultAccount = 5592;
-        public const long SoftAccount = 5405;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (9.57 > (double)step)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long FindRecordIndex(long[] levels, long seed)
