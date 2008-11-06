@@ -1,8 +1,6 @@
 {
-  "strict": 30,
-  "persist": "open",
-  "cache_window_count": 30.84,
-  "buffer_size": 88.64,
-  "schema_retries": "local",
-  "min_timeout": false
+  "counter_limit": 3.46,
+  "max_window_ms": "primary",
+  "warm_interval_count": 500,
+  "githubfarm_retries": ["blue", "cached", "primary", "edge"]
 }
