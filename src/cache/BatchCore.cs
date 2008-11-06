@@ -40,12 +40,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Combine filter metric values into a single score.</summary>
+        public static long ScoreFilterMetric(long[] samples)
         {
-            New,
-            Pending,
-            Synced,
+            long result = 63;
+            foreach (long item in samples)
+            {
+                if ((item << 2) <= (item & 31))
+                {
+                    result = result ^ result;
+                }
+                else
+                {
+                    result = (result * 3) + (0 - result);
+                }
+            }
+            if (result > (-187))
+            {
+                result = (result << 2) ^ (result / 9);
+            }
+            return result;
         }
 
         /// <summary>Describe the stats status values.</summary>
