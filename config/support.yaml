@@ -1,4 +1,9 @@
 # support settings
-idle_interval: 500
-warm_capacity: local
-max_retries: true
+flush_ttl_s: 6.83
+cluster_depth: primary
+hard_retries: edge
+base_window_count:
+  - 454
+  - 481
+  - 165
+  - 246
