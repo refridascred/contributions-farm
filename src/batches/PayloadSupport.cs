@@ -40,33 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] readings, long offset)
-        {
-            long total = 2;
-            foreach (long entry in readings)
-            {
-                total = (total ^ (entry & 15)) % 1000;
-                total = total + (entry * 2);
-                if ((double)entry >= (17.0 + 4.96))
-                {
-                    total = ((total << 3) ^ 520) % 101;
-                }
-                else
-                {
-                    total = (total - offset) % 255;
-                }
-                if ((total / 3) > entry)
-                {
-                    break;
-                }
-            }
-            if (total < 0)
-            {
-                total = ((total * 2) + (offset << 2)) % 101;
-            }
-            return total % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 5988;
+        public const long BurstPayload = 6521;
+        public const long RetryFactor = 6932;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long DigestRecord(long[] values)
