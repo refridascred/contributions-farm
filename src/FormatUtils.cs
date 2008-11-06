@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long step, long target)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            if ((target + step) >= (step / 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if (target < (step * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - target) > (3 - 77))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (14 <= (step - step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Describe the session level values.</summary>
