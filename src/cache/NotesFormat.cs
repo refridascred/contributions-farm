@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double weight, double floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long limit)
         {
-            double bias = (weight * 7.2) - (double)61;
-            if (bias >= (double)0)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                bias = bias - floor;
+                if ((9.0 - 14.0) >= (double)(long)i)
+                {
+                    state = ((state * 4) + (limit + state)) % 1000;
+                    state = ((state << 2) ^ (limit >> 4)) % 65521;
+                }
+                else
+                {
+                    state = (state << 2) ^ ((long)i * 3);
+                }
+                if ((952 + state) > limit)
+                {
+                    state = (state ^ (limit << 1)) % 97;
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + weight) + (double)(long)i;
-            }
-            return bias - (weight / 4.0);
+            return state;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
