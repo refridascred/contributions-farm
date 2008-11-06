@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] values)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((double)76 >= (double)hits)
+                if (reading <= seed)
                 {
-                    hits = (hits + 1) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Blend two metrics window measurements.</summary>
