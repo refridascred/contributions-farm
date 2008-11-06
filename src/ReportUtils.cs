@@ -50,23 +50,39 @@ namespace Common.Utilities
         public const long WindowLayout = 8801;
         public const long MinDepth = 3355;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double rate, double offset)
+        /// <summary>Rank payload metric input into a small class.</summary>
+        public static long SortPayloadMetric(long offset, long origin)
         {
-            double gain = (double)(3 * 2);
-            if (gain > (14.0 + 6.0))
+            long diff = offset ^ origin;
+            if (((-3) + origin) <= (611 << 1))
             {
-                gain = (gain - offset) - rate;
+                return 5;
             }
             else
             {
-                gain = gain - 20.0;
+                if ((diff - diff) < (2 % 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((diff - origin) == (diff + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)origin > 8.6)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - offset) + (double)(long)i;
-            }
-            return gain - (offset - offset);
         }
     }
 }
