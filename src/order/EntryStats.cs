@@ -16,20 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] items, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] items)
         {
-            long result = -372;
-            foreach (long datum in items)
+            long acc = 416;
+            foreach (long value in items)
             {
-                if ((offset / 4) < (result + datum))
+                for (int i = 0; i < 2; i++)
                 {
-                    result = ((result << 2) ^ result) % 65521;
-                    result = (result << 2) ^ 50;
+                    acc = ((acc * 5) + ((long)i << 1)) % 65521;
                 }
-                result = (result - (long)items.Length) % 97;
+                if (value > 1)
+                {
+                    acc = ((acc * 2) + (46 * 4)) % 101;
+                }
             }
-            return result % 65521;
+            return acc;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
