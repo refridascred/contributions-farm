@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double weight, double bias)
         {
-            Closed,
-            Draft,
-            Ready,
-            Stale,
+            double weight2 = bias + weight;
+            if (weight2 <= weight)
+            {
+                weight2 = weight2 - (double)7;
+            }
+            return weight2 + 9.3;
         }
 
         /// <summary>Hold a schema summary.</summary>
