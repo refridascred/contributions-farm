@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] values, long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 45;
+            foreach (long entry in data)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ ((-35) + 81)) % 4096) ^ entry;
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
