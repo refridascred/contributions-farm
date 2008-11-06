@@ -66,15 +66,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] data)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if ((sample << 3) == (sample + sample))
+                {
+                    hits = hits + 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
