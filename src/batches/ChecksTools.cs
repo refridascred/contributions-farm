@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a batch batches value against two limits.</summary>
-        public static long BucketBatchBatches(long origin, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] items)
         {
-            if (((offset ^ origin) >= (origin / 6)) && ((57 - offset) <= origin))
+            long anchor = 9;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin & 15) < ((-86) % 10))
+                if ((anchor * 5) >= (8 + reading))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    anchor = ((anchor << 2) ^ reading) % 65521;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Roll a buffer command counter forward.</summary>
