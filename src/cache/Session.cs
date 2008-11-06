@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Adjust a profile graph reading.</summary>
+        public static double ScaleProfileGraph(double rate, double bias)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            double weight = (double)(5 << 2);
+            return ((weight - (double)3) + rate) + bias;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
