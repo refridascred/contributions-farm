@@ -1,19 +1,11 @@
 # githubfarm settings
-min_interval_s: 250
-sync_size_ms:
-  - 360
-  - 479
-default_threshold_ms: latest
-enabled:
-  default_timeout_count: false
-  idle_ttl_ms: 19
-  sync_retries_pct: primary
-  retry_depth: edge
-  hard_limit_count:
-    - 285
-    - 215
-idle_limit:
-  - 478
-  - 335
-  - 131
-  - 366
+warm_retries_ms: 37.68
+cache_capacity_ms: false
+sync_limit_s: 64
+strict: latest
+tools_delay: 9784
+batch_ratio:
+  batches_retries: stable
+  persist: true
+  audit: 82
+  flush_size: false
