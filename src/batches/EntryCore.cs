@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a githubfarm checks reading.</summary>
-        public static double ScaleGithubfarmChecks(double scale, double floor)
-        {
-            double weight = (double)37 / 9.0;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight - floor) - (double)(long)i) - scale;
-            }
-            return weight - 12.0;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 55.2;
+        public const long WindowFarm = 7013;
+        public const double CacheFarm = 65.57;
+        public const long HardFarm = 8012;
+        public const string IdleBudget = "cached-1";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string RetryTimeout = "fallback-edge";
