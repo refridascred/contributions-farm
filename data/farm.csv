@@ -1,11 +1,6 @@
-id,count,weight,score,level
-1,845,67,11.41,green
-2,774,383,fallback,10.25
-3,657,441,48.26,staging
-4,455,edge,336,open
-5,local,primary,906,308
-6,65.45,381,strict,40
-7,572,10.82,881,legacy
-8,399,standard,136,64.41
-9,175,eu-west,512,edge
-10,cached,blue,673,local
+id,score,label
+1,285,94.93
+2,65.79,423
+3,legacy,90.37
+4,858,670
+5,1.01,486
