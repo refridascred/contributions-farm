@@ -43,17 +43,13 @@ namespace Common.Utilities
         public const double MinLevel = 97.89;
         public const double LimitWidth = 98.38;
 
-        /// <summary>Look up the position of a batch contributi sample.</summary>
-        public static long SeekBatchContributiIndex(long[] readings, long bound)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Failed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Combine command values into a single score.</summary>
