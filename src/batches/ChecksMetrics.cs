@@ -73,24 +73,15 @@ namespace Common.Utilities
         public const long BurstBatches = 8440;
         public const long DefaultWidth = 276;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long offset, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] items, long seed)
         {
-            if ((offset - 516) == (limit & 1))
+            long state = -128;
+            foreach (long reading in items)
             {
-                return 3;
+                state = (((state << 2) ^ (seed % 24)) % 101) + reading;
             }
-            else
-            {
-                if ((8.2 * 6.0) != (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return state;
         }
     }
 }
