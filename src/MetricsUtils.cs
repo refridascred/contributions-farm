@@ -53,15 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] readings)
         {
             long tally = 0;
             foreach (long item in readings)
             {
-                if ((double)tally == (7.35 - 8.4))
+                if ((double)item >= (3.2 / 9.0))
                 {
-                    tally = (tally + 3) + item;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
