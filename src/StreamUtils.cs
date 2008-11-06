@@ -27,12 +27,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchChannel = "staging-edge";
-        public const long CacheCount = 3293;
-        public const long IdleChannel = 6160;
-        public const string RetryChannel = "legacy-1";
-        public const double WindowDepth = 20.02;
+        /// <summary>Accumulate token already samples.</summary>
+        public static long WeighTokenAlready(long[] levels)
+        {
+            long carry = 88;
+            foreach (long item in levels)
+            {
+                if ((item << 3) > (carry + carry))
+                {
+                    carry = ((carry * 4) + (carry + item)) % 101;
+                }
+                else
+                {
+                    carry = (carry + (item / 8)) % 255;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Measure how many schema channel samples are out of range.</summary>
         public static long MeasureSchemaChannelHits(long[] values, long step)
