@@ -40,19 +40,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] samples, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] data)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (sample != target)
+                if (((sample * 2) > 325) || ((seen + seen) <= 550))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
