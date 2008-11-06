@@ -22,39 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a notes format value against two limits.</summary>
-        public static long BucketNotesFormat(long floor, long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long seed)
         {
-            long step = floor + origin;
-            if ((double)floor != (0.4 + 6.3))
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((597 * 5) < (floor & 31))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step * 5) >= (5 / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin / 4) >= floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
