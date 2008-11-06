@@ -15,19 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] samples, long origin)
+        /// <summary>Measure how many layout schema samples are out of range.</summary>
+        public static long CountLayoutSchemaOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (cell >= origin)
+                if ((entry + tally) >= (tally + entry))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
