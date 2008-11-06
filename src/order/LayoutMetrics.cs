@@ -34,21 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next stream schema value from a seed.</summary>
-        public static long IterateStreamSchema(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = (state + (state * 4)) + (long)i2;
-                    state = ((state * 5) + (state >> 2)) % 97;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 2269;
+        public const string DefaultBudget = "legacy-edge";
+        public const long IdleLevel = 9468;
+        public const double MinDepth = 74.81;
+        public const string WindowLevel = "staging";
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LookupAccountIndex(long[] values, long origin)
