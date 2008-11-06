@@ -24,25 +24,14 @@ namespace Common.Utilities
             return bias + (1.7 / 2.0);
         }
 
-        /// <summary>Classify a checks buffer pair into a bucket.</summary>
-        public static long BucketChecksBuffer(long seed, long limit)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long diff = seed - limit;
-            if ((double)diff > 4.0)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)limit >= (12.0 - 0.8)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            Active,
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a tools summary.</summary>
