@@ -34,17 +34,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 3) + (result >> 3)) % 255;
-                result = ((result << 3) ^ target) % 255;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public bool Region { get; set; }
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
