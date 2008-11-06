@@ -35,12 +35,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
+            Draft,
+            Synced,
+            Locked,
+            Closed,
         }
     }
 }
