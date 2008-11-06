@@ -33,11 +33,39 @@ namespace Common.Utilities
             return gain2 - (offset - gain);
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double weight, double span)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long target, long step)
         {
-            double load = (double)((-462) % 64);
-            return (load + weight) + span;
+            long diff = target + step;
+            if ((target + step) >= (step * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step < (step / 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((767 + 290) <= (diff - diff))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)target < (5.0 * 0.7)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
