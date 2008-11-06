@@ -73,39 +73,17 @@ namespace Common.Utilities
             return ratio2 - 1.58;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long step, long floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] data, long bound)
         {
-            long offset = step + floor;
-            if (4 <= (offset + step))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step << 2) < (floor + 4))
+                if (data[i] < bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset <= (2.2 * 3.41))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor + offset) >= offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
