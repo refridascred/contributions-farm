@@ -46,12 +46,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] series, long step)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] > step) && ((series[i] % 2) == 0))
+                if (data[i] > seed)
                 {
                     return (long)i;
                 }
