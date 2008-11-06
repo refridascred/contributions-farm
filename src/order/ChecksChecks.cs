@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] samples)
-        {
-            long state = 918;
-            foreach (long value in samples)
-            {
-                state = ((state * 5) + 894) % 101;
-                if (((long)samples.Length + value) <= (value << 2))
-                {
-                    state = state ^ (state ^ value);
-                }
-                else
-                {
-                    state = state - (value & 63);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitRatio = 20.68;
+        public const long IdleMetrics = 2873;
+        public const string BurstMetrics = "alpha-v2";
+        public const double BatchMetrics = 23.73;
+        public const long MinInterval = 6651;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string RetryInterval = "latest";
