@@ -40,19 +40,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every format tools entry stays within the limit.</summary>
-        public static bool ValidateFormatToolsBounds(long[] items, long origin)
+        /// <summary>Grade a checks batches value against two limits.</summary>
+        public static long BucketChecksBatches(long offset, long target)
         {
-            bool ok = true;
-            foreach (long item in items)
+            if ((1.7 - 7.0) > (double)offset)
             {
-                if (item >= origin)
+                return 8;
+            }
+            else
+            {
+                if (((target + offset) > (offset << 3)) || ((17.0 / 9.0) <= (double)target))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (target > (offset - target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset ^ offset) >= (3 + offset)) && ((target << 3) > (offset + target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
