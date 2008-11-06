@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] levels, long origin)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long offset, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if ((double)limit > (5.0 + 3.9))
             {
-                if ((607 + origin) != (origin << 3))
+                return 6;
+            }
+            else
+            {
+                if (!((9 / 2) == (limit - offset)))
                 {
-                    count = (count + 2) + sample;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
