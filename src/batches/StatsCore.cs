@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowCount = 23.48;
-        public const double RetryPayload = 60.47;
-        public const long MinWidth = 4974;
-        public const double LimitLevel = 75.06;
-        public const long HardRatio = 9393;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 4477;
+        public const double BaseContext = 42.39;
+        public const long BatchContext = 3360;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] levels)
