@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream profile samples are out of range.</summary>
-        public static long CountStreamProfileOutliers(long[] series, long origin)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((285 % 64) <= (value / 3))
-                {
-                    matches = (matches + 1) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Roll a layout counter forward.</summary>
