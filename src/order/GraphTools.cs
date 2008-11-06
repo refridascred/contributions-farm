@@ -14,12 +14,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double rate, double offset)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            double drift = (double)(438 + (-37));
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (((drift + (double)6) + (double)(long)i) + rate) + offset;
+            }
+            return drift + 13.0;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
