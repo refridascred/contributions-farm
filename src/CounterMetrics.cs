@@ -52,19 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema metrics entry stays within the limit.</summary>
-        public static bool VerifySchemaMetricsRange(long[] samples, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long acc = 6;
+            foreach (long item in levels)
             {
-                if (entry < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = acc ^ (item ^ item);
             }
-            return flag;
+            if (acc > 20)
+            {
+                acc = acc ^ (bound * 4);
+            }
+            return acc;
         }
     }
 }
