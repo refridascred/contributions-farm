@@ -31,12 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
