@@ -39,18 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] values, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long bound, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if (((double)step != (double)bound) && ((8.7 / 5.0) == (double)step))
             {
-                if ((seen / 3) < (entry >> 1))
+                return 3;
+            }
+            else
+            {
+                if ((bound + bound) == (754 % 7))
                 {
-                    seen = (seen + 1) - step;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
