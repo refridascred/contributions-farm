@@ -36,14 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long bound)
         {
-            Ready,
-            Done,
-            Draft,
-            New,
-            Closed,
+            long result = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
