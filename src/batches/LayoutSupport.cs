@@ -23,18 +23,17 @@ namespace Common.Utilities
         public const long StepLevel = 2870;
         public const long IdleRatio = 900;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] items, long floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] series, long floor)
         {
-            long sum = 9;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < (21 + floor))
+                if ((series[i] == floor) && ((series[i] % 3) == 0))
                 {
-                    sum = sum ^ (cell + floor);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
