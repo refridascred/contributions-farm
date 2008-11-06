@@ -14,31 +14,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long target, long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            if (((double)target < (double)step) && ((double)target != (6.9 - 7.6)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step <= (3.0 - 5.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + 1) < (target % 12))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
