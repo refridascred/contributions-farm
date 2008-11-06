@@ -62,26 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] items, long seed)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long mix = -89;
-            foreach (long entry in items)
-            {
-                if ((mix >= (entry * 4)) && ((3.4 * 1.0) >= (7.07 / 7.0)))
-                {
-                    mix = mix - mix;
-                }
-                else
-                {
-                    mix = ((mix * 3) + seed) % 101;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = ((mix * 3) + (seed >> 1)) % 97;
-            }
-            return mix;
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
