@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Measure how many payload filter samples are out of range.</summary>
+        public static long AuditPayloadFilterGaps(long[] samples, long target)
         {
-            Done,
-            Idle,
-            Paused,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading / 3) >= ((long)samples.Length - matches))
+                {
+                    matches = (matches + 1) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
