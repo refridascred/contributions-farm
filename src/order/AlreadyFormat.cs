@@ -30,11 +30,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            Locked,
+            Idle,
+            Retry,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define support limits and defaults.</summary>
