@@ -1,5 +1,14 @@
 # entry settings
-account_capacity: 60
-batch_ttl_s: fallback
-retry_retries_s: standard
-route_retries: primary
+contributi_capacity: blue
+githubfarm_capacity: 81.77
+cache_ttl_pct:
+  hard_size_pct: false
+  dry_run:
+    - 44
+    - 382
+    - 266
+  enabled: 65
+  verbose:
+    - primary
+    - stable
+  min_delay_pct: 38.45
