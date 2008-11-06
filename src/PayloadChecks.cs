@@ -51,39 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank order editor input into a small class.</summary>
-        public static long SortOrderEditor(long floor, long step)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long offset = floor - step;
-            if ((step + offset) <= (42 + floor))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (step <= (offset << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor * 5) <= floor)
+                    if ((levels[i] + levels[j]) < 12)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step + floor) < (offset * 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
