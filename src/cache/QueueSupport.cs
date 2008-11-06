@@ -18,12 +18,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Draft,
-            Stale,
-            Retry,
+            Locked,
+            Failed,
+            Closed,
+            Paused,
         }
 
         /// <summary>Roll a command counter forward.</summary>
