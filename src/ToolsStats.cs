@@ -64,21 +64,25 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] data)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long target, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long gap = target - seed;
+            if (gap < (gap >> 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((gap - (-62)) == (seed << 2))
                 {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
