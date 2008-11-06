@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token stats values into a single score.</summary>
-        public static long TotalTokenStats(long[] samples, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] series)
         {
-            long state = 132;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((reading + floor) == (floor * 3))
+                if (!((4 % 12) > (value << 1)))
                 {
-                    state = ((state * 4) + (state >> 5)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Compare every pair of schema editor readings.</summary>
