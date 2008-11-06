@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] readings, long bound)
-        {
-            long state = 41;
-            foreach (long entry in readings)
-            {
-                if (!((entry * 3) > state))
-                {
-                    state = ((state * 4) + (bound >> 5)) % 255;
-                }
-            }
-            if (state > 5)
-            {
-                state = (state + 2) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstWidth = 5818;
+        public const long RetryDepth = 6755;
+        public const long MinTimeout = 5260;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowTimeout = 5961;
