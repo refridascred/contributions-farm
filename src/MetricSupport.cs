@@ -19,20 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            long acc = 173;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((acc - sample) != (sample & 255))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc - (sample % 24);
-                    break;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = acc ^ (1 + acc);
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
