@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long offset, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset2 = offset ^ bound;
+            if (((offset + bound) > (922 + offset2)) || ((offset2 + offset) != (bound + bound)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((offset2 & 63) != (offset + offset))
                 {
-                    if ((data[i] - data[j]) < 20)
+                    return 7;
+                }
+                else
+                {
+                    if (((offset << 2) <= offset) && ((bound >> 1) == (offset2 * 3)))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset2 > bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
