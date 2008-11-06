@@ -24,22 +24,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] values, long offset)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!((entry >> 3) != (1 + entry)))
-                {
-                    hits = (hits + 1) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Draft,
+            Done,
+            Active,
         }
     }
 }
