@@ -51,23 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] values, long step)
         {
-            long carry = 14;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry ^ (carry - datum);
-                if ((carry - 5) > (datum << 2))
+                if ((values[i] > step) && ((values[i] % 5) != 0))
                 {
-                    carry = (carry ^ (datum * 4)) % 4096;
+                    return (long)i;
                 }
             }
-            if (carry > 881)
-            {
-                carry = ((carry * 3) + (carry - carry)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Blend two editor measurements.</summary>
