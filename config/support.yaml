@@ -1,11 +1,7 @@
 # support settings
-command_limit: 97.99
-compress: 30
-audit:
-  - 16
-  - 438
-batch_timeout: blue
-batch_threshold:
-  sync_window_pct: 85
-  queue_timeout: open
-  editor_delay: 4
+sync_interval:
+  - edge
+  - staging
+  - edge
+format_size: 250
+record_interval: false
