@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] data, long target)
+        /// <summary>Look up the position of a already buffer sample.</summary>
+        public static long SeekAlreadyBufferIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target & 1) != (target >> 2))
+                if (samples[i] == bound)
                 {
-                    seen = (seen + 3) + datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the queue status values.</summary>
