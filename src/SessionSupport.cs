@@ -30,13 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long bound, long origin)
         {
-            Failed,
-            Draft,
-            Done,
-            Active,
+            if (120 < bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((211 + origin) <= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
