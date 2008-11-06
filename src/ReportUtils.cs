@@ -70,11 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double rate, double floor)
         {
-            public double Region { get; set; }
-            public double Score { get; set; }
+            double drift = (double)(5 % 12);
+            if (drift < (rate / 5.0))
+            {
+                drift = drift + (drift + floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift + (floor / 7.0);
         }
     }
 }
