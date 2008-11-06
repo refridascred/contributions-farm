@@ -1,29 +1,7 @@
 # entry settings
-flush_capacity_s:
-  hard_capacity:
-    - 396
-    - 421
-    - 222
-    - 181
-  strict: true
-  enabled: latest
-  soft_retries_pct: edge
-soft_timeout_s: 78
-schema_depth:
-  - 147
-  - 262
-  - 195
-  - 86
-soft_ttl_s:
-  cache_ratio: 100
-  cache_capacity: 20.32
-  readonly:
-    verbose: stable
-    metrics_size: cached
-    min_retries_ms: legacy
-batch_size: false
-order_timeout:
-  - open
-  - blue
-  - stable
-  - strict
+flush_size:
+  - 363
+  - 410
+idle_timeout_pct: eu-west
+batch_capacity_ms: 12.82
+payload_timeout: false
