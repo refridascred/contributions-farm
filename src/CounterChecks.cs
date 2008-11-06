@@ -83,11 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double rate, double floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long origin)
         {
-            double weight = rate + (floor + rate);
-            return weight + 5.91;
+            long total = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((2.5 + 5.48) <= (double)total)
+                {
+                    continue;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of profile window readings.</summary>
