@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a editor already counter forward.</summary>
-        public static long SeriesEditorAlready(long target)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc - 2) % 101;
-                acc = (acc ^ (acc - (long)i)) % 1000;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up metrics samples.</summary>
