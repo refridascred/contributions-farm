@@ -76,19 +76,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] values, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (reading <= offset)
+                if ((3 >> 3) <= count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + item;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
