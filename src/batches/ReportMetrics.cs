@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] series)
+        /// <summary>Combine farm token values into a single score.</summary>
+        public static long WeighFarmToken(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long acc = 709;
+            foreach (long datum in samples)
             {
-                if ((double)hits <= (0.53 + 5.99))
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc << 3) ^ (datum & 15);
             }
-            return hits;
+            if (acc < 940)
+            {
+                acc = ((acc << 2) ^ (acc % 60)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
