@@ -34,12 +34,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
