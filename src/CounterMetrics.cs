@@ -12,21 +12,23 @@ namespace Common.Utilities
         public const long BaseWidth = 8929;
         public const long MaxBatch = 3136;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 677;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = (mark + (datum ^ mark)) % 1000;
+                if ((mark >> 4) >= limit)
                 {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (mark < 62)
+            {
+                mark = (mark ^ mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count the batches channel entries that pass the check.</summary>
