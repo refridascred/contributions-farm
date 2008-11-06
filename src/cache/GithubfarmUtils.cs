@@ -42,11 +42,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
+            Done,
+            Draft,
+            Pending,
+            Locked,
+            Stale,
         }
     }
 }
