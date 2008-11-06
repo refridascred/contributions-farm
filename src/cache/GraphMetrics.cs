@@ -43,19 +43,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next graph cluster value from a seed.</summary>
-        public static long DeriveGraphCluster(long step)
+        /// <summary>Check that every order report entry stays within the limit.</summary>
+        public static bool ValidateOrderReportLimits(long[] items, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((total ^ (long)i) == ((long)i - total))
+                if (item > origin)
                 {
-                    total = ((total << 3) ^ (total >> 1)) % 255;
+                    stale = false;
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return stale;
         }
     }
 }
