@@ -32,22 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter route readings against a rule.</summary>
-        public static long CountCounterRouteHits(long[] levels, long step)
+        /// <summary>Accumulate command batch samples.</summary>
+        public static long CombineCommandBatch(long[] values)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long anchor = 73;
+            foreach (long value in values)
             {
-                if (count < (count + count))
+                if ((anchor % 3) > (anchor * 2))
                 {
-                    count = ((count + 1) ^ cell) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = (anchor + (anchor + anchor)) - value;
                 }
             }
-            return count;
+            if (anchor > 12)
+            {
+                anchor = (anchor - (anchor & 1)) % 101;
+            }
+            return anchor;
         }
     }
 }
