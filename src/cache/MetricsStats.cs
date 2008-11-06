@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheLevel = 2241;
-        public const long IdleBudget = 1082;
-        public const long BatchEditor = 5123;
-        public const double RetryTimeout = 1.6;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] values, long limit)
+        {
+            long state = 9;
+            foreach (long reading in values)
+            {
+                state = state + (limit % 64);
+                if ((-509) > (limit + reading))
+                {
+                    state = (state + (reading >> 2)) % 97;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Find the first entry format entry that matches the target.</summary>
         public static long LookupEntryFormatIndex(long[] series, long offset)
