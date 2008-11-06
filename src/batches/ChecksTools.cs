@@ -47,12 +47,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Audit layout cluster readings against a rule.</summary>
+        public static long AuditLayoutClusterGaps(long[] samples)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell == (3.0 - 5.5))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
