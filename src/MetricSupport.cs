@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Active,
-            Done,
-            New,
-            Stale,
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a already summary.</summary>
