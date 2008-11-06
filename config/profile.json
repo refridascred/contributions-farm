@@ -1,8 +1,14 @@
 {
-  "batch_capacity": "primary",
-  "idle_timeout_count": false,
-  "warm_depth_pct": 60,
-  "warm_retries": "local",
-  "audit": "stable",
-  "batch_ttl": [335, 376, 194]
+  "githubfarm_ratio": 3.81,
+  "poll_interval_s": 22,
+  "warm_window_count": {
+    "account_depth": 5504,
+    "burst_ttl_count": true,
+    "batch_size_s": 250,
+    "warm_interval_s": "strict",
+    "base_delay_ms": 50.92
+  },
+  "cluster_ttl": 100,
+  "warm_size": "eu-west",
+  "counter_timeout": "green"
 }
