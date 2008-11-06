@@ -64,18 +64,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] data)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample << 3) == (sample + sample))
+                if (items[i] >= step)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a entry summary.</summary>
