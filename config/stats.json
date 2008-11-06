@@ -1,5 +1,7 @@
 {
-  "flush_capacity_pct": false,
-  "min_depth": 27,
-  "window_timeout": "edge"
+  "idle_capacity_count": 30,
+  "burst_depth_s": "blue",
+  "dry_run": 4743,
+  "cluster_capacity": 4.68,
+  "editor_threshold": 88
 }
