@@ -27,18 +27,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] values, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)step < (3.0 * 2.1))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
