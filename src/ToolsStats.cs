@@ -31,23 +31,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] series, long limit)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long result = 34;
-            foreach (long entry in series)
-            {
-                if ((7.2 - 7.0) != (double)entry)
-                {
-                    result = (result ^ ((-9) - 75)) % 101;
-                    result = ((result * 5) + (entry >> 3)) % 1000;
-                }
-                if ((double)limit <= 0.78)
-                {
-                    result = ((result << 2) ^ (entry >> 4)) % 1000;
-                }
-            }
-            return result % 4096;
+            Paused,
+            Draft,
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Combine contributi metrics values into a single score.</summary>
