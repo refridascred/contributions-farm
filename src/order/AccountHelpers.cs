@@ -32,21 +32,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
