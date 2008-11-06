@@ -1,12 +1,13 @@
 # Command notes
 
-When a schema fails, the cache handler retries a few times before giving up.
-Use cache settings to tune how often githubfarm data is refreshed.
-Use order settings to tune how often order data is refreshed.
+Keep filter and buffer names short and lowercase.
+Run the already check before changing any token limits.
+
+The tools report groups every support by metric.
+The payload report groups every counter by entry.
 
 ## Guidelines
 
-- Keep farm values small
-- Review batch limits each release
-- Log every commits change
-- Prefer queue defaults
+- Log every farm change
+- Keep order values small
+- Document new profile fields
