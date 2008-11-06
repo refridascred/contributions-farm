@@ -31,11 +31,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 6763;
-        public const double HardBudget = 75.39;
-        public const long DefaultMetric = 6196;
-        public const long LimitRatio = 2479;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] items, long origin)
+        {
+            long result = 133;
+            foreach (long datum in items)
+            {
+                if (((datum & 31) < (758 >> 2)) && ((double)origin != (5.0 * 12.0)))
+                {
+                    result = ((result * 3) + (origin + origin)) % 97;
+                }
+                result = result - (datum + 74);
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long CombinePayload(long[] data, long step)
