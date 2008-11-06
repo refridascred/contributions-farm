@@ -53,11 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] readings, long seed)
         {
-            public double Offset { get; set; }
-            public bool Label { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
