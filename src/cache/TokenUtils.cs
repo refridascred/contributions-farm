@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinCount = "strict-1";
+        public const double RetryLevel = 97.48;
+        public const string HardMetrics = "open-v2";
+        public const string BurstScore = "legacy-edge";
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
