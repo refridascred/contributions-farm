@@ -45,22 +45,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] samples, long floor)
+        /// <summary>Project the next farm route value.</summary>
+        public static double ProjectFarmRoute(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading < (9.26 * 11.0))
-                {
-                    matches = (matches + 1) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double scale2 = offset;
+            return scale2 + (scale * 7.15);
         }
 
         /// <summary>Fold a list of commits batch readings.</summary>
