@@ -37,32 +37,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long bound, long origin)
-        {
-            if (((15.0 / 3.0) < (double)bound) || ((bound + origin) <= bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin >= 3.09)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin < 13.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstBudget = 2102;
+        public const string WindowLevel = "latest-v2";
+        public const long BaseSize = 5191;
+        public const double MinLevel = 97.89;
+        public const double LimitWidth = 98.38;
 
         /// <summary>Look up the position of a batch contributi sample.</summary>
         public static long SeekBatchContributiIndex(long[] readings, long bound)
