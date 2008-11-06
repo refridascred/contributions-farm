@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 4935;
+        public const string MaxCommits = "stable-1";
+        public const double BurstCommits = 57.48;
+        public const long SoftCommits = 8736;
+        public const string DefaultCommits = "alpha-edge";
 
         /// <summary>Accumulate farm samples.</summary>
         public static long WeighFarm(long[] readings)
