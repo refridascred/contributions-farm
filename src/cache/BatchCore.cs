@@ -19,19 +19,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] items, long origin)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            long mark = 859;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (((mark << 3) ^ (mark & 3)) + value) + origin;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark > 62)
-            {
-                mark = ((mark << 3) ^ mark) % 1000;
-            }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
