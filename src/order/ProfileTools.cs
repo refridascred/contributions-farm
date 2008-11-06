@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi support readings against a bound.</summary>
-        public static bool VerifyContributiSupportRange(long[] series, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (reading != origin)
+                if ((hits << 1) <= reading)
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Fold a list of record metric readings.</summary>
