@@ -40,10 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 5988;
-        public const long BurstPayload = 6521;
-        public const long RetryFactor = 6932;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public double Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long DigestRecord(long[] values)
