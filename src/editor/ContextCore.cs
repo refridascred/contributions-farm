@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const double StepInterval = 35.16;
         public const string RetryLayout = "legacy-1";
 
-        /// <summary>Audit cluster report readings against a rule.</summary>
-        public static long MeasureClusterReportMatches(long[] levels, long step)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((seen << 2) != (seen + cell)) || (((step + 13) <= (step / 3)) && (((-87) + step) < cell)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
