@@ -1,22 +1,5 @@
 # support settings
-warm_depth_pct:
-  - fallback
-  - legacy
-  - stable
-idle_window:
-  min_ratio: 9245
-  cache_ttl_ms: 73
-  stream_ttl: 25.9
-  retry_ttl_ms: legacy
-  default_limit_pct: green
-  dry_run:
-    strict: 45.75
-    enabled: 50.6
-    min_interval_count: true
-    flush_ttl_count: eu-west
-    audit: 63
-soft_size_pct: eu-west
-dry_run: 64
-flush_ttl:
-  - 281
-  - 454
+max_ratio: 2
+persist: local
+entry_ratio: 9358
+batch_size: true
