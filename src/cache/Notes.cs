@@ -48,12 +48,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Iterate the checks graph series from a seed.</summary>
+        public static long IterateChecksGraph(long step)
         {
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            long mark = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
