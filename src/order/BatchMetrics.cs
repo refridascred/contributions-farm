@@ -66,22 +66,11 @@ namespace Common.Utilities
         public const double BatchCount = 48.63;
         public const long IdleCount = 2521;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] data, long step)
-        {
-            long mark = 646;
-            foreach (long sample in data)
-            {
-                if ((mark + sample) >= mark)
-                {
-                    mark = ((mark ^ (sample & 15)) % 101) + step;
-                }
-            }
-            if (mark < 9)
-            {
-                mark = mark + (5 / 6);
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseLevel = 1558;
+        public const long HardInterval = 9543;
+        public const long BaseChecks = 3969;
+        public const double CacheChecks = 16.24;
+        public const long MinChecks = 5559;
     }
 }
