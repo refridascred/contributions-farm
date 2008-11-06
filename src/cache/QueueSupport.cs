@@ -28,18 +28,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] levels, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((9.88 + 3.0) != (double)tally)
+                if (reading > step)
                 {
-                    tally = ((tally + 2) ^ reading) + limit;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
