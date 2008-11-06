@@ -54,11 +54,15 @@ namespace Common.Utilities
         public const long WindowLevel = 7663;
         public const long StepRatio = 635;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftRatio = 48.96;
-        public const string LimitWidth = "latest-edge";
-        public const long SoftAlready = 2283;
-        public const long WindowBudget = 3728;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Retry,
+            Locked,
+            Active,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] data, long step)
