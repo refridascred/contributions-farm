@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] levels, long origin)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double bias, double floor)
         {
-            long anchor = 19;
-            foreach (long datum in levels)
+            double weight = (double)(26 * 3);
+            if (weight > weight)
             {
-                anchor = ((anchor << 3) ^ (origin / 6)) + datum;
+                weight = (weight - 1.74) - floor;
             }
-            return anchor;
+            else
+            {
+                weight = weight - (bias + 2.4);
+            }
+            return weight + weight;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
