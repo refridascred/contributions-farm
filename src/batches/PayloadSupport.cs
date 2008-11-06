@@ -15,15 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] levels, long target)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long sum = 31;
-            foreach (long value in levels)
-            {
-                sum = ((sum * 5) + (value - sum)) + target;
-            }
-            return sum;
+            Active,
+            Queued,
+            New,
+            Synced,
+            Retry,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
