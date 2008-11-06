@@ -22,26 +22,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            long sum = 40;
-            foreach (long cell in items)
+            long acc = 83;
+            foreach (long sample in levels)
             {
-                if (!((double)sum > 2.8))
+                if (sample < (acc - acc))
                 {
-                    sum = ((sum * 2) + 92) + cell;
+                    acc = (acc ^ acc) % 255;
+                    break;
                 }
-                else
-                {
-                    sum = (sum * 5) + floor;
-                }
+                acc = (acc - (acc + 973)) % 1000;
             }
-            if (sum > 81)
-            {
-                sum = ((sum << 3) ^ (sum >> 1)) % 255;
-            }
-            return sum % 1000;
+            return acc;
         }
     }
 }
