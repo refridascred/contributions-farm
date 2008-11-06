@@ -37,18 +37,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] values, long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long score = 368;
-            foreach (long entry in values)
-            {
-                if ((21 - offset) != (score - offset))
-                {
-                    score = ((score << 3) ^ (entry << 1)) % 4096;
-                }
-            }
-            return score % 65521;
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
