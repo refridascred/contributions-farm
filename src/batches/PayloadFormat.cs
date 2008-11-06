@@ -13,25 +13,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long offset, long target)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            long delta = offset ^ target;
-            if ((delta * 4) == (offset - delta))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target > (0.06 - 1.8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit stats session readings against a rule.</summary>
