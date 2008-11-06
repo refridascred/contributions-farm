@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a profile buffer pair into a bucket.</summary>
-        public static long ClassifyProfileBuffer(long step, long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] data, long origin)
         {
-            long delta = step - origin;
-            if (!(step <= (delta + origin)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((delta + step) > (step + origin))
+                if (data[i] > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
