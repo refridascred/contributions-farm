@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double weight, double span)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            double ratio = span + weight;
+            if (ratio < (span - 8.13))
             {
-                if ((sum <= bound) && ((255 % 12) != ((long)i ^ bound)))
-                {
-                    sum = ((sum << 2) ^ sum) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                ratio = ratio - (span + weight);
             }
-            return sum;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (11.0 * 18.0)) + (double)(long)i;
+            }
+            return ratio + span;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
