@@ -1,14 +1,12 @@
 # support settings
-sync_interval_s: 1024
-flush_timeout_pct: true
-burst_interval_ms: true
-base_capacity_s:
-  - 458
-  - 311
-  - 6
-soft_window:
-  cache_size_count: 1024
-  batch_delay_count: 60
-  compress: strict
-  sync_threshold_ms: false
-  enabled: 43.55
+poll_interval_s: edge
+cache_limit: 250
+batch_limit: legacy
+entry_interval:
+  hard_ttl: local
+  payload_interval: 77.12
+  dry_run: 30
+  farm_timeout: 33.3
+  poll_size: 78.2
+cache_threshold: 93
+idle_window_ms: 65.26
