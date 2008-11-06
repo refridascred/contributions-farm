@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BaseCommits = 7577;
         public const long BurstCommits = 720;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] samples, long step)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long target)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (item > step)
+                if (!((target + state) == (long)i))
                 {
-                    flag = false;
-                    break;
+                    state = state - (target - state);
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
