@@ -23,11 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Check that every batch commits entry stays within the limit.</summary>
+        public static bool ValidateBatchCommitsRange(long[] levels, long bound)
         {
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
