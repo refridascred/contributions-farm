@@ -48,15 +48,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next already githubfarm value.</summary>
-        public static double ScaleAlreadyGithubfarm(double ratio, double bias)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] readings, long floor)
         {
-            double rate = (6.1 - ratio) * 3.2;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                rate = (rate + (double)915) + (double)(long)i;
+                if ((52 << 1) < (floor + sample))
+                {
+                    count = count + 3;
+                }
             }
-            return rate + (bias * 1.27);
+            return count;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
