@@ -1,6 +1,9 @@
-id,active,token,state
-1,cached,cached,950
-2,819,69.8,blue
-3,89.27,967,739
-4,local,legacy,eu-west
-5,343,strict,44.96
+id,owner
+1,75.64
+2,cached
+3,edge
+4,local
+5,open
+6,legacy
+7,legacy
+8,standard
