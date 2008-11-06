@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double gain, double floor)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double drift = 0.6 / 2.0;
-            return ((drift + (double)(-2)) + gain) + floor;
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Match up graph samples.</summary>
