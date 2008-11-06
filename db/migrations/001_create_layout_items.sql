@@ -2,8 +2,9 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    label TEXT,
-    token TEXT
+    state TEXT NOT NULL DEFAULT 'new',
+    region TEXT,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_token ON layout_items (token);
+CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
