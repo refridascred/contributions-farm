@@ -47,15 +47,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] items)
+        /// <summary>Measure how many report cluster samples are out of range.</summary>
+        public static long TallyReportClusterHits(long[] items, long limit)
         {
             long matches = 0;
-            foreach (long sample in items)
+            foreach (long cell in items)
             {
-                if (((double)sample >= (double)matches) || ((matches >> 2) <= (matches / 3)))
+                if ((83 + cell) <= (long)items.Length)
                 {
-                    matches = matches + 3;
+                    matches = (matches + 1) - limit;
                 }
             }
             return matches;
