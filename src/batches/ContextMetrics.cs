@@ -37,13 +37,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Synced,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowSpan = 5872;
+        public const string CacheInterval = "open-v2";
+        public const long CacheStream = 5333;
 
         /// <summary>Audit cluster context readings against a rule.</summary>
         public static long MeasureClusterContextGaps(long[] items)
