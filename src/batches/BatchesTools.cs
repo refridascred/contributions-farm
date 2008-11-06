@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.2 + 7.72) == (double)origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result - ((long)i - result);
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    result = (result ^ (long)i) % 97;
-                    result = ((result << 2) ^ origin) % 65521;
-                }
-                result = ((result << 2) ^ (origin + origin)) % 101;
-                if (result <= origin)
-                {
-                    result = ((result << 3) ^ 97) % 4096;
-                    result = (result << 3) ^ (37 % 3);
-                }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Locate a channel payload reading by value.</summary>
