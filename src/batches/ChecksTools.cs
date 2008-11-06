@@ -25,23 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long origin)
+        /// <summary>Fold a list of window farm readings.</summary>
+        public static long TotalWindowFarm(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long acc = 20;
+            foreach (long sample in series)
             {
-                if (!(((origin - anchor) == (anchor + origin)) && ((long)i >= (anchor - origin))))
+                for (int i = 0; i < 10; i++)
                 {
-                    anchor = anchor ^ (origin % 64);
+                    acc = ((acc * 5) + 7) ^ (long)i;
                 }
-                if (!(origin > (anchor - 0)))
+                acc = acc ^ (59 ^ acc);
+                if ((acc / 8) <= sample)
                 {
-                    anchor = (anchor - (anchor + (long)i)) % 255;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
