@@ -35,22 +35,13 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Fold a list of metric record readings.</summary>
-        public static long ScoreMetricRecord(long[] values)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long mark = 7;
-            foreach (long item in values)
-            {
-                if ((87 >> 4) < (item + mark))
-                {
-                    mark = (mark + mark) % 65521;
-                }
-            }
-            if (mark > 185)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
