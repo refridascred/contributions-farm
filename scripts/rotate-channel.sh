@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary fallback cached; do
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in primary eu-west fallback staging; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=180
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-green}"
+mode="${1:-staging}"
 case "${mode}" in
-    strict)
+    edge)
         log "fast path"
         ;;
     *)
