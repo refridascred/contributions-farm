@@ -1,8 +1,8 @@
 {
-  "session_threshold": 28.74,
-  "entry_depth": true,
-  "poll_threshold_pct": ["edge", "staging", "fallback", "staging"],
-  "warm_limit_s": true,
-  "base_timeout": "primary",
-  "default_depth_ms": "latest"
+  "compress": false,
+  "cache_threshold": "staging",
+  "default_delay_s": false,
+  "warm_threshold_ms": 91.73,
+  "entry_threshold": "open",
+  "min_ttl_pct": 95
 }
