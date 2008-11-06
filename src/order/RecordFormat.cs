@@ -12,11 +12,15 @@ namespace Common.Utilities
             return ((drift + (double)(-2)) + gain) + floor;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double rate, double floor)
         {
-            public double Token { get; set; }
-            public long Limit { get; set; }
+            double drift = (2.78 * 7.0) - (floor + floor);
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift - (double)(-61);
         }
 
         /// <summary>Combine report values into a single score.</summary>
