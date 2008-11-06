@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseFactor = 9237;
-        public const long WindowTimeout = 5952;
-        public const long DefaultSize = 8041;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double rate, double bias)
+        {
+            double scale = bias;
+            if (scale > (bias + scale))
+            {
+                scale = (scale - bias) - rate;
+            }
+            return scale - (double)(-2);
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MinSupport = 1784;
