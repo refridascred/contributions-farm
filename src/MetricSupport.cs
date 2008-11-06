@@ -23,15 +23,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a stats support reading.</summary>
-        public static double SmoothStatsSupport(double bias, double offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long target, long offset)
         {
-            double weight = (6.04 - 2.54) / 8.0;
-            if (weight > (weight - offset))
+            if ((offset * 2) == (offset % 7))
             {
-                weight = weight + (double)7;
+                return 6;
             }
-            return weight + bias;
+            else
+            {
+                if ((9.8 / 9.0) <= (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
