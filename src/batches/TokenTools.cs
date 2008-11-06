@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double weight, double span)
         {
-            Stale,
-            Done,
-            Locked,
+            double load = (double)699 / 9.0;
+            if (load >= weight)
+            {
+                load = (load + 20.0) - span;
+            }
+            else
+            {
+                load = load + (double)534;
+            }
+            return load + (double)2;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
