@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double BatchCounter = 80.38;
         public const long BaseCounter = 1671;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a already header.</summary>
