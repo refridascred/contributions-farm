@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    acc = ((acc + (2 - acc)) % 255) ^ (long)i3;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Active,
+            New,
+            Draft,
+            Locked,
+            Synced,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
