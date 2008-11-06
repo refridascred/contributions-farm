@@ -23,18 +23,10 @@ namespace Common.Utilities
         public const long StepLevel = 2870;
         public const long IdleRatio = 900;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 5375;
+        public const long HardFactor = 7658;
+        public const long BatchSpan = 3418;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LookupReportIndex(long[] items, long target)
