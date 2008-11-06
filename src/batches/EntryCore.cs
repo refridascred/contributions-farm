@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 55.2;
-        public const long WindowFarm = 7013;
-        public const double CacheFarm = 65.57;
-        public const long HardFarm = 8012;
-        public const string IdleBudget = "cached-1";
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] data, long origin)
+        {
+            long result = 1;
+            foreach (long reading in data)
+            {
+                if (860 > result)
+                {
+                    result = ((result * 4) + (origin - (long)data.Length)) % 4096;
+                }
+                result = (result << 3) ^ reading;
+                result = result + 57;
+                if (((reading + reading) >= origin) || (origin > (reading * 3)))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string RetryTimeout = "fallback-edge";
