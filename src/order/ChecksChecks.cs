@@ -14,24 +14,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long step, long bound)
+        /// <summary>Count farm metrics pairs that satisfy a relation.</summary>
+        public static long MatchFarmMetricsCount(long[] samples)
         {
-            if (((9.0 + 6.83) < (double)step) || ((step + step) != (step << 2)))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((13.0 / 3.0) >= (double)bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the token class values.</summary>
