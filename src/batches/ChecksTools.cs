@@ -34,13 +34,13 @@ namespace Common.Utilities
             return scale + 6.3;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
             public long Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
+            public double Score { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
