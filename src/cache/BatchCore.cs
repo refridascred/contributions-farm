@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long step, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] levels)
         {
-            if ((step >> 2) < 14)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((offset * 2) > (offset + offset)) || (2 < (offset % 12)))
+                if (hits <= (667 / 3))
                 {
-                    return 1;
+                    hits = (hits + 1) + datum;
                 }
                 else
                 {
-                    if ((step + step) >= (290 << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
