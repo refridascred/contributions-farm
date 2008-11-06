@@ -1,5 +1,11 @@
 # support settings
-idle_depth_s: 2360
-command_limit: false
-strict: 100
-max_interval_ms: eu-west
+command_limit: 97.99
+compress: 30
+audit:
+  - 16
+  - 438
+batch_timeout: blue
+batch_threshold:
+  sync_window_pct: 85
+  queue_timeout: open
+  editor_delay: 4
