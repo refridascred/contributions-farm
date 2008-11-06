@@ -66,12 +66,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardBatches = "stable-1";
-        public const string IdleBatches = "open-1";
-        public const double CacheLevel = 73.36;
-        public const long BurstBatches = 8440;
-        public const long DefaultWidth = 276;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] items, long seed)
