@@ -15,14 +15,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Compare every pair of order batch readings.</summary>
+        public static long OverlapOrderBatchCount(long[] items)
         {
-            Pending,
-            Failed,
-            Paused,
-            Draft,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a checks record.</summary>
