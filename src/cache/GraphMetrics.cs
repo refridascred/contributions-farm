@@ -16,22 +16,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] data)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample * 5) < (sample ^ sample))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Failed,
+            Paused,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a checks record.</summary>
