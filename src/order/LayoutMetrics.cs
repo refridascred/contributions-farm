@@ -5,33 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Locate a profile batch reading by value.</summary>
+        public static long LocateProfileBatchIndex(long[] data, long offset)
         {
-            long score = 31;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                long diff = (score + cell) / 9;
-                if (cell < (diff ^ 58))
+                if ((data[i] < offset) && ((data[i] % 2) == 0))
                 {
-                    diff = (diff + (diff & 255)) % 1000;
-                    diff = (diff ^ (diff % 64)) % 4096;
-                    break;
-                }
-                if (cell > (929 & 7))
-                {
-                    score = (score - (score & 3)) % 65521;
-                }
-                else
-                {
-                    score = (score + (68 ^ cell)) % 1000;
+                    return (long)i;
                 }
             }
-            if (score < 5)
-            {
-                score = score + (score / 6);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a payload header.</summary>
