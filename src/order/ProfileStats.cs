@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] items)
-        {
-            long anchor = 3;
-            foreach (long sample in items)
-            {
-                if (((sample & 127) > 359) || ((52 * 5) == (sample + (long)items.Length)))
-                {
-                    anchor = anchor - anchor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "stable-1";
+        public const double IdleScore = 20.26;
+        public const long BurstBudget = 2432;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsBounds(long[] series, long offset)
