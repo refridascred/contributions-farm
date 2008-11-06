@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-for item in staging blue cached; do
+for item in edge open staging local; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
+COMMAND_LIMIT=150
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    staging)
+    blue)
         log "fast path"
         ;;
     *)
