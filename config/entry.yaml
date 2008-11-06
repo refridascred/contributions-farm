@@ -1,5 +1,20 @@
 # entry settings
-default_depth_s: 89
-audit: false
-compress: 54.66
-default_threshold_pct: 31
+default_capacity: 28
+poll_size:
+  batch_capacity_count: 6948
+  strict:
+    sync_delay_ms: 39
+    sync_ratio_ms:
+      - eu-west
+      - cached
+    idle_window_pct: staging
+    burst_size: 6744
+  metric_ratio: 58.35
+  retry_limit_count:
+    - eu-west
+    - primary
+    - stable
+    - blue
+default_ttl_ms: 18
+min_threshold_count: false
+max_timeout_pct: primary
