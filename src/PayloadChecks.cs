@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many order context samples are out of range.</summary>
-        public static long MeasureOrderContextHits(long[] items)
+        /// <summary>Derive the next stats command value from a seed.</summary>
+        public static long StepStatsCommand(long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((count + 192) > sample)
-                {
-                    count = count + 2;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
