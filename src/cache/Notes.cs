@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] samples)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((hits * 4) < (item + hits)) || (((39 / 9) >= ((long)samples.Length - item)) || ((item % 8) >= item)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Queued,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the cluster class values.</summary>
