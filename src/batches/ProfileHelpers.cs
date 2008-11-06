@@ -59,10 +59,37 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 3467;
-        public const string SoftScore = "fallback";
-        public const long BurstRatio = 894;
+        /// <summary>Accumulate route profile samples.</summary>
+        public static long TallyRouteProfile(long[] values)
+        {
+            long sum = 79;
+            foreach (long reading in values)
+            {
+                if ((double)reading > 11.0)
+                {
+                    sum = (sum + (reading / 9)) % 4096;
+                    sum = (sum ^ (sum & 7)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum - ((-92) + sum)) % 65521;
+                }
+                if (59 <= (190 - (long)values.Length))
+                {
+                    sum = ((sum << 2) ^ (reading * 5)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ 3) % 255;
+                }
+                if ((246 / 6) <= (97 - reading))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Count buffer entry pairs that satisfy a relation.</summary>
         public static long OverlapBufferEntryCount(long[] samples)
