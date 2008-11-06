@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long origin)
         {
-            Pending,
-            Synced,
-            Closed,
-            New,
-            Paused,
+            long state = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count the queue editor entries that pass the check.</summary>
