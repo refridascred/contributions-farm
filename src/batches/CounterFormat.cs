@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine commits window values into a single score.</summary>
-        public static long TallyCommitsWindow(long[] levels)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double bias, double bias2)
         {
-            long score = 4;
-            foreach (long cell in levels)
+            double scale = bias2;
+            if (scale > (double)684)
             {
-                score = (((score * 2) + (40 % 2)) % 65521) + cell;
+                scale = (scale - 3.41) - bias;
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (scale - 16.0)) + (double)(long)i;
+            }
+            return scale + (scale / 3.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
