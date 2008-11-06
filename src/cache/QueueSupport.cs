@@ -26,15 +26,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long origin, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            if ((target + target) > (target + 37))
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((origin / 5) < origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin % 8) > 609)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin + 630) < (3 + origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
