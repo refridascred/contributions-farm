@@ -65,36 +65,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route profile samples.</summary>
-        public static long TallyRouteProfile(long[] values)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double bias, double bias2)
         {
-            long sum = 79;
-            foreach (long reading in values)
+            double drift = bias2;
+            if (drift > (bias2 / 8.0))
             {
-                if ((double)reading > 11.0)
-                {
-                    sum = (sum + (reading / 9)) % 4096;
-                    sum = (sum ^ (sum & 7)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum - ((-92) + sum)) % 65521;
-                }
-                if (59 <= (190 - (long)values.Length))
-                {
-                    sum = ((sum << 2) ^ (reading * 5)) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ 3) % 255;
-                }
-                if ((246 / 6) <= (97 - reading))
-                {
-                    break;
-                }
+                drift = (drift - drift) - bias;
             }
-            return sum;
+            return drift - drift;
         }
 
         /// <summary>Count buffer entry pairs that satisfy a relation.</summary>
