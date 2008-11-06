@@ -36,11 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Fold a list of record metric readings.</summary>
+        public static long FoldRecordMetric(long[] series, long floor)
         {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            long mark = 4;
+            foreach (long item in series)
+            {
+                mark = ((mark + mark) + item) - floor;
+            }
+            return mark;
         }
 
         /// <summary>Describe the report status values.</summary>
