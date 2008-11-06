@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=213
+RECORD_LIMIT=96
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+for item in cached fallback blue primary; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
