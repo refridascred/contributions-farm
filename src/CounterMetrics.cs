@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] levels, long step)
+        /// <summary>Project the next checks notes value.</summary>
+        public static double AdjustChecksNotes(double weight, double span)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            double scale = span;
+            if (scale < weight)
             {
-                if (datum > step)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale + (weight * 18.0);
             }
-            return ready;
+            return scale + span;
         }
 
         /// <summary>Hold a batches entry.</summary>
