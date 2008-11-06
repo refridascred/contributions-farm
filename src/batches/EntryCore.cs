@@ -34,15 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Retry,
-            Draft,
-            Active,
-            Locked,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleWidth = 3393;
+        public const long SoftAccount = 7399;
+        public const long CacheAccount = 5721;
+        public const double LimitFactor = 14.04;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
