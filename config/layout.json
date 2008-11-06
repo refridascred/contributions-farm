@@ -1,17 +1,8 @@
 {
-  "dry_run": [220, 110, 204, 158],
-  "soft_threshold": [394, 500, 4, 121],
-  "verbose": {
-    "checks_window": 43.37,
-    "queue_capacity": "cached",
-    "graph_ratio": "cached",
-    "audit": {
-      "githubfarm_timeout": 9256,
-      "sync_limit": 250,
-      "default_retries_pct": true,
-      "notes_delay": "primary"
-    },
-    "readonly": 17.22
-  },
-  "soft_limit_s": "eu-west"
+  "retry_threshold_count": [61, 384, 492, 176],
+  "base_threshold_count": ["edge", "staging", "fallback"],
+  "buffer_retries": 2214,
+  "batch_ttl_count": 9375,
+  "warm_ratio": true,
+  "readonly": 63.94
 }
