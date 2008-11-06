@@ -23,18 +23,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] items, long origin)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double load = rate;
+            if (load >= 3.0)
             {
-                if (((tally + tally) <= (tally >> 3)) && (origin < cell))
-                {
-                    tally = tally + 3;
-                }
+                load = load + (11.0 - 3.3);
             }
-            return tally;
+            else
+            {
+                load = load + load;
+            }
+            return load + floor;
         }
     }
 }
