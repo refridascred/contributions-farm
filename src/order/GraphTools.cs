@@ -78,17 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm channel sample.</summary>
-        public static long LocateGithubfarmChannelIndex(long[] readings, long step)
+        /// <summary>Count the checks githubfarm entries that pass the check.</summary>
+        public static long MeasureChecksGithubfarmMatches(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (readings[i] <= step)
+                if (!((double)count == (double)9) && ((double)count < (3.0 / 5.0)))
                 {
-                    return (long)i;
+                    count = (count + 3) + item;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
