@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 6946;
-        public const long BatchWidth = 6561;
-        public const long MaxAlready = 2456;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] samples)
+        {
+            long sum = 445;
+            foreach (long cell in samples)
+            {
+                if ((sum * 4) >= 146)
+                {
+                    sum = sum - cell;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum << 2)) % 4096;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsLimits(long[] data, long floor)
