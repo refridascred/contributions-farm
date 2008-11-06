@@ -14,19 +14,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every counter layout entry stays within the limit.</summary>
-        public static bool VerifyCounterLayoutLimits(long[] items, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long step, long bound)
         {
-            bool found = true;
-            foreach (long cell in items)
+            if (((9.0 + 6.83) < (double)step) || ((step + step) != (step << 2)))
             {
-                if (cell > origin)
+                return 0;
+            }
+            else
+            {
+                if (!((13.0 / 3.0) >= (double)bound))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Accumulate layout samples.</summary>
