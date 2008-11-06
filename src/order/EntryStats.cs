@@ -49,15 +49,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double ratio, double floor)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double gain, double floor)
         {
-            double drift = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift - ratio;
+            double rate = floor;
+            return (rate - floor) + gain;
         }
 
         /// <summary>Accumulate payload samples.</summary>
