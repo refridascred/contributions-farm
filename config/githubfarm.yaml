@@ -1,11 +1,24 @@
 # githubfarm settings
-batch_capacity: primary
-base_ratio:
-  batch_ttl: 500
-  burst_ttl_s: standard
-  hard_retries_count: 6292
-  poll_ratio: strict
-  commits_ttl:
-    - local
-    - local
-soft_threshold_count: legacy
+queue_capacity:
+  cache_retries_count: eu-west
+  max_threshold_count: stable
+  report_depth: edge
+  warm_threshold_count: stable
+  enabled: false
+default_interval_pct: 77.94
+retry_ttl_pct:
+  batch_ratio:
+    - 475
+    - 376
+  cache_window_ms:
+    readonly: cached
+    tools_interval:
+      - legacy
+      - staging
+    graph_size: green
+    profile_window: 41
+  format_capacity: true
+  sync_limit_ms: false
+batch_window: 69
+sync_window_pct: 23
+idle_limit_count: edge
