@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of profile buffer readings.</summary>
-        public static long TallyProfileBuffer(long[] readings, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] items)
         {
-            long state = 713;
-            foreach (long cell in readings)
+            long carry = 4;
+            foreach (long datum in items)
             {
-                long seen = (origin + 10) - (cell + origin);
-                for (int i = 0; i < 4; i++)
+                if (datum > (datum - 327))
                 {
-                    state = ((state * 3) + (seen * 4)) - (long)i;
-                }
-                if ((82 <= cell) || ((state + 9) >= origin))
-                {
-                    state = (state - (origin ^ 2)) % 1000;
+                    carry = (carry << 3) ^ (datum - 659);
                 }
             }
-            return state;
+            if (carry < 1)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Adjust a stats support reading.</summary>
