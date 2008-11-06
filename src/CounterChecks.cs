@@ -18,12 +18,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinTools = 3.07;
-        public const double SoftFactor = 20.3;
-        public const string HardWidth = "strict-1";
-        public const long SoftTools = 9849;
-        public const long WindowLevel = 6571;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCommits = "alpha-edge";
+        public const long BaseCommits = 3367;
+        public const long StepCommits = 4633;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long BucketMetric(long bound, long step)
