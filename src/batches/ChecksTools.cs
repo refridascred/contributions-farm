@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Grade a batch batches value against two limits.</summary>
+        public static long BucketBatchBatches(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            if (((offset ^ origin) >= (origin / 6)) && ((57 - offset) <= origin))
             {
-                if (!((6.3 * 3.47) == (double)tally))
+                return 6;
+            }
+            else
+            {
+                if ((origin & 15) < ((-86) % 10))
                 {
-                    tally = (tally + 3) + sample;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
