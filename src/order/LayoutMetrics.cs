@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public double Mode { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
