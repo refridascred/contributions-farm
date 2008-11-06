@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank payload farm input into a small class.</summary>
-        public static long ClassifyPayloadFarm(long bound, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long floor, long floor2)
         {
-            if ((seed / 2) >= ((-31) - 904))
+            if ((6.6 + 2.71) != (double)floor)
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (bound > (seed + 750))
+                if (!(floor < (floor2 + floor2)))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)seed >= (double)5)
+                    if (!((floor2 ^ floor) > (floor2 + (-18))))
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        if (590 > (seed ^ seed))
+                        if (!((double)floor >= (7.14 * 3.0)))
                         {
-                            return 4;
+                            return 3;
                         }
                         else
                         {
-                            return 6;
+                            return 4;
                         }
                     }
                 }
