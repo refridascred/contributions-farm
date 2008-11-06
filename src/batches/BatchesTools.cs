@@ -31,21 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of order queue readings.</summary>
-        public static long CompareOrderQueueCount(long[] items)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Closed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
