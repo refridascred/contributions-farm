@@ -29,31 +29,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long seed, long offset)
-        {
-            if (!((offset & 1) > (seed + seed)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) < seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset <= 3.01)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepFilter = 71.78;
+        public const double MaxScore = 44.81;
+        public const long SoftSpan = 3012;
     }
 }
