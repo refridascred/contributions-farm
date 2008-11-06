@@ -1,15 +1,15 @@
 # Command notes
 
-Keep stats and context names short and lowercase.
-A checks that stays idle for too long is moved to the command list.
+Each filter is validated before it reaches the account queue.
+When a counter fails, the tools handler retries a few times before giving up.
+The window helpers are pure functions, so they are safe to call from any thread.
 
-Use editor settings to tune how often stats data is refreshed.
-The record helpers are pure functions, so they are safe to call from any thread.
-The metrics report groups every buffer by buffer.
+When a order fails, the stream handler retries a few times before giving up.
+The batches report groups every contributi by githubfarm.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Log every account change
-- Keep session values small
-- Review queue limits each release
+- Keep profile values small
+- Prefer session defaults
+- Validate entry input early
+- Document new token fields
