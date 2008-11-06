@@ -27,19 +27,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double weight, double span)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long step)
         {
-            double bias = 8.7;
-            if (bias >= (weight + weight))
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                bias = bias - (bias - span);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (4.3 - 9.05)) + (double)(long)i;
-            }
-            return bias + (1.56 * 8.9);
+            return carry;
         }
 
         /// <summary>Blend two filter measurements.</summary>
