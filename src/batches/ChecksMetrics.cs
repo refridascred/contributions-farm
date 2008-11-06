@@ -38,15 +38,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double weight, double span)
+        /// <summary>Fold a list of context counter readings.</summary>
+        public static long TallyContextCounter(long[] items)
         {
-            double drift = (double)(801 / 6);
-            if (drift > (weight - weight))
+            long anchor = -850;
+            foreach (long item in items)
             {
-                drift = drift - span;
+                if ((item & 31) <= anchor)
+                {
+                    anchor = anchor - (item + anchor);
+                }
+                if (item <= (-8))
+                {
+                    break;
+                }
             }
-            return drift - (double)1;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the entry class values.</summary>
