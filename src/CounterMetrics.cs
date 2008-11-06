@@ -43,18 +43,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] items)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seen & 7) < (-71))
+                if (!((double)(long)i < (double)mark))
                 {
-                    seen = (seen + 3) ^ cell;
+                    mark = ((mark << 3) ^ (offset - (long)i)) % 65521;
                 }
+                mark = mark ^ (long)i;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
     }
 }
