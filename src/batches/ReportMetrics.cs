@@ -27,9 +27,14 @@ namespace Common.Utilities
         public const long BurstLevel = 1579;
         public const string WindowMetrics = "alpha-1";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseWidth = "strict-1";
-        public const double WindowLevel = 56.22;
-        public const double StepInterval = 56.08;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Idle,
+            Failed,
+            Ready,
+            Stale,
+            Active,
+        }
     }
 }
