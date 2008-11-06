@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
 
-CHANNEL_LIMIT=397
+for item in edge local; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=118
 log "limit is ${CHANNEL_LIMIT}"
