@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] series, long target)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (!(((target << 3) == (tally >> 2)) && (tally >= (550 << 3))))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
