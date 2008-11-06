@@ -24,15 +24,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double scale, double span)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long seed, long limit)
         {
-            double weight = span;
-            if (weight > (weight + scale))
+            long edge = seed + limit;
+            if ((seed > (limit & 3)) && ((26 % 7) <= (edge ^ 930)))
             {
-                weight = weight + span;
+                return 0;
             }
-            return weight - (9.0 * 5.1);
+            else
+            {
+                if (edge <= (edge >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate editor samples.</summary>
