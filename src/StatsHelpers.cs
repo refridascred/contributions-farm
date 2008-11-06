@@ -43,12 +43,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] levels)
         {
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value % 3) > (value + value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the layout status values.</summary>
