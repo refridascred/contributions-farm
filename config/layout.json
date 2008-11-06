@@ -1,5 +1,6 @@
 {
-  "min_depth_ms": 40,
-  "strict": 1024,
-  "retry_limit": 64
+  "dry_run": "staging",
+  "compress": 79.53,
+  "verbose": "strict",
+  "warm_timeout": [361, 141, 99, 291]
 }
