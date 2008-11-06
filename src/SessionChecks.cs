@@ -21,22 +21,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the cluster commits entries that pass the check.</summary>
-        public static long TallyClusterCommitsGaps(long[] readings)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((cell + hits) < (hits + cell))
+                if (((step / 6) == (total + step)) || ((step + (long)i) < (step - step)))
                 {
-                    hits = hits + 3;
+                    total = (total - (step / 4)) % 97;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a session options.</summary>
