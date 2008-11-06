@@ -24,18 +24,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] samples, long origin)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((6 + origin) == (count + origin))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            Dropped,
+            Queued,
+            Retry,
+            Draft,
         }
     }
 }
