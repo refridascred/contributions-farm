@@ -25,9 +25,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFactor = 34.63;
-        public const long BurstScore = 15;
-        public const long LimitFormat = 2059;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 5073;
+        public const double CacheCount = 95.1;
+        public const long RetryWidth = 715;
     }
 }
