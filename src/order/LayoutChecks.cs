@@ -64,22 +64,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] samples)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long bound)
         {
-            long result = 86;
-            foreach (long cell in samples)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)cell > 3.33)
+                if ((2.42 / 9.0) <= (double)(long)i)
                 {
-                    result = (result ^ (cell + (long)samples.Length)) % 97;
+                    total = (total + total) % 4096;
                 }
-                else
-                {
-                    result = (result + (cell + cell)) % 255;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return result % 4096;
+            return total;
         }
 
         /// <summary>Adjust a command reading.</summary>
