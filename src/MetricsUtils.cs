@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double ratio, double floor)
         {
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            double rate = 2.5 - (3.0 / 9.0);
+            if (rate >= floor)
+            {
+                rate = rate - ratio;
+            }
+            return rate - rate;
         }
 
         /// <summary>Describe the already level values.</summary>
