@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long mark = 589;
-            foreach (long cell in levels)
-            {
-                if ((cell + cell) > mark)
-                {
-                    mark = (mark - (-662)) % 4096;
-                    break;
-                }
-                mark = (mark + (cell % 8)) % 4096;
-            }
-            if (mark < 33)
-            {
-                mark = mark ^ (215 % 12);
-            }
-            return mark;
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Blend two metrics window measurements.</summary>
