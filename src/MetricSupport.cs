@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] series)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((count & 127) < ((-567) + count))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Queued,
+            Done,
         }
 
         /// <summary>Hold a already summary.</summary>
