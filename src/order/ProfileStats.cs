@@ -40,38 +40,14 @@ namespace Common.Utilities
         public const long MinReport = 2418;
         public const long WindowLevel = 433;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long offset, long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            if (((double)floor >= (5.6 - 4.6)) && ((offset + floor) <= floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset < (701 + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset < (floor << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor > (offset - floor)) && (3 > (floor ^ offset)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Failed,
+            Closed,
+            Pending,
+            Dropped,
         }
     }
 }
