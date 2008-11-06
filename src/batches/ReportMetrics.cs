@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double weight, double offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] series)
         {
-            double scale = weight;
-            return (scale + (double)671) + offset;
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((double)hits <= (0.53 + 5.99))
+                {
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
