@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "latest-v2";
-        public const long StepReport = 2824;
-        public const string HardReport = "legacy-v2";
-        public const string StepInterval = "alpha-1";
-        public const long WindowReport = 628;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Ready,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Measure how many session tools samples are out of range.</summary>
         public static long TallySessionToolsHits(long[] data, long target)
