@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] samples)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally + tally) > tally)
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count farm metrics pairs that satisfy a relation.</summary>
