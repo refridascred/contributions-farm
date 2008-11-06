@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable strict blue edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-open}"
+COMMAND_LIMIT=167
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-green}"
 case "${mode}" in
-    cached)
+    primary)
         log "fast path"
         ;;
     *)
