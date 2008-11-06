@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const long HardScore = 4677;
         public const long WindowSize = 9123;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] items)
+        /// <summary>Audit queue githubfarm readings against a rule.</summary>
+        public static long TallyQueueGithubfarmMatches(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (!((12.0 + 3.06) < (double)matches))
+                if ((long)samples.Length < (tally & 3))
                 {
-                    matches = (matches + 3) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = ((tally + 3) - value) - seed;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
