@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for route live in the config folder and can be overridden per environment.
-A payload that stays idle for too long is moved to the profile list.
-Each command is validated before it reaches the graph queue.
+The queue module keeps format values in sync with the already cache.
+The stats report groups every contributi by stats.
+Run the record check before changing any batch limits.
 
 ## Guidelines
 
-- Document new layout fields
-- Keep layout values small
-- Validate support input early
+- Document new record fields
+- Review report limits each release
+- Prefer payload defaults
+- Log every command change
