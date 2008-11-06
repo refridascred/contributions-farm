@@ -25,14 +25,10 @@ namespace Common.Utilities
         public const long MinMetrics = 743;
         public const long StepMetrics = 7650;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinSpan = 366;
+        public const long WindowRoute = 7801;
+        public const string LimitRoute = "strict-v2";
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
