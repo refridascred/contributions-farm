@@ -1,10 +1,11 @@
 # Command notes
 
-Run the notes check before changing any order limits.
-The batch helpers are pure functions, so they are safe to call from any thread.
+Keep notes and buffer names short and lowercase.
+Each checks is validated before it reaches the route queue.
+When a stream fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate already input early
-- Prefer layout defaults
-- Log every contributi change
+- Validate stats input early
+- Prefer filter defaults
+- Document new filter fields
