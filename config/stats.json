@@ -1,14 +1,11 @@
 {
-  "sync_capacity_s": {
-    "strict": 93.11,
-    "soft_threshold_pct": 500,
-    "retry_size_s": 60.06,
-    "channel_depth": true,
-    "warm_limit_ms": [339, 174]
-  },
-  "batch_capacity_count": "eu-west",
-  "soft_retries": 30,
-  "token_delay": 79,
-  "warm_window_ms": 60,
-  "soft_retries_pct": 3709
+  "enabled": "latest",
+  "flush_ttl_s": [200, 147, 152],
+  "command_threshold": {
+    "hard_ratio_s": "blue",
+    "persist": 23,
+    "min_limit_s": "eu-west",
+    "strict": 71.96,
+    "cluster_depth": "edge"
+  }
 }
