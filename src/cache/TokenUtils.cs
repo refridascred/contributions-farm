@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many cache tools samples are out of range.</summary>
-        public static long AuditCacheToolsOutliers(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (datum < (bound / 8))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 9637;
+        public const long StepCount = 8756;
+        public const double BatchCounter = 80.38;
+        public const long BaseCounter = 1671;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
