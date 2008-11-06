@@ -43,19 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] series, long bound)
         {
-            long carry = -428;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (!(((datum & 15) < datum) || ((3.28 / 8.0) < (double)carry)))
+                if (reading < bound)
                 {
-                    carry = ((carry << 2) ^ (943 + datum)) % 101;
+                    ok = false;
+                    break;
                 }
-                carry = ((carry * 2) + (carry - datum)) % 255;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
