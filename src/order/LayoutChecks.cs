@@ -82,18 +82,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit counter support readings against a rule.</summary>
-        public static long CountCounterSupportHits(long[] items, long seed)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double scale, double span)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double weight = span + (8.5 + 18.0);
+            if (weight > span)
             {
-                if ((datum * 4) >= (datum * 5))
-                {
-                    tally = (tally + 2) - seed;
-                }
+                weight = (weight - (span * 3.0)) + scale;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (double)8) - (double)(long)i;
+            }
+            return weight - (9.2 / 2.0);
         }
     }
 }
