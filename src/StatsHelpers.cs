@@ -16,12 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] values, long offset)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((89 >> 3) >= (offset ^ hits)) || ((hits - 380) == (offset / 6)))
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
