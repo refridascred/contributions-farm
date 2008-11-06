@@ -25,17 +25,25 @@ namespace Common.Utilities
         public const long MaxFarm = 870;
         public const long IdleFarm = 7039;
 
-        /// <summary>Look up the position of a commits checks sample.</summary>
-        public static long LocateCommitsChecksIndex(long[] series, long offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long bound, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = bound - offset;
+            if ((87 >> 5) < bound)
             {
-                if (series[i] < offset)
+                return 7;
+            }
+            else
+            {
+                if ((offset >= (offset + 8)) && (offset <= (lane << 1)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
