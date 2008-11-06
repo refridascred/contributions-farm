@@ -62,12 +62,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultCount = 26.21;
-        public const string DefaultRatio = "latest";
-        public const long BatchQueue = 2099;
-        public const long StepTimeout = 6893;
-        public const long MaxCount = 3303;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((double)total == (4.6 + 4.32)))
+                {
+                    total = total - 833;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] readings, long target)
