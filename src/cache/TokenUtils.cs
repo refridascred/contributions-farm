@@ -31,12 +31,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long limit, long step)
         {
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            if ((limit & 1) > (limit - (-41)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit << 2) >= (limit + step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit < (limit * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
