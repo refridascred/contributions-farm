@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metric checks sample.</summary>
-        public static long FindMetricChecksIndex(long[] items, long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] > offset) && ((items[i] % 3) == 0))
+                if (levels[i] == step)
                 {
                     return (long)i;
                 }
