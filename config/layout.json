@@ -1,10 +1,5 @@
 {
-  "enabled": {
-    "cache_timeout_s": 10,
-    "enabled": 8577,
-    "flush_delay_s": "primary",
-    "idle_timeout": 5675
-  },
-  "min_limit_pct": 43.26,
-  "default_size": "blue"
+  "retry_limit": "strict",
+  "max_interval_count": true,
+  "account_capacity": 9.97
 }
