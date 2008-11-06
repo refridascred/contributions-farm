@@ -42,21 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] items, long origin)
-        {
-            long result = 5;
-            foreach (long reading in items)
-            {
-                if (!((reading + result) != (result + (long)items.Length)))
-                {
-                    result = (result ^ 706) + origin;
-                    result = (result - reading) % 255;
-                }
-                result = (result + (9 ^ 18)) % 255;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseDepth = 28.4;
+        public const long CacheRoute = 2982;
+        public const long SoftRoute = 9768;
+        public const long MaxTimeout = 8955;
+        public const long BaseRatio = 3183;
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
