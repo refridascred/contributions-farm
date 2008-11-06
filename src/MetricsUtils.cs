@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const string HardGraph = "alpha-v2";
         public const long MinCount = 1361;
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 62;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((long)data.Length <= 958))
                 {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix + (cell - mix)) % 65521;
                 }
             }
-            return count;
+            if (mix > 694)
+            {
+                mix = ((mix * 2) + (seed << 2)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate report samples.</summary>
