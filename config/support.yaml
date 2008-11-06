@@ -1,5 +1,5 @@
 # support settings
-sync_threshold_s: true
-persist: staging
-hard_depth: 60
-min_ttl_s: 60
+idle_depth_s: 2360
+command_limit: false
+strict: 100
+max_interval_ms: eu-west
