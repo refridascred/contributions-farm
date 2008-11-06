@@ -28,14 +28,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Roll a stream report counter forward.</summary>
+        public static long StepStreamReport(long target)
         {
-            Failed,
-            Queued,
-            Idle,
-            Draft,
-            Ready,
+            long result = target;
+            for (int i = 0; i < 4; i++)
+            {
+                long bound = 0 & 127;
+                long delta = (bound + bound) * 3;
+                result = (result - ((-88) + delta)) % 65521;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
