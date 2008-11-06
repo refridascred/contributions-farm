@@ -48,27 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long anchor = 823;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = (((anchor * 3) + (anchor / 8)) % 101) ^ (long)i;
-                    anchor = anchor + (datum % 97);
-                }
-                if (((datum & 31) > (112 ^ datum)) || ((datum % 16) < anchor))
-                {
-                    anchor = (anchor ^ datum) % 65521;
-                }
-            }
-            if (anchor < 539)
-            {
-                anchor = anchor ^ (94 - anchor);
-            }
-            return anchor % 1000;
+            Failed,
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
