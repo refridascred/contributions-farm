@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
