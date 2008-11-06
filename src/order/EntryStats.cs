@@ -43,18 +43,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] samples)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (45 <= (item - 4))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Queued,
+            Retry,
+            Ready,
+            Paused,
+            Pending,
         }
     }
 }
