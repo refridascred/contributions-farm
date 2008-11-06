@@ -63,31 +63,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long bound, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] readings, long origin)
         {
-            if (bound >= limit)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6 - bound) != (1 % 2))
+                if ((origin % 10) < (origin - origin))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound / 2) >= (limit & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = (tally + 2) ^ datum;
                 }
             }
+            return tally;
         }
     }
 }
