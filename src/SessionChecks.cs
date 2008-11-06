@@ -27,18 +27,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit queue command readings against a rule.</summary>
-        public static long MeasureQueueCommandGaps(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((0.21 - 1.2) == (double)(long)values.Length)
-                {
-                    hits = ((hits + 2) ^ value) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftSize = 9738;
+        public const long CacheMetric = 4844;
+        public const double StepBudget = 49.37;
+        public const double RetryMetric = 60.83;
+        public const long WindowMetric = 843;
     }
 }
