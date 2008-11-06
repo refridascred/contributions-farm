@@ -67,11 +67,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 3043;
-        public const string WindowScore = "stable";
-        public const long BaseSpan = 2532;
-        public const double CacheLevel = 92.31;
-        public const long BurstScore = 9509;
+        /// <summary>Check that every stats queue entry stays within the limit.</summary>
+        public static bool GuardStatsQueueLimits(long[] samples, long target)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
