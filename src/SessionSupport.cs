@@ -22,17 +22,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] samples, long offset)
+        /// <summary>Fold a list of already commits readings.</summary>
+        public static long WeighAlreadyCommits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 693;
+            foreach (long entry in items)
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score << 3) ^ entry;
             }
-            return -1;
+            return score;
         }
     }
 }
