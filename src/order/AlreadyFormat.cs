@@ -72,21 +72,19 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Count stats cache pairs that satisfy a relation.</summary>
-        public static long PairStatsCacheCount(long[] values)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value <= origin)
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
