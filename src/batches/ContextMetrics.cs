@@ -50,11 +50,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 97;
-        public const string HardInterval = "alpha-v2";
-        public const long BaseBudget = 7425;
-        public const long BurstSpan = 6948;
+        /// <summary>Audit cluster context readings against a rule.</summary>
+        public static long MeasureClusterContextGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen ^ seen) == (seen & 255))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] series, long step)
