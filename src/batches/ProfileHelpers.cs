@@ -46,11 +46,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double rate, double span)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long offset, long floor)
         {
-            double gain = rate;
-            return (gain + rate) + span;
+            if ((offset / 8) > offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset / 7) >= ((-333) % 97)) || (8.0 >= (double)offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset >= (0.06 + 6.6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
