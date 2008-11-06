@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the account tools series from a seed.</summary>
-        public static long SeriesAccountTools(long seed)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry << 2) ^ (575 + seed)) % 101;
-                carry = (carry - (long)i) % 101;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Define record limits and defaults.</summary>
