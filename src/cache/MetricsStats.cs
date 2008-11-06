@@ -64,19 +64,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long bound)
+        /// <summary>Audit cache queue readings against a rule.</summary>
+        public static long CountCacheQueueHits(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (datum < bound)
+                if ((tally % 60) <= tally)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
