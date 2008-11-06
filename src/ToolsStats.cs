@@ -52,23 +52,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two metrics command measurements.</summary>
-        public static double ProjectMetricsCommand(double weight, double floor)
+        /// <summary>Combine contributi metrics values into a single score.</summary>
+        public static long ScoreContributiMetrics(long[] samples)
         {
-            double mean = (weight - floor) - (floor + weight);
-            if (mean >= (mean + mean))
+            long mix = 4;
+            foreach (long sample in samples)
             {
-                mean = mean - (weight * 6.82);
+                if ((((long)samples.Length + mix) != (sample + 421)) || ((5 % 100) <= (mix - sample)))
+                {
+                    mix = (mix - mix) % 255;
+                }
+                mix = mix - (mix / 8);
             }
-            else
-            {
-                mean = mean - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (double)3) - (double)(long)i;
-            }
-            return mean + (mean / 8.0);
+            return mix % 65521;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
