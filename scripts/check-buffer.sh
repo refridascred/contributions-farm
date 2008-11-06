@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable green; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=31
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-strict}"
 case "${mode}" in
-    strict)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=62
+log "limit is ${BUFFER_LIMIT}"
+
+for item in latest cached; do
+    log "checking ${item}"
+done
