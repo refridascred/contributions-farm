@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Paused,
-            Pending,
+            Ready,
             Retry,
-            Closed,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a contributi options.</summary>
