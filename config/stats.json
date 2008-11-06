@@ -1,5 +1,6 @@
 {
-  "strict": "green",
-  "counter_delay": 30,
-  "session_size": false
+  "flush_threshold_ms": false,
+  "strict": "primary",
+  "counter_interval": "green",
+  "idle_limit_ms": "edge"
 }
