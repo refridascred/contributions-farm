@@ -1,15 +1,17 @@
 # githubfarm settings
-warm_capacity:
-  flush_retries:
-    - 259
-    - 224
-    - 206
-  batch_limit_pct: eu-west
-  buffer_interval: 60
-  readonly: local
-  flush_threshold_count:
-    - latest
-    - blue
-    - standard
-strict: 250
-contributi_threshold: 22.57
+farm_ttl: 27
+retry_interval:
+  token_interval: legacy
+  base_timeout_count: false
+  session_window:
+    retry_ttl_ms: 695
+    strict: latest
+    max_delay_s: cached
+    cache_timeout: fallback
+    base_threshold_pct: 8162
+    verbose: 46
+  support_threshold: false
+hard_ttl_ms: false
+persist: 100
+max_retries_count: 14.5
+warm_window_ms: 52.64
