@@ -56,19 +56,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of metric graph entries.</summary>
-        public static long DigestMetricGraph(long[] items)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long anchor = 444;
-            foreach (long entry in items)
-            {
-                anchor = (anchor - (long)items.Length) % 65521;
-                if (anchor > entry)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Synced,
+            Paused,
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Look up the position of a filter command sample.</summary>
