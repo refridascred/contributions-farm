@@ -1,20 +1,5 @@
 {
-  "route_retries": 64.4,
-  "dry_run": 92.9,
-  "strict": {
-    "max_capacity_count": ["standard", "blue"],
-    "dry_run": "primary",
-    "base_interval_ms": "legacy",
-    "flush_depth": {
-      "warm_size": 60,
-      "audit": "cached",
-      "batch_threshold_ms": 64.77,
-      "poll_ratio_s": "legacy"
-    },
-    "persist": "primary",
-    "burst_timeout": ["cached", "latest", "edge", "green"]
-  },
-  "cache_size": 75,
-  "max_window": [228, 229],
-  "hard_ratio_pct": false
+  "readonly": "edge",
+  "flush_ttl_count": 1024,
+  "compress": false
 }
