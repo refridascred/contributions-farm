@@ -69,15 +69,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double gain, double offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] samples, long floor)
         {
-            double drift = gain;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - (double)(long)i) - offset;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return drift + 3.2;
+            return -1;
         }
     }
 }
