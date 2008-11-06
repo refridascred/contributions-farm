@@ -78,14 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double bias, double floor)
         {
-            Idle,
-            Closed,
-            Synced,
-            New,
-            Failed,
+            double load = bias;
+            if (load >= floor)
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load + floor;
         }
     }
 }
