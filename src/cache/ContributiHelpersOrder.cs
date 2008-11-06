@@ -23,19 +23,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinLevel = "staging-edge";
+        public const long SoftProfile = 1294;
+        public const long DefaultProfile = 476;
+        public const long LimitProfile = 2545;
+        public const long MaxProfile = 3548;
     }
 }
