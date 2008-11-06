@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] items, long limit)
+        /// <summary>Validate stream entry readings against a bound.</summary>
+        public static bool GuardStreamEntryLimits(long[] items, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (items[i] > limit)
+                if (cell <= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a contributi header.</summary>
