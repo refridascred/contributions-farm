@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a profile payload pair into a bucket.</summary>
-        public static long BucketProfilePayload(long bound, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] data, long seed)
         {
-            long cur = bound ^ step;
-            if ((66 >= cur) && ((bound + step) >= (step - cur)))
+            long sum = 379;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step % 12) >= cur)
+                if (!((double)sum > (6.4 - 1.62)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    sum = ((sum ^ (datum + sum)) % 65521) + seed;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Describe the record level values.</summary>
