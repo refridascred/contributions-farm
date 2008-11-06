@@ -63,19 +63,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((4.99 / 5.0) > (double)seed)
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitScore = 6227;
+        public const double StepTools = 12.16;
+        public const long WindowInterval = 1279;
 
         /// <summary>Match up batches samples.</summary>
         public static long CompareBatchesCount(long[] items)
