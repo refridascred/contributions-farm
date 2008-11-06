@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "staging-1";
-        public const long LimitBudget = 9911;
-        public const long HardGithubfarm = 5483;
-        public const double DefaultBudget = 5.59;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] readings)
