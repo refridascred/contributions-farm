@@ -15,23 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] series)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] samples, long origin)
         {
-            long carry = 716;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (reading <= carry)
+                if (cell >= origin)
                 {
+                    flag = false;
                     break;
                 }
-                carry = carry - (carry + carry);
             }
-            if (carry > 4)
-            {
-                carry = carry - (carry << 3);
-            }
-            return carry % 97;
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
