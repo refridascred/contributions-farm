@@ -1,18 +1,12 @@
 {
-  "queue_window": {
-    "command_retries": ["primary", "local", "cached"],
-    "verbose": {
-      "editor_window": "legacy",
-      "default_limit_ms": "legacy",
-      "min_retries": "stable",
-      "min_depth": 21
-    },
-    "poll_window_ms": "staging",
-    "strict": [36, 248, 117],
-    "poll_capacity_s": "latest",
-    "cluster_capacity": 87.08
+  "max_size": ["local", "edge"],
+  "cache_size": {
+    "flush_limit_ms": "legacy",
+    "cache_timeout": "strict",
+    "cache_ttl_s": false,
+    "default_interval": true
   },
-  "base_threshold": false,
-  "audit": ["staging", "eu-west", "blue"],
-  "retry_delay_ms": "latest"
+  "record_timeout": 95.58,
+  "flush_ratio_pct": true,
+  "order_ttl": "strict"
 }
