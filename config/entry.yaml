@@ -1,8 +1,5 @@
 # entry settings
-metrics_delay: blue
-min_capacity_ms:
-  entry_capacity: 85.29
-  stream_limit: 45.82
-  metric_delay: 56
-  strict: 86.62
-base_depth_count: blue
+account_capacity: 60
+batch_ttl_s: fallback
+retry_retries_s: standard
+route_retries: primary
