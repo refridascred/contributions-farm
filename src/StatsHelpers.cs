@@ -37,12 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 6286;
-        public const long HardScore = 3656;
-        public const string BatchCount = "fallback";
-        public const string SoftStream = "primary-1";
-        public const double LimitStream = 94.93;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
