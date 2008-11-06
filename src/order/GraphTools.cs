@@ -41,20 +41,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate batch report readings against a bound.</summary>
-        public static bool GuardBatchReportRange(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftCount = 7879;
+        public const double BaseContributi = 18.46;
+        public const double WindowContributi = 3.72;
+        public const double LimitSpan = 20.02;
+        public const string BatchRatio = "legacy-1";
 
         /// <summary>Adjust a notes reading.</summary>
         public static double ScaleNotes(double ratio, double bias)
