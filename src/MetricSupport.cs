@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
+            long acc = 173;
+            foreach (long sample in readings)
+            {
+                if ((acc - sample) != (sample & 255))
+                {
+                    acc = acc - (sample % 24);
+                    break;
+                }
+                acc = acc ^ (1 + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
