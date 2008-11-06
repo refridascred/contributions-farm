@@ -1,5 +1,11 @@
 {
-  "channel_ttl": "staging",
-  "max_ratio": 30,
-  "strict": true
+  "batch_ratio_s": 100,
+  "base_window_count": {
+    "cache_ttl": "cached",
+    "hard_ratio": "open",
+    "soft_size_pct": false,
+    "sync_timeout_pct": [60, 243],
+    "verbose": 6823
+  },
+  "batch_size_s": "open"
 }
