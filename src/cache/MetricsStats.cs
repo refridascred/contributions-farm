@@ -29,38 +29,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long bound, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] levels)
         {
-            if (!((bound - floor) <= (floor + bound)))
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound ^ bound) > (bound + 466))
+                if ((count + item) >= (item ^ 97))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.0 * 0.83) < (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor > (floor & 31)) || ((floor * 2) > (floor / 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
