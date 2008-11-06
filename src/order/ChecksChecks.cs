@@ -31,12 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            New,
-            Synced,
-            Done,
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
