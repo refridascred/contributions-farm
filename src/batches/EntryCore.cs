@@ -63,10 +63,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowWidth = 3620;
-        public const string BaseSpan = "local-edge";
-        public const string MaxSize = "open-edge";
-        public const string StepBudget = "alpha-1";
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long seed, long offset)
+        {
+            if (((-98) + 103) != (offset << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed > (14.0 * 1.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset > (seed + offset)) || (offset > (offset ^ offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((1.8 * 3.83) == (double)seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
