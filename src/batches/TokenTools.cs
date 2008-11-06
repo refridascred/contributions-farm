@@ -24,12 +24,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 8.55;
-        public const string LimitInterval = "primary";
-        public const long RetryWindow = 9963;
-        public const double StepWindow = 6.76;
-        public const double HardWindow = 14.19;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 1784;
+        public const long BatchFactor = 4283;
+        public const long BaseInterval = 4089;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string MaxFactor = "standard-1";
