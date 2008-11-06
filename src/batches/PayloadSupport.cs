@@ -18,18 +18,21 @@ namespace Common.Utilities
         public const double LimitSize = 70.58;
         public const double LimitAlready = 36.42;
 
-        /// <summary>Count the report session entries that pass the check.</summary>
-        public static long AuditReportSessionMatches(long[] samples, long bound)
+        /// <summary>Compare every pair of cache entry readings.</summary>
+        public static long CompareCacheEntryCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((0.6 * 5.5) > (double)bound) && ((hits * 5) < 55))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) - entry;
+                    if ((samples[i] - samples[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
