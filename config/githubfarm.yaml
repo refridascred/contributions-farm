@@ -1,7 +1,11 @@
 # githubfarm settings
-stream_timeout: 60
-max_window_s: 37.44
-stats_depth: 30
-enabled: standard
-default_delay_s: 3133
-sync_ratio_s: false
+batch_capacity: primary
+base_ratio:
+  batch_ttl: 500
+  burst_ttl_s: standard
+  hard_retries_count: 6292
+  poll_ratio: strict
+  commits_ttl:
+    - local
+    - local
+soft_threshold_count: legacy
