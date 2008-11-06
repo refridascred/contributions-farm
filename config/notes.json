@@ -1,8 +1,13 @@
 {
-  "default_interval": "latest",
-  "hard_retries": 1850,
-  "warm_ttl_pct": 7783,
-  "batch_size": 79.87,
-  "hard_delay_s": "staging",
-  "queue_window": "latest"
+  "retry_ratio": {
+    "persist": 51.97,
+    "readonly": 3934,
+    "tools_ratio": [120, 76, 435, 456],
+    "support_ratio": [148, 217, 237],
+    "poll_retries_ms": [205, 71, 489, 131]
+  },
+  "dry_run": 58.48,
+  "filter_delay": true,
+  "record_retries": [247, 414, 83, 454],
+  "idle_interval_s": 7973
 }
