@@ -1,20 +1,6 @@
 {
-  "cache_ttl": ["primary", "primary", "strict", "green"],
-  "audit": 868,
-  "readonly": 30,
-  "default_ratio_count": {
-    "readonly": true,
-    "batch_limit": 100,
-    "burst_limit": {
-      "base_depth": "primary",
-      "burst_interval": ["legacy", "blue"],
-      "flush_ratio": 6654,
-      "account_size": ["strict", "local", "latest"]
-    },
-    "checks_capacity": 51,
-    "format_ttl": true,
-    "base_depth_s": 6506
-  },
-  "base_ttl_count": "eu-west",
-  "base_size_pct": [9, 473, 284, 108]
+  "cache_depth_count": 8084,
+  "batch_limit": false,
+  "burst_limit": ["stable", "primary"],
+  "channel_interval": "fallback"
 }
