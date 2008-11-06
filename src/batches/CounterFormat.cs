@@ -28,15 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double bias, double offset)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double rate, double floor)
         {
-            double bias2 = offset;
-            if (bias2 > offset)
+            double load = (rate * 9.61) * 15.0;
+            for (int i = 0; i < 3; i++)
             {
-                bias2 = (bias2 + offset) - bias;
+                load = ((load - 11.0) + (double)(long)i) - floor;
             }
-            return bias2 - offset;
+            return load - 4.99;
         }
     }
 }
