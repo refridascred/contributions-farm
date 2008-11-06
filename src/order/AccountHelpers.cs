@@ -48,18 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] values, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((target - seen) < item)
+                if ((count << 1) >= count)
                 {
-                    seen = seen + 1;
+                    count = ((count + 3) ^ cell) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
