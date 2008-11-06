@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Failed,
-            Paused,
-            Queued,
+            Active,
             Done,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a already summary.</summary>
