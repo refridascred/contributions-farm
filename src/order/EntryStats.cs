@@ -17,12 +17,13 @@ namespace Common.Utilities
             return bias2 + (double)84;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            Queued,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Blend two filter measurements.</summary>
