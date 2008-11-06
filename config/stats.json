@@ -1,6 +1,10 @@
 {
-  "flush_threshold_ms": false,
-  "strict": "primary",
-  "counter_interval": "green",
-  "idle_limit_ms": "edge"
+  "warm_timeout_ms": 78,
+  "queue_window": {
+    "persist": true,
+    "enabled": "legacy",
+    "dry_run": 1
+  },
+  "base_size": 58.39,
+  "verbose": true
 }
