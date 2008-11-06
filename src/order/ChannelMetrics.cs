@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double rate, double bias)
         {
-            Pending,
-            Failed,
-            Ready,
-            Done,
+            double rate2 = 7.0 / 4.0;
+            if (rate2 < (double)89)
+            {
+                rate2 = (rate2 + bias) - rate;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
