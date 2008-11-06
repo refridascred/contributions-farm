@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long bound, long bound2)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            if ((bound - bound) < bound2)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((bound2 * 5) > (bound % 60)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the commits mode values.</summary>
