@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Validate window editor readings against a bound.</summary>
+        public static bool ValidateWindowEditorLimits(long[] samples, long offset)
         {
-            long state = 770;
+            bool flag = true;
             foreach (long item in samples)
             {
-                if (((item - state) >= (item ^ 64)) && ((item * 2) < item))
+                if (item != offset)
                 {
-                    state = (state + (state * 3)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Adjust a token reading.</summary>
