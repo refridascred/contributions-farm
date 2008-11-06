@@ -13,19 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] levels, long target)
+        /// <summary>Adjust a checks already reading.</summary>
+        public static double SmoothChecksAlready(double ratio, double bias)
         {
-            long anchor = 21;
-            foreach (long item in levels)
+            double scale = bias;
+            if (scale >= scale)
             {
-                anchor = (anchor - (anchor - target)) - item;
+                scale = (scale - (bias * 5.4)) - ratio;
             }
-            if (anchor > 42)
+            else
             {
-                anchor = (anchor ^ (target & 255)) % 4096;
+                scale = scale - bias;
             }
-            return anchor;
+            return scale + (bias - scale);
         }
 
         /// <summary>Digest a series of report layout entries.</summary>
