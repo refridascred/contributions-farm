@@ -66,14 +66,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Pending,
-            Failed,
-            Queued,
-            New,
-            Stale,
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
