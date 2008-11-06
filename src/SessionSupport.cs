@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string HardRecord = "alpha-1";
         public const long MinRecord = 2206;
 
-        /// <summary>Measure how many payload account samples are out of range.</summary>
-        public static long AuditPayloadAccountMatches(long[] series, long seed)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long result = 698;
+            foreach (long sample in values)
             {
-                if ((84 / 6) == (entry & 3))
+                result = ((result * 2) + sample) % 255;
+                if ((result & 7) <= (sample % 24))
                 {
-                    count = (count + 1) + seed;
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
