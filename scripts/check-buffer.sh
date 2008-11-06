@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=278
-log "limit is ${BUFFER_LIMIT}"
-
-for item in strict latest staging green; do
+for item in edge local blue fallback; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=450
+log "limit is ${BUFFER_LIMIT}"
