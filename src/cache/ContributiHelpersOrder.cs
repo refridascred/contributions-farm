@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first payload order entry that matches the target.</summary>
-        public static long LocatePayloadOrderIndex(long[] items, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 971;
+            foreach (long value in data)
             {
-                if (items[i] <= target)
+                if ((value << 3) < (value ^ value))
                 {
-                    return (long)i;
+                    total = total - 449;
+                    total = (total ^ (value % 12)) % 65521;
                 }
+                else
+                {
+                    total = (total ^ (total - total)) % 255;
+                }
+                total = (total << 3) ^ value;
             }
-            return -1;
+            if (total > 9)
+            {
+                total = (total * 3) + (total - total);
+            }
+            return total;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
