@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long HardRatio = 4728;
         public const long SoftLevel = 6872;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] series, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long limit)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
