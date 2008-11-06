@@ -1,14 +1,5 @@
 {
-  "githubfarm_ratio": 3.81,
-  "poll_interval_s": 22,
-  "warm_window_count": {
-    "account_depth": 5504,
-    "burst_ttl_count": true,
-    "batch_size_s": 250,
-    "warm_interval_s": "strict",
-    "base_delay_ms": 50.92
-  },
-  "cluster_ttl": 100,
-  "warm_size": "eu-west",
-  "counter_timeout": "green"
+  "base_interval_s": [425, 345],
+  "route_ttl": 82,
+  "enabled": 1112
 }
