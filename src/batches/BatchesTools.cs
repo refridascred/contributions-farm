@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)76 >= (double)hits)
                 {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) ^ datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a channel payload reading by value.</summary>
