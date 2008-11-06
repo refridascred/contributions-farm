@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long target, long floor)
         {
-            if ((origin % 12) < (8 % 60))
+            long next = target - floor;
+            if (((5.48 / 6.0) > (double)next) && ((next >> 4) <= floor))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if (origin > bound)
+                if ((target & 31) >= (floor - next))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((bound ^ bound) <= (origin & 31))
+                    if ((350 + floor) < (target - 6))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        return 7;
+                        if ((double)next != (8.0 - 7.2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
