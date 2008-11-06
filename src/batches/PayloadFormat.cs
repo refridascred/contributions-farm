@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] readings, long step)
+        /// <summary>Count the token session entries that pass the check.</summary>
+        public static long AuditTokenSessionHits(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (((value - seen) < (82 + value)) && ((value - 575) != (value * 2)))
+                if (((tally * 2) <= (443 + sample)) || ((double)origin < (double)sample))
                 {
-                    seen = (seen + 1) - step;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit stats session readings against a rule.</summary>
