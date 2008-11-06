@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] items, long limit)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < limit)
+                if (items[i] < offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the buffer state values.</summary>
