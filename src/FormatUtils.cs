@@ -83,13 +83,21 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long bound)
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
-            public double Score { get; set; }
+            long total = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((bound - bound) < (bound >> 5))
+                {
+                    total = total - (bound - total);
+                    total = (total + total) % 255;
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the report class values.</summary>
