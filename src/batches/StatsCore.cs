@@ -57,18 +57,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] samples)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((3 >> 3) <= count)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    count = (count + 2) + item;
+                    state = ((state + (seed + seed)) % 101) + (long)i2;
                 }
+                if ((state - (long)i) < 5)
+                {
+                    state = (state - (seed % 16)) % 101;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
     }
 }
