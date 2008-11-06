@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] values)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches >> 5) >= reading)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Closed,
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
