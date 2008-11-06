@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Stale,
-            Ready,
-            Retry,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "strict";
+        public const long BurstFarm = 2522;
+        public const long SoftLevel = 3340;
+        public const long LimitDepth = 2159;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
