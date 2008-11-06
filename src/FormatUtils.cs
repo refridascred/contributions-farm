@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public double Label { get; set; }
-            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Derive the next record buffer value from a seed.</summary>
