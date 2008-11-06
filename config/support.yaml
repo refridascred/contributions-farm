@@ -1,4 +1,4 @@
 # support settings
-support_limit: 67.09
-stats_timeout: 64
-min_interval_ms: 1024
+idle_interval: 500
+warm_capacity: local
+max_retries: true
