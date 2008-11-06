@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count filter report pairs that satisfy a relation.</summary>
-        public static long CompareFilterReportCount(long[] values)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] items, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)floor == (8.9 - 7.48))
                 {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) - entry;
                 }
             }
             return hits;
