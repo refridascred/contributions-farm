@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long StepLevel = 3072;
         public const long HardTimeout = 2877;
 
-        /// <summary>Validate payload layout readings against a bound.</summary>
-        public static bool ValidatePayloadLayoutBounds(long[] data, long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Draft,
+            Locked,
+            Paused,
         }
 
         /// <summary>Hold a batches record.</summary>
