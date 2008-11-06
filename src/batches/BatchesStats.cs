@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] samples, long origin)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long origin)
         {
-            long carry = 9;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((origin + 511) >= (carry * 2)) || (carry < (origin + carry)))
+                if (readings[i] > origin)
                 {
-                    carry = ((carry << 2) ^ cell) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
