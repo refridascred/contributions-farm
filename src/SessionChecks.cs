@@ -27,13 +27,11 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheFactor = 6652;
+        public const string BaseSize = "stable-1";
+        public const long LimitProfile = 3513;
+        public const double MinProfile = 60.52;
 
         /// <summary>Accumulate graph cache samples.</summary>
         public static long DigestGraphCache(long[] readings)
