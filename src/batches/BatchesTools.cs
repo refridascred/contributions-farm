@@ -31,13 +31,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Locate a channel payload reading by value.</summary>
+        public static long FindChannelPayloadIndex(long[] items, long target)
         {
-            Failed,
-            Closed,
-            Queued,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
