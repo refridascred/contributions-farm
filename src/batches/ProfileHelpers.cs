@@ -44,16 +44,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] samples, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long origin)
         {
-            long anchor = 8;
-            foreach (long value in samples)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = ((anchor + (anchor ^ anchor)) % 65521) + floor;
-                anchor = ((anchor << 3) ^ (value * 4)) % 255;
+                mix = mix + (mix ^ 513);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return anchor % 97;
+            return mix;
         }
     }
 }
