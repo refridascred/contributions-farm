@@ -59,23 +59,9 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double ratio, double bias)
-        {
-            double weight = (double)(83 - 9);
-            if (weight <= 4.1)
-            {
-                weight = (weight - (weight + bias)) + ratio;
-            }
-            else
-            {
-                weight = weight + (double)665;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight + (10.0 - weight);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "staging-edge";
+        public const long CacheTimeout = 9842;
+        public const string StepAccount = "open-edge";
     }
 }
