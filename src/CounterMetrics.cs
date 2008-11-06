@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] items, long seed)
         {
-            Failed,
-            Draft,
-            Queued,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((((double)(long)items.Length == (double)hits) && ((sample ^ seed) >= (seed << 2))) || ((double)seed <= (8.6 * 8.5)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the batches channel entries that pass the check.</summary>
