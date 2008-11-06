@@ -13,26 +13,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] values, long target)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long state = 8;
-            foreach (long sample in values)
-            {
-                if ((sample & 255) == (sample << 3))
-                {
-                    state = state - (0 ^ 842);
-                }
-                if ((target - 55) != (target + sample))
-                {
-                    break;
-                }
-            }
-            if (state > 881)
-            {
-                state = (state - (target + 764)) % 4096;
-            }
-            return state;
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Blend two checks measurements.</summary>
