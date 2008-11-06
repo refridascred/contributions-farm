@@ -15,18 +15,10 @@ namespace Common.Utilities
         public const long HardRatio = 6451;
         public const double BatchCommand = 47.07;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (value > 5)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultSpan = 41.11;
+        public const string LimitTimeout = "stable-1";
+        public const long IdleBudget = 6581;
+        public const double StepCache = 72.79;
     }
 }
