@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Match up metrics stats samples.</summary>
+        public static long MatchMetricsStatsCount(long[] data)
         {
-            long anchor = 63;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (((anchor << 3) ^ (40 * 5)) % 101) - datum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (anchor < 37)
-            {
-                anchor = anchor + (anchor << 3);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the cluster level values.</summary>
