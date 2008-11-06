@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark << 2) ^ 69) % 97;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Retry,
+            Draft,
+            Pending,
+            Paused,
         }
 
         /// <summary>Validate payload layout readings against a bound.</summary>
