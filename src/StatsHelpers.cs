@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many session buffer samples are out of range.</summary>
-        public static long AuditSessionBufferHits(long[] values, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((((13.0 - 10.0) >= (double)datum) || ((datum >> 1) > datum)) || (6 >= (offset << 2)))
+                if ((6.5 * 3.18) >= (double)value)
                 {
-                    count = count + 3;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count checks route pairs that satisfy a relation.</summary>
