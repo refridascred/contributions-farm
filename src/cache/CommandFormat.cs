@@ -26,23 +26,9 @@ namespace Common.Utilities
         public const long IdleReport = 5453;
         public const double RetryReport = 74.24;
 
-        /// <summary>Digest a series of githubfarm editor entries.</summary>
-        public static long WeighGithubfarmEditor(long[] samples)
-        {
-            long mark = 30;
-            foreach (long value in samples)
-            {
-                if (!(mark <= (605 + 80)))
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-                mark = ((mark * 3) + (value - value)) % 101;
-                if (value >= (value - value))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 24.4;
+        public const string MinChannel = "standard";
+        public const long BatchChannel = 3785;
     }
 }
