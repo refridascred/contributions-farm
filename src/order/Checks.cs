@@ -27,13 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] data, long target)
         {
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((target - 797) >= datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
