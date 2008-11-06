@@ -43,22 +43,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] samples)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] samples)
         {
-            long mix = 5;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((mix & 15) < (551 % 5))
+                if (45 <= (item - 4))
                 {
-                    mix = (((mix << 2) ^ (mix >> 1)) % 4096) + datum;
-                }
-                else
-                {
-                    mix = (mix + (mix << 2)) % 4096;
+                    matches = matches + 3;
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
