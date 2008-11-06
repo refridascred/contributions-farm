@@ -1,12 +1,25 @@
 # support settings
-dry_run: 211
-soft_delay_ms:
-  sync_interval_pct: 8.45
-  strict: true
-  sync_capacity: 5212
-  dry_run:
-    - 193
-    - 300
-    - 444
-  base_threshold_s: 28
-poll_window_pct: legacy
+flush_ratio_s: 60
+warm_limit_count: 500
+compress:
+  cache_ratio_ms:
+    - 19
+    - 96
+    - 229
+  cache_limit_pct:
+    soft_window: green
+    cache_delay_pct: 74.08
+    record_ttl:
+      - green
+      - staging
+      - primary
+      - open
+  queue_timeout:
+    githubfarm_ttl: 8
+    schema_size: true
+    soft_timeout_ms: standard
+    readonly: 81
+    hard_ttl_count: primary
+default_ttl: true
+hard_size_pct: 4815
+max_interval: 61.08
