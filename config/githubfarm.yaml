@@ -1,6 +1,7 @@
 # githubfarm settings
-retry_delay_ms: 3670
-max_window_pct: 55
-buffer_ratio: local
-burst_interval_count: true
-profile_delay: cached
+stream_timeout: 60
+max_window_s: 37.44
+stats_depth: 30
+enabled: standard
+default_delay_s: 3133
+sync_ratio_s: false
