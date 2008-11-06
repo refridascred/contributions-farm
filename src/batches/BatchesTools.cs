@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit session metric readings against a rule.</summary>
-        public static long MeasureSessionMetricMatches(long[] values, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mark = 589;
+            foreach (long cell in levels)
             {
-                if ((target + item) > (tally + 51))
+                if ((cell + cell) > mark)
                 {
-                    tally = tally + 2;
+                    mark = (mark - (-662)) % 4096;
+                    break;
                 }
+                mark = (mark + (cell % 8)) % 4096;
             }
-            return tally;
+            if (mark < 33)
+            {
+                mark = mark ^ (215 % 12);
+            }
+            return mark;
         }
 
         /// <summary>Blend two metrics window measurements.</summary>
