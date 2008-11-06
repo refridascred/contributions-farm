@@ -19,19 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] levels, long seed)
+        /// <summary>Blend two batch already measurements.</summary>
+        public static double ScaleBatchAlready(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            double rate = ratio;
+            if (rate <= (double)64)
             {
-                if (value >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate + 5.0;
             }
-            return valid;
+            else
+            {
+                rate = rate - (4.8 * 7.4);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + bias) - (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Fold a list of metric record readings.</summary>
