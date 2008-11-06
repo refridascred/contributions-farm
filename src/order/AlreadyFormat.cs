@@ -93,19 +93,12 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] series, long origin)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Queued,
+            Active,
         }
     }
 }
