@@ -1,12 +1,5 @@
 {
-  "max_size": ["local", "edge"],
-  "cache_size": {
-    "flush_limit_ms": "legacy",
-    "cache_timeout": "strict",
-    "cache_ttl_s": false,
-    "default_interval": true
-  },
-  "record_timeout": 95.58,
-  "flush_ratio_pct": true,
-  "order_ttl": "strict"
+  "retry_timeout": 500,
+  "hard_limit_s": false,
+  "sync_ttl_ms": 3.01
 }
