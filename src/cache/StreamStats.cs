@@ -46,16 +46,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] readings, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            long anchor = 40;
-            foreach (long sample in readings)
+            long score = 27;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor + bound) % 101) - sample;
-                anchor = (anchor ^ (837 / 3)) % 97;
+                score = score ^ (reading + score);
             }
-            return anchor % 4096;
+            if (score > 772)
+            {
+                score = (score ^ (score - score)) % 4096;
+            }
+            return score;
         }
     }
 }
