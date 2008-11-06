@@ -12,17 +12,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of tools stream readings.</summary>
-        public static long WeighToolsStream(long[] items)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long seed)
         {
-            long mix = 950;
-            foreach (long entry in items)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(mix >= (mix / 8)))
-                {
-                    mix = (mix + (mix >> 3)) % 97;
-                }
-                mix = (mix << 3) ^ entry;
+                mix = ((mix * 4) + (long)i) % 97;
             }
             return mix;
         }
