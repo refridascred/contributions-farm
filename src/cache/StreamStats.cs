@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
