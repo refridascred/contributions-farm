@@ -1,4 +1,7 @@
 # entry settings
-batch_delay_count: 250
-cache_delay: 5720
-record_size: false
+burst_capacity: open
+stream_interval: standard
+batch_depth_s: blue
+entry_window: edge
+soft_size_count: fallback
+hard_limit_count: open
