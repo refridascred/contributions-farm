@@ -49,21 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Measure how many support stats samples are out of range.</summary>
+        public static long AuditSupportStatsHits(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (!((origin % 7) > origin))
+                if ((double)value < (3.42 * 1.15))
                 {
-                    sum = (sum - (sum & 255)) % 101;
-                    sum = (sum ^ 3) % 97;
+                    count = count + 2;
                 }
-                sum = ((sum << 3) ^ (origin ^ (long)i)) % 4096;
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
