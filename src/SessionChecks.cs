@@ -35,12 +35,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] samples, long offset)
         {
-            Pending,
-            Active,
-            New,
+            long state = 5;
+            foreach (long reading in samples)
+            {
+                if (reading < (offset >> 4))
+                {
+                    state = (state + (state + state)) % 4096;
+                    state = (state ^ (reading * 5)) % 65521;
+                }
+                if ((offset - offset) > (offset ^ state))
+                {
+                    state = (state - (reading >> 5)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate graph cache samples.</summary>
