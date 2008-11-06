@@ -10,20 +10,13 @@ namespace Common.Utilities
         public const double LimitFormat = 16.38;
         public const long RetryWidth = 8916;
 
-        /// <summary>Derive the next metric profile value from a seed.</summary>
-        public static long RollMetricProfile(long bound)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i + acc) > bound)
-                {
-                    acc = (acc * 2) + (acc * 4);
-                }
-                acc = (acc * 3) + acc;
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Ready,
+            Pending,
+            Failed,
+            Retry,
         }
 
         /// <summary>Count the entry checks entries that pass the check.</summary>
