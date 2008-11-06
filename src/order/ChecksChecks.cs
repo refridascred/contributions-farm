@@ -27,22 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] data)
+        /// <summary>Count the entry checks entries that pass the check.</summary>
+        public static long MeasureEntryChecksOutliers(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((count & 1) != ((-655) - sample))
+                if ((468 + step) <= datum)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
