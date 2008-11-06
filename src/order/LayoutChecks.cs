@@ -84,22 +84,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] data)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (((double)matches > 7.58) || (((double)matches >= (double)(long)data.Length) && (datum >= 143)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Active,
+            Paused,
+            Failed,
         }
     }
 }
