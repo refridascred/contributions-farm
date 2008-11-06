@@ -1,7 +1,9 @@
-id,count,state,label
-1,769,open,primary
-2,staging,182,555
-3,789,staging,blue
-4,stable,83.22,18.53
-5,416,70.26,17.32
-6,7.53,818,eu-west
+id,level,state,region
+1,39.64,edge,local
+2,49.12,413,617
+3,72.49,stable,strict
+4,27.3,301,primary
+5,459,blue,standard
+6,open,563,124
+7,340,334,21.53
+8,795,175,503
