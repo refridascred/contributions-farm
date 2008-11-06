@@ -26,21 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Grade a notes format value against two limits.</summary>
+        public static long BucketNotesFormat(long floor, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long step = floor + origin;
+            if ((double)floor != (0.4 + 6.3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((597 * 5) < (floor & 31))
                 {
-                    if ((samples[i] + samples[j]) != 2)
+                    return 8;
+                }
+                else
+                {
+                    if ((step * 5) >= (5 / 4))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin / 4) >= floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
