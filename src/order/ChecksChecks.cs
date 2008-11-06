@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 27.06;
-        public const double LimitFormat = 16.38;
-        public const long RetryWidth = 8916;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every counter layout entry stays within the limit.</summary>
         public static bool VerifyCounterLayoutLimits(long[] items, long origin)
