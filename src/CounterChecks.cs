@@ -63,18 +63,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] samples, long seed)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((seed + seed) <= 840)
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
