@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate checks already samples.</summary>
-        public static long CombineChecksAlready(long[] readings)
-        {
-            long carry = 83;
-            foreach (long cell in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = (((carry << 2) ^ (cell - cell)) % 101) ^ (long)i;
-                }
-                if ((carry < ((long)readings.Length / 8)) && ((494 % 10) != (cell % 60)))
-                {
-                    carry = ((carry << 2) ^ (carry + cell)) % 101;
-                }
-                else
-                {
-                    carry = (carry * 3) + (83 - cell);
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 6698;
+        public const long HardFormat = 5300;
+        public const long BurstFactor = 8753;
+        public const long DefaultSpan = 3732;
 
         /// <summary>Rank entry payload input into a small class.</summary>
         public static long ClassifyEntryPayload(long target, long step)
