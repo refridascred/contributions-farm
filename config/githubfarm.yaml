@@ -1,6 +1,17 @@
 # githubfarm settings
-base_threshold: 90.23
-payload_depth: latest
-burst_ttl_pct: 1024
-route_window: cached
-cache_depth: 82.68
+checks_depth:
+  payload_size:
+    batch_size: open
+    strict: 1024
+    hard_depth: 2671
+    route_depth:
+      - edge
+      - standard
+      - staging
+    audit: 59.32
+  readonly: 76.32
+  filter_ratio: legacy
+sync_window_count: true
+persist:
+  - blue
+  - cached
