@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] levels)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 9;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (((sum * 2) + (71 & 127)) ^ entry) - floor;
             }
-            return seen;
+            return sum % 1000;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
