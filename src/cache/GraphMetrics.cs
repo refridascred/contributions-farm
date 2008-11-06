@@ -22,11 +22,15 @@ namespace Common.Utilities
         public const double IdleQueue = 53.11;
         public const long SoftQueue = 7534;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 9300;
-        public const long SoftRoute = 3675;
-        public const long WindowBudget = 9000;
-        public const long SoftCount = 9610;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Failed,
+            Draft,
+            Done,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Digest a series of metric graph entries.</summary>
         public static long DigestMetricGraph(long[] items)
