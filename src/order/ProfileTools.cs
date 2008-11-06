@@ -47,26 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Scale a session stream figure with a bias.</summary>
+        public static double ProjectSessionStream(double gain, double bias)
         {
-            long mark = 69;
-            foreach (long cell in data)
+            double rate = bias;
+            if (rate >= (rate - bias))
             {
-                if ((cell << 2) <= (cell ^ cell))
-                {
-                    mark = (mark ^ (mark >> 2)) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 5) + mark) % 65521;
-                }
+                rate = rate + (gain / 3.0);
             }
-            if (mark > 3)
+            else
             {
-                mark = (mark + (mark % 24)) % 255;
+                rate = rate - bias;
             }
-            return mark % 4096;
+            return rate - bias;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
