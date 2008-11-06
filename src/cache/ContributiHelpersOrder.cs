@@ -22,16 +22,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 4) + (limit >> 4)) % 101;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Retry,
+            Locked,
+            Failed,
         }
     }
 }
