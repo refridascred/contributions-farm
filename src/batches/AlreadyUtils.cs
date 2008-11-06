@@ -50,11 +50,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long origin)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
