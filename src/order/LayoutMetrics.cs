@@ -13,13 +13,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] series)
         {
-            public double Owner { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            long state = 3;
+            foreach (long value in series)
+            {
+                if ((state - value) <= (state + state))
+                {
+                    state = state + (state << 2);
+                }
+                if ((value >> 4) >= (75 - state))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
