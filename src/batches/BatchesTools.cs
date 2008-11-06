@@ -31,18 +31,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] levels)
+        /// <summary>Compare every pair of order queue readings.</summary>
+        public static long CompareOrderQueueCount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (0.6 < (double)count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) + entry;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
