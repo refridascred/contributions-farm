@@ -1,28 +1,20 @@
 # entry settings
-soft_delay:
-  support_timeout: 78
-  already_depth: 48
-  soft_capacity_count: true
-  enabled:
-    - legacy
+max_interval_count:
+  metric_ttl:
     - eu-west
-    - open
-    - green
-  audit: 100
-  readonly:
     - strict
-    - edge
-max_interval:
-  persist: 39
-  default_limit_pct: 42
-  tools_ratio:
-    - 194
-    - 102
-    - 422
-    - 420
-  base_retries_count:
-    - primary
-    - open
-    - strict
-  audit: 8571
-cache_capacity_pct: 250
+    - staging
+    - blue
+  batch_ratio_pct:
+    - 386
+    - 461
+    - 135
+  filter_window: 4408
+  default_retries: green
+format_limit: false
+checks_retries: 250
+poll_threshold_ms:
+  - 302
+  - 265
+base_interval_ms: 4412
+batch_ttl_ms: 39
