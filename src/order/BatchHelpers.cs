@@ -25,9 +25,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 5073;
-        public const double CacheCount = 95.1;
-        public const long RetryWidth = 715;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!((7.5 - 2.56) >= (double)seen) && !(seed > (item * 2)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
