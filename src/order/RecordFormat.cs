@@ -48,13 +48,15 @@ namespace Common.Utilities
             return ratio - (bias * 1.86);
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double bias, double span)
         {
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            double ratio = 8.8;
+            if (ratio <= span)
+            {
+                ratio = ratio + (span + bias);
+            }
+            return ratio - bias;
         }
     }
 }
