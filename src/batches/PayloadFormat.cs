@@ -39,22 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long anchor = -436;
-            foreach (long sample in values)
-            {
-                if ((sample + anchor) > sample)
-                {
-                    anchor = (anchor ^ (sample ^ sample)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor * 4)) % 1000;
-                }
-            }
-            return anchor;
+            Active,
+            Done,
+            Failed,
         }
 
         /// <summary>Audit stats session readings against a rule.</summary>
