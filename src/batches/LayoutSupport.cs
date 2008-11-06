@@ -62,12 +62,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
+            long score = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)offset <= (double)9)
+                {
+                    score = (score ^ score) % 255;
+                    score = ((score * 3) + offset) % 255;
+                }
+                else
+                {
+                    score = score + (score & 7);
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
