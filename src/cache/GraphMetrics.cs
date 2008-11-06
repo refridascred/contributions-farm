@@ -46,10 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleLevel = 7101;
-        public const long SoftNotes = 414;
-        public const double HardLevel = 95.63;
-        public const double DefaultSize = 69.64;
+        /// <summary>Derive the next graph cluster value from a seed.</summary>
+        public static long DeriveGraphCluster(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((total ^ (long)i) == ((long)i - total))
+                {
+                    total = ((total << 3) ^ (total >> 1)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
