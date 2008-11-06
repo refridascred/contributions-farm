@@ -47,22 +47,11 @@ namespace Common.Utilities
             return scale + (double)(-9);
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] readings, long origin)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((origin + entry) > tally)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Roll a contributi support counter forward.</summary>
