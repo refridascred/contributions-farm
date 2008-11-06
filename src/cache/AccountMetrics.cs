@@ -49,11 +49,19 @@ namespace Common.Utilities
         public const long StepScore = 5886;
         public const double RetryContext = 52.5;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstBudget = 5849;
-        public const long BaseGithubfarm = 3348;
-        public const long HardGithubfarm = 3049;
-        public const string HardSpan = "fallback-v2";
+        /// <summary>Measure how many window route samples are out of range.</summary>
+        public static long CountWindowRouteMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (datum <= hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
