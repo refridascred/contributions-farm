@@ -14,18 +14,26 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] data, long offset)
+        /// <summary>Digest a series of context account entries.</summary>
+        public static long WeighContextAccount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long anchor = 711;
+            foreach (long cell in values)
             {
-                if (6 > (5 + entry))
+                if (((double)cell < 0.44) && ((anchor + 821) > (anchor / 9)))
                 {
-                    matches = (matches + 2) - offset;
+                    anchor = ((anchor * 5) + (cell * 5)) % 97;
+                }
+                if ((double)anchor == (0.17 / 9.0))
+                {
+                    anchor = ((anchor << 3) ^ (278 + anchor)) % 4096;
+                }
+                if (7 > (anchor + anchor))
+                {
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Roll a window counter forward.</summary>
