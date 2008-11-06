@@ -40,31 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels, long bound)
         {
-            long state = 96;
-            foreach (long datum in values)
+            long acc = 87;
+            foreach (long sample in levels)
             {
-                if ((state << 3) <= 12)
-                {
-                    state = (state ^ state) ^ datum;
-                    continue;
-                }
-                else
-                {
-                    state = (state - (state * 2)) % 4096;
-                }
-                if ((10.0 + 5.2) < (double)state)
-                {
-                    state = state ^ (state & 255);
-                }
+                acc = (((acc * 3) + (sample & 31)) % 4096) - bound;
             }
-            if (state < 20)
+            if (acc > (-982))
             {
-                state = state + (state + 53);
+                acc = (acc << 2) ^ acc;
             }
-            return state;
+            return acc;
         }
     }
 }
