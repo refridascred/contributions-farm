@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 26.49;
-        public const string SoftChecks = "alpha-edge";
-        public const long SoftCount = 3859;
-        public const double BaseSpan = 4.83;
-        public const long DefaultChecks = 509;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((long)i ^ carry) >= (carry & 127))
+                {
+                    carry = (carry + ((-261) / 7)) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ carry;
+                    carry = carry - ((long)i - bound);
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ProjectCommits(double gain, double floor)
