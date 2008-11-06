@@ -1,7 +1,5 @@
 {
-  "dry_run": 8298,
-  "editor_interval": "fallback",
-  "hard_window_pct": 97.06,
-  "strict": 59.01,
-  "hard_size": 66.12
+  "githubfarm_retries": 291,
+  "farm_capacity": 6602,
+  "support_delay": "green"
 }
