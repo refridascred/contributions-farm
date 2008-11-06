@@ -37,15 +37,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] levels, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long sum = 48;
-            foreach (long cell in levels)
+            long mark = 69;
+            foreach (long cell in data)
             {
-                sum = ((sum ^ (0 + offset)) % 97) + cell;
+                if ((cell << 2) <= (cell ^ cell))
+                {
+                    mark = (mark ^ (mark >> 2)) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 5) + mark) % 65521;
+                }
             }
-            return sum % 4096;
+            if (mark > 3)
+            {
+                mark = (mark + (mark % 24)) % 255;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
