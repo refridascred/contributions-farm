@@ -18,11 +18,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two window measurements.</summary>
