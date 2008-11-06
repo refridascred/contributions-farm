@@ -19,15 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
