@@ -51,17 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] values, long step)
+        /// <summary>Check that every farm layout entry stays within the limit.</summary>
+        public static bool CheckFarmLayoutRange(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((values[i] > step) && ((values[i] % 5) != 0))
+                if (reading != origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Blend two editor measurements.</summary>
