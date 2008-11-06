@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
+            Retry,
+            Ready,
+            Locked,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
