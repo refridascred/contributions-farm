@@ -26,24 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long bound, long seed)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            if (((seed % 64) >= (35 << 1)) && ((double)seed == (9.7 * 9.3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed - bound) < (bound << 3)) || (seed < (seed * 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Pending,
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define account limits and defaults.</summary>
