@@ -14,17 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first command tools entry that matches the target.</summary>
-        public static long FindCommandToolsIndex(long[] data, long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
