@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchSpan = 48.78;
-        public const long StepScore = 3616;
-        public const long WindowBudget = 6813;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double ProjectCluster(double rate, double span)
