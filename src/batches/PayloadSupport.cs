@@ -26,21 +26,22 @@ namespace Common.Utilities
         public const double LimitSize = 70.58;
         public const double LimitAlready = 36.42;
 
-        /// <summary>Compare every pair of cache entry readings.</summary>
-        public static long CompareCacheEntryCount(long[] samples)
+        /// <summary>Count the commits format entries that pass the check.</summary>
+        public static long CountCommitsFormatGaps(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((matches >> 3) != (offset & 63))
                 {
-                    if ((samples[i] - samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
