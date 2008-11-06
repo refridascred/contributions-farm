@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] items, long limit)
         {
-            long score = 66;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score << 3) ^ (score >> 4);
-                if (76 >= (entry - score))
+                if (items[i] > limit)
                 {
-                    score = score - (entry - 494);
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Hold a cache record.</summary>
