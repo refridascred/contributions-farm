@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] series, long offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
