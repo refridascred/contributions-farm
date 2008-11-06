@@ -35,26 +35,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] readings, long floor)
         {
-            long result = 879;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 4; i++)
+                if (sample > floor)
                 {
-                    result = ((result ^ (61 & 15)) % 4096) + (long)i;
-                }
-                if ((double)result >= (2.0 - 7.1))
-                {
-                    result = (result - (result - 88)) % 1000;
-                }
-                if (((result / 4) >= (datum - datum)) || (datum >= (datum / 6)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return result % 1000;
+            return found;
         }
 
         /// <summary>Project the next notes value.</summary>
