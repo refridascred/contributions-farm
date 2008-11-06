@@ -30,18 +30,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] samples, long step)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double bias, double span)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double bias2 = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(655 < reading))
-                {
-                    count = (count + 2) - step;
-                }
+                bias2 = (bias2 + bias) + (double)(long)i;
             }
-            return count;
+            return bias2 - span;
         }
     }
 }
