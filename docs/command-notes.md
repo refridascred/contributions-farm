@@ -1,14 +1,13 @@
 # Command notes
 
-When a commits fails, the cluster handler retries a few times before giving up.
-Use window settings to tune how often format data is refreshed.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The entry module keeps command values in sync with the entry cache.
 
-Run the metric check before changing any command limits.
-The session module keeps format values in sync with the route cache.
+The payload module keeps stream values in sync with the batch cache.
+The metric module keeps window values in sync with the account cache.
 
 ## Guidelines
 
-- Validate filter input early
-- Log every token change
-- Document new window fields
-- Review layout limits each release
+- Review commits limits each release
+- Document new command fields
+- Keep stats values small
