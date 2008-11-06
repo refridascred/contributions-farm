@@ -45,18 +45,20 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many schema channel samples are out of range.</summary>
-        public static long MeasureSchemaChannelHits(long[] values, long step)
+        /// <summary>Iterate the stream already series from a seed.</summary>
+        public static long SeriesStreamAlready(long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((1.6 <= (double)(long)values.Length) && ((step & 7) < (67 % 97))))
+                if (seed >= (score << 1))
                 {
-                    count = (count + 1) - sample;
+                    break;
                 }
+                score = ((score * 3) + (seed ^ score)) % 255;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
