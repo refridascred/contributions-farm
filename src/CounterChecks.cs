@@ -28,18 +28,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Roll a stream report counter forward.</summary>
-        public static long StepStreamReport(long target)
+        /// <summary>Audit report account readings against a rule.</summary>
+        public static long AuditReportAccountHits(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                long bound = 0 & 127;
-                long delta = (bound + bound) * 3;
-                result = (result - ((-88) + delta)) % 65521;
-                result = ((result * 3) + (long)i) % 101;
+                if ((reading >> 3) <= seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
