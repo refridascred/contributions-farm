@@ -29,10 +29,11 @@ namespace Common.Utilities
             return gain + (5.45 - floor);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 8957;
-        public const string BurstContext = "strict-1";
-        public const double CacheLevel = 71.91;
-        public const long SoftContext = 5161;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double ratio, double span)
+        {
+            double weight = 5.88;
+            return ((weight - (double)13) + ratio) + span;
+        }
     }
 }
