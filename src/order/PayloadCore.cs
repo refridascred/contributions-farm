@@ -34,21 +34,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up contributi metrics samples.</summary>
-        public static long CompareContributiMetricsCount(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (16 > (origin + item))
                 {
-                    if ((levels[i] - levels[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate support token readings against a bound.</summary>
