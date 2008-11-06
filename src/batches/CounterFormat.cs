@@ -22,18 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context graph entries that pass the check.</summary>
-        public static long CountContextGraphHits(long[] samples)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count << 2) >= entry)
+                if (samples[i] < bound)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of checks report readings.</summary>
