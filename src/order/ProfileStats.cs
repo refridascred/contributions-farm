@@ -36,17 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command cache entry that matches the target.</summary>
-        public static long FindCommandCacheIndex(long[] series, long limit)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 5) == 0))
+                if ((double)limit != (double)anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor * 4) + limit;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
     }
 }
