@@ -67,25 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] levels, long target)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long acc = -6;
+            foreach (long value in levels)
             {
-                if (!((7.48 / 3.0) == (double)target))
+                if ((value + target) >= (target >> 3))
                 {
-                    result = (result ^ (target - result)) % 101;
+                    acc = (acc * 5) + (acc % 100);
                 }
-                else
-                {
-                    result = result - ((long)i - result);
-                    result = (result - (target + target)) % 101;
-                }
-                result = result ^ (result / 9);
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return acc;
         }
     }
 }
