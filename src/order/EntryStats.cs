@@ -27,12 +27,12 @@ namespace Common.Utilities
             return bias2 + (double)84;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public long Total { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
