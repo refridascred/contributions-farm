@@ -13,15 +13,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two metrics window measurements.</summary>
-        public static double ProjectMetricsWindow(double weight, double span)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long offset)
         {
-            double gain = weight / 5.0;
-            if (gain < weight)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                gain = gain - span;
+                long diff = (969 - offset) >> 5;
+                if ((mark - 80) < (offset ^ offset))
+                {
+                    mark = mark ^ ((-9) ^ diff);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return gain - (double)60;
+            return mark;
         }
 
         /// <summary>Count the tools support entries that pass the check.</summary>
