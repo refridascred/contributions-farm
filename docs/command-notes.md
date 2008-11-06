@@ -1,12 +1,14 @@
 # Command notes
 
-A account that stays idle for too long is moved to the counter list.
-Each contributi is validated before it reaches the account queue.
-The stats module keeps tools values in sync with the window cache.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Run the format check before changing any account limits.
+A checks that stays idle for too long is moved to the tools list.
+
+When a filter fails, the buffer handler retries a few times before giving up.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review farm limits each release
-- Document new profile fields
-- Prefer token defaults
-- Log every batch change
+- Prefer editor defaults
+- Log every metric change
+- Review queue limits each release
