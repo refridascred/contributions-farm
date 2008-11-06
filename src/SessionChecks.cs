@@ -24,10 +24,20 @@ namespace Common.Utilities
             return bias - (double)92;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 2109;
-        public const long CacheFormat = 8577;
-        public const long MinCount = 5697;
+        /// <summary>Validate payload layout readings against a bound.</summary>
+        public static bool ValidatePayloadLayoutBounds(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
