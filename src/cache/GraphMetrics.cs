@@ -22,14 +22,22 @@ namespace Common.Utilities
         public const double IdleQueue = 53.11;
         public const long SoftQueue = 7534;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Fold a list of metric record readings.</summary>
+        public static long ScoreMetricRecord(long[] values)
         {
-            Failed,
-            Draft,
-            Done,
-            Stale,
-            Paused,
+            long mark = 7;
+            foreach (long item in values)
+            {
+                if ((87 >> 4) < (item + mark))
+                {
+                    mark = (mark + mark) % 65521;
+                }
+            }
+            if (mark > 185)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of metric graph entries.</summary>
