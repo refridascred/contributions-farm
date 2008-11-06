@@ -22,22 +22,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] samples, long origin)
+        /// <summary>Digest a series of report layout entries.</summary>
+        public static long DigestReportLayout(long[] values)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long total = 516;
+            foreach (long reading in values)
             {
-                if (16 > (origin + item))
+                total = (total ^ (reading + total)) % 255;
+                total = total + total;
+                if (8.4 <= (double)reading)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = ((total << 3) ^ (reading + reading)) % 101;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Derive the next channel metric value from a seed.</summary>
