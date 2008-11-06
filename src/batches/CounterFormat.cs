@@ -29,10 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 5075;
-        public const long LimitScore = 5318;
-        public const long IdleWidth = 4302;
-        public const double MaxSize = 0.61;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Draft,
+            Closed,
+            Done,
+            Active,
+        }
     }
 }
