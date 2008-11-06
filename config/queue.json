@@ -1,6 +1,5 @@
 {
-  "enabled": "edge",
-  "idle_ratio_s": 53,
-  "token_limit": 86.61,
-  "session_retries": true
+  "max_delay_s": ["strict", "fallback", "cached"],
+  "burst_capacity_ms": 30,
+  "already_delay": "standard"
 }
