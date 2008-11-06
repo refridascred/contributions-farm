@@ -1,8 +1,8 @@
 {
-  "min_capacity_count": [266, 127, 242],
-  "retry_timeout": "staging",
-  "default_ttl_ms": "strict",
-  "poll_interval_count": 57.05,
-  "max_capacity_s": 86.22,
-  "batch_delay": 14.92
+  "default_retries_ms": true,
+  "readonly": 3806,
+  "strict": 82.78,
+  "soft_depth": "stable",
+  "hard_window": "standard",
+  "idle_interval": 20
 }
