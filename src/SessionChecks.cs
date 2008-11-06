@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double ratio, double span)
         {
-            Ready,
-            Retry,
-            Active,
-            Idle,
+            double bias = (double)63;
+            if (bias <= (double)(-1))
+            {
+                bias = bias + (ratio * 0.51);
+            }
+            else
+            {
+                bias = bias + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (7.0 * 8.1)) + (double)(long)i;
+            }
+            return bias - (double)92;
         }
 
         /// <summary>Define format limits and defaults.</summary>
