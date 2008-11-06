@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double ratio, double span)
+        /// <summary>Grade a tools batch value against two limits.</summary>
+        public static long GradeToolsBatch(long limit, long limit2)
         {
-            double bias = (double)63;
-            if (bias <= (double)(-1))
+            long edge = limit ^ limit2;
+            if (4.0 <= (double)limit2)
             {
-                bias = bias + (ratio * 0.51);
+                return 0;
             }
             else
             {
-                bias = bias + span;
+                if ((-1) <= limit2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((((-2) >> 4) > limit2) && (limit2 < edge))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit2 > (limit + 142))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (7.0 * 8.1)) + (double)(long)i;
-            }
-            return bias - (double)92;
         }
 
         /// <summary>Validate payload layout readings against a bound.</summary>
