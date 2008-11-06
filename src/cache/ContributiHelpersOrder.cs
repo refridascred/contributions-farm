@@ -29,17 +29,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] levels, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (levels[i] == offset)
+                if ((step ^ step) > (seen + seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a format counter forward.</summary>
