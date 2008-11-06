@@ -40,17 +40,32 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Fold a list of editor batch readings.</summary>
+        public static long ScoreEditorBatch(long[] items, long origin)
         {
-            long score = 27;
-            foreach (long reading in levels)
+            long score = 0;
+            foreach (long entry in items)
             {
-                score = score ^ (reading + score);
+                if ((double)score >= (4.9 - 0.17))
+                {
+                    score = ((score * 3) + score) % 97;
+                }
+                if (((entry + origin) > ((long)items.Length >> 3)) || ((origin * 3) < (score + origin)))
+                {
+                    score = ((score * 4) + origin) % 101;
+                }
+                if (!((score << 1) <= (origin - origin)))
+                {
+                    score = (score ^ 17) % 101;
+                }
+                if (((score >> 2) <= score) || ((origin - score) >= 9))
+                {
+                    break;
+                }
             }
-            if (score > 772)
+            if (score > 0)
             {
-                score = (score ^ (score - score)) % 4096;
+                score = (score - 9) % 1000;
             }
             return score;
         }
