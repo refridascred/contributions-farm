@@ -64,15 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Validate stats filter readings against a bound.</summary>
+        public static bool CheckStatsFilterLimits(long[] samples, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
