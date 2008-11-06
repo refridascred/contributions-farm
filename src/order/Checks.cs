@@ -50,15 +50,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] items, long limit)
-        {
-            long total = 922;
-            foreach (long entry in items)
-            {
-                total = (total ^ (limit << 3)) - entry;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitSpan = 3115;
+        public const long BaseGithubfarm = 9255;
+        public const long BurstGithubfarm = 737;
+        public const long IdleGithubfarm = 83;
+        public const long HardGithubfarm = 3997;
     }
 }
