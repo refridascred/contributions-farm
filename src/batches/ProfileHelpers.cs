@@ -37,13 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] levels)
         {
-            Dropped,
-            Draft,
-            Stale,
-            Idle,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + 8) <= count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
