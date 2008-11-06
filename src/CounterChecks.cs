@@ -106,25 +106,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long limit, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] items, long step)
         {
-            long bound = limit - step;
-            if ((bound & 1) >= limit)
+            bool stale = true;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((step % 97) > limit))
+                if (value > step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
