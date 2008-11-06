@@ -1,6 +1,7 @@
-id,region,score,label
-1,35.82,blue,eu-west
-2,164,38.86,861
-3,411,79.42,8.82
-4,36,35.05,248
-5,stable,759,legacy
+id,label,weight
+1,blue,605
+2,110,strict
+3,39.93,stable
+4,edge,6.83
+5,12.16,658
+6,392,882
