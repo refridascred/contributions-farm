@@ -84,22 +84,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] samples, long floor)
+        /// <summary>Audit already queue readings against a rule.</summary>
+        public static long AuditAlreadyQueueMatches(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((((2.0 / 8.0) <= (double)count) && ((double)count > (5.8 + 17.0))) || ((count % 16) < floor))
+                if (((2 >> 2) < (bound + matches)) || ((double)bound >= 4.2))
                 {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Rank report input into a small class.</summary>
