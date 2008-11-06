@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] items, long target)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((target & 63) <= (target ^ 86))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
