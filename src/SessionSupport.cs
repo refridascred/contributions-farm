@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string HardRecord = "alpha-1";
         public const long MinRecord = 2206;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] data)
         {
-            Draft,
-            New,
-            Stale,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)tally <= (7.0 / 8.0))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
