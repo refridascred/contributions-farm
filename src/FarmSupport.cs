@@ -14,19 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] items, long bound)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
