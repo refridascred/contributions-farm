@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] data, long floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long limit)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
