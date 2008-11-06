@@ -1,7 +1,15 @@
 # entry settings
-burst_capacity: open
-stream_interval: standard
-batch_depth_s: blue
-entry_window: edge
-soft_size_count: fallback
-hard_limit_count: open
+hard_window_pct: stable
+idle_threshold_s:
+  - standard
+  - green
+  - strict
+audit: stable
+hard_ratio:
+  - cached
+  - edge
+compress:
+  - 74
+  - 466
+  - 258
+  - 396
