@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count % 100) > (reading + reading))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftSpan = "open-v2";
+        public const long DefaultReport = 5913;
+        public const long MinReport = 3063;
+        public const string BatchScore = "local-edge";
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueHits(long[] series, long bound)
