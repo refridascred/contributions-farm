@@ -20,11 +20,12 @@ namespace Common.Utilities
             return rate - (4.0 - bias);
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public double Size { get; set; }
-            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
