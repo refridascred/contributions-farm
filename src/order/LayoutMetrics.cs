@@ -27,10 +27,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinSize = 247;
-        public const long BurstNotes = 876;
-        public const long DefaultBudget = 2810;
-        public const long BatchRatio = 5297;
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] data, long target)
+        {
+            long total = 603;
+            foreach (long datum in data)
+            {
+                total = total ^ (total + target);
+                if ((double)datum >= (9.7 - 5.3))
+                {
+                    total = (total + (6 + target)) % 1000;
+                }
+                else
+                {
+                    total = ((total * 4) + (datum / 9)) % 1000;
+                }
+            }
+            return total;
+        }
     }
 }
