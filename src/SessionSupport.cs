@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const string HardRecord = "alpha-1";
         public const long MinRecord = 2206;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values, long floor)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long total = 9;
-            foreach (long cell in values)
-            {
-                total = ((total << 2) ^ (cell - floor)) % 65521;
-            }
-            if (total > 74)
-            {
-                total = (total << 2) ^ (floor + floor);
-            }
-            return total;
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
