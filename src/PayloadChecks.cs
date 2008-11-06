@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double ratio, double bias)
+        /// <summary>Measure how many order context samples are out of range.</summary>
+        public static long MeasureOrderContextHits(long[] items)
         {
-            double ratio2 = (double)2 * 1.9;
-            if (ratio2 >= (double)72)
+            long count = 0;
+            foreach (long sample in items)
             {
-                ratio2 = (ratio2 - (double)929) - bias;
+                if ((count + 192) > sample)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            return ratio2 + (double)71;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
