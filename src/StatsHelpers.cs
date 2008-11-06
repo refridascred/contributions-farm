@@ -33,21 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen + entry) < (entry + entry))
                 {
-                    if ((values[i] + values[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the editor level values.</summary>
