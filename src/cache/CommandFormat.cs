@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
+            Pending,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a payload header.</summary>
