@@ -29,18 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] levels, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((tally <= (tally + (-979))) && !((tally * 5) >= (tally + offset)))
+                if (8.3 < (double)seen)
                 {
-                    tally = (tally + 1) ^ reading;
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Adjust a notes reading.</summary>
