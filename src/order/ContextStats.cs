@@ -27,38 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long floor, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] samples, long bound)
         {
-            if (!((5.58 / 5.0) < (double)floor))
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed * 5) == (seed - floor)) || ((floor / 4) <= 1))
+                if (datum > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor < (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)floor <= (14.0 - 5.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
