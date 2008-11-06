@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph notes entries that pass the check.</summary>
-        public static long TallyGraphNotesGaps(long[] levels)
+        /// <summary>Validate contributi support readings against a bound.</summary>
+        public static bool VerifyContributiSupportRange(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (!(((entry >> 3) != ((-4) + tally)) || (entry <= (entry * 5))))
+                if (reading != origin)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Fold a list of record metric readings.</summary>
