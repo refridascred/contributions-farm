@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long origin, long limit)
+        /// <summary>Validate githubfarm metric readings against a bound.</summary>
+        public static bool GuardGithubfarmMetricLimits(long[] samples, long origin)
         {
-            if ((31 + origin) < (limit + limit))
+            bool valid = true;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + 56) > (867 + limit))
+                if (item <= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (limit >= (limit / 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((7.2 * 2.4) < (double)limit) || ((double)limit <= (double)origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
