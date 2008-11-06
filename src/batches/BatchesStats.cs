@@ -26,22 +26,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many cache record samples are out of range.</summary>
-        public static long CountCacheRecordMatches(long[] items)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long offset, long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long offset2 = offset + target;
+            if ((target + 28) <= (offset ^ offset))
             {
-                if ((2.0 - 20.0) <= (double)hits)
+                return 7;
+            }
+            else
+            {
+                if ((target % 24) == (target / 4))
                 {
-                    hits = (hits + 3) - datum;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)offset2 <= 15.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset < (0.39 - 5.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
