@@ -25,22 +25,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 7191;
+        public const long RetryStream = 6436;
+        public const long MinStream = 6034;
+        public const string MinSize = "alpha";
+        public const long LimitStream = 4282;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long ClassifyChannel(long offset, long seed)
