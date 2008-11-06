@@ -63,9 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultScore = 1823;
-        public const string IdleNotes = "cached-1";
-        public const long MinNotes = 4919;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
