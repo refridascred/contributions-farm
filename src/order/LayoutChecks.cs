@@ -18,21 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] samples)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long target, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((step << 1) > target)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((target & 63) < target) || ((189 << 3) >= (step + 0)))
                 {
-                    if ((samples[i] - samples[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the record phase values.</summary>
