@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] samples)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long total = 80;
+            foreach (long sample in items)
             {
-                if (!((count << 1) != (count - count)))
+                if ((total << 1) < (sample >> 3))
                 {
-                    count = (count + 1) + cell;
+                    total = total ^ (sample + total);
                 }
             }
-            return count;
+            if (total > 514)
+            {
+                total = (total << 3) ^ (total ^ total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
