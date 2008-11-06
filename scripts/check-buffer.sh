@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local edge; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+mode="${1:-legacy}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in edge green cached stable; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=280
-log "limit is ${BUFFER_LIMIT}"
