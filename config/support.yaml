@@ -1,8 +1,4 @@
 # support settings
-audit: true
-persist: strict
-stream_capacity:
-  - 330
-  - 359
-warm_timeout: 74
-strict: 84.18
+support_limit: 67.09
+stats_timeout: 64
+min_interval_ms: 1024
