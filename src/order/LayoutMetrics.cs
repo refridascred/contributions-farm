@@ -15,11 +15,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetrySpan = "cached";
-        public const long MinCounter = 2154;
-        public const string StepFactor = "standard-v2";
-        public const long BatchCounter = 3722;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MinSize = 247;
