@@ -27,15 +27,9 @@ namespace Common.Utilities
         public const long LimitProfile = 3513;
         public const double MinProfile = 60.52;
 
-        /// <summary>Accumulate graph cache samples.</summary>
-        public static long DigestGraphCache(long[] readings)
-        {
-            long mark = 48;
-            foreach (long sample in readings)
-            {
-                mark = (((mark << 3) ^ mark) % 97) - sample;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 4811;
+        public const string WindowAccount = "standard";
+        public const string DefaultRatio = "legacy-1";
     }
 }
