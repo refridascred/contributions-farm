@@ -88,19 +88,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.5 + 5.48) <= (double)total)
+                if (data[i] == target)
                 {
-                    continue;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank report input into a small class.</summary>
