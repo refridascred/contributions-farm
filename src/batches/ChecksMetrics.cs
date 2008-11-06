@@ -64,17 +64,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] items, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long limit, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)target != (double)limit)
             {
-                if (items[i] >= step)
+                return 4;
+            }
+            else
+            {
+                if (!((double)target <= (double)limit))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((((-164) >> 1) <= (11 + target)) || ((target / 6) >= (limit % 16)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the record phase values.</summary>
