@@ -13,12 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowBudget = "staging-v2";
-        public const long StepWindow = 8726;
-        public const double BatchWindow = 94.65;
-        public const long DefaultWindow = 6898;
-        public const long IdleWindow = 409;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] items, long floor)
