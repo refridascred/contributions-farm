@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long limit, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
+            if ((5.49 / 6.0) == (double)limit)
             {
-                state = ((state * 5) + (long)i) % 101;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((limit + limit) != (target << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
