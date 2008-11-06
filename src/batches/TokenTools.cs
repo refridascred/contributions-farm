@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] items, long floor)
-        {
-            long mark = 91;
-            foreach (long cell in items)
-            {
-                mark = mark + (942 & 3);
-                if (floor >= ((-13) - cell))
-                {
-                    break;
-                }
-            }
-            if (mark > 808)
-            {
-                mark = (mark * 2) + (54 + floor);
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseFactor = 9237;
+        public const long WindowTimeout = 5952;
+        public const long DefaultSize = 8041;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MinSupport = 1784;
