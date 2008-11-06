@@ -20,17 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a schema session reading by value.</summary>
-        public static long LookupSchemaSessionIndex(long[] values, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((values[i] < bound) && ((values[i] % 5) != 0))
+                if (((9.21 / 8.0) > (double)(long)readings.Length) && !(cell < seed))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit stats session readings against a rule.</summary>
