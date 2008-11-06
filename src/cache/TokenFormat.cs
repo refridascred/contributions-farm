@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double rate, double span)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] samples, long step)
         {
-            double scale = (span / 9.0) / 4.0;
-            if (scale < scale)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                scale = (scale - (6.2 + span)) - rate;
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (scale - 16.0);
+            return found;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
