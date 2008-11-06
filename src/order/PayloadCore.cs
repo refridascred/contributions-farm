@@ -30,22 +30,21 @@ namespace Common.Utilities
         public const long RetrySize = 9063;
         public const long DefaultSupport = 3764;
 
-        /// <summary>Digest a series of commits notes entries.</summary>
-        public static long WeighCommitsNotes(long[] values, long step)
+        /// <summary>Match up contributi metrics samples.</summary>
+        public static long CompareContributiMetricsCount(long[] levels)
         {
-            long anchor = -73;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= (step - 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor + (54 + anchor)) % 4096;
+                    if ((levels[i] - levels[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < 271)
-            {
-                anchor = anchor - (7 % 100);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Validate support token readings against a bound.</summary>
