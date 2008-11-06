@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
+            public string Owner { get; set; } = "";
             public double Ratio { get; set; }
-            public long Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate session readings against a bound.</summary>
