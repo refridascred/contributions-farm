@@ -38,14 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Closed,
-            Dropped,
-            Done,
-            Failed,
-            Queued,
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
