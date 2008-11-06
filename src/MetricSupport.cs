@@ -29,11 +29,9 @@ namespace Common.Utilities
         public const double MaxSize = 62.61;
         public const long CacheBudget = 7426;
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "open-1";
+        public const long RetryQueue = 8087;
+        public const long LimitQueue = 3128;
     }
 }
