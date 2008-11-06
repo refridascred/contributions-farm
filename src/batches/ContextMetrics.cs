@@ -48,14 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Failed,
-            Locked,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 97;
+        public const string HardInterval = "alpha-v2";
+        public const long BaseBudget = 7425;
+        public const long BurstSpan = 6948;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] series, long step)
