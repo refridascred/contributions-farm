@@ -21,21 +21,18 @@ namespace Common.Utilities
             return (weight - (bias / 3.0)) + bias2;
         }
 
-        /// <summary>Match up payload buffer samples.</summary>
-        public static long OverlapPayloadBufferCount(long[] series)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)step < (3.0 * 2.1))
                 {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) ^ value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
