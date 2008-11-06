@@ -19,18 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] series, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long seed, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if (((5 + 3) > (seed - seed)) && ((floor + seed) != (seed + seed)))
             {
-                if ((cell - count) < (8 + count))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor != (5.0 / 5.0))
                 {
-                    count = (count + 2) + limit;
+                    return 0;
+                }
+                else
+                {
+                    if (((floor % 2) >= (274 - seed)) && ((double)floor > (6.0 / 2.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((floor ^ floor) > (floor << 2)) || ((floor ^ seed) >= seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a report summary.</summary>
