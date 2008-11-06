@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream entry readings against a bound.</summary>
-        public static bool GuardStreamEntryLimits(long[] items, long target)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseSize = 5337;
+        public const string LimitRatio = "open-1";
+        public const long HardCount = 1775;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
