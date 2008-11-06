@@ -29,11 +29,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] items, long target)
         {
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
