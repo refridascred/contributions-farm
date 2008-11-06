@@ -60,18 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] values)
+        /// <summary>Check that every context record entry stays within the limit.</summary>
+        public static bool CheckContextRecordLimits(long[] values, long seed)
         {
-            long seen = 0;
+            bool ok = true;
             foreach (long item in values)
             {
-                if ((double)seen <= (double)item)
+                if (item >= seed)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the window class values.</summary>
