@@ -19,18 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] levels, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (sample > (origin + origin))
+                if ((((datum >> 3) <= (seen << 3)) && (8.0 > (double)seen)) || (((datum * 3) <= seen) && (seen > (1 + 9))))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 2) - target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Blend two context measurements.</summary>
