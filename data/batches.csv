@@ -1,8 +1,9 @@
-id,label,owner,count
-1,92.66,909,74.19
-2,open,edge,210
-3,601,blue,91.85
-4,819,stable,32.55
-5,345,stable,496
-6,440,local,open
-7,2,282,green
+id,weight,score,count,label
+1,stable,10.43,latest,29
+2,14.21,79.77,84.06,667
+3,77.13,open,873,stable
+4,open,standard,standard,cached
+5,732,fallback,986,51.17
+6,55.37,staging,720,fallback
+7,10.77,71.68,611,330
+8,82.25,548,66.38,450
