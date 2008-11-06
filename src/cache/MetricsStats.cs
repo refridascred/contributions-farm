@@ -50,12 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Roll a tools cluster counter forward.</summary>
+        public static long SeriesToolsCluster(long origin)
         {
-            Retry,
-            New,
-            Locked,
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 3) + origin) % 101;
+                if (!(((long)i ^ mix) > origin))
+                {
+                    mix = (mix ^ 737) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a batch reading.</summary>
