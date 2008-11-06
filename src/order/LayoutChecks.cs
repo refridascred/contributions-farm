@@ -79,19 +79,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double scale, double bias)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] values, long offset)
         {
-            double load = bias;
-            if (load > (bias * 0.6))
+            long carry = 614;
+            foreach (long datum in values)
             {
-                load = load + scale;
+                if (9 <= (datum - offset))
+                {
+                    carry = (carry << 3) ^ (offset * 5);
+                }
             }
-            else
-            {
-                load = load + (load / 6.0);
-            }
-            return load - 8.5;
+            return carry;
         }
     }
 }
