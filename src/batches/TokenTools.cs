@@ -27,15 +27,17 @@ namespace Common.Utilities
         public const double StepWindow = 6.76;
         public const double HardWindow = 14.19;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double gain, double offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] readings, long step)
         {
-            double ratio = offset;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + gain) - (double)(long)i;
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + gain;
+            return -1;
         }
     }
 }
