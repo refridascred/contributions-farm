@@ -1,17 +1,19 @@
 # githubfarm settings
-idle_ttl_count: stable
-batch_window:
-  - 373
-  - 368
-  - 305
-enabled: strict
-already_ratio: true
-command_timeout:
-  - 474
-  - 408
-  - 460
-retry_retries_s:
-  - 365
-  - 313
-  - 377
-  - 108
+min_interval_s: 250
+sync_size_ms:
+  - 360
+  - 479
+default_threshold_ms: latest
+enabled:
+  default_timeout_count: false
+  idle_ttl_ms: 19
+  sync_retries_pct: primary
+  retry_depth: edge
+  hard_limit_count:
+    - 285
+    - 215
+idle_limit:
+  - 478
+  - 335
+  - 131
+  - 366
