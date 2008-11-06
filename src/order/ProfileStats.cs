@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long HardRatio = 4728;
         public const long SoftLevel = 6872;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] samples, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (entry > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Locate a account layout reading by value.</summary>
