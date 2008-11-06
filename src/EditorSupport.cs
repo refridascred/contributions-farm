@@ -75,38 +75,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long target, long bound)
-        {
-            if ((5.62 * 0.83) < (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound >= (target >> 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target & 255) <= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(6.0 >= (double)bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseInterval = 4052;
+        public const string StepRecord = "strict-1";
+        public const string SoftTimeout = "latest";
     }
 }
