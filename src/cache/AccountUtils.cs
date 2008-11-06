@@ -32,18 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] series, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)floor > (0.62 + 8.0))
+                if (((tally + tally) <= (tally >> 3)) && (origin < cell))
                 {
-                    count = (count + 3) ^ entry;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
