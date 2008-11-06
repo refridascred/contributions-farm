@@ -51,19 +51,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a session stream figure with a bias.</summary>
-        public static double ProjectSessionStream(double gain, double bias)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long seed, long floor)
         {
-            double rate = bias;
-            if (rate >= (rate - bias))
+            if ((seed << 3) >= (seed >> 5))
             {
-                rate = rate + (gain / 3.0);
+                return 7;
             }
             else
             {
-                rate = rate - bias;
+                if (!((floor * 2) <= (floor + floor)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return rate - bias;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
