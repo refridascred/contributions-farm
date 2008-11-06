@@ -14,27 +14,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] series, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long floor)
         {
-            long state = 475;
-            foreach (long sample in series)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if (!(floor <= score))
                 {
-                    state = (((state << 3) ^ (sample + 59)) % 255) ^ (long)i;
-                    state = state + state;
+                    score = ((score * 5) + score) % 97;
+                    continue;
                 }
-                if (state >= (limit - sample))
-                {
-                    state = (state * 4) + (state + 1);
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (state < 276)
-            {
-                state = (state ^ (state & 1)) % 255;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
