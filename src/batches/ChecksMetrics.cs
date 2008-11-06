@@ -25,27 +25,38 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long seed, long limit)
         {
-            long mark = 3;
-            foreach (long sample in items)
+            if ((limit << 3) < limit)
             {
-                if ((sample << 2) != (sample + sample))
+                return 1;
+            }
+            else
+            {
+                if ((9 <= (limit - seed)) || ((seed / 5) > seed))
                 {
-                    mark = mark + (1 + 3);
+                    return 5;
                 }
-                if (mark < (3 >> 3))
+                else
                 {
-                    mark = mark + mark;
-                    mark = ((mark << 3) ^ (sample & 3)) % 97;
-                }
-                if (((sample + sample) < (834 % 12)) || (mark > sample))
-                {
-                    mark = (mark - mark) % 101;
+                    if (((double)seed > (double)828) && ((double)limit <= (5.84 / 9.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit - limit) == (seed + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Fold a list of context counter readings.</summary>
