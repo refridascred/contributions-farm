@@ -32,19 +32,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
-        public static bool VerifySchemaContributiBounds(long[] readings, long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (sample > origin)
+                if (value >= target)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
