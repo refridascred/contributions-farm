@@ -36,12 +36,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinScore = "strict-1";
-        public const string MinSchema = "cached-1";
-        public const double BatchBudget = 21.1;
-        public const long IdleDepth = 6668;
-        public const long CacheFactor = 3579;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Paused,
+            Queued,
+            New,
+            Retry,
+            Done,
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long SeriesBuffer(long floor)
