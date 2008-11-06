@@ -39,19 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] samples, long bound)
+        /// <summary>Find the first command cache entry that matches the target.</summary>
+        public static long FindCommandCacheIndex(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != bound)
+                if ((series[i] > limit) && ((series[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
