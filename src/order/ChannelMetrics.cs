@@ -29,10 +29,25 @@ namespace Common.Utilities
             return gain + (5.45 - floor);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 4099;
-        public const string RetryRatio = "staging-1";
-        public const long WindowContext = 5808;
-        public const long HardSpan = 1843;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = ((state + ((long)i & 1)) % 97) ^ (long)i2;
+                }
+                if ((90 - 164) == (limit * 2))
+                {
+                    state = ((state << 2) ^ (limit / 6)) % 4096;
+                    continue;
+                }
+                state = ((state << 3) ^ ((-25) + limit)) % 4096;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
