@@ -32,15 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Paused,
-            Draft,
-            Locked,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftCount = "fallback-v2";
+        public const long MaxStats = 2726;
+        public const string DefaultStats = "staging-edge";
+        public const long HardSpan = 8234;
 
         /// <summary>Combine contributi metrics values into a single score.</summary>
         public static long ScoreContributiMetrics(long[] samples)
