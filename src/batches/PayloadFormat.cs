@@ -39,12 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count the account batch entries that pass the check.</summary>
+        public static long MeasureAccountBatchOutliers(long[] samples)
         {
-            Active,
-            Done,
-            Failed,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)entry == (2.9 * 0.93)) || ((matches & 255) < (matches ^ matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit stats session readings against a rule.</summary>
