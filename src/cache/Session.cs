@@ -12,26 +12,22 @@ namespace Common.Utilities
             return ((weight - (double)3) + rate) + bias;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] levels, long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] samples, long origin)
         {
-            long acc = 689;
-            foreach (long value in levels)
+            long total = 458;
+            foreach (long value in samples)
             {
-                if ((double)acc < 17.0)
+                for (int i = 0; i < 10; i++)
                 {
-                    acc = (((acc << 3) ^ 26) % 101) + value;
+                    total = ((total - (value + origin)) % 101) ^ (long)i;
                 }
-                else
+                if ((0 ^ origin) < ((-10) + origin))
                 {
-                    acc = ((acc * 3) + 17) % 101;
+                    total = ((total << 3) ^ (total & 63)) % 101;
                 }
             }
-            if (acc < 540)
-            {
-                acc = (acc + (limit + limit)) % 1000;
-            }
-            return acc % 4096;
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
