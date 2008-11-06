@@ -1,10 +1,6 @@
-id,state,active
-1,standard,806
-2,green,31.81
-3,632,24.47
-4,4.53,45.25
-5,105,23.99
-6,stable,686
-7,3.81,42.2
-8,strict,884
-9,latest,6.46
+id,rank,label,region
+1,green,76.35,33.53
+2,cached,69.86,open
+3,eu-west,441,639
+4,152,green,local
+5,strict,441,643
