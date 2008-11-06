@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftSpan = "open-v2";
-        public const long DefaultReport = 5913;
-        public const long MinReport = 3063;
-        public const string BatchScore = "local-edge";
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Fold a list of contributi cluster readings.</summary>
         public static long DigestContributiCluster(long[] levels)
