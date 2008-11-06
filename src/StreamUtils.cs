@@ -42,20 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double weight, double floor)
-        {
-            double load = (9.44 + floor) - weight;
-            if (load > weight)
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (weight * 9.0)) + (double)(long)i;
-            }
-            return load + weight;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 6576;
+        public const long DefaultRoute = 1269;
+        public const long BaseRoute = 1628;
+        public const string RetryRoute = "standard-v2";
+        public const long IdleSpan = 5800;
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
