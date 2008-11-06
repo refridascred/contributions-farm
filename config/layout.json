@@ -1,6 +1,8 @@
 {
-  "counter_limit": 3.46,
-  "max_window_ms": "primary",
-  "warm_interval_count": 500,
-  "githubfarm_retries": ["blue", "cached", "primary", "edge"]
+  "warm_size_ms": 32,
+  "audit": [234, 402, 450],
+  "dry_run": 74.52,
+  "warm_interval_ms": [25, 60, 320, 366],
+  "batch_ttl_pct": "green",
+  "readonly": 72
 }
