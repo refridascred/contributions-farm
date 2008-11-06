@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double bias, double floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double load = bias;
-            if (load > (double)99)
-            {
-                load = (load - (load * 2.7)) - floor;
-            }
-            else
-            {
-                load = load - (load - load);
-            }
-            return load - (double)1;
+            Done,
+            Queued,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a stream options.</summary>
