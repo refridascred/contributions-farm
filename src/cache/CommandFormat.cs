@@ -41,18 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally - tally) >= (tally % 100))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstCount = 4677;
+        public const double BurstFactor = 89.59;
+        public const string DefaultAccount = "strict-edge";
+        public const double RetryAccount = 11.57;
+        public const long LimitWidth = 795;
     }
 }
