@@ -38,9 +38,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 24.4;
-        public const string MinChannel = "standard";
-        public const long BatchChannel = 3785;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double rate, double floor)
+        {
+            double weight = 4.0;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (((weight + 1.0) + (double)(long)i) + rate) + floor;
+            }
+            return weight - (weight * 12.0);
+        }
     }
 }
