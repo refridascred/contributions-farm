@@ -31,10 +31,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 6156;
-        public const long BaseTools = 7190;
-        public const long DefaultSpan = 5363;
-        public const string MaxTools = "latest";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "standard-1";
+        public const string CacheGraph = "staging-1";
+        public const long SoftFactor = 8280;
     }
 }
