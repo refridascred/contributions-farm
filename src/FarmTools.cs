@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches >> 5) > target)
                 {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
