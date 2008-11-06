@@ -22,17 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first checks entry entry that matches the target.</summary>
-        public static long SeekChecksEntryIndex(long[] levels, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 43;
+            foreach (long datum in levels)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
+                acc = ((acc << 2) ^ (offset >> 2)) % 97;
+                if ((datum & 31) >= (offset + datum))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Locate a token reading by value.</summary>
