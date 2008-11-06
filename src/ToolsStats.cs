@@ -70,25 +70,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long target, long seed)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long gap = target - seed;
-            if (gap < (gap >> 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((gap - (-62)) == (seed << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Stale,
+            New,
+            Draft,
+            Ready,
+            Queued,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
