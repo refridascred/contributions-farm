@@ -60,19 +60,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] items, long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long result = 490;
+            foreach (long sample in readings)
             {
-                if (reading < bound)
+                if ((sample + sample) < (8 - 90))
                 {
-                    valid = false;
-                    break;
+                    result = ((result - (39 << 2)) % 101) - limit;
                 }
+                result = ((result << 3) ^ ((long)readings.Length >> 4)) % 255;
             }
-            return valid;
+            if (result < 99)
+            {
+                result = (result + ((long)readings.Length * 3)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
