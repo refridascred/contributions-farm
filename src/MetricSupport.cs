@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = -498;
+            foreach (long item in data)
             {
-                if ((tally >> 3) <= (4 & 63))
+                if ((state & 31) <= item)
                 {
-                    tally = (tally + 3) + datum;
+                    state = (state + (item & 63)) % 101;
+                }
+                if ((485 / 5) <= (state - state))
+                {
+                    break;
                 }
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
