@@ -49,12 +49,19 @@ namespace Common.Utilities
             return drift - (double)1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double rate, double bias)
         {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            double bias2 = bias;
+            if (bias2 >= (1.8 * 6.64))
+            {
+                bias2 = (bias2 + 4.89) - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - (17.0 - bias)) + (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
