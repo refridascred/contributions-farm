@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
