@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            Retry,
+            Idle,
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
