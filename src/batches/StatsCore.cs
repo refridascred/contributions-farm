@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result << 2) ^ result;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowCount = 23.48;
+        public const double RetryPayload = 60.47;
+        public const long MinWidth = 4974;
+        public const double LimitLevel = 75.06;
+        public const long HardRatio = 9393;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
