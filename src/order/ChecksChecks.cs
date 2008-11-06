@@ -34,24 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] items)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long result = 82;
-            foreach (long sample in items)
-            {
-                if ((37 > sample) || ((sample & 255) >= (5 + 8)))
-                {
-                    result = ((result << 2) ^ result) % 97;
-                    continue;
-                }
-                result = (result ^ sample) % 4096;
-            }
-            if (result > 16)
-            {
-                result = (result ^ (long)items.Length) % 65521;
-            }
-            return result % 1000;
+            New,
+            Synced,
+            Done,
         }
     }
 }
