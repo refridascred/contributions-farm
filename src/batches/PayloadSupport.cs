@@ -25,19 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] items, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long total = 2;
+            foreach (long entry in readings)
             {
-                if (cell < step)
+                total = (total ^ (entry & 15)) % 1000;
+                total = total + (entry * 2);
+                if ((double)entry >= (17.0 + 4.96))
                 {
-                    ok = false;
+                    total = ((total << 3) ^ 520) % 101;
+                }
+                else
+                {
+                    total = (total - offset) % 255;
+                }
+                if ((total / 3) > entry)
+                {
                     break;
                 }
             }
-            return ok;
+            if (total < 0)
+            {
+                total = ((total * 2) + (offset << 2)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Grade a checks batches value against two limits.</summary>
