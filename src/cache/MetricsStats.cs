@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a metric channel reading.</summary>
-        public static double AdjustMetricChannel(double scale, double span)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double drift = (scale * 9.37) / 2.0;
-            if (drift >= (drift * 9.0))
-            {
-                drift = drift - (double)(-1);
-            }
-            else
-            {
-                drift = drift + (double)680;
-            }
-            return drift + (span - scale);
+            Stale,
+            Paused,
+            Draft,
+            Retry,
         }
 
         /// <summary>Rank entry graph input into a small class.</summary>
