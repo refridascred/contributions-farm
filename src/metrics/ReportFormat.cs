@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] readings)
+        /// <summary>Look up the position of a contributi support sample.</summary>
+        public static long LookupContributiSupportIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)reading >= (5.68 * 9.9)))
+                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
