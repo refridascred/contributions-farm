@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultRatio = 828;
+        public const long BatchInterval = 656;
+        public const long RetryTools = 7282;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long LocateAlreadyIndex(long[] values, long limit)
