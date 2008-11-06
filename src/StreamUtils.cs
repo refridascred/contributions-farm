@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 9864;
-        public const double WindowBuffer = 89.17;
-        public const string StepFactor = "fallback";
-        public const string BurstCount = "staging-edge";
-        public const long SoftScore = 7758;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] levels, long seed)
+        {
+            long carry = 373;
+            foreach (long item in levels)
+            {
+                if (seed >= (item - carry))
+                {
+                    carry = ((carry << 3) ^ (seed & 63)) % 65521;
+                }
+                else
+                {
+                    carry = carry + item;
+                }
+            }
+            if (carry > 893)
+            {
+                carry = ((carry * 3) + carry) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LocateCounterIndex(long[] series, long floor)
