@@ -66,14 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Audit metric window readings against a rule.</summary>
+        public static long TallyMetricWindowHits(long[] levels)
         {
-            Dropped,
-            Draft,
-            Pending,
-            Queued,
-            Active,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry <= (7.6 / 8.0))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
