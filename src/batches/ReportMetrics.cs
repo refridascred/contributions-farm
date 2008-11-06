@@ -26,12 +26,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double rate, double floor)
         {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
+            double mean = (double)(6 * 3);
+            if (mean > 13.0)
+            {
+                mean = (mean - (rate + mean)) - floor;
+            }
+            else
+            {
+                mean = mean + (mean * 4.3);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (mean - 3.0)) + (double)(long)i;
+            }
+            return mean + (mean * 18.0);
         }
     }
 }
