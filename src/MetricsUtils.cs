@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double bias, double floor)
-        {
-            double weight = (double)(26 * 3);
-            if (weight > weight)
-            {
-                weight = (weight - 1.74) - floor;
-            }
-            else
-            {
-                weight = weight - (bias + 2.4);
-            }
-            return weight + weight;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 5029;
+        public const long BatchSize = 7671;
+        public const long HardCount = 8147;
+        public const string HardGraph = "alpha-v2";
+        public const long MinCount = 1361;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long OverlapFilterCount(long[] samples)
