@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double weight, double offset)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] series, long bound)
         {
-            double mean = (double)632 + 5.33;
-            if (mean <= mean)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - (double)937;
+                if ((series[i] >= bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (mean + weight)) + (double)(long)i;
-            }
-            return mean - (offset - weight);
+            return -1;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
