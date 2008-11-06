@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowSize = 61.7;
-        public const long LimitGithubfarm = 8997;
-        public const string HardGithubfarm = "legacy-1";
-        public const long WindowSpan = 5423;
-        public const long CacheSize = 1444;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Grade a notes metric value against two limits.</summary>
         public static long ClassifyNotesMetric(long seed, long seed2)
