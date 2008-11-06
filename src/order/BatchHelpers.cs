@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double weight, double span)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double ratio = span + weight;
-            if (ratio < (span - 8.13))
-            {
-                ratio = ratio - (span + weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (11.0 * 18.0)) + (double)(long)i;
-            }
-            return ratio + span;
+            public double Label { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
