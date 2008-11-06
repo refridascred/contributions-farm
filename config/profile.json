@@ -1,11 +1,8 @@
 {
-  "base_ttl_count": 1024,
-  "idle_ratio_ms": "primary",
-  "retry_depth_count": false,
-  "readonly": true,
-  "poll_ratio": {
-    "enabled": "fallback",
-    "verbose": false,
-    "entry_window": "green"
-  }
+  "verbose": "standard",
+  "burst_capacity_count": [473, 177],
+  "batches_capacity": ["eu-west", "open", "edge", "fallback"],
+  "hard_ratio": true,
+  "compress": false,
+  "max_retries_ms": 500
 }
