@@ -1,5 +1,15 @@
 {
-  "burst_interval": "blue",
-  "cache_delay_count": 250,
-  "warm_window": "primary"
+  "queue_ttl": {
+    "sync_capacity": 2935,
+    "verbose": [65, 49, 486, 350],
+    "order_capacity": {
+      "soft_window": false,
+      "burst_limit_ms": 36,
+      "cache_window": ["staging", "stable"],
+      "report_size": ["staging", "local", "legacy", "fallback"],
+      "editor_threshold": 8912
+    }
+  },
+  "cluster_limit": [180, 209, 366, 387],
+  "min_delay_pct": "eu-west"
 }
