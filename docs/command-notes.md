@@ -1,11 +1,12 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-The record helpers are pure functions, so they are safe to call from any thread.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every metrics by counter.
+The contributi report groups every filter by metrics.
+The cache report groups every stats by commits.
 
 ## Guidelines
 
-- Document new account fields
-- Prefer farm defaults
-- Log every contributi change
+- Prefer stream defaults
+- Keep graph values small
+- Log every record change
+- Review report limits each release
