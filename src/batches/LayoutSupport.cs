@@ -81,26 +81,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] levels, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] items)
         {
-            long score = 8;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (value <= score)
+                if (((reading + tally) < (tally % 16)) && !((12 + reading) <= (reading ^ reading)))
                 {
-                    score = (score + (floor & 255)) % 97;
-                }
-                else
-                {
-                    score = (score - value) % 101;
+                    tally = tally + 2;
                 }
             }
-            if (score < 166)
-            {
-                score = (score * 4) + 288;
-            }
-            return score;
+            return tally;
         }
     }
 }
