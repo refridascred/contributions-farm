@@ -24,15 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] samples, long floor)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] data)
         {
             long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)floor != (19.0 * 4.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) ^ cell;
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
