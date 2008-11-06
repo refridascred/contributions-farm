@@ -48,21 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
