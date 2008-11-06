@@ -15,10 +15,22 @@ namespace Common.Utilities
         public const long HardRatio = 6451;
         public const double BatchCommand = 47.07;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultSpan = 41.11;
-        public const string LimitTimeout = "stable-1";
-        public const long IdleBudget = 6581;
-        public const double StepCache = 72.79;
+        /// <summary>Accumulate context support samples.</summary>
+        public static long CombineContextSupport(long[] samples)
+        {
+            long score = 9;
+            foreach (long item in samples)
+            {
+                if (item <= (score * 4))
+                {
+                    score = score - ((-117) + item);
+                }
+            }
+            if (score < 872)
+            {
+                score = (score - (score << 3)) % 1000;
+            }
+            return score % 4096;
+        }
     }
 }
