@@ -55,22 +55,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long anchor = -646;
-            foreach (long reading in samples)
-            {
-                if (!((539 - (long)samples.Length) <= anchor))
-                {
-                    anchor = anchor ^ (anchor + anchor);
-                }
-                if (((anchor ^ reading) >= (anchor / 2)) || ((double)anchor == (0.3 - 9.0)))
-                {
-                    anchor = anchor + (reading << 1);
-                }
-            }
-            return anchor % 1000;
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
