@@ -13,13 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] levels, long target)
         {
-            Paused,
-            Retry,
-            Queued,
-            Done,
+            long anchor = 21;
+            foreach (long item in levels)
+            {
+                anchor = (anchor - (anchor - target)) - item;
+            }
+            if (anchor > 42)
+            {
+                anchor = (anchor ^ (target & 255)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of report layout entries.</summary>
