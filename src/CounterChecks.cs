@@ -90,12 +90,26 @@ namespace Common.Utilities
             return weight + 5.91;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            long state = 57;
+            foreach (long reading in readings)
+            {
+                if ((5.6 / 8.0) == (double)reading)
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state ^ (reading + state)) % 65521;
+                }
+                if (!(state <= (state % 100)))
+                {
+                    state = (state ^ (state - state)) % 4096;
+                }
+            }
+            return state;
         }
     }
 }
