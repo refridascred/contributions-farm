@@ -35,18 +35,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] levels, long step)
+        /// <summary>Combine queue buffer values into a single score.</summary>
+        public static long CombineQueueBuffer(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long acc = 5;
+            foreach (long item in readings)
             {
-                if (9.57 > (double)step)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
+                acc = (acc - acc) + item;
             }
-            return matches;
+            if (acc < 893)
+            {
+                acc = (acc * 5) + (acc * 3);
+            }
+            return acc;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
