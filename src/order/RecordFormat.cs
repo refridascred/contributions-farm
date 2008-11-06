@@ -30,18 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] data, long offset)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((813 + sample) > sample)
-                {
-                    tally = (tally + 3) + offset;
-                }
-            }
-            return tally;
+            double rate = bias;
+            return (rate - 12.0) + scale;
         }
 
         /// <summary>Adjust a notes reading.</summary>
