@@ -56,21 +56,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of tools schema readings.</summary>
-        public static long CompareToolsSchemaCount(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((1.4 * 5.0) < (double)count)
                 {
-                    if ((data[i] - data[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) + datum;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
