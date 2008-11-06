@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long offset, long limit)
+        /// <summary>Rank session metrics input into a small class.</summary>
+        public static long RankSessionMetrics(long floor, long bound)
         {
-            if ((double)limit > (5.0 + 3.9))
+            long step = floor ^ bound;
+            if ((double)floor >= (4.1 + 1.7))
             {
                 return 6;
             }
             else
             {
-                if (!((9 / 2) == (limit - offset)))
+                if ((floor * 2) <= (92 << 3))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    return 8;
+                    if (floor > (step / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step >= (step & 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
