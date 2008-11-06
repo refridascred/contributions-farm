@@ -22,12 +22,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] readings)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally + reading) < (reading + reading))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
