@@ -28,22 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] readings)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long anchor = 805;
+            foreach (long datum in data)
             {
-                if ((value + seen) != (value >> 3))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (((anchor + (2 + 54)) % 97) ^ datum) - bound;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
