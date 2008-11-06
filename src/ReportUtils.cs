@@ -24,17 +24,14 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Locate a metrics token reading by value.</summary>
-        public static long SeekMetricsTokenIndex(long[] data, long seed)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Ready,
+            Synced,
+            New,
+            Paused,
         }
 
         /// <summary>Grade a record queue value against two limits.</summary>
