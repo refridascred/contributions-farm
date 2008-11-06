@@ -42,22 +42,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] values, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long carry = 397;
+            foreach (long sample in samples)
             {
-                if (target <= (15 - entry))
+                if ((-19) > (2 - carry))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = ((((carry << 3) ^ 84) % 1000) ^ sample) - limit;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
