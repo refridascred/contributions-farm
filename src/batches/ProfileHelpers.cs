@@ -29,20 +29,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] samples, long offset)
-        {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 5977;
+        public const double BurstDepth = 31.75;
+        public const double SoftQueue = 92.64;
+        public const long SoftWidth = 5744;
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
