@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate counter commits samples.</summary>
-        public static long FoldCounterCommits(long[] items)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long carry = 799;
-            foreach (long datum in items)
-            {
-                carry = carry ^ ((long)items.Length << 3);
-                if ((8.0 + 9.2) > (double)datum)
-                {
-                    carry = (carry << 2) ^ datum;
-                }
-            }
-            return carry;
+            Paused,
+            Retry,
+            Active,
+            Done,
         }
 
         /// <summary>Blend two metric measurements.</summary>
