@@ -40,12 +40,17 @@ namespace Common.Utilities
         public const long DefaultAccount = 5592;
         public const long SoftAccount = 5405;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] levels, long seed)
         {
-            Pending,
-            Failed,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a context header.</summary>
