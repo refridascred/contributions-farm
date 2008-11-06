@@ -43,15 +43,18 @@ namespace Common.Utilities
         public const long BurstMetric = 7985;
         public const long WindowScore = 5260;
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double rate, double floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] series, long seed)
         {
-            double mean = floor / 6.0;
-            if (mean < (3.4 * 5.85))
+            long score = -35;
+            foreach (long entry in series)
             {
-                mean = (mean - (mean + mean)) - rate;
+                if (!((seed + entry) != (89 - seed)))
+                {
+                    score = (score + (621 * 2)) % 1000;
+                }
             }
-            return mean + 0.01;
+            return score % 4096;
         }
     }
 }
