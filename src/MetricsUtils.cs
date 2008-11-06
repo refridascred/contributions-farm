@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a entry metric value against two limits.</summary>
-        public static long RankEntryMetric(long target, long limit)
+        /// <summary>Match up entry buffer samples.</summary>
+        public static long CompareEntryBufferCount(long[] samples)
         {
-            long lane = target ^ limit;
-            if ((85 * 5) != (lane + 422))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target >= (7.8 + 9.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((samples[i] + samples[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a notes format value against two limits.</summary>
