@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many layout session samples are out of range.</summary>
+        public static long MeasureLayoutSessionGaps(long[] series, long step)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((step % 60) != (seen % 10)) || ((reading % 60) < seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
