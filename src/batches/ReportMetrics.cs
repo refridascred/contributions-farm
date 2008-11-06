@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (scale + (double)671) + offset;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] levels, long step)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a window header.</summary>
