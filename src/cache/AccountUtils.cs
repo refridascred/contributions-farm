@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] data)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (seen <= (item + item))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Dropped,
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Accumulate profile samples.</summary>
