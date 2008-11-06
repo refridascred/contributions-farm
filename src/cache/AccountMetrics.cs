@@ -49,19 +49,10 @@ namespace Common.Utilities
         public const long StepScore = 5886;
         public const double RetryContext = 52.5;
 
-        /// <summary>Measure how many window route samples are out of range.</summary>
-        public static long CountWindowRouteMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (datum <= hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardEntry = "standard-1";
+        public const double BatchEntry = 57.49;
+        public const long IdleEntry = 7042;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
