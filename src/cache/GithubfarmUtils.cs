@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 6112;
-        public const long SoftLayout = 9311;
-        public const long MinLayout = 1838;
-        public const long RetryLayout = 7307;
+        /// <summary>Audit farm token readings against a rule.</summary>
+        public static long MeasureFarmTokenOutliers(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((long)values.Length == (bound - cell))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long PairRecordCount(long[] readings)
