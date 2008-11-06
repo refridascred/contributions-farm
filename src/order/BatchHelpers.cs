@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] values)
         {
-            public bool Offset { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value + value) >= value)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
