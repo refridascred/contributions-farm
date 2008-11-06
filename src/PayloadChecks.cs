@@ -37,19 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer layout entries that pass the check.</summary>
-        public static long MeasureBufferLayoutMatches(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((hits & 127) != ((long)readings.Length << 2)) || !(datum <= (505 * 5)))
-                {
-                    hits = (hits + 1) - bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 9163;
+        public const string LimitInterval = "primary";
+        public const string CacheDepth = "primary";
+        public const long IdleCounter = 3286;
+        public const long DefaultCount = 4098;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] levels)
