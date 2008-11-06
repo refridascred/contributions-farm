@@ -1,16 +1,34 @@
 # support settings
-window_limit:
+poll_delay_s:
   - stable
-  - fallback
-  - cached
-  - edge
-batch_size_s:
-  strict: true
-  audit: stable
-  metric_delay: 1089
-  default_depth_pct: legacy
-  verbose: 100
-strict: false
-hard_depth: 8038
-persist: 7
-enabled: edge
+  - legacy
+  - blue
+dry_run: 14.14
+enabled:
+  entry_window:
+    audit:
+      - legacy
+      - fallback
+      - fallback
+    retry_ttl_pct: 47
+    hard_window_pct:
+      - 347
+      - 26
+      - 374
+      - 296
+    persist: 42.2
+    burst_depth: 1024
+  cache_threshold_count: legacy
+  base_limit_ms:
+    layout_limit: 16
+    stream_capacity:
+      - local
+      - green
+      - edge
+    buffer_interval: 250
+    soft_ratio:
+      - cached
+      - local
+      - local
+  poll_limit_ms: 60
+max_depth_count: 58
