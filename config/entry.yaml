@@ -1,47 +1,11 @@
 # entry settings
-queue_retries: 27
-entry_timeout: staging
-batches_timeout:
-  base_ttl_count: 49.1
-  queue_depth:
-    - cached
-    - edge
-    - latest
-  sync_capacity_ms: 81.27
-  flush_capacity:
-    idle_timeout: true
-    cache_ratio: 71.7
-    idle_capacity_ms: fallback
-  idle_capacity: 30
-  notes_threshold: 1024
-audit: false
-retry_depth_s: 98.75
-enabled:
-  idle_timeout_ms: true
-  dry_run:
-    - 199
-    - 228
-    - 476
-    - 112
-  stream_ratio:
-    enabled: 250
-    default_ttl: false
-    default_retries_count: false
-    base_timeout_ms: 100
-    sync_delay_ms: 40.06
-    sync_retries: 31
-  sync_size_pct:
-    poll_window: 0.9
-    dry_run:
-      - 228
-      - 215
-      - 128
-      - 369
-    audit: true
-    base_limit_ms:
-      - green
-      - fallback
-      - local
-      - legacy
-  cache_limit_count: true
-  hard_depth_ms: green
+channel_window: green
+token_window: true
+strict: 67
+default_delay_count:
+  - 268
+  - 398
+  - 352
+  - 313
+batch_retries_s: 89
+channel_depth: 1999
