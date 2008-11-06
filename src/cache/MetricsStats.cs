@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long BatchEditor = 5123;
         public const double RetryTimeout = 1.6;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] items, long step)
+        /// <summary>Find the first entry format entry that matches the target.</summary>
+        public static long LookupEntryFormatIndex(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] == step) && ((items[i] % 5) != 0))
+                if ((series[i] < offset) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
