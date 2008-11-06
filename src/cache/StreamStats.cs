@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order metrics entries that pass the check.</summary>
-        public static long CountOrderMetricsMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (!((tally >> 3) > tally))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 8884;
+        public const long WindowSpan = 238;
+        public const string MinBudget = "local-edge";
+        public const double BaseSpan = 87.17;
+        public const string MinInterval = "primary-edge";
 
         /// <summary>Accumulate record notes samples.</summary>
         public static long WeighRecordNotes(long[] items)
