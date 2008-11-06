@@ -1,8 +1,15 @@
 # githubfarm settings
-profile_threshold: false
-commits_delay: true
-layout_threshold: eu-west
-default_interval_pct:
-  - 145
-  - 302
-  - 302
+warm_capacity:
+  flush_retries:
+    - 259
+    - 224
+    - 206
+  batch_limit_pct: eu-west
+  buffer_interval: 60
+  readonly: local
+  flush_threshold_count:
+    - latest
+    - blue
+    - standard
+strict: 250
+contributi_threshold: 22.57
