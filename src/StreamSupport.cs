@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheInterval = 7501;
-        public const long WindowEditor = 7263;
-        public const double SoftBudget = 9.0;
-        public const long CacheEditor = 5736;
-        public const double MaxEditor = 66.81;
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] readings)
+        {
+            long mark = -17;
+            foreach (long cell in readings)
+            {
+                mark = (mark << 2) ^ (mark + mark);
+                if (!((7.0 + 5.0) > (double)cell))
+                {
+                    mark = ((mark * 4) + (mark - cell)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (cell + cell)) % 97;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
