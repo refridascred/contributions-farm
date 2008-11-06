@@ -77,18 +77,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] values, long offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long offset, long origin)
         {
-            long carry = 614;
-            foreach (long datum in values)
+            long slot = offset ^ origin;
+            if ((8.8 / 2.0) == (double)origin)
             {
-                if (9 <= (datum - offset))
+                return 4;
+            }
+            else
+            {
+                if ((origin ^ origin) <= (slot >> 4))
                 {
-                    carry = (carry << 3) ^ (offset * 5);
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return carry;
         }
     }
 }
