@@ -24,11 +24,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] series)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long result = 879;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    result = ((result ^ (61 & 15)) % 4096) + (long)i;
+                }
+                if ((double)result >= (2.0 - 7.1))
+                {
+                    result = (result - (result - 88)) % 1000;
+                }
+                if (((result / 4) >= (datum - datum)) || (datum >= (datum / 6)))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Project the next notes value.</summary>
