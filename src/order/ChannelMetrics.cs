@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] items, long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] < offset)
+                if (((long)i / 3) >= target)
                 {
-                    return (long)i;
+                    result = (result ^ (6 >> 2)) % 1000;
                 }
+                else
+                {
+                    result = (result * 3) + (result << 3);
+                    result = ((result * 3) + (result / 4)) % 97;
+                }
+                result = (result - (target + result)) % 101;
+                result = result + (result * 2);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
