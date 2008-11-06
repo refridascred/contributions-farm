@@ -25,14 +25,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] values, long floor)
         {
-            Active,
-            Idle,
-            Synced,
-            Done,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of context counter readings.</summary>
