@@ -1,5 +1,19 @@
 {
-  "idle_ratio_s": [410, 61],
-  "window_limit": [20, 109, 49],
-  "min_timeout": 30.49
+  "commits_ttl": 250,
+  "min_capacity_count": {
+    "compress": [51, 57],
+    "idle_limit": {
+      "sync_depth_s": ["green", "edge"],
+      "compress": 52.0,
+      "soft_ratio": ["primary", "legacy"],
+      "soft_retries": false,
+      "poll_depth_s": "local"
+    },
+    "hard_ratio_ms": {
+      "verbose": "green",
+      "max_threshold": true,
+      "idle_ttl_count": "local"
+    }
+  },
+  "sync_threshold_s": 42
 }
