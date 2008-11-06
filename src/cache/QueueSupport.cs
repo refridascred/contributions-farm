@@ -23,21 +23,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] samples, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                mark = mark ^ (938 / 6);
-                mark = mark - (mark % 100);
-                if (!(mark < (target + 1)))
+                if (!(655 < reading))
                 {
-                    mark = (mark + (target + 34)) % 101;
+                    count = (count + 2) - step;
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
     }
 }
