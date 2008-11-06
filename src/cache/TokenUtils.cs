@@ -21,15 +21,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] series, long step)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            long total = 184;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total ^ (0 - 85)) % 101) + sample) - step;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
