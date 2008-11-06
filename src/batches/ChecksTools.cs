@@ -61,23 +61,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double weight, double span)
+        /// <summary>Grade a buffer session value against two limits.</summary>
+        public static long BucketBufferSession(long seed, long limit)
         {
-            double weight2 = span;
-            if (weight2 >= span)
+            if ((12.0 * 9.6) < (double)limit)
             {
-                weight2 = (weight2 - span) - weight;
+                return 6;
             }
             else
             {
-                weight2 = weight2 - (double)4;
+                if (((limit >> 5) < 121) && ((seed / 9) >= seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)limit != (0.6 / 2.0)) && (5.57 > (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + (6.03 + span)) + (double)(long)i;
-            }
-            return weight2 - weight2;
         }
     }
 }
