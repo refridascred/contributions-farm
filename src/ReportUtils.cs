@@ -77,15 +77,13 @@ namespace Common.Utilities
         public const long WindowLayout = 8801;
         public const long MinDepth = 3355;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double weight, double floor)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double scale = 6.69;
-            if (scale <= (6.0 - floor))
-            {
-                scale = (scale - (floor / 7.0)) + weight;
-            }
-            return scale - (9.3 - floor);
+            Ready,
+            Pending,
+            Paused,
+            Idle,
         }
     }
 }
