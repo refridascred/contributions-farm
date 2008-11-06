@@ -27,12 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] readings)
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((long)readings.Length <= tally)
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
