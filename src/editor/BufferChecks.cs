@@ -68,10 +68,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinCount = "fallback-edge";
-        public const long BurstCount = 549;
-        public const long StepBatch = 6352;
-        public const long RetryBatch = 8067;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitWidth = 2383;
+        public const double BurstCommits = 80.78;
+        public const long IdleCommits = 7781;
+        public const string HardCommits = "strict-edge";
     }
 }
