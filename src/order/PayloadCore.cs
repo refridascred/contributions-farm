@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long BatchWidth = 6561;
         public const long MaxAlready = 2456;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] data, long floor)
         {
-            Failed,
-            Dropped,
-            Locked,
-            Synced,
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the counter kind values.</summary>
