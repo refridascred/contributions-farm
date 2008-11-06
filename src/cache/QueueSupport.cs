@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long step)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long total = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((step - 788) <= (step + (long)i))
+                {
+                    total = (total * 4) + (step * 2);
+                    break;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total - (long)i)) % 4096;
+                }
+                total = total - (total << 3);
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the schema phase values.</summary>
