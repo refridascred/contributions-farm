@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the route support entries that pass the check.</summary>
-        public static long CountRouteSupportHits(long[] samples)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((2.21 * 7.4) <= (double)item) && (98 > (seen + seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
