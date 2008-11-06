@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up entry buffer samples.</summary>
-        public static long CompareEntryBufferCount(long[] samples)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Roll a metric counter forward.</summary>
