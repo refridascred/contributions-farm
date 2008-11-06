@@ -1,9 +1,7 @@
 {
-  "profile_interval": {
-    "idle_threshold_pct": false,
-    "order_size": "strict",
-    "contributi_ttl": "standard"
-  },
-  "entry_timeout": [269, 468],
-  "max_interval": false
+  "max_size": "primary",
+  "cache_ratio": true,
+  "default_ratio": 27.88,
+  "commits_delay": true,
+  "githubfarm_ttl": 5426
 }
