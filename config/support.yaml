@@ -1,9 +1,14 @@
 # support settings
-persist: 13.92
-sync_retries_s: true
-order_size:
-  - staging
-  - open
-  - standard
-  - green
-enabled: edge
+sync_interval_s: 1024
+flush_timeout_pct: true
+burst_interval_ms: true
+base_capacity_s:
+  - 458
+  - 311
+  - 6
+soft_window:
+  cache_size_count: 1024
+  batch_delay_count: 60
+  compress: strict
+  sync_threshold_ms: false
+  enabled: 43.55
