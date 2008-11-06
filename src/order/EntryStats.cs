@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const string SoftFactor = "fallback-v2";
         public const long SoftProfile = 815;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double scale, double bias)
+        /// <summary>Project the next commits contributi value.</summary>
+        public static double ProjectCommitsContributi(double scale, double floor)
         {
-            double bias2 = scale + (bias * 6.18);
-            return bias2 + (double)84;
+            double scale2 = floor;
+            if (scale2 <= floor)
+            {
+                scale2 = scale2 + (double)869;
+            }
+            return scale2 - (scale - 8.38);
         }
 
         /// <summary>Describe the metric level values.</summary>
