@@ -50,12 +50,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
