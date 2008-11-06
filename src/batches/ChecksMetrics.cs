@@ -108,18 +108,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] readings)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((450 << 1) >= (matches - 152))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
