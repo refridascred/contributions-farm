@@ -42,18 +42,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the counter session entries that pass the check.</summary>
-        public static long CountCounterSessionOutliers(long[] values)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (item > (count % 12))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
