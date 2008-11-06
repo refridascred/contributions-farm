@@ -53,14 +53,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Active,
-            Draft,
-            New,
-            Done,
-            Queued,
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
