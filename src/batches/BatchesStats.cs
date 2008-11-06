@@ -45,9 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleWidth = 2648;
-        public const double RetryProfile = 26.0;
-        public const double MinProfile = 50.82;
+        /// <summary>Audit context payload readings against a rule.</summary>
+        public static long MeasureContextPayloadOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (reading >= (matches << 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
