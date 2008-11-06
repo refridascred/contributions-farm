@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
+            public double Mode { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
