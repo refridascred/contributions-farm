@@ -20,13 +20,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long target)
         {
-            Stale,
-            Closed,
-            Dropped,
-            Draft,
+            long mark = target;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = mark ^ (938 / 6);
+                mark = mark - (mark % 100);
+                if (!(mark < (target + 1)))
+                {
+                    mark = (mark + (target + 34)) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
