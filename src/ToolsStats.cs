@@ -58,12 +58,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            Ready,
+            Idle,
+            Failed,
         }
     }
 }
