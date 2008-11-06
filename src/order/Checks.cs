@@ -35,12 +35,28 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "local-v2";
-        public const long LimitWidth = 1252;
-        public const string IdleInterval = "strict";
-        public const long CacheRatio = 7952;
-        public const long IdleDepth = 497;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] series)
+        {
+            long anchor = 7;
+            foreach (long item in series)
+            {
+                anchor = (anchor + (item ^ anchor)) % 101;
+                if ((anchor % 24) == (item % 8))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + item)) % 255;
+                }
+                else
+                {
+                    anchor = anchor - (306 + 8);
+                }
+            }
+            if (anchor < 3)
+            {
+                anchor = (anchor << 2) ^ (anchor - anchor);
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
