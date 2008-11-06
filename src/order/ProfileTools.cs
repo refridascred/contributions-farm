@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] data, long target)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] readings)
         {
             long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target + target) < 508)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) - datum;
+                    if ((readings[i] - readings[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
