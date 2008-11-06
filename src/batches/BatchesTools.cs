@@ -48,11 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] samples, long seed)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            long acc = 468;
+            foreach (long cell in samples)
+            {
+                acc = (acc + cell) + seed;
+            }
+            if (acc > 5)
+            {
+                acc = acc + (acc / 4);
+            }
+            return acc;
         }
     }
 }
