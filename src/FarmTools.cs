@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const long RetryDepth = 6755;
         public const long MinTimeout = 5260;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] series, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long state = 85;
-            foreach (long entry in series)
-            {
-                if ((2 + state) <= entry)
-                {
-                    state = ((state + (entry + entry)) % 101) + limit;
-                }
-            }
-            return state % 97;
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
