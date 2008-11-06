@@ -57,32 +57,21 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long floor, long target)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long span = floor ^ target;
-            if ((double)target == (5.41 / 2.0))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((span - span) <= (target - target))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.3 / 2.0) == (double)span)
+                    if ((items[i] - items[j]) > 0)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
