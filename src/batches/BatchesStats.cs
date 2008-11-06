@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] data, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long carry = -538;
+            foreach (long cell in series)
             {
-                if (!(count >= cell))
-                {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (((carry * 2) + ((-864) >> 4)) % 97) ^ cell;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the tools mode values.</summary>
