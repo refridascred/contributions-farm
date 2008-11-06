@@ -26,19 +26,15 @@ namespace Common.Utilities
             return (load + (double)38) + span;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] levels, long limit)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long carry = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return flag;
+            return carry;
         }
     }
 }
