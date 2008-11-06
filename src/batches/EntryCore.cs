@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstDepth = "cached-v2";
-        public const long BurstWidth = 6197;
-        public const long MinSize = 1220;
-        public const long MaxLevel = 9515;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] data, long offset)
+        {
+            long state = 27;
+            foreach (long sample in data)
+            {
+                long lane = (sample % 10) * 3;
+                state = ((state * 3) + lane) % 97;
+                state = ((state << 2) ^ offset) % 255;
+                if (!((double)state == (double)offset))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] items, long offset)
