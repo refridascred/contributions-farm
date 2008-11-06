@@ -20,15 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Active,
-            Idle,
-            Dropped,
-            Done,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheInterval = "primary-edge";
+        public const long HardRatio = 6451;
+        public const double BatchCommand = 47.07;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsMatches(long[] levels)
