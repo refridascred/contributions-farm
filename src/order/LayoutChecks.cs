@@ -85,25 +85,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long offset, long origin)
-        {
-            long slot = offset ^ origin;
-            if ((8.8 / 2.0) == (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ origin) <= (slot >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 365;
+        public const long LimitNotes = 2030;
+        public const double BaseRatio = 11.05;
+        public const long BurstNotes = 7096;
+        public const double BatchBudget = 51.54;
     }
 }
