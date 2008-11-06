@@ -14,15 +14,31 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double rate, double offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long target, long step)
         {
-            double drift = (double)(438 + (-37));
-            for (int i = 0; i < 4; i++)
+            if (((double)target < (double)step) && ((double)target != (6.9 - 7.6)))
             {
-                drift = (((drift + (double)6) + (double)(long)i) + rate) + offset;
+                return 7;
             }
-            return drift + 13.0;
+            else
+            {
+                if ((double)step <= (3.0 - 5.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target + 1) < (target % 12))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
