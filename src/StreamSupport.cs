@@ -17,25 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long seed, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] samples, long limit)
         {
-            long edge = seed + limit;
-            if ((seed > (limit & 3)) && ((26 % 7) <= (edge ^ 930)))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (edge <= (edge >> 3))
+                if (limit < (650 & 1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 3) - sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate editor samples.</summary>
