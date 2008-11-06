@@ -39,10 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultBudget = 9852;
-        public const long RetryAccount = 9299;
-        public const double WindowAccount = 93.71;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] values)
+        {
+            long anchor = -436;
+            foreach (long sample in values)
+            {
+                if ((sample + anchor) > sample)
+                {
+                    anchor = (anchor ^ (sample ^ sample)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor * 4)) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Audit stats session readings against a rule.</summary>
         public static long CountStatsSessionHits(long[] series, long floor)
