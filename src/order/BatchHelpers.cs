@@ -25,22 +25,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] values, long seed)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] series)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((7.5 - 2.56) >= (double)seen) && !(seed > (item * 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
