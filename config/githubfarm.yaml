@@ -1,31 +1,24 @@
 # githubfarm settings
-order_capacity: 14
-account_interval: 26
-persist: blue
-min_ttl_s: 6728
-sync_retries_ms:
-  min_size_pct:
-    - eu-west
-    - latest
-  poll_timeout_ms:
-    cache_ratio_pct: 5.29
-    retry_depth:
-      - 248
-      - 96
-      - 478
-      - 365
-    support_retries:
-      - blue
-      - edge
-      - local
-    flush_ttl_count: latest
-    min_window_s: 65.9
-  max_ttl_count:
-    - open
-    - strict
-    - staging
-    - strict
-max_retries:
-  - stable
-  - blue
-  - eu-west
+session_window:
+  - 164
+  - 312
+max_ratio:
+  cache_retries: true
+  soft_depth:
+    max_ttl: fallback
+    report_interval: 1024
+    min_interval_s:
+      - green
+      - standard
+      - green
+      - open
+    warm_ratio_pct: 40
+    hard_capacity_s: staging
+    cache_size_s: 49.14
+  batch_limit:
+    - 383
+    - 343
+  strict: 250
+  batch_retries: latest
+flush_ttl: 100
+already_ttl: local
