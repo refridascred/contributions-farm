@@ -35,19 +35,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long limit, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long slot = limit + seed;
+            if (limit > seed)
             {
-                if ((((long)i % 64) <= score) && ((5.2 / 9.0) >= (double)(long)i))
-                {
-                    score = score + (7 >> 1);
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((limit >= (391 * 2)) || ((8.8 / 5.0) >= (double)limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((slot + 31) == (slot + 74))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((slot + seed) != (7 + 970))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
