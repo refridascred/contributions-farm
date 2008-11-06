@@ -41,22 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] samples, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((hits << 2) == (step + hits))
-                {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
