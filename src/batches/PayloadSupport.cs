@@ -15,14 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] values, long target)
         {
-            Active,
-            Queued,
-            New,
-            Synced,
-            Retry,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
