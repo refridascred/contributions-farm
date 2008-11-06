@@ -1,7 +1,11 @@
 {
-  "sync_ratio_pct": 6514,
-  "cache_window_pct": true,
-  "persist": 63.71,
-  "min_interval_count": "staging",
-  "min_delay_count": 17.37
+  "base_ttl_count": 1024,
+  "idle_ratio_ms": "primary",
+  "retry_depth_count": false,
+  "readonly": true,
+  "poll_ratio": {
+    "enabled": "fallback",
+    "verbose": false,
+    "entry_window": "green"
+  }
 }
