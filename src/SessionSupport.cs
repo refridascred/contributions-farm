@@ -24,19 +24,14 @@ namespace Common.Utilities
             return gain - (double)(-564);
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] series, long offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Queued,
+            Active,
+            Dropped,
+            Failed,
         }
     }
 }
