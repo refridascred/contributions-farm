@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
+            public bool Size { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
