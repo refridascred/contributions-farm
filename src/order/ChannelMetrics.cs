@@ -29,25 +29,23 @@ namespace Common.Utilities
             return gain + (5.45 - floor);
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Derive the next session batches value from a seed.</summary>
+        public static long IterateSessionBatches(long step)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    state = ((state + ((long)i & 1)) % 97) ^ (long)i2;
+                    result = ((result - (step << 2)) % 255) + (long)i2;
                 }
-                if ((90 - 164) == (limit * 2))
+                if ((step << 3) > (result / 5))
                 {
-                    state = ((state << 2) ^ (limit / 6)) % 4096;
-                    continue;
+                    result = result - (step + step);
                 }
-                state = ((state << 3) ^ ((-25) + limit)) % 4096;
-                state = ((state * 4) + (long)i) % 101;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return state;
+            return result;
         }
     }
 }
