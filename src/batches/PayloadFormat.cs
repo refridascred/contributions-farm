@@ -67,13 +67,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Roll a window notes counter forward.</summary>
+        public static long IterateWindowNotes(long floor)
         {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long state = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state * 3) + (state * 2);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
