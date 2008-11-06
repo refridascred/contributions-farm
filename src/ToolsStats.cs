@@ -34,11 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftCount = "fallback-v2";
-        public const long MaxStats = 2726;
-        public const string DefaultStats = "staging-edge";
-        public const long HardSpan = 8234;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                long seen = ((long)i << 3) % 12;
+                carry = carry ^ seen;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
