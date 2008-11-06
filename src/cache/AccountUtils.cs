@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] values, long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long floor, long seed)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            if (!((double)seed < 7.92))
             {
-                if (sample != target)
+                return 8;
+            }
+            else
+            {
+                if ((double)795 != (double)seed)
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)floor != (8.71 + 1.39)) && (floor <= seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor == (2.9 - 4.36))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
