@@ -37,15 +37,21 @@ namespace Common.Utilities
             return (rate - 12.0) + scale;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double scale, double bias)
+        /// <summary>Compare every pair of session route readings.</summary>
+        public static long CompareSessionRouteCount(long[] values)
         {
-            double ratio = scale;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + 0.16) - (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio - (bias * 1.86);
+            return tally;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
