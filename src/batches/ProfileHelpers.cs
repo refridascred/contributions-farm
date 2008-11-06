@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up schema batches samples.</summary>
-        public static long OverlapSchemaBatchesCount(long[] levels)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Dropped,
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Check that every layout context entry stays within the limit.</summary>
