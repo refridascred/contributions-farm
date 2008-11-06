@@ -1,7 +1,4 @@
 # entry settings
-flush_size:
-  - 363
-  - 410
-idle_timeout_pct: eu-west
-batch_capacity_ms: 12.82
-payload_timeout: false
+max_window_s: 7203
+base_retries: fallback
+retry_ratio: 2.2
