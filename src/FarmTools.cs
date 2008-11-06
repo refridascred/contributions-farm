@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstBudget = 4632;
-        public const long BurstSize = 5117;
-        public const string CacheRatio = "staging-1";
-        public const double CacheAlready = 34.28;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Pending,
+            Closed,
+            Done,
+            Idle,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowTimeout = 5961;
