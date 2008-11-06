@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Measure how many commits batch samples are out of range.</summary>
+        public static long CountCommitsBatchGaps(long[] series)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((4.94 < (double)origin) && ((acc >> 1) < (acc ^ acc)))
+                if ((datum & 63) < (872 << 1))
                 {
-                    acc = acc + (origin ^ origin);
-                    acc = acc - ((long)i % 2);
-                    continue;
+                    count = count + 2;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = (acc ^ (origin % 12)) - (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a filter entry.</summary>
