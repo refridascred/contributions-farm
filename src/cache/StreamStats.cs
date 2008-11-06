@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks command samples are out of range.</summary>
-        public static long CountChecksCommandMatches(long[] series, long step)
+        /// <summary>Accumulate metrics stats samples.</summary>
+        public static long FoldMetricsStats(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mix = 79;
+            foreach (long cell in items)
             {
-                if (((seen - seen) > (seen / 9)) || (((4.71 + 1.5) < (double)step) || ((double)9 >= (double)step)))
+                if ((mix + mix) < (61 + 3))
                 {
-                    seen = (seen + 3) - item;
+                    mix = (mix + (cell + offset)) % 255;
+                }
+                else
+                {
+                    mix = mix ^ (cell % 100);
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Accumulate record notes samples.</summary>
