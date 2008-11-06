@@ -41,12 +41,10 @@ namespace Common.Utilities
             return scale + (double)(-9);
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheDepth = 8087;
+        public const long BaseRoute = 8862;
+        public const long LimitFactor = 6454;
 
         /// <summary>Roll a contributi support counter forward.</summary>
         public static long DeriveContributiSupport(long origin)
