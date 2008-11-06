@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=22
-log "limit is ${BUFFER_LIMIT}"
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
+for item in staging green; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+mode="${1:-blue}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=469
+log "limit is ${BUFFER_LIMIT}"
