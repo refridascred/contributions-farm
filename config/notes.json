@@ -1,21 +1,6 @@
 {
-  "dry_run": "fallback",
-  "layout_capacity": ["standard", "edge", "legacy"],
-  "compress": "primary",
-  "default_retries_ms": 100,
-  "hard_retries": {
-    "metrics_retries": {
-      "audit": "eu-west",
-      "compress": 31,
-      "cache_size": 38.52,
-      "burst_depth_count": ["strict", "legacy", "stable"],
-      "max_delay_count": ["blue", "legacy"]
-    },
-    "metrics_capacity": true,
-    "soft_retries_count": "strict",
-    "dry_run": "latest",
-    "verbose": false,
-    "batch_retries": "green"
-  },
-  "base_delay_ms": 8377
+  "session_window": [209, 54, 32],
+  "base_interval": false,
+  "min_interval_ms": 70.7,
+  "burst_retries_ms": "cached"
 }
