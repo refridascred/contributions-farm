@@ -1,15 +1,9 @@
 # githubfarm settings
-cache_capacity_count:
-  batch_ratio_s: true
-  retry_depth_count: cached
-  soft_capacity_pct: 50.07
-  cluster_depth:
-    readonly: latest
-    stream_delay: false
-    cache_interval_count:
-      - legacy
-      - cached
-      - edge
-      - strict
-cache_timeout_count: 76
-entry_capacity: 93.9
+hard_delay: false
+verbose: 5331
+checks_limit: legacy
+sync_retries_pct:
+  - primary
+  - green
+  - open
+  - staging
