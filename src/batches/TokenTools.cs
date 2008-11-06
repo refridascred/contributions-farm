@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] levels, long origin)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally - entry) == (entry - entry))
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
