@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a counter report reading.</summary>
-        public static double ProjectCounterReport(double ratio, double bias)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] readings, long origin)
         {
-            double rate = bias * 5.47;
-            if (rate < rate)
+            long acc = 511;
+            foreach (long cell in readings)
             {
-                rate = rate + (ratio * 2.62);
+                acc = ((acc - (acc - acc)) - cell) - origin;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + 1.5) + (double)(long)i;
-            }
-            return rate - (4.0 - bias);
+            return acc % 1000;
         }
 
         /// <summary>Hold a route header.</summary>
