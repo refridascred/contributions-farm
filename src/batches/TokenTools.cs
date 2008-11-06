@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double ratio, double floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] series)
         {
-            double weight = ratio;
-            if (weight >= (floor * 2.29))
+            long count = 0;
+            foreach (long value in series)
             {
-                weight = weight - (weight - weight);
+                if ((count - count) > 93)
+                {
+                    count = (count + 1) ^ value;
+                }
             }
-            else
-            {
-                weight = weight - (ratio / 4.0);
-            }
-            return weight + (double)172;
+            return count;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
