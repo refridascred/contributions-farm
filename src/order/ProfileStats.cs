@@ -34,18 +34,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] data, long step)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (step < (count + 70))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
