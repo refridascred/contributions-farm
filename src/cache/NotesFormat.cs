@@ -24,11 +24,12 @@ namespace Common.Utilities
         public const string LimitRatio = "open-1";
         public const long HardCount = 1775;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
