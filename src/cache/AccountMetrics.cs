@@ -40,13 +40,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Count order graph pairs that satisfy a relation.</summary>
+        public static long MatchOrderGraphCount(long[] readings)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the window kind values.</summary>
