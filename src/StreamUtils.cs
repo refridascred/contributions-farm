@@ -66,18 +66,14 @@ namespace Common.Utilities
         public const long SoftWidth = 9361;
         public const long BurstStream = 2543;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] items)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((9.5 <= (double)seen) && (seen <= (value + seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Pending,
+            Dropped,
+            Queued,
+            New,
+            Locked,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
