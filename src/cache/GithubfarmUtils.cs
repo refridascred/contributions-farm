@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Roll a format checks counter forward.</summary>
+        public static long RollFormatChecks(long step)
         {
-            Closed,
-            Active,
-            Pending,
-            Idle,
-            New,
+            long score = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((score << 3) < 121))
+                {
+                    score = (score + (step << 2)) % 97;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a tools summary.</summary>
