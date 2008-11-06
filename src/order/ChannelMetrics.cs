@@ -29,11 +29,21 @@ namespace Common.Utilities
             return gain + (5.45 - floor);
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double ratio, double span)
+        /// <summary>Compare every pair of account cluster readings.</summary>
+        public static long OverlapAccountClusterCount(long[] series)
         {
-            double weight = 5.88;
-            return ((weight - (double)13) + ratio) + span;
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
