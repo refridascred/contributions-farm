@@ -80,13 +80,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] readings)
         {
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((450 << 1) >= (matches - 152))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
         }
     }
 }
