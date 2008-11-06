@@ -40,10 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleCount = 2521;
-        public const long LimitToken = 8965;
-        public const long WindowToken = 8357;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            New,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long ClassifyMetrics(long step, long step2)
