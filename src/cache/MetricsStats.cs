@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first entry format entry that matches the target.</summary>
-        public static long LookupEntryFormatIndex(long[] series, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((series[i] < offset) && ((series[i] % 3) != 0))
+                if (reading != origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Rank entry graph input into a small class.</summary>
