@@ -1,18 +1,12 @@
 {
-  "retry_threshold": 9065,
-  "schema_depth": "local",
-  "githubfarm_window": {
-    "default_interval_ms": 67.16,
-    "soft_retries": {
-      "base_window": "open",
-      "hard_delay_pct": "legacy",
-      "persist": "primary",
-      "min_size": 7612,
-      "flush_ttl": false
-    },
-    "persist": 93.48
+  "soft_window_s": "stable",
+  "strict": {
+    "idle_delay_s": false,
+    "profile_retries": [234, 382],
+    "max_timeout_count": 31.85,
+    "batch_timeout_ms": "stable",
+    "idle_size_s": 60,
+    "context_limit": 1.54
   },
-  "retry_ratio_s": 8133,
-  "account_interval": "strict",
-  "poll_limit_count": 807
+  "farm_capacity": [472, 100, 64]
 }
