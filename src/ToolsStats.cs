@@ -47,13 +47,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] samples, long floor)
         {
-            Active,
-            Idle,
-            Stale,
-            Ready,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading < (9.26 * 11.0))
+                {
+                    matches = (matches + 1) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of commits batch readings.</summary>
