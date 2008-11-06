@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double gain, double floor)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double ratio = 5.2;
-            if (ratio >= (ratio - 3.9))
-            {
-                ratio = (ratio - ratio) - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (gain + gain)) + (double)(long)i;
-            }
-            return ratio - (double)99;
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
