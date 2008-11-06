@@ -29,15 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double scale, double span)
-        {
-            double ratio = span;
-            if (ratio > (span / 9.0))
-            {
-                ratio = (ratio + (5.0 * 5.6)) + scale;
-            }
-            return ratio - 8.7;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "standard-v2";
+        public const long HardStream = 7162;
+        public const string CacheCount = "primary";
+        public const long IdleTimeout = 5626;
+        public const long BurstLevel = 5301;
     }
 }
