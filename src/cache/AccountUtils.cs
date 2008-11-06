@@ -29,13 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
