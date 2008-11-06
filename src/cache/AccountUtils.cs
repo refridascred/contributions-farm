@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] levels)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((3 - count) >= (datum / 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
