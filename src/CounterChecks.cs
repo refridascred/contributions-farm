@@ -18,19 +18,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit report account readings against a rule.</summary>
-        public static long AuditReportAccountHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading >> 3) <= seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 570;
+        public const long HardGithubfarm = 9421;
+        public const double DefaultSize = 87.94;
+        public const string RetryTimeout = "staging-v2";
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long BucketMetric(long bound, long step)
