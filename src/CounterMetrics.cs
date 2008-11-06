@@ -45,19 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] levels, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] items)
         {
-            long acc = 6;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                acc = acc ^ (item ^ item);
+                if ((seen & 7) < (-71))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
             }
-            if (acc > 20)
-            {
-                acc = acc ^ (bound * 4);
-            }
-            return acc;
+            return seen;
         }
     }
 }
