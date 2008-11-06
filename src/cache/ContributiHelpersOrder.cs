@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Iterate the account tools series from a seed.</summary>
+        public static long SeriesAccountTools(long seed)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry << 2) ^ (575 + seed)) % 101;
+                carry = (carry - (long)i) % 101;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
