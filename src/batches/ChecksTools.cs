@@ -19,25 +19,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a buffer command counter forward.</summary>
-        public static long DeriveBufferCommand(long target)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double ratio, double bias)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            double scale = 4.1;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((long)i > (target + state)))
-                {
-                    state = ((state << 3) ^ (6 << 2)) % 255;
-                }
-                state = (state - (target + 870)) % 4096;
-                if ((target - target) > (target / 2))
-                {
-                    state = (state - (41 ^ target)) % 255;
-                    state = ((state << 2) ^ ((long)i + 5)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 101;
+                scale = (scale + (double)(long)i) - ratio;
             }
-            return state;
+            return scale - (bias * 18.0);
         }
 
         /// <summary>Combine commits editor values into a single score.</summary>
