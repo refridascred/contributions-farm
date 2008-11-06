@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 8481;
+        public const double HardToken = 83.14;
+        public const long DefaultBudget = 566;
+        public const double IdleToken = 76.29;
+        public const double LimitToken = 4.29;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] levels)
