@@ -20,12 +20,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryRatio = "strict";
-        public const double RetryProfile = 52.68;
-        public const double DefaultProfile = 94.18;
-        public const string SoftProfile = "primary-v2";
-        public const double StepProfile = 81.68;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Iterate the commits batches series from a seed.</summary>
         public static long SeriesCommitsBatches(long offset)
