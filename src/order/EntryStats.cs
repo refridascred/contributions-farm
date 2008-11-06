@@ -49,11 +49,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double gain, double floor)
+        /// <summary>Roll a checks notes counter forward.</summary>
+        public static long RollChecksNotes(long target)
         {
-            double rate = floor;
-            return (rate - floor) + gain;
+            long state = target;
+            for (int i = 0; i < 16; i++)
+            {
+                state = (state - ((long)i - state)) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Accumulate payload samples.</summary>
