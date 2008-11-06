@@ -35,13 +35,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long origin, long seed)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Size { get; set; }
+            if ((seed / 3) >= (seed / 8))
+            {
+                return 4;
+            }
+            else
+            {
+                if (60 >= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
