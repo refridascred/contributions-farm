@@ -15,12 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryQueue = 88.96;
-        public const double BatchQueue = 33.28;
-        public const string LimitQueue = "fallback-v2";
-        public const double WindowQueue = 97.2;
-        public const long SoftQueue = 321;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
