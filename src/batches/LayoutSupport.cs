@@ -20,11 +20,39 @@ namespace Common.Utilities
             return mean + (mean * 1.5);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepCount = 7125;
-        public const long StepChecks = 218;
-        public const string DefaultFactor = "open";
-        public const string SoftBudget = "cached-edge";
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long origin, long step)
+        {
+            if (19.0 > (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)step < (4.36 * 8.9)) || ((origin * 3) <= (step + step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin * 2) >= (origin & 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((16 / 9) > origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TallyFormat(long[] items, long floor)
