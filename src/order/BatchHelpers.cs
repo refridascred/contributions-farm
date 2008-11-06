@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] values)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value + value) >= value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Adjust a command reading.</summary>
