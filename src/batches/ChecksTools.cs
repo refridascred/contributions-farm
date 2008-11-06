@@ -53,32 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long origin, long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long offset = origin ^ seed;
-            if (((8 >> 2) != (seed * 5)) || ((origin * 3) == (seed / 9)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin * 5) > seed) || (((-87) & 127) != (777 + offset)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)offset > (19.0 + 20.0)))
+                    if ((values[i] + values[j]) == 7)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
