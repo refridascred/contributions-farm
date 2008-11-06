@@ -37,15 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] data, long bound)
+        /// <summary>Accumulate session counter samples.</summary>
+        public static long FoldSessionCounter(long[] samples)
         {
-            long anchor = 805;
-            foreach (long datum in data)
+            long total = 796;
+            foreach (long cell in samples)
             {
-                anchor = (((anchor + (2 + 54)) % 97) ^ datum) - bound;
+                total = ((total + (total + 74)) % 4096) - cell;
             }
-            return anchor;
+            if (total > 3)
+            {
+                total = (total + (5 & 127)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
