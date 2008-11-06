@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepSize = 7.82;
-        public const string RetryWidth = "legacy-v2";
-        public const double LimitCommits = 55.06;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Retry,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long LookupFormatIndex(long[] readings, long offset)
