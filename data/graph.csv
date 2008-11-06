@@ -1,8 +1,6 @@
-id,state,label,level
-1,55.38,993,12.95
-2,80.18,strict,edge
-3,19.48,38.73,74.21
-4,38,green,green
-5,999,fallback,92.75
-6,eu-west,56.91,874
-7,legacy,385,open
+id,rank,label,active
+1,local,18,445
+2,legacy,cached,green
+3,blue,78.5,edge
+4,80.36,410,180
+5,961,95.09,79
