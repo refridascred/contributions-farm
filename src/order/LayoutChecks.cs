@@ -95,15 +95,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] readings, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] data)
         {
             long matches = 0;
-            foreach (long item in readings)
+            foreach (long datum in data)
             {
-                if (!(target > 35) && ((6.6 * 17.0) >= (double)target))
+                if (((double)matches > 7.58) || (((double)matches >= (double)(long)data.Length) && (datum >= 143)))
                 {
-                    matches = (matches + 1) ^ item;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
