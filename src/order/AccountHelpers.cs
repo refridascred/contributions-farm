@@ -45,12 +45,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many window stats samples are out of range.</summary>
+        public static long MeasureWindowStatsMatches(long[] readings, long limit)
         {
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (item <= (limit % 97))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the account kind values.</summary>
