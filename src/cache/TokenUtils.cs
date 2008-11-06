@@ -31,9 +31,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "standard-1";
-        public const string CacheGraph = "staging-1";
-        public const long SoftFactor = 8280;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double ratio, double floor)
+        {
+            double weight = 7.39;
+            if (weight <= (ratio + floor))
+            {
+                weight = weight + floor;
+            }
+            else
+            {
+                weight = weight - (double)61;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (double)66) + (double)(long)i;
+            }
+            return weight - (weight / 2.0);
+        }
     }
 }
