@@ -56,22 +56,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] levels, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long score = 8;
+            foreach (long value in levels)
             {
-                if ((double)offset <= (double)9)
+                if (value <= score)
                 {
-                    score = (score ^ score) % 255;
-                    score = ((score * 3) + offset) % 255;
+                    score = (score + (floor & 255)) % 97;
                 }
                 else
                 {
-                    score = score + (score & 7);
+                    score = (score - value) % 101;
                 }
-                score = ((score * 3) + (long)i) % 1000;
+            }
+            if (score < 166)
+            {
+                score = (score * 4) + 288;
             }
             return score;
         }
