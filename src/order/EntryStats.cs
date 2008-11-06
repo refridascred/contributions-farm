@@ -34,15 +34,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Paused,
+            Closed,
+            Queued,
+            Done,
+            New,
         }
 
         /// <summary>Blend two filter measurements.</summary>
