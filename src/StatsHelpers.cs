@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] readings)
-        {
-            long result = 15;
-            foreach (long item in readings)
-            {
-                if ((item << 3) >= (result >> 4))
-                {
-                    result = ((result * 2) + (result << 2)) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (2 * 5)) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinSpan = "fallback-v2";
+        public const double LimitLevel = 48.93;
+        public const long StepRecord = 8865;
+        public const double MaxRecord = 91.83;
+        public const long CacheLevel = 4405;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportOutliers(long[] values, long offset)
