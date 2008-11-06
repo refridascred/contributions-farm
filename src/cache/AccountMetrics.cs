@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long target, long origin)
+        /// <summary>Audit checks metrics readings against a rule.</summary>
+        public static long MeasureChecksMetricsGaps(long[] series)
         {
-            if ((target >> 2) >= target)
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin >> 2) == (target ^ 4))
+                if (70 >= (entry - entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
