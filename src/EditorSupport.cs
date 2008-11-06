@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double offset)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] items, long floor)
         {
-            double load = scale;
-            if (load > (offset + offset))
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - (double)26;
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (double)2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (double)3) + (double)(long)i;
-            }
-            return load + (offset + offset);
+            return -1;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
