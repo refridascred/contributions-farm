@@ -63,22 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up route order samples.</summary>
-        public static long CompareRouteOrderCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseCount = 468;
+        public const long WindowLayout = 8801;
+        public const long MinDepth = 3355;
 
         /// <summary>Combine already command values into a single score.</summary>
         public static long FoldAlreadyCommand(long[] samples, long offset)
