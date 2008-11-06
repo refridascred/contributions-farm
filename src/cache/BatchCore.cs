@@ -48,31 +48,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long offset, long seed)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            if ((8.0 + 1.8) >= (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset / 8) < (offset << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)seed > (double)36))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Active,
+            New,
+            Paused,
+            Locked,
+            Idle,
         }
     }
 }
