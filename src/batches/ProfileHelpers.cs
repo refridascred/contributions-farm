@@ -101,24 +101,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long origin, long offset)
+        /// <summary>Check that every command buffer entry stays within the limit.</summary>
+        public static bool ValidateCommandBufferRange(long[] data, long offset)
         {
-            if ((double)origin <= (0.72 + 0.25))
+            bool ok = true;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((40 * 4) <= (origin / 3))
+                if (item < offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
