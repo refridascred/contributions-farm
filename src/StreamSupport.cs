@@ -35,31 +35,15 @@ namespace Common.Utilities
             return weight - (9.0 * 5.1);
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long floor, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] series, long target)
         {
-            if ((floor - (-28)) > (origin >> 2))
+            long mark = 50;
+            foreach (long item in series)
             {
-                return 8;
+                mark = ((mark + (target + target)) % 101) + item;
             }
-            else
-            {
-                if (floor >= (floor + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin == (2.25 + 17.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mark % 97;
         }
     }
 }
