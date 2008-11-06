@@ -23,10 +23,13 @@ namespace Common.Utilities
         public const long StepLevel = 2870;
         public const long IdleRatio = 900;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 5375;
-        public const long HardFactor = 7658;
-        public const long BatchSpan = 3418;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Draft,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LookupReportIndex(long[] items, long target)
