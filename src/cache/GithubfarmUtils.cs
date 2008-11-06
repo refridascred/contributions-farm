@@ -24,10 +24,26 @@ namespace Common.Utilities
             return bias + (1.7 / 2.0);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowTimeout = 7214;
-        public const string MinContributi = "legacy-1";
-        public const long StepContributi = 4414;
+        /// <summary>Classify a checks buffer pair into a bucket.</summary>
+        public static long BucketChecksBuffer(long seed, long limit)
+        {
+            long diff = seed - limit;
+            if ((double)diff > 4.0)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)limit >= (12.0 - 0.8)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
