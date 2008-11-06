@@ -16,39 +16,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long origin, long step)
-        {
-            if (19.0 > (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)step < (4.36 * 8.9)) || ((origin * 3) <= (step + step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin * 2) >= (origin & 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((16 / 9) > origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinDepth = 24.68;
+        public const long CacheCommits = 1386;
+        public const long LimitScore = 5784;
+        public const long StepLevel = 2870;
+        public const long IdleRatio = 900;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TallyFormat(long[] items, long floor)
