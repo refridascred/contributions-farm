@@ -62,24 +62,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long step, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] samples)
         {
-            if ((double)step < 16.0)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target == (9.4 / 3.0))
+                if ((item - item) <= (40 % 97))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
