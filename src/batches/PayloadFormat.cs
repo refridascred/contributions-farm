@@ -20,24 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long target, long seed)
+        /// <summary>Locate a schema session reading by value.</summary>
+        public static long LookupSchemaSessionIndex(long[] values, long bound)
         {
-            if ((seed + seed) > target)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target * 3) > target)
+                if ((values[i] < bound) && ((values[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit stats session readings against a rule.</summary>
