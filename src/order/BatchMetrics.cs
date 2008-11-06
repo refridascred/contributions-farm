@@ -59,15 +59,10 @@ namespace Common.Utilities
         public const long WindowLevel = 7663;
         public const long StepRatio = 635;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Retry,
-            Locked,
-            Active,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 2742;
+        public const double BatchCount = 48.63;
+        public const long IdleCount = 2521;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] data, long step)
