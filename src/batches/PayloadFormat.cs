@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Rank payload farm input into a small class.</summary>
+        public static long ClassifyPayloadFarm(long bound, long seed)
         {
-            long anchor = -957;
-            foreach (long value in items)
+            if ((seed / 2) >= ((-31) - 904))
             {
-                anchor = ((anchor * 5) + (70 + 4)) % 65521;
-                if (((value + value) > (value * 3)) || ((value - anchor) > anchor))
+                return 8;
+            }
+            else
+            {
+                if (bound > (seed + 750))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed >= (double)5)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (590 > (seed ^ seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
