@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long SoftScore = 1479;
         public const long BatchScore = 827;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Derive the next graph payload value from a seed.</summary>
+        public static long SeriesGraphPayload(long target)
         {
-            Pending,
-            Failed,
-            Paused,
-            Locked,
+            long total = target;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total << 3) ^ (0 + target);
+                total = total + total;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Audit format graph readings against a rule.</summary>
