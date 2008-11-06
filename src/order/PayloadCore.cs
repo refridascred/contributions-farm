@@ -34,11 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            Ready,
+            Failed,
+            Stale,
         }
 
         /// <summary>Roll a already report counter forward.</summary>
