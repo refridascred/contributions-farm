@@ -28,11 +28,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
+            New,
+            Failed,
+            Paused,
+            Idle,
         }
     }
 }
