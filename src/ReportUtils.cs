@@ -32,22 +32,23 @@ namespace Common.Utilities
         public const long WindowLayout = 8801;
         public const long MinDepth = 3355;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double rate, double offset)
         {
-            long result = 2;
-            foreach (long item in readings)
+            double gain = (double)(3 * 2);
+            if (gain > (14.0 + 6.0))
             {
-                if ((result << 3) < (item % 16))
-                {
-                    result = (result + item) % 4096;
-                }
-                if ((item & 1) >= (item - 45))
-                {
-                    result = (result + (item - result)) % 1000;
-                }
+                gain = (gain - offset) - rate;
             }
-            return result % 4096;
+            else
+            {
+                gain = gain - 20.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - offset) + (double)(long)i;
+            }
+            return gain - (offset - offset);
         }
     }
 }
