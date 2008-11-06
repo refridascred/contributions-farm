@@ -62,13 +62,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long step, long target)
         {
-            Queued,
-            Retry,
-            Ready,
-            Paused,
+            if ((double)step < 16.0)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target == (9.4 / 3.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
