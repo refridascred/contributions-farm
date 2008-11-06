@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string HardRecord = "alpha-1";
         public const long MinRecord = 2206;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values, long floor)
         {
-            long result = 698;
-            foreach (long sample in values)
+            long total = 9;
+            foreach (long cell in values)
             {
-                result = ((result * 2) + sample) % 255;
-                if ((result & 7) <= (sample % 24))
-                {
-                    break;
-                }
+                total = ((total << 2) ^ (cell - floor)) % 65521;
             }
-            return result;
+            if (total > 74)
+            {
+                total = (total << 2) ^ (floor + floor);
+            }
+            return total;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
