@@ -50,12 +50,23 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Digest a series of metrics already entries.</summary>
+        public static long FoldMetricsAlready(long[] readings, long target)
         {
-            Paused,
-            Failed,
-            New,
+            long total = 73;
+            foreach (long item in readings)
+            {
+                total = (total * 3) + (total ^ target);
+                if ((item >> 2) != (total % 24))
+                {
+                    total = (total + (4 & 127)) % 255;
+                }
+            }
+            if (total > 4)
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
