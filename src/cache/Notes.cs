@@ -66,17 +66,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first profile payload entry that matches the target.</summary>
-        public static long LookupProfilePayloadIndex(long[] items, long origin)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
