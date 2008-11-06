@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] values, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((seed - hits) != (sample * 4)) || (2 > (45 + sample)))
                 {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
