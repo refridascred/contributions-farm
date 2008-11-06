@@ -40,14 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long offset, long target)
         {
-            Failed,
-            Stale,
-            Queued,
-            Idle,
-            Locked,
+            long delta = offset ^ target;
+            if ((delta * 4) == (offset - delta))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target > (0.06 - 1.8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
