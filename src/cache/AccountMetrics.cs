@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up checks contributi samples.</summary>
-        public static long OverlapChecksContributiCount(long[] data)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long target, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((target >> 2) >= target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((origin >> 2) == (target ^ 4))
                 {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
