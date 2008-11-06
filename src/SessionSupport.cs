@@ -13,13 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            Done,
-            Queued,
-            Synced,
-            Active,
+            long carry = 2;
+            foreach (long item in readings)
+            {
+                carry = (carry + carry) - item;
+            }
+            if (carry < 4)
+            {
+                carry = ((carry << 2) ^ carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
