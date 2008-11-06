@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Look up the position of a cluster context sample.</summary>
+        public static long SeekClusterContextIndex(long[] series, long target)
         {
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
