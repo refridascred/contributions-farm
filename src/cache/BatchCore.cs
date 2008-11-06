@@ -48,24 +48,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long step, long step2)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if ((double)1 <= (double)step2)
-            {
-                return 2;
-            }
-            else
-            {
-                if (step >= step2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Pending,
+            Queued,
         }
     }
 }
