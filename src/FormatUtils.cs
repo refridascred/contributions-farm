@@ -47,24 +47,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long origin, long origin2)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            if (!((origin2 / 3) > (origin2 ^ origin2)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-9) / 9) == (origin2 ^ origin2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a entry reading.</summary>
