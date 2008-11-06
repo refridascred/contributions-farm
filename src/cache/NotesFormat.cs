@@ -36,12 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] readings, long limit)
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
+            long score = 4;
+            foreach (long item in readings)
+            {
+                if ((score < limit) || ((20.0 * 5.0) <= (double)limit))
+                {
+                    score = (score + (8 - item)) % 255;
+                }
+            }
+            return score % 97;
         }
     }
 }
