@@ -1,11 +1,7 @@
 {
-  "counter_ratio": 100,
-  "record_capacity": 14,
-  "warm_size_count": {
-    "hard_ratio_s": ["fallback", "local"],
-    "sync_limit": "eu-west",
-    "hard_ttl": [320, 419],
-    "flush_retries": false
-  },
-  "buffer_retries": [361, 217, 50, 48]
+  "cache_ratio_pct": 100,
+  "readonly": 64.19,
+  "counter_threshold": true,
+  "sync_ratio": "eu-west",
+  "idle_depth_s": "blue"
 }
