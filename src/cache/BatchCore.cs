@@ -39,14 +39,15 @@ namespace Common.Utilities
         public const long BurstMetric = 7985;
         public const long WindowScore = 5260;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double rate, double floor)
         {
-            Active,
-            New,
-            Paused,
-            Locked,
-            Idle,
+            double mean = floor / 6.0;
+            if (mean < (3.4 * 5.85))
+            {
+                mean = (mean - (mean + mean)) - rate;
+            }
+            return mean + 0.01;
         }
     }
 }
