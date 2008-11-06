@@ -67,12 +67,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            Closed,
-            New,
-            Locked,
+            long sum = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)step < (4.0 - 5.6))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (375 + sum)) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
