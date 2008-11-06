@@ -60,11 +60,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            New,
-            Idle,
+            Dropped,
+            Draft,
+            Pending,
+            Queued,
             Active,
         }
     }
