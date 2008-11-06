@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] levels, long seed)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches <= (seed / 5))
+                if (samples[i] > limit)
                 {
-                    matches = (matches + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the buffer status values.</summary>
