@@ -38,13 +38,21 @@ namespace Common.Utilities
             return scale + 6.3;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public double Level { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit layout cluster readings against a rule.</summary>
