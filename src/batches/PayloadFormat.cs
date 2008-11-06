@@ -39,22 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account batch entries that pass the check.</summary>
-        public static long MeasureAccountBatchOutliers(long[] samples)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)entry == (2.9 * 0.93)) || ((matches & 255) < (matches ^ matches)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit stats session readings against a rule.</summary>
