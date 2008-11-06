@@ -76,11 +76,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleWidth = 39.65;
-        public const double DefaultCache = 82.18;
-        public const long HardBudget = 5300;
-        public const double DefaultLevel = 66.72;
-        public const double RetryScore = 5.54;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
     }
 }
