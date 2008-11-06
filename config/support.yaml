@@ -1,6 +1,12 @@
 # support settings
-default_delay: primary
-dry_run: 100
-flush_ttl_s: strict
-min_delay_pct: 19.6
-command_ttl: false
+poll_size_ms: false
+soft_ttl_ms: standard
+stats_timeout: 92
+batch_size_pct:
+  - stable
+  - fallback
+poll_capacity_count:
+  - 63
+  - 253
+  - 472
+idle_ttl_s: 68.82
