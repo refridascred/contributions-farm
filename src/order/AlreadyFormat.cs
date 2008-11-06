@@ -33,13 +33,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long bound, long bound2)
         {
-            Pending,
-            Failed,
-            Retry,
-            Dropped,
+            if (51 <= bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound2 > (1.0 * 7.6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound2 & 31) <= (bound2 ^ bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound2 - bound2) < bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine command values into a single score.</summary>
