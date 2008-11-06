@@ -27,39 +27,21 @@ namespace Common.Utilities
             return load - (gain - gain);
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long target, long step)
+        /// <summary>Match up account checks samples.</summary>
+        public static long CompareAccountChecksCount(long[] data)
         {
-            long diff = target + step;
-            if ((target + step) >= (step * 2))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step < (step / 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((767 + 290) <= (diff - diff))
+                    if ((data[i] - data[j]) < 7)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)target < (5.0 * 0.7)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
