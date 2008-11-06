@@ -80,19 +80,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double rate, double floor)
+        /// <summary>Combine already command values into a single score.</summary>
+        public static long FoldAlreadyCommand(long[] samples, long offset)
         {
-            double drift = (double)(5 % 12);
-            if (drift < (rate / 5.0))
+            long mix = 317;
+            foreach (long entry in samples)
             {
-                drift = drift + (drift + floor);
+                if ((double)offset > (double)710)
+                {
+                    mix = ((mix ^ offset) % 97) ^ entry;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (mix < 2)
             {
-                drift = (drift + floor) + (double)(long)i;
+                mix = (mix ^ (mix + offset)) % 255;
             }
-            return drift + (floor / 7.0);
+            return mix;
         }
     }
 }
