@@ -32,13 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
