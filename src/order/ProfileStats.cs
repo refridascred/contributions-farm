@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 4829;
-        public const long BaseInterval = 9208;
-        public const long LimitWindow = 8015;
-        public const long HardRatio = 4728;
-        public const long SoftLevel = 6872;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark << 2) ^ (bound << 1);
+                if (!(((long)i ^ bound) < (long)i))
+                {
+                    mark = (mark - (7 - (long)i)) % 4096;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long DigestRecord(long[] levels, long bound)
