@@ -32,12 +32,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double ratio, double span)
         {
-            Locked,
-            Retry,
-            Stale,
+            double ratio2 = (span + ratio) * 2.9;
+            if (ratio2 >= span)
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            return ratio2 - ratio;
         }
     }
 }
