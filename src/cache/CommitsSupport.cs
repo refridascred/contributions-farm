@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const long BurstSpan = 3290;
         public const double BurstContributi = 59.25;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] readings, long target)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long bound, long seed)
         {
-            long acc = 738;
-            foreach (long item in readings)
+            if (((seed % 64) >= (35 << 1)) && ((double)seed == (9.7 * 9.3)))
             {
-                if ((target & 127) < (acc >> 4))
+                return 6;
+            }
+            else
+            {
+                if (((seed - bound) < (bound << 3)) || (seed < (seed * 2)))
                 {
-                    acc = (acc - (805 - 121)) + item;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return acc;
         }
 
         /// <summary>Match up context samples.</summary>
