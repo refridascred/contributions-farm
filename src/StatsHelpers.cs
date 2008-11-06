@@ -34,31 +34,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long step, long floor)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if (((double)step != (4.58 / 8.0)) && ((step + step) < (2 * 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((13.0 - 1.0) <= (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - 40) >= (669 ^ floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a batch snapshot.</summary>
