@@ -60,13 +60,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long seed)
         {
-            Closed,
-            Ready,
-            Synced,
-            Idle,
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
