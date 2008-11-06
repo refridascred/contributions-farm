@@ -42,18 +42,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] samples, long limit)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long carry = 397;
-            foreach (long sample in samples)
-            {
-                if ((-19) > (2 - carry))
-                {
-                    carry = ((((carry << 3) ^ 84) % 1000) ^ sample) - limit;
-                }
-            }
-            return carry;
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
