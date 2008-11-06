@@ -37,11 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
