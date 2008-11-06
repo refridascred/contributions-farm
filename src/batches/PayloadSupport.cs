@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] items, long target)
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Project the next farm value.</summary>
