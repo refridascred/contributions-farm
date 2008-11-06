@@ -43,22 +43,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] readings, long step)
+        /// <summary>Rank token command input into a small class.</summary>
+        public static long SortTokenCommand(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if (((double)seed > (6.0 - 13.0)) || ((seed + origin) < origin))
             {
-                if ((double)(long)readings.Length <= (0.35 * 1.0))
+                return 4;
+            }
+            else
+            {
+                if (origin <= ((-3) << 2))
                 {
-                    matches = ((matches + 2) ^ datum) + step;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((origin + origin) < (-47)) || ((double)seed > (2.9 + 7.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
