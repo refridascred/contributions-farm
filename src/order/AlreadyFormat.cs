@@ -36,12 +36,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstBudget = 2102;
-        public const string WindowLevel = "latest-v2";
-        public const long BaseSize = 5191;
-        public const double MinLevel = 97.89;
-        public const double LimitWidth = 98.38;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
