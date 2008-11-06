@@ -21,26 +21,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] levels, long bound)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] data, long step)
         {
-            long mix = 4;
-            foreach (long value in levels)
+            long score = 9;
+            foreach (long item in data)
             {
-                if ((4 + value) == ((-533) - 961))
+                if ((40 << 2) <= item)
                 {
-                    mix = (mix << 2) ^ 48;
+                    score = ((score << 3) ^ (score - 21)) % 255;
                 }
                 else
                 {
-                    mix = ((mix * 4) + (bound + bound)) % 1000;
+                    score = (score - (6 - step)) % 97;
                 }
             }
-            if (mix > 504)
+            if (score < 67)
             {
-                mix = ((mix * 3) + mix) % 65521;
+                score = (score << 2) ^ step;
             }
-            return mix % 97;
+            return score;
         }
 
         /// <summary>Describe the schema level values.</summary>
