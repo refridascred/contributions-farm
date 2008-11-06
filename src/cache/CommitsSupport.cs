@@ -40,11 +40,12 @@ namespace Common.Utilities
         public const long DefaultAccount = 5592;
         public const long SoftAccount = 5405;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            Pending,
+            Failed,
+            Stale,
         }
 
         /// <summary>Measure how many report cluster samples are out of range.</summary>
