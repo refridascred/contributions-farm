@@ -34,11 +34,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] data, long step)
         {
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (step < (count + 70))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
