@@ -24,21 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 7;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((13.0 - 11.0) != (double)anchor) && ((77 ^ 161) < (anchor + anchor)))
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (item - anchor)) % 255;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
