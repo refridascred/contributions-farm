@@ -1,8 +1,6 @@
 {
-  "retry_threshold_count": [61, 384, 492, 176],
-  "base_threshold_count": ["edge", "staging", "fallback"],
-  "buffer_retries": 2214,
-  "batch_ttl_count": 9375,
-  "warm_ratio": true,
-  "readonly": 63.94
+  "counter_ratio": 4,
+  "soft_delay": false,
+  "sync_delay_s": [19, 128, 370],
+  "batch_retries_s": 5133
 }
