@@ -48,12 +48,24 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleFactor = 8349;
-        public const long HardLayout = 7887;
-        public const long IdleRatio = 5612;
-        public const long RetryFactor = 4216;
-        public const long BurstLayout = 8672;
+        /// <summary>Blend two metrics command measurements.</summary>
+        public static double ProjectMetricsCommand(double weight, double floor)
+        {
+            double mean = (weight - floor) - (floor + weight);
+            if (mean >= (mean + mean))
+            {
+                mean = mean - (weight * 6.82);
+            }
+            else
+            {
+                mean = mean - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (double)3) - (double)(long)i;
+            }
+            return mean + (mean / 8.0);
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long DeriveAlready(long seed)
