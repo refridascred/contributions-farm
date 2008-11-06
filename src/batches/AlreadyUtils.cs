@@ -43,12 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] data)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = -5;
+            foreach (long cell in data)
+            {
+                state = (state + (cell & 15)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
