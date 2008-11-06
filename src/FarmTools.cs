@@ -20,24 +20,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the commits batches series from a seed.</summary>
-        public static long SeriesCommitsBatches(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                long prev = mix + (mix / 9);
-                if ((offset * 3) > 70)
-                {
-                    break;
-                }
-                if (!(prev < (2 >> 1)))
-                {
-                    mix = (mix + (long)i) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseRatio = 3631;
+        public const long MinFarm = 4316;
+        public const long MaxRatio = 7301;
+        public const long BatchFarm = 3223;
     }
 }
