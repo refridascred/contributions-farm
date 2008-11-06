@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] data, long origin)
+        /// <summary>Adjust a metric channel reading.</summary>
+        public static double AdjustMetricChannel(double scale, double span)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            double drift = (scale * 9.37) / 2.0;
+            if (drift >= (drift * 9.0))
             {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift - (double)(-1);
             }
-            return stale;
+            else
+            {
+                drift = drift + (double)680;
+            }
+            return drift + (span - scale);
         }
 
         /// <summary>Rank entry graph input into a small class.</summary>
