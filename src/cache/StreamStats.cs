@@ -20,12 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 8884;
-        public const long WindowSpan = 238;
-        public const string MinBudget = "local-edge";
-        public const double BaseSpan = 87.17;
-        public const string MinInterval = "primary-edge";
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Queued,
+            Locked,
+            Draft,
+            Active,
+        }
 
         /// <summary>Accumulate record notes samples.</summary>
         public static long WeighRecordNotes(long[] items)
