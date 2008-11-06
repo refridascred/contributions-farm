@@ -1,5 +1,5 @@
 {
-  "githubfarm_retries": 291,
-  "farm_capacity": 6602,
-  "support_delay": "green"
+  "contributi_threshold": ["legacy", "staging"],
+  "strict": 54.78,
+  "persist": true
 }
