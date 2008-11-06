@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate githubfarm metric readings against a bound.</summary>
-        public static bool GuardGithubfarmMetricLimits(long[] samples, long origin)
+        /// <summary>Adjust a githubfarm checks reading.</summary>
+        public static double ScaleGithubfarmChecks(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            double weight = (double)37 / 9.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (item <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = ((weight - floor) - (double)(long)i) - scale;
             }
-            return valid;
+            return weight - 12.0;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
