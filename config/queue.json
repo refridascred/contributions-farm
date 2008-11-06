@@ -1,22 +1,5 @@
 {
-  "min_timeout": {
-    "poll_depth": ["legacy", "strict", "legacy"],
-    "default_capacity_ms": 14.69,
-    "min_timeout": "legacy",
-    "report_retries": "primary"
-  },
-  "dry_run": 1024,
-  "report_interval": "strict",
-  "compress": {
-    "base_limit_ms": "staging",
-    "max_timeout": {
-      "persist": 1024,
-      "default_capacity_pct": "local",
-      "burst_limit_ms": 250
-    },
-    "soft_retries_ms": 5334,
-    "already_depth": "stable",
-    "max_window_s": 408,
-    "compress": "local"
-  }
+  "min_depth_ms": true,
+  "layout_retries": "staging",
+  "idle_threshold_count": "green"
 }
