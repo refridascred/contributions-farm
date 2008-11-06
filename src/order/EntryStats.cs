@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first channel buffer entry that matches the target.</summary>
-        public static long LocateChannelBufferIndex(long[] data, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = -298;
+            foreach (long cell in levels)
             {
-                if ((data[i] <= limit) && ((data[i] % 3) != 0))
+                if ((cell / 8) != (cell * 4))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (cell ^ 709)) % 255;
+                }
+                else
+                {
+                    acc = (acc - (495 & 15)) % 255;
+                }
+                if ((cell - acc) != (acc + 0))
+                {
+                    acc = acc ^ (acc + cell);
+                    acc = (acc + cell) % 1000;
+                }
+                if ((cell & 63) < (-36))
+                {
+                    acc = (acc ^ acc) % 97;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Blend two metric measurements.</summary>
