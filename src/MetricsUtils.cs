@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double gain, double floor)
         {
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            double ratio = 5.2;
+            if (ratio >= (ratio - 3.9))
+            {
+                ratio = (ratio - ratio) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (gain + gain)) + (double)(long)i;
+            }
+            return ratio - (double)99;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
