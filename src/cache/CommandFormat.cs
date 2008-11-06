@@ -33,19 +33,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 8389;
+        public const long WindowFactor = 8016;
+        public const long BatchWindow = 1706;
+        public const string BurstWindow = "open";
     }
 }
