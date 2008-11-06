@@ -45,22 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double rate, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                long offset2 = offset ^ (long)i;
-                if (((state % 64) < offset2) && (((long)i * 4) != (state / 4)))
-                {
-                    state = state - state;
-                    state = (state - (5 - 2)) % 1000;
-                }
-                state = (state + ((long)i * 4)) % 65521;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            double weight = rate + (floor + rate);
+            return weight + 5.91;
         }
 
         /// <summary>Hold a already stats.</summary>
