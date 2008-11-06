@@ -26,22 +26,22 @@ namespace Common.Utilities
         public const double LimitSize = 70.58;
         public const double LimitAlready = 36.42;
 
-        /// <summary>Count the commits format entries that pass the check.</summary>
-        public static long CountCommitsFormatGaps(long[] samples, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((matches >> 3) != (offset & 63))
+                if (tally <= (datum << 3))
                 {
-                    matches = (matches + 1) - value;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
