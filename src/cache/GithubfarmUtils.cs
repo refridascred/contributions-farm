@@ -34,12 +34,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the notes class values.</summary>
