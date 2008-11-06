@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchFarm = "strict";
-        public const long BurstFarm = 2522;
-        public const long SoftLevel = 3340;
-        public const long LimitDepth = 2159;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public double Size { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
