@@ -1,5 +1,5 @@
 {
-  "batch_timeout": "standard",
-  "audit": 30,
-  "warm_interval_pct": 55
+  "audit": 100,
+  "readonly": true,
+  "cache_limit_count": [323, 289, 382, 489]
 }
