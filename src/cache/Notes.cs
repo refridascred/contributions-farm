@@ -63,17 +63,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] readings, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long bound, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (bound >= limit)
             {
-                if ((readings[i] == seed) && ((readings[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((6 - bound) != (1 % 2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound / 2) >= (limit & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
