@@ -40,12 +40,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Validate batch cache readings against a bound.</summary>
+        public static bool GuardBatchCacheBounds(long[] items, long target)
         {
-            Paused,
-            Stale,
-            Active,
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the checks graph series from a seed.</summary>
