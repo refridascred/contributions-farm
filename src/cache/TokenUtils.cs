@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const string HardMetrics = "open-v2";
         public const string BurstScore = "legacy-edge";
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            Stale,
+            Synced,
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
