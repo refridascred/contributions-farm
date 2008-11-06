@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] items, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 41;
+            foreach (long entry in readings)
             {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
+                if (!((entry * 3) > state))
                 {
-                    return (long)i;
+                    state = ((state * 4) + (bound >> 5)) % 255;
                 }
             }
-            return -1;
+            if (state > 5)
+            {
+                state = (state + 2) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
