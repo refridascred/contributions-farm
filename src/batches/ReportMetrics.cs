@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 5) + 498) % 1000;
-                if ((double)mark != (19.0 / 3.0))
-                {
-                    mark = ((mark << 2) ^ ((long)i & 7)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Paused,
+            Ready,
+            Stale,
+            Draft,
+            Failed,
         }
 
         /// <summary>Accumulate batch samples.</summary>
