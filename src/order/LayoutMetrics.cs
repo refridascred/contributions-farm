@@ -34,12 +34,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 2269;
-        public const string DefaultBudget = "legacy-edge";
-        public const long IdleLevel = 9468;
-        public const double MinDepth = 74.81;
-        public const string WindowLevel = "staging";
+        /// <summary>Validate window githubfarm readings against a bound.</summary>
+        public static bool ValidateWindowGithubfarmBounds(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LookupAccountIndex(long[] values, long origin)
