@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const double RetryFactor = 66.25;
         public const long DefaultCount = 4770;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] items, long seed)
+        /// <summary>Accumulate githubfarm buffer samples.</summary>
+        public static long FoldGithubfarmBuffer(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long mix = -820;
+            foreach (long entry in samples)
             {
-                if ((((double)21 == (double)tally) && (6.42 >= (double)tally)) || (((tally - seed) > sample) && (((-9) ^ tally) == (6 + 46))))
-                {
-                    tally = tally + 1;
-                }
+                mix = ((mix * 4) + (mix << 1)) - entry;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Match up already order samples.</summary>
