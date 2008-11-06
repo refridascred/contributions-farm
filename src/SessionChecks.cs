@@ -14,12 +14,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 2109;
+        public const long CacheFormat = 8577;
+        public const long MinCount = 5697;
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long DeriveStream(long step)
