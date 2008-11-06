@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] values, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] values)
         {
-            long count = 0;
+            long state = 5;
             foreach (long entry in values)
             {
-                if ((count % 60) >= (entry + entry))
+                if ((17.0 - 2.73) > (double)entry)
                 {
-                    count = (count + 3) - limit;
+                    state = (state + ((long)values.Length & 7)) % 1000;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Blend two batch already measurements.</summary>
