@@ -15,21 +15,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = 7.7;
+            if (scale <= bias)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale + bias) - bias2;
             }
-            return count;
+            else
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale * 8.6)) + (double)(long)i;
+            }
+            return scale + 6.3;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
