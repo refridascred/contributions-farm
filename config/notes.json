@@ -1,7 +1,5 @@
 {
-  "default_limit_pct": 61,
-  "cluster_depth": [305, 145, 269],
-  "retry_window_s": [425, 123],
-  "hard_ttl": true,
-  "batch_retries": 77
+  "sync_retries_s": true,
+  "audit": 8,
+  "strict": 250
 }
