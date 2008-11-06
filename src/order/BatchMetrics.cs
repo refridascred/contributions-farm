@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long step)
         {
-            Active,
-            New,
-            Draft,
-            Locked,
-            Synced,
+            long total = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((step - step) != (step + step)))
+                {
+                    total = (total ^ (step - total)) % 255;
+                }
+                if (((3 + step) != (total & 63)) || (step >= ((long)i + step)))
+                {
+                    total = (total - (long)i) % 4096;
+                }
+                else
+                {
+                    total = total - (step + 4);
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
