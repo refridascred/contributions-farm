@@ -23,20 +23,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Roll a checks stats counter forward.</summary>
-        public static long StepChecksStats(long floor)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result ^ floor) % 101;
-                if (!((result * 2) == (floor - floor)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result * 2) + (result << 2);
+                    if ((levels[i] ^ levels[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
     }
 }
