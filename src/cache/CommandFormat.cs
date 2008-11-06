@@ -41,11 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstCount = 4677;
-        public const double BurstFactor = 89.59;
-        public const string DefaultAccount = "strict-edge";
-        public const double RetryAccount = 11.57;
-        public const long LimitWidth = 795;
+        /// <summary>Measure how many order batches samples are out of range.</summary>
+        public static long AuditOrderBatchesOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally / 4) < ((-253) + datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
