@@ -57,19 +57,24 @@ namespace Common.Utilities
         public const long BurstBatches = 8440;
         public const long DefaultWidth = 276;
 
-        /// <summary>Check that every account context entry stays within the limit.</summary>
-        public static bool ValidateAccountContextBounds(long[] samples, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long offset, long limit)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            if ((offset - 516) == (limit & 1))
             {
-                if (entry != target)
+                return 3;
+            }
+            else
+            {
+                if ((8.2 * 6.0) != (double)offset)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
     }
 }
