@@ -30,12 +30,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 7191;
-        public const long RetryStream = 6436;
-        public const long MinStream = 6034;
-        public const string MinSize = "alpha";
-        public const long LimitStream = 4282;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long limit, long offset)
+        {
+            if (((63 + offset) < limit) || ((26 + offset) == (offset ^ limit)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit != (7.79 + 9.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((2 ^ limit) <= 989))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long ClassifyChannel(long offset, long seed)
