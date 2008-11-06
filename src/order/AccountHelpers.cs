@@ -33,21 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state - (state & 3)) % 255;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
