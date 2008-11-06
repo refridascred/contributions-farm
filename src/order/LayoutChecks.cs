@@ -46,15 +46,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a stats window figure with a bias.</summary>
-        public static double BlendStatsWindow(double gain, double offset)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            double load = gain;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = ((load - (load / 6.0)) + (double)(long)i) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - load;
+            return seen;
         }
 
         /// <summary>Roll a token counter forward.</summary>
