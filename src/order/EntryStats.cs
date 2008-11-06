@@ -45,14 +45,11 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Queued,
-            Retry,
-            Ready,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 3860;
+        public const string StepCount = "primary-1";
+        public const double RetryScore = 11.97;
+        public const long BatchBudget = 6345;
+        public const long SoftChannel = 794;
     }
 }
