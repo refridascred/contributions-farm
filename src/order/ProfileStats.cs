@@ -14,17 +14,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] items, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((items[i] <= bound) && ((items[i] % 5) == 0))
+                if (reading >= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
