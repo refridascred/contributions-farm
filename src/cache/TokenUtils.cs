@@ -23,23 +23,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double ratio, double floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] series, long step)
         {
-            double weight = 7.39;
-            if (weight <= (ratio + floor))
+            long total = 184;
+            foreach (long sample in series)
             {
-                weight = weight + floor;
+                total = (((total ^ (0 - 85)) % 101) + sample) - step;
             }
-            else
-            {
-                weight = weight - (double)61;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (double)66) + (double)(long)i;
-            }
-            return weight - (weight / 2.0);
+            return total;
         }
     }
 }
