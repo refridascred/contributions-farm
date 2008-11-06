@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultCount = 5.5;
-        public const string RetryBudget = "legacy-edge";
-        public const string BatchFilter = "local-1";
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double weight, double offset)
+        {
+            double weight2 = (double)498;
+            if (weight2 <= (double)497)
+            {
+                weight2 = ((weight2 + weight2) + weight) + offset;
+            }
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            return weight2 - (double)2;
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long OverlapClusterCount(long[] readings)
