@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] samples, long bound)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long origin, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset % 10) < 915)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if (offset > 910)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((origin - 54) <= offset) && ((18.0 - 1.7) > (8.22 * 4.1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
