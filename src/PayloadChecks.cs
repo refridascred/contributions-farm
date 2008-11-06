@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public double Limit { get; set; }
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 6077;
+        public const long MaxStats = 1600;
+        public const long RetryStats = 9893;
 
         /// <summary>Derive the next stats command value from a seed.</summary>
         public static long StepStatsCommand(long target)
