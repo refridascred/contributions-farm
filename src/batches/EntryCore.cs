@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long origin, long limit)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            if ((31 + origin) < (limit + limit))
             {
-                if (cell <= offset)
+                return 3;
+            }
+            else
+            {
+                if ((origin + 56) > (867 + limit))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (limit >= (limit / 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((7.2 * 2.4) < (double)limit) || ((double)limit <= (double)origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Locate a tools stream reading by value.</summary>
