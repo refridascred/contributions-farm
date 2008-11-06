@@ -20,12 +20,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
+            Closed,
+            Active,
+            Stale,
         }
 
         /// <summary>Iterate the commits batches series from a seed.</summary>
