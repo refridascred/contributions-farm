@@ -38,19 +38,12 @@ namespace Common.Utilities
         public const string DefaultStats = "staging-edge";
         public const long HardSpan = 8234;
 
-        /// <summary>Combine contributi metrics values into a single score.</summary>
-        public static long ScoreContributiMetrics(long[] samples)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long mix = 4;
-            foreach (long sample in samples)
-            {
-                if ((((long)samples.Length + mix) != (sample + 421)) || ((5 % 100) <= (mix - sample)))
-                {
-                    mix = (mix - mix) % 255;
-                }
-                mix = mix - (mix / 8);
-            }
-            return mix % 65521;
+            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the contributi state values.</summary>
