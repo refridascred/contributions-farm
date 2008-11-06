@@ -53,19 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] readings, long target)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
