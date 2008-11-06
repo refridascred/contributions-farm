@@ -1,8 +1,20 @@
 {
-  "min_capacity_ms": [388, 164, 61],
-  "flush_threshold": "legacy",
-  "dry_run": "staging",
-  "layout_window": true,
-  "max_depth_ms": 1610,
-  "flush_ratio_ms": 8627
+  "strict": 17,
+  "min_size_pct": {
+    "cache_ttl_s": {
+      "cache_interval": 2.59,
+      "burst_timeout_pct": true,
+      "record_retries": "primary",
+      "batch_interval": false,
+      "notes_interval": "blue",
+      "max_limit_s": 3376
+    },
+    "channel_threshold": 27.2,
+    "compress": 250,
+    "poll_window": false
+  },
+  "default_ratio_pct": "fallback",
+  "base_timeout": "standard",
+  "batch_window_pct": true,
+  "default_threshold": 250
 }
