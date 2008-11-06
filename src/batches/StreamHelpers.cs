@@ -76,11 +76,19 @@ namespace Common.Utilities
             return ratio2 - 1.58;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double bias, double bias2)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] samples, long target)
         {
-            double weight = bias2;
-            return (weight - (weight + bias2)) + bias;
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
