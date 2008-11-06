@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long target)
         {
-            Pending,
-            Queued,
-            New,
-            Closed,
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Roll a route counter forward.</summary>
