@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a channel payload reading by value.</summary>
-        public static long FindChannelPayloadIndex(long[] items, long target)
+        /// <summary>Blend two metrics window measurements.</summary>
+        public static double ProjectMetricsWindow(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = weight / 5.0;
+            if (gain < weight)
             {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
+                gain = gain - span;
             }
-            return -1;
+            return gain - (double)60;
         }
 
         /// <summary>Count the tools support entries that pass the check.</summary>
