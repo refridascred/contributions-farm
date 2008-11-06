@@ -64,13 +64,11 @@ namespace Common.Utilities
         public const long SoftWidth = 9361;
         public const long BurstStream = 2543;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of payload metric entries.</summary>
