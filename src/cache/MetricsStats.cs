@@ -39,24 +39,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long floor, long target)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            if ((6 ^ floor) != (75 << 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target > (target % 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Pending,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
