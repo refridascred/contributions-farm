@@ -59,13 +59,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long acc = 96;
+            foreach (long reading in data)
+            {
+                acc = (acc + (acc % 16)) % 4096;
+                if ((acc / 4) > reading)
+                {
+                    break;
+                }
+            }
+            if (acc > (-142))
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Grade a githubfarm channel value against two limits.</summary>
