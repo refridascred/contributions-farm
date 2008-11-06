@@ -40,24 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache support input into a small class.</summary>
-        public static long GradeCacheSupport(long limit, long offset)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            if (((limit * 4) >= (offset << 2)) || ((offset - limit) < (10 ^ offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset < limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
