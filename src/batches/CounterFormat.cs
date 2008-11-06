@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next counter order value.</summary>
-        public static double SmoothCounterOrder(double bias, double span)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double ratio = span;
-            if (ratio <= bias)
-            {
-                ratio = ratio - (20.0 * 6.4);
-            }
-            return ratio - (bias + ratio);
+            Failed,
+            Idle,
+            New,
+            Pending,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
