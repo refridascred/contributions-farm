@@ -25,10 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "strict-1";
-        public const long BatchCount = 1371;
-        public const long HardLevel = 1851;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count - count) == (19 + entry))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
