@@ -38,14 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] values, long limit)
         {
-            Failed,
-            Queued,
-            Closed,
-            Dropped,
-            Pending,
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of tools schema readings.</summary>
