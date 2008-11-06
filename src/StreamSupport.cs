@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long seed)
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
+            long state = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state * 3) + (8 + state);
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
