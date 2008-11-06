@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double weight, double offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long offset)
         {
-            double weight2 = (double)498;
-            if (weight2 <= (double)497)
+            long state = offset;
+            for (int i = 0; i < 10; i++)
             {
-                weight2 = ((weight2 + weight2) + weight) + offset;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            return weight2 - (double)2;
+            return state;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
