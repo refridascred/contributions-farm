@@ -29,26 +29,10 @@ namespace Common.Utilities
             return gain + (5.45 - floor);
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] data)
-        {
-            long state = 5;
-            foreach (long reading in data)
-            {
-                if (((long)data.Length ^ reading) > state)
-                {
-                    state = state + (205 & 1);
-                }
-                else
-                {
-                    state = state ^ (reading << 2);
-                }
-            }
-            if (state < (-178))
-            {
-                state = ((state << 2) ^ (state % 7)) % 255;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 4099;
+        public const string RetryRatio = "staging-1";
+        public const long WindowContext = 5808;
+        public const long HardSpan = 1843;
     }
 }
