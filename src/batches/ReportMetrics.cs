@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long limit, long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            long span = limit + seed;
-            if ((span + seed) != (span - limit))
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((span - span) >= (span + 4)) && ((span - seed) > limit))
+                mark = ((mark * 5) + 498) % 1000;
+                if ((double)mark != (19.0 / 3.0))
                 {
-                    return 2;
+                    mark = ((mark << 2) ^ ((long)i & 7)) % 4096;
                 }
-                else
-                {
-                    if (((-5) & 63) == (72 + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Accumulate batch samples.</summary>
