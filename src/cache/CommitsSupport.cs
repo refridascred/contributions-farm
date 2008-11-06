@@ -49,18 +49,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support stats samples are out of range.</summary>
-        public static long AuditSupportStatsHits(long[] levels)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value < (3.42 * 1.15))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
