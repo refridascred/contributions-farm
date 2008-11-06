@@ -38,16 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] readings, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                anchor = (anchor << 2) ^ (23 & 15);
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((250 & 3) > ((long)readings.Length % 24))
+                {
+                    seen = ((seen + 2) - item) - floor;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
