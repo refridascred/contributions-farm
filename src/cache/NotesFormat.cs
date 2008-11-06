@@ -33,18 +33,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] levels, long offset)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (!((sample >= (sample + sample)) || ((offset + hits) > (hits & 127))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
     }
 }
