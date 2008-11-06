@@ -20,15 +20,14 @@ namespace Common.Utilities
             return ratio - (double)99;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] series, long seed)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long result = 42;
-            foreach (long value in series)
-            {
-                result = ((result ^ (value << 1)) % 4096) - seed;
-            }
-            return result;
+            Queued,
+            Active,
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Accumulate already samples.</summary>
