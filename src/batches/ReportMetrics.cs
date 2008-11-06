@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long WindowRatio = 3176;
         public const string StepEntry = "legacy";
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] levels, long step)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 7606;
+        public const long CacheLevel = 5905;
+        public const long WindowScore = 4078;
+        public const long BurstInterval = 2065;
+        public const long BatchFormat = 4117;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionRange(long[] samples, long seed)
