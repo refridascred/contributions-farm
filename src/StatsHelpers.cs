@@ -59,13 +59,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] items)
         {
-            Queued,
-            Stale,
-            Paused,
-            Ready,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
