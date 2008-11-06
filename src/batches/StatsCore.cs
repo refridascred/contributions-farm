@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry ^ seen) > seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a account reading.</summary>
