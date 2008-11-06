@@ -1,6 +1,6 @@
 # support settings
-max_ttl_count: 27
-soft_size_pct: 26
-dry_run: local
-retry_ratio_count: 64
-batch_ratio: 48
+default_delay: primary
+dry_run: 100
+flush_ttl_s: strict
+min_delay_pct: 19.6
+command_ttl: false
