@@ -29,21 +29,26 @@ namespace Common.Utilities
             return gain + (5.45 - floor);
         }
 
-        /// <summary>Compare every pair of account cluster readings.</summary>
-        public static long OverlapAccountClusterCount(long[] series)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 5;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)data.Length ^ reading) > state)
                 {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state + (205 & 1);
+                }
+                else
+                {
+                    state = state ^ (reading << 2);
                 }
             }
-            return matches;
+            if (state < (-178))
+            {
+                state = ((state << 2) ^ (state % 7)) % 255;
+            }
+            return state % 4096;
         }
     }
 }
