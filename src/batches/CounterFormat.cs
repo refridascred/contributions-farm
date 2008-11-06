@@ -32,12 +32,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Done,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRoute = "fallback-1";
+        public const string WindowCount = "stable-v2";
+        public const string SoftRoute = "strict-1";
     }
 }
