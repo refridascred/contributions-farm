@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue stable; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-fallback}"
+mode="${1:-strict}"
 case "${mode}" in
-    fallback)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=113
+log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
