@@ -35,18 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many channel already samples are out of range.</summary>
-        public static long AuditChannelAlreadyGaps(long[] series, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)origin >= 7.14)
+                if ((((long)i % 64) <= score) && ((5.2 / 9.0) >= (double)(long)i))
                 {
-                    count = (count + 2) + sample;
+                    score = score + (7 >> 1);
                 }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
     }
 }
