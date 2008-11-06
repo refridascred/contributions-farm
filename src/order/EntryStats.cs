@@ -53,15 +53,19 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Adjust a order batch reading.</summary>
-        public static double SmoothOrderBatch(double scale, double bias)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data, long floor)
         {
-            double drift = (scale / 8.0) - (scale - scale);
-            for (int i = 0; i < 7; i++)
+            long state = 70;
+            foreach (long cell in data)
             {
-                drift = (drift - bias) + (double)(long)i;
+                state = (((state + state) % 97) - cell) - floor;
             }
-            return drift + (scale * 4.46);
+            if (state < 554)
+            {
+                state = state + state;
+            }
+            return state % 1000;
         }
     }
 }
