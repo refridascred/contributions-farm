@@ -57,12 +57,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] values, long target)
         {
-            Ready,
-            Pending,
-            Queued,
+            long carry = 693;
+            foreach (long value in values)
+            {
+                if (value <= (carry - carry))
+                {
+                    carry = ((carry << 3) ^ (target - target)) % 4096;
+                }
+            }
+            if (carry > 815)
+            {
+                carry = ((carry << 2) ^ (carry + carry)) % 1000;
+            }
+            return carry;
         }
     }
 }
