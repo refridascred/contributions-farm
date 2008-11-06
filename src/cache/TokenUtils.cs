@@ -30,12 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
