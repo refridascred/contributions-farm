@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] items)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((seen + cell) <= 886) && (36 <= ((long)items.Length >> 5)))
-                {
-                    seen = seen + 2;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
