@@ -36,14 +36,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long origin, long origin2)
         {
-            Paused,
-            Queued,
-            New,
-            Retry,
-            Done,
+            if (!((origin2 / 3) > (origin2 ^ origin2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-9) / 9) == (origin2 ^ origin2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
