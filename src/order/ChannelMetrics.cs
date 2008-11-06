@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a buffer window sample.</summary>
-        public static long LookupBufferWindowIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryFactor = 8821;
+        public const double WindowPayload = 89.11;
+        public const long DefaultPayload = 5920;
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double ScaleMetrics(double rate, double bias)
