@@ -40,19 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] series)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            long mark = 599;
-            foreach (long value in series)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                mark = ((mark << 2) ^ (value << 3)) % 4096;
+                if ((7.45 * 7.0) <= (double)(long)i)
+                {
+                    score = (score * 4) + step;
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            if (mark > 815)
-            {
-                mark = (mark << 2) ^ (mark % 3);
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
