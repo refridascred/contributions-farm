@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine farm token values into a single score.</summary>
-        public static long WeighFarmToken(long[] samples)
-        {
-            long acc = 709;
-            foreach (long datum in samples)
-            {
-                acc = (acc << 3) ^ (datum & 15);
-            }
-            if (acc < 940)
-            {
-                acc = ((acc << 2) ^ (acc % 60)) % 1000;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstEntry = "local-edge";
+        public const long WindowRatio = 3176;
+        public const string StepEntry = "legacy";
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionLimits(long[] levels, long step)
