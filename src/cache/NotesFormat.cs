@@ -25,15 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
