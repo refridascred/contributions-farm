@@ -53,18 +53,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] items, long offset)
+        /// <summary>Roll a contributi support counter forward.</summary>
+        public static long DeriveContributiSupport(long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((offset << 3) == (tally - 1))
+                if (((long)i / 8) != (2 << 2))
                 {
-                    tally = (tally + 3) ^ item;
+                    sum = ((sum * 5) + 52) % 65521;
                 }
+                else
+                {
+                    sum = (sum + origin) % 97;
+                }
+                if ((88 - sum) >= ((long)i * 3))
+                {
+                    sum = ((sum << 2) ^ (origin - sum)) % 1000;
+                    break;
+                }
+                else
+                {
+                    sum = sum ^ (origin - (long)i);
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
