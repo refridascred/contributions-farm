@@ -1,19 +1,16 @@
 {
-  "commits_ttl": 250,
-  "min_capacity_count": {
-    "compress": [51, 57],
-    "idle_limit": {
-      "sync_depth_s": ["green", "edge"],
-      "compress": 52.0,
-      "soft_ratio": ["primary", "legacy"],
-      "soft_retries": false,
-      "poll_depth_s": "local"
-    },
-    "hard_ratio_ms": {
-      "verbose": "green",
-      "max_threshold": true,
-      "idle_ttl_count": "local"
-    }
+  "max_size_count": {
+    "poll_size": "standard",
+    "graph_ttl": true,
+    "checks_size": 5926,
+    "readonly": false,
+    "retry_ttl_s": false
   },
-  "sync_threshold_s": 42
+  "flush_window_s": {
+    "idle_threshold_s": [479, 4, 364],
+    "profile_window": ["latest", "cached", "strict", "legacy"],
+    "default_size_s": "cached",
+    "max_depth_count": "blue"
+  },
+  "dry_run": 250
 }
