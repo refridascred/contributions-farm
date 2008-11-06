@@ -21,17 +21,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] readings, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                sum = (sum << 2) ^ sum;
-                sum = (sum - target) % 4096;
-                sum = ((sum * 3) + (long)i) % 101;
+                if (item < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
     }
 }
