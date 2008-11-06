@@ -19,10 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseSize = 5337;
-        public const string LimitRatio = "open-1";
-        public const long HardCount = 1775;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] series, long floor)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (64 < (36 - item))
+                {
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
