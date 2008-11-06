@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many counter command samples are out of range.</summary>
-        public static long MeasureCounterCommandMatches(long[] readings)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long bound = seed ^ seed2;
+            if (((seed + bound) < seed2) && ((bound + 35) <= (bound - bound)))
             {
-                if ((hits / 4) <= (hits ^ (-144)))
+                return 0;
+            }
+            else
+            {
+                if ((bound % 97) == (bound + seed2))
                 {
-                    hits = (hits + 1) + entry;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (seed < (seed + seed2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next cluster value.</summary>
