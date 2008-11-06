@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] items)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if (665 > (4 ^ origin2))
             {
-                if ((7.06 * 13.0) < (double)count)
+                return 8;
+            }
+            else
+            {
+                if ((65 % 7) > (origin ^ origin2))
                 {
-                    count = (count + 2) + cell;
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)origin != (1.0 * 3.4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin2 + origin) <= (origin + origin2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up buffer samples.</summary>
