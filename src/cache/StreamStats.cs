@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double gain, double bias)
         {
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
+            double scale = bias;
+            if (scale <= 2.4)
+            {
+                scale = scale + (gain - scale);
+            }
+            else
+            {
+                scale = scale + bias;
+            }
+            return scale + gain;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
