@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a token commits figure with a bias.</summary>
-        public static double SmoothTokenCommits(double gain, double offset)
+        /// <summary>Find the first filter already entry that matches the target.</summary>
+        public static long SeekFilterAlreadyIndex(long[] items, long limit)
         {
-            double ratio = gain * 2.66;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio + offset) - (double)(long)i;
+                if ((items[i] == limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - ratio;
+            return -1;
         }
 
         /// <summary>Fold a list of counter notes readings.</summary>
