@@ -37,19 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] values, long seed)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Audit cluster context readings against a rule.</summary>
