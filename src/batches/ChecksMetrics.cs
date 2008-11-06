@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] series)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count + datum) <= (datum * 3))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
