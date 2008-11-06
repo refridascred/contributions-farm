@@ -41,18 +41,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] series, long floor)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)floor > (11.0 - 9.0))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            Active,
+            Done,
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define support limits and defaults.</summary>
