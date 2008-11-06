@@ -1,22 +1,5 @@
 {
-  "hard_ratio": 30,
-  "audit": true,
-  "idle_retries": 16,
-  "stats_size": 35.71,
-  "hard_ratio_s": "legacy",
-  "persist": {
-    "max_ttl": 1,
-    "commits_interval": 4259,
-    "command_depth": {
-      "account_ttl": "standard",
-      "cache_threshold_ms": 4266,
-      "command_ratio": "primary",
-      "idle_delay_count": ["cached", "edge", "local"]
-    },
-    "verbose": {
-      "retry_size_count": "eu-west",
-      "persist": 94.02,
-      "poll_ratio": 34.35
-    }
-  }
+  "batch_timeout": "standard",
+  "audit": 30,
+  "warm_interval_pct": 55
 }
