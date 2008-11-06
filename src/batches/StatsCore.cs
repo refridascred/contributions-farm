@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double LimitLevel = 75.06;
         public const long HardRatio = 9393;
 
-        /// <summary>Audit graph batches readings against a rule.</summary>
-        public static long CountGraphBatchesHits(long[] data)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long acc = -6;
+            foreach (long datum in levels)
             {
-                if ((20.0 * 8.0) == (double)hits)
+                if ((19 / 7) >= (acc / 5))
                 {
-                    hits = (hits + 3) ^ entry;
+                    acc = ((acc ^ acc) % 65521) + datum;
                 }
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Adjust a account reading.</summary>
