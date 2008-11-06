@@ -16,18 +16,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] series)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((entry ^ seen) > seen)
-                {
-                    seen = seen + 1;
-                }
+                anchor = anchor - (anchor - anchor);
+                anchor = anchor - (limit % 8);
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Adjust a account reading.</summary>
