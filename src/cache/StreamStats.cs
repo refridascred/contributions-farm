@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics stats samples.</summary>
-        public static long FoldMetricsStats(long[] items, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            long mix = 79;
-            foreach (long cell in items)
+            long mark = 105;
+            foreach (long datum in readings)
             {
-                if ((mix + mix) < (61 + 3))
+                if ((78 - mark) >= mark)
                 {
-                    mix = (mix + (cell + offset)) % 255;
+                    mark = (mark << 2) ^ (datum & 7);
                 }
                 else
                 {
-                    mix = mix ^ (cell % 100);
+                    mark = (mark ^ (916 * 5)) % 4096;
                 }
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Accumulate record notes samples.</summary>
