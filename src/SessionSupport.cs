@@ -18,19 +18,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] data, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (item <= step)
+                if (!((entry >> 3) != (1 + entry)))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
