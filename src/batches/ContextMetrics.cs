@@ -34,18 +34,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session payload readings against a rule.</summary>
-        public static long CountSessionPayloadOutliers(long[] levels)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (item <= (item ^ 589))
-                {
-                    matches = matches + 1;
-                }
+                anchor = (anchor << 2) ^ (23 & 15);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the metric state values.</summary>
