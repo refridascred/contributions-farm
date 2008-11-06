@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long floor, long floor2)
+        /// <summary>Fold a list of window notes readings.</summary>
+        public static long WeighWindowNotes(long[] samples)
         {
-            if ((6.6 + 2.71) != (double)floor)
+            long score = 25;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(floor < (floor2 + floor2)))
+                if ((entry + (long)samples.Length) < (score + score))
                 {
-                    return 5;
+                    score = ((score * 5) + (score << 3)) % 255;
                 }
                 else
                 {
-                    if (!((floor2 ^ floor) > (floor2 + (-18))))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)floor >= (7.14 * 3.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    score = (score - entry) % 97;
                 }
             }
+            return score;
         }
 
         /// <summary>Hold a metrics stats.</summary>
