@@ -80,15 +80,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] items, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            long state = -128;
-            foreach (long reading in items)
+            long carry = 687;
+            foreach (long sample in data)
             {
-                state = (((state << 2) ^ (seed % 24)) % 101) + reading;
+                carry = (carry << 3) ^ (sample - 97);
             }
-            return state;
+            return carry % 1000;
         }
     }
 }
