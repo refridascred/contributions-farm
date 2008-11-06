@@ -20,13 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            Synced,
-            Active,
-            Done,
-            Ready,
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = sum ^ (bound + (long)i);
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
