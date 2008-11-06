@@ -1,5 +1,14 @@
 {
-  "buffer_retries": [153, 258, 217],
-  "soft_delay": "stable",
-  "retry_window": true
+  "default_ratio_ms": true,
+  "min_capacity_count": 1024,
+  "min_ttl_count": 100,
+  "persist": "latest",
+  "enabled": {
+    "batch_window_s": 49.73,
+    "idle_retries_ms": "primary",
+    "idle_limit_count": "stable",
+    "cache_retries": 41.39,
+    "hard_window": false,
+    "githubfarm_delay": "latest"
+  }
 }
