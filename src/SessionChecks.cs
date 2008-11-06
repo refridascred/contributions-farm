@@ -27,9 +27,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 4133;
-        public const long IdleMetrics = 9542;
-        public const long MaxMetrics = 9178;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
