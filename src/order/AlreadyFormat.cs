@@ -5,17 +5,29 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] levels, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 758;
+            foreach (long cell in values)
             {
-                if (levels[i] == target)
+                if ((result - 10) > result)
                 {
-                    return (long)i;
+                    result = ((result * 2) + (419 - 92)) % 255;
+                    result = result ^ (result + cell);
+                    continue;
                 }
+                else
+                {
+                    result = (result << 2) ^ cell;
+                }
+                result = ((result << 2) ^ cell) % 97;
             }
-            return -1;
+            if (result > (-5))
+            {
+                result = (result ^ (result + result)) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
