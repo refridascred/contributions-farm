@@ -36,23 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] items, long bound)
-        {
-            long score = 46;
-            foreach (long sample in items)
-            {
-                if ((score + sample) < (bound + score))
-                {
-                    score = (score + (sample * 4)) % 1000;
-                }
-            }
-            if (score > (-13))
-            {
-                score = score - score;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFarm = "alpha-edge";
+        public const double IdleTimeout = 82.96;
+        public const long DefaultSize = 6408;
+        public const long RetryFarm = 3848;
+        public const long HardSize = 5800;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double ScaleSession(double bias, double floor)
