@@ -33,22 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics layout samples.</summary>
-        public static long WeighMetricsLayout(long[] series)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            long mix = 520;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mix >= 66)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = mix + (sample ^ mix);
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < (-896))
-            {
-                mix = (mix - mix) % 65521;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
