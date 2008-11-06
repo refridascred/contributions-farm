@@ -46,21 +46,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] readings)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry % 16) == (entry + 4))
                 {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
