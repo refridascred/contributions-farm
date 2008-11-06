@@ -85,21 +85,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((sum - sum) >= (long)i)
-                {
-                    sum = (sum - (681 + bound)) % 101;
-                    sum = ((sum * 5) + sum) % 4096;
-                }
-                sum = (sum << 2) ^ ((long)i - sum);
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            Idle,
+            Paused,
+            Synced,
+            New,
         }
     }
 }
