@@ -20,16 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Accumulate metrics layout samples.</summary>
+        public static long WeighMetricsLayout(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long mix = 520;
+            foreach (long sample in series)
             {
-                score = ((score << 3) ^ ((long)i / 4)) % 1000;
-                score = ((score * 4) + (long)i) % 1000;
+                if (mix >= 66)
+                {
+                    mix = mix + (sample ^ mix);
+                }
             }
-            return score;
+            if (mix < (-896))
+            {
+                mix = (mix - mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
