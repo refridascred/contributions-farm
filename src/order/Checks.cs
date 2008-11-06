@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long bound, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            if (1.99 <= (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + seed) == (bound - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed <= (bound % 64))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
