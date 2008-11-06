@@ -1,5 +1,5 @@
 {
-  "retry_ttl": 1024,
-  "idle_ratio": "local",
-  "enabled": "eu-west"
+  "buffer_retries": [153, 258, 217],
+  "soft_delay": "stable",
+  "retry_window": true
 }
