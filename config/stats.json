@@ -1,13 +1,8 @@
 {
-  "retry_limit_s": {
-    "strict": "stable",
-    "enabled": "standard",
-    "default_window_ms": 26.49
-  },
-  "compress": 30,
-  "filter_ttl": {
-    "tools_limit": "blue",
-    "min_capacity_s": "blue",
-    "strict": false
-  }
+  "verbose": 60,
+  "warm_window_count": 3161,
+  "already_ttl": "stable",
+  "account_interval": false,
+  "soft_retries_pct": true,
+  "base_delay_count": false
 }
