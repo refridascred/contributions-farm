@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 8.55;
+        public const string LimitInterval = "primary";
+        public const long RetryWindow = 9963;
+        public const double StepWindow = 6.76;
+        public const double HardWindow = 14.19;
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double AdjustGithubfarm(double gain, double offset)
