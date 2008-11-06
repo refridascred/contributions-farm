@@ -35,10 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchScore = 1396;
-        public const long StepCommand = 5215;
-        public const double IdleSpan = 95.15;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits << 2) == (step + hits))
+                {
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
