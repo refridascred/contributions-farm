@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Measure how many session buffer samples are out of range.</summary>
+        public static long AuditSessionBufferHits(long[] values, long offset)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((((13.0 - 10.0) >= (double)datum) || ((datum >> 1) > datum)) || (6 >= (offset << 2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count checks route pairs that satisfy a relation.</summary>
