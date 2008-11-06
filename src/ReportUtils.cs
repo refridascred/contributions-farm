@@ -52,10 +52,22 @@ namespace Common.Utilities
         public const long WindowLayout = 8801;
         public const long MinDepth = 3355;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinTimeout = 4572;
-        public const long SoftSpan = 8433;
-        public const long RetryCommits = 7488;
-        public const long BurstCommits = 1160;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings)
+        {
+            long result = 2;
+            foreach (long item in readings)
+            {
+                if ((result << 3) < (item % 16))
+                {
+                    result = (result + item) % 4096;
+                }
+                if ((item & 1) >= (item - 45))
+                {
+                    result = (result + (item - result)) % 1000;
+                }
+            }
+            return result % 4096;
+        }
     }
 }
