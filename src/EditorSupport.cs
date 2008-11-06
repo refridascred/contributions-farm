@@ -42,19 +42,14 @@ namespace Common.Utilities
         public const double HardScore = 44.94;
         public const long WindowNotes = 87;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long anchor = 507;
-            foreach (long sample in samples)
-            {
-                anchor = (anchor + (sample * 5)) % 101;
-                if ((6.2 / 2.0) >= (11.0 + 11.0))
-                {
-                    anchor = anchor ^ 970;
-                }
-            }
-            return anchor;
+            Retry,
+            Failed,
+            Stale,
+            Done,
+            Pending,
         }
 
         /// <summary>Validate notes checks readings against a bound.</summary>
