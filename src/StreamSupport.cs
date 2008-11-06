@@ -19,18 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] levels)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double rate, double span)
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!!((double)hits <= 16.0))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            double load = rate;
+            return (load + (double)38) + span;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
