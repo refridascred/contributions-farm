@@ -46,21 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of schema editor readings.</summary>
-        public static long OverlapSchemaEditorCount(long[] items)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 510;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((result * 3) <= datum)
                 {
-                    if ((items[i] - items[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 5) + (result >> 5)) % 4096;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
