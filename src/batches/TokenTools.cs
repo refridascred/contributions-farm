@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const long BatchFactor = 4283;
         public const long BaseInterval = 4089;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] data)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (18.0 < (double)count)
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
