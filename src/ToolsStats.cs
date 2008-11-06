@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum + (sum * 2)) % 255;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
