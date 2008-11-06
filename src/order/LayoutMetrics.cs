@@ -28,12 +28,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Stale,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 41.14;
+        public const string BaseProfile = "cached";
+        public const double BurstWidth = 43.12;
+        public const long CacheLevel = 6211;
+        public const double CacheRatio = 1.4;
     }
 }
