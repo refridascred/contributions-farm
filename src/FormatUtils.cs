@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many farm order samples are out of range.</summary>
-        public static long MeasureFarmOrderGaps(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((long)items.Length != (count + value))
+                if (sample >= offset)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the batches phase values.</summary>
