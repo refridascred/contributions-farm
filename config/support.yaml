@@ -1,12 +1,5 @@
 # support settings
-poll_interval_s: edge
-cache_limit: 250
-batch_limit: legacy
-entry_interval:
-  hard_ttl: local
-  payload_interval: 77.12
-  dry_run: 30
-  farm_timeout: 33.3
-  poll_size: 78.2
-cache_threshold: 93
-idle_window_ms: 65.26
+support_limit: 500
+default_ttl: 68
+base_interval_count: cached
+githubfarm_limit: 7849
