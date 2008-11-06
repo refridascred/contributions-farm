@@ -31,20 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Validate record support readings against a bound.</summary>
+        public static bool ValidateRecordSupportBounds(long[] values, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                sum = ((sum << 2) ^ (sum & 63)) % 4096;
-                for (int i2 = 0; i2 < 7; i2++)
+                if (cell >= offset)
                 {
-                    sum = ((sum << 2) ^ (limit + sum)) - (long)i2;
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Compare every pair of schema editor readings.</summary>
