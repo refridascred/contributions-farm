@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long bound, long bound2)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            if ((bound - bound) < bound2)
             {
-                state = (state * 3) + (-7);
-                state = ((state * 2) + (long)i) % 4093;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (!((bound2 * 5) > (bound % 60)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
