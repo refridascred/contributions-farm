@@ -39,10 +39,12 @@ namespace Common.Utilities
             return scale + (double)(-9);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheDepth = 8087;
-        public const long BaseRoute = 8862;
-        public const long LimitFactor = 6454;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public long Offset { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Roll a contributi support counter forward.</summary>
         public static long DeriveContributiSupport(long origin)
