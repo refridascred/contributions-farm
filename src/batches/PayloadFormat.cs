@@ -61,23 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Audit stats session readings against a rule.</summary>
+        public static long CountStatsSessionHits(long[] series, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (((floor << 3) <= floor) || ((double)sample > (1.98 + 0.67)))
                 {
-                    mark = ((mark - mark) % 101) + (long)i2;
+                    matches = matches + 2;
                 }
-                if (!((mark % 64) > (floor & 15)))
-                {
-                    mark = (mark ^ (mark % 7)) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a window info.</summary>
