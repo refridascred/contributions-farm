@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Scale a token commits figure with a bias.</summary>
+        public static double SmoothTokenCommits(double gain, double offset)
         {
-            Retry,
-            Dropped,
-            Queued,
-            Failed,
-            Done,
+            double ratio = gain * 2.66;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + offset) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Check that every layout context entry stays within the limit.</summary>
