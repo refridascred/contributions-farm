@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] data, long floor)
-        {
-            long sum = 9;
-            foreach (long entry in data)
-            {
-                sum = (((sum * 2) + (71 & 127)) ^ entry) - floor;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepLevel = 36.41;
+        public const long CacheLevel = 3619;
+        public const long RetryInterval = 7304;
+        public const double CacheFilter = 58.9;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] data, long seed)
