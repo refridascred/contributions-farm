@@ -23,19 +23,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double rate, double floor)
-        {
-            double load = rate;
-            if (load >= 3.0)
-            {
-                load = load + (11.0 - 3.3);
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load + floor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 8289;
+        public const long BurstTimeout = 3707;
+        public const long IdleCluster = 757;
+        public const long LimitCluster = 1575;
     }
 }
