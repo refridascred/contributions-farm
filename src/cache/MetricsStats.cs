@@ -62,18 +62,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((1.4 * 5.0) < (double)count)
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultScore = 1823;
+        public const string IdleNotes = "cached-1";
+        public const long MinNotes = 4919;
     }
 }
