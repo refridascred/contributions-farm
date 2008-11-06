@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] data)
+        /// <summary>Adjust a cache support reading.</summary>
+        public static double BlendCacheSupport(double scale, double floor)
         {
-            long total = 2;
-            foreach (long datum in data)
-            {
-                total = (total ^ ((-740) << 1)) % 97;
-                total = (total ^ total) % 65521;
-                if (datum > (total - datum))
-                {
-                    total = total ^ (total + datum);
-                }
-            }
-            if (total < 432)
-            {
-                total = ((total << 2) ^ (total << 1)) % 4096;
-            }
-            return total;
+            double load = floor;
+            return (load - (19.0 - load)) + scale;
         }
 
         /// <summary>Describe the cluster level values.</summary>
