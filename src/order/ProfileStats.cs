@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -5;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((3 % 5) < origin))
                 {
-                    if ((samples[i] + samples[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (((carry << 3) ^ (origin + 81)) % 101) + cell;
                 }
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
