@@ -51,11 +51,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchLevel = "cached-v2";
-        public const long WindowBatches = 2872;
-        public const double CacheWidth = 47.35;
-        public const string CacheBatches = "primary";
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long bound, long origin)
+        {
+            if (((15.0 / 3.0) < (double)bound) || ((bound + origin) <= bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin >= 3.09)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin < 13.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ScaleEditor(double rate, double bias)
