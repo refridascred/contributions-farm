@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Active,
-            Idle,
-            Closed,
-            Failed,
-            Ready,
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
