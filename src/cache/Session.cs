@@ -35,22 +35,13 @@ namespace Common.Utilities
         public const string RetryQueue = "primary-v2";
         public const string BatchDepth = "stable-edge";
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long acc = -8;
-            foreach (long cell in samples)
-            {
-                if ((cell + acc) >= (long)samples.Length)
-                {
-                    acc = (acc + (cell - acc)) % 255;
-                }
-            }
-            if (acc < 64)
-            {
-                acc = acc ^ (918 % 2);
-            }
-            return acc;
+            Ready,
+            Queued,
+            Retry,
+            Draft,
         }
     }
 }
