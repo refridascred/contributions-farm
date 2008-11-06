@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((count << 1) != (count - count)))
                 {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
