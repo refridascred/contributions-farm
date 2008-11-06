@@ -55,24 +55,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((((long)i ^ total) < (long)i) || ((total & 1) != (limit << 2)))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total ^ (total + total)) % 4096;
-                    total = ((total * 5) + (total & 1)) % 101;
-                }
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowScore = 3801;
+        public const long BaseBudget = 4951;
+        public const long LimitScore = 8893;
+        public const double CacheAccount = 28.9;
     }
 }
