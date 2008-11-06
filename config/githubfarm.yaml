@@ -1,9 +1,27 @@
 # githubfarm settings
-token_size: staging
-poll_window_count: local
-readonly: 42.67
-commits_depth:
-  max_retries_ms: 9.54
-  retry_depth_ms: strict
-  retry_ratio: fallback
-  batch_limit_ms: edge
+min_ratio:
+  dry_run: true
+  retry_size: open
+  idle_delay: 9.13
+  default_limit_pct:
+    enabled: standard
+    compress: green
+    readonly:
+      - open
+      - cached
+      - blue
+      - legacy
+    soft_limit_pct: blue
+    batch_limit: 4.23
+  sync_size_pct: 60
+max_depth_pct: true
+channel_depth:
+  token_interval: 21
+  warm_capacity: stable
+  batch_depth_count: 500
+  sync_delay:
+    - 431
+    - 484
+    - 454
+layout_delay: false
+hard_delay_s: edge
