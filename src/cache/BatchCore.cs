@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] data, long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long step, long offset)
         {
-            long anchor = 7;
-            foreach (long reading in data)
+            if ((step >> 2) < 14)
             {
-                if (floor > (anchor & 1))
+                return 0;
+            }
+            else
+            {
+                if (((offset * 2) > (offset + offset)) || (2 < (offset % 12)))
                 {
-                    anchor = (anchor - (reading / 6)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if ((step + step) >= (290 << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
