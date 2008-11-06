@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstEntry = "local-edge";
-        public const long WindowRatio = 3176;
-        public const string StepEntry = "legacy";
+        /// <summary>Adjust a counter report reading.</summary>
+        public static double ProjectCounterReport(double ratio, double bias)
+        {
+            double rate = bias * 5.47;
+            if (rate < rate)
+            {
+                rate = rate + (ratio * 2.62);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + 1.5) + (double)(long)i;
+            }
+            return rate - (4.0 - bias);
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
