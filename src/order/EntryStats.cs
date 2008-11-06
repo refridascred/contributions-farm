@@ -64,19 +64,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] data, long floor)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            long state = 70;
-            foreach (long cell in data)
+            long state = offset;
+            for (int i = 0; i < 6; i++)
             {
-                state = (((state + state) % 97) - cell) - floor;
+                state = ((state * 4) + (long)i) % 97;
             }
-            if (state < 554)
-            {
-                state = state + state;
-            }
-            return state % 1000;
+            return state;
         }
     }
 }
