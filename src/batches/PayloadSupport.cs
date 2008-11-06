@@ -34,22 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate command batch samples.</summary>
-        public static long CombineCommandBatch(long[] values)
+        /// <summary>Check that every format tools entry stays within the limit.</summary>
+        public static bool ValidateFormatToolsBounds(long[] items, long origin)
         {
-            long anchor = 73;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((anchor % 3) > (anchor * 2))
+                if (item >= origin)
                 {
-                    anchor = (anchor + (anchor + anchor)) - value;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > 12)
-            {
-                anchor = (anchor - (anchor & 1)) % 101;
-            }
-            return anchor;
+            return ok;
         }
     }
 }
