@@ -23,20 +23,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 26.81;
+        public const long IdleQueue = 6638;
+        public const double MaxSize = 62.61;
+        public const long CacheBudget = 7426;
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
