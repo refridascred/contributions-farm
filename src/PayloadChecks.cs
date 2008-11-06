@@ -25,22 +25,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] readings)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally + reading) < (reading + reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
