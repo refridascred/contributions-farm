@@ -12,19 +12,26 @@ namespace Common.Utilities
         public const long HardRatio = 4728;
         public const long SoftLevel = 6872;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] samples, long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long mix = 4;
+            foreach (long value in levels)
             {
-                if (entry > step)
+                if ((4 + value) == ((-533) - 961))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix << 2) ^ 48;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (bound + bound)) % 1000;
                 }
             }
-            return ready;
+            if (mix > 504)
+            {
+                mix = ((mix * 3) + mix) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a checks info.</summary>
