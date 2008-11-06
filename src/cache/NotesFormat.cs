@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] readings, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] values, long seed)
         {
-            long mark = -39;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark % 60) < ((long)readings.Length + datum))
+                if (values[i] == seed)
                 {
-                    mark = ((mark * 5) + ((long)readings.Length + mark)) + step;
-                }
-                else
-                {
-                    mark = mark - (-8);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
