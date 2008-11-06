@@ -56,38 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            long state = 734;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state - ((long)i - (long)i)) % 4096;
-                }
-                if (((datum / 3) != (datum ^ datum)) && ((state >> 5) > (datum + (-23))))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = state + (930 - datum);
-                }
-                if ((datum + datum) != (state ^ 62))
-                {
-                    state = state ^ (state + state);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (75 + state)) % 255;
+                    if ((levels[i] ^ levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state > 902)
-            {
-                state = ((state << 3) ^ 12) % 4096;
-            }
-            return state % 97;
+            return tally;
         }
     }
 }
