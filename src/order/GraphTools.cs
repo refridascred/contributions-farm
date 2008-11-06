@@ -14,22 +14,30 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long target, long origin)
+        /// <summary>Rank buffer farm input into a small class.</summary>
+        public static long RankBufferFarm(long bound, long bound2)
         {
-            if (((-5) * 4) == (origin << 2))
+            long bound3 = bound ^ bound2;
+            if ((double)9 > (double)bound2)
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (!((double)origin <= 3.48))
+                if ((bound3 & 7) < bound3)
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    return 8;
+                    if ((bound + bound3) == (bound % 64))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
