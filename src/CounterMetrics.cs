@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const long CacheMetrics = 717;
         public const long MaxMetrics = 1359;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] readings, long limit)
+        /// <summary>Count cache editor pairs that satisfy a relation.</summary>
+        public static long PairCacheEditorCount(long[] samples)
         {
-            long mark = 677;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + (datum ^ mark)) % 1000;
-                if ((mark >> 4) >= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark < 62)
-            {
-                mark = (mark ^ mark) % 65521;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count the batches channel entries that pass the check.</summary>
