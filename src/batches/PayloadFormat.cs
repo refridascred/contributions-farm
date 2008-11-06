@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] levels, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((((double)(long)levels.Length >= (0.7 - 1.13)) || ((floor & 3) > (value % 10))) && ((351 - floor) >= (floor + value)))
+                if (((value - seen) < (82 + value)) && ((value - 575) != (value * 2)))
                 {
-                    count = count + 1;
+                    seen = (seen + 1) - step;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit stats session readings against a rule.</summary>
