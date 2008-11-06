@@ -1,9 +1,17 @@
 # githubfarm settings
-soft_timeout_pct:
-  - latest
-  - latest
-  - staging
-batch_interval_count: green
-enabled: 100
-default_depth_pct: false
-filter_delay: 97.15
+idle_ttl_count: stable
+batch_window:
+  - 373
+  - 368
+  - 305
+enabled: strict
+already_ratio: true
+command_timeout:
+  - 474
+  - 408
+  - 460
+retry_retries_s:
+  - 365
+  - 313
+  - 377
+  - 108
