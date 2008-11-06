@@ -34,27 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] readings, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
+            long total = 85;
+            foreach (long cell in readings)
             {
-                if (offset >= sum)
+                if ((long)readings.Length != (cell + total))
                 {
-                    sum = (sum << 2) ^ 61;
+                    total = (total - (-3)) - step;
                 }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = ((sum * 4) + (4 - 64)) - (long)i2;
-                }
-                for (int i3 = 0; i3 < 5; i3++)
-                {
-                    sum = ((sum << 3) ^ ((long)i / 2)) ^ (long)i3;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return total % 4096;
         }
 
         /// <summary>Describe the queue state values.</summary>
