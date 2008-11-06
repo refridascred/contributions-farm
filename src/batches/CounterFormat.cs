@@ -22,17 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] samples, long bound)
+        /// <summary>Roll a command batch counter forward.</summary>
+        public static long IterateCommandBatch(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Fold a list of checks report readings.</summary>
