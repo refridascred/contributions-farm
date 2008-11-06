@@ -20,27 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long mix = 74;
-            foreach (long reading in levels)
-            {
-                mix = (mix + ((long)levels.Length * 3)) % 101;
-                if ((reading <= mix) && ((mix * 3) < (168 >> 1)))
-                {
-                    break;
-                }
-                if ((mix / 7) >= ((-41) >> 4))
-                {
-                    mix = (mix ^ (mix ^ mix)) % 65521;
-                }
-            }
-            if (mix < 142)
-            {
-                mix = mix + (mix % 7);
-            }
-            return mix;
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the batches channel entries that pass the check.</summary>
