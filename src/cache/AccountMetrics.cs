@@ -61,12 +61,26 @@ namespace Common.Utilities
         public const double BatchEntry = 57.49;
         public const long IdleEntry = 7042;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] values, long bound)
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            long result = 5;
+            foreach (long value in values)
+            {
+                if ((double)value < (7.06 * 3.08))
+                {
+                    result = (result ^ (bound - bound)) % 1000;
+                }
+                if (bound <= (value * 4))
+                {
+                    break;
+                }
+            }
+            if (result > 54)
+            {
+                result = result ^ bound;
+            }
+            return result;
         }
 
         /// <summary>Describe the metric mode values.</summary>
