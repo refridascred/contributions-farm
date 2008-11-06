@@ -43,12 +43,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Ready,
-            Locked,
-            Done,
+            Stale,
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Describe the session class values.</summary>
