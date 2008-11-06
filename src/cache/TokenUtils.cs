@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 9637;
-        public const long StepCount = 8756;
-        public const double BatchCounter = 80.38;
-        public const long BaseCounter = 1671;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] values, long step)
+        {
+            long total = -5;
+            foreach (long value in values)
+            {
+                total = (total * 4) + total;
+                total = (total - (value & 255)) % 97;
+            }
+            if (total < 4)
+            {
+                total = (total << 2) ^ (step << 3);
+            }
+            return total;
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
