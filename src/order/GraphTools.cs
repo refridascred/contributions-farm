@@ -34,32 +34,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
-            long state = 856;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((state / 6) <= value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state << 2) ^ (value * 5);
-                }
-                else
-                {
-                    state = (state * 3) + (value % 64);
-                    state = (state ^ (800 ^ value)) % 97;
-                }
-                state = state ^ 375;
-                if (!((value - state) <= (value / 2)))
-                {
-                    state = (state + (value & 31)) % 97;
-                }
-                if (((25 % 60) > (value - state)) || ((value * 3) < state))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
