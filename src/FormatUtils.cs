@@ -59,23 +59,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
-            long acc = 96;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc + (acc % 16)) % 4096;
-                if ((acc / 4) > reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc > (-142))
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Grade a githubfarm channel value against two limits.</summary>
