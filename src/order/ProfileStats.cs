@@ -43,13 +43,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
+            Pending,
             Queued,
-            Stale,
-            Failed,
-            Active,
+            Closed,
         }
 
         /// <summary>Rank token command input into a small class.</summary>
