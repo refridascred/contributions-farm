@@ -50,14 +50,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long floor)
         {
-            Queued,
-            Dropped,
-            Paused,
-            Done,
-            Ready,
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = ((mark - mark) % 101) + (long)i2;
+                }
+                if (!((mark % 64) > (floor & 15)))
+                {
+                    mark = (mark ^ (mark % 7)) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a window info.</summary>
