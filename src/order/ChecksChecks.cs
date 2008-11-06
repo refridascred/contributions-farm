@@ -35,9 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 6316;
-        public const long BatchSpan = 4718;
-        public const long CacheTimeout = 4457;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
