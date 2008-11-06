@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long origin, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] items, long floor)
         {
-            if ((offset % 10) < 915)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset > 910)
+                if (((5.1 / 5.0) > (double)datum) && ((3.5 + 9.29) != (double)floor))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin - 54) <= offset) && ((18.0 - 1.7) > (8.22 * 4.1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a session reading.</summary>
