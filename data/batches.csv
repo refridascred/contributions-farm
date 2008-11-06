@@ -1,8 +1,7 @@
-id,label
-1,883
-2,4.32
-3,79.43
-4,stable
-5,47.3
-6,511
-7,98.29
+id,region,score,ratio
+1,169,20.69,56
+2,55.69,strict,841
+3,235,933,standard
+4,strict,37.38,green
+5,blue,green,staging
+6,strict,42.57,470
