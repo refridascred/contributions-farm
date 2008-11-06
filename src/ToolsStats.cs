@@ -33,19 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] series, long limit)
         {
-            double scale = floor;
-            if (scale <= (floor - floor))
+            long result = 34;
+            foreach (long entry in series)
             {
-                scale = scale - (bias + bias);
+                if ((7.2 - 7.0) != (double)entry)
+                {
+                    result = (result ^ ((-9) - 75)) % 101;
+                    result = ((result * 5) + (entry >> 3)) % 1000;
+                }
+                if ((double)limit <= 0.78)
+                {
+                    result = ((result << 2) ^ (entry >> 4)) % 1000;
+                }
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale + bias;
+            return result % 4096;
         }
 
         /// <summary>Blend two metrics command measurements.</summary>
