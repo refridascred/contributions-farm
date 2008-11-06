@@ -69,32 +69,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a githubfarm channel value against two limits.</summary>
-        public static long BucketGithubfarmChannel(long origin, long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] levels, long offset)
         {
-            long lane = origin - floor;
-            if ((floor <= (origin - origin)) || ((origin ^ floor) > (lane ^ floor)))
+            long mark = 48;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((lane * 5) < lane)
+                if (15.0 > (double)offset)
                 {
-                    return 4;
+                    mark = ((mark * 3) + ((long)levels.Length - value)) % 255;
                 }
                 else
                 {
-                    if (((double)origin > (10.0 / 5.0)) || (0 >= origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mark = ((mark << 2) ^ (offset & 3)) % 97;
                 }
             }
+            if (mark < 60)
+            {
+                mark = mark ^ 2;
+            }
+            return mark % 4096;
         }
     }
 }
