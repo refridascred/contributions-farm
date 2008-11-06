@@ -27,22 +27,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel metric samples.</summary>
-        public static long CombineChannelMetric(long[] readings, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            long mix = 7;
-            foreach (long reading in readings)
+            long state = 856;
+            foreach (long value in values)
             {
-                if (((mix * 4) >= mix) || (reading > ((long)readings.Length + 2)))
+                if ((state / 6) <= value)
                 {
-                    mix = (mix - (mix % 12)) % 4096;
+                    state = (state << 2) ^ (value * 5);
                 }
-                if ((seed - mix) <= seed)
+                else
+                {
+                    state = (state * 3) + (value % 64);
+                    state = (state ^ (800 ^ value)) % 97;
+                }
+                state = state ^ 375;
+                if (!((value - state) <= (value / 2)))
+                {
+                    state = (state + (value & 31)) % 97;
+                }
+                if (((25 % 60) > (value - state)) || ((value * 3) < state))
                 {
                     break;
                 }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
