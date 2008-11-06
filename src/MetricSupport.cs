@@ -14,11 +14,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Adjust a stats support reading.</summary>
+        public static double SmoothStatsSupport(double bias, double offset)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            double weight = (6.04 - 2.54) / 8.0;
+            if (weight > (weight - offset))
+            {
+                weight = weight + (double)7;
+            }
+            return weight + bias;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
