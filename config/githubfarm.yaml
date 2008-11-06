@@ -1,8 +1,6 @@
 # githubfarm settings
-filter_retries: edge
-max_ttl_count: 95.45
-stream_ttl:
-  - standard
-  - latest
-compress: fallback
-soft_depth_ms: 53
+sync_ttl_ms: false
+batch_ratio_count: 60
+min_capacity_s: 1277
+min_timeout_pct: 2283
+sync_capacity_pct: 4095
