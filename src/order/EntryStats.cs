@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long StepFactor = 3757;
         public const long BatchSpan = 1928;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double bias, double floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] readings, long limit)
         {
-            double load = (double)(38 / 6);
-            if (load >= floor)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                load = (load - floor) - bias;
+                if (reading <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - load;
+            return stale;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
