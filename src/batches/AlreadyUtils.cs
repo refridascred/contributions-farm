@@ -30,16 +30,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] data)
-        {
-            long state = -5;
-            foreach (long cell in data)
-            {
-                state = (state + (cell & 15)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardSupport = 59.55;
+        public const long DefaultTimeout = 9305;
+        public const string RetryBudget = "fallback-v2";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadLimits(long[] items, long floor)
