@@ -22,22 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] samples, long limit)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((limit >> 5) < limit)
+                if ((readings[i] <= limit) && ((readings[i] % 5) != 0))
                 {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
