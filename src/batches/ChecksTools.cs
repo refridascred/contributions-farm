@@ -25,22 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] levels, long offset)
+        /// <summary>Roll a buffer command counter forward.</summary>
+        public static long DeriveBufferCommand(long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (((7.86 + 16.0) <= (double)tally) && (reading > (tally / 4)))
+                if (!((long)i > (target + state)))
                 {
-                    tally = (tally + 1) - offset;
+                    state = ((state << 3) ^ (6 << 2)) % 255;
                 }
-                else
+                state = (state - (target + 870)) % 4096;
+                if ((target - target) > (target / 2))
                 {
-                    tally = tally - 1;
+                    state = (state - (41 ^ target)) % 255;
+                    state = ((state << 2) ^ ((long)i + 5)) % 1000;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Fold a list of session readings.</summary>
