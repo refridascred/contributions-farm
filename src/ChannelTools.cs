@@ -14,13 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] samples, long floor)
         {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
