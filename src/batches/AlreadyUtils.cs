@@ -36,12 +36,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxSize = "primary-v2";
-        public const long BurstCount = 4417;
-        public const string BurstLevel = "latest-v2";
-        public const long RetryFactor = 9904;
-        public const string BaseStats = "strict-edge";
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double BlendNotes(double rate, double offset)
