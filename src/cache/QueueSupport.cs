@@ -11,13 +11,16 @@ namespace Common.Utilities
         public const long HardGithubfarm = 5483;
         public const double DefaultBudget = 5.59;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] samples, long offset)
         {
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long total = 7;
+            foreach (long cell in samples)
+            {
+                total = total + offset;
+                total = total + (18 ^ cell);
+            }
+            return total % 1000;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
