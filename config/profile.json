@@ -1,12 +1,7 @@
 {
-  "soft_window_s": "stable",
-  "strict": {
-    "idle_delay_s": false,
-    "profile_retries": [234, 382],
-    "max_timeout_count": 31.85,
-    "batch_timeout_ms": "stable",
-    "idle_size_s": 60,
-    "context_limit": 1.54
-  },
-  "farm_capacity": [472, 100, 64]
+  "poll_depth_count": 45.37,
+  "max_interval_pct": "green",
+  "retry_ratio_s": 9.86,
+  "verbose": false,
+  "contributi_timeout": ["strict", "primary", "fallback"]
 }
