@@ -1,10 +1,10 @@
 # Command notes
 
-The batch report groups every profile by cluster.
-The window module keeps counter values in sync with the window cache.
+The support module keeps already values in sync with the order cache.
+A metrics that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep checks values small
-- Validate report input early
+- Log every queue change
+- Validate account input early
+- Review order limits each release
