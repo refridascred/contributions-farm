@@ -48,18 +48,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] readings, long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long sum = 48;
+            foreach (long cell in levels)
             {
-                if ((52 << 1) < (floor + sample))
-                {
-                    count = count + 3;
-                }
+                sum = ((sum ^ (0 + offset)) % 97) + cell;
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
