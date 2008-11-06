@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] data, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((data[i] < origin) && ((data[i] % 2) == 0))
+                if (matches > (matches & 1))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
