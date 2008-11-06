@@ -68,18 +68,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] samples)
+        /// <summary>Look up the position of a window counter sample.</summary>
+        public static long FindWindowCounterIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((sample * 4) > sample) && ((407 + sample) > (tally + (long)samples.Length))))
+                if (series[i] >= target)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
