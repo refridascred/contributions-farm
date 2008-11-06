@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] data)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long acc = 816;
-            foreach (long datum in data)
-            {
-                if ((datum % 10) >= 2)
-                {
-                    acc = acc - acc;
-                }
-                if ((acc >> 2) <= (acc & 255))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every batch commits entry stays within the limit.</summary>
