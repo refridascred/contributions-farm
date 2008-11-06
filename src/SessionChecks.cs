@@ -27,21 +27,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Audit queue command readings against a rule.</summary>
+        public static long MeasureQueueCommandGaps(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((0.21 - 1.2) == (double)(long)values.Length)
                 {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 2) ^ value) - floor;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
