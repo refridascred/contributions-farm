@@ -1,20 +1,8 @@
 {
-  "hard_ttl_count": 1377,
-  "strict": {
-    "metric_ratio": 62,
-    "readonly": "local",
-    "default_window_count": 42.19,
-    "flush_ratio_ms": 72.69,
-    "verbose": {
-      "cache_depth": [29, 463],
-      "cache_timeout": "open",
-      "entry_ratio": 100,
-      "persist": [402, 346],
-      "hard_size_ms": false
-    },
-    "cache_size_s": 87
-  },
-  "command_threshold": 13,
-  "persist": 4565,
-  "flush_limit_ms": 29.32
+  "payload_size": "eu-west",
+  "retry_threshold": 9.64,
+  "max_retries_pct": "stable",
+  "window_ratio": ["legacy", "legacy", "fallback"],
+  "idle_ratio_ms": 100,
+  "batch_retries": 4422
 }
