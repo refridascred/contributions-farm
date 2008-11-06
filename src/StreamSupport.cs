@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Failed,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheInterval = 7501;
+        public const long WindowEditor = 7263;
+        public const double SoftBudget = 9.0;
+        public const long CacheEditor = 5736;
+        public const double MaxEditor = 66.81;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
