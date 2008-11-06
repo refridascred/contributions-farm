@@ -13,11 +13,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] values, long bound)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!((tally / 6) != (bound + item)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
