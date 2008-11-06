@@ -1,12 +1,27 @@
 # support settings
-compress: true
-hard_capacity_pct:
-  - local
-  - blue
-max_delay_s: true
-editor_ratio: 8
-strict:
-  burst_interval: 48.32
-  poll_depth_count: 32.14
-  readonly: 65.9
-idle_delay: legacy
+warm_limit_ms:
+  sync_interval_count: 65
+  metrics_delay: 37
+  account_retries: false
+  flush_threshold_s: false
+  hard_delay_count:
+    metrics_ttl: legacy
+    min_size:
+      - 349
+      - 244
+    farm_delay:
+      - latest
+      - staging
+      - standard
+    cache_depth_ms: 4339
+    base_window: primary
+    hard_threshold:
+      - 187
+      - 201
+      - 133
+      - 466
+  batch_interval:
+    - cached
+    - staging
+persist: false
+compress: 9056
