@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a window notes sample.</summary>
-        public static long FindWindowNotesIndex(long[] levels, long target)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] <= target)
+                if ((data[i] < origin) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
