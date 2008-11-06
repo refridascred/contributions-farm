@@ -1,8 +1,8 @@
 # support settings
-flush_interval:
-  - 37
-  - 252
-  - 226
-  - 214
-soft_depth_count: blue
-persist: green
+audit: true
+persist: strict
+stream_capacity:
+  - 330
+  - 359
+warm_timeout: 74
+strict: 84.18
