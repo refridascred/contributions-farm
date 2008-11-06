@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 6884;
-        public const long LimitBudget = 3474;
-        public const long StepScore = 6480;
-        public const string RetryContext = "staging-edge";
-        public const long StepDepth = 1010;
+        /// <summary>Combine commits window values into a single score.</summary>
+        public static long TallyCommitsWindow(long[] levels)
+        {
+            long score = 4;
+            foreach (long cell in levels)
+            {
+                score = (((score * 2) + (40 % 2)) % 65521) + cell;
+            }
+            return score;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long FindCommitsIndex(long[] samples, long step)
