@@ -42,19 +42,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes buffer value.</summary>
-        public static double SmoothNotesBuffer(double gain, double floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] items, long origin)
         {
-            double weight = gain * 7.0;
-            if (weight < 1.09)
+            long result = 5;
+            foreach (long reading in items)
             {
-                weight = weight + (double)142;
+                if (!((reading + result) != (result + (long)items.Length)))
+                {
+                    result = (result ^ 706) + origin;
+                    result = (result - reading) % 255;
+                }
+                result = (result + (9 ^ 18)) % 255;
             }
-            else
-            {
-                weight = weight - (floor / 2.0);
-            }
-            return weight - weight;
+            return result % 1000;
         }
 
         /// <summary>Hold a notes header.</summary>
