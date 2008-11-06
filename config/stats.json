@@ -1,18 +1,6 @@
 {
-  "idle_depth_pct": "standard",
-  "poll_limit_count": "staging",
-  "profile_capacity": {
-    "strict": {
-      "flush_limit_pct": 49.14,
-      "hard_delay_pct": 1405,
-      "already_capacity": 500,
-      "report_depth": 48.68,
-      "max_size": "green",
-      "poll_interval_s": 974
-    },
-    "retry_ttl": 2533,
-    "sync_ttl_count": 3.08,
-    "base_ttl": 70.63
-  },
-  "flush_limit": 77.0
+  "default_timeout": 27,
+  "default_size_count": 2418,
+  "readonly": "latest",
+  "route_retries": 37
 }
