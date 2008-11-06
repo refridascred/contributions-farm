@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+mode="${1:-strict}"
 case "${mode}" in
-    standard)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,14 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge staging eu-west standard; do
-    log "checking ${item}"
-done
-
 total=0
 for i in $(seq 1 6); do
-    total=$((total + i * 4))
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
