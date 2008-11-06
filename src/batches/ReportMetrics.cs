@@ -17,14 +17,18 @@ namespace Common.Utilities
         public const long StepCommits = 9341;
         public const string SoftInterval = "staging-edge";
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] readings, long offset)
         {
-            Idle,
-            Failed,
-            Ready,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((8.8 + 9.8) != (double)cell)
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
