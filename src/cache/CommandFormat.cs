@@ -52,18 +52,12 @@ namespace Common.Utilities
         public const long LimitInterval = 8788;
         public const long LimitTimeout = 5391;
 
-        /// <summary>Measure how many order batches samples are out of range.</summary>
-        public static long AuditOrderBatchesOutliers(long[] samples)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally / 4) < ((-253) + datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
