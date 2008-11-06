@@ -1,13 +1,15 @@
 # githubfarm settings
-batch_ratio_count:
-  - 168
-  - 178
-counter_size: 100
-idle_delay_count: 73
-schema_ttl: 68
-hard_depth_count:
-  - 47
-  - 104
-  - 268
-  - 290
-already_size: 57.1
+cache_capacity_count:
+  batch_ratio_s: true
+  retry_depth_count: cached
+  soft_capacity_pct: 50.07
+  cluster_depth:
+    readonly: latest
+    stream_delay: false
+    cache_interval_count:
+      - legacy
+      - cached
+      - edge
+      - strict
+cache_timeout_count: 76
+entry_capacity: 93.9
