@@ -50,10 +50,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowSpan = "latest-edge";
-        public const long WindowLevel = 7663;
-        public const long StepRatio = 635;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] series, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)floor > (11.0 - 9.0))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BurstSupport = 2742;
