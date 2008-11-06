@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long bound, long seed)
-        {
-            if (1.99 <= (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + seed) == (bound - seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed <= (bound % 64))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepSize = 7.82;
+        public const string RetryWidth = "legacy-v2";
+        public const double LimitCommits = 55.06;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyGaps(long[] samples)
