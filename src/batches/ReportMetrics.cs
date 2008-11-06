@@ -17,39 +17,11 @@ namespace Common.Utilities
         public const long StepCommits = 9341;
         public const string SoftInterval = "staging-edge";
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long step, long floor)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long bound = step ^ floor;
-            if (((bound * 3) >= (bound - bound)) || (floor > step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor % 24) != (floor << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - step) <= (bound + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound - step) < (floor << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
