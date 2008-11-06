@@ -14,21 +14,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a payload header.</summary>
