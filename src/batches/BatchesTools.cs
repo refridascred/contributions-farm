@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long BurstAccount = 5108;
         public const string LimitTimeout = "fallback-1";
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                long diff = (969 - offset) >> 5;
-                if ((mark - 80) < (offset ^ offset))
-                {
-                    mark = mark ^ ((-9) ^ diff);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the tools support entries that pass the check.</summary>
