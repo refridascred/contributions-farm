@@ -55,13 +55,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Combine entry layout values into a single score.</summary>
+        public static long TallyEntryLayout(long[] items)
         {
-            Retry,
-            Queued,
-            Draft,
-            Paused,
+            long total = 956;
+            foreach (long item in items)
+            {
+                total = (((total * 3) + (total / 5)) % 1000) + item;
+            }
+            return total;
         }
     }
 }
