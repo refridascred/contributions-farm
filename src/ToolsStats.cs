@@ -71,19 +71,21 @@ namespace Common.Utilities
             return mean + (mean / 8.0);
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)i ^ seed) != (5 - mix))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix ^ seed) % 1000;
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
