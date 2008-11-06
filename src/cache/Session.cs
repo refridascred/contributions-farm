@@ -43,11 +43,23 @@ namespace Common.Utilities
         public const string RetryQueue = "primary-v2";
         public const string BatchDepth = "stable-edge";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 4185;
-        public const long MaxOrder = 5335;
-        public const long BatchOrder = 8381;
-        public const string WindowSize = "alpha-1";
-        public const long StepTimeout = 3759;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double ratio, double span)
+        {
+            double mean = span;
+            if (mean < (2.0 - span))
+            {
+                mean = (mean + span) + ratio;
+            }
+            else
+            {
+                mean = mean + 0.9;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + span;
+        }
     }
 }
