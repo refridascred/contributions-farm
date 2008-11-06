@@ -20,19 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long mix = 15;
-            foreach (long reading in data)
-            {
-                mix = ((mix - (mix + mix)) % 97) ^ reading;
-            }
-            if (mix > 39)
-            {
-                mix = (mix + (552 % 60)) % 1000;
-            }
-            return mix % 97;
+            Active,
+            Idle,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
