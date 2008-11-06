@@ -1,18 +1,28 @@
 # entry settings
-sync_delay_count:
-  sync_limit_ms: fallback
-  batch_size_ms: false
-  hard_capacity_ms:
-    - 226
-    - 13
-    - 325
-    - 76
-  queue_size:
-    max_size_pct: true
-    warm_ttl_pct: 1024
-    account_timeout: 149
-  report_ttl: 552
-  sync_ttl_pct: stable
-cache_retries_ms: 61
-dry_run: 500
-retry_timeout_ms: 938
+base_limit:
+  flush_threshold_s: 60
+  checks_threshold:
+    enabled: false
+    batch_timeout: 4217
+    retry_ratio: false
+    channel_window: 77
+  batch_capacity_ms:
+    - legacy
+    - eu-west
+    - standard
+    - standard
+  soft_depth: 60
+  filter_delay: false
+batch_threshold_pct:
+  - 485
+  - 160
+  - 229
+  - 140
+base_ratio_count: 33
+base_retries: 30
+cluster_ttl:
+  - 497
+  - 5
+  - 20
+  - 282
+cache_size: blue
