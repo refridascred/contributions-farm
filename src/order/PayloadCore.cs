@@ -40,19 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support token readings against a bound.</summary>
-        public static bool VerifySupportTokenRange(long[] items, long target)
+        /// <summary>Derive the next channel metric value from a seed.</summary>
+        public static long SeriesChannelMetric(long offset)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = mark + (offset << 2);
+                mark = mark ^ (mark >> 2);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return flag;
+            return mark;
         }
     }
 }
