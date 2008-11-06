@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            New,
-            Draft,
-            Done,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepRatio = 35.84;
+        public const long HardStream = 7985;
+        public const long LimitStream = 1642;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool VerifyGraphBounds(long[] data, long target)
