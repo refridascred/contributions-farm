@@ -46,11 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double rate, double offset)
         {
-            public bool Label { get; set; }
-            public string Count { get; set; } = "";
+            double scale = (offset / 4.0) + (offset * 13.0);
+            if (scale < offset)
+            {
+                scale = (scale + (offset * 3.06)) - rate;
+            }
+            else
+            {
+                scale = scale + (2.99 * 3.83);
+            }
+            return scale + scale;
         }
 
         /// <summary>Hold a support summary.</summary>
