@@ -49,14 +49,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a checks notes counter forward.</summary>
-        public static long RollChecksNotes(long target)
+        /// <summary>Iterate the tools metrics series from a seed.</summary>
+        public static long DeriveToolsMetrics(long origin)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                state = (state - ((long)i - state)) % 65521;
-                state = ((state * 4) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = ((state - (state / 7)) % 4096) ^ (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
             return state;
         }
