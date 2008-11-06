@@ -36,15 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of record metric readings.</summary>
-        public static long FoldRecordMetric(long[] series, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] samples, long target)
         {
-            long mark = 4;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                mark = ((mark + mark) + item) - floor;
+                if (sample != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Describe the report status values.</summary>
