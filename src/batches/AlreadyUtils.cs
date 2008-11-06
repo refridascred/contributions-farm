@@ -36,20 +36,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] readings, long floor)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxSize = "primary-v2";
+        public const long BurstCount = 4417;
+        public const string BurstLevel = "latest-v2";
+        public const long RetryFactor = 9904;
+        public const string BaseStats = "strict-edge";
 
         /// <summary>Project the next notes value.</summary>
         public static double BlendNotes(double rate, double offset)
