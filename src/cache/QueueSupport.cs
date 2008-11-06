@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the route githubfarm series from a seed.</summary>
-        public static long RollRouteGithubfarm(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = sum - sum;
-                sum = (sum - offset) % 101;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "staging-1";
+        public const long LimitBudget = 9911;
+        public const long HardGithubfarm = 5483;
+        public const double DefaultBudget = 5.59;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string RetryLevel = "strict";
