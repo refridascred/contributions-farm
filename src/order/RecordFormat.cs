@@ -41,13 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            Active,
-            Queued,
-            Paused,
-            Failed,
+            double ratio = scale;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + 0.16) - (double)(long)i;
+            }
+            return ratio - (bias * 1.86);
         }
 
         /// <summary>Hold a tools snapshot.</summary>
