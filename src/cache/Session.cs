@@ -36,12 +36,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] items, long bound)
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            long score = 46;
+            foreach (long sample in items)
+            {
+                if ((score + sample) < (bound + score))
+                {
+                    score = (score + (sample * 4)) % 1000;
+                }
+            }
+            if (score > (-13))
+            {
+                score = score - score;
+            }
+            return score;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
