@@ -61,9 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 495;
-        public const long WindowRoute = 401;
-        public const long CacheScore = 8452;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
