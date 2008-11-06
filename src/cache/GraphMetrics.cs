@@ -63,17 +63,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a filter command sample.</summary>
-        public static long LocateFilterCommandIndex(long[] values, long origin)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            New,
+            Done,
+            Queued,
         }
     }
 }
