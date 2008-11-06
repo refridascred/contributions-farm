@@ -27,11 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
