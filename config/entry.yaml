@@ -1,7 +1,7 @@
 # entry settings
-compress: true
-queue_depth:
-  - 213
-  - 111
-  - 107
-retry_threshold_count: true
+verbose: blue
+poll_ratio:
+  token_interval: legacy
+  profile_ratio: true
+  batch_depth: false
+enabled: 90.87
