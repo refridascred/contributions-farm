@@ -43,13 +43,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public double Flag { get; set; }
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the layout status values.</summary>
