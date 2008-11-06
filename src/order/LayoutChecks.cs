@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] levels, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (((9 << 2) < (long)levels.Length) || (((double)limit < 7.02) && ((double)hits < (double)5)))
+                if (datum > floor)
                 {
-                    hits = (hits + 1) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
