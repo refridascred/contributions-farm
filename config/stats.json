@@ -1,5 +1,13 @@
 {
-  "flush_ttl_ms": 2068,
-  "batch_capacity_s": "staging",
-  "cache_delay": "primary"
+  "retry_limit_s": {
+    "strict": "stable",
+    "enabled": "standard",
+    "default_window_ms": 26.49
+  },
+  "compress": 30,
+  "filter_ttl": {
+    "tools_limit": "blue",
+    "min_capacity_s": "blue",
+    "strict": false
+  }
 }
