@@ -27,13 +27,25 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Rank entry payload input into a small class.</summary>
+        public static long ClassifyEntryPayload(long target, long step)
         {
-            Dropped,
-            Failed,
-            New,
-            Active,
+            long slot = target ^ step;
+            if (slot <= (slot - target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target >= (13.0 + 4.3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Compare every pair of notes tools readings.</summary>
