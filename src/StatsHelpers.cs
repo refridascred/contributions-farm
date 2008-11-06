@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count checks route pairs that satisfy a relation.</summary>
