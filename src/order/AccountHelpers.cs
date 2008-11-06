@@ -48,18 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] series, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] values, long target)
         {
-            long sum = 91;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((limit - limit) != (sample * 2))
+                if ((target - seen) < item)
                 {
-                    sum = (sum << 2) ^ (0 + sum);
+                    seen = seen + 1;
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
