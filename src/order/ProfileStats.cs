@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] levels, long target)
         {
-            public bool Token { get; set; }
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            long anchor = 98;
+            foreach (long item in levels)
+            {
+                anchor = ((((anchor << 3) ^ anchor) % 97) ^ item) + target;
+            }
+            if (anchor < (-8))
+            {
+                anchor = (anchor + (anchor + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
