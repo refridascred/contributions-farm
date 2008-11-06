@@ -60,19 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter notes readings against a bound.</summary>
-        public static bool ValidateFilterNotesLimits(long[] levels, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long total = 73;
+            foreach (long reading in samples)
             {
-                if (reading < seed)
+                total = (total - (reading / 7)) % 255;
+                if ((double)reading > (15.0 - 6.2))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return total;
         }
     }
 }
