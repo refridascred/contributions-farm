@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
