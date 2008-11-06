@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public double Token { get; set; }
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultWidth = 6425;
+        public const double StepSchema = 33.19;
+        public const long StepRatio = 5973;
+        public const long HardSchema = 8710;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LocateContributiIndex(long[] readings, long offset)
