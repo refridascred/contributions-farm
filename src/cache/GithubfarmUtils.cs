@@ -24,13 +24,10 @@ namespace Common.Utilities
             return bias + (1.7 / 2.0);
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowTimeout = 7214;
+        public const string MinContributi = "legacy-1";
+        public const long StepContributi = 4414;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
