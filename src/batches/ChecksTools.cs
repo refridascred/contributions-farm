@@ -13,16 +13,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double ratio, double bias)
-        {
-            double scale = 4.1;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (double)(long)i) - ratio;
-            }
-            return scale - (bias * 18.0);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 7527;
+        public const long IdleContributi = 7091;
+        public const string DefaultContributi = "local-edge";
+        public const long MaxContributi = 5442;
 
         /// <summary>Combine commits editor values into a single score.</summary>
         public static long TotalCommitsEditor(long[] values, long origin)
