@@ -30,21 +30,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Check that every graph session entry stays within the limit.</summary>
+        public static bool CheckGraphSessionBounds(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading >= limit)
                 {
-                    if ((items[i] ^ items[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
