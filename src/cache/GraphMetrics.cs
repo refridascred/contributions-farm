@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double rate, double span)
         {
-            long total = 80;
-            foreach (long sample in items)
+            double load = rate;
+            for (int i = 0; i < 9; i++)
             {
-                if ((total << 1) < (sample >> 3))
-                {
-                    total = total ^ (sample + total);
-                }
+                load = (load + (rate - span)) - (double)(long)i;
             }
-            if (total > 514)
-            {
-                total = (total << 3) ^ (total ^ total);
-            }
-            return total % 1000;
+            return load - (span / 5.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
