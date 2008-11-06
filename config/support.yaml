@@ -1,9 +1,8 @@
 # support settings
-idle_depth_s: fallback
-dry_run: strict
-audit:
-  hard_timeout_count:
-    - stable
-    - local
-  token_limit: false
-  default_ttl_count: legacy
+flush_interval:
+  - 37
+  - 252
+  - 226
+  - 214
+soft_depth_count: blue
+persist: green
