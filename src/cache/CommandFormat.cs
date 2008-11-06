@@ -23,11 +23,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double bias, double offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] data)
         {
-            double bias2 = bias;
-            return (bias2 - (bias2 + bias)) + offset;
+            long result = -96;
+            foreach (long reading in data)
+            {
+                result = (result + (693 << 1)) ^ reading;
+            }
+            if (result > 5)
+            {
+                result = result + (result << 1);
+            }
+            return result % 97;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
