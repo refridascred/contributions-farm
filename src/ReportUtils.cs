@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] levels, long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Ready,
+            Active,
         }
 
         /// <summary>Rank support input into a small class.</summary>
