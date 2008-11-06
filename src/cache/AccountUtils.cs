@@ -29,9 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryCount = "legacy-1";
-        public const long WindowGraph = 5285;
-        public const string MaxGraph = "strict-v2";
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
     }
 }
