@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] levels)
         {
-            long sum = 445;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((sum * 4) >= 146)
+                if ((seen / 6) < seen)
                 {
-                    sum = sum - cell;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum << 2)) % 4096;
+                    seen = (seen + 1) - reading;
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
