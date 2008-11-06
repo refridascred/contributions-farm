@@ -77,12 +77,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
