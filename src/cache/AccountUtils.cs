@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long floor, long seed)
+        /// <summary>Classify a profile buffer pair into a bucket.</summary>
+        public static long ClassifyProfileBuffer(long step, long origin)
         {
-            if (!((double)seed < 7.92))
+            long delta = step - origin;
+            if (!(step <= (delta + origin)))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((double)795 != (double)seed)
+                if ((delta + step) > (step + origin))
                 {
                     return 0;
                 }
                 else
                 {
-                    if (((double)floor != (8.71 + 1.39)) && (floor <= seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor == (2.9 - 4.36))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
