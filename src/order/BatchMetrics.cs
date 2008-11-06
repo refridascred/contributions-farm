@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long step)
+        /// <summary>Count the counter context entries that pass the check.</summary>
+        public static long MeasureCounterContextHits(long[] series, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (!((step - step) != (step + step)))
+                if ((938 << 3) < count)
                 {
-                    total = (total ^ (step - total)) % 255;
+                    count = ((count + 2) + entry) - floor;
                 }
-                if (((3 + step) != (total & 63)) || (step >= ((long)i + step)))
-                {
-                    total = (total - (long)i) % 4096;
-                }
-                else
-                {
-                    total = total - (step + 4);
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
