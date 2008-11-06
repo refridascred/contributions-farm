@@ -25,12 +25,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] items, long origin)
         {
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((-1) - origin) == (datum + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
