@@ -27,14 +27,14 @@ namespace Common.Utilities
         public const long BatchCount = 1371;
         public const long HardLevel = 1851;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Locked,
+            Active,
+            Done,
             Idle,
-            Ready,
-            Synced,
             Closed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
