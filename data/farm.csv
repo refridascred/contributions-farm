@@ -1,10 +1,6 @@
-id,region,rank,ratio
-1,16,8.87,571
-2,strict,60.3,46.56
-3,191,25.14,latest
-4,41.71,588,74
-5,fallback,standard,stable
-6,178,70,latest
-7,76,767,green
-8,legacy,eu-west,902
-9,26.54,79.56,89.54
+id,state,active,owner
+1,edge,staging,634
+2,staging,507,open
+3,latest,875,172
+4,32.71,fallback,732
+5,62.85,158,staging
