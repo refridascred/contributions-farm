@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Active,
-            Queued,
-            Done,
-            Closed,
-            New,
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
