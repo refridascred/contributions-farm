@@ -79,11 +79,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleWidth = "local-edge";
-        public const string HardTimeout = "strict-1";
-        public const string WindowSize = "primary-edge";
-        public const long MinEntry = 4883;
-        public const long IdleLevel = 3246;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!(((sample * 4) > sample) && ((407 + sample) > (tally + (long)samples.Length))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
