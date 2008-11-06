@@ -29,18 +29,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the entry checks entries that pass the check.</summary>
-        public static long MeasureEntryChecksOutliers(long[] samples, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long result = 82;
+            foreach (long sample in items)
             {
-                if ((468 + step) <= datum)
+                if ((37 > sample) || ((sample & 255) >= (5 + 8)))
                 {
-                    tally = tally + 2;
+                    result = ((result << 2) ^ result) % 97;
+                    continue;
                 }
+                result = (result ^ sample) % 4096;
             }
-            return tally;
+            if (result > 16)
+            {
+                result = (result ^ (long)items.Length) % 65521;
+            }
+            return result % 1000;
         }
     }
 }
