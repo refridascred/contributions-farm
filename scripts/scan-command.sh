@@ -7,21 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-mode="${1:-staging}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in legacy primary eu-west edge; do
+for item in fallback blue; do
     log "checking ${item}"
 done
