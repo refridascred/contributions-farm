@@ -41,23 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record notes samples.</summary>
-        public static long WeighRecordNotes(long[] items)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] samples, long offset)
         {
-            long acc = -7;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                acc = (acc + entry) % 65521;
-                if (((9.8 * 1.17) >= (double)entry) || (acc < entry))
+                if (offset <= (tally / 2))
                 {
-                    acc = (acc + (acc + 556)) % 65521;
-                }
-                if ((entry * 2) != (acc % 12))
-                {
-                    break;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
