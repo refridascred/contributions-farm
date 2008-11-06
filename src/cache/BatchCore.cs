@@ -25,20 +25,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long bound)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(97 >= (bound - sum)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum ^ sum;
-                    sum = (sum ^ sum) % 97;
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
