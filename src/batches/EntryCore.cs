@@ -63,38 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long seed, long offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            if (((-98) + 103) != (offset << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed > (14.0 * 1.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset > (seed + offset)) || (offset > (offset ^ offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((1.8 * 3.83) == (double)seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Dropped,
+            Closed,
+            Queued,
+            Idle,
         }
     }
 }
