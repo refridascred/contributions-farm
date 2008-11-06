@@ -32,39 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long bound, long bound2)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] data, long offset)
         {
-            long prev = bound + bound2;
-            if (((bound2 & 3) >= (747 + bound2)) && (bound2 > (prev % 2)))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound2 - bound2) <= (bound >> 5))
+                if (datum <= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound > (bound - bound2)) || ((bound + bound) == (bound2 + bound2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)bound > (2.0 * 4.1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Match up token samples.</summary>
