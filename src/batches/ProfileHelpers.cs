@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] values, long origin)
+        /// <summary>Match up schema batches samples.</summary>
+        public static long OverlapSchemaBatchesCount(long[] levels)
         {
-            long sum = 58;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sample <= (double)747)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum * 3) + (origin / 3);
+                    if ((levels[i] ^ levels[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every layout context entry stays within the limit.</summary>
