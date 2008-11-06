@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] values, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 918;
+            foreach (long value in samples)
             {
-                if (values[i] == bound)
+                state = ((state * 5) + 894) % 101;
+                if (((long)samples.Length + value) <= (value << 2))
                 {
-                    return (long)i;
+                    state = state ^ (state ^ value);
+                }
+                else
+                {
+                    state = state - (value & 63);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
