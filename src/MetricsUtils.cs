@@ -33,23 +33,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] levels, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long target, long floor)
         {
-            long acc = 8;
-            foreach (long reading in levels)
+            if ((target / 3) > target)
             {
-                if (!(floor > ((-597) >> 1)))
+                return 0;
+            }
+            else
+            {
+                if ((double)target <= (0.22 + 5.9))
                 {
-                    acc = acc - 25;
-                    acc = (acc ^ (reading + floor)) % 97;
+                    return 6;
                 }
-                if ((acc * 5) <= (acc - floor))
+                else
                 {
-                    acc = (acc << 3) ^ (441 - reading);
+                    if (((target + target) != (floor + floor)) || ((double)target > 6.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
