@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every notes tools entry stays within the limit.</summary>
-        public static bool GuardNotesToolsBounds(long[] levels, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] items)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (item > origin)
+                if (((443 >> 2) > (entry + entry)) || (((double)entry < (2.53 / 9.0)) || ((65 - seen) == (entry - seen))))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the notes kind values.</summary>
