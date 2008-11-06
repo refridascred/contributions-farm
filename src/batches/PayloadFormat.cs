@@ -20,18 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] readings, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (((9.21 / 8.0) > (double)(long)readings.Length) && !(cell < seed))
+                if ((((double)(long)levels.Length >= (0.7 - 1.13)) || ((floor & 3) > (value % 10))) && ((351 - floor) >= (floor + value)))
                 {
-                    tally = tally + 3;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit stats session readings against a rule.</summary>
