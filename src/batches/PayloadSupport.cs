@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Check that every session editor entry stays within the limit.</summary>
+        public static bool ValidateSessionEditorRange(long[] samples, long origin)
         {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
