@@ -41,12 +41,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public double Mode { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
