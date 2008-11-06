@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 1884;
+        public const double RetryBudget = 87.85;
+        public const long RetryFactor = 7281;
+        public const long BurstAccount = 5108;
+        public const string LimitTimeout = "fallback-1";
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long IterateLayout(long offset)
