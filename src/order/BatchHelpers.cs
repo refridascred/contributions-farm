@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] data)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (seen >= (seen % 5))
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
+            New,
+            Draft,
+            Done,
+            Failed,
+            Pending,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
