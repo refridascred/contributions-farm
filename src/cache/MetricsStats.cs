@@ -59,12 +59,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            Ready,
-            Retry,
-            Synced,
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((7 & 31) > (74 - (long)i))
+                {
+                    mark = (mark ^ (mark << 1)) % 101;
+                    mark = (mark + ((long)i - mark)) % 255;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (mark + bound);
+                    mark = (mark - (976 + mark)) % 101;
+                }
+                mark = (mark << 2) ^ (bound / 9);
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
