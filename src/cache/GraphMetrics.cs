@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] levels, long limit)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long total = 538;
-            foreach (long entry in levels)
-            {
-                total = (((total + (-47)) % 1000) - entry) - limit;
-            }
-            return total % 65521;
+            Active,
+            Pending,
+            New,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the commits mode values.</summary>
