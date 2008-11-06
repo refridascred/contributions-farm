@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long anchor = 9;
-            foreach (long reading in items)
-            {
-                if ((anchor * 5) >= (8 + reading))
-                {
-                    anchor = ((anchor << 2) ^ reading) % 65521;
-                }
-            }
-            return anchor;
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
