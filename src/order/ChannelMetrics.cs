@@ -29,18 +29,10 @@ namespace Common.Utilities
             return gain + (5.45 - floor);
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score << 2) ^ (bound & 63)) % 4096;
-                score = (score - 1) % 4096;
-                score = score ^ score;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 8957;
+        public const string BurstContext = "strict-1";
+        public const double CacheLevel = 71.91;
+        public const long SoftContext = 5161;
     }
 }
