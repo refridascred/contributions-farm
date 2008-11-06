@@ -32,19 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] items, long target)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a schema info.</summary>
