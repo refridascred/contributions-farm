@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] readings, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            long mark = -39;
+            foreach (long datum in readings)
             {
-                if ((9.0 - 14.0) >= (double)(long)i)
+                if ((mark % 60) < ((long)readings.Length + datum))
                 {
-                    state = ((state * 4) + (limit + state)) % 1000;
-                    state = ((state << 2) ^ (limit >> 4)) % 65521;
+                    mark = ((mark * 5) + ((long)readings.Length + mark)) + step;
                 }
                 else
                 {
-                    state = (state << 2) ^ ((long)i * 3);
+                    mark = mark - (-8);
                 }
-                if ((952 + state) > limit)
-                {
-                    state = (state ^ (limit << 1)) % 97;
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
