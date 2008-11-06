@@ -1,8 +1,9 @@
 {
-  "default_threshold_pct": 500,
-  "burst_capacity_count": ["local", "eu-west", "primary", "open"],
-  "compress": 63.62,
-  "default_timeout_s": 500,
-  "retry_ttl_count": "eu-west",
-  "base_retries": 98
+  "profile_interval": {
+    "idle_threshold_pct": false,
+    "order_size": "strict",
+    "contributi_ttl": "standard"
+  },
+  "entry_timeout": [269, 468],
+  "max_interval": false
 }
