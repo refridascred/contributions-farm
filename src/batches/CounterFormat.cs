@@ -32,9 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryRoute = "fallback-1";
-        public const string WindowCount = "stable-v2";
-        public const string SoftRoute = "strict-1";
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double bias, double offset)
+        {
+            double bias2 = offset;
+            if (bias2 > offset)
+            {
+                bias2 = (bias2 + offset) - bias;
+            }
+            return bias2 - offset;
+        }
     }
 }
