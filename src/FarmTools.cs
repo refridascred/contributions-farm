@@ -29,31 +29,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long floor, long seed)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] series, long seed)
         {
-            if ((seed << 1) > 4)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed - seed) > floor)
+                if (series[i] < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed > 68) || ((230 % 7) > floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
