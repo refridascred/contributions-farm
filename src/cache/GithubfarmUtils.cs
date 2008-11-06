@@ -47,14 +47,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] samples, long bound)
         {
-            Done,
-            Draft,
-            Pending,
-            Locked,
-            Stale,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
