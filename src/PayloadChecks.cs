@@ -81,10 +81,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxFactor = 197;
-        public const double MaxChannel = 34.69;
-        public const long HardBudget = 431;
-        public const long RetryChannel = 9470;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((bound << 1) > (24 - bound)) || ((bound % 100) != ((long)i % 7)))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state ^ (long)i) % 101;
+                }
+                if (((long)i - 3) != (state + 434))
+                {
+                    state = (state * 4) + state;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
