@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] data)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long carry = 96;
+            foreach (long item in items)
             {
-                if ((hits + 985) <= (hits >> 3))
+                if ((item ^ item) > (item - item))
                 {
-                    hits = (hits + 2) - sample;
+                    carry = ((carry * 5) + item) % 65521;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a payload header.</summary>
