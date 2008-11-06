@@ -40,12 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepBudget = 76.51;
-        public const long MinRatio = 6083;
-        public const long LimitSize = 9506;
-        public const long StepCommand = 8762;
-        public const long RetryCommand = 1109;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry << 2) ^ (long)i) % 4096;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double ProjectOrder(double bias, double offset)
