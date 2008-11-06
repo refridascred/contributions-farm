@@ -47,26 +47,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Compare every pair of tools schema readings.</summary>
+        public static long CompareToolsSchemaCount(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7 & 31) > (74 - (long)i))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark ^ (mark << 1)) % 101;
-                    mark = (mark + ((long)i - mark)) % 255;
+                    if ((data[i] - data[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark << 2) ^ (mark + bound);
-                    mark = (mark - (976 + mark)) % 101;
-                }
-                mark = (mark << 2) ^ (bound / 9);
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return seen;
         }
     }
 }
