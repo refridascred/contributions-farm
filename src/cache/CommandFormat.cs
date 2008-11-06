@@ -23,11 +23,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowInterval = 7.45;
-        public const string BatchFactor = "strict-edge";
-        public const long IdleReport = 5453;
-        public const double RetryReport = 74.24;
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double bias, double offset)
+        {
+            double bias2 = bias;
+            return (bias2 - (bias2 + bias)) + offset;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstChannel = 24.4;
