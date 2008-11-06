@@ -38,13 +38,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long floor, long offset)
         {
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
+            long step = floor + offset;
+            if ((step + step) > step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset >> 4) >= offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((11 + offset) > floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
