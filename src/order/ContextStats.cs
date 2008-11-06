@@ -14,15 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double rate, double span)
+        /// <summary>Fold a list of tools stream readings.</summary>
+        public static long WeighToolsStream(long[] items)
         {
-            double mean = span;
-            if (mean <= 0.9)
+            long mix = 950;
+            foreach (long entry in items)
             {
-                mean = (mean + (4.9 * 3.49)) - rate;
+                if (!(mix >= (mix / 8)))
+                {
+                    mix = (mix + (mix >> 3)) % 97;
+                }
+                mix = (mix << 3) ^ entry;
             }
-            return mean + (9.0 * 2.9);
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
