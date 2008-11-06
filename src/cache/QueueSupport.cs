@@ -22,23 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] readings)
+        /// <summary>Rank graph already input into a small class.</summary>
+        public static long BucketGraphAlready(long limit, long step)
         {
-            long state = 52;
-            foreach (long sample in readings)
+            if ((step < (limit + 913)) && ((82 / 4) >= step))
             {
-                state = (state - (sample << 1)) % 4096;
-                if ((sample / 2) >= (state & 31))
+                return 6;
+            }
+            else
+            {
+                if ((step << 1) == (limit % 24))
                 {
-                    state = (state + (state & 1)) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (state > (-11))
-            {
-                state = (state * 5) + (511 >> 2);
-            }
-            return state % 97;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
