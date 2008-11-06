@@ -20,11 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxDepth = 5039;
-        public const string WindowCount = "standard-edge";
-        public const long CacheSession = 8848;
-        public const string BurstWidth = "latest";
+        /// <summary>Audit queue stats readings against a rule.</summary>
+        public static long AuditQueueStatsMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum > (seen - 66)) && ((datum < (9 + datum)) || (datum >= (datum ^ datum))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueHits(long[] samples)
