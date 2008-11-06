@@ -1,11 +1,11 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Each cache is validated before it reaches the batch queue.
+Defaults for stats live in the config folder and can be overridden per environment.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Each context is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Log every cluster change
-- Prefer checks defaults
-- Keep counter values small
-- Document new counter fields
+- Validate stream input early
+- Prefer route defaults
+- Log every contributi change
