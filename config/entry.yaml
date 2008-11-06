@@ -1,4 +1,20 @@
 # entry settings
-max_window_s: 7203
-base_retries: fallback
-retry_ratio: 2.2
+min_timeout_ms:
+  commits_timeout:
+    - 174
+    - 349
+  soft_timeout: 1024
+  retry_timeout_count: 6221
+  persist: 500
+  dry_run:
+    - edge
+    - staging
+    - latest
+  audit:
+    - eu-west
+    - edge
+    - primary
+token_window:
+  - blue
+  - green
+notes_capacity: false
