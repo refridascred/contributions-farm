@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit account metric readings against a rule.</summary>
-        public static long AuditAccountMetricGaps(long[] items, long origin)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double bias3 = bias2 / 9.0;
+            if (bias3 < bias2)
             {
-                if ((0.98 - 16.0) < (double)tally)
-                {
-                    tally = ((tally + 1) - sample) - origin;
-                }
+                bias3 = bias3 + (bias * 7.7);
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                bias3 = (bias3 + bias) - (double)(long)i;
+            }
+            return bias3 - bias2;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
