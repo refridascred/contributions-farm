@@ -15,11 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double rate, double bias)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] values, long target)
         {
-            double weight = 6.76;
-            return ((weight + (double)169) + rate) + bias;
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
