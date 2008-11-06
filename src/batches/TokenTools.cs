@@ -19,38 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long seed, long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            if (((double)step < 6.0) || ((step << 3) <= seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((9.1 * 2.6) == (double)seed) || ((double)step < (double)seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed > (9 >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((step + step) < (seed & 15)) && ((double)seed >= (double)step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
