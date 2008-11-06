@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate route order readings against a bound.</summary>
-        public static bool ValidateRouteOrderRange(long[] readings, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (cell >= origin)
+                if ((hits + 985) <= (hits >> 3))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) - sample;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a payload header.</summary>
