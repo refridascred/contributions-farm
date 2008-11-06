@@ -45,9 +45,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepFilter = 71.78;
-        public const double MaxScore = 44.81;
-        public const long SoftSpan = 3012;
+        /// <summary>Match up support payload samples.</summary>
+        public static long OverlapSupportPayloadCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
