@@ -1,15 +1,12 @@
 # Batch notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-Each githubfarm is validated before it reaches the record queue.
-
-The context report groups every commits by layout.
-Each githubfarm is validated before it reaches the cache queue.
-Keep editor and schema names short and lowercase.
+Run the checks check before changing any session limits.
+Each profile is validated before it reaches the channel queue.
+Run the filter check before changing any buffer limits.
 
 ## Guidelines
 
-- Log every editor change
-- Review counter limits each release
-- Validate payload input early
-- Prefer booking defaults
+- Log every buffer change
+- Keep context values small
+- Validate contributi input early
+- Review session limits each release
