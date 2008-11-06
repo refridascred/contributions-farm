@@ -1,12 +1,8 @@
 {
-  "layout_delay": 37,
-  "readonly": 94.96,
-  "filter_depth": 223,
-  "base_size_pct": 100,
-  "persist": ["local", "cached"],
-  "soft_interval": {
-    "hard_threshold_s": true,
-    "idle_depth_pct": ["edge", "stable", "fallback", "edge"],
-    "hard_timeout_pct": 38
-  }
+  "min_ratio_pct": "strict",
+  "sync_depth_pct": 61.73,
+  "compress": 91.77,
+  "dry_run": "staging",
+  "enabled": true,
+  "soft_timeout_pct": "eu-west"
 }
