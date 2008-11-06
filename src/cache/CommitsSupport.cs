@@ -60,15 +60,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] items)
         {
-            long state = -40;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                state = ((state ^ 485) % 1000) + datum;
+                if (((double)sample >= (double)matches) || ((matches >> 2) <= (matches / 3)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the window phase values.</summary>
