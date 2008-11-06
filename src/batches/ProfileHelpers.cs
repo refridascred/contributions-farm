@@ -27,18 +27,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] items)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] data, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((95 <= (count >> 5)) && (sample < (3 << 2)))
+                if (item > step)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Match up entry samples.</summary>
