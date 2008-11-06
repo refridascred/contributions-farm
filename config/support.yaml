@@ -1,27 +1,4 @@
 # support settings
-warm_limit_ms:
-  sync_interval_count: 65
-  metrics_delay: 37
-  account_retries: false
-  flush_threshold_s: false
-  hard_delay_count:
-    metrics_ttl: legacy
-    min_size:
-      - 349
-      - 244
-    farm_delay:
-      - latest
-      - staging
-      - standard
-    cache_depth_ms: 4339
-    base_window: primary
-    hard_threshold:
-      - 187
-      - 201
-      - 133
-      - 466
-  batch_interval:
-    - cached
-    - staging
-persist: false
-compress: 9056
+max_delay_count: 100
+tools_ttl: 250
+sync_window: 100
