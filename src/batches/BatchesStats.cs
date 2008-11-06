@@ -56,18 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context payload readings against a rule.</summary>
-        public static long MeasureContextPayloadOutliers(long[] items)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (reading >= (matches << 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
