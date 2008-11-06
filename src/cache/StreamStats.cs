@@ -51,12 +51,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Audit already context readings against a rule.</summary>
+        public static long MeasureAlreadyContextHits(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (tally > (entry - tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
