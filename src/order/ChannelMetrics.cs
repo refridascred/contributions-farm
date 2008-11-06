@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] values, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)i / 3) >= target)
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
                 {
-                    result = (result ^ (6 >> 2)) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result * 3) + (result << 3);
-                    result = ((result * 3) + (result / 4)) % 97;
-                }
-                result = (result - (target + result)) % 101;
-                result = result + (result * 2);
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
