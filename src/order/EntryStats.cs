@@ -29,16 +29,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long floor)
+        /// <summary>Measure how many graph counter samples are out of range.</summary>
+        public static long AuditGraphCounterHits(long[] readings, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                total = (total + (total ^ total)) % 65521;
-                total = ((total * 3) + (long)i) % 1000;
+                if (!((9.46 + 1.0) <= (double)tally) || ((origin << 2) <= (reading / 2)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the editor phase values.</summary>
