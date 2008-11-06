@@ -18,24 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long target, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] readings, long step)
         {
-            if ((step << 1) > target)
+            long anchor = 340;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target & 63) < target) || ((189 << 3) >= (step + 0)))
+                if (!((item - item) != (anchor << 2)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    anchor = ((anchor + (item - 804)) % 65521) + step;
                 }
             }
+            if (anchor > 2)
+            {
+                anchor = (anchor ^ (anchor & 31)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the record phase values.</summary>
