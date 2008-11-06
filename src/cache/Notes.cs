@@ -55,15 +55,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the checks graph series from a seed.</summary>
-        public static long IterateChecksGraph(long step)
+        /// <summary>Find the first profile payload entry that matches the target.</summary>
+        public static long LookupProfilePayloadIndex(long[] items, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
