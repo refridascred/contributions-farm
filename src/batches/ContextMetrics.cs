@@ -66,15 +66,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric window readings against a rule.</summary>
-        public static long TallyMetricWindowHits(long[] levels)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] items, long bound)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long sample in items)
             {
-                if ((double)entry <= (7.6 / 8.0))
+                if (!((9.2 * 3.17) <= (double)bound))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 2) ^ sample;
                 }
                 else
                 {
