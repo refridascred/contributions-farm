@@ -49,11 +49,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 4144;
-        public const double IdleBatches = 40.54;
-        public const long BurstBatches = 5718;
-        public const string MaxInterval = "latest-1";
-        public const double BaseBatches = 91.34;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value + count) <= (count & 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
