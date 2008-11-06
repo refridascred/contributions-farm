@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long carry = -538;
-            foreach (long cell in series)
-            {
-                carry = (((carry * 2) + ((-864) >> 4)) % 97) ^ cell;
-            }
-            return carry;
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two queue measurements.</summary>
