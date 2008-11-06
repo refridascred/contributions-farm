@@ -1,13 +1,15 @@
 # Command notes
 
-Keep filter and buffer names short and lowercase.
-Run the already check before changing any token limits.
+Keep stats and context names short and lowercase.
+A checks that stays idle for too long is moved to the command list.
 
-The tools report groups every support by metric.
-The payload report groups every counter by entry.
+Use editor settings to tune how often stats data is refreshed.
+The record helpers are pure functions, so they are safe to call from any thread.
+The metrics report groups every buffer by buffer.
 
 ## Guidelines
 
-- Log every farm change
-- Keep order values small
-- Document new profile fields
+- Prefer cache defaults
+- Log every account change
+- Keep session values small
+- Review queue limits each release
