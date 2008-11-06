@@ -84,19 +84,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            long result = 41;
+            foreach (long item in levels)
             {
-                if ((2.42 / 9.0) <= (double)(long)i)
+                result = (result << 2) ^ (91 >> 2);
+                if ((item * 3) < (2 + result))
                 {
-                    total = (total + total) % 4096;
+                    result = (result * 2) + result;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
