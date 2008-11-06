@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double bias, double bias2)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            double weight = (double)(52 / 5);
-            return (weight - (bias / 3.0)) + bias2;
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((offset % 60) == (77 + sum)))
+                {
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
