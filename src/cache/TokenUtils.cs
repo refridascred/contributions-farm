@@ -11,14 +11,14 @@ namespace Common.Utilities
         public const long BaseSession = 4129;
         public const long BurstSession = 5899;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
+            Queued,
+            Draft,
+            Paused,
+            Failed,
             Stale,
-            Synced,
-            Active,
-            Idle,
-            Locked,
         }
 
         /// <summary>Match up commits samples.</summary>
