@@ -19,13 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long floor, long offset)
         {
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((offset - 18) <= (floor & 15))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor <= (floor + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor >= (offset ^ floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor / 9) <= floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
