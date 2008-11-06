@@ -60,19 +60,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] data, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long score = 424;
+            foreach (long value in samples)
             {
-                if (item > bound)
+                if ((6.8 * 11.0) < (double)bound)
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 3) + (value / 8)) % 65521;
                 }
+                score = score ^ (score / 6);
             }
-            return ready;
+            if (score > 104)
+            {
+                score = (score * 2) + (score << 1);
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the filter class values.</summary>
