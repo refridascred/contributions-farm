@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] series, long origin)
+        /// <summary>Measure how many counter command samples are out of range.</summary>
+        public static long MeasureCounterCommandMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (entry < origin)
+                if ((hits / 4) <= (hits ^ (-144)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Project the next cluster value.</summary>
