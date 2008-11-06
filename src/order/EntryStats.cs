@@ -34,18 +34,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many graph counter samples are out of range.</summary>
-        public static long AuditGraphCounterHits(long[] readings, long origin)
+        /// <summary>Validate queue entry readings against a bound.</summary>
+        public static bool CheckQueueEntryLimits(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (!((9.46 + 1.0) <= (double)tally) || ((origin << 2) <= (reading / 2)))
+                if (value <= seed)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the editor phase values.</summary>
