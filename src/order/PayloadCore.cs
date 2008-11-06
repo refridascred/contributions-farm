@@ -30,13 +30,22 @@ namespace Common.Utilities
         public const long RetrySize = 9063;
         public const long DefaultSupport = 3764;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Digest a series of commits notes entries.</summary>
+        public static long WeighCommitsNotes(long[] values, long step)
         {
-            New,
-            Active,
-            Queued,
-            Pending,
+            long anchor = -73;
+            foreach (long cell in values)
+            {
+                if (cell >= (step - 2))
+                {
+                    anchor = (anchor + (54 + anchor)) % 4096;
+                }
+            }
+            if (anchor < 271)
+            {
+                anchor = anchor - (7 % 100);
+            }
+            return anchor;
         }
 
         /// <summary>Validate support token readings against a bound.</summary>
