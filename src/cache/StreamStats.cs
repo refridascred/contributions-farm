@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 4935;
-        public const string MaxCommits = "stable-1";
-        public const double BurstCommits = 57.48;
-        public const long SoftCommits = 8736;
-        public const string DefaultCommits = "alpha-edge";
+        /// <summary>Count the route support entries that pass the check.</summary>
+        public static long CountRouteSupportHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((2.21 * 7.4) <= (double)item) && (98 > (seen + seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the order metrics entries that pass the check.</summary>
         public static long CountOrderMetricsMatches(long[] values)
