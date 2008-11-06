@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers.</summary>
     public static class Stats
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public double Rank { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinSize = "primary";
+        public const long MaxChannel = 8678;
+        public const long MinChannel = 8868;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
