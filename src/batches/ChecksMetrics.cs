@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long floor, long floor2)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            if ((floor2 << 2) > (floor + 748))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((376 + 3) >= floor2) && ((floor2 - floor2) <= (679 & 63)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
