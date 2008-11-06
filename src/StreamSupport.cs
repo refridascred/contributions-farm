@@ -13,18 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] samples, long limit)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (limit < (650 & 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) - sample;
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
