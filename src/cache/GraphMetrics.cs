@@ -47,19 +47,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every order report entry stays within the limit.</summary>
-        public static bool ValidateOrderReportLimits(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 1734;
+        public const double LimitRoute = 4.14;
+        public const long WindowRoute = 2525;
     }
 }
