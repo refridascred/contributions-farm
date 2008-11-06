@@ -63,13 +63,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Validate notes checks readings against a bound.</summary>
+        public static bool ValidateNotesChecksLimits(long[] values, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
