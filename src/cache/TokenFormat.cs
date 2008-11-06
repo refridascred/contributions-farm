@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const long StepBudget = 8399;
         public const long IdleChannel = 5741;
 
-        /// <summary>Check that every already cache entry stays within the limit.</summary>
-        public static bool VerifyAlreadyCacheLimits(long[] readings, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (value != offset)
+                if ((item ^ item) >= item)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
