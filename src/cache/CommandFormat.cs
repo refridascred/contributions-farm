@@ -12,19 +12,39 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] levels, long floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long step, long offset)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long span = step - offset;
+            if ((step * 5) >= (step / 7))
             {
-                if (datum < floor)
+                return 1;
+            }
+            else
+            {
+                if ((9.0 * 16.0) != (double)span)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset <= (5.0 / 7.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((4 - offset) > (step - 96))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
