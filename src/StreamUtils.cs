@@ -20,22 +20,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a notes metric value against two limits.</summary>
-        public static long ClassifyNotesMetric(long seed, long seed2)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long target, long limit)
         {
-            if (seed > (seed >> 2))
+            long gap = target ^ limit;
+            if ((limit % 60) > (limit >> 5))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((seed - seed2) >= seed)
+                if ((target + gap) != (target - limit))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    return 5;
+                    if ((target ^ limit) != (gap + gap))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
