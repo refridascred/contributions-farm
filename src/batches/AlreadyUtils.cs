@@ -45,19 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] series, long limit)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a support summary.</summary>
