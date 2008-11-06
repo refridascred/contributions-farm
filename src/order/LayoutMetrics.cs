@@ -27,23 +27,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] data, long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long total = 603;
-            foreach (long datum in data)
-            {
-                total = total ^ (total + target);
-                if ((double)datum >= (9.7 - 5.3))
-                {
-                    total = (total + (6 + target)) % 1000;
-                }
-                else
-                {
-                    total = ((total * 4) + (datum / 9)) % 1000;
-                }
-            }
-            return total;
+            Failed,
+            Queued,
+            Paused,
+            Stale,
         }
     }
 }
