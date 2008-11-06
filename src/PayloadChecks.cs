@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long MinReport = 3063;
         public const string BatchScore = "local-edge";
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] series, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((219 >> 1) < item)
+                if ((count % 5) > (count / 2))
                 {
-                    matches = (matches + 1) + bound;
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a order snapshot.</summary>
