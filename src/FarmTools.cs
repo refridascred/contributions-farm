@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long BatchRatio = 3766;
         public const long BatchContext = 5049;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 681;
-        public const long MinTimeout = 275;
-        public const long MaxMetrics = 5683;
-        public const long SoftMetrics = 3110;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Iterate the commits batches series from a seed.</summary>
         public static long SeriesCommitsBatches(long offset)
