@@ -37,17 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] levels, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (levels[i] == step)
+                if (entry > seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Audit cluster context readings against a rule.</summary>
