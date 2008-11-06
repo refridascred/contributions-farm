@@ -23,9 +23,10 @@ namespace Common.Utilities
         public const long RetryDepth = 6755;
         public const long MinTimeout = 5260;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowTimeout = 5961;
-        public const double BatchEntry = 78.78;
-        public const long BatchCount = 8199;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 2191;
+        public const long CacheSize = 9448;
+        public const string MinCounter = "staging-v2";
+        public const string BatchInterval = "legacy-v2";
     }
 }
