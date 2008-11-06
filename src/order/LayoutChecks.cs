@@ -23,15 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] samples, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            long total = -34;
+            foreach (long item in samples)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                total = (((total << 2) ^ (355 - total)) % 101) - item;
             }
-            return carry;
+            if (total > 2)
+            {
+                total = (total ^ (limit / 7)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Describe the already mode values.</summary>
