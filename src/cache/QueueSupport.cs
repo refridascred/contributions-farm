@@ -12,21 +12,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] levels)
+        /// <summary>Digest a series of contributi counter entries.</summary>
+        public static long TotalContributiCounter(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 96;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = (((sum * 5) + (-328)) % 4096) + offset;
+                sum = (sum + (reading % 12)) % 255;
+                if ((reading >> 2) > ((long)levels.Length - sum))
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 3) ^ (reading + sum)) % 4096;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
