@@ -47,22 +47,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double offset)
         {
-            long score = 2;
-            foreach (long cell in values)
+            double load = (double)(436 << 2);
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)score >= (1.0 + 8.6))
-                {
-                    score = (score << 2) ^ cell;
-                }
-                else
-                {
-                    score = (score - (score >> 3)) % 4096;
-                }
+                load = (((load - (load / 3.0)) + (double)(long)i) - scale) + offset;
             }
-            return score % 65521;
+            return load + load;
         }
     }
 }
