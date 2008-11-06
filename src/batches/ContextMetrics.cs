@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate graph batch readings against a bound.</summary>
-        public static bool CheckGraphBatchRange(long[] items, long origin)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
