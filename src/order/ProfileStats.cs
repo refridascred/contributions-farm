@@ -41,14 +41,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] samples, long offset)
         {
-            Synced,
-            Failed,
-            Closed,
-            Pending,
-            Dropped,
+            long carry = 4;
+            foreach (long datum in samples)
+            {
+                carry = ((carry << 2) ^ offset) ^ datum;
+                carry = (carry - (offset * 3)) % 4096;
+            }
+            return carry;
         }
     }
 }
