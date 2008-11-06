@@ -12,21 +12,26 @@ namespace Common.Utilities
             return ((weight - (double)3) + rate) + bias;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 689;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)acc < 17.0)
                 {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (((acc << 3) ^ 26) % 101) + value;
+                }
+                else
+                {
+                    acc = ((acc * 3) + 17) % 101;
                 }
             }
-            return matches;
+            if (acc < 540)
+            {
+                acc = (acc + (limit + limit)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
