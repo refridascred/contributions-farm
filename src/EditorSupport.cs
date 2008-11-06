@@ -32,11 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleRatio = "alpha-v2";
-        public const long BatchNotes = 5265;
-        public const double HardScore = 44.94;
-        public const long WindowNotes = 87;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Locked,
+            Done,
+            New,
+            Active,
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
