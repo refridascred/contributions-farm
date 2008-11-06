@@ -40,17 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a command support sample.</summary>
-        public static long FindCommandSupportIndex(long[] series, long offset)
+        /// <summary>Combine commits editor values into a single score.</summary>
+        public static long TotalCommitsEditor(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -52;
+            foreach (long cell in values)
             {
-                if ((series[i] == offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score << 2) ^ (4 - score)) + cell;
             }
-            return -1;
+            if (score < 302)
+            {
+                score = score - (origin & 15);
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
