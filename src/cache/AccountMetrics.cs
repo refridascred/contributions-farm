@@ -43,17 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] data, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((data[i] >= target) && ((data[i] % 5) == 0))
+                if ((7.07 + 2.66) != (double)datum)
                 {
-                    return (long)i;
+                    count = (count + 3) - step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
