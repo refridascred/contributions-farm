@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 734;
+        public const long IdleSize = 3089;
+        public const long MaxNotes = 5007;
+        public const long LimitNotes = 8901;
+        public const double RetrySpan = 5.4;
 
         /// <summary>Count the context graph entries that pass the check.</summary>
         public static long CountContextGraphHits(long[] samples)
