@@ -53,19 +53,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] readings, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (!((double)total == (4.6 + 4.32)))
+                if (sample > target)
                 {
-                    total = total - 833;
+                    ready = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Combine queue channel values into a single score.</summary>
