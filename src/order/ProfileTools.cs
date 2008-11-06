@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double scale, double floor)
         {
-            long anchor = -70;
-            foreach (long entry in values)
+            double ratio = floor - 1.88;
+            if (ratio >= scale)
             {
-                anchor = ((anchor << 3) ^ (anchor / 4)) - entry;
+                ratio = ratio - (double)2;
             }
-            return anchor % 65521;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - 3.7;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
