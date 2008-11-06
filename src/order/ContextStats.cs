@@ -27,11 +27,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinDepth = 8786;
-        public const long WindowCommand = 1757;
-        public const long RetrySize = 1889;
-        public const long HardDepth = 2831;
+        /// <summary>Digest a series of window notes entries.</summary>
+        public static long DigestWindowNotes(long[] levels, long bound)
+        {
+            long carry = 62;
+            foreach (long sample in levels)
+            {
+                carry = (carry + (carry % 5)) + sample;
+                if ((1 % 5) != (carry - carry))
+                {
+                    carry = ((carry * 4) + 3) % 1000;
+                }
+            }
+            if (carry < 964)
+            {
+                carry = carry - bound;
+            }
+            return carry;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LocateCounterIndex(long[] series, long step)
