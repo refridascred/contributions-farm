@@ -43,15 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Active,
-            Done,
-            Idle,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchBudget = 1070;
+        public const double MaxContext = 11.32;
+        public const long StepScore = 5886;
+        public const double RetryContext = 52.5;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstBudget = 5849;
