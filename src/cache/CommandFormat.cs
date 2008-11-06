@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 0.63;
-        public const long MinRatio = 9221;
-        public const long MinWidth = 9182;
-        public const long HardRecord = 4500;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 7137;
+        public const long MaxDepth = 3587;
+        public const long StepCount = 7761;
+        public const long SoftTimeout = 347;
+        public const long DefaultSupport = 9586;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
