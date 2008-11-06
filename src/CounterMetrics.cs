@@ -31,25 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long seed, long step)
+        /// <summary>Count the batches channel entries that pass the check.</summary>
+        public static long TallyBatchesChannelHits(long[] items)
         {
-            long next = seed + step;
-            if ((double)next == (20.0 + 15.0))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed + 359) > next) && ((1.6 / 7.0) < (double)next))
+                if (!((entry > tally) && (0.4 < (double)tally)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine report values into a single score.</summary>
