@@ -27,11 +27,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] levels, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally <= (tally + (-979))) && !((tally * 5) >= (tally + offset)))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batches state values.</summary>
