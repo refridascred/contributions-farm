@@ -48,18 +48,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] readings)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value + count) <= (count & 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
