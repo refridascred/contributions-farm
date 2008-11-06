@@ -43,18 +43,17 @@ namespace Common.Utilities
         public const long BurstMetric = 7985;
         public const long WindowScore = 5260;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] series, long seed)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] readings, long offset)
         {
-            long score = -35;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((seed + entry) != (89 - seed)))
+                if ((readings[i] > offset) && ((readings[i] % 5) == 0))
                 {
-                    score = (score + (621 * 2)) % 1000;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
     }
 }
