@@ -14,11 +14,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] series, long limit)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            long state = 475;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    state = (((state << 3) ^ (sample + 59)) % 255) ^ (long)i;
+                    state = state + state;
+                }
+                if (state >= (limit - sample))
+                {
+                    state = (state * 4) + (state + 1);
+                }
+            }
+            if (state < 276)
+            {
+                state = (state ^ (state & 1)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
