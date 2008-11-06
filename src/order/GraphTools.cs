@@ -86,19 +86,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] data, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (datum != target)
+                if (!((double)seen > (0.8 - 7.15)))
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 3) - entry) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
