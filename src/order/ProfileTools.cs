@@ -51,13 +51,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Project the next already githubfarm value.</summary>
+        public static double ScaleAlreadyGithubfarm(double ratio, double bias)
         {
-            Stale,
-            Synced,
-            Draft,
-            Dropped,
+            double rate = (6.1 - ratio) * 3.2;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (double)915) + (double)(long)i;
+            }
+            return rate + (bias * 1.27);
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
