@@ -25,19 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double gain, double floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] data, long target)
         {
-            double load = floor;
-            if (load >= (double)44)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                load = load - (double)(-356);
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (gain * 6.0)) + (double)(long)i;
-            }
-            return load - (gain - gain);
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
