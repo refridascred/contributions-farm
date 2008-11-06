@@ -63,19 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context record entry stays within the limit.</summary>
-        public static bool CheckContextRecordLimits(long[] values, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (item >= seed)
+                if ((double)tally == (7.35 - 8.4))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) + item;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
