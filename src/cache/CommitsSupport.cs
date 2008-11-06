@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a commits farm value against two limits.</summary>
-        public static long RankCommitsFarm(long target, long bound)
-        {
-            long gap = target - bound;
-            if ((double)gap <= (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((gap + 6) >= (gap + gap)) && ((double)target >= 4.22))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstSpan = 9946;
+        public const double BaseProfile = 35.68;
+        public const long SoftScore = 1479;
+        public const long BatchScore = 827;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
