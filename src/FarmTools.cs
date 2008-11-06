@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm buffer samples.</summary>
-        public static long FoldGithubfarmBuffer(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] series)
         {
-            long mix = -820;
-            foreach (long entry in samples)
+            long result = 297;
+            foreach (long cell in series)
             {
-                mix = ((mix * 4) + (mix << 1)) - entry;
+                result = (result * 4) + (cell + 85);
             }
-            return mix;
+            return result % 65521;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
