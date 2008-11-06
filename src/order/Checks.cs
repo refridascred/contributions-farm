@@ -33,16 +33,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double ratio, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            double ratio2 = floor;
+            if (ratio2 <= 8.8)
             {
-                acc = acc ^ (2 + (long)i);
-                acc = ((acc * 5) + (long)i) % 65521;
+                ratio2 = (ratio2 - 7.0) + ratio;
             }
-            return acc;
+            else
+            {
+                ratio2 = ratio2 - 9.46;
+            }
+            return ratio2 - (double)7;
         }
 
         /// <summary>Hold a graph stats.</summary>
