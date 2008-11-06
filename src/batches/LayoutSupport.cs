@@ -50,18 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] items)
+        /// <summary>Look up the position of a context notes sample.</summary>
+        public static long LocateContextNotesIndex(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((reading + tally) < (tally % 16)) && !((12 + reading) <= (reading ^ reading)))
+                if ((samples[i] > target) && ((samples[i] % 3) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
