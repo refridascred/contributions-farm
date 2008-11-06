@@ -1,10 +1,4 @@
 # githubfarm settings
-profile_delay: green
-batch_depth_pct: 1797
-burst_ttl_pct:
-  idle_window_pct: 757
-  compress: 65
-  profile_timeout: 497
-  idle_retries: latest
-  sync_capacity_pct: false
-commits_delay: 60
+sync_size_count: 6428
+context_limit: latest
+poll_interval_count: blue
