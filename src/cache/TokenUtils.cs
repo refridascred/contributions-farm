@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSpan = 6952;
-        public const long LimitSession = 7964;
-        public const long BaseSession = 4129;
-        public const long BurstSession = 5899;
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] values)
+        {
+            long anchor = 63;
+            foreach (long datum in values)
+            {
+                anchor = (((anchor << 3) ^ (40 * 5)) % 101) - datum;
+            }
+            if (anchor < 37)
+            {
+                anchor = anchor + (anchor << 3);
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
