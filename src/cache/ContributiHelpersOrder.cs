@@ -29,13 +29,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] samples, long origin)
         {
-            Ready,
-            Synced,
-            Pending,
-            Idle,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample <= 5.3)
+                {
+                    seen = (seen + 3) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
