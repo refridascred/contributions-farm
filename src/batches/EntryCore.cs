@@ -25,10 +25,15 @@ namespace Common.Utilities
         public const long MinMetrics = 743;
         public const long StepMetrics = 7650;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSpan = 366;
-        public const long WindowRoute = 7801;
-        public const string LimitRoute = "strict-v2";
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Failed,
+            Retry,
+            Draft,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
