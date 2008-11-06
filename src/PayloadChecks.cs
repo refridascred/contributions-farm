@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            public double Limit { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of contributi cluster readings.</summary>
