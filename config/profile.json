@@ -1,5 +1,11 @@
 {
-  "retry_size": true,
-  "enabled": 6875,
-  "warm_capacity_ms": "cached"
+  "audit": 1603,
+  "retry_delay": 5716,
+  "burst_threshold_ms": 2387,
+  "soft_threshold_ms": 45.26,
+  "verbose": {
+    "metric_depth": false,
+    "default_ttl_pct": 22,
+    "idle_interval_count": 77
+  }
 }
