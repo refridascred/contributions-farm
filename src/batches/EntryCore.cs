@@ -34,13 +34,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            Paused,
-            Queued,
-            New,
-            Idle,
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if (offset >= sum)
+                {
+                    sum = (sum << 2) ^ 61;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = ((sum * 4) + (4 - 64)) - (long)i2;
+                }
+                for (int i3 = 0; i3 < 5; i3++)
+                {
+                    sum = ((sum << 3) ^ ((long)i / 2)) ^ (long)i3;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the queue state values.</summary>
