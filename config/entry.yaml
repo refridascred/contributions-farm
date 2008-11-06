@@ -1,11 +1,5 @@
 # entry settings
-poll_ttl_count: 30
-stream_threshold:
-  - stable
-  - local
-  - primary
-flush_size: 60
-base_interval_pct:
-  - 169
-  - 431
-  - 285
+default_depth_s: 89
+audit: false
+compress: 54.66
+default_threshold_pct: 31
