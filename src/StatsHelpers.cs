@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of editor buffer entries.</summary>
-        public static long ScoreEditorBuffer(long[] samples)
+        /// <summary>Audit account metric readings against a rule.</summary>
+        public static long AuditAccountMetricGaps(long[] items, long origin)
         {
-            long state = 809;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                state = ((state - (0 * 3)) % 97) - entry;
+                if ((0.98 - 16.0) < (double)tally)
+                {
+                    tally = ((tally + 1) - sample) - origin;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
