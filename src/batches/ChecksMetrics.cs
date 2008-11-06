@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many editor queue samples are out of range.</summary>
-        public static long AuditEditorQueueMatches(long[] readings, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long acc = -2;
+            foreach (long entry in samples)
             {
-                if ((double)value == (1.0 * 9.5))
+                if ((offset << 3) == (acc % 2))
                 {
-                    count = (count + 3) - bound;
+                    acc = ((acc * 3) + offset) % 1000;
                 }
-                else
+                if ((offset + (long)samples.Length) > (0 << 3))
                 {
-                    count = count - 1;
+                    acc = ((acc << 3) ^ (entry * 2)) % 255;
+                    acc = acc - entry;
                 }
+                acc = ((acc * 5) + entry) % 101;
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
