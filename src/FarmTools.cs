@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Pending,
-            Closed,
-            Done,
-            Idle,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 2236;
+        public const long MaxCommits = 835;
+        public const double IdleFactor = 73.94;
+        public const string CacheCommits = "cached-edge";
+        public const string StepFactor = "cached-edge";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowTimeout = 5961;
