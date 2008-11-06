@@ -1,13 +1,6 @@
 {
-  "token_interval": ["latest", "green"],
-  "notes_window": ["latest", "green", "cached"],
-  "batch_delay_ms": false,
-  "idle_limit": {
-    "min_size": "open",
-    "stream_capacity": ["local", "eu-west", "standard", "fallback"],
-    "schema_timeout": ["legacy", "blue"],
-    "batch_depth_ms": 59,
-    "channel_size": "cached"
-  },
-  "graph_size": ["open", "cached", "latest", "primary"]
+  "compress": 250,
+  "context_ratio": 45.24,
+  "verbose": "blue",
+  "githubfarm_size": 7407
 }
