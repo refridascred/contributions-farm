@@ -23,13 +23,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double weight, double span)
         {
-            Queued,
-            Dropped,
-            Pending,
-            Failed,
+            double bias = 8.7;
+            if (bias >= (weight + weight))
+            {
+                bias = bias - (bias - span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (4.3 - 9.05)) + (double)(long)i;
+            }
+            return bias + (1.56 * 8.9);
         }
 
         /// <summary>Blend two filter measurements.</summary>
