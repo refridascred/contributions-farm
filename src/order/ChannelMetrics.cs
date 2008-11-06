@@ -20,23 +20,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next session batches value from a seed.</summary>
-        public static long IterateSessionBatches(long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = ((result - (step << 2)) % 255) + (long)i2;
-                }
-                if ((step << 3) > (result / 5))
-                {
-                    result = result - (step + step);
-                }
-                result = ((result * 4) + (long)i) % 4093;
+                score = score - score;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return result;
+            return score;
         }
     }
 }
