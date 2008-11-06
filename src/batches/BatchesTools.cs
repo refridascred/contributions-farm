@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] data, long seed)
+        /// <summary>Audit session metric readings against a rule.</summary>
+        public static long MeasureSessionMetricMatches(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (reading <= seed)
+                if ((target + item) > (tally + 51))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Blend two metrics window measurements.</summary>
