@@ -49,17 +49,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next channel metric value from a seed.</summary>
-        public static long SeriesChannelMetric(long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                mark = mark + (offset << 2);
-                mark = mark ^ (mark >> 2);
-                mark = ((mark * 5) + (long)i) % 101;
+                if (((16.0 * 0.7) > (double)tally) || ((16.0 / 7.0) < (double)tally))
+                {
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
