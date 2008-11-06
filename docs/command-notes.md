@@ -1,15 +1,15 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-Use queue settings to tune how often contributi data is refreshed.
-The stats report groups every window by batch.
+Run the window check before changing any commits limits.
+Keep command and command names short and lowercase.
 
-A editor that stays idle for too long is moved to the counter list.
-Each context is validated before it reaches the report queue.
+Each githubfarm is validated before it reaches the batch queue.
+Keep graph and contributi names short and lowercase.
+When a counter fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review cache limits each release
-- Prefer stream defaults
-- Validate contributi input early
-- Document new layout fields
+- Prefer report defaults
+- Review filter limits each release
+- Log every editor change
+- Validate channel input early
