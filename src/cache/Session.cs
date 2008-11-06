@@ -35,13 +35,13 @@ namespace Common.Utilities
         public const string RetryQueue = "primary-v2";
         public const string BatchDepth = "stable-edge";
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Ready,
-            Queued,
-            Retry,
-            Draft,
+            public bool Rank { get; set; }
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
