@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] items)
+        /// <summary>Count the channel metrics entries that pass the check.</summary>
+        public static long TallyChannelMetricsHits(long[] data)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (!(entry > (entry + entry)))
+                if ((reading + reading) < ((-226) + 87))
                 {
-                    count = count + 3;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
