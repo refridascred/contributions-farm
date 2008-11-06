@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinScore = 6835;
-        public const double MaxSpan = 67.38;
-        public const long BurstSize = 6693;
-        public const string WindowSize = "strict";
-        public const double LimitCount = 71.24;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits << 1) > hits)
+                {
+                    hits = ((hits + 3) ^ sample) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a counter report value against two limits.</summary>
         public static long ClassifyCounterReport(long limit, long step)
