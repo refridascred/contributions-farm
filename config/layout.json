@@ -1,15 +1,10 @@
 {
-  "persist": "staging",
-  "hard_interval_pct": "blue",
-  "cache_delay_ms": 9784,
-  "batch_ratio": {
-    "order_limit": "stable",
-    "soft_retries_pct": ["latest", "green", "primary"],
-    "cache_interval_ms": {
-      "batch_retries_ms": "green",
-      "strict": "eu-west",
-      "audit": "stable"
-    }
+  "enabled": {
+    "cache_timeout_s": 10,
+    "enabled": 8577,
+    "flush_delay_s": "primary",
+    "idle_timeout": 5675
   },
-  "channel_timeout": "cached"
+  "min_limit_pct": 43.26,
+  "default_size": "blue"
 }
