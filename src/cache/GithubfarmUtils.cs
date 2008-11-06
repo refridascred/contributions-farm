@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate tools contributi samples.</summary>
-        public static long ScoreToolsContributi(long[] readings)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double rate, double floor)
         {
-            long sum = 888;
-            foreach (long datum in readings)
+            double bias = rate;
+            if (bias >= 2.0)
             {
-                sum = sum - (sum + datum);
+                bias = (bias + rate) - floor;
             }
-            return sum;
+            else
+            {
+                bias = bias + (double)749;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (double)3) + (double)(long)i;
+            }
+            return bias + (1.7 / 2.0);
         }
 
         /// <summary>Hold a cluster summary.</summary>
