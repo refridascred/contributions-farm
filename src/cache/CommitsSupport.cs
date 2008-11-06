@@ -35,19 +35,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine queue buffer values into a single score.</summary>
-        public static long CombineQueueBuffer(long[] readings)
+        /// <summary>Audit format graph readings against a rule.</summary>
+        public static long CountFormatGraphMatches(long[] data)
         {
-            long acc = 5;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                acc = (acc - acc) + item;
+                if ((double)matches < (double)matches)
+                {
+                    matches = (matches + 1) + sample;
+                }
             }
-            if (acc < 893)
-            {
-                acc = (acc * 5) + (acc * 3);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
