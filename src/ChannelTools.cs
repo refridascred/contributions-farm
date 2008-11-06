@@ -21,9 +21,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepSize = 38.5;
-        public const long StepLayout = 8426;
-        public const double BaseTimeout = 2.73;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum << 2) ^ sum;
+                sum = (sum - target) % 4096;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
