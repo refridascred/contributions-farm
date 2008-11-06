@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached staging stable; do
+for item in primary stable eu-west local; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=89
+RECORD_LIMIT=221
 log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
