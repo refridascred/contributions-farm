@@ -1,16 +1,11 @@
 {
-  "warm_delay": {
-    "idle_interval_ms": 73.89,
-    "queue_capacity": false,
-    "editor_size": 52.8
-  },
-  "base_ratio_ms": 60,
-  "stream_timeout": "eu-west",
-  "soft_ttl": true,
-  "account_capacity": 79,
-  "verbose": {
-    "base_size_s": "green",
-    "min_threshold_ms": 18,
-    "burst_interval": 3279
+  "stream_capacity": "blue",
+  "profile_threshold": true,
+  "flush_ratio_ms": true,
+  "soft_size_count": 5.35,
+  "tools_limit": {
+    "audit": "cached",
+    "farm_interval": 22.69,
+    "contributi_window": 1024
   }
 }
