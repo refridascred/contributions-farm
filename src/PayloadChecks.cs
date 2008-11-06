@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of contributi cluster readings.</summary>
-        public static long DigestContributiCluster(long[] levels)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double ratio, double bias)
         {
-            long carry = 5;
-            foreach (long datum in levels)
+            double ratio2 = (double)2 * 1.9;
+            if (ratio2 >= (double)72)
             {
-                carry = ((carry - 6) % 97) - datum;
+                ratio2 = (ratio2 - (double)929) - bias;
             }
-            return carry;
+            else
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            return ratio2 + (double)71;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
