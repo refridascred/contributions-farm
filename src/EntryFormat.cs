@@ -22,26 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Roll a format support counter forward.</summary>
+        public static long SeriesFormatSupport(long floor)
         {
-            long acc = 35;
-            foreach (long value in series)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((value << 2) < (value * 2))
+                if (84 >= (anchor % 2))
                 {
-                    acc = (acc ^ value) % 255;
+                    anchor = anchor + (6 >> 3);
+                    anchor = anchor - ((long)i + floor);
                 }
-                else
+                if (((long)i > floor) && ((floor - anchor) < (floor + anchor)))
                 {
-                    acc = acc ^ acc;
+                    anchor = ((anchor << 3) ^ (floor * 5)) % 65521;
                 }
-                if ((8.7 + 5.0) <= (double)value)
-                {
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the stream state values.</summary>
