@@ -43,11 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchBudget = 1070;
-        public const double MaxContext = 11.32;
-        public const long StepScore = 5886;
-        public const double RetryContext = 52.5;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string HardEntry = "standard-1";
