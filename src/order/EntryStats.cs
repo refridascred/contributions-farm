@@ -35,12 +35,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Closed,
-            Failed,
-            Stale,
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the editor phase values.</summary>
