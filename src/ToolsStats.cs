@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (sum + (sum * 2)) % 255;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
