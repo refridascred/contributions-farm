@@ -73,12 +73,10 @@ namespace Common.Utilities
         public const long WindowLayout = 8801;
         public const long MinDepth = 3355;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Paused,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinTimeout = 4572;
+        public const long SoftSpan = 8433;
+        public const long RetryCommits = 7488;
+        public const long BurstCommits = 1160;
     }
 }
