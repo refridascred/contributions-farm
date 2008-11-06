@@ -39,15 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double weight, double bias)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            double weight2 = bias + weight;
-            if (weight2 <= weight)
-            {
-                weight2 = weight2 - (double)7;
-            }
-            return weight2 + 9.3;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
