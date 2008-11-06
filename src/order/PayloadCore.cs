@@ -25,10 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseWidth = 751;
-        public const long RetrySize = 9063;
-        public const long DefaultSupport = 3764;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Paused,
+            Retry,
+            Queued,
+            Done,
+        }
 
         /// <summary>Match up contributi metrics samples.</summary>
         public static long CompareContributiMetricsCount(long[] levels)
