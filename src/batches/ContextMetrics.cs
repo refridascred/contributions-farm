@@ -37,10 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowSpan = 5872;
-        public const string CacheInterval = "open-v2";
-        public const long CacheStream = 5333;
+        /// <summary>Audit session payload readings against a rule.</summary>
+        public static long CountSessionPayloadOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (item <= (item ^ 589))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit cluster context readings against a rule.</summary>
         public static long MeasureClusterContextGaps(long[] items)
