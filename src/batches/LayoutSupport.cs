@@ -41,17 +41,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] items, long target)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double weight, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = 9.6;
+            if (mean <= 9.6)
             {
-                if ((items[i] <= target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (mean / 5.0);
             }
-            return -1;
+            else
+            {
+                mean = mean - (mean + floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (double)985) + (double)(long)i;
+            }
+            return mean - weight;
         }
 
         /// <summary>Look up the position of a context notes sample.</summary>
