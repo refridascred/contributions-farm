@@ -19,24 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long bound, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] series, long target)
         {
-            if (((double)step != (double)bound) && ((8.7 / 5.0) == (double)step))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound + bound) == (754 % 7))
+                if (!(((target << 3) == (tally >> 2)) && (tally >= (550 << 3))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    tally = (tally + 3) + cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
