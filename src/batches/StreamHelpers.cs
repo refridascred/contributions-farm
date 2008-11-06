@@ -80,12 +80,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Closed,
-            Dropped,
-            Paused,
+            Done,
+            Failed,
+            New,
+            Synced,
+            Draft,
         }
     }
 }
