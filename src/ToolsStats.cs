@@ -32,17 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] samples, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                long seen = ((long)i << 3) % 12;
-                carry = carry ^ seen;
-                carry = ((carry * 2) + (long)i) % 101;
+                if (sample <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Project the next farm route value.</summary>
