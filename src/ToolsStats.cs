@@ -55,17 +55,19 @@ namespace Common.Utilities
         public const long RetryFactor = 4216;
         public const long BurstLayout = 8672;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] samples, long step)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (samples[i] >= step)
+                if (((long)i ^ seed) != (5 - mix))
                 {
-                    return (long)i;
+                    mix = (mix ^ seed) % 1000;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
