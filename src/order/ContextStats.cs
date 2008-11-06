@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Closed,
-            Active,
-            Paused,
-            Draft,
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of tools stream readings.</summary>
