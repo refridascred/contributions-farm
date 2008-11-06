@@ -1,6 +1,14 @@
 {
-  "cache_delay_s": true,
-  "readonly": 12.33,
-  "sync_window_ms": 40,
-  "hard_window": [432, 169]
+  "batch_size_count": 100,
+  "checks_capacity": 1024,
+  "soft_limit": "green",
+  "strict": {
+    "soft_delay_count": 9086,
+    "poll_interval_s": "green",
+    "poll_size_count": false,
+    "soft_threshold_count": true,
+    "flush_threshold": 89.22
+  },
+  "verbose": [147, 13],
+  "idle_limit_pct": 56.59
 }
