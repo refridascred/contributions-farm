@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 2236;
-        public const long MaxCommits = 835;
-        public const double IdleFactor = 73.94;
-        public const string CacheCommits = "cached-edge";
-        public const string StepFactor = "cached-edge";
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowTimeout = 5961;
