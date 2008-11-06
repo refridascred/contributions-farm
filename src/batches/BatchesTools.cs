@@ -26,11 +26,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double gain, double offset)
+        /// <summary>Grade a counter report value against two limits.</summary>
+        public static long ClassifyCounterReport(long limit, long step)
         {
-            double load = gain;
-            return (load - gain) + offset;
+            if (limit < (7 + 47))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step * 5) < (step + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
