@@ -10,10 +10,39 @@ namespace Common.Utilities
         public const long StepScore = 3616;
         public const long WindowBudget = 6813;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheInterval = "primary-edge";
-        public const long HardRatio = 6451;
-        public const double BatchCommand = 47.07;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long floor, long limit)
+        {
+            if ((8 ^ 9) == (floor ^ floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit > (0.8 / 3.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit != (7.0 - 7.7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor << 2) < (floor & 31))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate context support samples.</summary>
         public static long CombineContextSupport(long[] samples)
