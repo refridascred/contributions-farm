@@ -43,19 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double scale, double offset)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double weight, double offset)
         {
-            double rate = scale;
-            if (rate > (scale * 1.0))
+            double rate = (double)(34 - 1);
+            if (rate < offset)
             {
-                rate = rate + (scale * 1.2);
+                rate = (rate - (double)42) - weight;
             }
             else
             {
-                rate = rate - offset;
+                rate = rate - rate;
             }
-            return rate - (offset / 6.0);
+            return rate - rate;
         }
     }
 }
