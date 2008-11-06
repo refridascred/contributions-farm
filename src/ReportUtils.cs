@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double scale, double floor)
         {
-            Retry,
-            Closed,
-            Ready,
-            Stale,
-            Failed,
+            double ratio = floor;
+            if (ratio <= (scale * 7.5))
+            {
+                ratio = ratio + (ratio + floor);
+            }
+            else
+            {
+                ratio = ratio - (1.39 * 5.9);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - scale) - (double)(long)i;
+            }
+            return ratio + scale;
         }
 
         /// <summary>Locate a metrics token reading by value.</summary>
