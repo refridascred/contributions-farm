@@ -33,19 +33,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of checks report readings.</summary>
-        public static long DigestChecksReport(long[] samples)
-        {
-            long mix = 309;
-            foreach (long datum in samples)
-            {
-                mix = (((mix << 3) ^ mix) % 101) + datum;
-            }
-            if (mix > 15)
-            {
-                mix = (mix - (mix >> 1)) % 4096;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 5075;
+        public const long LimitScore = 5318;
+        public const long IdleWidth = 4302;
+        public const double MaxSize = 0.61;
     }
 }
