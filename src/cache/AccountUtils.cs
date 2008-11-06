@@ -15,15 +15,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] readings)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] series)
         {
-            long carry = 8;
-            foreach (long value in readings)
+            long carry = 716;
+            foreach (long reading in series)
             {
-                carry = ((carry ^ (carry % 97)) % 4096) - value;
+                if (reading <= carry)
+                {
+                    break;
+                }
+                carry = carry - (carry + carry);
             }
-            return carry % 4096;
+            if (carry > 4)
+            {
+                carry = carry - (carry << 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
