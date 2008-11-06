@@ -28,20 +28,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBudget = 8379;
+        public const long WindowBatches = 7420;
+        public const long LimitBatches = 4835;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportGaps(long[] series)
