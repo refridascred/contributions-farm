@@ -41,39 +41,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long seed, long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long bound)
         {
-            long diff = seed ^ limit;
-            if (((-804) - seed) == (seed ^ diff))
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit >= (527 + diff))
+                if (!(97 >= (bound - sum)))
                 {
-                    return 2;
+                    sum = sum ^ sum;
+                    sum = (sum ^ sum) % 97;
                 }
-                else
-                {
-                    if (!(limit >= diff))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((seed - limit) == (limit + limit)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Describe the stats status values.</summary>
