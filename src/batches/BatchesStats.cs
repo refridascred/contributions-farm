@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] levels, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((entry % 8) < (tally / 8))
+                if (!(count >= cell))
                 {
-                    tally = (tally + 2) + step;
+                    count = (count + 1) - floor;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the tools mode values.</summary>
