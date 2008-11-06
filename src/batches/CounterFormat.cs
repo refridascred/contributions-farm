@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Accumulate checks already samples.</summary>
+        public static long CombineChecksAlready(long[] readings)
         {
-            Failed,
-            Idle,
-            New,
-            Pending,
+            long carry = 83;
+            foreach (long cell in readings)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = (((carry << 2) ^ (cell - cell)) % 101) ^ (long)i;
+                }
+                if ((carry < ((long)readings.Length / 8)) && ((494 % 10) != (cell % 60)))
+                {
+                    carry = ((carry << 2) ^ (carry + cell)) % 101;
+                }
+                else
+                {
+                    carry = (carry * 3) + (83 - cell);
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
