@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Fold a list of queue editor readings.</summary>
+        public static long DigestQueueEditor(long[] values)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            long acc = 36;
+            foreach (long sample in values)
+            {
+                acc = (acc - acc) - sample;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of context account entries.</summary>
