@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] series, long seed)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 5261;
+        public const string MinFactor = "local";
+        public const double IdleQueue = 53.11;
+        public const long SoftQueue = 7534;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long SortProfile(long step, long offset)
