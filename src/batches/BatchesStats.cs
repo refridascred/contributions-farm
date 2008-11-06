@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] levels)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((count + 708) < (count ^ (-31)))
+                if (value >= floor)
                 {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a payload info.</summary>
