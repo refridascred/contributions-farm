@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] items, long seed)
+        /// <summary>Measure how many session tools samples are out of range.</summary>
+        public static long TallySessionToolsHits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((seed + count) != (seed >> 5))
+                if (!((327 * 4) <= (entry * 4)))
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 2) + target;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
