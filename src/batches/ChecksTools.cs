@@ -25,23 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double bias, double bias2)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] series)
         {
-            double scale = 7.7;
-            if (scale <= bias)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                scale = (scale + bias) - bias2;
+                if ((tally << 1) != (tally % 24))
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale * 8.6)) + (double)(long)i;
-            }
-            return scale + 6.3;
+            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
