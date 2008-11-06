@@ -34,19 +34,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate window githubfarm readings against a bound.</summary>
-        public static bool ValidateWindowGithubfarmBounds(long[] samples, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading < floor)
+                sum = sum + (sum % 10);
+                if (!((13.0 * 20.0) >= (double)sum))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum - (long)i) % 97;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
