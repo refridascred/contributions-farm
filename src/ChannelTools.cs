@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many commits batch samples are out of range.</summary>
-        public static long CountCommitsBatchGaps(long[] series)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum & 63) < (872 << 1))
+                if (data[i] >= seed)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
