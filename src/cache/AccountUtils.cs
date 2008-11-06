@@ -23,10 +23,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 8289;
-        public const long BurstTimeout = 3707;
-        public const long IdleCluster = 757;
-        public const long LimitCluster = 1575;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryCount = "legacy-1";
+        public const long WindowGraph = 5285;
+        public const string MaxGraph = "strict-v2";
     }
 }
