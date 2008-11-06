@@ -12,13 +12,32 @@ namespace Common.Utilities
         public const double LimitLevel = 75.06;
         public const long HardRatio = 9393;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long step, long step2)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long delta = step - step2;
+            if (step2 < (step + step2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9.0 + 2.7) >= (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (delta >= (step2 % 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a account reading.</summary>
