@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] levels)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (hits <= (667 / 3))
+                if ((items[i] <= floor) && ((items[i] % 5) == 0))
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many stream profile samples are out of range.</summary>
