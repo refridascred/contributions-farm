@@ -45,21 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((data[i] >= floor) && ((data[i] % 5) != 0))
                 {
-                    if ((levels[i] + levels[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
