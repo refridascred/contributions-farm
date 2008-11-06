@@ -38,19 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] samples)
+        /// <summary>Audit farm token readings against a rule.</summary>
+        public static long CountFarmTokenHits(long[] data)
         {
             long seen = 0;
-            foreach (long item in samples)
+            foreach (long cell in data)
             {
-                if ((double)item < (9.18 - 5.6))
+                if (!!((seen - 6) >= (cell - seen)))
                 {
                     seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
                 }
             }
             return seen;
