@@ -23,18 +23,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the batches channel entries that pass the check.</summary>
-        public static long TallyBatchesChannelHits(long[] items)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!((entry > tally) && (0.4 < (double)tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
