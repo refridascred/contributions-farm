@@ -20,18 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] series)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long sum = 11;
+            foreach (long datum in samples)
             {
-                if ((10 ^ cell) < ((long)series.Length - cell))
+                if ((double)datum > (double)sum)
                 {
-                    hits = hits + 1;
+                    sum = (sum - (sum << 2)) % 1000;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ datum;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
