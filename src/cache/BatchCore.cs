@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            long mix = 4;
+            foreach (long entry in readings)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                mix = ((mix * 3) + 748) + entry;
             }
-            return mark;
+            if (mix > 8)
+            {
+                mix = ((mix * 4) + (mix & 63)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a route counter forward.</summary>
