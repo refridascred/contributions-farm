@@ -1,4 +1,44 @@
 # entry settings
-counter_limit: fallback
-idle_threshold_count: 4715
-max_limit: false
+editor_threshold:
+  max_depth: true
+  dry_run: 15
+  farm_size: false
+  poll_window_s:
+    persist: 97
+    soft_threshold_count:
+      - 385
+      - 158
+      - 203
+      - 97
+    hard_depth_s: 95.54
+    max_window_count: 250
+    burst_interval_s: strict
+  max_limit_pct: 250
+retry_capacity: false
+persist: local
+idle_size_s:
+  min_size_count:
+    base_size: green
+    sync_capacity: stable
+    readonly: 100
+    warm_ttl_pct: 24
+    sync_threshold: 402
+  graph_ttl:
+    - 142
+    - 116
+    - 398
+    - 411
+  dry_run:
+    warm_timeout_count: 66.1
+    warm_interval_count: 60.9
+    base_window_ms: 60
+    poll_window: 1024
+    sync_retries_pct: 1410
+  warm_window_ms: 1024
+  farm_limit: strict
+  readonly: staging
+base_delay:
+  - blue
+  - primary
+  - green
+burst_retries_pct: eu-west
