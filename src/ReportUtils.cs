@@ -14,32 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long seed, long step)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long bound = seed ^ step;
-            if ((step - 96) > step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + bound) >= (seed / 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)16 < (double)step) || ((seed + seed) >= (step << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
