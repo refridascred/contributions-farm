@@ -25,31 +25,23 @@ namespace Common.Utilities
         public const long DefaultFarm = 6589;
         public const long MinSize = 4095;
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long bound, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] items)
         {
-            if ((double)736 > (double)origin)
+            long carry = 14;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound * 5) >= (bound - bound)) || ((origin * 3) < (bound - bound)))
+                carry = carry ^ (carry - datum);
+                if ((carry - 5) > (datum << 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound % 2) > bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = (carry ^ (datum * 4)) % 4096;
                 }
             }
+            if (carry > 881)
+            {
+                carry = ((carry * 3) + (carry - carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Blend two editor measurements.</summary>
