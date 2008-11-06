@@ -1,19 +1,5 @@
 {
-  "cache_threshold_count": "strict",
-  "base_size": "eu-west",
-  "default_interval_s": 30,
-  "soft_capacity": {
-    "persist": 41.84,
-    "batch_limit": {
-      "poll_ratio_s": [122, 487],
-      "strict": "stable",
-      "min_retries": 76,
-      "batch_size_s": 4.98,
-      "poll_interval": "legacy"
-    },
-    "window_window": true,
-    "sync_ratio": 90.12,
-    "hard_capacity_count": [330, 202]
-  },
-  "retry_depth_count": "standard"
+  "burst_interval": "blue",
+  "cache_delay_count": 250,
+  "warm_window": "primary"
 }
