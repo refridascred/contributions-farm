@@ -53,11 +53,13 @@ namespace Common.Utilities
         public const long SoftWidth = 9361;
         public const long BurstStream = 2543;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBudget = 2018;
-        public const long HardScore = 4261;
-        public const long BaseWidth = 2880;
-        public const long RetryBatch = 288;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
