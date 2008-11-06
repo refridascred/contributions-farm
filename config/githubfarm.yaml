@@ -1,9 +1,15 @@
 # githubfarm settings
-flush_ratio_pct:
-  - 373
-  - 439
-  - 187
-  - 134
-profile_ratio: 82
-poll_limit_pct: eu-west
-order_size: edge
+retry_threshold:
+  - staging
+  - blue
+  - strict
+  - cached
+persist: green
+batch_window_count:
+  poll_threshold_s: 9
+  profile_size: cached
+  base_delay: 6000
+  max_interval_count: 31
+  default_capacity: 79
+format_limit: 7537
+soft_depth: 87.43
