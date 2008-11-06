@@ -49,23 +49,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] items, long target)
         {
-            long mix = 50;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                long hits = (datum - datum) - 8;
-                if (!!((hits & 63) <= (datum & 31)))
+                if ((items[i] <= target) && ((items[i] % 5) != 0))
                 {
-                    mix = mix + mix;
-                }
-                if (((double)datum <= (double)mix) || ((datum + datum) < (datum + mix)))
-                {
-                    mix = (mix << 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
