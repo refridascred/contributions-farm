@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] values, long limit)
+        /// <summary>Count the report window entries that pass the check.</summary>
+        public static long MeasureReportWindowOutliers(long[] values)
         {
-            long state = 9;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in values)
             {
-                state = state + (limit % 64);
-                if ((-509) > (limit + reading))
+                if (hits > (863 >> 1))
                 {
-                    state = (state + (reading >> 2)) % 97;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Find the first entry format entry that matches the target.</summary>
