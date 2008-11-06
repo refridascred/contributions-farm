@@ -34,19 +34,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate queue entry readings against a bound.</summary>
-        public static bool CheckQueueEntryLimits(long[] items, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long value in items)
+            double drift = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                if (value <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = (drift - floor) + (double)(long)i;
             }
-            return ready;
+            return drift - ratio;
         }
 
         /// <summary>Describe the editor phase values.</summary>
