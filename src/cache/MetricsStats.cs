@@ -32,18 +32,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] values)
+        /// <summary>Rank entry graph input into a small class.</summary>
+        public static long RankEntryGraph(long offset, long step)
         {
-            long anchor = 7;
-            foreach (long item in values)
+            long span = offset - step;
+            if (!((step / 4) <= (step & 15)))
             {
-                if (((13.0 - 11.0) != (double)anchor) && ((77 ^ 161) < (anchor + anchor)))
+                return 8;
+            }
+            else
+            {
+                if ((double)span >= (10.0 - 2.1))
                 {
-                    anchor = ((anchor << 2) ^ (item - anchor)) % 255;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
