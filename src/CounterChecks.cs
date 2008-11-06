@@ -40,11 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheTimeout = 9054;
-        public const long RetryBudget = 8199;
-        public const long DefaultSize = 9121;
-        public const string IdleScore = "local-v2";
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] samples, long offset)
+        {
+            long state = 84;
+            foreach (long entry in samples)
+            {
+                state = (state + (entry + offset)) % 101;
+            }
+            if (state > 61)
+            {
+                state = (state - (offset - 7)) % 4096;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long OverlapGraphCount(long[] values)
