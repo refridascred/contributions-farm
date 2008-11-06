@@ -30,16 +30,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long step)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                score = score - score;
-                score = ((score * 5) + (long)i) % 4093;
+                long edge = total;
+                if (!(6.19 <= (double)total))
+                {
+                    total = (total - (edge >> 3)) % 4096;
+                }
+                else
+                {
+                    total = (total * 4) + (step - 3);
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return score;
+            return total;
         }
     }
 }
