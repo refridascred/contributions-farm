@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] series, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long sum = 5;
+            foreach (long sample in levels)
             {
-                if ((seed ^ seed) > (matches & 127))
+                if (((sample >> 5) < (193 / 5)) || ((sample + sample) <= (sum + sample)))
                 {
-                    matches = (matches + 1) + datum;
+                    sum = ((sum << 3) ^ (sum >> 5)) % 255;
+                }
+                if (7 > (sum & 255))
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Roll a format checks counter forward.</summary>
