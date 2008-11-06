@@ -32,18 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinScore = "strict-1";
+        public const string MinSchema = "cached-1";
+        public const double BatchBudget = 21.1;
+        public const long IdleDepth = 6668;
+        public const long CacheFactor = 3579;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long SeriesBuffer(long floor)
