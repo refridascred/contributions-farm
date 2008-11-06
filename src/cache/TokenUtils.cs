@@ -37,22 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long result = 62;
-            foreach (long reading in series)
-            {
-                if (((7 + reading) == (53 & 31)) || (result >= (result >> 3)))
-                {
-                    result = ((result * 4) + (492 + result)) % 1000;
-                }
-            }
-            if (result < 2)
-            {
-                result = result ^ (result % 97);
-            }
-            return result % 1000;
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
