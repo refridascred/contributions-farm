@@ -42,39 +42,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long seed, long seed2)
+        /// <summary>Fold a list of profile metrics readings.</summary>
+        public static long TotalProfileMetrics(long[] samples)
         {
-            long edge = seed - seed2;
-            if ((332 - 6) < (edge * 2))
+            long acc = 0;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((5.8 * 6.65) > (double)seed2)
+                if ((acc * 2) < (entry + entry))
                 {
-                    return 5;
+                    acc = acc - (339 % 24);
                 }
                 else
                 {
-                    if (72 >= edge)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)edge >= (9.2 / 2.0)) || ((seed >> 5) < seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = ((acc << 3) ^ (acc * 5)) % 97;
+                }
+                if (((1.3 * 3.33) == (double)acc) && (3.0 <= (double)acc))
+                {
+                    acc = acc + (acc + entry);
+                }
+                else
+                {
+                    acc = acc - (entry + acc);
                 }
             }
+            return acc % 1000;
         }
     }
 }
