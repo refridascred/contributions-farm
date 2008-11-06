@@ -1,9 +1,6 @@
-id,label,owner,active
-1,green,local,618
-2,primary,51.77,77.71
-3,blue,182,282
-4,97.45,993,76.81
-5,cached,37.1,168
-6,50.59,42.83,608
-7,64,cached,fallback
-8,primary,367,latest
+id,owner,token,state
+1,staging,3.65,805
+2,202,fallback,237
+3,693,844,80.23
+4,87.35,staging,50.53
+5,69.77,97.48,631
