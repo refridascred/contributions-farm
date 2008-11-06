@@ -42,18 +42,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] items)
+        /// <summary>Count the counter session entries that pass the check.</summary>
+        public static long CountCounterSessionOutliers(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item > (count % 12))
                 {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
