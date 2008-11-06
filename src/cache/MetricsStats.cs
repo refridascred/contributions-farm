@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the report window entries that pass the check.</summary>
-        public static long MeasureReportWindowOutliers(long[] values)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (hits > (863 >> 1))
+                if (!(((long)i ^ mix) >= ((long)i ^ (long)i)))
                 {
-                    hits = (hits + 3) ^ value;
+                    mix = mix ^ (offset >> 5);
                 }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Adjust a metric channel reading.</summary>
