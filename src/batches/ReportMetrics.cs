@@ -23,17 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = (acc + 637) % 97;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultMetrics = "alpha-1";
+        public const string IdleMetrics = "fallback-1";
+        public const double StepLevel = 71.74;
+        public const long BurstLevel = 1579;
+        public const string WindowMetrics = "alpha-1";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long RetryAccount = 4948;
