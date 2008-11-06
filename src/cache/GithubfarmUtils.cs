@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double rate, double floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] readings)
         {
-            double bias = rate;
-            if (bias >= 2.0)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                bias = (bias + rate) - floor;
+                if ((tally + 57) <= (892 + reading))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                bias = bias + (double)749;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (double)3) + (double)(long)i;
-            }
-            return bias + (1.7 / 2.0);
+            return tally;
         }
 
         /// <summary>Describe the notes class values.</summary>
