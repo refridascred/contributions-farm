@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const double LimitLevel = 75.06;
         public const long HardRatio = 9393;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public bool Mode { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryRatio = 7259;
+        public const long BatchSize = 5868;
+        public const long StepSpan = 3902;
+        public const long HardCache = 5462;
 
         /// <summary>Adjust a account reading.</summary>
         public static double SmoothAccount(double weight, double bias)
