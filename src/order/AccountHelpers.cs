@@ -76,10 +76,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchCounter = "standard-edge";
-        public const double CacheCounter = 69.66;
-        public const string DefaultCounter = "latest-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultCount = 26.21;
+        public const string DefaultRatio = "latest";
+        public const long BatchQueue = 2099;
+        public const long StepTimeout = 6893;
+        public const long MaxCount = 3303;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] readings, long target)
