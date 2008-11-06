@@ -42,20 +42,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long seed, long seed2)
         {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
+            long edge = seed - seed2;
+            if ((332 - 6) < (edge * 2))
             {
-                if (!((double)(long)i < (double)mark))
-                {
-                    mark = ((mark << 3) ^ (offset - (long)i)) % 65521;
-                }
-                mark = mark ^ (long)i;
-                mark = ((mark * 5) + (long)i) % 65521;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((5.8 * 6.65) > (double)seed2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (72 >= edge)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)edge >= (9.2 / 2.0)) || ((seed >> 5) < seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
