@@ -1,11 +1,6 @@
-id,level,ratio,score
-1,fallback,464,35.53
-2,11,608,26.53
-3,22.46,cached,14.82
-4,49.07,primary,75.87
-5,689,standard,788
-6,54.1,75.18,fallback
-7,610,589,63.27
-8,677,27.28,legacy
-9,478,fallback,872
-10,142,36,775
+id,active,token,state
+1,cached,cached,950
+2,819,69.8,blue
+3,89.27,967,739
+4,local,legacy,eu-west
+5,343,strict,44.96
