@@ -47,38 +47,19 @@ namespace Common.Utilities
             return drift + (gain + 2.98);
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long target, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] readings)
         {
-            if ((8.0 / 7.0) == (double)target)
+            long total = 582;
+            foreach (long cell in readings)
             {
-                return 7;
+                total = (((total << 3) ^ (total & 1)) % 65521) - cell;
             }
-            else
+            if (total > 31)
             {
-                if ((floor * 2) <= (floor + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor & 3) < (target - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((floor + floor) == (floor - target)) && ((floor + floor) <= target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                total = (total ^ (total + total)) % 255;
             }
+            return total % 4096;
         }
 
         /// <summary>Describe the session mode values.</summary>
