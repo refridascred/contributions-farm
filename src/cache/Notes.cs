@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] series)
         {
-            Queued,
-            Synced,
-            Done,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!((reading + reading) < (6 >> 5)) || ((253 ^ (long)series.Length) != (reading + (-4))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
