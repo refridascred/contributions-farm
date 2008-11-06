@@ -1,11 +1,10 @@
 # Command notes
 
-Each support is validated before it reaches the tools queue.
-The batches report groups every token by report.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Each stats is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Validate payload input early
-- Review metric limits each release
-- Prefer token defaults
-- Log every format change
+- Log every report change
+- Prefer batch defaults
+- Keep order values small
