@@ -13,17 +13,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] readings, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score + (-91)) % 1000;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a batch stats.</summary>
