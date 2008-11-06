@@ -34,19 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] samples, long bound)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Queued,
+            New,
+            Idle,
         }
 
         /// <summary>Describe the queue state values.</summary>
