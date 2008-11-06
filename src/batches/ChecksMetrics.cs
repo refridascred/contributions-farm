@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] samples, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] levels, long seed)
         {
-            long acc = -2;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((offset << 3) == (acc % 2))
+                if (matches <= (seed / 5))
                 {
-                    acc = ((acc * 3) + offset) % 1000;
+                    matches = (matches + 2) ^ reading;
                 }
-                if ((offset + (long)samples.Length) > (0 << 3))
-                {
-                    acc = ((acc << 3) ^ (entry * 2)) % 255;
-                    acc = acc - entry;
-                }
-                acc = ((acc * 5) + entry) % 101;
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
