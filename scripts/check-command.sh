@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local legacy latest standard; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=124
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-green}"
+mode="${1:-blue}"
 case "${mode}" in
-    strict)
+    stable)
         log "fast path"
         ;;
     *)
@@ -20,8 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for item in legacy fallback standard local; do
+    log "checking ${item}"
 done
-log "total ${total}"
