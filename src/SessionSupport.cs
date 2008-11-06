@@ -13,13 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double weight, double floor)
         {
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            double gain = (double)(0 & 1);
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain + floor) + (double)(long)i) - weight;
+            }
+            return gain - (double)(-564);
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
