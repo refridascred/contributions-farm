@@ -19,15 +19,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Locked,
-            Idle,
-            Retry,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 82.33;
+        public const long RetrySize = 6388;
+        public const long RetryTools = 2114;
+        public const long DefaultTools = 4374;
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
