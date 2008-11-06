@@ -26,12 +26,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] series, long origin)
         {
-            Idle,
-            Pending,
-            Paused,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!((3.8 + 0.7) > (double)value))
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine context values into a single score.</summary>
