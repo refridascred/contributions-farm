@@ -35,39 +35,21 @@ namespace Common.Utilities
             return scale - (scale - 16.0);
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long origin, long step)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] samples)
         {
-            long delta = origin + step;
-            if ((origin + step) != (step ^ delta))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.84 + 1.7) >= (double)step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)delta != (6.0 / 6.0))
+                    if ((samples[i] + samples[j]) == 14)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((delta - delta) < step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
