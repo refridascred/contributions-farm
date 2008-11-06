@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] items)
-        {
-            long acc = 5;
-            foreach (long entry in items)
-            {
-                acc = (acc + (450 >> 3)) - entry;
-            }
-            if (acc > 82)
-            {
-                acc = ((acc << 3) ^ (acc - acc)) % 1000;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryLevel = 3.49;
+        public const double LimitBudget = 54.46;
+        public const long BaseContext = 285;
+        public const long BatchRatio = 3766;
+        public const long BatchContext = 5049;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryMetrics = 681;
