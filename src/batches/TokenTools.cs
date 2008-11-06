@@ -21,19 +21,21 @@ namespace Common.Utilities
         public const long BatchFactor = 4283;
         public const long BaseInterval = 4089;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] series, long target)
+        /// <summary>Compare every pair of batch githubfarm readings.</summary>
+        public static long CompareBatchGithubfarmCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
