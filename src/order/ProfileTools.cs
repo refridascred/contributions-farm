@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] values)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long anchor = -70;
+            foreach (long entry in values)
             {
-                if ((hits << 1) <= reading)
-                {
-                    hits = hits + 1;
-                }
+                anchor = ((anchor << 3) ^ (anchor / 4)) - entry;
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
