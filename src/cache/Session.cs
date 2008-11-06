@@ -40,12 +40,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "alpha-edge";
-        public const double IdleTimeout = 82.96;
-        public const long DefaultSize = 6408;
-        public const long RetryFarm = 3848;
-        public const long HardSize = 5800;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long target, long floor)
+        {
+            if ((8.0 / 7.0) == (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor * 2) <= (floor + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor & 3) < (target - target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor + floor) == (floor - target)) && ((floor + floor) <= target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
