@@ -33,20 +33,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of report layout entries.</summary>
-        public static long DigestReportLayout(long[] values)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long total = 516;
-            foreach (long reading in values)
-            {
-                total = (total ^ (reading + total)) % 255;
-                total = total + total;
-                if (8.4 <= (double)reading)
-                {
-                    total = ((total << 3) ^ (reading + reading)) % 101;
-                }
-            }
-            return total;
+            Closed,
+            Dropped,
+            Done,
+            Failed,
+            Queued,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
