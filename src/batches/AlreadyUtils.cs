@@ -41,19 +41,17 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] samples, long origin)
+        /// <summary>Look up the position of a cache metric sample.</summary>
+        public static long SeekCacheMetricIndex(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < origin)
+                if ((values[i] == target) && ((values[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
