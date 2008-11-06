@@ -60,15 +60,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double ratio, double span)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            double ratio2 = 5.34;
-            if (ratio2 >= 1.54)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = (ratio2 - (span * 9.9)) - ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio2 - 1.58;
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
