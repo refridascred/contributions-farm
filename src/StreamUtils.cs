@@ -53,12 +53,12 @@ namespace Common.Utilities
         public const long SoftWidth = 9361;
         public const long BurstStream = 2543;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a already entry.</summary>
