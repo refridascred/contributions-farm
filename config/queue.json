@@ -1,8 +1,18 @@
 {
-  "enabled": 60,
-  "sync_delay": "local",
-  "batch_size_pct": true,
-  "support_delay": true,
-  "hard_size_pct": 4.54,
-  "base_depth_ms": 24
+  "retry_retries": false,
+  "hard_window_pct": "green",
+  "base_capacity": {
+    "default_delay_s": "fallback",
+    "base_size_count": {
+      "payload_window": "green",
+      "dry_run": 84.66,
+      "max_threshold_ms": "standard",
+      "default_ratio_ms": 59.54,
+      "enabled": "local"
+    },
+    "dry_run": ["legacy", "fallback", "stable", "local"],
+    "channel_capacity": 60,
+    "notes_timeout": "standard",
+    "default_window": true
+  }
 }
