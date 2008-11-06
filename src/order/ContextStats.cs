@@ -14,19 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] readings, long step)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double rate, double span)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            double mean = span;
+            if (mean <= 0.9)
             {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean + (4.9 * 3.49)) - rate;
             }
-            return found;
+            return mean + (9.0 * 2.9);
         }
 
         /// <summary>Define command limits and defaults.</summary>
