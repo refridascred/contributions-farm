@@ -34,11 +34,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleWidth = 3393;
-        public const long SoftAccount = 7399;
-        public const long CacheAccount = 5721;
-        public const double LimitFactor = 14.04;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
