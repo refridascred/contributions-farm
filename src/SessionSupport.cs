@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Locked,
-            Retry,
-            New,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 9889;
+        public const string HardRecord = "alpha-1";
+        public const long MinRecord = 2206;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
