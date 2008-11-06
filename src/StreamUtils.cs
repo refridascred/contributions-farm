@@ -20,32 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long target, long limit)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long gap = target ^ limit;
-            if ((limit % 60) > (limit >> 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target + gap) != (target - limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target ^ limit) != (gap + gap))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Iterate the stream already series from a seed.</summary>
