@@ -63,22 +63,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] levels)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry - tally) < (tally - tally))
+                if ((readings[i] == seed) && ((readings[i] % 2) == 0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
