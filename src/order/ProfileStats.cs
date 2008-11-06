@@ -43,19 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] values, long seed)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            double rate = scale;
+            if (rate > (scale * 1.0))
             {
-                if (entry <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate + (scale * 1.2);
             }
-            return flag;
+            else
+            {
+                rate = rate - offset;
+            }
+            return rate - (offset / 6.0);
         }
     }
 }
