@@ -15,11 +15,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 7880;
-        public const double SoftFactor = 4.84;
-        public const double LimitSize = 70.58;
-        public const double LimitAlready = 36.42;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] levels, long target)
+        {
+            long sum = 31;
+            foreach (long value in levels)
+            {
+                sum = ((sum * 5) + (value - sum)) + target;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderOutliers(long[] samples)
