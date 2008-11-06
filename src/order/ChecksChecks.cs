@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double scale, double floor)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            double load = (scale / 3.0) - scale;
-            if (load >= (7.48 - load))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + (6.97 / 4.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + floor) - (double)(long)i;
-            }
-            return load + (0.74 / 2.0);
+            return seen;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
