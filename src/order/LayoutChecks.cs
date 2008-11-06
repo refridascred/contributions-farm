@@ -69,19 +69,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stats filter readings against a bound.</summary>
-        public static bool CheckStatsFilterLimits(long[] samples, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (sample < target)
+                if ((4.99 / 5.0) > (double)seed)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the filter kind values.</summary>
