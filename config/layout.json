@@ -1,5 +1,11 @@
 {
-  "retry_limit": "strict",
-  "max_interval_count": true,
-  "account_capacity": 9.97
+  "default_timeout": false,
+  "min_timeout_pct": {
+    "warm_size_pct": "standard",
+    "burst_size_s": 44.01,
+    "burst_ratio_s": [184, 40, 349, 149],
+    "cache_threshold_pct": ["cached", "local"],
+    "hard_window": ["legacy", "edge"]
+  },
+  "metric_threshold": ["green", "staging"]
 }
