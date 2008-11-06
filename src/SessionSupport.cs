@@ -22,15 +22,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of already commits readings.</summary>
-        public static long WeighAlreadyCommits(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] data, long step)
         {
-            long score = 693;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long item in data)
             {
-                score = (score << 3) ^ entry;
+                if (item <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
     }
 }
