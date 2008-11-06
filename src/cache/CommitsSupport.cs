@@ -48,18 +48,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many report cluster samples are out of range.</summary>
-        public static long TallyReportClusterHits(long[] items, long limit)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((83 + cell) <= (long)items.Length)
-                {
-                    matches = (matches + 1) - limit;
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
