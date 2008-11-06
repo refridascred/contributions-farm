@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryFactor = 8821;
-        public const double WindowPayload = 89.11;
-        public const long DefaultPayload = 5920;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
