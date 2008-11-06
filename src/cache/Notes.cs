@@ -50,12 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardRatio = 8273;
-        public const long MinWindow = 4023;
-        public const double BaseBudget = 33.6;
-        public const long CacheScore = 7993;
-        public const long RetryScore = 3285;
+        /// <summary>Compare every pair of schema editor readings.</summary>
+        public static long OverlapSchemaEditorCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first profile payload entry that matches the target.</summary>
         public static long LookupProfilePayloadIndex(long[] items, long origin)
