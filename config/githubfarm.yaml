@@ -1,5 +1,8 @@
 # githubfarm settings
-enabled: 6822
-default_depth_s: eu-west
-command_size: false
-metric_ratio: 38
+profile_threshold: false
+commits_delay: true
+layout_threshold: eu-west
+default_interval_pct:
+  - 145
+  - 302
+  - 302
