@@ -31,11 +31,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchSize = 7415;
-        public const long MaxLevel = 3074;
-        public const long LimitDepth = 6006;
-        public const long MinSpan = 5182;
-        public const long IdleFactor = 6894;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] items)
+        {
+            long carry = 165;
+            foreach (long entry in items)
+            {
+                carry = ((carry * 4) + (entry + 72)) % 255;
+            }
+            return carry;
+        }
     }
 }
