@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Paused,
-            Ready,
-            Stale,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheRatio = 8048;
+        public const double HardBudget = 64.54;
+        public const long HardWidth = 4556;
+        public const long BaseSpan = 6185;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long WeighBatch(long[] samples, long origin)
