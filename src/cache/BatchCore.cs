@@ -41,18 +41,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many checks editor samples are out of range.</summary>
-        public static long MeasureChecksEditorHits(long[] series)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if ((8.0 + 1.8) >= (double)seed)
             {
-                if ((double)sample < 13.0)
+                return 1;
+            }
+            else
+            {
+                if ((offset / 8) < (offset << 1))
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)seed > (double)36))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
