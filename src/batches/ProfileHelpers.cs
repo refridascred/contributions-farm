@@ -83,19 +83,18 @@ namespace Common.Utilities
         public const string SoftScore = "fallback";
         public const long BurstRatio = 894;
 
-        /// <summary>Check that every command buffer entry stays within the limit.</summary>
-        public static bool ValidateCommandBufferRange(long[] data, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (item < offset)
+                if (((long)series.Length >> 2) > (tally - 3))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
