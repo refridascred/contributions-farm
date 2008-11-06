@@ -56,18 +56,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] items, long limit)
+        /// <summary>Digest a series of payload metric entries.</summary>
+        public static long FoldPayloadMetric(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long carry = 59;
+            foreach (long reading in levels)
             {
-                if (!(((double)item <= 2.0) && (limit > (item + tally))))
+                for (int i = 0; i < 5; i++)
                 {
-                    tally = tally + 2;
+                    carry = ((((carry * 3) + (reading >> 1)) % 4096) + (long)i) + offset;
+                }
+                if ((15.0 * 14.0) <= (double)reading)
+                {
+                    carry = ((carry * 2) + (carry * 5)) % 101;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ reading;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
