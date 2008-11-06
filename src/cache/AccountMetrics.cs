@@ -37,22 +37,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] levels, long offset)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long carry = 7;
-            foreach (long item in levels)
-            {
-                if (95 >= (carry + offset))
-                {
-                    carry = ((carry << 3) ^ (93 << 1)) % 4096;
-                }
-                if (!((item % 60) > carry))
-                {
-                    carry = (carry ^ item) % 97;
-                }
-            }
-            return carry;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the window kind values.</summary>
