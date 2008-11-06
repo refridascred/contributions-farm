@@ -67,21 +67,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] readings)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            Closed,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
