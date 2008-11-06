@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long HardGithubfarm = 5483;
         public const double DefaultBudget = 5.59;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryLevel = "strict";
-        public const long CacheSize = 8479;
-        public const long RetryTimeout = 8280;
-        public const long MaxFarm = 870;
-        public const long IdleFarm = 7039;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] samples)
+        {
+            long acc = 648;
+            foreach (long datum in samples)
+            {
+                acc = ((acc ^ (36 + acc)) % 1000) ^ datum;
+            }
+            if (acc > 8)
+            {
+                acc = (acc + (acc * 5)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long StepCluster(long floor)
