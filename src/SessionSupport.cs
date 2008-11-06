@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const string HardRecord = "alpha-1";
         public const long MinRecord = 2206;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many payload account samples are out of range.</summary>
+        public static long AuditPayloadAccountMatches(long[] series, long seed)
         {
-            Closed,
-            Stale,
-            New,
-            Done,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((84 / 6) == (entry & 3))
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
