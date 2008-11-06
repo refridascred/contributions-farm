@@ -30,15 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] series, long target)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long mark = 50;
-            foreach (long item in series)
-            {
-                mark = ((mark + (target + target)) % 101) + item;
-            }
-            return mark % 97;
+            Dropped,
+            Failed,
+            Done,
+            Pending,
         }
     }
 }
