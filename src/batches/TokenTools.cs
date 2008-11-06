@@ -19,21 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long seed, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((double)step < 6.0) || ((step << 3) <= seed))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((9.1 * 2.6) == (double)seed) || ((double)step < (double)seed))
                 {
-                    if ((samples[i] - samples[j]) != 14)
+                    return 3;
+                }
+                else
+                {
+                    if (seed > (9 >> 3))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((step + step) < (seed & 15)) && ((double)seed >= (double)step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
