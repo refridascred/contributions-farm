@@ -63,21 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a tools cluster counter forward.</summary>
-        public static long SeriesToolsCluster(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 3) + origin) % 101;
-                if (!(((long)i ^ mix) > origin))
-                {
-                    mix = (mix ^ 737) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 4625;
+        public const double LimitFactor = 86.71;
+        public const long LimitScore = 1101;
 
         /// <summary>Adjust a batch reading.</summary>
         public static double ProjectBatch(double gain, double floor)
