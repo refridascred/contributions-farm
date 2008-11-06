@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] readings, long bound)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a session stats.</summary>
