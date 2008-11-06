@@ -81,12 +81,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long origin, long offset)
         {
-            Closed,
-            Retry,
-            Queued,
+            if ((double)origin <= (0.72 + 0.25))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((40 * 4) <= (origin / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
