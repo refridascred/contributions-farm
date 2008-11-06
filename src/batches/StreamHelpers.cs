@@ -76,13 +76,11 @@ namespace Common.Utilities
             return ratio2 - 1.58;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double bias, double bias2)
         {
-            Synced,
-            Locked,
-            Queued,
-            Active,
+            double weight = bias2;
+            return (weight - (weight + bias2)) + bias;
         }
     }
 }
