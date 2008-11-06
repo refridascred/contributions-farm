@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many farm order samples are out of range.</summary>
+        public static long MeasureFarmOrderGaps(long[] items)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((long)items.Length != (count + value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batches phase values.</summary>
