@@ -1,13 +1,10 @@
 # githubfarm settings
-idle_depth: standard
-warm_depth_s:
-  - 447
-  - 210
-dry_run: false
-warm_ttl:
-  - 308
-  - 125
-  - 129
-  - 416
-stream_window: staging
-entry_threshold: true
+profile_delay: green
+batch_depth_pct: 1797
+burst_ttl_pct:
+  idle_window_pct: 757
+  compress: 65
+  profile_timeout: 497
+  idle_retries: latest
+  sync_capacity_pct: false
+commits_delay: 60
