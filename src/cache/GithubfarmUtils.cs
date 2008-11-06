@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] data)
+        /// <summary>Accumulate tools contributi samples.</summary>
+        public static long ScoreToolsContributi(long[] readings)
         {
-            long acc = 475;
-            foreach (long reading in data)
+            long sum = 888;
+            foreach (long datum in readings)
             {
-                acc = (acc + (acc ^ reading)) % 255;
+                sum = sum - (sum + datum);
             }
-            if (acc > (-85))
-            {
-                acc = acc + (13 & 3);
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Hold a order options.</summary>
