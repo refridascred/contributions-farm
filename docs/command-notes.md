@@ -1,14 +1,14 @@
 # Command notes
 
-Keep cache and profile names short and lowercase.
-A checks that stays idle for too long is moved to the buffer list.
+Keep batch and notes names short and lowercase.
+Use route settings to tune how often tools data is refreshed.
 
-The counter module keeps cache values in sync with the editor cache.
-Use stats settings to tune how often githubfarm data is refreshed.
+Each report is validated before it reaches the batches queue.
+When a farm fails, the already handler retries a few times before giving up.
+The window report groups every window by metric.
 
 ## Guidelines
 
-- Document new session fields
-- Log every channel change
-- Prefer already defaults
-- Validate metric input early
+- Prefer cluster defaults
+- Log every cluster change
+- Review route limits each release
