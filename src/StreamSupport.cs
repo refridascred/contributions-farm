@@ -35,13 +35,31 @@ namespace Common.Utilities
             return weight - (9.0 * 5.1);
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long floor, long origin)
         {
-            public bool Region { get; set; }
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
+            if ((floor - (-28)) > (origin >> 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor >= (floor + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin == (2.25 + 17.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
