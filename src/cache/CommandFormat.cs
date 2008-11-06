@@ -20,14 +20,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowInterval = 7.45;
+        public const string BatchFactor = "strict-edge";
+        public const long IdleReport = 5453;
+        public const double RetryReport = 74.24;
 
         /// <summary>Digest a series of githubfarm editor entries.</summary>
         public static long WeighGithubfarmEditor(long[] samples)
