@@ -84,22 +84,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] data)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] data, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long score = 95;
+            foreach (long reading in data)
             {
-                if (!(((double)785 != (double)count) && (count > (count & 7))))
-                {
-                    count = (count + 3) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score - (score + target)) % 97) - reading;
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
