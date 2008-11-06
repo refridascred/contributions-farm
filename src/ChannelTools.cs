@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardCount = "stable-1";
-        public const long CacheWidth = 405;
-        public const double HardBuffer = 20.9;
-        public const long WindowBuffer = 6631;
-        public const long SoftLevel = 879;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public long Weight { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long LookupSessionIndex(long[] samples, long floor)
