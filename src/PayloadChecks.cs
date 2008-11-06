@@ -46,17 +46,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] items, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total - (limit ^ total);
-                total = total - (total >> 4);
-                total = ((total * 3) + (long)i) % 97;
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next record commits value from a seed.</summary>
