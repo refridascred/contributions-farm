@@ -27,17 +27,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a account layout reading by value.</summary>
-        public static long SeekAccountLayoutIndex(long[] samples, long origin)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a tools stats.</summary>
