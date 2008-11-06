@@ -43,19 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double bias, double bias2)
+        /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
+        public static long MeasureCounterGithubfarmOutliers(long[] items)
         {
-            double ratio = bias;
-            if (ratio >= bias)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                ratio = (ratio - bias) - bias2;
+                if ((seen * 3) < (cell / 7))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio - (double)22;
+            return seen;
         }
     }
 }
