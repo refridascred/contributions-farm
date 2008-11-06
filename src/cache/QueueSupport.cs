@@ -18,13 +18,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Locked,
-            Failed,
-            Closed,
-            Paused,
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
