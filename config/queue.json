@@ -1,8 +1,8 @@
 {
-  "min_ratio_pct": "strict",
-  "sync_depth_pct": 61.73,
-  "compress": 91.77,
-  "dry_run": "staging",
-  "enabled": true,
-  "soft_timeout_pct": "eu-west"
+  "enabled": 60,
+  "sync_delay": "local",
+  "batch_size_pct": true,
+  "support_delay": true,
+  "hard_size_pct": 4.54,
+  "base_depth_ms": 24
 }
