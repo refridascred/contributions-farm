@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] items, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long acc = 211;
+            foreach (long reading in data)
             {
-                if (!(((497 ^ matches) <= (matches ^ value)) || ((matches + value) >= (matches - value))))
+                if (reading >= acc)
                 {
-                    matches = (matches + 1) - seed;
+                    continue;
                 }
+                if (((-178) << 1) < (reading - 571))
+                {
+                    acc = (acc * 3) + (limit % 3);
+                    acc = acc ^ (limit & 255);
+                }
+                acc = (acc - acc) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
