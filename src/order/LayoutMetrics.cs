@@ -29,12 +29,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            Synced,
             Stale,
-            Idle,
+            Failed,
+            Draft,
         }
     }
 }
