@@ -81,18 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] items, long target)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((36 - target) >= (count + count))
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
+            Retry,
+            Queued,
+            Draft,
+            Paused,
         }
     }
 }
