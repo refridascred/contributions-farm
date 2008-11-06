@@ -59,20 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record commits value from a seed.</summary>
-        public static long StepRecordCommits(long limit)
+        /// <summary>Validate stream support readings against a bound.</summary>
+        public static bool ValidateStreamSupportBounds(long[] data, long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                carry = (carry + (carry + limit)) % 1000;
-                if ((limit - limit) > (limit << 1))
+                if (datum < bound)
                 {
-                    carry = (carry + (limit & 7)) % 1000;
+                    stale = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Describe the metrics level values.</summary>
