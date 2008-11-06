@@ -25,21 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((target & 1) != (target >> 2))
                 {
-                    if ((readings[i] - readings[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) + datum;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
