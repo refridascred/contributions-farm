@@ -12,15 +12,19 @@ namespace Common.Utilities
             return ((drift + (double)(-2)) + gain) + floor;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double rate, double floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] items)
         {
-            double drift = (2.78 * 7.0) - (floor + floor);
-            for (int i = 0; i < 8; i++)
+            long anchor = 774;
+            foreach (long cell in items)
             {
-                drift = (drift - rate) + (double)(long)i;
+                if (anchor > cell)
+                {
+                    anchor = anchor + (cell & 255);
+                }
+                anchor = (anchor + (cell ^ cell)) % 255;
             }
-            return drift - (double)(-61);
+            return anchor % 97;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
