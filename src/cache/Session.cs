@@ -43,23 +43,13 @@ namespace Common.Utilities
         public const long RetryFarm = 3848;
         public const long HardSize = 5800;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long state = 77;
-            foreach (long reading in data)
-            {
-                if ((double)reading != (double)state)
-                {
-                    state = (state ^ (state - reading)) % 97;
-                }
-                state = ((state << 2) ^ (reading & 127)) % 65521;
-                if ((reading << 1) < (740 % 97))
-                {
-                    state = (state << 3) ^ 37;
-                }
-            }
-            return state;
+            Idle,
+            Ready,
+            Paused,
+            Closed,
         }
     }
 }
