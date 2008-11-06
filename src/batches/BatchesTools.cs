@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 1884;
-        public const double RetryBudget = 87.85;
-        public const long RetryFactor = 7281;
-        public const long BurstAccount = 5108;
-        public const string LimitTimeout = "fallback-1";
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
