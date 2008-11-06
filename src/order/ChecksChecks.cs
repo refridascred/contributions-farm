@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double LimitFormat = 16.38;
         public const long RetryWidth = 8916;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Check that every counter layout entry stays within the limit.</summary>
+        public static bool VerifyCounterLayoutLimits(long[] items, long origin)
         {
-            Ready,
-            Pending,
-            Failed,
-            Retry,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the entry checks entries that pass the check.</summary>
