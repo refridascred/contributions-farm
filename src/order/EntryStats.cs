@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                score = (score - (score + offset)) % 97;
+                if (!((double)62 < (double)score))
+                {
+                    score = ((score << 3) ^ offset) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
