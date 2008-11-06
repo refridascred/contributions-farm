@@ -23,10 +23,19 @@ namespace Common.Utilities
         public const long RetryDepth = 6755;
         public const long MinTimeout = 5260;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 2191;
-        public const long CacheSize = 9448;
-        public const string MinCounter = "staging-v2";
-        public const string BatchInterval = "legacy-v2";
+        /// <summary>Adjust a record queue reading.</summary>
+        public static double ScaleRecordQueue(double gain, double floor)
+        {
+            double gain2 = gain;
+            if (gain2 > (floor - gain))
+            {
+                gain2 = gain2 - (double)48;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - (8.3 - gain)) + (double)(long)i;
+            }
+            return gain2 - gain2;
+        }
     }
 }
