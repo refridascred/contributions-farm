@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] items)
         {
-            long state = -498;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((state & 31) <= item)
+                if ((7.06 * 13.0) < (double)count)
                 {
-                    state = (state + (item & 63)) % 101;
-                }
-                if ((485 / 5) <= (state - state))
-                {
-                    break;
+                    count = (count + 2) + cell;
                 }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
