@@ -34,13 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] levels, long origin)
         {
-            Paused,
-            Active,
-            Done,
-            Retry,
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
