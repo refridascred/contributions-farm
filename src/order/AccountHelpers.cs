@@ -44,18 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] samples)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((item - item) <= (40 % 97))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
