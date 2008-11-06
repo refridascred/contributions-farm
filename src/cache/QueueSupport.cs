@@ -20,24 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank graph already input into a small class.</summary>
-        public static long BucketGraphAlready(long limit, long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            if ((step < (limit + 913)) && ((82 / 4) >= step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step << 1) == (limit % 24))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
