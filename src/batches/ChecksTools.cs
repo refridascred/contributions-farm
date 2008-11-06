@@ -39,12 +39,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] readings, long origin)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
