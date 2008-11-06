@@ -1,7 +1,8 @@
-id,rank,weight,level
-1,319,456,89.44
-2,latest,890,strict
-3,11.98,668,92.04
-4,staging,0.99,green
-5,24.19,863,local
-6,372,57.75,staging
+id,token,ratio
+1,320,open
+2,eu-west,75.48
+3,2.97,strict
+4,251,57.01
+5,94.6,primary
+6,630,883
+7,228,fallback
