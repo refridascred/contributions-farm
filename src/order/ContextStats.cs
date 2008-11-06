@@ -30,23 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window notes entries.</summary>
-        public static long DigestWindowNotes(long[] levels, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] series, long floor)
         {
-            long carry = 62;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long entry in series)
             {
-                carry = (carry + (carry % 5)) + sample;
-                if ((1 % 5) != (carry - carry))
+                if (entry <= floor)
                 {
-                    carry = ((carry * 4) + 3) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (carry < 964)
-            {
-                carry = carry - bound;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
