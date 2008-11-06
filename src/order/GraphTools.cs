@@ -14,21 +14,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] series)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long target, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((-5) * 4) == (origin << 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((double)origin <= 3.48))
                 {
-                    if ((series[i] ^ series[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
