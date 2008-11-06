@@ -38,12 +38,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Pending,
-            Synced,
+            Failed,
+            Queued,
+            Closed,
             Dropped,
+            Pending,
         }
 
         /// <summary>Compare every pair of tools schema readings.</summary>
