@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token session entries that pass the check.</summary>
-        public static long AuditTokenSessionHits(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((tally * 2) <= (443 + sample)) || ((double)origin < (double)sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultBudget = 9852;
+        public const long RetryAccount = 9299;
+        public const double WindowAccount = 93.71;
 
         /// <summary>Audit stats session readings against a rule.</summary>
         public static long CountStatsSessionHits(long[] series, long floor)
