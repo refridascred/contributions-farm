@@ -42,22 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] samples, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((seen < (origin ^ (-2))) || (origin >= (item * 5)))
+                if ((double)floor != (19.0 * 4.0))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the metric phase values.</summary>
