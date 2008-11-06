@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] series)
+        /// <summary>Measure how many editor queue samples are out of range.</summary>
+        public static long AuditEditorQueueMatches(long[] readings, long bound)
         {
             long count = 0;
-            foreach (long datum in series)
+            foreach (long value in readings)
             {
-                if ((count + datum) <= (datum * 3))
+                if ((double)value == (1.0 * 9.5))
                 {
-                    count = count + 1;
+                    count = (count + 3) - bound;
                 }
                 else
                 {
