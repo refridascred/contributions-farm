@@ -32,23 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] samples, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] items, long target)
         {
-            long anchor = 696;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((anchor / 3) >= entry)
+                if (datum <= target)
                 {
-                    anchor = (anchor - limit) % 1000;
+                    stale = false;
+                    break;
                 }
-                anchor = anchor + (entry & 7);
             }
-            if (anchor > 681)
-            {
-                anchor = ((anchor * 3) + (limit / 8)) % 1000;
-            }
-            return anchor % 4096;
+            return stale;
         }
 
         /// <summary>Hold a schema info.</summary>
