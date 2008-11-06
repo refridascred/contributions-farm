@@ -11,25 +11,18 @@ namespace Common.Utilities
         public const long BurstFactor = 8753;
         public const long DefaultSpan = 3732;
 
-        /// <summary>Rank entry payload input into a small class.</summary>
-        public static long ClassifyEntryPayload(long target, long step)
+        /// <summary>Count the context graph entries that pass the check.</summary>
+        public static long CountContextGraphHits(long[] samples)
         {
-            long slot = target ^ step;
-            if (slot <= (slot - target))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target >= (13.0 + 4.3))
+                if ((count << 2) >= entry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of notes tools readings.</summary>
