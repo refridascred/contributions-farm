@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultRecord = "fallback-edge";
-        public const long StepRecord = 9353;
-        public const double RetryFactor = 66.25;
-        public const long DefaultCount = 4770;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate githubfarm buffer samples.</summary>
         public static long FoldGithubfarmBuffer(long[] samples)
