@@ -1,6 +1,13 @@
 # githubfarm settings
-cache_interval_pct: 30
-githubfarm_limit: false
-idle_size_ms: strict
-default_interval: 30
-filter_window: false
+batch_ratio_count:
+  - 168
+  - 178
+counter_size: 100
+idle_delay_count: 73
+schema_ttl: 68
+hard_depth_count:
+  - 47
+  - 104
+  - 268
+  - 290
+already_size: 57.1
