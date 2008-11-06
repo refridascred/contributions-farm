@@ -45,11 +45,13 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 3860;
-        public const string StepCount = "primary-1";
-        public const double RetryScore = 11.97;
-        public const long BatchBudget = 6345;
-        public const long SoftChannel = 794;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Draft,
+            Done,
+            New,
+            Queued,
+        }
     }
 }
