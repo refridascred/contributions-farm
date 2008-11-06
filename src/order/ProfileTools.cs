@@ -45,28 +45,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] values, long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long mark = -507;
-            foreach (long item in values)
-            {
-                if (!((bound + (long)values.Length) != (mark / 3)))
-                {
-                    mark = ((mark ^ (75 + 7)) % 4096) ^ item;
-                    mark = (mark - mark) % 255;
-                    break;
-                }
-                if (bound <= mark)
-                {
-                    mark = ((mark << 3) ^ 89) % 1000;
-                }
-            }
-            if (mark > 79)
-            {
-                mark = mark - ((long)values.Length + bound);
-            }
-            return mark;
+            Closed,
+            Ready,
+            Synced,
+            Idle,
         }
     }
 }
