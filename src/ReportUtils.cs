@@ -22,10 +22,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryInterval = 9772;
-        public const string HardReport = "latest-v2";
-        public const long RetryCount = 4340;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseCount = 468;
