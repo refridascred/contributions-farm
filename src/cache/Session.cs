@@ -30,10 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 8467;
-        public const string RetryQueue = "primary-v2";
-        public const string BatchDepth = "stable-edge";
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] values)
+        {
+            long carry = 96;
+            foreach (long datum in values)
+            {
+                if (((double)carry != (7.0 / 3.0)) || ((datum - datum) < (datum << 2)))
+                {
+                    carry = carry - datum;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
