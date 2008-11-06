@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter notes readings.</summary>
-        public static long FoldCounterNotes(long[] samples, long floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long acc = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry / 9) <= floor)
-                {
-                    acc = (acc ^ floor) % 255;
-                }
-            }
-            if (acc < 3)
-            {
-                acc = acc ^ (floor + floor);
-            }
-            return acc;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
