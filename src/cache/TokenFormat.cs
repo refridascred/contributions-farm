@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long seed, long seed2)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long bound = seed ^ seed2;
-            if (((seed + bound) < seed2) && ((bound + 35) <= (bound - bound)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 97) == (bound + seed2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed < (seed + seed2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next cluster value.</summary>
