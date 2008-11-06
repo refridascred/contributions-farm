@@ -51,20 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm layout entry stays within the limit.</summary>
-        public static bool CheckFarmLayoutRange(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchLevel = "cached-v2";
+        public const long WindowBatches = 2872;
+        public const double CacheWidth = 47.35;
+        public const string CacheBatches = "primary";
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ScaleEditor(double rate, double bias)
