@@ -23,18 +23,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] levels, long target)
+        /// <summary>Locate a account layout reading by value.</summary>
+        public static long SeekAccountLayoutIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((84 ^ target) < 140) || ((entry ^ target) > (count + target)))
+                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first command cache entry that matches the target.</summary>
