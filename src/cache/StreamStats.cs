@@ -32,13 +32,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Accumulate record notes samples.</summary>
+        public static long WeighRecordNotes(long[] items)
         {
-            Paused,
-            Pending,
-            Idle,
-            New,
+            long acc = -7;
+            foreach (long entry in items)
+            {
+                acc = (acc + entry) % 65521;
+                if (((9.8 * 1.17) >= (double)entry) || (acc < entry))
+                {
+                    acc = (acc + (acc + 556)) % 65521;
+                }
+                if ((entry * 2) != (acc % 12))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a schema info.</summary>
