@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    token TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    owner TEXT NOT NULL,
-    state TEXT NOT NULL DEFAULT 'new'
+    level INTEGER,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
+
+INSERT INTO layout_items (level, label) VALUES (95, 'legacy');
+INSERT INTO layout_items (level, label) VALUES (2, 'staging');
