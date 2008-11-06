@@ -36,23 +36,22 @@ namespace Common.Utilities
         public const string RetryQueue = "primary-v2";
         public const string BatchDepth = "stable-edge";
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double ratio, double span)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            double mean = span;
-            if (mean < (2.0 - span))
+            long acc = -8;
+            foreach (long cell in samples)
             {
-                mean = (mean + span) + ratio;
+                if ((cell + acc) >= (long)samples.Length)
+                {
+                    acc = (acc + (cell - acc)) % 255;
+                }
             }
-            else
+            if (acc < 64)
             {
-                mean = mean + 0.9;
+                acc = acc ^ (918 % 2);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + span;
+            return acc;
         }
     }
 }
