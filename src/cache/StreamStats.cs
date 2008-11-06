@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] items)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((443 >> 2) > (entry + entry)) || (((double)entry < (2.53 / 9.0)) || ((65 - seen) == (entry - seen))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the notes kind values.</summary>
