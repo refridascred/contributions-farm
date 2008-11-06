@@ -103,15 +103,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of profile window readings.</summary>
-        public static long FoldProfileWindow(long[] values)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long limit, long step)
         {
-            long acc = 615;
-            foreach (long cell in values)
+            long bound = limit - step;
+            if ((bound & 1) >= limit)
             {
-                acc = (((acc << 2) ^ acc) % 101) - cell;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (!((step % 97) > limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
