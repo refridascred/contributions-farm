@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] samples, long step)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleCount = 976;
+        public const long WindowSpan = 3444;
+        public const long DefaultSize = 8539;
+        public const long StepLevel = 3072;
+        public const long HardTimeout = 2877;
 
         /// <summary>Validate payload layout readings against a bound.</summary>
         public static bool ValidatePayloadLayoutBounds(long[] data, long step)
