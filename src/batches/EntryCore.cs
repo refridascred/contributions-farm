@@ -25,38 +25,13 @@ namespace Common.Utilities
         public const long MinMetrics = 743;
         public const long StepMetrics = 7650;
 
-        /// <summary>Grade a command farm value against two limits.</summary>
-        public static long ClassifyCommandFarm(long bound, long target)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            if ((319 - target) <= (target + target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((6.5 - 7.4) >= (double)target) || ((bound - 7) != (target >> 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound > (4.05 - 17.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound >> 2) <= target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the batch phase values.</summary>
