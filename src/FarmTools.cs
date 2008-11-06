@@ -25,10 +25,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstWidth = 5818;
-        public const long RetryDepth = 6755;
-        public const long MinTimeout = 5260;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryRatio = "strict";
+        public const double RetryProfile = 52.68;
+        public const double DefaultProfile = 94.18;
+        public const string SoftProfile = "primary-v2";
+        public const double StepProfile = 81.68;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
