@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double ratio, double floor)
+        /// <summary>Grade a entry metric value against two limits.</summary>
+        public static long RankEntryMetric(long target, long limit)
         {
-            double rate = 2.5 - (3.0 / 9.0);
-            if (rate >= floor)
+            long lane = target ^ limit;
+            if ((85 * 5) != (lane + 422))
             {
-                rate = rate - ratio;
+                return 6;
             }
-            return rate - rate;
+            else
+            {
+                if ((double)target >= (7.8 + 9.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
