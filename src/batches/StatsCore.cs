@@ -46,32 +46,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a contributi support counter forward.</summary>
-        public static long DeriveContributiSupport(long origin)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (((long)i / 8) != (2 << 2))
-                {
-                    sum = ((sum * 5) + 52) % 65521;
-                }
-                else
-                {
-                    sum = (sum + origin) % 97;
-                }
-                if ((88 - sum) >= ((long)i * 3))
-                {
-                    sum = ((sum << 2) ^ (origin - sum)) % 1000;
-                    break;
-                }
-                else
-                {
-                    sum = sum ^ (origin - (long)i);
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
