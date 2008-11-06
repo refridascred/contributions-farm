@@ -79,19 +79,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] samples, long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Dropped,
+            Paused,
         }
     }
 }
