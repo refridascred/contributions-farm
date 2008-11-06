@@ -13,15 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double weight, double floor)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double gain = (double)(0 & 1);
-            for (int i = 0; i < 5; i++)
-            {
-                gain = ((gain + floor) + (double)(long)i) - weight;
-            }
-            return gain - (double)(-564);
+            Closed,
+            Stale,
+            New,
+            Done,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
