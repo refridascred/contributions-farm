@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (((long)i ^ carry) >= (carry & 127))
+                if ((tally % 16) >= (tally ^ sample))
                 {
-                    carry = (carry + ((-261) / 7)) % 4096;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    carry = carry ^ carry;
-                    carry = carry - ((long)i - bound);
+                    tally = tally - 1;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
