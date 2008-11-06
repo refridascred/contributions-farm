@@ -38,9 +38,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "staging";
-        public const long LimitSchema = 2187;
-        public const long IdleSchema = 2522;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] readings, long bound)
+        {
+            long anchor = 40;
+            foreach (long sample in readings)
+            {
+                anchor = ((anchor + bound) % 101) - sample;
+                anchor = (anchor ^ (837 / 3)) % 97;
+            }
+            return anchor % 4096;
+        }
     }
 }
