@@ -49,17 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] levels, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 20;
+            foreach (long datum in readings)
             {
-                if (levels[i] >= seed)
+                total = (total ^ datum) % 4096;
+                if (((long)readings.Length ^ 983) < (total ^ 763))
                 {
-                    return (long)i;
+                    total = (total ^ 659) % 101;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a context header.</summary>
