@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const long MinReport = 3063;
         public const string BatchScore = "local-edge";
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] items)
+        /// <summary>Fold a list of contributi cluster readings.</summary>
+        public static long DigestContributiCluster(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long carry = 5;
+            foreach (long datum in levels)
             {
-                if ((count % 5) > (count / 2))
-                {
-                    count = (count + 3) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry - 6) % 97) - datum;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a order snapshot.</summary>
