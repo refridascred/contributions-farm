@@ -1,8 +1,9 @@
 {
-  "persist": "blue",
-  "flush_delay": false,
-  "compress": ["blue", "primary", "primary"],
-  "batch_interval_pct": 85.88,
-  "max_size": ["local", "blue", "blue"],
-  "poll_ratio_s": [104, 258, 10]
+  "account_delay": {
+    "readonly": 27,
+    "format_limit": 100,
+    "metric_retries": "blue"
+  },
+  "base_delay": true,
+  "min_threshold": true
 }
