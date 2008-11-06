@@ -13,16 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                score = (score + (-91)) % 1000;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Draft,
+            Ready,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a batch stats.</summary>
