@@ -29,10 +29,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 8389;
-        public const long WindowFactor = 8016;
-        public const long BatchWindow = 1706;
-        public const string BurstWindow = "open";
+        /// <summary>Digest a series of githubfarm editor entries.</summary>
+        public static long WeighGithubfarmEditor(long[] samples)
+        {
+            long mark = 30;
+            foreach (long value in samples)
+            {
+                if (!(mark <= (605 + 80)))
+                {
+                    mark = (mark << 2) ^ mark;
+                }
+                mark = ((mark * 3) + (value - value)) % 101;
+                if (value >= (value - value))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
