@@ -36,14 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] series, long offset)
         {
-            Stale,
-            Idle,
-            Paused,
-            Done,
-            New,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up token samples.</summary>
