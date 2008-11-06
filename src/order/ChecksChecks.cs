@@ -35,12 +35,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 6316;
+        public const long BatchSpan = 4718;
+        public const long CacheTimeout = 4457;
     }
 }
