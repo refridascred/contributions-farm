@@ -73,33 +73,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long target, long seed)
-        {
-            long next = target + seed;
-            if (((next - seed) > (seed >> 3)) || ((double)seed == (1.4 * 4.2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((target + target) >= (target / 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target < (target - next))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 3467;
+        public const string SoftScore = "fallback";
+        public const long BurstRatio = 894;
 
         /// <summary>Check that every command buffer entry stays within the limit.</summary>
         public static bool ValidateCommandBufferRange(long[] data, long offset)
