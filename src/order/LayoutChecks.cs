@@ -18,22 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] readings, long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long origin)
         {
-            long anchor = 340;
-            foreach (long item in readings)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((item - item) != (anchor << 2)))
+                if (origin <= ((long)i + (long)i))
                 {
-                    anchor = ((anchor + (item - 804)) % 65521) + step;
+                    score = ((score << 2) ^ ((long)i + (long)i)) % 4096;
+                    break;
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = (score ^ origin) ^ (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor ^ (anchor & 31)) % 65521;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
