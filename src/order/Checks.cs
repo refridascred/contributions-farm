@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string RetryWidth = "legacy-v2";
         public const double LimitCommits = 55.06;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] samples)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seen < 1.65)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) + datum;
+                    if ((values[i] ^ values[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
