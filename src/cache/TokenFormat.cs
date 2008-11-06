@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the channel metrics entries that pass the check.</summary>
-        public static long TallyChannelMetricsHits(long[] data)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((reading + reading) < ((-226) + 87))
+                if (value <= bound)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
