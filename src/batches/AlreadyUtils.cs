@@ -14,19 +14,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((54 < (hits + 75)) || ((cell - hits) != (long)levels.Length))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 3175;
+        public const long BurstChannel = 1636;
+        public const string StepChannel = "stable-1";
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
