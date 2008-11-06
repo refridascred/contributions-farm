@@ -38,20 +38,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 4136;
+        public const double BatchCount = 26.82;
+        public const long HardBudget = 1467;
 
         /// <summary>Match up token samples.</summary>
         public static long PairTokenCount(long[] data)
