@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green open cached staging; do
+for item in edge green latest primary; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=218
+log "limit is ${CHANNEL_LIMIT}"
