@@ -29,17 +29,9 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowTimeout = 5961;
+        public const double BatchEntry = 78.78;
+        public const long BatchCount = 8199;
     }
 }
