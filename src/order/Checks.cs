@@ -27,18 +27,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] data, long target)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((target - 797) >= datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
