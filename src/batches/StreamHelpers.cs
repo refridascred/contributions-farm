@@ -60,23 +60,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] samples, long bound)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double scale, double bias)
         {
-            long score = 424;
-            foreach (long value in samples)
+            double weight = 11.0;
+            if (weight >= bias)
             {
-                if ((6.8 * 11.0) < (double)bound)
-                {
-                    score = ((score * 3) + (value / 8)) % 65521;
-                }
-                score = score ^ (score / 6);
+                weight = (weight - 2.02) + scale;
             }
-            if (score > 104)
-            {
-                score = (score * 2) + (score << 1);
-            }
-            return score % 97;
+            return weight - bias;
         }
 
         /// <summary>Describe the filter class values.</summary>
