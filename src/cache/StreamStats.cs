@@ -52,10 +52,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "latest-edge";
-        public const long CacheChecks = 4913;
-        public const long MinCount = 1898;
-        public const string BaseChecks = "stable-edge";
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((datum >> 1) == (seen >> 2)) && (((datum + seen) >= (75 / 6)) || ((double)5 >= (double)seen)))
+                {
+                    seen = (seen + 1) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
