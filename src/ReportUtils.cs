@@ -50,39 +50,15 @@ namespace Common.Utilities
         public const long WindowLayout = 8801;
         public const long MinDepth = 3355;
 
-        /// <summary>Rank payload metric input into a small class.</summary>
-        public static long SortPayloadMetric(long offset, long origin)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double weight, double floor)
         {
-            long diff = offset ^ origin;
-            if (((-3) + origin) <= (611 << 1))
+            double scale = 6.69;
+            if (scale <= (6.0 - floor))
             {
-                return 5;
+                scale = (scale - (floor / 7.0)) + weight;
             }
-            else
-            {
-                if ((diff - diff) < (2 % 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((diff - origin) == (diff + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin > 8.6)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return scale - (9.3 - floor);
         }
     }
 }
