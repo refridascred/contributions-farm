@@ -78,12 +78,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Draft,
-            Dropped,
+            Locked,
+            Stale,
             Retry,
+            Paused,
+            Idle,
         }
     }
 }
