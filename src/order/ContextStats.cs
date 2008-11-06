@@ -12,15 +12,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] items, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((seed + count) != (seed >> 5))
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Digest a series of window notes entries.</summary>
