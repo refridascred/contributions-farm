@@ -17,19 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] data, long seed)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long mix = 58;
-            foreach (long entry in data)
-            {
-                mix = ((mix * 2) + (seed % 5)) - entry;
-            }
-            if (mix > 645)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a account reading.</summary>
