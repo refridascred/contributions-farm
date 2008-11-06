@@ -15,19 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] values, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (cell != target)
+                if ((54 < (hits + 75)) || ((cell - hits) != (long)levels.Length))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the support kind values.</summary>
