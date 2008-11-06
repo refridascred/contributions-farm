@@ -20,16 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Derive the next record buffer value from a seed.</summary>
+        public static long IterateRecordBuffer(long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                sum = sum ^ (bound + (long)i);
-                sum = ((sum * 4) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    total = ((total ^ (origin % 2)) % 255) + (long)i2;
+                }
+                total = total - (total + origin);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
