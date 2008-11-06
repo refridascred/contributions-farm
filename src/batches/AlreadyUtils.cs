@@ -45,19 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (value > floor)
+                if (cell < limit)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Hold a support summary.</summary>
