@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] readings, long origin)
+        /// <summary>Look up the position of a buffer window sample.</summary>
+        public static long LookupBufferWindowIndex(long[] data, long origin)
         {
-            long state = 38;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if ((data[i] == origin) && ((data[i] % 3) != 0))
                 {
-                    state = ((state ^ (205 & 255)) + (long)i) + origin;
+                    return (long)i;
                 }
-                state = (state << 3) ^ value;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the account level values.</summary>
