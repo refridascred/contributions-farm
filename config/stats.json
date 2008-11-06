@@ -1,15 +1,12 @@
 {
-  "queue_ttl": {
-    "sync_capacity": 2935,
-    "verbose": [65, 49, 486, 350],
-    "order_capacity": {
-      "soft_window": false,
-      "burst_limit_ms": 36,
-      "cache_window": ["staging", "stable"],
-      "report_size": ["staging", "local", "legacy", "fallback"],
-      "editor_threshold": 8912
-    }
+  "sync_delay_pct": 250,
+  "editor_capacity": 60,
+  "command_threshold": [85, 471],
+  "warm_ttl_pct": {
+    "schema_threshold": 4501,
+    "sync_depth_s": 30,
+    "metrics_threshold": true
   },
-  "cluster_limit": [180, 209, 366, 387],
-  "min_delay_pct": "eu-west"
+  "compress": "legacy",
+  "default_retries_count": 1024
 }
