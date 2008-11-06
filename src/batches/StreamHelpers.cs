@@ -46,27 +46,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] data, long step)
-        {
-            long anchor = 8;
-            foreach (long datum in data)
-            {
-                if ((datum ^ step) < (step & 1))
-                {
-                    anchor = (anchor ^ datum) % 65521;
-                }
-                if ((anchor - anchor) <= datum)
-                {
-                    break;
-                }
-            }
-            if (anchor > 75)
-            {
-                anchor = (anchor - 6) % 1000;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowBatch = "standard-edge";
+        public const double DefaultBatch = 64.87;
+        public const long MinBatch = 1350;
+        public const long BaseBatch = 3044;
 
         /// <summary>Measure how many schema record samples are out of range.</summary>
         public static long MeasureSchemaRecordOutliers(long[] levels)
