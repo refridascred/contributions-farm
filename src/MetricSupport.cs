@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Fold a list of profile buffer readings.</summary>
+        public static long TallyProfileBuffer(long[] readings, long origin)
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long state = 713;
+            foreach (long cell in readings)
+            {
+                long seen = (origin + 10) - (cell + origin);
+                for (int i = 0; i < 4; i++)
+                {
+                    state = ((state * 3) + (seen * 4)) - (long)i;
+                }
+                if ((82 <= cell) || ((state + 9) >= origin))
+                {
+                    state = (state - (origin ^ 2)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Adjust a stats support reading.</summary>
