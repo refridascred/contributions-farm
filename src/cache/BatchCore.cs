@@ -30,16 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                sum = (sum - (sum * 3)) % 1000;
-                sum = ((sum * 4) + (long)i) % 97;
+                if (!((12.0 + 3.06) < (double)matches))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
