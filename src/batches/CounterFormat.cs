@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 6698;
-        public const long HardFormat = 5300;
-        public const long BurstFactor = 8753;
-        public const long DefaultSpan = 3732;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Count the context graph entries that pass the check.</summary>
         public static long CountContextGraphHits(long[] samples)
