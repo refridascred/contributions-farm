@@ -1,9 +1,5 @@
 # githubfarm settings
-hard_delay: false
-verbose: 5331
-checks_limit: legacy
-sync_retries_pct:
-  - primary
-  - green
-  - open
-  - staging
+hard_size_ms: true
+max_limit_count: 53
+base_limit: 2757
+soft_timeout_count: eu-west
