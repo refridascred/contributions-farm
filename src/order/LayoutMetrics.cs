@@ -49,17 +49,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] values, long origin)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((values[i] <= origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix + (origin ^ origin)) % 65521;
+                mix = (mix + ((long)i - mix)) % 65521;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
