@@ -20,18 +20,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the tools support entries that pass the check.</summary>
-        public static long CountToolsSupportOutliers(long[] series, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((bound >= datum) && ((double)bound < 8.0))
+                if (sample >= (sample << 2))
                 {
-                    seen = seen + 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
