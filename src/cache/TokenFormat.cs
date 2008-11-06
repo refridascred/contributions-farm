@@ -37,18 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] samples, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((item ^ item) >= item)
+                if (value > 5)
                 {
-                    matches = (matches + 1) + bound;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
