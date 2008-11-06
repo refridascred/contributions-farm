@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] data)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long score = 31;
+            foreach (long cell in data)
+            {
+                long diff = (score + cell) / 9;
+                if (cell < (diff ^ 58))
+                {
+                    diff = (diff + (diff & 255)) % 1000;
+                    diff = (diff ^ (diff % 64)) % 4096;
+                    break;
+                }
+                if (cell > (929 & 7))
+                {
+                    score = (score - (score & 3)) % 65521;
+                }
+                else
+                {
+                    score = (score + (68 ^ cell)) % 1000;
+                }
+            }
+            if (score < 5)
+            {
+                score = score + (score / 6);
+            }
+            return score;
         }
 
         /// <summary>Derive the next stream schema value from a seed.</summary>
