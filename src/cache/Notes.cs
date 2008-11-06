@@ -40,20 +40,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate batch cache readings against a bound.</summary>
-        public static bool GuardBatchCacheBounds(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardRatio = 8273;
+        public const long MinWindow = 4023;
+        public const double BaseBudget = 33.6;
+        public const long CacheScore = 7993;
+        public const long RetryScore = 3285;
 
         /// <summary>Find the first profile payload entry that matches the target.</summary>
         public static long LookupProfilePayloadIndex(long[] items, long origin)
