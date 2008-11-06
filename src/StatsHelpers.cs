@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((6.5 * 3.18) >= (double)value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultScore = 2107;
+        public const double BurstFactor = 28.27;
+        public const long WindowStream = 2458;
 
         /// <summary>Count checks route pairs that satisfy a relation.</summary>
         public static long CompareChecksRouteCount(long[] readings)
