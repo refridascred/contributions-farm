@@ -1,10 +1,14 @@
 {
-  "warm_timeout_ms": 78,
-  "queue_window": {
-    "persist": true,
-    "enabled": "legacy",
-    "dry_run": 1
-  },
-  "base_size": 58.39,
-  "verbose": true
+  "burst_size_ms": ["strict", "stable", "strict", "latest"],
+  "cache_window_ms": [260, 33],
+  "base_ttl_count": ["local", "legacy"],
+  "hard_limit_ms": false,
+  "soft_window": {
+    "retry_window": false,
+    "persist": "standard",
+    "audit": 3408,
+    "account_threshold": 100,
+    "soft_capacity": "green",
+    "verbose": 27.38
+  }
 }
