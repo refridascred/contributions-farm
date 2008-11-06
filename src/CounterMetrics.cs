@@ -47,30 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile metrics readings.</summary>
-        public static long TotalProfileMetrics(long[] samples)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] items)
         {
-            long acc = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc * 2) < (entry + entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc - (339 % 24);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc * 5)) % 97;
-                }
-                if (((1.3 * 3.33) == (double)acc) && (3.0 <= (double)acc))
-                {
-                    acc = acc + (acc + entry);
-                }
-                else
-                {
-                    acc = acc - (entry + acc);
+                    if ((items[i] ^ items[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return seen;
         }
     }
 }
