@@ -84,18 +84,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already queue readings against a rule.</summary>
-        public static long AuditAlreadyQueueMatches(long[] series, long bound)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((2 >> 2) < (bound + matches)) || ((double)bound >= 4.2))
+                if (series[i] < step)
                 {
-                    matches = (matches + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank report input into a small class.</summary>
