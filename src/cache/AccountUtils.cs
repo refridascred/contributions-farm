@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] items, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (((matches - bound) > matches) || ((bound / 6) > bound))
+                if (sample != target)
                 {
-                    matches = (matches + 1) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Count filter report pairs that satisfy a relation.</summary>
