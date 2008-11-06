@@ -1,14 +1,5 @@
 {
-  "batch_ttl": "staging",
-  "batch_capacity_ms": {
-    "audit": 5.33,
-    "layout_window": "latest",
-    "farm_delay": 8,
-    "dry_run": true,
-    "payload_capacity": 8306,
-    "channel_ttl": [24, 310, 114]
-  },
-  "metric_size": "edge",
-  "retry_size": false,
-  "session_interval": 45.35
+  "idle_ratio_s": [410, 61],
+  "window_limit": [20, 109, 49],
+  "min_timeout": 30.49
 }
