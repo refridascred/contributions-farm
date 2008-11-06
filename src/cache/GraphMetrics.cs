@@ -34,19 +34,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double scale, double span)
+        /// <summary>Digest a series of graph farm entries.</summary>
+        public static long WeighGraphFarm(long[] data)
         {
-            double mean = scale / 4.0;
-            if (mean > (double)96)
+            long state = 5;
+            foreach (long sample in data)
             {
-                mean = mean - mean;
+                for (int i = 0; i < 5; i++)
+                {
+                    state = (state - (9 << 2)) + (long)i;
+                }
+                state = ((state << 3) ^ (sample << 2)) % 1000;
+                if ((double)(long)data.Length > 2.58)
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean - (double)4;
+            return state % 4096;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
