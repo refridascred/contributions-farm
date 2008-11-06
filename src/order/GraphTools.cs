@@ -86,22 +86,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] readings, long floor)
+        /// <summary>Look up the position of a githubfarm channel sample.</summary>
+        public static long LocateGithubfarmChannelIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)seen > (0.8 - 7.15)))
+                if (readings[i] <= step)
                 {
-                    seen = ((seen + 3) - entry) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
