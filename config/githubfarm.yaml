@@ -1,6 +1,9 @@
 # githubfarm settings
-sync_ttl_ms: false
-batch_ratio_count: 60
-min_capacity_s: 1277
-min_timeout_pct: 2283
-sync_capacity_pct: 4095
+soft_timeout_pct:
+  - latest
+  - latest
+  - staging
+batch_interval_count: green
+enabled: 100
+default_depth_pct: false
+filter_delay: 97.15
