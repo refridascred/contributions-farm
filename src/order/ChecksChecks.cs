@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long score = 880;
+            foreach (long sample in series)
             {
-                if ((tally + tally) > tally)
+                if (!((double)limit <= (2.0 - 17.0)))
                 {
-                    tally = (tally + 3) + sample;
+                    score = (score ^ score) % 101;
+                }
+                else
+                {
+                    score = score - (sample & 1);
+                }
+                if ((score & 1) < (score & 15))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score < (-646))
+            {
+                score = ((score * 4) + (limit + limit)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Count farm metrics pairs that satisfy a relation.</summary>
