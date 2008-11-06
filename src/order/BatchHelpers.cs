@@ -35,17 +35,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] values, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long target, long target2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = target + target2;
+            if ((edge + edge) == (76 << 2))
             {
-                if ((values[i] >= bound) && ((values[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (!((2 + 77) >= (39 - target)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((edge ^ edge) <= (target2 + edge))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(target <= (edge + 230)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
