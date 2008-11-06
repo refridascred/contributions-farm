@@ -52,19 +52,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double bias, double offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            double ratio = offset;
-            if (ratio < (ratio - bias))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + (double)90;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            return ratio - ratio;
+            return tally;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
