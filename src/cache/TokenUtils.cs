@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] values, long step)
+        /// <summary>Measure how many notes account samples are out of range.</summary>
+        public static long AuditNotesAccountHits(long[] data)
         {
-            long total = -5;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                total = (total * 4) + total;
-                total = (total - (value & 255)) % 97;
+                if ((reading + seen) <= (seen >> 5))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total < 4)
-            {
-                total = (total << 2) ^ (step << 3);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
