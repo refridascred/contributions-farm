@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultScore = 2107;
-        public const double BurstFactor = 28.27;
-        public const long WindowStream = 2458;
+        /// <summary>Combine already batches values into a single score.</summary>
+        public static long TotalAlreadyBatches(long[] items)
+        {
+            long mark = -151;
+            foreach (long entry in items)
+            {
+                if (!(entry <= (mark % 3)))
+                {
+                    mark = (mark * 4) + (mark + mark);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Count checks route pairs that satisfy a relation.</summary>
         public static long CompareChecksRouteCount(long[] readings)
