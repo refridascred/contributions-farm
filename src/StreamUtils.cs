@@ -42,12 +42,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 6576;
-        public const long DefaultRoute = 1269;
-        public const long BaseRoute = 1628;
-        public const string RetryRoute = "standard-v2";
-        public const long IdleSpan = 5800;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 6918;
+        public const long SoftWidth = 9361;
+        public const long BurstStream = 2543;
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
