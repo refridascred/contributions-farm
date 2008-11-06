@@ -41,21 +41,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up support payload samples.</summary>
-        public static long OverlapSupportPayloadCount(long[] items)
+        /// <summary>Roll a already report counter forward.</summary>
+        public static long RollAlreadyReport(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seed % 8) == (seed - (long)i))
                 {
-                    if ((items[i] ^ items[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result - (seed + result);
                 }
+                if (((result + seed) == (seed & 31)) && (((long)i / 6) > (seed + seed)))
+                {
+                    result = ((result << 2) ^ (5 << 3)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
     }
 }
