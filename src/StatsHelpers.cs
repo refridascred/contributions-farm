@@ -37,19 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen + entry) < (entry + entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 6286;
+        public const long HardScore = 3656;
+        public const string BatchCount = "fallback";
+        public const string SoftStream = "primary-1";
+        public const double LimitStream = 94.93;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
