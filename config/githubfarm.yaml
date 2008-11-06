@@ -1,6 +1,5 @@
 # githubfarm settings
-entry_interval: 87
-base_threshold_pct: open
-editor_threshold: open
-soft_timeout: 66
-sync_timeout: false
+enabled: 6822
+default_depth_s: eu-west
+command_size: false
+metric_ratio: 38
