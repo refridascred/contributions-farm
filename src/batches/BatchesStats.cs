@@ -31,13 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Stale,
-            Locked,
-            Draft,
-            New,
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Adjust a graph reading.</summary>
