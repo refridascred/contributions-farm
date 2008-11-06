@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Grade a order editor value against two limits.</summary>
+        public static long ClassifyOrderEditor(long origin, long target)
         {
-            long state = 49;
-            foreach (long datum in values)
+            long gap = origin ^ target;
+            if (origin >= 837)
             {
-                state = state + (datum - datum);
-                if ((7 + state) > (datum - 2))
+                return 6;
+            }
+            else
+            {
+                if (!((double)gap == (double)origin))
                 {
-                    state = state ^ (state * 5);
+                    return 1;
+                }
+                else
+                {
+                    if (((gap + 767) <= origin) && ((double)gap <= (1.2 * 7.3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Accumulate metrics layout samples.</summary>
