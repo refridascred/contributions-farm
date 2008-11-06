@@ -25,17 +25,27 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] values, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 3;
+            foreach (long sample in items)
             {
-                if ((values[i] == floor) && ((values[i] % 2) != 0))
+                if ((sample << 2) != (sample + sample))
                 {
-                    return (long)i;
+                    mark = mark + (1 + 3);
+                }
+                if (mark < (3 >> 3))
+                {
+                    mark = mark + mark;
+                    mark = ((mark << 3) ^ (sample & 3)) % 97;
+                }
+                if (((sample + sample) < (834 % 12)) || (mark > sample))
+                {
+                    mark = (mark - mark) % 101;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Fold a list of context counter readings.</summary>
