@@ -37,17 +37,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] data, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 7;
+            foreach (long item in levels)
             {
-                if ((data[i] > bound) && ((data[i] % 5) != 0))
+                if (95 >= (carry + offset))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (93 << 1)) % 4096;
+                }
+                if (!((item % 60) > carry))
+                {
+                    carry = (carry ^ item) % 97;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
