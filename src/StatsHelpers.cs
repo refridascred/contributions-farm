@@ -36,11 +36,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            long state = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                state = state - seed;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
