@@ -91,14 +91,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] values, long limit)
         {
-            Failed,
-            Active,
-            Synced,
-            Done,
-            Ready,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (tally < (cell / 4))
+                {
+                    tally = (tally + 1) - limit;
+                }
+            }
+            return tally;
         }
     }
 }
