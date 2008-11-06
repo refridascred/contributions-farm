@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                state = (state * 3) + (8 + state);
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Retry,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
