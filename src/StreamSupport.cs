@@ -24,14 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double scale, double span)
         {
-            New,
-            Active,
-            Ready,
-            Pending,
-            Dropped,
+            double weight = span;
+            if (weight > (weight + scale))
+            {
+                weight = weight + span;
+            }
+            return weight - (9.0 * 5.1);
         }
 
         /// <summary>Hold a filter info.</summary>
