@@ -1,4 +1,4 @@
 # entry settings
-counter_window: latest
-dry_run: blue
-farm_retries: 15
+account_depth: standard
+retry_retries_count: 36
+retry_threshold_ms: 1709
