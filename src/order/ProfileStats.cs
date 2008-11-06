@@ -43,16 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] samples, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] values, long seed)
         {
-            long carry = 4;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                carry = ((carry << 2) ^ offset) ^ datum;
-                carry = (carry - (offset * 3)) % 4096;
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
     }
 }
