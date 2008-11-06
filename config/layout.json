@@ -1,8 +1,15 @@
 {
-  "warm_size_ms": 32,
-  "audit": [234, 402, 450],
-  "dry_run": 74.52,
-  "warm_interval_ms": [25, 60, 320, 366],
-  "batch_ttl_pct": "green",
-  "readonly": 72
+  "persist": "staging",
+  "hard_interval_pct": "blue",
+  "cache_delay_ms": 9784,
+  "batch_ratio": {
+    "order_limit": "stable",
+    "soft_retries_pct": ["latest", "green", "primary"],
+    "cache_interval_ms": {
+      "batch_retries_ms": "green",
+      "strict": "eu-west",
+      "audit": "stable"
+    }
+  },
+  "channel_timeout": "cached"
 }
