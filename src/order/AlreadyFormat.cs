@@ -30,30 +30,23 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long step, long floor)
+        /// <summary>Grade a graph token value against two limits.</summary>
+        public static long SortGraphToken(long seed, long bound)
         {
-            long offset = step - floor;
-            if (!(floor >= (offset + offset)))
+            long offset = seed ^ bound;
+            if (((offset / 2) <= (offset & 15)) && ((offset - seed) > (-45)))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (!((5.23 + 2.3) == (double)step))
+                if ((offset - bound) < (seed + seed))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if ((offset << 2) > floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 1;
                 }
             }
         }
