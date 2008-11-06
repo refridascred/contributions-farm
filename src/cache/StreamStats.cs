@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double weight, double offset)
         {
-            Paused,
-            Closed,
-            New,
-            Pending,
+            double rate = offset;
+            if (rate < offset)
+            {
+                rate = rate - (double)9;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Classify a account graph pair into a bucket.</summary>
