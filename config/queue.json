@@ -1,11 +1,6 @@
 {
-  "stream_capacity": "blue",
-  "profile_threshold": true,
-  "flush_ratio_ms": true,
-  "soft_size_count": 5.35,
-  "tools_limit": {
-    "audit": "cached",
-    "farm_interval": 22.69,
-    "contributi_window": 1024
-  }
+  "batch_retries_s": true,
+  "retry_capacity": 56,
+  "githubfarm_limit": 12.01,
+  "verbose": 9708
 }
