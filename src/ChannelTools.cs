@@ -25,24 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((mark / 8) < 8)
-                {
-                    mark = ((mark << 3) ^ mark) % 97;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (552 << 2);
-                }
-                mark = mark + (bound >> 4);
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepSize = 38.5;
+        public const long StepLayout = 8426;
+        public const double BaseTimeout = 2.73;
     }
 }
