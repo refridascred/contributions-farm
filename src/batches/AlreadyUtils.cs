@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultWidth = 6425;
-        public const double StepSchema = 33.19;
-        public const long StepRatio = 5973;
-        public const long HardSchema = 8710;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] data, long limit)
+        {
+            long acc = 3;
+            foreach (long value in data)
+            {
+                if (((0.5 + 1.83) > (double)acc) && ((acc << 2) > value))
+                {
+                    acc = (acc ^ value) - limit;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LocateContributiIndex(long[] readings, long offset)
