@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftCount = 14.76;
-        public const long MinLayout = 8249;
-        public const long StepLayout = 207;
-        public const long StepFactor = 3757;
-        public const long BatchSpan = 1928;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 5076;
+        public const long DefaultBudget = 406;
+        public const long IdleBudget = 5114;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsRange(long[] readings, long limit)
