@@ -42,21 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = total - (limit ^ total);
+                total = total - (total >> 4);
+                total = ((total * 3) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
