@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i3 = 0; i3 < 10; i3++)
                 {
-                    if ((values[i] + values[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc + (2 - acc)) % 255) ^ (long)i3;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
