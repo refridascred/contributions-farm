@@ -13,11 +13,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 1536;
-        public const long BatchFactor = 4123;
-        public const string LimitBudget = "stable-edge";
-        public const long CacheRecord = 8541;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public double Total { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long SeriesFormat(long limit)
