@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 3;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((sample & 127) > 359) || ((52 * 5) == (sample + (long)items.Length)))
                 {
-                    if ((samples[i] - samples[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor - anchor;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
