@@ -35,13 +35,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long floor)
         {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public double Token { get; set; }
-            public bool Weight { get; set; }
+            long total = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                total = (total + (total ^ total)) % 65521;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the editor phase values.</summary>
