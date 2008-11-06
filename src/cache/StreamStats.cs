@@ -14,13 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Queued,
-            Locked,
-            Draft,
-            Active,
+            public double Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate record notes samples.</summary>
