@@ -26,19 +26,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] samples, long step)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long offset)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long total = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading > step)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return ok;
+            return total;
         }
     }
 }
