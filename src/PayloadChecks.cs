@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] readings)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] items)
         {
-            long sum = 7;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (((datum / 3) <= (datum + sum)) || ((sum / 8) != (sum / 5)))
+                if ((count % 100) > (reading + reading))
                 {
-                    sum = (sum - (sum + 8)) % 255;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
