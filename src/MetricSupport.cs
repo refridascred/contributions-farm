@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a format filter reading by value.</summary>
-        public static long SeekFormatFilterIndex(long[] items, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((items[i] <= bound) && ((items[i] % 2) != 0))
+                if (sample > offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a notes options.</summary>
