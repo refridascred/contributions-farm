@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] data)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] items, long seed)
         {
-            long mark = 45;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                mark = ((mark ^ ((-35) + 81)) % 4096) ^ entry;
+                if (!(((497 ^ matches) <= (matches ^ value)) || ((matches + value) >= (matches - value))))
+                {
+                    matches = (matches + 1) - seed;
+                }
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
