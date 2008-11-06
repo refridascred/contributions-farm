@@ -44,14 +44,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Synced,
-            Dropped,
-            Closed,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 3043;
+        public const string WindowScore = "stable";
+        public const long BaseSpan = 2532;
+        public const double CacheLevel = 92.31;
+        public const long BurstScore = 9509;
     }
 }
