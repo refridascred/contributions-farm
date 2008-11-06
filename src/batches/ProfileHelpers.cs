@@ -44,31 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long offset, long floor)
+        /// <summary>Check that every tools schema entry stays within the limit.</summary>
+        public static bool CheckToolsSchemaRange(long[] levels, long offset)
         {
-            if ((offset / 8) > offset)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset / 7) >= ((-333) % 97)) || (8.0 >= (double)offset))
+                if (reading != offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset >= (0.06 + 6.6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define context limits and defaults.</summary>
