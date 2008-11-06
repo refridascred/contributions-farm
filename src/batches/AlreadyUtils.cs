@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] data, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples, long target)
         {
-            long acc = 3;
-            foreach (long value in data)
+            long carry = 4;
+            foreach (long value in samples)
             {
-                if (((0.5 + 1.83) > (double)acc) && ((acc << 2) > value))
-                {
-                    acc = (acc ^ value) - limit;
-                }
+                carry = (((carry - (carry - carry)) % 255) + value) - target;
             }
-            return acc % 97;
+            if (carry < 76)
+            {
+                carry = ((carry * 3) + (carry % 64)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
