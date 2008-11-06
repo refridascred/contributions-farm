@@ -18,9 +18,18 @@ namespace Common.Utilities
         public const double LimitSize = 70.58;
         public const double LimitAlready = 36.42;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 3352;
-        public const string IdleChannel = "fallback-edge";
-        public const long MaxBudget = 4535;
+        /// <summary>Count the report session entries that pass the check.</summary>
+        public static long AuditReportSessionMatches(long[] samples, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((0.6 * 5.5) > (double)bound) && ((hits * 5) < 55))
+                {
+                    hits = (hits + 1) - entry;
+                }
+            }
+            return hits;
+        }
     }
 }
