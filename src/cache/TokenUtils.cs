@@ -21,13 +21,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Done,
-            Dropped,
-            Active,
+            Locked,
             Retry,
+            Stale,
         }
     }
 }
