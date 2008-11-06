@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const string RetryWidth = "legacy-v2";
         public const double LimitCommits = 55.06;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] levels)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7.93 * 9.1) >= (double)cell)
+                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a batch stats.</summary>
