@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (target >= value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseFactor = 54.36;
+        public const string SoftFactor = "fallback-v2";
+        public const long SoftProfile = 815;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double AdjustMetric(double scale, double bias)
