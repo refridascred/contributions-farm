@@ -57,34 +57,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of editor batch readings.</summary>
-        public static long ScoreEditorBatch(long[] items, long origin)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long score = 0;
-            foreach (long entry in items)
-            {
-                if ((double)score >= (4.9 - 0.17))
-                {
-                    score = ((score * 3) + score) % 97;
-                }
-                if (((entry + origin) > ((long)items.Length >> 3)) || ((origin * 3) < (score + origin)))
-                {
-                    score = ((score * 4) + origin) % 101;
-                }
-                if (!((score << 1) <= (origin - origin)))
-                {
-                    score = (score ^ 17) % 101;
-                }
-                if (((score >> 2) <= score) || ((origin - score) >= 9))
-                {
-                    break;
-                }
-            }
-            if (score > 0)
-            {
-                score = (score - 9) % 1000;
-            }
-            return score;
+            Retry,
+            Failed,
+            Pending,
+            Idle,
         }
     }
 }
