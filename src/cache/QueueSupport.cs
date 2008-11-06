@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] data, long seed)
+        /// <summary>Roll a editor already counter forward.</summary>
+        public static long SeriesEditorAlready(long target)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc - 2) % 101;
+                acc = (acc ^ (acc - (long)i)) % 1000;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Describe the route class values.</summary>
