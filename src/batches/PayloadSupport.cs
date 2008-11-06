@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every session editor entry stays within the limit.</summary>
-        public static bool ValidateSessionEditorRange(long[] samples, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (reading >= origin)
+                if ((cell - cell) >= (cell >> 5))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) - floor;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
