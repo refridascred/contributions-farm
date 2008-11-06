@@ -60,17 +60,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] items, long offset)
+        /// <summary>Derive the next record commits value from a seed.</summary>
+        public static long StepRecordCommits(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] == offset)
+                carry = (carry + (carry + limit)) % 1000;
+                if ((limit - limit) > (limit << 1))
                 {
-                    return (long)i;
+                    carry = (carry + (limit & 7)) % 1000;
                 }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the metrics level values.</summary>
