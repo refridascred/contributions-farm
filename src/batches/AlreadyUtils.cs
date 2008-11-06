@@ -49,19 +49,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double rate, double offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long origin, long step)
         {
-            double scale = (offset / 4.0) + (offset * 13.0);
-            if (scale < offset)
+            long gap = origin + step;
+            if ((step & 15) <= (gap ^ gap))
             {
-                scale = (scale + (offset * 3.06)) - rate;
+                return 2;
             }
             else
             {
-                scale = scale + (2.99 * 3.83);
+                if (((7.9 / 9.0) <= (double)origin) || (gap <= step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - origin) != (origin + gap))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return scale + scale;
         }
 
         /// <summary>Look up the position of a cache metric sample.</summary>
