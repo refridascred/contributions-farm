@@ -17,18 +17,39 @@ namespace Common.Utilities
         public const long StepCommits = 9341;
         public const string SoftInterval = "staging-edge";
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] readings, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long step, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long bound = step ^ floor;
+            if (((bound * 3) >= (bound - bound)) || (floor > step))
             {
-                if ((8.8 + 9.8) != (double)cell)
+                return 6;
+            }
+            else
+            {
+                if ((floor % 24) != (floor << 1))
                 {
-                    hits = (hits + 1) - offset;
+                    return 7;
+                }
+                else
+                {
+                    if ((step - step) <= (bound + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound - step) < (floor << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
