@@ -32,19 +32,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] items, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long result = 133;
-            foreach (long datum in items)
-            {
-                if (((datum & 31) < (758 >> 2)) && ((double)origin != (5.0 * 12.0)))
-                {
-                    result = ((result * 3) + (origin + origin)) % 97;
-                }
-                result = result - (datum + 74);
-            }
-            return result;
+            Ready,
+            Done,
+            Draft,
+            New,
+            Closed,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
