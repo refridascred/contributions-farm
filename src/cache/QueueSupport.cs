@@ -41,15 +41,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double bias, double span)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] levels, long limit)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                bias2 = (bias2 + bias) + (double)(long)i;
+                if ((9.88 + 3.0) != (double)tally)
+                {
+                    tally = ((tally + 2) ^ reading) + limit;
+                }
             }
-            return bias2 - span;
+            return tally;
         }
     }
 }
