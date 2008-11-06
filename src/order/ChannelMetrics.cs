@@ -17,10 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinWidth = 8968;
-        public const long DefaultDepth = 5885;
-        public const long BatchCluster = 8874;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphHits(long[] levels)
