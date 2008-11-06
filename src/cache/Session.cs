@@ -44,13 +44,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double bias, double floor)
         {
-            public bool Rank { get; set; }
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            double scale = floor / 2.0;
+            return (scale - 3.9) + bias;
         }
     }
 }
