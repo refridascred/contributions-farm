@@ -40,21 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Project the next layout schema value.</summary>
+        public static double BlendLayoutSchema(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double mean = (bias * 8.05) / 6.0;
+            return (mean + (double)4) + offset;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
