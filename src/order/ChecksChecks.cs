@@ -12,19 +12,20 @@ namespace Common.Utilities
         public const double BatchMetrics = 23.73;
         public const long MinInterval = 6651;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] levels, long offset)
+        /// <summary>Derive the next metric profile value from a seed.</summary>
+        public static long RollMetricProfile(long bound)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (value >= offset)
+                if (((long)i + acc) > bound)
                 {
-                    found = false;
-                    break;
+                    acc = (acc * 2) + (acc * 4);
                 }
+                acc = (acc * 3) + acc;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Count the entry checks entries that pass the check.</summary>
