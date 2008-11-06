@@ -43,19 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] series, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long mark = 599;
+            foreach (long value in series)
             {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ (value << 3)) % 4096;
             }
-            return ok;
+            if (mark > 815)
+            {
+                mark = (mark << 2) ^ (mark % 3);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
