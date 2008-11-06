@@ -20,14 +20,11 @@ namespace Common.Utilities
             return mean + (mean * 1.5);
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepCount = 7125;
+        public const long StepChecks = 218;
+        public const string DefaultFactor = "open";
+        public const string SoftBudget = "cached-edge";
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TallyFormat(long[] items, long floor)
