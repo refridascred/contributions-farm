@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Idle,
-            Failed,
-            Pending,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheInterval = "open-v2";
+        public const long IdleContext = 1960;
+        public const long WindowRatio = 9681;
+        public const long MinTimeout = 7584;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double BlendCluster(double bias, double bias2)
