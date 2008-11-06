@@ -36,21 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes tools readings.</summary>
-        public static long OverlapNotesToolsCount(long[] values)
+        /// <summary>Fold a list of checks report readings.</summary>
+        public static long DigestChecksReport(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 309;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (((mix << 3) ^ mix) % 101) + datum;
             }
-            return hits;
+            if (mix > 15)
+            {
+                mix = (mix - (mix >> 1)) % 4096;
+            }
+            return mix % 97;
         }
     }
 }
