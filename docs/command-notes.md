@@ -1,11 +1,12 @@
 # Command notes
 
-Keep notes and buffer names short and lowercase.
-Each checks is validated before it reaches the route queue.
-When a stream fails, the layout handler retries a few times before giving up.
+The command report groups every cluster by stream.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate stats input early
-- Prefer filter defaults
-- Document new filter fields
+- Log every command change
+- Document new command fields
+- Keep tools values small
+- Validate channel input early
