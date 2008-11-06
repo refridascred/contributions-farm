@@ -16,17 +16,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] data, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long mix = 58;
+            foreach (long entry in data)
             {
-                anchor = anchor - (anchor - anchor);
-                anchor = anchor - (limit % 8);
-                anchor = ((anchor * 2) + (long)i) % 97;
+                mix = ((mix * 2) + (seed % 5)) - entry;
             }
-            return anchor;
+            if (mix > 645)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a account reading.</summary>
