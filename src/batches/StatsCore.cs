@@ -24,20 +24,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double weight, double bias)
-        {
-            double scale = weight;
-            if (scale >= (bias - 3.8))
-            {
-                scale = scale - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (bias / 5.0)) - (double)(long)i;
-            }
-            return scale + (double)(-9);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 390;
+        public const long DefaultNotes = 6408;
+        public const long BaseNotes = 7770;
+        public const long SoftNotes = 5140;
+        public const long CacheTimeout = 2630;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
