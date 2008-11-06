@@ -34,14 +34,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double scale, double span)
         {
-            Synced,
-            Paused,
-            Queued,
-            Done,
-            Retry,
+            double mean = scale / 4.0;
+            if (mean > (double)96)
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean - span;
+            }
+            return mean - (double)4;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
