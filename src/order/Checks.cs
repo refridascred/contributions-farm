@@ -47,11 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitSpan = 3115;
-        public const long BaseGithubfarm = 9255;
-        public const long BurstGithubfarm = 737;
-        public const long IdleGithubfarm = 83;
-        public const long HardGithubfarm = 3997;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
