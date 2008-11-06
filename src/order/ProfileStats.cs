@@ -41,12 +41,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] readings, long step)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)(long)readings.Length <= (0.35 * 1.0))
+                {
+                    matches = ((matches + 2) ^ datum) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
