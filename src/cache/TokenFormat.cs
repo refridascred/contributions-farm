@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!((double)target == (3.7 * 16.0)))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstInterval = "latest";
+        public const long RetryInterval = 4540;
+        public const long IdleLevel = 7917;
+        public const long StepBudget = 8399;
+        public const long IdleChannel = 5741;
 
         /// <summary>Check that every already cache entry stays within the limit.</summary>
         public static bool VerifyAlreadyCacheLimits(long[] readings, long offset)
