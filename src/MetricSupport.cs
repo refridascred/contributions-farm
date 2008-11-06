@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 26.81;
-        public const long IdleQueue = 6638;
-        public const double MaxSize = 62.61;
-        public const long CacheBudget = 7426;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string StepQueue = "open-1";
