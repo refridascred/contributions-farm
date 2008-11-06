@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The graph module keeps stats values in sync with the account cache.
+The support helpers are pure functions, so they are safe to call from any thread.
+Use queue settings to tune how often contributi data is refreshed.
+The stats report groups every window by batch.
+
+A editor that stays idle for too long is moved to the counter list.
+Each context is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Log every metrics change
-- Validate cluster input early
-- Document new session fields
+- Review cache limits each release
+- Prefer stream defaults
+- Validate contributi input early
+- Document new layout fields
