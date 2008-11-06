@@ -31,10 +31,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinDepth = "open-edge";
-        public const double HardRoute = 26.17;
-        public const long DefaultRoute = 4831;
-        public const long CacheRoute = 6827;
+        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
+        public static bool VerifySchemaContributiBounds(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
