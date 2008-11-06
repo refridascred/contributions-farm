@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] levels, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (origin <= ((long)i + (long)i))
+                if (((9 << 2) < (long)levels.Length) || (((double)limit < 7.02) && ((double)hits < (double)5)))
                 {
-                    score = ((score << 2) ^ ((long)i + (long)i)) % 4096;
-                    break;
+                    hits = (hits + 1) ^ cell;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = (score ^ origin) ^ (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
