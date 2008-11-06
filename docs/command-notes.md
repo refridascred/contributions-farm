@@ -1,12 +1,10 @@
 # Command notes
 
-The queue module keeps format values in sync with the already cache.
-The stats report groups every contributi by stats.
-Run the record check before changing any batch limits.
+Run the notes check before changing any order limits.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new record fields
-- Review report limits each release
-- Prefer payload defaults
-- Log every command change
+- Validate already input early
+- Prefer layout defaults
+- Log every contributi change
