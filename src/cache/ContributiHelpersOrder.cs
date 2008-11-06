@@ -42,11 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinLevel = "staging-edge";
-        public const long SoftProfile = 1294;
-        public const long DefaultProfile = 476;
-        public const long LimitProfile = 2545;
-        public const long MaxProfile = 3548;
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
