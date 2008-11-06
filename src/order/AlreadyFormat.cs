@@ -30,10 +30,33 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinSpan = 7900;
-        public const long DefaultFarm = 6589;
-        public const long MinSize = 4095;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long step, long floor)
+        {
+            long offset = step - floor;
+            if (!(floor >= (offset + offset)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((5.23 + 2.3) == (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset << 2) > floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long DigestAccount(long[] items)
