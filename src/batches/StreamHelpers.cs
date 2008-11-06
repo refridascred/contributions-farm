@@ -20,22 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] values, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mark = -143;
+            foreach (long cell in data)
             {
-                if (!((tally / 6) != (bound + item)))
+                if ((double)cell > 20.0)
                 {
-                    tally = tally + 1;
+                    mark = (mark - (floor / 7)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = ((mark << 2) ^ (floor - mark)) % 101;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
