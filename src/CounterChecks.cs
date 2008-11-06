@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchFactor = 96.98;
-        public const double BaseSpan = 25.85;
-        public const double BatchCount = 9.45;
-        public const long WindowRoute = 6491;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long seed, long limit)
+        {
+            long next = seed + limit;
+            if ((seed - next) <= (next << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((limit << 3) != (next + limit)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed % 3) != (7 / 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((5.7 / 8.0) >= (double)limit) || ((69 / 2) != (seed << 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
