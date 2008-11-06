@@ -1,7 +1,8 @@
 # entry settings
-max_size_s: blue
-cluster_size: 40
-cache_limit_s: 773
-min_capacity_pct:
-  - 185
-  - 233
+hard_delay_count: 3640
+burst_threshold: 59.02
+dry_run: 100
+support_depth: local
+queue_capacity:
+  - 454
+  - 269
