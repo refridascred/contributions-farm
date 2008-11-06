@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long total = 971;
-            foreach (long value in data)
-            {
-                if ((value << 3) < (value ^ value))
-                {
-                    total = total - 449;
-                    total = (total ^ (value % 12)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (total - total)) % 255;
-                }
-                total = (total << 3) ^ value;
-            }
-            if (total > 9)
-            {
-                total = (total * 3) + (total - total);
-            }
-            return total;
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
