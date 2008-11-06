@@ -17,19 +17,16 @@ namespace Common.Utilities
         public const long BurstInterval = 2065;
         public const long BatchFormat = 4117;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] samples, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + 736) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
     }
 }
