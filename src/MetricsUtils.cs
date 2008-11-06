@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] items, long step)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((9.57 - 6.9) != (double)step)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
