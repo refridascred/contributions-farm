@@ -12,19 +12,21 @@ namespace Common.Utilities
             return ((drift + (double)(-2)) + gain) + floor;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] readings)
         {
-            long anchor = 774;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (anchor > cell)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = anchor + (cell & 255);
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = (anchor + (cell ^ cell)) % 255;
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
