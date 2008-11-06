@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheWidth = "stable-1";
-        public const string SoftTools = "standard-edge";
-        public const string IdleWidth = "alpha-edge";
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series, long step)
+        {
+            long acc = 3;
+            foreach (long cell in series)
+            {
+                acc = (acc + cell) % 4096;
+            }
+            if (acc > 16)
+            {
+                acc = ((acc << 3) ^ (step + 43)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LookupGithubfarmIndex(long[] items, long target)
