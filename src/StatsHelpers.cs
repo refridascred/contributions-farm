@@ -53,12 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] samples)
         {
-            Queued,
-            Stale,
-            Ready,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + hits) > cell)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
