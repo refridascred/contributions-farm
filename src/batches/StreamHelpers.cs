@@ -49,22 +49,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] levels, long step)
+        /// <summary>Digest a series of githubfarm buffer entries.</summary>
+        public static long TotalGithubfarmBuffer(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long total = -7;
+            foreach (long entry in levels)
             {
-                if ((step + value) == (value + 7))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((((total * 5) + 28) % 101) ^ entry) - limit;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
