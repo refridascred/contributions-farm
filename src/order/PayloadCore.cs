@@ -43,22 +43,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] data)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            if (!((offset & 1) > (seed + seed)))
             {
-                if (((16.0 * 0.7) > (double)tally) || ((16.0 / 7.0) < (double)tally))
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) < seed)
                 {
-                    tally = (tally + 3) + item;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)offset <= 3.01)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
