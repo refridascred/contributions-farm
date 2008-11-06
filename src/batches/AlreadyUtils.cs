@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Queued,
-            Active,
-            Idle,
-            Pending,
-            Draft,
+            Synced,
+            Retry,
+            New,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
