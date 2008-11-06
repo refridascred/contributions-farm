@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Find the first payload order entry that matches the target.</summary>
+        public static long LocatePayloadOrderIndex(long[] items, long target)
         {
-            Done,
-            Closed,
-            Idle,
-            Failed,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch info.</summary>
