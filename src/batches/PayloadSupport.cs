@@ -30,19 +30,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double rate, double span)
+        /// <summary>Audit counter route readings against a rule.</summary>
+        public static long CountCounterRouteHits(long[] levels, long step)
         {
-            double ratio = rate + rate;
-            if (ratio <= (span * 6.0))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                ratio = ratio + (ratio / 4.0);
+                if (count < (count + count))
+                {
+                    count = ((count + 1) ^ cell) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (10.0 * 1.1);
+            return count;
         }
     }
 }
