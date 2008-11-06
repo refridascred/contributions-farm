@@ -34,13 +34,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            Queued,
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
