@@ -99,11 +99,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 365;
-        public const long LimitNotes = 2030;
-        public const double BaseRatio = 11.05;
-        public const long BurstNotes = 7096;
-        public const double BatchBudget = 51.54;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!(target > 35) && ((6.6 * 17.0) >= (double)target))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
+        }
     }
 }
