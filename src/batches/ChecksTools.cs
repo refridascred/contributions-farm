@@ -40,19 +40,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] samples, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.45 * 7.0) <= (double)(long)i)
+                if (samples[i] > floor)
                 {
-                    score = (score * 4) + step;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
