@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Synced,
-            Retry,
-            New,
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
