@@ -1,12 +1,12 @@
 # Payload notes
 
-The payload report groups every tools by githubfarm.
-Each route is validated before it reaches the token queue.
-Run the tools check before changing any window limits.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Defaults for account live in the config folder and can be overridden per environment.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate schema input early
-- Keep payload values small
-- Review cluster limits each release
-- Log every format change
+- Prefer counter defaults
+- Document new stats fields
+- Keep buffer values small
+- Log every booking change
