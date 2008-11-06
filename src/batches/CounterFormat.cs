@@ -15,17 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] levels, long floor)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
