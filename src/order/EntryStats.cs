@@ -45,13 +45,15 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Adjust a order batch reading.</summary>
+        public static double SmoothOrderBatch(double scale, double bias)
         {
-            Draft,
-            Done,
-            New,
-            Queued,
+            double drift = (scale / 8.0) - (scale - scale);
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + (scale * 4.46);
         }
     }
 }
