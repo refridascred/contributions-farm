@@ -43,19 +43,9 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxDepth = 1767;
+        public const string HardInterval = "strict-edge";
+        public const long SoftCommand = 5518;
     }
 }
