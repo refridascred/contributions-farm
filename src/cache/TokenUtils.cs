@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Measure how many cache tools samples are out of range.</summary>
+        public static long AuditCacheToolsOutliers(long[] readings, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (acc > (62 * 2))
+                if (datum < (bound / 8))
                 {
-                    acc = (acc ^ (step ^ acc)) % 4096;
+                    hits = hits + 1;
                 }
-                else
-                {
-                    acc = acc + (step >> 5);
-                    acc = (acc ^ ((-6) - 66)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
