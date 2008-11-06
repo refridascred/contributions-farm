@@ -26,18 +26,27 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] data)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            long count = 0;
-            foreach (long item in data)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((((item & 15) <= 461) && ((double)item == (20.0 - 8.0))) || (9.4 >= (double)item))
+                if (!(3 <= bound))
                 {
-                    count = count + 3;
+                    result = (result * 4) + bound;
                 }
+                if ((bound << 2) < bound)
+                {
+                    result = (result * 3) + (result % 64);
+                }
+                else
+                {
+                    result = (result ^ (result + (long)i)) % 97;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
     }
 }
