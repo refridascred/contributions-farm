@@ -37,18 +37,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] series)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!((seen + seen) > (49 ^ reading)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Dropped,
+            New,
+            Active,
+            Ready,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
