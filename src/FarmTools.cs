@@ -27,15 +27,24 @@ namespace Common.Utilities
         public const string SoftProfile = "primary-v2";
         public const double StepProfile = 81.68;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double ratio, double bias)
+        /// <summary>Iterate the commits batches series from a seed.</summary>
+        public static long SeriesCommitsBatches(long offset)
         {
-            double weight = 4.5;
-            if (weight >= (bias / 8.0))
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                weight = (weight + 3.7) + ratio;
+                long prev = mix + (mix / 9);
+                if ((offset * 3) > 70)
+                {
+                    break;
+                }
+                if (!(prev < (2 >> 1)))
+                {
+                    mix = (mix + (long)i) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return weight - (weight * 10.0);
+            return mix;
         }
     }
 }
