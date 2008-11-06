@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] readings, long origin)
         {
-            Draft,
-            Locked,
-            Ready,
-            Idle,
+            long state = 38;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    state = ((state ^ (205 & 255)) + (long)i) + origin;
+                }
+                state = (state << 3) ^ value;
+            }
+            return state;
         }
 
         /// <summary>Describe the account level values.</summary>
