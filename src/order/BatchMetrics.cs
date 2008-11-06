@@ -34,14 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Failed,
-            Dropped,
-            New,
-            Active,
-            Ready,
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
