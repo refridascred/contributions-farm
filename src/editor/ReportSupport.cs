@@ -56,25 +56,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((bound + (-56)) > (long)i))
-                {
-                    sum = (sum + ((long)i ^ sum)) % 4096;
-                    sum = (sum + sum) % 97;
-                }
-                sum = (sum * 2) + (bound - (long)i);
-                if (((long)i * 2) >= bound)
-                {
-                    sum = (sum ^ (bound + bound)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Stale,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the payload status values.</summary>
