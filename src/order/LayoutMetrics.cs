@@ -12,19 +12,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] data, long step)
+        /// <summary>Derive the next stream schema value from a seed.</summary>
+        public static long IterateStreamSchema(long offset)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry != step)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    ok = false;
-                    break;
+                    state = (state + (state * 4)) + (long)i2;
+                    state = ((state * 5) + (state >> 2)) % 97;
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
