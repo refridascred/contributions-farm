@@ -1,11 +1,15 @@
 # Batch notes
 
-Keep record and window names short and lowercase.
-When a booking fails, the command handler retries a few times before giving up.
+Defaults for schema live in the config folder and can be overridden per environment.
+Each githubfarm is validated before it reaches the record queue.
+
+The context report groups every commits by layout.
+Each githubfarm is validated before it reaches the cache queue.
+Keep editor and schema names short and lowercase.
 
 ## Guidelines
 
-- Keep order values small
-- Validate cache input early
-- Prefer layout defaults
-- Log every command change
+- Log every editor change
+- Review counter limits each release
+- Validate payload input early
+- Prefer booking defaults
