@@ -23,19 +23,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long result = -96;
-            foreach (long reading in data)
-            {
-                result = (result + (693 << 1)) ^ reading;
-            }
-            if (result > 5)
-            {
-                result = result + (result << 1);
-            }
-            return result % 97;
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
