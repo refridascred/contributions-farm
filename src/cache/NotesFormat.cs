@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] data, long limit)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long acc = 211;
-            foreach (long reading in data)
-            {
-                if (reading >= acc)
-                {
-                    continue;
-                }
-                if (((-178) << 1) < (reading - 571))
-                {
-                    acc = (acc * 3) + (limit % 3);
-                    acc = acc ^ (limit & 255);
-                }
-                acc = (acc - acc) % 101;
-            }
-            return acc;
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
