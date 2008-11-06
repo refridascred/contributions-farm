@@ -32,22 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowWidth = "primary-v2";
+        public const long DefaultAccount = 5592;
+        public const long SoftAccount = 5405;
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
