@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a tools stream reading by value.</summary>
-        public static long SeekToolsStreamIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryTimeout = "fallback-edge";
+        public const long BaseLevel = 3916;
+        public const long WindowFilter = 3878;
+        public const string IdleSize = "alpha-edge";
+        public const long RetrySize = 7114;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double SoftRatio = 16.34;
