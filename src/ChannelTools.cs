@@ -50,12 +50,9 @@ namespace Common.Utilities
             return weight2 + 9.3;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleRatio = "strict-v2";
+        public const long RetryBudget = 943;
+        public const long BurstInterval = 986;
     }
 }
