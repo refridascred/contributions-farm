@@ -26,18 +26,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] levels)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (((long)levels.Length % 100) != (datum >> 5))
+                if ((((item & 15) <= 461) && ((double)item == (20.0 - 8.0))) || (9.4 >= (double)item))
                 {
-                    hits = hits + 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
