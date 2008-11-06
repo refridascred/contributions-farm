@@ -19,17 +19,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] readings, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 7;
+            foreach (long item in readings)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                mark = (mark + mark) % 97;
+                mark = ((mark << 3) ^ (mark + item)) % 65521;
+                if (limit >= (limit * 3))
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ item) % 1000;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
