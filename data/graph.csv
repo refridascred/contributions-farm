@@ -1,6 +1,7 @@
-id,rank,label,active
-1,local,18,445
-2,legacy,cached,green
-3,blue,78.5,edge
-4,80.36,410,180
-5,961,95.09,79
+id,ratio,score
+1,207,latest
+2,93.17,27.78
+3,2.9,51.94
+4,508,standard
+5,69.53,blue
+6,30.75,60
