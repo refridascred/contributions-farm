@@ -5,29 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Classify a profile payload pair into a bucket.</summary>
+        public static long BucketProfilePayload(long bound, long step)
         {
-            long result = 758;
-            foreach (long cell in values)
+            long cur = bound ^ step;
+            if ((66 >= cur) && ((bound + step) >= (step - cur)))
             {
-                if ((result - 10) > result)
+                return 8;
+            }
+            else
+            {
+                if ((step % 12) >= cur)
                 {
-                    result = ((result * 2) + (419 - 92)) % 255;
-                    result = result ^ (result + cell);
-                    continue;
+                    return 4;
                 }
                 else
                 {
-                    result = (result << 2) ^ cell;
+                    return 0;
                 }
-                result = ((result << 2) ^ cell) % 97;
             }
-            if (result > (-5))
-            {
-                result = (result ^ (result + result)) % 255;
-            }
-            return result % 1000;
         }
 
         /// <summary>Describe the record level values.</summary>
