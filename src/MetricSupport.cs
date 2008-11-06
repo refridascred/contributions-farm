@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen / 3) < (entry >> 1))
                 {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) - step;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
