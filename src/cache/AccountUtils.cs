@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long offset, long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] levels)
         {
-            long offset2 = offset ^ bound;
-            if (((offset + bound) > (922 + offset2)) || ((offset2 + offset) != (bound + bound)))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 & 63) != (offset + offset))
+                if ((3 - count) >= (datum / 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset << 2) <= offset) && ((bound >> 1) == (offset2 * 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset2 > bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
