@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 26.49;
+        public const string SoftChecks = "alpha-edge";
+        public const long SoftCount = 3859;
+        public const double BaseSpan = 4.83;
+        public const long DefaultChecks = 509;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ProjectCommits(double gain, double floor)
