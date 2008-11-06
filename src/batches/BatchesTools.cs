@@ -44,19 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] samples, long seed)
+        /// <summary>Count the tools support entries that pass the check.</summary>
+        public static long CountToolsSupportOutliers(long[] series, long bound)
         {
-            long acc = 468;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                acc = (acc + cell) + seed;
+                if ((bound >= datum) && ((double)bound < 8.0))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (acc > 5)
-            {
-                acc = acc + (acc / 4);
-            }
-            return acc;
+            return seen;
         }
     }
 }
