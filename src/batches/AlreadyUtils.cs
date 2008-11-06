@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Retry,
-            Idle,
-            Dropped,
-            Active,
-            Synced,
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
