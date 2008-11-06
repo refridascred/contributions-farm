@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepBudget = 76.51;
+        public const long MinRatio = 6083;
+        public const long LimitSize = 9506;
+        public const long StepCommand = 8762;
+        public const long RetryCommand = 1109;
 
         /// <summary>Blend two order measurements.</summary>
         public static double ProjectOrder(double bias, double offset)
