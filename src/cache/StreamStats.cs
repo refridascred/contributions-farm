@@ -14,11 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public double Region { get; set; }
-            public double Total { get; set; }
+            Done,
+            Ready,
+            Synced,
+            Failed,
         }
 
         /// <summary>Accumulate record notes samples.</summary>
