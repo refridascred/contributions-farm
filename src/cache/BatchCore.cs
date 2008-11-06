@@ -41,22 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] values, long target)
+        /// <summary>Measure how many checks editor samples are out of range.</summary>
+        public static long MeasureChecksEditorHits(long[] series)
         {
-            long carry = 693;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (value <= (carry - carry))
+                if ((double)sample < 13.0)
                 {
-                    carry = ((carry << 3) ^ (target - target)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            if (carry > 815)
-            {
-                carry = ((carry << 2) ^ (carry + carry)) % 1000;
-            }
-            return carry;
+            return tally;
         }
     }
 }
