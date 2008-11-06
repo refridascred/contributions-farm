@@ -16,23 +16,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Blend two batch already measurements.</summary>
-        public static double ScaleBatchAlready(double ratio, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] data)
         {
-            double rate = ratio;
-            if (rate <= (double)64)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                rate = rate + 5.0;
+                if ((sample * 5) < (sample ^ sample))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                rate = rate - (4.8 * 7.4);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + bias) - (double)(long)i;
-            }
-            return rate + rate;
+            return seen;
         }
 
         /// <summary>Hold a checks record.</summary>
