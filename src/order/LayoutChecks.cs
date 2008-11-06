@@ -84,11 +84,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double rate, double floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            double drift = (floor / 9.0) / 5.0;
-            return (drift + (16.0 - 6.8)) + rate;
+            long result = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
