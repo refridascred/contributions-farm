@@ -1,9 +1,8 @@
-id,rank,ratio
-1,11.6,785
-2,primary,62.53
-3,710,local
-4,42.72,fallback
-5,primary,282
-6,legacy,26
-7,12.98,102
-8,edge,17.43
+id,token,active,label
+1,80.92,694,blue
+2,primary,392,local
+3,786,36.37,staging
+4,94,edge,staging
+5,196,500,11.16
+6,staging,latest,latest
+7,484,724,66
