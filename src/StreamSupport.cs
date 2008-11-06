@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Retry,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitInterval = 42.84;
+        public const long BatchQueue = 2576;
+        public const long MinCount = 8434;
 
         /// <summary>Match up command samples.</summary>
         public static long MatchCommandCount(long[] readings)
