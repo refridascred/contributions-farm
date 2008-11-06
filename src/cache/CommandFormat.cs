@@ -20,11 +20,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long result = target;
+            for (int i = 0; i < 24; i++)
+            {
+                result = result ^ result;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
