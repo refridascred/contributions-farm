@@ -1,9 +1,8 @@
-id,level,score,active
-1,7.83,36.75,483
-2,748,69.85,open
-3,19.73,794,eu-west
-4,98.73,43.51,74.16
-5,252,131,64
-6,77,strict,27.02
-7,legacy,staging,cached
-8,981,898,212
+id,label,owner,count
+1,92.66,909,74.19
+2,open,edge,210
+3,601,blue,91.85
+4,819,stable,32.55
+5,345,stable,496
+6,440,local,open
+7,2,282,green
