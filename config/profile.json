@@ -1,5 +1,5 @@
 {
-  "retry_timeout": 500,
-  "hard_limit_s": false,
-  "sync_ttl_ms": 3.01
+  "graph_interval": 25.41,
+  "dry_run": 3.28,
+  "entry_interval": ["local", "fallback", "green"]
 }
