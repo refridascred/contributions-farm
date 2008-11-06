@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats metrics readings against a bound.</summary>
-        public static bool ValidateStatsMetricsRange(long[] readings, long offset)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
