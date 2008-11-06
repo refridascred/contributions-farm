@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((tally + 57) <= (892 + reading))
+                if ((seed ^ seed) > (matches & 127))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 1) + datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Roll a format checks counter forward.</summary>
