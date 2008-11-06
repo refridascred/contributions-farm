@@ -21,13 +21,19 @@ namespace Common.Utilities
         public const long BatchFactor = 4283;
         public const long BaseInterval = 4089;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] series, long target)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public double Weight { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
