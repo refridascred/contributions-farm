@@ -1,20 +1,11 @@
 # entry settings
-min_timeout_ms:
-  commits_timeout:
-    - 174
-    - 349
-  soft_timeout: 1024
-  retry_timeout_count: 6221
-  persist: 500
-  dry_run:
-    - edge
-    - staging
-    - latest
-  audit:
-    - eu-west
-    - edge
-    - primary
-token_window:
-  - blue
-  - green
-notes_capacity: false
+poll_ttl_count: 30
+stream_threshold:
+  - stable
+  - local
+  - primary
+flush_size: 60
+base_interval_pct:
+  - 169
+  - 431
+  - 285
