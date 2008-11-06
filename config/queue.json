@@ -1,5 +1,17 @@
 {
-  "max_delay_s": ["strict", "fallback", "cached"],
-  "burst_capacity_ms": 30,
-  "already_delay": "standard"
+  "order_window": 70.68,
+  "filter_delay": {
+    "cluster_retries": 500,
+    "soft_delay": 88,
+    "default_timeout": {
+      "default_size_s": false,
+      "hard_retries": "edge",
+      "flush_limit": [205, 443, 256],
+      "order_ratio": true,
+      "base_retries_s": "local"
+    }
+  },
+  "poll_capacity_s": 1024,
+  "farm_timeout": false,
+  "warm_retries_s": 58
 }
