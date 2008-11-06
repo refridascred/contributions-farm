@@ -49,18 +49,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit already context readings against a rule.</summary>
-        public static long MeasureAlreadyContextHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (tally > (entry - tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "latest-edge";
+        public const long CacheChecks = 4913;
+        public const long MinCount = 1898;
+        public const string BaseChecks = "stable-edge";
     }
 }
