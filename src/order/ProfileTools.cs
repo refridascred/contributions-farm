@@ -40,18 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] data)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((sample * 2) > 325) || ((seen + seen) <= 550))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
