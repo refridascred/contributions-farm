@@ -58,12 +58,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Ready,
-            Idle,
-            Failed,
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
