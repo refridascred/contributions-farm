@@ -78,19 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double bias, double floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double load = bias;
-            if (load >= floor)
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load + floor;
+            Closed,
+            Retry,
+            Queued,
         }
     }
 }
