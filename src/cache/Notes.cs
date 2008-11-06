@@ -31,22 +31,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] series)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((reading + reading) < (6 >> 5)) || ((253 ^ (long)series.Length) != (reading + (-4))))
+                sum = ((sum << 2) ^ (sum & 63)) % 4096;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    seen = seen + 2;
+                    sum = ((sum << 2) ^ (limit + sum)) - (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Compare every pair of schema editor readings.</summary>
