@@ -1,16 +1,41 @@
 {
-  "compress": "latest",
-  "cache_window": {
-    "idle_ratio": {
-      "audit": ["latest", "local"],
-      "idle_timeout_count": false,
-      "enabled": [260, 327, 326],
-      "session_capacity": 65.76,
-      "default_size_count": "green",
-      "checks_limit": 60
+  "flush_ratio_pct": {
+    "schema_size": "open",
+    "max_timeout": {
+      "burst_threshold_s": 21,
+      "max_capacity_pct": "local",
+      "verbose": [228, 248],
+      "idle_threshold_count": "local",
+      "dry_run": 60,
+      "readonly": 250
     },
-    "max_retries_s": 35,
-    "flush_limit_count": false
+    "dry_run": ["open", "green", "cached"],
+    "base_capacity_count": false
   },
-  "soft_interval": ["fallback", "local"]
+  "session_ttl": true,
+  "session_threshold": {
+    "audit": {
+      "enabled": [285, 212, 355, 185],
+      "stream_ratio": false,
+      "record_threshold": "primary",
+      "counter_interval": 5939
+    },
+    "channel_window": true,
+    "commits_ttl": "stable",
+    "window_ttl": 500,
+    "soft_ttl_ms": [321, 480, 167, 484],
+    "enabled": false
+  },
+  "burst_ratio": {
+    "idle_retries": 100,
+    "account_window": "legacy",
+    "base_ratio_ms": 100,
+    "route_threshold": "green"
+  },
+  "burst_interval": {
+    "session_window": 97.28,
+    "burst_retries_pct": "cached",
+    "audit": false
+  },
+  "sync_ratio_pct": "cached"
 }
