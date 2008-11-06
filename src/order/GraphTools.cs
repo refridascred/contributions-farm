@@ -34,21 +34,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] series)
+        /// <summary>Validate batch report readings against a bound.</summary>
+        public static bool GuardBatchReportRange(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample <= seed)
                 {
-                    if ((series[i] - series[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Adjust a notes reading.</summary>
