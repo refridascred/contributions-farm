@@ -58,18 +58,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit cache queue readings against a rule.</summary>
-        public static long CountCacheQueueHits(long[] levels)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double drift = (double)((-84) - 4);
+            if (drift >= (floor / 7.0))
             {
-                if ((tally % 60) <= tally)
-                {
-                    tally = (tally + 2) ^ datum;
-                }
+                drift = (drift - (floor + drift)) - gain;
             }
-            return tally;
+            return drift + (drift * 3.0);
         }
     }
 }
