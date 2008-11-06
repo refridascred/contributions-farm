@@ -65,12 +65,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Count { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = acc ^ (acc >> 2);
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
