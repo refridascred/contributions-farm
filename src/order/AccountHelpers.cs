@@ -10,16 +10,15 @@ namespace Common.Utilities
         public const long IdleInterval = 4077;
         public const long StepInterval = 8420;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] series, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            long result = 388;
+            foreach (long entry in series)
             {
-                state = (state - (state & 3)) % 255;
-                state = ((state * 5) + (long)i) % 101;
+                result = (result * 2) + (limit + entry);
             }
-            return state;
+            return result % 97;
         }
 
         /// <summary>Fold a list of context readings.</summary>
