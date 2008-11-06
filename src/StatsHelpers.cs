@@ -13,15 +13,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] values, long offset)
+        /// <summary>Count checks route pairs that satisfy a relation.</summary>
+        public static long CompareChecksRouteCount(long[] readings)
         {
             long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((89 >> 3) >= (offset ^ hits)) || ((hits - 380) == (offset / 6)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) - entry;
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
