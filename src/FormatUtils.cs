@@ -75,26 +75,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] levels, long offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long bound)
         {
-            long mark = 48;
-            foreach (long value in levels)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (15.0 > (double)offset)
+                if ((sum - sum) >= (long)i)
                 {
-                    mark = ((mark * 3) + ((long)levels.Length - value)) % 255;
+                    sum = (sum - (681 + bound)) % 101;
+                    sum = ((sum * 5) + sum) % 4096;
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ (offset & 3)) % 97;
-                }
+                sum = (sum << 2) ^ ((long)i - sum);
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            if (mark < 60)
-            {
-                mark = mark ^ 2;
-            }
-            return mark % 4096;
+            return sum;
         }
     }
 }
