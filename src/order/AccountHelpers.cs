@@ -66,19 +66,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)tally <= (8.3 * 7.87))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultLevel = 6639;
+        public const long IdleDepth = 8660;
+        public const double WindowNotes = 79.81;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] readings, long target)
