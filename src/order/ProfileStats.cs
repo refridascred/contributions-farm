@@ -36,19 +36,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Rank cache support input into a small class.</summary>
+        public static long GradeCacheSupport(long limit, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            if (((limit * 4) >= (offset << 2)) || ((offset - limit) < (10 ^ offset)))
             {
-                if ((double)limit != (double)anchor)
-                {
-                    anchor = (anchor * 4) + limit;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (offset < limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
