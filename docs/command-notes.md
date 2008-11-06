@@ -1,10 +1,11 @@
 # Command notes
 
-The support module keeps already values in sync with the order cache.
-A metrics that stays idle for too long is moved to the record list.
+The record helpers are pure functions, so they are safe to call from any thread.
+Each cache is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Log every queue change
-- Validate account input early
-- Review order limits each release
+- Log every cluster change
+- Prefer checks defaults
+- Keep counter values small
+- Document new counter fields
