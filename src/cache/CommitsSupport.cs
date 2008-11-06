@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 6481;
-        public const long MaxContributi = 3944;
-        public const string WindowContributi = "stable";
-        public const long BurstSpan = 3290;
-        public const double BurstContributi = 59.25;
+        /// <summary>Grade a commits farm value against two limits.</summary>
+        public static long RankCommitsFarm(long target, long bound)
+        {
+            long gap = target - bound;
+            if ((double)gap <= (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((gap + 6) >= (gap + gap)) && ((double)target >= 4.22))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long ClassifyChannel(long bound, long seed)
