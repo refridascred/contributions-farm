@@ -43,12 +43,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Pending,
-            Queued,
-            Closed,
+            public bool Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Rank token command input into a small class.</summary>
