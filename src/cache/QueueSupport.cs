@@ -27,15 +27,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFactor = 6180;
+        public const long LimitFilter = 9885;
+        public const long WindowBudget = 7639;
+        public const long BatchDepth = 2211;
     }
 }
