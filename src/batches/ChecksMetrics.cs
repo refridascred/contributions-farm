@@ -25,19 +25,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] readings, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Idle,
+            Synced,
+            Done,
+            Stale,
         }
 
         /// <summary>Fold a list of context counter readings.</summary>
