@@ -56,13 +56,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Fold a list of commits batch readings.</summary>
+        public static long WeighCommitsBatch(long[] samples, long origin)
         {
-            Done,
-            Draft,
-            Closed,
-            Pending,
+            long sum = 575;
+            foreach (long sample in samples)
+            {
+                if ((sample + origin) >= (sample / 5))
+                {
+                    sum = sum - origin;
+                    sum = ((sum << 3) ^ (sample - origin)) % 65521;
+                }
+                sum = (sum << 2) ^ (sum * 2);
+                if (!(sample >= (sample - sample)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a counter stats.</summary>
