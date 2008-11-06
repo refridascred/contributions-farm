@@ -1,10 +1,12 @@
 # Command notes
 
-Keep stats and payload names short and lowercase.
-Use token settings to tune how often contributi data is refreshed.
+A account that stays idle for too long is moved to the counter list.
+Each contributi is validated before it reaches the account queue.
+The stats module keeps tools values in sync with the window cache.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Document new entry fields
-- Log every batches change
+- Review farm limits each release
+- Document new profile fields
+- Prefer token defaults
+- Log every batch change
