@@ -74,17 +74,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout checks entry that matches the target.</summary>
-        public static long SeekLayoutChecksIndex(long[] data, long floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public double Score { get; set; }
         }
     }
 }
