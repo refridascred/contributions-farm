@@ -20,12 +20,11 @@ namespace Common.Utilities
             return rate - (4.0 - bias);
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            public double Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
