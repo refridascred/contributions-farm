@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double bias, double bias2)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            double scale = bias2;
-            if (scale > (double)684)
-            {
-                scale = (scale - 3.41) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (scale - 16.0)) + (double)(long)i;
-            }
-            return scale + (scale / 3.0);
+            Active,
+            Idle,
+            Closed,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
