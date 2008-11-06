@@ -23,18 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] values, long seed)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double gain2 = (offset - 5.5) / 5.0;
+            if (gain2 <= gain2)
             {
-                if (((seed - hits) != (sample * 4)) || (2 > (45 + sample)))
-                {
-                    hits = hits + 1;
-                }
+                gain2 = gain2 - offset;
             }
-            return hits;
+            return gain2 - (offset - gain);
         }
 
         /// <summary>Project the next tools value.</summary>
