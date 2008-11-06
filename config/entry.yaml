@@ -1,7 +1,7 @@
 # entry settings
-tools_limit: 98.0
-idle_retries: 29
-graph_delay: latest
-strict: strict
-farm_interval: 30
-flush_window_s: 79
+max_size_s: blue
+cluster_size: 40
+cache_limit_s: 773
+min_capacity_pct:
+  - 185
+  - 233
