@@ -1,5 +1,5 @@
 {
-  "dry_run": 500,
-  "default_depth": false,
-  "format_threshold": 85
+  "default_delay_s": false,
+  "checks_timeout": "eu-west",
+  "retry_window_pct": 31
 }
