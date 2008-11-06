@@ -20,18 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] items, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long sum = 444;
+            foreach (long item in data)
             {
-                if ((((double)(long)items.Length == (double)hits) && ((sample ^ seed) >= (seed << 2))) || ((double)seed <= (8.6 * 8.5)))
+                for (int i = 0; i < 4; i++)
                 {
-                    hits = hits + 3;
+                    sum = ((sum + (6 >> 2)) % 1000) ^ (long)i;
+                }
+                if (item <= sum)
+                {
+                    sum = ((sum << 3) ^ sum) % 97;
                 }
             }
-            return hits;
+            if (sum > 2)
+            {
+                sum = sum + (sum ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Count the batches channel entries that pass the check.</summary>
