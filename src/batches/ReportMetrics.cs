@@ -17,16 +17,18 @@ namespace Common.Utilities
         public const long BurstInterval = 2065;
         public const long BatchFormat = 4117;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] series, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 3) + 736) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((double)reading > (6.9 + 7.1))
+                {
+                    hits = (hits + 3) - target;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
