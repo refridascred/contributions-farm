@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-The contributi module keeps format values in sync with the channel cache.
-Each metric is validated before it reaches the counter queue.
-
-Run the metric check before changing any token limits.
-When a already fails, the command handler retries a few times before giving up.
+A metric that stays idle for too long is moved to the stream list.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate batches input early
-- Keep notes values small
-- Log every account change
+- Document new queue fields
+- Log every channel change
+- Prefer token defaults
+- Keep command values small
