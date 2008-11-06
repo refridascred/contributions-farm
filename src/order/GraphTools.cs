@@ -49,21 +49,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long limit, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((1 - (-4)) == (target - 187))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)limit <= 9.0) && ((3.3 * 7.99) == (double)target))
                 {
-                    if ((items[i] + items[j]) > 6)
+                    return 1;
+                }
+                else
+                {
+                    if (!(11 < target))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a githubfarm channel sample.</summary>
