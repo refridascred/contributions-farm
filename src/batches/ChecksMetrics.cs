@@ -80,15 +80,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long carry = 687;
-            foreach (long sample in data)
-            {
-                carry = (carry << 3) ^ (sample - 97);
-            }
-            return carry % 1000;
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
