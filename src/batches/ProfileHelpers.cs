@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first filter already entry that matches the target.</summary>
-        public static long SeekFilterAlreadyIndex(long[] items, long limit)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = bias;
+            if (load > (double)99)
             {
-                if ((items[i] == limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (load * 2.7)) - floor;
             }
-            return -1;
+            else
+            {
+                load = load - (load - load);
+            }
+            return load - (double)1;
         }
 
         /// <summary>Hold a stream options.</summary>
