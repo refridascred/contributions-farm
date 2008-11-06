@@ -78,19 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double rate, double bias)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            double drift = (double)(86 - 607);
-            if (drift <= (double)773)
-            {
-                drift = drift + bias;
-            }
-            else
-            {
-                drift = drift + (double)13;
-            }
-            return drift + rate;
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
