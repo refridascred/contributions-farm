@@ -36,12 +36,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] items)
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
