@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double gain, double offset)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double gain, double floor)
         {
-            double gain2 = (offset - 5.5) / 5.0;
-            if (gain2 <= gain2)
+            double load = floor;
+            if (load >= (double)44)
             {
-                gain2 = gain2 - offset;
+                load = load - (double)(-356);
             }
-            return gain2 - (offset - gain);
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (gain * 6.0)) + (double)(long)i;
+            }
+            return load - (gain - gain);
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
