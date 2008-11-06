@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const string SoftFactor = "fallback-v2";
         public const long SoftProfile = 815;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleCounter = "latest-v2";
-        public const double DefaultBudget = 0.58;
-        public const long LimitDepth = 9151;
-        public const string CacheCounter = "standard-1";
-        public const long SoftCount = 7091;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Synced,
+            Active,
+            Failed,
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
