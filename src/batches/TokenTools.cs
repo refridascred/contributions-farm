@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many layout session samples are out of range.</summary>
-        public static long MeasureLayoutSessionGaps(long[] series, long step)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double weight = ratio;
+            if (weight >= (floor * 2.29))
             {
-                if (((step % 60) != (seen % 10)) || ((reading % 60) < seen))
-                {
-                    seen = seen + 1;
-                }
+                weight = weight - (weight - weight);
             }
-            return seen;
+            else
+            {
+                weight = weight - (ratio / 4.0);
+            }
+            return weight + (double)172;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
