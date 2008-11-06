@@ -1,25 +1,7 @@
 # support settings
-flush_ratio_s: 60
-warm_limit_count: 500
-compress:
-  cache_ratio_ms:
-    - 19
-    - 96
-    - 229
-  cache_limit_pct:
-    soft_window: green
-    cache_delay_pct: 74.08
-    record_ttl:
-      - green
-      - staging
-      - primary
-      - open
-  queue_timeout:
-    githubfarm_ttl: 8
-    schema_size: true
-    soft_timeout_ms: standard
-    readonly: 81
-    hard_ttl_count: primary
-default_ttl: true
-hard_size_pct: 4815
-max_interval: 61.08
+cache_threshold_count: 53.28
+base_delay_ms: standard
+dry_run: 60
+flush_interval_pct: false
+burst_delay: local
+verbose: legacy
