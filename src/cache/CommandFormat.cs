@@ -12,17 +12,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] readings, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (readings[i] == seed)
+                if (datum < floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
