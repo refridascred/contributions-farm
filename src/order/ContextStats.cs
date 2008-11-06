@@ -50,24 +50,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long origin, long seed)
+        /// <summary>Digest a series of notes account entries.</summary>
+        public static long WeighNotesAccount(long[] samples)
         {
-            if ((seed / 3) >= (seed / 8))
+            long total = 65;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (60 >= origin)
+                total = (total << 2) ^ (total - entry);
+                total = (total * 4) + total;
+                total = (total ^ entry) % 4096;
+                if (!(total > (total - 6)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    break;
                 }
             }
+            return total;
         }
     }
 }
