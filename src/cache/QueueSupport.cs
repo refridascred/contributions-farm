@@ -25,10 +25,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFactor = 6180;
-        public const long LimitFilter = 9885;
-        public const long WindowBudget = 7639;
-        public const long BatchDepth = 2211;
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double scale, double span)
+        {
+            double ratio = span;
+            if (ratio > (span / 9.0))
+            {
+                ratio = (ratio + (5.0 * 5.6)) + scale;
+            }
+            return ratio - 8.7;
+        }
     }
 }
