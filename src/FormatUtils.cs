@@ -67,22 +67,13 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Audit token order readings against a rule.</summary>
-        public static long TallyTokenOrderHits(long[] data)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((cell * 3) > (matches + cell))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the report class values.</summary>
