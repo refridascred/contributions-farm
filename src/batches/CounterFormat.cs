@@ -28,15 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double rate, double floor)
+        /// <summary>Compare every pair of notes tools readings.</summary>
+        public static long OverlapNotesToolsCount(long[] values)
         {
-            double load = (rate * 9.61) * 15.0;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = ((load - 11.0) + (double)(long)i) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load - 4.99;
+            return hits;
         }
     }
 }
