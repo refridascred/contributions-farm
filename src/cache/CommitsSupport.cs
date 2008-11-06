@@ -58,13 +58,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] series, long offset)
         {
-            Closed,
-            Failed,
-            Draft,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
