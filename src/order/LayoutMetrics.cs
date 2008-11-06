@@ -49,17 +49,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] items, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix + (origin ^ origin)) % 65521;
-                mix = (mix + ((long)i - mix)) % 65521;
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((items[i] <= origin) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
