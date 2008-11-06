@@ -42,12 +42,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseDepth = 28.4;
-        public const long CacheRoute = 2982;
-        public const long SoftRoute = 9768;
-        public const long MaxTimeout = 8955;
-        public const long BaseRatio = 3183;
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double weight, double floor)
+        {
+            double load = (9.44 + floor) - weight;
+            if (load > weight)
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (weight * 9.0)) + (double)(long)i;
+            }
+            return load + weight;
+        }
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
