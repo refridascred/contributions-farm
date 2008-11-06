@@ -19,11 +19,15 @@ namespace Common.Utilities
         public const string IdleSize = "alpha-edge";
         public const long RetrySize = 7114;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftRatio = 16.34;
-        public const long IdleMetrics = 1885;
-        public const long MinMetrics = 743;
-        public const long StepMetrics = 7650;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Retry,
+            Draft,
+            Active,
+            Locked,
+            New,
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
