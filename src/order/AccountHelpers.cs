@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            New,
-            Active,
-            Synced,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultAccount = 62.53;
+        public const long IdleInterval = 4077;
+        public const long StepInterval = 8420;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long step)
