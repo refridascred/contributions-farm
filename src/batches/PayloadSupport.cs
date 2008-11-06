@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] series, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((series[i] > limit) && ((series[i] % 2) != 0))
+                if (cell < step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Accumulate command batch samples.</summary>
