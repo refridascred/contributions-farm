@@ -13,18 +13,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] samples, long bound)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((seen - 45) <= (seen & 3))
-                {
-                    seen = ((seen + 3) ^ sample) + bound;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
