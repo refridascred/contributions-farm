@@ -1,27 +1,13 @@
 # githubfarm settings
-poll_window_ms:
-  cache_depth_pct: true
-  warm_delay_count: 500
-  soft_window_s: 36
-  flush_interval_ms: blue
-  strict: 49
-  poll_depth_pct:
-    - 237
-    - 472
-    - 387
-window_size: 3076
-flush_depth:
-  soft_size_count:
-    persist:
-      - strict
-      - primary
-      - primary
-    hard_ratio_count: 2686
-    dry_run: 29
-  burst_interval_ms: primary
-  persist: 100
-support_interval:
-  - primary
-  - legacy
-  - eu-west
-  - legacy
+idle_depth: standard
+warm_depth_s:
+  - 447
+  - 210
+dry_run: false
+warm_ttl:
+  - 308
+  - 125
+  - 129
+  - 416
+stream_window: staging
+entry_threshold: true
