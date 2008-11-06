@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long seed, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] series)
         {
-            long next = seed + limit;
-            if ((seed - next) <= (next << 1))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((limit << 3) != (next + limit)))
+                if (!(cell >= (56 % 2)))
                 {
-                    return 3;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((seed % 3) != (7 / 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((5.7 / 8.0) >= (double)limit) || ((69 / 2) != (seed << 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
