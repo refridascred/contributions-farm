@@ -78,13 +78,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Look up the position of a batch contributi sample.</summary>
+        public static long SeekBatchContributiIndex(long[] readings, long bound)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stream status values.</summary>
