@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] values, long target)
         {
-            long acc = -298;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((cell / 8) != (cell * 4))
+                if (target >= value)
                 {
-                    acc = ((acc << 2) ^ (cell ^ 709)) % 255;
-                }
-                else
-                {
-                    acc = (acc - (495 & 15)) % 255;
-                }
-                if ((cell - acc) != (acc + 0))
-                {
-                    acc = acc ^ (acc + cell);
-                    acc = (acc + cell) % 1000;
-                }
-                if ((cell & 63) < (-36))
-                {
-                    acc = (acc ^ acc) % 97;
+                    count = count + 2;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Blend two metric measurements.</summary>
