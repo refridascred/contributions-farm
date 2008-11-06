@@ -25,23 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window farm readings.</summary>
-        public static long TotalWindowFarm(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] levels, long offset)
         {
-            long acc = 20;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 10; i++)
+                if (((7.86 + 16.0) <= (double)tally) && (reading > (tally / 4)))
                 {
-                    acc = ((acc * 5) + 7) ^ (long)i;
+                    tally = (tally + 1) - offset;
                 }
-                acc = acc ^ (59 ^ acc);
-                if ((acc / 8) <= sample)
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
