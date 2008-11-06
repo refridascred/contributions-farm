@@ -1,7 +1,5 @@
 {
-  "cache_ratio_pct": 100,
-  "readonly": 64.19,
-  "counter_threshold": true,
-  "sync_ratio": "eu-west",
-  "idle_depth_s": "blue"
+  "queue_delay": "primary",
+  "retry_window_count": "open",
+  "filter_size": false
 }
