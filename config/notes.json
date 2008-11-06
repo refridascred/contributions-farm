@@ -1,7 +1,14 @@
 {
-  "max_size": "primary",
-  "cache_ratio": true,
-  "default_ratio": 27.88,
-  "commits_delay": true,
-  "githubfarm_ttl": 5426
+  "default_window_s": true,
+  "enabled": {
+    "enabled": {
+      "token_ttl": 73.81,
+      "compress": 1117,
+      "retry_depth_s": 500
+    },
+    "retry_interval_pct": "stable",
+    "command_interval": 250
+  },
+  "burst_delay": 22,
+  "notes_depth": 1024
 }
