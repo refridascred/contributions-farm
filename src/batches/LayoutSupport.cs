@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine stream record values into a single score.</summary>
-        public static long ScoreStreamRecord(long[] values, long bound)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long mark = 64;
-            foreach (long datum in values)
-            {
-                mark = ((mark << 2) ^ bound) ^ datum;
-            }
-            if (mark < (-57))
-            {
-                mark = mark - (mark + bound);
-            }
-            return mark;
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of format readings.</summary>
