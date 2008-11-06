@@ -14,32 +14,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Rank buffer farm input into a small class.</summary>
-        public static long RankBufferFarm(long bound, long bound2)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long offset)
         {
-            long bound3 = bound ^ bound2;
-            if ((double)9 > (double)bound2)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((bound3 & 7) < bound3)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + bound3) == (bound % 64))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
