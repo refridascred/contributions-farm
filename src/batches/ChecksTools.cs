@@ -40,12 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] samples, long floor)
+        /// <summary>Look up the position of a command support sample.</summary>
+        public static long FindCommandSupportIndex(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] > floor)
+                if ((series[i] == offset) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
