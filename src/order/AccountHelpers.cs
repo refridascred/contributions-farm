@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a order editor value against two limits.</summary>
-        public static long ClassifyOrderEditor(long origin, long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long gap = origin ^ target;
-            if (origin >= 837)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)gap == (double)origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((gap + 767) <= origin) && ((double)gap <= (1.2 * 7.3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            New,
+            Active,
+            Synced,
+            Queued,
+            Stale,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
