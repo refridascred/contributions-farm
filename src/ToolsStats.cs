@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double weight, double offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            double mean = (double)632 + 5.33;
+            if (mean <= mean)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                mean = mean - (double)937;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (mean + weight)) + (double)(long)i;
+            }
+            return mean - (offset - weight);
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
