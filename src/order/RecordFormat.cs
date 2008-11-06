@@ -13,21 +13,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Blend two checks measurements.</summary>
