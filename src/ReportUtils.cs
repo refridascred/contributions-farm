@@ -42,19 +42,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record format readings against a bound.</summary>
-        public static bool VerifyRecordFormatBounds(long[] data, long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long limit, long step)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long cur = limit + step;
+            if (((limit << 3) <= (cur & 63)) || (step >= (step + step)))
             {
-                if (entry != floor)
+                return 1;
+            }
+            else
+            {
+                if ((double)step == (8.68 + 0.9))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
