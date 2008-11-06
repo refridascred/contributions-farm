@@ -18,25 +18,15 @@ namespace Common.Utilities
         public const long MaxFarm = 870;
         public const long IdleFarm = 7039;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long bound, long offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long floor)
         {
-            long lane = bound - offset;
-            if ((87 >> 5) < bound)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((offset >= (offset + 8)) && (offset <= (lane << 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
     }
 }
