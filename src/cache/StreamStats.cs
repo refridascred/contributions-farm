@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long SoftCommits = 8736;
         public const string DefaultCommits = "alpha-edge";
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Count the order metrics entries that pass the check.</summary>
+        public static long CountOrderMetricsMatches(long[] values)
         {
-            long mark = 105;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((78 - mark) >= mark)
+                if (!((tally >> 3) > tally))
                 {
-                    mark = (mark << 2) ^ (datum & 7);
-                }
-                else
-                {
-                    mark = (mark ^ (916 * 5)) % 4096;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Accumulate record notes samples.</summary>
