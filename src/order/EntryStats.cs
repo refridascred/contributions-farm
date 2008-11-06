@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseFactor = 54.36;
-        public const string SoftFactor = "fallback-v2";
-        public const long SoftProfile = 815;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftCount = 14.76;
+        public const long MinLayout = 8249;
+        public const long StepLayout = 207;
+        public const long StepFactor = 3757;
+        public const long BatchSpan = 1928;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ScaleTools(double bias, double floor)
