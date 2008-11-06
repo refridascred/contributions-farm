@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every batch commits entry stays within the limit.</summary>
-        public static bool ValidateBatchCommitsRange(long[] levels, long bound)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
