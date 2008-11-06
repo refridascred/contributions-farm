@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 15;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix - (mix + mix)) % 97) ^ reading;
             }
-            return matches;
+            if (mix > 39)
+            {
+                mix = (mix + (552 % 60)) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
