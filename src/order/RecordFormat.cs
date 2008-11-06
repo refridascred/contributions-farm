@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            Draft,
+            Ready,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a metric stats.</summary>
