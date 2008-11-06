@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] levels, long seed)
-        {
-            long carry = 373;
-            foreach (long item in levels)
-            {
-                if (seed >= (item - carry))
-                {
-                    carry = ((carry << 3) ^ (seed & 63)) % 65521;
-                }
-                else
-                {
-                    carry = carry + item;
-                }
-            }
-            if (carry > 893)
-            {
-                carry = ((carry * 3) + carry) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowSize = 61.7;
+        public const long LimitGithubfarm = 8997;
+        public const string HardGithubfarm = "legacy-1";
+        public const long WindowSpan = 5423;
+        public const long CacheSize = 1444;
 
         /// <summary>Grade a notes metric value against two limits.</summary>
         public static long ClassifyNotesMetric(long seed, long seed2)
