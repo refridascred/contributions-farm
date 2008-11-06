@@ -29,11 +29,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBudget = 8877;
-        public const double MinBatches = 7.75;
-        public const double IdleBatches = 31.25;
-        public const long RetryBatches = 4829;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
