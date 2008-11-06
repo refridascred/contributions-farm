@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double gain, double offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double load = gain;
-            return (load - (gain / 4.0)) + offset;
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
