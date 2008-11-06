@@ -14,12 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] values, long seed)
         {
-            Idle,
-            Active,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate record notes samples.</summary>
