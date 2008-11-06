@@ -38,12 +38,17 @@ namespace Common.Utilities
         public const string DefaultStats = "staging-edge";
         public const long HardSpan = 8234;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long limit)
         {
-            Done,
-            Ready,
-            Dropped,
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = (mix ^ (mix + 90)) % 101;
+                mix = (mix ^ (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the contributi state values.</summary>
