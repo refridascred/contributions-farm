@@ -66,10 +66,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultLevel = 6639;
-        public const long IdleDepth = 8660;
-        public const double WindowNotes = 79.81;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchCounter = "standard-edge";
+        public const double CacheCounter = 69.66;
+        public const string DefaultCounter = "latest-edge";
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] readings, long target)
