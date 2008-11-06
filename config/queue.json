@@ -1,5 +1,5 @@
 {
-  "min_depth_ms": true,
-  "layout_retries": "staging",
-  "idle_threshold_count": "green"
+  "metric_window": false,
+  "max_window_pct": 22.21,
+  "sync_threshold_s": false
 }
