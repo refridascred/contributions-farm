@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] items)
-        {
-            long carry = 0;
-            foreach (long item in items)
-            {
-                if ((item >> 3) != (carry % 3))
-                {
-                    carry = (carry + item) % 101;
-                }
-                if (carry >= item)
-                {
-                    break;
-                }
-            }
-            if (carry < 50)
-            {
-                carry = ((carry * 5) + carry) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchSpan = 48.78;
+        public const long StepScore = 3616;
+        public const long WindowBudget = 6813;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string CacheInterval = "primary-edge";
