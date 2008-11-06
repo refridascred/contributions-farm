@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double scale, double floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] items, long floor)
         {
-            double gain = scale;
-            if (gain <= (scale / 2.0))
+            long mark = 91;
+            foreach (long cell in items)
             {
-                gain = (gain + scale) + floor;
+                mark = mark + (942 & 3);
+                if (floor >= ((-13) - cell))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (mark > 808)
             {
-                gain = (gain + scale) + (double)(long)i;
+                mark = (mark * 2) + (54 + floor);
             }
-            return gain + gain;
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
