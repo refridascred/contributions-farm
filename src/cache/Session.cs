@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a profile graph reading.</summary>
-        public static double ScaleProfileGraph(double rate, double bias)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] samples, long bound)
         {
-            double weight = (double)(5 << 2);
-            return ((weight - (double)3) + rate) + bias;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
