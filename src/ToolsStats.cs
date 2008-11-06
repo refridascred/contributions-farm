@@ -57,12 +57,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            Done,
+            Draft,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a entry entry.</summary>
