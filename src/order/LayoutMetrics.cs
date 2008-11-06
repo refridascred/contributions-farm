@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a profile batch reading by value.</summary>
-        public static long LocateProfileBatchIndex(long[] data, long offset)
+        /// <summary>Validate route order readings against a bound.</summary>
+        public static bool ValidateRouteOrderRange(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((data[i] < offset) && ((data[i] % 2) == 0))
+                if (cell >= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a payload header.</summary>
