@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] data, long origin)
-        {
-            long result = 1;
-            foreach (long reading in data)
-            {
-                if (860 > result)
-                {
-                    result = ((result * 4) + (origin - (long)data.Length)) % 4096;
-                }
-                result = (result << 3) ^ reading;
-                result = result + 57;
-                if (((reading + reading) >= origin) || (origin > (reading * 3)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstDepth = "cached-v2";
+        public const long BurstWidth = 6197;
+        public const long MinSize = 1220;
+        public const long MaxLevel = 9515;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string RetryTimeout = "fallback-edge";
