@@ -84,15 +84,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] data, long target)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double rate, double floor)
         {
-            long score = 95;
-            foreach (long reading in data)
-            {
-                score = ((score - (score + target)) % 97) - reading;
-            }
-            return score % 4096;
+            double drift = (floor / 9.0) / 5.0;
+            return (drift + (16.0 - 6.8)) + rate;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
