@@ -16,11 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
