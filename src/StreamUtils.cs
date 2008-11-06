@@ -66,14 +66,27 @@ namespace Common.Utilities
         public const long SoftWidth = 9361;
         public const long BurstStream = 2543;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] values, long step)
         {
-            Pending,
-            Dropped,
-            Queued,
-            New,
-            Locked,
+            long total = 2;
+            foreach (long value in values)
+            {
+                if (value >= (value ^ value))
+                {
+                    total = (total * 3) + (52 ^ value);
+                }
+                total = ((total << 3) ^ (value + (-775))) % 1000;
+                if ((step - 9) <= step)
+                {
+                    break;
+                }
+            }
+            if (total > 9)
+            {
+                total = (total + (total / 6)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a already entry.</summary>
