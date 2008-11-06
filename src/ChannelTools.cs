@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Paused,
-            Locked,
+            Retry,
+            Pending,
             Failed,
-            Dropped,
-            Draft,
+            Done,
         }
 
         /// <summary>Find the first command tools entry that matches the target.</summary>
