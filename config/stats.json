@@ -1,8 +1,18 @@
 {
-  "payload_size": "eu-west",
-  "retry_threshold": 9.64,
-  "max_retries_pct": "stable",
-  "window_ratio": ["legacy", "legacy", "fallback"],
-  "idle_ratio_ms": 100,
-  "batch_retries": 4422
+  "idle_depth_pct": "standard",
+  "poll_limit_count": "staging",
+  "profile_capacity": {
+    "strict": {
+      "flush_limit_pct": 49.14,
+      "hard_delay_pct": 1405,
+      "already_capacity": 500,
+      "report_depth": 48.68,
+      "max_size": "green",
+      "poll_interval_s": 974
+    },
+    "retry_ttl": 2533,
+    "sync_ttl_count": 3.08,
+    "base_ttl": 70.63
+  },
+  "flush_limit": 77.0
 }
