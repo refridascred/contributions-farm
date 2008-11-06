@@ -43,16 +43,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double bias, double bias2)
-        {
-            double drift = bias2;
-            if (drift > (bias2 / 8.0))
-            {
-                drift = (drift - drift) - bias;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleRatio = "open-1";
+        public const long StepRatio = 1137;
+        public const long LimitProfile = 8087;
+        public const string HardProfile = "strict-edge";
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long WeighCache(long[] samples, long floor)
