@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] series)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double scale, double floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            double gain = scale;
+            if (gain <= (scale / 2.0))
             {
-                if ((count - count) > 93)
-                {
-                    count = (count + 1) ^ value;
-                }
+                gain = (gain + scale) + floor;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + scale) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Define window limits and defaults.</summary>
