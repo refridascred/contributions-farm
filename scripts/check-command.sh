@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-blue}"
 case "${mode}" in
-    stable)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge blue eu-west fallback; do
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in latest cached green open; do
     log "checking ${item}"
 done
