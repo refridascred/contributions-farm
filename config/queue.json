@@ -1,6 +1,8 @@
 {
-  "batch_retries_s": true,
-  "retry_capacity": 56,
-  "githubfarm_limit": 12.01,
-  "verbose": 9708
+  "min_capacity_count": [266, 127, 242],
+  "retry_timeout": "staging",
+  "default_ttl_ms": "strict",
+  "poll_interval_count": 57.05,
+  "max_capacity_s": 86.22,
+  "batch_delay": 14.92
 }
