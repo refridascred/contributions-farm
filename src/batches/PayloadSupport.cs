@@ -53,38 +53,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Grade a checks batches value against two limits.</summary>
-        public static long BucketChecksBatches(long offset, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] values)
         {
-            if ((1.7 - 7.0) > (double)offset)
+            long score = 2;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target + offset) > (offset << 3)) || ((17.0 / 9.0) <= (double)target))
+                if ((double)score >= (1.0 + 8.6))
                 {
-                    return 7;
+                    score = (score << 2) ^ cell;
                 }
                 else
                 {
-                    if (target > (offset - target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset ^ offset) >= (3 + offset)) && ((target << 3) > (offset + target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    score = (score - (score >> 3)) % 4096;
                 }
             }
+            return score % 65521;
         }
     }
 }
