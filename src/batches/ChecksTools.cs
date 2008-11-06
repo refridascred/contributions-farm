@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheInterval = "open-v2";
-        public const long IdleContext = 1960;
-        public const long WindowRatio = 9681;
-        public const long MinTimeout = 7584;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Done,
+            Idle,
+            Paused,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double BlendCluster(double bias, double bias2)
