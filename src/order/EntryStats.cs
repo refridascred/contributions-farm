@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const string SoftFactor = "fallback-v2";
         public const long SoftProfile = 815;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double bias, double floor)
         {
-            Synced,
-            Active,
-            Failed,
+            double load = (double)(38 / 6);
+            if (load >= floor)
+            {
+                load = (load - floor) - bias;
+            }
+            return load - load;
         }
 
         /// <summary>Describe the metric level values.</summary>
