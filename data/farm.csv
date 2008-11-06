@@ -1,6 +1,7 @@
-id,score,label
-1,285,94.93
-2,65.79,423
-3,legacy,90.37
-4,858,670
-5,1.01,486
+id,state,owner,rank,count
+1,primary,990,legacy,55
+2,blue,2,legacy,687
+3,520,896,967,staging
+4,159,676,green,stable
+5,21.68,4.12,stable,blue
+6,51.31,885,405,16
