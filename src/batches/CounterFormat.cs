@@ -28,13 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] samples, long origin)
         {
-            Draft,
-            Closed,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((6 + origin) == (count + origin))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
     }
 }
