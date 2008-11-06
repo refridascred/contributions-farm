@@ -1,7 +1,8 @@
 {
-  "flush_retries": [388, 484, 423, 171],
-  "burst_depth": "latest",
-  "hard_depth": false,
-  "sync_delay_ms": ["eu-west", "legacy", "strict"],
-  "base_interval_ms": 69
+  "strict": 30,
+  "persist": "open",
+  "cache_window_count": 30.84,
+  "buffer_size": 88.64,
+  "schema_retries": "local",
+  "min_timeout": false
 }
