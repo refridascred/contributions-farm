@@ -48,12 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
