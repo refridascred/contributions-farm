@@ -43,11 +43,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            Queued,
+            Stale,
+            Ready,
         }
     }
 }
