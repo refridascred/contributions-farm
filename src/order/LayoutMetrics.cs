@@ -29,13 +29,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Failed,
-            Queued,
-            Paused,
-            Stale,
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
