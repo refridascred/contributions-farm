@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next githubfarm window value from a seed.</summary>
-        public static long RollGithubfarmWindow(long step)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc * 4) + ((long)i - acc);
-                acc = ((acc * 5) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
