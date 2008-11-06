@@ -29,19 +29,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((step ^ step) > (seen + seen))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 1536;
+        public const long BatchFactor = 4123;
+        public const string LimitBudget = "stable-edge";
+        public const long CacheRecord = 8541;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long SeriesFormat(long limit)
