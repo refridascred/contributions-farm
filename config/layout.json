@@ -1,5 +1,12 @@
 {
-  "compress": true,
-  "max_capacity": "fallback",
-  "base_limit": 3540
+  "batch_depth_ms": "green",
+  "persist": 30,
+  "batch_depth_s": true,
+  "queue_timeout": {
+    "max_retries": true,
+    "cache_window_count": "edge",
+    "sync_limit_count": "local",
+    "commits_ratio": [172, 198],
+    "warm_threshold_s": 45.75
+  }
 }
