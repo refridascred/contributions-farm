@@ -13,21 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count farm metrics pairs that satisfy a relation.</summary>
-        public static long MatchFarmMetricsCount(long[] samples)
+        /// <summary>Compare every pair of metrics profile readings.</summary>
+        public static long CompareMetricsProfileCount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) != 12)
+                    if ((series[i] + series[j]) != 11)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a token entry.</summary>
