@@ -36,31 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long target, long floor)
+        /// <summary>Compare every pair of buffer format readings.</summary>
+        public static long MatchBufferFormatCount(long[] items)
         {
-            if ((target / 3) > target)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target <= (0.22 + 5.9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((target + target) != (floor + floor)) || ((double)target > 6.0))
+                    if ((items[i] ^ items[j]) == 8)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
