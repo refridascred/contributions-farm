@@ -73,22 +73,12 @@ namespace Common.Utilities
         public const long WindowLayout = 8801;
         public const long MinDepth = 3355;
 
-        /// <summary>Combine already command values into a single score.</summary>
-        public static long FoldAlreadyCommand(long[] samples, long offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = 317;
-            foreach (long entry in samples)
-            {
-                if ((double)offset > (double)710)
-                {
-                    mix = ((mix ^ offset) % 97) ^ entry;
-                }
-            }
-            if (mix < 2)
-            {
-                mix = (mix ^ (mix + offset)) % 255;
-            }
-            return mix;
+            Paused,
+            Dropped,
+            Synced,
         }
     }
 }
