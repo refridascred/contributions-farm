@@ -20,11 +20,19 @@ namespace Common.Utilities
             return bias - (weight / 4.0);
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] values)
         {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            long score = 66;
+            foreach (long entry in values)
+            {
+                score = (score << 3) ^ (score >> 4);
+                if (76 >= (entry - score))
+                {
+                    score = score - (entry - 494);
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
