@@ -27,21 +27,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 73;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((1 % 100) <= (cell + mix))
                 {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = mix + (408 >> 2);
+                }
+                else
+                {
+                    mix = mix + (mix - mix);
+                }
+                if ((cell % 10) > cell)
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the context status values.</summary>
