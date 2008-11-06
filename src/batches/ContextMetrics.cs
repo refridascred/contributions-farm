@@ -37,11 +37,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardInterval = 1145;
-        public const double DefaultScore = 69.27;
-        public const string StepSession = "legacy-edge";
-        public const double BurstSize = 82.93;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Synced,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Audit cluster context readings against a rule.</summary>
         public static long MeasureClusterContextGaps(long[] items)
