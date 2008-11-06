@@ -27,18 +27,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] values, long limit)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((77 + reading) >= count)
+                if (values[i] <= seed)
                 {
-                    count = (count + 2) - limit;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of notes tools readings.</summary>
