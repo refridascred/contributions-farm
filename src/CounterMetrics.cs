@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 8481;
-        public const double HardToken = 83.14;
-        public const long DefaultBudget = 566;
-        public const double IdleToken = 76.29;
-        public const double LimitToken = 4.29;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardScore = 9563;
+        public const double CacheLevel = 31.63;
+        public const string MinFactor = "fallback-v2";
+        public const long BaseWidth = 8929;
+        public const long MaxBatch = 3136;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] levels)
