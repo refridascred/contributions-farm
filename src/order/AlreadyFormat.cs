@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] data, long seed)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long sum = 379;
-            foreach (long datum in data)
-            {
-                if (!((double)sum > (6.4 - 1.62)))
-                {
-                    sum = ((sum ^ (datum + sum)) % 65521) + seed;
-                }
-            }
-            return sum % 1000;
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
