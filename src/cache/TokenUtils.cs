@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up queue record samples.</summary>
-        public static long PairQueueRecordCount(long[] data)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (acc > (62 * 2))
                 {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc ^ (step ^ acc)) % 4096;
                 }
+                else
+                {
+                    acc = acc + (step >> 5);
+                    acc = (acc ^ ((-6) - 66)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
