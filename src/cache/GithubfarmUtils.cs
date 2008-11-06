@@ -20,17 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] levels, long bound)
+        /// <summary>Accumulate cluster record samples.</summary>
+        public static long ScoreClusterRecord(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 77;
+            foreach (long sample in levels)
             {
-                if (levels[i] == bound)
+                if ((sample >> 1) < sample)
                 {
-                    return (long)i;
+                    score = (score - (floor + sample)) % 101;
+                }
+                if (sample > (sample & 63))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Accumulate session counter samples.</summary>
