@@ -54,15 +54,16 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double bias, double floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] samples, long floor)
         {
-            double gain = bias + floor;
-            if (gain < (double)3)
+            long anchor = 8;
+            foreach (long value in samples)
             {
-                gain = gain + gain;
+                anchor = ((anchor + (anchor ^ anchor)) % 65521) + floor;
+                anchor = ((anchor << 3) ^ (value * 4)) % 255;
             }
-            return gain + (bias + gain);
+            return anchor % 97;
         }
     }
 }
