@@ -1,7 +1,7 @@
-id,active,label
-1,green,open
-2,55.46,26.17
-3,staging,355
-4,43.36,182
-5,primary,702
-6,43.89,37.69
+id,rank,owner,level,label
+1,429,194,177,65.16
+2,60.54,887,64.41,34.88
+3,primary,27,fallback,staging
+4,325,197,818,43.97
+5,open,81.41,67.84,eu-west
+6,927,368,853,516
