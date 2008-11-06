@@ -12,13 +12,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] series, long bound)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a metric editor reading.</summary>
