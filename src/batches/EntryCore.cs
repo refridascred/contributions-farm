@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long MinSize = 1220;
         public const long MaxLevel = 9515;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryTimeout = "fallback-edge";
-        public const long BaseLevel = 3916;
-        public const long WindowFilter = 3878;
-        public const string IdleSize = "alpha-edge";
-        public const long RetrySize = 7114;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
