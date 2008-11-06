@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate githubfarm schema readings against a bound.</summary>
-        public static bool CheckGithubfarmSchemaBounds(long[] samples, long offset)
+        /// <summary>Project the next context batches value.</summary>
+        public static double BlendContextBatches(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            double mean = floor;
+            if (mean < floor)
             {
-                if (cell >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = (mean + mean) - weight;
             }
-            return ready;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (mean * 1.5);
         }
 
         /// <summary>Hold a token summary.</summary>
