@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "stable-1";
-        public const double IdleScore = 20.26;
-        public const long BurstBudget = 2432;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 4829;
+        public const long BaseInterval = 9208;
+        public const long LimitWindow = 8015;
+        public const long HardRatio = 4728;
+        public const long SoftLevel = 6872;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsBounds(long[] series, long offset)
