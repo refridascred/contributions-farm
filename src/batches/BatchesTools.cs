@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two metrics window measurements.</summary>
