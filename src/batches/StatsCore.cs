@@ -47,12 +47,22 @@ namespace Common.Utilities
             return scale + (double)(-9);
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] readings, long origin)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((origin + entry) > tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a contributi support counter forward.</summary>
