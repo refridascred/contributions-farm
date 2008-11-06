@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] items)
         {
-            Retry,
-            Synced,
-            New,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((6 + 7) <= cell)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
