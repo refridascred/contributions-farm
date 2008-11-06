@@ -53,19 +53,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] series, long step)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long origin, long seed)
         {
-            long result = 48;
-            foreach (long cell in series)
+            long offset = origin ^ seed;
+            if (((8 >> 2) != (seed * 5)) || ((origin * 3) == (seed / 9)))
             {
-                result = ((result - (step - result)) % 97) ^ cell;
+                return 2;
             }
-            if (result > 6)
+            else
             {
-                result = (result * 3) + (step ^ result);
+                if (((origin * 5) > seed) || (((-87) & 127) != (777 + offset)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)offset > (19.0 + 20.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return result;
         }
     }
 }
