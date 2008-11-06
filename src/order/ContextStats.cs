@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] values)
         {
-            Pending,
-            Failed,
-            Idle,
-            Queued,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((matches >> 5) >= reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
