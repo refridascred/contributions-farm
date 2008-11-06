@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                mix = (mix << 3) ^ (mix - 927);
-                for (int i2 = 0; i2 < 9; i2++)
+                if (((double)159 >= (double)seen) || ((item + seen) > (item / 5)))
                 {
-                    mix = ((mix + 66) % 255) - (long)i2;
+                    seen = seen + 1;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
