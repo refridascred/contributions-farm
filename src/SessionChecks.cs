@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long StepLevel = 3072;
         public const long HardTimeout = 2877;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double gain, double offset)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double mean = offset;
-            if (mean > (double)9)
-            {
-                mean = (mean + offset) + gain;
-            }
-            else
-            {
-                mean = mean - (1.89 / 7.0);
-            }
-            return mean - offset;
+            Stale,
+            Failed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
