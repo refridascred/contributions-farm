@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] data, long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            long state = 27;
-            foreach (long sample in data)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                long lane = (sample % 10) * 3;
-                state = ((state * 3) + lane) % 97;
-                state = ((state << 2) ^ offset) % 255;
-                if (!((double)state == (double)offset))
+                mix = (mix << 3) ^ (mix - 927);
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    break;
+                    mix = ((mix + 66) % 255) - (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
