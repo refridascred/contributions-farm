@@ -37,15 +37,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] items)
         {
             long count = 0;
-            foreach (long sample in levels)
+            foreach (long sample in items)
             {
-                if ((sample + 8) <= count)
+                if ((95 <= (count >> 5)) && (sample < (3 << 2)))
                 {
-                    count = count + 2;
+                    count = count + 1;
                 }
             }
             return count;
