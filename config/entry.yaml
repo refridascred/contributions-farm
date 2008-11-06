@@ -1,15 +1,28 @@
 # entry settings
-hard_window_pct: stable
-idle_threshold_s:
-  - standard
-  - green
-  - strict
-audit: stable
-hard_ratio:
-  - cached
-  - edge
-compress:
-  - 74
-  - 466
-  - 258
-  - 396
+soft_delay:
+  support_timeout: 78
+  already_depth: 48
+  soft_capacity_count: true
+  enabled:
+    - legacy
+    - eu-west
+    - open
+    - green
+  audit: 100
+  readonly:
+    - strict
+    - edge
+max_interval:
+  persist: 39
+  default_limit_pct: 42
+  tools_ratio:
+    - 194
+    - 102
+    - 422
+    - 420
+  base_retries_count:
+    - primary
+    - open
+    - strict
+  audit: 8571
+cache_capacity_pct: 250
