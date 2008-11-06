@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in cached eu-west; do
+for item in strict primary local; do
     log "checking ${item}"
 done
