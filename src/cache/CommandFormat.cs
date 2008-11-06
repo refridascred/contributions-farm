@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many cache metrics samples are out of range.</summary>
-        public static long AuditCacheMetricsGaps(long[] values)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + seen) > seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Dropped,
+            Active,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the command class values.</summary>
