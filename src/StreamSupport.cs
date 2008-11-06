@@ -29,13 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] levels, long limit)
         {
-            Dropped,
-            Failed,
-            Done,
-            Pending,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
