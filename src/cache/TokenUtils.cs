@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many notes account samples are out of range.</summary>
-        public static long AuditNotesAccountHits(long[] data)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + seen) <= (seen >> 5))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Queued,
+            Draft,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a tools snapshot.</summary>
