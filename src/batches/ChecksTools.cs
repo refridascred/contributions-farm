@@ -61,31 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a buffer session value against two limits.</summary>
-        public static long BucketBufferSession(long seed, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] series, long step)
         {
-            if ((12.0 * 9.6) < (double)limit)
+            long result = 48;
+            foreach (long cell in series)
             {
-                return 6;
+                result = ((result - (step - result)) % 97) ^ cell;
             }
-            else
+            if (result > 6)
             {
-                if (((limit >> 5) < 121) && ((seed / 9) >= seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)limit != (0.6 / 2.0)) && (5.57 > (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                result = (result * 3) + (step ^ result);
             }
+            return result;
         }
     }
 }
