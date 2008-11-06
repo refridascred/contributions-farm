@@ -79,21 +79,21 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Count stats cache pairs that satisfy a relation.</summary>
+        public static long PairStatsCacheCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 0)
+                    if ((values[i] + values[j]) < 18)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
