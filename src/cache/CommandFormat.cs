@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many notes stats samples are out of range.</summary>
+        public static long TallyNotesStatsOutliers(long[] readings, long bound)
         {
-            public double Size { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count - sample) < bound)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
