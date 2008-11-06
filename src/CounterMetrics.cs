@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardScore = 9563;
-        public const double CacheLevel = 31.63;
-        public const string MinFactor = "fallback-v2";
-        public const long BaseWidth = 8929;
-        public const long MaxBatch = 3136;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 3467;
+        public const double MinMetrics = 95.94;
+        public const string StepScore = "stable-v2";
+        public const long CacheMetrics = 717;
+        public const long MaxMetrics = 1359;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long ScoreCluster(long[] readings, long limit)
