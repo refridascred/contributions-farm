@@ -31,31 +31,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long limit, long step)
-        {
-            if ((limit & 1) > (limit - (-41)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 2) >= (limit + step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit < (limit * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 6156;
+        public const long BaseTools = 7190;
+        public const long DefaultSpan = 5363;
+        public const string MaxTools = "latest";
     }
 }
