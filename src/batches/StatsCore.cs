@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepLevel = 36.41;
-        public const long CacheLevel = 3619;
-        public const long RetryInterval = 7304;
-        public const double CacheFilter = 58.9;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 18; i++)
+            {
+                result = (result << 2) ^ result;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] data, long seed)
