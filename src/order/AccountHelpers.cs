@@ -44,14 +44,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Dropped,
-            Failed,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleSpan = 59.54;
+        public const long HardFactor = 99;
+        public const long BatchLevel = 2363;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextBounds(long[] readings, long target)
