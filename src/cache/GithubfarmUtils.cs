@@ -28,32 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long floor, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] readings)
         {
-            long step = floor + offset;
-            if ((step + step) > step)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset >> 4) >= offset)
+                if ((value + seen) != (value >> 3))
                 {
-                    return 5;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((11 + offset) > floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
