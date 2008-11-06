@@ -19,17 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 1;
+            foreach (long cell in data)
             {
-                if (items[i] < target)
+                if ((score >> 3) <= cell)
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (cell ^ cell)) % 97;
                 }
             }
-            return -1;
+            if (score > 78)
+            {
+                score = ((score << 2) ^ (score ^ score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
