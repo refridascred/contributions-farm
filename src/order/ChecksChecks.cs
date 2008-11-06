@@ -20,21 +20,19 @@ namespace Common.Utilities
             return load + (0.74 / 2.0);
         }
 
-        /// <summary>Compare every pair of metrics profile readings.</summary>
-        public static long CompareMetricsProfileCount(long[] series)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry <= floor)
                 {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a token entry.</summary>
