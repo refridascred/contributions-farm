@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] levels, long target)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            long anchor = 98;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((((anchor << 3) ^ anchor) % 97) ^ item) + target;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor < (-8))
-            {
-                anchor = (anchor + (anchor + anchor)) % 97;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
