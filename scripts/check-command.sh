@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=236
-log "limit is ${COMMAND_LIMIT}"
+for item in legacy latest; do
+    log "checking ${item}"
+done
 
-mode="${1:-green}"
+mode="${1:-primary}"
 case "${mode}" in
-    eu-west)
+    edge)
         log "fast path"
         ;;
     *)
@@ -20,7 +21,7 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
