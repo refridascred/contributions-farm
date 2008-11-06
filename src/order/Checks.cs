@@ -32,27 +32,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] levels)
         {
-            long anchor = 7;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                anchor = (anchor + (item ^ anchor)) % 101;
-                if ((anchor % 24) == (item % 8))
+                if (((tally >> 1) < (tally - tally)) && ((((long)levels.Length / 8) != (datum - datum)) && (845 >= (tally >> 5))))
                 {
-                    anchor = ((anchor << 2) ^ (anchor + item)) % 255;
-                }
-                else
-                {
-                    anchor = anchor - (306 + 8);
+                    tally = tally + 2;
                 }
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor << 2) ^ (anchor - anchor);
-            }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Hold a graph stats.</summary>
