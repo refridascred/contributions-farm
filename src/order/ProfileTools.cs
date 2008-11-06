@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double scale, double floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] values, long origin)
         {
-            double ratio = floor - 1.88;
-            if (ratio >= scale)
+            long acc = 4;
+            foreach (long reading in values)
             {
-                ratio = ratio - (double)2;
+                if ((origin >> 1) == (reading - reading))
+                {
+                    acc = (acc + (origin << 2)) % 255;
+                }
+                if (!(98 < (acc - (long)values.Length)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - 3.7;
+            return acc % 97;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
