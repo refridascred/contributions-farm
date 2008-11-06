@@ -12,39 +12,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long step, long offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long span = step - offset;
-            if ((step * 5) >= (step / 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((9.0 * 16.0) != (double)span)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset <= (5.0 / 7.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((4 - offset) > (step - 96))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            New,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a cache summary.</summary>
