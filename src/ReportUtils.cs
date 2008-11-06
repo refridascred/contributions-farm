@@ -15,11 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Locate a metrics token reading by value.</summary>
+        public static long SeekMetricsTokenIndex(long[] data, long seed)
         {
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account stats.</summary>
