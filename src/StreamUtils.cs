@@ -71,26 +71,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of payload metric entries.</summary>
-        public static long FoldPayloadMetric(long[] levels, long offset)
-        {
-            long carry = 59;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    carry = ((((carry * 3) + (reading >> 1)) % 4096) + (long)i) + offset;
-                }
-                if ((15.0 * 14.0) <= (double)reading)
-                {
-                    carry = ((carry * 2) + (carry * 5)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ reading;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleWidth = 39.65;
+        public const double DefaultCache = 82.18;
+        public const long HardBudget = 5300;
+        public const double DefaultLevel = 66.72;
+        public const double RetryScore = 5.54;
     }
 }
