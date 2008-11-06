@@ -32,15 +32,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double ratio, double span)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] levels, long limit)
         {
-            double ratio2 = (span + ratio) * 2.9;
-            if (ratio2 >= span)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                ratio2 = ratio2 - ratio;
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio2 - ratio;
+            return valid;
         }
     }
 }
