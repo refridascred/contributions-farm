@@ -68,22 +68,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] series, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long acc = 87;
-            foreach (long cell in series)
-            {
-                if ((acc + step) > acc)
-                {
-                    acc = (acc - (8 - cell)) % 97;
-                }
-            }
-            if (acc > 0)
-            {
-                acc = ((acc * 3) + (step * 4)) % 4096;
-            }
-            return acc;
+            Retry,
+            Active,
+            Done,
+            Dropped,
         }
     }
 }
