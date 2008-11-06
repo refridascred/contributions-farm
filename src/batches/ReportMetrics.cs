@@ -25,11 +25,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] samples, long seed)
         {
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
