@@ -27,19 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] samples, long bound)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
