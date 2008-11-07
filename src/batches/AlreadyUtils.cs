@@ -39,11 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 9755;
-        public const double LimitFarm = 30.25;
-        public const string StepDepth = "primary";
-        public const long BurstFarm = 5931;
+        /// <summary>Validate notes order readings against a bound.</summary>
+        public static bool VerifyNotesOrderBounds(long[] levels, long origin)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
