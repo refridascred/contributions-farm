@@ -52,12 +52,33 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            Active,
-            Draft,
-            Synced,
+            long acc = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((3 - target) == (acc + (long)i))
+                {
+                    acc = (acc ^ 630) % 101;
+                    continue;
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                }
+                if ((acc - target) <= (target & 15))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ target) % 101;
+                }
+                acc = (acc + ((long)i & 15)) % 97;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
