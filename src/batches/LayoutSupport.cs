@@ -62,17 +62,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a context notes sample.</summary>
-        public static long LocateContextNotesIndex(long[] samples, long target)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((samples[i] > target) && ((samples[i] % 3) == 0))
+                if (((total & 127) <= (origin - total)) || ((origin & 1) > ((long)i - origin)))
                 {
-                    return (long)i;
+                    total = total + total;
+                    total = ((total << 2) ^ ((long)i + (long)i)) % 1000;
+                    break;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
     }
 }
