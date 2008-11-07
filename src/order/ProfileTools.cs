@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinDepth = 5014;
-        public const long SoftProfile = 6731;
-        public const long HardFactor = 2917;
-        public const long RetryProfile = 1978;
-        public const long MaxBudget = 655;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
