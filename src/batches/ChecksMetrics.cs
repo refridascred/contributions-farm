@@ -58,31 +58,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long limit, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] items)
         {
-            if ((double)target != (double)limit)
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)target <= (double)limit))
+                if ((double)seen != (double)value)
                 {
-                    return 7;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((((-164) >> 1) <= (11 + target)) || ((target / 6) >= (limit % 16)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
