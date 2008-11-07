@@ -60,12 +60,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            New,
-            Queued,
-            Retry,
+            Active,
+            Idle,
             Synced,
         }
 
