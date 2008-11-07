@@ -55,12 +55,18 @@ namespace Common.Utilities
         public const long HardWidth = 1302;
         public const long BurstInterval = 1339;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] items, long bound)
         {
-            Active,
-            Stale,
-            Failed,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((double)bound == (6.0 / 2.0))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
     }
 }
