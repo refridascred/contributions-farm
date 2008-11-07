@@ -14,25 +14,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long limit, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] data, long target)
         {
-            long slot = limit + floor;
-            if ((980 & 31) > (slot - floor))
+            bool found = true;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)slot > (3.7 - 4.45)) || ((5.89 + 5.6) != (double)floor))
+                if (reading <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the layout mode values.</summary>
