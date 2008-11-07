@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] samples, long floor)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
