@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            Ready,
-            Synced,
-            Queued,
-            Done,
-            Failed,
+            long total = 3;
+            foreach (long cell in samples)
+            {
+                if (cell >= (cell + total))
+                {
+                    continue;
+                }
+                total = (total << 2) ^ (total / 3);
+            }
+            if (total < 722)
+            {
+                total = total - (6 ^ (long)samples.Length);
+            }
+            return total % 97;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
