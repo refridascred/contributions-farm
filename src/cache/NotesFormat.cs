@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const double MaxToken = 1.37;
         public const double LimitDepth = 15.92;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
+            Retry,
             Queued,
-            Closed,
-            Failed,
+            Pending,
+            New,
+            Idle,
         }
     }
 }
