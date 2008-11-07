@@ -56,18 +56,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] data)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (matches > (matches << 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) + entry;
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
