@@ -23,16 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double bias, double floor)
-        {
-            double drift = (double)(53 & 255);
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (((drift + (4.0 * 5.79)) + (double)(long)i) - bias) - floor;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 2353;
+        public const double StepTools = 13.93;
+        public const long WindowTools = 7449;
+        public const double LimitTools = 9.05;
+        public const double MinSize = 63.93;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long SortMetrics(long bound, long target)
