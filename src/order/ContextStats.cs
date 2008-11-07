@@ -53,18 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] items, long seed)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long mix = 70;
-            foreach (long entry in items)
-            {
-                if (((seed + seed) <= ((long)items.Length - mix)) || ((entry + 5) <= seed))
-                {
-                    mix = (mix * 4) + (44 ^ mix);
-                }
-            }
-            return mix % 97;
+            public long Label { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
