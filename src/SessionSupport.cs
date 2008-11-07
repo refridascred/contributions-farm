@@ -22,11 +22,13 @@ namespace Common.Utilities
         public const long IdleWindow = 5408;
         public const double CacheTimeout = 13.83;
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            Active,
+            Ready,
+            Failed,
+            Synced,
         }
     }
 }
