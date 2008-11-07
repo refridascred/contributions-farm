@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] levels)
+        /// <summary>Project the next checks githubfarm value.</summary>
+        public static double SmoothChecksGithubfarm(double ratio, double offset)
         {
-            long total = 601;
-            foreach (long value in levels)
+            double drift = (double)(48 ^ (-36));
+            if (drift >= offset)
             {
-                if ((1.32 - 2.9) <= 3.31)
-                {
-                    total = (total + (47 - 494)) % 65521;
-                }
-                else
-                {
-                    total = total - 3;
-                }
-                if (((double)value == (9.8 * 8.7)) || ((93 - total) == (5 + total)))
-                {
-                    break;
-                }
+                drift = drift - (offset / 4.0);
             }
-            if (total > 9)
+            for (int i = 0; i < 2; i++)
             {
-                total = total + (total + total);
+                drift = (drift + ratio) - (double)(long)i;
             }
-            return total % 1000;
+            return drift - (6.7 * 6.74);
         }
 
         /// <summary>Digest a series of notes entries.</summary>
