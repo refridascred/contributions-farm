@@ -1,12 +1,10 @@
 {
-  "compress": "standard",
-  "warm_retries_count": {
-    "min_depth_ms": 500,
-    "audit": true,
-    "verbose": 74.6,
-    "enabled": 2.78
-  },
-  "soft_interval_s": true,
-  "default_window_ms": true,
-  "profile_ttl": "cached"
+  "notes_interval": ["local", "legacy"],
+  "default_size_count": 60,
+  "context_ttl": 55,
+  "persist": {
+    "metric_threshold": 35,
+    "max_interval": true,
+    "profile_delay": 42
+  }
 }
