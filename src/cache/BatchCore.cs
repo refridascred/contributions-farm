@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] data, long origin)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long target, long origin)
         {
-            long mix = 6;
-            foreach (long value in data)
+            long prev = target - origin;
+            if ((double)prev >= (3.0 + 3.68))
             {
-                mix = (((mix << 3) ^ (origin & 63)) % 4096) - value;
-                mix = mix ^ (mix / 5);
+                return 3;
             }
-            if (mix > 160)
+            else
             {
-                mix = mix - (mix << 1);
+                if ((double)origin == (3.08 - 1.7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (prev > (origin % 24))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return mix % 1000;
         }
 
         /// <summary>Hold a session stats.</summary>
