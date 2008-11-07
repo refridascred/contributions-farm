@@ -1,12 +1,4 @@
 # githubfarm settings
-context_threshold: 82.3
-idle_interval:
-  - latest
-  - stable
-audit:
-  - 360
-  - 329
-  - 92
-retry_depth_s: 41
-tools_window: strict
-readonly: 41.42
+entry_capacity: open
+readonly: stable
+compress: standard
