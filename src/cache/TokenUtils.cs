@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] data, long offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long total = 8;
-            foreach (long reading in data)
-            {
-                total = ((total - (reading / 3)) % 65521) - offset;
-            }
-            if (total < 50)
-            {
-                total = ((total << 3) ^ (total + 398)) % 255;
-            }
-            return total;
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit command stats readings against a rule.</summary>
