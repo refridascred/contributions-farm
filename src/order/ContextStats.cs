@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session tools samples are out of range.</summary>
-        public static long TallySessionToolsHits(long[] data, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double load = bias;
+            if (load <= load)
             {
-                if (!((327 * 4) <= (entry * 4)))
-                {
-                    tally = (tally + 2) + target;
-                }
+                load = load + (floor * 16.0);
             }
-            return tally;
+            return load + 9.0;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
