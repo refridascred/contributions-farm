@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] samples, long bound)
+        /// <summary>Iterate the format schema series from a seed.</summary>
+        public static long RollFormatSchema(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
