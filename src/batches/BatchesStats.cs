@@ -13,22 +13,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] readings, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)origin == (8.48 + 7.0))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Stale,
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Audit farm token readings against a rule.</summary>
