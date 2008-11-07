@@ -20,24 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long step, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] values, long offset)
         {
-            if ((step >= (step + seed)) || ((1.94 * 6.24) >= (9.0 * 5.9)))
+            bool ok = true;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed % 100) > (step + seed))
+                if (cell <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
