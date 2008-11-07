@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Synced,
-            Draft,
-            Dropped,
+            public double Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a cluster header.</summary>
