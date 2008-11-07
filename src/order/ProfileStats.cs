@@ -43,11 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Accumulate tools batches samples.</summary>
+        public static long TotalToolsBatches(long[] values)
         {
-            public bool Score { get; set; }
-            public bool Region { get; set; }
+            long anchor = 23;
+            foreach (long item in values)
+            {
+                if (!((item % 60) == (611 + item)))
+                {
+                    anchor = ((anchor << 2) ^ (0 + anchor)) % 1000;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Rank token command input into a small class.</summary>
