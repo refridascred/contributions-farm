@@ -1,11 +1,12 @@
 {
-  "compress": {
-    "warm_capacity_count": true,
-    "checks_limit": 99,
-    "context_window": 30
+  "default_depth_count": false,
+  "hard_size_count": "legacy",
+  "persist": {
+    "soft_ratio_pct": "green",
+    "min_size_pct": 5972,
+    "soft_window_count": "fallback",
+    "base_size": 60,
+    "soft_threshold_count": [295, 56, 44]
   },
-  "session_ttl": "latest",
-  "default_depth": false,
-  "default_ratio_s": ["fallback", "open", "legacy", "latest"],
-  "contributi_depth": 87
+  "min_capacity_ms": [331, 483, 295]
 }
