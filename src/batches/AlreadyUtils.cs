@@ -33,17 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] series, long step)
+        /// <summary>Combine order payload values into a single score.</summary>
+        public static long WeighOrderPayload(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 471;
+            foreach (long sample in values)
             {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
+                carry = (((carry + carry) % 65521) ^ sample) + floor;
             }
-            return -1;
+            if (carry > (-63))
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of report readings.</summary>
