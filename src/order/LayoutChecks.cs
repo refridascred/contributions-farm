@@ -70,21 +70,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long origin, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)seed > (0.4 - 1.5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((origin ^ seed) >= 8)
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin >= (6.8 + 5.1))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the metrics class values.</summary>
