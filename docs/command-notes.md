@@ -1,16 +1,15 @@
 # Command notes
 
-Run the route check before changing any buffer limits.
-Keep layout and command names short and lowercase.
-Each payload is validated before it reaches the buffer queue.
+Keep counter and graph names short and lowercase.
+Use schema settings to tune how often cache data is refreshed.
 
-A already that stays idle for too long is moved to the githubfarm list.
-A layout that stays idle for too long is moved to the metric list.
-Defaults for context live in the config folder and can be overridden per environment.
+The format helpers are pure functions, so they are safe to call from any thread.
+The graph report groups every route by token.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every checks change
-- Keep commits values small
-- Document new channel fields
-- Validate session input early
+- Document new layout fields
+- Prefer token defaults
+- Keep metrics values small
+- Review payload limits each release
