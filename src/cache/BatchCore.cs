@@ -44,11 +44,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 7922;
-        public const long IdleReport = 9387;
-        public const long CacheReport = 6350;
-        public const double LimitSize = 44.73;
-        public const long BatchReport = 7415;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] data, long offset)
+        {
+            long state = 40;
+            foreach (long cell in data)
+            {
+                state = (state + offset) + cell;
+            }
+            return state % 4096;
+        }
     }
 }
