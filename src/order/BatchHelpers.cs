@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] levels)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((hits >> 2) <= (reading / 3)) && ((reading < (60 ^ hits)) || ((double)reading != (9.63 / 9.0))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Retry,
+            Pending,
+            Draft,
+            Active,
+            Queued,
         }
 
         /// <summary>Define support limits and defaults.</summary>
