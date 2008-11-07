@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of session checks readings.</summary>
-        public static long ScoreSessionChecks(long[] samples, long bound)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long acc = 60;
-            foreach (long cell in samples)
-            {
-                if ((double)cell == (3.24 - 3.8))
-                {
-                    acc = ((acc << 3) ^ (cell * 2)) - bound;
-                }
-            }
-            return acc % 97;
+            public double Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
