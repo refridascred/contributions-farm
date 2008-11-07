@@ -29,14 +29,19 @@ namespace Common.Utilities
         public const double CacheBudget = 36.2;
         public const long SoftWindow = 9590;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double rate, double span)
         {
-            Queued,
-            Active,
-            Retry,
-            Dropped,
-            Stale,
+            double gain = (rate + rate) * 3.8;
+            if (gain > span)
+            {
+                gain = gain - (double)576;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + span;
         }
     }
 }
