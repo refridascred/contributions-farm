@@ -17,19 +17,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double gain, double bias)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long origin, long origin2)
         {
-            double mean = bias * 8.8;
-            if (mean < (double)(-8))
+            if (origin > (899 / 6))
             {
-                mean = mean - (double)9;
+                return 3;
             }
             else
             {
-                mean = mean + (gain - mean);
+                if (6 < (origin2 - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return mean + mean;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
