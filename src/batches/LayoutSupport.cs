@@ -53,18 +53,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] series, long origin)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)hits <= (2.5 * 5.34))
-                {
-                    hits = ((hits + 1) + sample) - origin;
-                }
-            }
-            return hits;
+            Queued,
+            Pending,
+            Stale,
         }
     }
 }
