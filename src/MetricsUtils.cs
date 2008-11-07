@@ -16,18 +16,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstWidth = 95.76;
+        public const double DefaultBudget = 36.13;
+        public const long DefaultSchema = 6196;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long GradeWindow(long origin, long limit)
