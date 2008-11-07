@@ -16,22 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 0.46;
+        public const long SoftWindow = 3027;
+        public const long IdleWindow = 5408;
+        public const double CacheTimeout = 13.83;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
