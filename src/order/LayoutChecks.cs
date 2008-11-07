@@ -97,12 +97,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long bound, long bound2)
         {
-            Closed,
-            Pending,
-            Retry,
+            long lane = bound ^ bound2;
+            if ((bound % 12) < (18 & 15))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound2 > (1 + lane)) && ((bound + 745) <= (bound & 63)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)lane <= 3.67)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((lane + bound) < (bound * 2)) && ((bound2 >> 2) > (bound + 738)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of layout token readings.</summary>
