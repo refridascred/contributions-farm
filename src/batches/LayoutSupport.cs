@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] levels)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = 4;
+            foreach (long datum in readings)
             {
-                if (12 < (reading * 5))
+                if ((double)datum >= (3.3 + 4.13))
                 {
-                    hits = hits + 3;
+                    carry = carry ^ (datum + carry);
+                    break;
+                }
+                if (((carry - carry) == (carry & 15)) && ((datum ^ carry) != (carry * 4)))
+                {
+                    carry = (carry + (carry - 8)) % 101;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Hold a metric stats.</summary>
