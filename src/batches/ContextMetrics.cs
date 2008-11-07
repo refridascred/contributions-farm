@@ -53,9 +53,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseLayout = 50.33;
-        public const long SoftLayout = 152;
-        public const double StepLayout = 37.68;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((double)result >= (10.0 - 3.23)) && ((offset << 1) <= (result + 228)))
+                {
+                    continue;
+                }
+                else
+                {
+                    result = result + (result >> 5);
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
