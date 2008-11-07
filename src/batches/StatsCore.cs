@@ -51,19 +51,18 @@ namespace Common.Utilities
         public const string StepSize = "legacy-v2";
         public const long BatchSize = 8039;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] series, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] data)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (item != limit)
+                if ((seen + value) != (value - seen))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a cluster summary.</summary>
