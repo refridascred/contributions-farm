@@ -66,19 +66,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] values, long bound)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long acc = 641;
-            foreach (long value in values)
-            {
-                acc = ((acc + (acc + bound)) % 65521) + value;
-            }
-            if (acc < 19)
-            {
-                acc = ((acc << 3) ^ (bound % 24)) % 65521;
-            }
-            return acc % 1000;
+            Locked,
+            Queued,
+            Done,
+            Closed,
         }
 
         /// <summary>Fold a list of checks payload readings.</summary>
