@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] values, long target)
+        /// <summary>Locate a githubfarm schema reading by value.</summary>
+        public static long SeekGithubfarmSchemaIndex(long[] values, long step)
         {
-            long state = 340;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (((state * 3) + (45 * 2)) ^ entry) - target;
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Describe the metrics class values.</summary>
