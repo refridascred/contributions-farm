@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Active,
+            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
