@@ -30,13 +30,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] values)
         {
-            Draft,
-            Synced,
-            Locked,
-            Closed,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)count != (7.13 * 15.0))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
