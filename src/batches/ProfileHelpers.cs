@@ -82,16 +82,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            long mark = 73;
+            foreach (long datum in data)
             {
-                mix = mix + (mix ^ 513);
-                mix = ((mix * 3) + (long)i) % 1000;
+                mark = ((mark + (2 / 5)) % 4096) ^ datum;
             }
-            return mix;
+            return mark;
         }
     }
 }
