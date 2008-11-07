@@ -48,15 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] values, long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] series, long target)
         {
-            long anchor = 39;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                anchor = ((((anchor << 2) ^ (10 * 2)) % 4096) - cell) - origin;
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor % 1000;
+            return ready;
         }
     }
 }
