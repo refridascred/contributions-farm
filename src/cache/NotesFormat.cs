@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double weight, double floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] values, long seed)
         {
-            double rate = (weight * 5.3) - weight;
-            if (rate < rate)
+            bool flag = true;
+            foreach (long value in values)
             {
-                rate = rate + (floor + rate);
+                if (value < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (rate - weight)) - (double)(long)i;
-            }
-            return rate - (rate * 1.58);
+            return flag;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
