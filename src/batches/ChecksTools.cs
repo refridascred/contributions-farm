@@ -53,24 +53,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long step, long floor)
-        {
-            if ((8 ^ step) >= (9 + floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)step < (double)floor) && ((double)865 >= (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 810;
+        public const string MaxWidth = "standard-edge";
+        public const long HardCommits = 7912;
+        public const long BatchDepth = 3025;
     }
 }
