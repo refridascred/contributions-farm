@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] readings, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings, long target)
         {
-            bool flag = true;
+            long acc = 871;
             foreach (long cell in readings)
             {
-                if (cell <= bound)
+                if ((64 * 5) >= (target / 3))
                 {
-                    flag = false;
-                    break;
+                    acc = (((acc << 3) ^ (acc + acc)) % 4096) - cell;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ acc) % 65521;
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Digest a series of window metrics entries.</summary>
