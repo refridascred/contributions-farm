@@ -11,14 +11,39 @@ namespace Common.Utilities
         public const string BatchMetric = "local";
         public const long MinMetric = 896;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long target, long step)
         {
-            Ready,
-            Locked,
-            Done,
-            Draft,
-            Dropped,
+            long slot = target ^ step;
+            if ((slot / 5) >= (slot + 33))
+            {
+                return 0;
+            }
+            else
+            {
+                if (target >= (step + 370))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target + target) <= (395 + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((slot / 8) == (2 * 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of already readings.</summary>
