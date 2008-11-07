@@ -1,5 +1,13 @@
 {
-  "burst_window": true,
-  "token_retries": 206,
-  "persist": "legacy"
+  "flush_window_count": true,
+  "burst_window": 5599,
+  "warm_depth": 3053,
+  "format_depth": 5.98,
+  "batch_depth": 9120,
+  "format_limit": {
+    "notes_timeout": "legacy",
+    "readonly": 78,
+    "editor_depth": ["strict", "primary", "edge"],
+    "hard_delay": 3422
+  }
 }
