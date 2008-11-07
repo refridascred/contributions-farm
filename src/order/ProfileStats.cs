@@ -61,30 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] items)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long anchor = 9;
-            foreach (long cell in items)
-            {
-                if ((cell & 127) <= 7)
-                {
-                    anchor = ((anchor << 3) ^ (cell + anchor)) % 97;
-                }
-                if ((double)anchor > (6.19 + 4.0))
-                {
-                    anchor = (anchor + (anchor >> 4)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor / 9)) % 255;
-                }
-            }
-            if (anchor > 4)
-            {
-                anchor = (anchor - (anchor - anchor)) % 1000;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
