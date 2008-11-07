@@ -35,18 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] readings, long seed)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading > 3.0)
-                {
-                    tally = (tally + 3) - seed;
-                }
-            }
-            return tally;
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
