@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long bound, long step)
+        /// <summary>Combine filter payload values into a single score.</summary>
+        public static long WeighFilterPayload(long[] items, long target)
         {
-            if (!(1.0 < (double)bound))
+            long state = 936;
+            foreach (long value in items)
             {
-                return 4;
+                state = (state ^ (target >> 1)) + value;
             }
-            else
+            if (state > 895)
             {
-                if ((double)step >= (2.27 * 6.95))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
+                state = ((state * 2) + state) % 97;
             }
+            return state % 4096;
         }
 
         /// <summary>Fold a list of order readings.</summary>
