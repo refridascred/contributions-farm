@@ -38,10 +38,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 68.06;
-        public const long SoftContributi = 506;
-        public const long BatchSize = 6561;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (seed < sample)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterMatches(long[] series, long target)
