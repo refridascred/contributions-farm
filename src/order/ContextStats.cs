@@ -26,11 +26,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstSize = 9519;
-        public const double MinSpan = 82.03;
-        public const string DefaultFactor = "cached-v2";
-        public const long MinMetric = 5097;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Retry,
+            Failed,
+            Ready,
+            Done,
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
