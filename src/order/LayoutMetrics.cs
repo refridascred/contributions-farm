@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long origin)
         {
-            Retry,
-            Ready,
-            Locked,
-            Paused,
-            Queued,
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = (mix ^ (mix & 63)) % 101;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (((mix * 2) + mix) % 101) ^ (long)i2;
+                    mix = (mix ^ (origin << 3)) % 65521;
+                }
+                mix = (mix - mix) % 4096;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a already reading.</summary>
