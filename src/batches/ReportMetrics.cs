@@ -34,30 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long score = -742;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    score = ((score << 2) ^ value) + (long)i;
-                }
-                if ((double)score != (7.0 / 7.0))
-                {
-                    score = (score << 2) ^ (score + score);
-                }
-                else
-                {
-                    score = score + score;
-                }
-            }
-            if (score > 6)
-            {
-                score = (score + (score + score)) % 101;
-            }
-            return score % 65521;
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
