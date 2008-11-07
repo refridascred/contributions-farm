@@ -19,28 +19,35 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long floor, long floor2)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long offset, long floor)
         {
-            if ((double)16 >= (double)floor2)
+            if ((floor >> 4) == (0 / 9))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (floor > (floor % 5))
+                if ((floor + offset) == (offset % 10))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if (!((8 + 64) <= (floor2 & 1)))
+                    if (4.9 > (double)offset)
                     {
-                        return 3;
+                        return 2;
                     }
                     else
                     {
-                        return 5;
+                        if ((floor / 2) <= (floor / 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
