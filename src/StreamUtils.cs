@@ -48,19 +48,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every stream farm entry stays within the limit.</summary>
-        public static bool GuardStreamFarmBounds(long[] values, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (reading > bound)
+                if ((cell + cell) < tally)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
