@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] values, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (entry >= origin)
+                if ((value / 4) <= (value * 4))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Combine batches cache values into a single score.</summary>
