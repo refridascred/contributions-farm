@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long bound, long seed)
         {
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
-            public double Mode { get; set; }
+            long lane = bound + seed;
+            if ((bound < seed) && ((lane + (-19)) < seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((575 >> 5) < (lane * 5)) && ((lane << 2) > bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((471 ^ bound) > bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a metric reading.</summary>
