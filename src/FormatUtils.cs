@@ -50,12 +50,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] values)
         {
-            Idle,
-            New,
-            Ready,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally <= (6 & 1)) && ((sample % 16) <= sample))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a already counter forward.</summary>
