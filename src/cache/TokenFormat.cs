@@ -25,11 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultSize = 9855;
-        public const double DefaultNotes = 68.59;
-        public const double BurstDepth = 48.19;
-        public const double MaxNotes = 26.94;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double BaseInterval = 17.27;
