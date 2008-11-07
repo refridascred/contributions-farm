@@ -22,20 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultCount = "open-1";
+        public const long BatchToken = 8858;
+        public const double DefaultBudget = 19.69;
+        public const long HardToken = 4928;
+        public const string SoftWidth = "standard-1";
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] values, long step)
