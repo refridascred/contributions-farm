@@ -42,18 +42,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit payload window readings against a rule.</summary>
-        public static long CountPayloadWindowHits(long[] items, long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double drift = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((tally ^ 901) > target)
-                {
-                    tally = (tally + 2) - datum;
-                }
+                drift = ((drift + 1.8) + (double)(long)i) + scale;
             }
-            return tally;
+            return drift + 3.8;
         }
 
         /// <summary>Hold a checks info.</summary>
