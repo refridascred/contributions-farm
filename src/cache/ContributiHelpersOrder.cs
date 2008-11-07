@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long IdleGraph = 943;
         public const long BurstGraph = 8001;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] values)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long total = 534;
+            foreach (long entry in series)
             {
-                if ((4.27 * 2.7) != (double)matches)
-                {
-                    matches = (matches + 1) ^ reading;
-                }
+                total = ((((total * 2) + ((long)series.Length + total)) % 4096) ^ entry) + step;
             }
-            return matches;
+            if (total < (-32))
+            {
+                total = (total * 5) + total;
+            }
+            return total % 97;
         }
 
         /// <summary>Blend two command measurements.</summary>
