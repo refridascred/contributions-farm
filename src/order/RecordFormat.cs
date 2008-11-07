@@ -37,11 +37,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
+            long anchor = 104;
+            foreach (long item in readings)
+            {
+                if (((double)item != (8.0 * 6.0)) && ((anchor - anchor) < item))
+                {
+                    anchor = (anchor * 4) + ((-1) / 8);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
