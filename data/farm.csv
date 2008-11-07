@@ -1,7 +1,6 @@
-id,label,owner
-1,68.51,64.82
-2,873,728
-3,595,324
-4,45.07,457
-5,151,fallback
-6,36,edge
+id,state,active
+1,latest,16.03
+2,staging,stable
+3,65.26,242
+4,fallback,810
+5,51.0,569
