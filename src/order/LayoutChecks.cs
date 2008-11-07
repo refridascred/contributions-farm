@@ -41,15 +41,17 @@ namespace Common.Utilities
             return ((ratio - (5.5 * 20.0)) + gain) + bias;
         }
 
-        /// <summary>Blend two command report measurements.</summary>
-        public static double ProjectCommandReport(double scale, double bias)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] samples, long seed)
         {
-            double scale2 = bias;
-            if (scale2 > bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 - (double)62;
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 + scale;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
