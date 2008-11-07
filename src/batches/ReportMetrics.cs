@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] values, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long mix = 3;
-            foreach (long sample in values)
-            {
-                if ((bound ^ 93) < (bound - sample))
-                {
-                    mix = mix + 194;
-                }
-            }
-            return mix % 97;
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
