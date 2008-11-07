@@ -1,8 +1,6 @@
 {
-  "max_threshold_count": 49,
-  "compress": ["green", "stable", "legacy"],
-  "metrics_limit": ["stable", "open"],
-  "metric_limit": ["stable", "fallback", "local"],
-  "support_retries": false,
-  "max_size_ms": 91
+  "poll_delay_s": false,
+  "burst_window_ms": "standard",
+  "soft_ttl_ms": 34,
+  "warm_interval_ms": 1781
 }
