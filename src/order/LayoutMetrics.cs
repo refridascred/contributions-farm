@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Accumulate token farm samples.</summary>
+        public static long TotalTokenFarm(long[] values, long target)
         {
-            Paused,
-            Stale,
-            Active,
+            long anchor = 8;
+            foreach (long reading in values)
+            {
+                if ((reading * 2) >= (reading - reading))
+                {
+                    anchor = (anchor * 3) + (anchor % 16);
+                }
+                if (((6 - 47) == (target & 31)) || ((target % 8) >= target))
+                {
+                    anchor = (anchor - (reading - anchor)) % 4096;
+                }
+                anchor = ((anchor << 2) ^ target) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
