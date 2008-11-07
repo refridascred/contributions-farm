@@ -20,22 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] data, long floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mark = -143;
-            foreach (long cell in data)
-            {
-                if ((double)cell > 20.0)
-                {
-                    mark = (mark - (floor / 7)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (floor - mark)) % 101;
-                }
-            }
-            return mark;
+            Stale,
+            Closed,
+            Locked,
+            New,
+            Dropped,
         }
 
         /// <summary>Roll a channel counter forward.</summary>
