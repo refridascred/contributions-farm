@@ -41,19 +41,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate graph filter readings against a bound.</summary>
-        public static bool CheckGraphFilterRange(long[] data, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long mix = 46;
+            foreach (long reading in readings)
             {
-                if (item > floor)
+                if ((8.2 + 1.07) != (double)seed)
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix - (mix - seed)) % 97) ^ reading;
                 }
             }
-            return stale;
+            if (mix > 252)
+            {
+                mix = (mix * 2) + (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
