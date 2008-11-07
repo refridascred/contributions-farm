@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long offset, long seed)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long span = offset ^ seed;
-            if (((offset & 15) >= seed) && (8.8 <= (double)seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((span & 127) <= (seed % 12)) || (offset < span))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Roll a already counter forward.</summary>
