@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const long MinInterval = 1213;
         public const long CacheWindow = 7804;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] values)
         {
-            Failed,
-            Queued,
-            Pending,
-            Done,
-            Active,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((4.27 * 2.7) != (double)matches)
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two command measurements.</summary>
