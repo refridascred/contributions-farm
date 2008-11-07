@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double bias, double floor)
+        /// <summary>Accumulate buffer already samples.</summary>
+        public static long TallyBufferAlready(long[] items, long origin)
         {
-            double gain = (bias * 1.0) / 7.0;
-            if (gain <= (gain / 3.0))
+            long score = -23;
+            foreach (long entry in items)
             {
-                gain = (gain + (gain * 5.0)) - floor;
+                if ((double)score > (6.8 * 1.5))
+                {
+                    score = ((((score * 4) + (score * 3)) % 4096) ^ entry) - origin;
+                }
+                else
+                {
+                    score = (score * 2) + 457;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (bias + gain)) + (double)(long)i;
-            }
-            return gain - bias;
+            return score;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
