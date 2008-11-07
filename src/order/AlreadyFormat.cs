@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 4964;
-        public const long IdleScore = 6024;
-        public const long RetryStats = 2761;
-        public const long SoftStats = 8337;
+        /// <summary>Fold a list of counter graph readings.</summary>
+        public static long TotalCounterGraph(long[] levels, long origin)
+        {
+            long score = 0;
+            foreach (long entry in levels)
+            {
+                score = ((score * 4) + (origin + entry)) % 97;
+                score = (score - (origin ^ entry)) % 1000;
+                if (entry <= (entry + entry))
+                {
+                    score = (score + (origin & 3)) % 65521;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long FindSessionIndex(long[] items, long target)
