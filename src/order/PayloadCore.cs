@@ -22,25 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long limit, long step)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] readings, long limit)
         {
-            long edge = limit + step;
-            if (((limit >> 2) > 4) && ((edge + 793) <= (edge ^ edge)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((edge * 3) >= (step >> 3)) && ((86 * 5) > step))
+                if (readings[i] < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
