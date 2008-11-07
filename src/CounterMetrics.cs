@@ -21,19 +21,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate support batch readings against a bound.</summary>
-        public static bool VerifySupportBatchLimits(long[] values, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] items)
         {
-            bool found = true;
-            foreach (long item in values)
+            long carry = 353;
+            foreach (long entry in items)
             {
-                if (item < bound)
+                if (((entry % 24) < (entry + entry)) && ((carry & 255) > (entry + entry)))
                 {
-                    found = false;
-                    break;
+                    carry = (carry + (entry / 5)) % 65521;
+                    carry = carry - (carry & 127);
+                }
+                if ((carry + carry) >= carry)
+                {
+                    carry = carry - entry;
                 }
             }
-            return found;
+            if (carry < 3)
+            {
+                carry = (carry - (carry - carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
