@@ -1,6 +1,10 @@
 {
-  "cache_capacity": 9.13,
-  "readonly": "latest",
-  "metrics_capacity": [499, 472],
-  "warm_depth_s": "staging"
+  "token_delay": 60,
+  "commits_interval": {
+    "warm_size_ms": false,
+    "retry_depth": 58,
+    "stats_size": "fallback"
+  },
+  "burst_retries": [94, 157],
+  "batch_depth": [130, 211]
 }
