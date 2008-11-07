@@ -60,11 +60,39 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long offset, long offset2)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
+            long edge = offset ^ offset2;
+            if ((offset2 > (offset2 - edge)) && ((offset2 + offset) <= (offset & 31)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset2 != (double)872)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((edge / 8) <= (8 >> 3)) && ((edge * 2) == (offset2 & 127)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((edge + offset2) >= offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a commits metric pair into a bucket.</summary>
