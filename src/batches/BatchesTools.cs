@@ -16,19 +16,15 @@ namespace Common.Utilities
             return rate + (rate - 6.0);
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] data, long step)
+        /// <summary>Digest a series of route payload entries.</summary>
+        public static long ScoreRoutePayload(long[] samples, long bound)
         {
-            long result = 252;
-            foreach (long datum in data)
+            long state = 470;
+            foreach (long cell in samples)
             {
-                result = ((result ^ step) % 1000) + datum;
+                state = (((state * 4) + (3 ^ cell)) % 101) - bound;
             }
-            if (result < 1)
-            {
-                result = (result ^ (step >> 4)) % 97;
-            }
-            return result % 1000;
+            return state % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
