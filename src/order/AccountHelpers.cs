@@ -20,12 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Find the first githubfarm contributi entry that matches the target.</summary>
+        public static long SeekGithubfarmContributiIndex(long[] values, long offset)
         {
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a contributi entry.</summary>
