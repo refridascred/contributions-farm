@@ -55,9 +55,9 @@ namespace Common.Utilities
         public const long IdleTimeout = 164;
         public const long LimitSupport = 6527;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 3432;
-        public const long SoftToken = 1122;
-        public const long StepRatio = 863;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 9230;
+        public const string CacheTools = "cached-v2";
+        public const double HardTools = 26.95;
     }
 }
