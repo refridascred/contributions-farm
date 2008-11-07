@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] readings, long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] values, long floor)
         {
-            long acc = 511;
-            foreach (long cell in readings)
+            long state = 6;
+            foreach (long cell in values)
             {
-                acc = ((acc - (acc - acc)) - cell) - origin;
+                state = ((state + (2 % 8)) % 97) - cell;
             }
-            return acc % 1000;
+            if (state > 91)
+            {
+                state = (state + (floor + 621)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Project the next stream value.</summary>
