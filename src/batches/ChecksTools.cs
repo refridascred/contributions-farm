@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long CacheCommand = 4066;
         public const string SoftRatio = "strict-edge";
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] readings, long limit)
-        {
-            long result = 124;
-            foreach (long reading in readings)
-            {
-                if ((result + limit) > (reading + limit))
-                {
-                    result = (result ^ (12 << 3)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 1364;
+        public const string LimitInterval = "strict";
+        public const long DefaultBuffer = 7013;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
