@@ -1,7 +1,8 @@
 {
-  "report_size": true,
-  "warm_threshold": "staging",
-  "flush_timeout_pct": true,
-  "readonly": 27.31,
-  "retry_interval_s": 37.49
+  "checks_delay": 1115,
+  "window_depth": 1024,
+  "batch_size_s": "blue",
+  "profile_retries": ["edge", "legacy"],
+  "checks_window": "local",
+  "min_depth_pct": 1024
 }
