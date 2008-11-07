@@ -1,10 +1,7 @@
-id,state,owner
-1,latest,663
-2,505,primary
-3,366,496
-4,96.85,648
-5,115,legacy
-6,local,14.84
-7,87.57,standard
-8,96.39,green
-9,22,81
+id,level,state
+1,latest,local
+2,3.05,staging
+3,edge,916
+4,57.44,52.17
+5,312,396
+6,47.87,0.34
