@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] items, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] values)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long mix = 4;
+            foreach (long item in values)
             {
-                if (item <= step)
+                mix = mix + (73 >> 2);
+                mix = mix + (mix + mix);
+                if ((item + mix) < item)
                 {
-                    stale = false;
-                    break;
+                    mix = (mix << 3) ^ (6 << 3);
                 }
             }
-            return stale;
+            if (mix < 0)
+            {
+                mix = (mix + (mix << 3)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
