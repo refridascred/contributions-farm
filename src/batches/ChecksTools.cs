@@ -45,21 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count githubfarm order pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmOrderCount(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 106;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((7.3 * 17.0) >= (double)entry))
                 {
-                    if ((items[i] + items[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                anchor = anchor ^ (anchor + entry);
             }
-            return count;
+            return anchor;
         }
     }
 }
