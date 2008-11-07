@@ -61,11 +61,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWidth = 7845;
-        public const string IdleWindow = "alpha-edge";
-        public const long MinSpan = 417;
-        public const string WindowTimeout = "cached";
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Synced,
+            Pending,
+            Queued,
+            New,
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long FoldCluster(long[] readings)
