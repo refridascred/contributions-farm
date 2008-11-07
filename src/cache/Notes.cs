@@ -22,24 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long offset, long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double gain, double bias)
         {
-            if ((1.4 + 5.0) != (double)offset)
+            double mean = bias * 8.8;
+            if (mean < (double)(-8))
             {
-                return 4;
+                mean = mean - (double)9;
             }
             else
             {
-                if (((0.96 / 8.0) >= (double)offset) || ((8.96 - 12.0) == (double)offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
+                mean = mean + (gain - mean);
             }
+            return mean + mean;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
