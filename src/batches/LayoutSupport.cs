@@ -51,12 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] data)
         {
-            Queued,
-            Pending,
-            Stale,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (matches > (matches << 3))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
