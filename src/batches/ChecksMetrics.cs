@@ -52,15 +52,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long seed)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
