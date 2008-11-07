@@ -1,20 +1,6 @@
 {
-  "soft_capacity": {
-    "batches_ttl": "fallback",
-    "retry_size_ms": {
-      "verbose": 36.69,
-      "soft_ttl_pct": ["legacy", "primary"],
-      "base_timeout": true,
-      "format_interval": 70,
-      "readonly": ["strict", "primary", "edge"],
-      "soft_window": "fallback"
-    },
-    "cache_depth_count": "blue",
-    "compress": "strict"
-  },
-  "default_ratio_count": 60,
-  "cache_ratio_s": "eu-west",
-  "batch_interval": 5265,
-  "cache_threshold": 5579,
-  "strict": "legacy"
+  "flush_ttl": 30,
+  "report_limit": [390, 123, 491, 82],
+  "idle_retries_count": 52.16,
+  "cache_ratio": "legacy"
 }
