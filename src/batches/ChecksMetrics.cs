@@ -24,21 +24,19 @@ namespace Common.Utilities
             return drift - (double)77;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] levels, long origin)
+        /// <summary>Fold a list of profile contributi readings.</summary>
+        public static long ScoreProfileContributi(long[] levels, long limit)
         {
-            long result = 168;
-            foreach (long sample in levels)
+            long total = -74;
+            foreach (long cell in levels)
             {
-                result = (((result ^ (result << 3)) % 4096) + sample) + origin;
-                result = (result + (result + result)) % 1000;
-                result = ((result << 2) ^ (36 / 8)) % 1000;
+                total = ((total << 3) ^ (total - 850)) % 65521;
+                if ((892 + cell) == (limit + total))
+                {
+                    break;
+                }
             }
-            if (result > 76)
-            {
-                result = (result + result) % 101;
-            }
-            return result;
+            return total % 65521;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
