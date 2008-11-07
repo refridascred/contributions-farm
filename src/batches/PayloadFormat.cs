@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double rate, double offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] items, long origin)
         {
-            double rate2 = offset * 7.0;
-            if (rate2 <= (double)1)
+            long count = 0;
+            foreach (long datum in items)
             {
-                rate2 = rate2 + offset;
+                if ((13.0 + 8.0) <= (double)count)
+                {
+                    count = ((count + 1) + datum) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                rate2 = rate2 + 3.0;
-            }
-            return rate2 - rate;
+            return count;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
