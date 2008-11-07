@@ -1,12 +1,8 @@
 {
-  "persist": 100,
-  "soft_timeout_count": {
-    "stream_timeout": 15,
-    "stats_size": false,
-    "batch_threshold_pct": false,
-    "metric_delay": false
-  },
-  "verbose": 79.57,
-  "soft_window_s": "edge",
-  "metric_capacity": "cached"
+  "contributi_window": "eu-west",
+  "flush_timeout": "cached",
+  "cache_depth_s": 30,
+  "soft_retries_count": 9967,
+  "batch_interval": "stable",
+  "command_window": "eu-west"
 }
