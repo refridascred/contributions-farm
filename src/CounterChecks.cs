@@ -54,25 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long bound, long step)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long offset)
         {
-            long bound2 = bound - step;
-            if ((double)bound2 < (double)bound)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
+                result = ((result * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (2.49 >= (double)bound2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return result;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
