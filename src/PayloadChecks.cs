@@ -64,19 +64,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph route readings against a bound.</summary>
-        public static bool VerifyGraphRouteRange(long[] samples, long seed)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= seed)
+                if (samples[i] < offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
