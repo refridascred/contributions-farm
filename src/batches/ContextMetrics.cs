@@ -46,11 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] levels, long step)
         {
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((step - step) < (seen >> 3))
+                {
+                    seen = (seen + 2) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
