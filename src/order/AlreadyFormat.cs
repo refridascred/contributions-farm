@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long RetryStats = 2761;
         public const long SoftStats = 8337;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] items, long target)
         {
-            Dropped,
-            Ready,
-            Active,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
