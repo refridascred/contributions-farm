@@ -66,23 +66,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate contributi session samples.</summary>
-        public static long DigestContributiSession(long[] readings, long target)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long score = 185;
-            foreach (long sample in readings)
-            {
-                if ((sample * 3) > (long)readings.Length)
-                {
-                    score = (((score << 2) ^ (4 & 3)) % 1000) + target;
-                }
-                score = ((score * 4) + (score >> 5)) % 65521;
-                if (((sample * 4) < (sample >> 4)) && ((sample / 2) >= score))
-                {
-                    break;
-                }
-            }
-            return score;
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
