@@ -57,12 +57,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            Locked,
+            Queued,
+            Failed,
+            Done,
         }
     }
 }
