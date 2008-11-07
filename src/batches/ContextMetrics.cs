@@ -66,14 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] readings)
         {
-            Idle,
-            New,
-            Queued,
-            Pending,
-            Draft,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((2.9 - 6.24) >= (double)cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
