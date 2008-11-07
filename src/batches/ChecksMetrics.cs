@@ -24,19 +24,13 @@ namespace Common.Utilities
             return drift - (double)77;
         }
 
-        /// <summary>Fold a list of profile contributi readings.</summary>
-        public static long ScoreProfileContributi(long[] levels, long limit)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long total = -74;
-            foreach (long cell in levels)
-            {
-                total = ((total << 3) ^ (total - 850)) % 65521;
-                if ((892 + cell) == (limit + total))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
