@@ -60,11 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 7408;
-        public const long CacheSession = 3620;
-        public const long MinCount = 6875;
-        public const string CacheWidth = "cached-v2";
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double scale, double offset)
+        {
+            double load = scale;
+            return (load + (6.4 * 0.35)) + offset;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricLimits(long[] readings, long offset)
