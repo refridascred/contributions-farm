@@ -41,11 +41,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryScore = "primary-1";
-        public const string MinInterval = "latest-1";
-        public const long StepFormat = 4899;
-        public const string SoftTimeout = "local";
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Active,
+            New,
+            Queued,
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
