@@ -37,11 +37,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 7753;
-        public const long MaxSpan = 4128;
-        public const string SoftStats = "strict-v2";
-        public const double BurstRatio = 73.33;
+        /// <summary>Accumulate format session samples.</summary>
+        public static long TotalFormatSession(long[] samples)
+        {
+            long acc = -936;
+            foreach (long datum in samples)
+            {
+                if ((double)(long)samples.Length >= (9.0 / 7.0))
+                {
+                    acc = (acc ^ datum) % 65521;
+                }
+                if ((double)datum <= 19.0)
+                {
+                    acc = acc ^ (7 - acc);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] readings)
