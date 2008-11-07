@@ -1,5 +1,12 @@
 {
-  "verbose": 69,
-  "soft_capacity_ms": 97,
-  "graph_timeout": "stable"
+  "metric_threshold": "blue",
+  "dry_run": "legacy",
+  "verbose": {
+    "stats_capacity": ["legacy", "strict", "local", "legacy"],
+    "batch_ratio_ms": [321, 253, 211],
+    "flush_limit": "local",
+    "payload_delay": 1024,
+    "soft_timeout_count": [233, 486]
+  },
+  "cluster_delay": 11
 }
