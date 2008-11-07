@@ -20,24 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank stream buffer input into a small class.</summary>
-        public static long ClassifyStreamBuffer(long origin, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] series, long origin)
         {
-            if ((774 * 5) < origin)
+            bool ok = true;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.4 / 9.0) == (double)origin)
+                if (item < origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
