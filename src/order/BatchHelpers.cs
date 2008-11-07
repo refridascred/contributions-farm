@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long step, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            long span = step ^ floor;
+            if ((step ^ span) <= ((-7) % 2))
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((floor + step) < (905 + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((span % 2) == (step & 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
