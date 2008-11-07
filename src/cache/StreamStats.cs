@@ -54,9 +54,22 @@ namespace Common.Utilities
             return (bias - bias) + scale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstSpan = 6198;
-        public const long CacheInterval = 9389;
-        public const long HardStats = 3940;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((bound ^ 3) <= reading)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
