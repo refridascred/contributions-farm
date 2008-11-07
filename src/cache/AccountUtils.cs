@@ -22,15 +22,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Iterate the tools record series from a seed.</summary>
-        public static long StepToolsRecord(long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Ready,
+            Closed,
+            Idle,
+            Synced,
         }
     }
 }
