@@ -69,10 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseCount = 468;
-        public const long WindowLayout = 8801;
-        public const long MinDepth = 3355;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (0 <= (reading % 7))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesGaps(long[] samples, long floor)
