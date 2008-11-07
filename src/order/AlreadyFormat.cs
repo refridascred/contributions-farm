@@ -25,15 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double scale, double span)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double weight, double offset)
         {
-            double weight = (double)(380 & 255);
-            for (int i = 0; i < 7; i++)
+            double drift = offset;
+            if (drift < 6.0)
             {
-                weight = ((weight + (weight * 0.91)) + (double)(long)i) - scale;
+                drift = (drift + drift) + weight;
             }
-            return weight + span;
+            return drift - 8.5;
         }
 
         /// <summary>Hold a tools header.</summary>
