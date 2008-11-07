@@ -1,15 +1,7 @@
 {
-  "batches_depth": {
-    "min_threshold": 100,
-    "warm_capacity_s": 37,
-    "idle_depth": "blue",
-    "warm_interval": 9,
-    "warm_ratio_count": 1024
-  },
-  "poll_limit_pct": {
-    "format_ttl": "edge",
-    "default_ratio": [395, 49, 271, 198],
-    "route_timeout": 100
-  },
-  "cache_capacity_ms": 91
+  "hard_size_s": "cached",
+  "dry_run": 93,
+  "readonly": false,
+  "warm_limit_s": false,
+  "idle_limit_ms": 4708
 }
