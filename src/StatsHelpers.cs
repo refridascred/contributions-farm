@@ -34,16 +34,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                state = state - seed;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the session state values.</summary>
