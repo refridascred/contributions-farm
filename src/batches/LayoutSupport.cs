@@ -32,13 +32,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Closed,
-            Active,
-            Failed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitEntry = "legacy";
+        public const double IdleTimeout = 90.15;
+        public const double HardInterval = 30.6;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 5602;
