@@ -21,13 +21,22 @@ namespace Common.Utilities
         public const long IdleSpan = 5136;
         public const double BaseAlready = 28.66;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] series)
         {
-            Paused,
-            Failed,
-            Locked,
-            Retry,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!!((count + count) != (cell ^ 83)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
