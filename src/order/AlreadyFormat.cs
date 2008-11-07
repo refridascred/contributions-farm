@@ -57,26 +57,11 @@ namespace Common.Utilities
         public const long MinBudget = 1695;
         public const string IdleChecks = "legacy-v2";
 
-        /// <summary>Digest a series of cluster schema entries.</summary>
-        public static long TotalClusterSchema(long[] items, long seed)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double rate, double offset)
         {
-            long carry = -73;
-            foreach (long value in items)
-            {
-                if ((value * 3) > (seed & 7))
-                {
-                    carry = (carry << 3) ^ (value + value);
-                }
-                else
-                {
-                    carry = carry + carry;
-                }
-                if ((279 > carry) || (seed <= (value + carry)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            double gain = (double)(50 / 6);
+            return ((gain - (2.28 * 7.84)) + rate) + offset;
         }
     }
 }
