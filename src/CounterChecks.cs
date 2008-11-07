@@ -65,17 +65,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] series, long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                carry = (carry << 2) ^ ((-898) & 127);
+                carry = carry ^ (141 ^ (-56));
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
