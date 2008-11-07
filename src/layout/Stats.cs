@@ -10,13 +10,39 @@ namespace Common.Utilities
         public const long MaxChannel = 8678;
         public const long MinChannel = 8868;
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long step, long bound)
         {
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            long offset = step - bound;
+            if ((double)bound != (double)offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset * 2) == (bound % 24))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset < (step >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step <= (16.0 / 7.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
