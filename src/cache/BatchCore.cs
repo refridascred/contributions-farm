@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 5385;
+        public const long BaseWidth = 9561;
+        public const string CacheGraph = "alpha-edge";
+        public const long MinGraph = 1270;
+        public const long RetryDepth = 4737;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long BucketToken(long seed, long floor)
