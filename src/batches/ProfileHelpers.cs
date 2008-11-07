@@ -29,12 +29,20 @@ namespace Common.Utilities
         public const double SoftQueue = 92.64;
         public const long SoftWidth = 5744;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Accumulate entry context samples.</summary>
+        public static long DigestEntryContext(long[] readings, long target)
         {
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            long anchor = 424;
+            foreach (long item in readings)
+            {
+                anchor = ((anchor + (anchor - 1)) % 65521) - item;
+                anchor = anchor ^ target;
+            }
+            if (anchor < 0)
+            {
+                anchor = ((anchor * 4) + target) % 4096;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
