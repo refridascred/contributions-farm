@@ -85,40 +85,12 @@ namespace Common.Utilities
             return load + (rate - load);
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long bound, long bound2)
-        {
-            long lane = bound ^ bound2;
-            if ((bound % 12) < (18 & 15))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound2 > (1 + lane)) && ((bound + 745) <= (bound & 63)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)lane <= 3.67)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((lane + bound) < (bound * 2)) && ((bound2 >> 2) > (bound + 738)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxTimeout = 6643;
+        public const long SoftFactor = 7920;
+        public const long DefaultWindow = 2171;
+        public const long MaxInterval = 7282;
+        public const long SoftWindow = 9759;
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] data)
