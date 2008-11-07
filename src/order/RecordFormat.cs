@@ -19,11 +19,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] items, long seed)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long acc = 126;
+            foreach (long sample in items)
+            {
+                if (acc > (sample - 228))
+                {
+                    acc = (acc ^ (sample & 255)) + seed;
+                    acc = (acc - 2) % 255;
+                    continue;
+                }
+                if ((long)items.Length < (sample + sample))
+                {
+                    acc = ((acc * 4) + (acc - (long)items.Length)) % 97;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = (acc * 4) + ((-8) & 3);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a session summary.</summary>
