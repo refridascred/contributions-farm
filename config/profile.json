@@ -1,14 +1,5 @@
 {
-  "idle_ttl": 69.53,
-  "account_depth": 9170,
-  "session_delay": 8358,
-  "schema_limit": [184, 307, 471, 472],
-  "contributi_ratio": "blue",
-  "cache_delay": {
-    "support_ttl": 30,
-    "command_threshold": 1553,
-    "batch_ttl_ms": "legacy",
-    "persist": "eu-west",
-    "filter_ratio": true
-  }
+  "burst_ttl": true,
+  "token_threshold": 20.45,
+  "base_interval_count": "legacy"
 }
