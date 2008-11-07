@@ -37,18 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result ^ target) % 101;
-                result = ((result * 5) + (result + (long)i)) % 97;
-                result = ((result << 2) ^ target) % 255;
-                result = ((result * 3) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Count stats record pairs that satisfy a relation.</summary>
