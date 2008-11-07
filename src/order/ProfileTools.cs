@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] readings)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score + ((long)i + target)) % 97;
+                score = score ^ (target * 2);
+                score = (score << 3) ^ (target + target);
+                score = ((score * 4) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
