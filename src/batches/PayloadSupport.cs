@@ -36,12 +36,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
