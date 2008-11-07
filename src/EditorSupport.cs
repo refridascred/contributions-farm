@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long origin, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long limit, long bound)
         {
-            long edge = origin - bound;
-            if ((bound & 31) <= origin)
+            if ((bound / 6) == (65 & 1))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (((-58) & 3) > origin)
+                if ((bound + limit) >= (limit + limit))
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((20 - bound) == (edge * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin < 51)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
