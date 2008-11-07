@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine already batches values into a single score.</summary>
-        public static long TotalAlreadyBatches(long[] items)
+        /// <summary>Count the payload order entries that pass the check.</summary>
+        public static long TallyPayloadOrderMatches(long[] data, long origin)
         {
-            long mark = -151;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (!(entry <= (mark % 3)))
+                if ((((tally / 6) <= origin) && ((double)origin <= (double)tally)) && ((tally ^ origin) >= (origin << 3)))
                 {
-                    mark = (mark * 4) + (mark + mark);
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Accumulate checks samples.</summary>
