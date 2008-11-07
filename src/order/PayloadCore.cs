@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the graph farm entries that pass the check.</summary>
-        public static long TallyGraphFarmHits(long[] samples, long origin)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item % 3) < origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
