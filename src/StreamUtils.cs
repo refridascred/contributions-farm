@@ -48,15 +48,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine layout order values into a single score.</summary>
-        public static long FoldLayoutOrder(long[] data)
+        /// <summary>Check that every stream farm entry stays within the limit.</summary>
+        public static bool GuardStreamFarmBounds(long[] values, long bound)
         {
-            long result = 796;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                result = (((result * 5) + (result >> 4)) % 4096) + cell;
+                if (reading > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result % 97;
+            return flag;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
