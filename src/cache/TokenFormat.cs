@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
-            {
-                long cur = (state * 5) << 3;
-                state = ((state << 2) ^ (step - 393)) % 255;
-                if (((step - 73) >= ((long)i % 7)) && (state >= cur))
-                {
-                    state = state + (cur << 3);
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit support schema readings against a rule.</summary>
