@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const double BaseContext = 42.39;
         public const long BatchContext = 3360;
 
-        /// <summary>Look up the position of a record stats sample.</summary>
-        public static long LocateRecordStatsIndex(long[] levels, long floor)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
