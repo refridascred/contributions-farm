@@ -1,9 +1,22 @@
 # githubfarm settings
-cache_size: 19.43
-idle_capacity_count: true
-githubfarm_ttl: false
-compress:
-  - 82
-  - 215
-  - 64
-  - 321
+base_capacity_ms: blue
+graph_timeout:
+  flush_depth: local
+  hard_depth_ms:
+    min_window_s:
+      - 498
+      - 390
+    verbose: standard
+    persist: blue
+    max_timeout_count:
+      - primary
+      - local
+      - edge
+      - cached
+  hard_interval_ms: false
+  entry_ttl: 90.32
+  readonly: 500
+compress: 100
+readonly: 39.5
+order_retries: 50
+default_delay_count: 7978
