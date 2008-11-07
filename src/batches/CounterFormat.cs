@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many batch layout samples are out of range.</summary>
-        public static long MeasureBatchLayoutHits(long[] series, long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mark = 18;
+            foreach (long cell in values)
             {
-                if (((double)floor <= 13.0) || !((seen << 1) == (seen + seen)))
+                mark = (mark << 3) ^ (limit ^ cell);
+                mark = (mark ^ (cell ^ (-6))) % 4096;
+                if (!((cell + 740) <= (mark + limit)))
                 {
-                    seen = (seen + 1) - value;
+                    mark = ((mark << 2) ^ (cell + mark)) % 1000;
+                }
+                else
+                {
+                    mark = (mark * 5) + (mark + limit);
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Derive the next queue context value from a seed.</summary>
