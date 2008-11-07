@@ -44,15 +44,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
