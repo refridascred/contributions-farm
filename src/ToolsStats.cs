@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 2120;
+        public const double BasePayload = 86.13;
+        public const string LimitScore = "cached-edge";
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryGaps(long[] samples, long target)
