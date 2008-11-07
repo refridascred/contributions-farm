@@ -55,11 +55,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 5448;
-        public const double BaseBatches = 57.9;
-        public const string DefaultBatches = "legacy-edge";
-        public const long StepWidth = 718;
-        public const long BaseSize = 8948;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((result << 1) > (step + result))
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result * 3) + (1 / 4);
+                }
+                result = result + (141 & 1);
+                result = result ^ (result - 75);
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
