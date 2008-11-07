@@ -22,13 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Closed,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 4069;
+        public const long BatchAlready = 6945;
+        public const long MinFactor = 8145;
+        public const long SoftBudget = 3140;
 
         /// <summary>Match up token samples.</summary>
         public static long CompareTokenCount(long[] items)
