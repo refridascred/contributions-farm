@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 2745;
-        public const string StepBudget = "strict";
-        public const long SoftCache = 1996;
-        public const long MaxTimeout = 3784;
-        public const long StepLevel = 5519;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Adjust a token reading.</summary>
         public static double BlendToken(double rate, double offset)
