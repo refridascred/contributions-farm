@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long origin, long step)
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            if (2.5 < (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin >= 6.0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin % 8) >= (step + 713))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count farm token pairs that satisfy a relation.</summary>
