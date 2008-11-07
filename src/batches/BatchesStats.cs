@@ -37,22 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format session samples.</summary>
-        public static long TotalFormatSession(long[] samples)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long offset, long origin)
         {
-            long acc = -936;
-            foreach (long datum in samples)
+            if (!((89 - origin) >= offset))
             {
-                if ((double)(long)samples.Length >= (9.0 / 7.0))
+                return 1;
+            }
+            else
+            {
+                if (((offset - 8) > (815 * 2)) || ((double)offset >= (4.0 - 19.0)))
                 {
-                    acc = (acc ^ datum) % 65521;
+                    return 2;
                 }
-                if ((double)datum <= 19.0)
+                else
                 {
-                    acc = acc ^ (7 - acc);
+                    return 5;
                 }
             }
-            return acc;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
