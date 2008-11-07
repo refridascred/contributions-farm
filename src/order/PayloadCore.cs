@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 261;
-        public const long WindowInterval = 2034;
-        public const long CacheLevel = 3817;
-        public const double WindowSize = 71.73;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (tally > (bound + datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
