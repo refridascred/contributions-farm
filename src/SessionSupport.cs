@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Audit window context readings against a rule.</summary>
+        public static long CountWindowContextHits(long[] items, long target)
         {
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((446 < (target ^ tally)) || ((double)tally > 7.0)) || (((6 + reading) >= (target + target)) || ((target * 5) == (target - reading))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
