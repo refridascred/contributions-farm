@@ -22,20 +22,18 @@ namespace Common.Utilities
         public const string StepReport = "cached";
         public const long MaxReport = 199;
 
-        /// <summary>Digest a series of report editor entries.</summary>
-        public static long TallyReportEditor(long[] data, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] values)
         {
-            long result = 89;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in values)
             {
-                result = (result ^ (78 << 1)) % 97;
-                result = (result * 5) + (step + value);
+                if ((0.02 - 4.0) >= (double)item)
+                {
+                    count = count + 2;
+                }
             }
-            if (result > 0)
-            {
-                result = (result ^ (step - result)) % 1000;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Validate metrics graph readings against a bound.</summary>
