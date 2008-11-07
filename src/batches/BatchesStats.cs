@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] series)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long total = 94;
+            foreach (long value in levels)
             {
-                if ((double)entry <= (5.4 + 3.03))
+                total = (total * 5) + (total >> 2);
+                if (((value << 2) >= (total & 7)) || ((value + 0) != (5 ^ total)))
                 {
-                    hits = hits + 2;
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Digest a series of context route entries.</summary>
