@@ -29,12 +29,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] samples, long bound)
         {
-            Dropped,
-            Done,
-            Retry,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((double)bound >= (double)tally) || !((tally << 3) != (bound / 6)))
+                {
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
