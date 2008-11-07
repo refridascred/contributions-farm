@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every support tools entry stays within the limit.</summary>
-        public static bool ValidateSupportToolsLimits(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "staging";
+        public const long IdleSpan = 458;
+        public const long DefaultFarm = 1420;
+        public const double MinFarm = 29.72;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 8640;
