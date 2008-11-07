@@ -67,11 +67,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
+            public double Region { get; set; }
+            public long Score { get; set; }
             public long Mode { get; set; }
-            public double Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
