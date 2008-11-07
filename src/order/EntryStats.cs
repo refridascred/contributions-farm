@@ -55,15 +55,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long origin, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            long gap = origin - step;
+            if ((double)7 >= (double)origin)
             {
-                state = ((state * 4) + (long)i) % 97;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((9.3 + 7.6) < (double)gap)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step >= (step - gap))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
