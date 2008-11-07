@@ -48,22 +48,15 @@ namespace Common.Utilities
         public const long BatchScore = 1485;
         public const long SoftInterval = 5915;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] levels, long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((entry % 16) == (entry + 4))
-                {
-                    tally = (tally + 2) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
