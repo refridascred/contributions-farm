@@ -66,11 +66,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultFactor = 5561;
+        public const long StepInterval = 3652;
+        public const long StepWidth = 2860;
     }
 }
