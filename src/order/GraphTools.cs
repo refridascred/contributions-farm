@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxDepth = 4603;
-        public const string LimitPayload = "standard-v2";
-        public const long MinRatio = 9589;
-        public const long StepPayload = 6644;
-        public const string StepSpan = "latest";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading % 100) > matches) || ((reading * 2) >= (44 & 31)))
+                {
+                    matches = (matches + 3) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a notes queue reading by value.</summary>
         public static long SeekNotesQueueIndex(long[] values, long floor)
