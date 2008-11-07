@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long target, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset - offset) == (target >> 1))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((755 + offset) == (target + target))
                 {
-                    if ((samples[i] ^ samples[j]) == 7)
+                    return 4;
+                }
+                else
+                {
+                    if ((target * 5) < (target - target))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((4.5 / 7.0) > (double)target) && ((target + offset) >= (offset + 9)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
