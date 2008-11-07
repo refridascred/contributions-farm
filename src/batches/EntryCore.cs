@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
