@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] series, long seed)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum != seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
