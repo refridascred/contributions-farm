@@ -33,10 +33,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinMetric = 72.7;
-        public const long StepTimeout = 6216;
-        public const double MinWidth = 32.9;
-        public const long IdleMetric = 8903;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((12.0 - 7.75) != (double)entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
