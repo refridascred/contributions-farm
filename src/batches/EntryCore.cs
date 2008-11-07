@@ -62,19 +62,11 @@ namespace Common.Utilities
         public const long HardWidth = 1302;
         public const long BurstInterval = 1339;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] items, long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double drift = offset;
+            return (drift - offset) + ratio;
         }
     }
 }
