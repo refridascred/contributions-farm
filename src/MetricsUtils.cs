@@ -57,38 +57,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long step, long offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            if (offset > step)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((offset + offset) >= offset) && ((step * 2) >= (step * 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step > (offset - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset - step) != (offset & 63))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Synced,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
