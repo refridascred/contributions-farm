@@ -1,10 +1,5 @@
 {
-  "token_delay": 60,
-  "commits_interval": {
-    "warm_size_ms": false,
-    "retry_depth": 58,
-    "stats_size": "fallback"
-  },
-  "burst_retries": [94, 157],
-  "batch_depth": [130, 211]
+  "enabled": 65,
+  "batch_interval": ["latest", "green"],
+  "entry_retries": ["open", "blue", "latest"]
 }
