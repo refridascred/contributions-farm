@@ -1,18 +1,15 @@
 # support settings
-max_limit_s: fallback
-idle_ttl:
-  persist:
-    max_interval_ms: 30
-    readonly: 35
-    batch_ttl: false
-    warm_window: true
-    hard_retries_ms: true
-    dry_run: false
-  idle_delay: 19.74
-  contributi_delay: legacy
-  default_interval_ms: standard
-  idle_timeout_count: 4327
-batch_ratio_pct: 100
-readonly:
-  - strict
-  - local
+strict: 8.4
+record_interval:
+  - 348
+  - 74
+  - 344
+  - 370
+batch_capacity_ms: green
+support_size:
+  - 138
+  - 247
+  - 180
+  - 130
+base_depth: 36
+min_limit: 20
