@@ -43,18 +43,11 @@ namespace Common.Utilities
             return ratio + 20.0;
         }
 
-        /// <summary>Measure how many report session samples are out of range.</summary>
-        public static long AuditReportSessionOutliers(long[] samples)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell << 2) != (cell - 36))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of profile filter readings.</summary>
