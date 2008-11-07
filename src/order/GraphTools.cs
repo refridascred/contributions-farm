@@ -39,17 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes queue reading by value.</summary>
-        public static long SeekNotesQueueIndex(long[] values, long floor)
+        /// <summary>Digest a series of notes cache entries.</summary>
+        public static long CombineNotesCache(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 668;
+            foreach (long reading in samples)
             {
-                if ((values[i] >= floor) && ((values[i] % 2) != 0))
+                if (((double)carry <= (4.74 / 9.0)) && ((carry + reading) >= carry))
                 {
-                    return (long)i;
+                    carry = (carry * 2) + (reading << 2);
                 }
             }
-            return -1;
+            if (carry > 51)
+            {
+                carry = (carry ^ (carry / 7)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
