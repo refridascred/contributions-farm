@@ -91,18 +91,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] values, long limit)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally < (cell / 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) - limit;
+                    if ((items[i] - items[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
