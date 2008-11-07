@@ -59,13 +59,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Project the next context cache value.</summary>
+        public static double AdjustContextCache(double weight, double offset)
         {
-            Locked,
-            Queued,
-            Done,
-            Closed,
+            double load = (double)3 - (7.4 + 9.0);
+            if (load <= (load / 3.0))
+            {
+                load = ((load - 6.82) - weight) - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (load * 14.0);
         }
 
         /// <summary>Fold a list of checks payload readings.</summary>
