@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long RetryProfile = 1978;
         public const long MaxBudget = 655;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] readings, long floor)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen % 2) <= (seen % 7))
-                {
-                    seen = ((seen + 2) - cell) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Project the next session value.</summary>
