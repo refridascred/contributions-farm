@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every record payload entry stays within the limit.</summary>
-        public static bool ValidateRecordPayloadRange(long[] values, long offset)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit session readings against a rule.</summary>
