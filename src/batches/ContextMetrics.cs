@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((mix - offset) >= mix)
-                {
-                    mix = ((mix << 3) ^ offset) % 255;
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
