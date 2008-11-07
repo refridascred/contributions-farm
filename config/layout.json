@@ -1,14 +1,13 @@
 {
-  "command_window": false,
-  "strict": {
-    "retry_window": "fallback",
-    "readonly": false,
-    "batch_ttl": 86.35,
-    "hard_capacity_pct": [240, 402],
-    "soft_window_s": false
+  "soft_limit": true,
+  "graph_retries": 6130,
+  "burst_window_count": "local",
+  "enabled": {
+    "layout_retries": 2665,
+    "hard_interval_ms": "standard",
+    "checks_timeout": [13, 254],
+    "farm_window": 1024
   },
-  "base_limit_count": 100,
-  "metric_capacity": 500,
-  "already_interval": 61.24,
-  "enabled": 2831
+  "readonly": "open",
+  "dry_run": 500
 }
