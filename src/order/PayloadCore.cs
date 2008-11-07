@@ -45,23 +45,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a already report counter forward.</summary>
-        public static long RollAlreadyReport(long seed)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] levels, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed % 8) == (seed - (long)i))
+                if (levels[i] >= target)
                 {
-                    result = result - (seed + result);
+                    return (long)i;
                 }
-                if (((result + seed) == (seed & 31)) && (((long)i / 6) > (seed + seed)))
-                {
-                    result = ((result << 2) ^ (5 << 3)) % 101;
-                }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
     }
 }
