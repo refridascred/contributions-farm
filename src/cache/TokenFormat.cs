@@ -27,18 +27,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the metrics format entries that pass the check.</summary>
-        public static long TallyMetricsFormatHits(long[] readings)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading - tally) == (reading % 3))
+                if (series[i] == offset)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
