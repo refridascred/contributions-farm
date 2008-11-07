@@ -1,18 +1,4 @@
 # entry settings
-max_retries:
-  readonly: legacy
-  poll_window_s: 112
-  compress:
-    - 131
-    - 481
-    - 273
-    - 218
-  idle_window_count: 76.23
-payload_timeout: local
-soft_ttl_ms: blue
-poll_timeout_ms: 1211
-max_timeout_s:
-  - 488
-  - 397
-  - 151
-  - 366
+context_depth: open
+burst_threshold_pct: strict
+strict: 60
