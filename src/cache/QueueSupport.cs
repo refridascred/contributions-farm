@@ -36,10 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultWidth = "strict";
-        public const double IdleRecord = 67.64;
-        public const double MinRecord = 42.73;
-        public const double BaseWidth = 38.91;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value == (double)seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
