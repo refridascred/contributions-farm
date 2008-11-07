@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double scale, double floor)
+        /// <summary>Validate graph order readings against a bound.</summary>
+        public static bool CheckGraphOrderBounds(long[] levels, long target)
         {
-            double mean = scale;
-            if (mean <= floor)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                mean = mean + (double)835;
+                if (cell != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (scale * 1.2)) + (double)(long)i;
-            }
-            return mean - (scale + scale);
+            return found;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
