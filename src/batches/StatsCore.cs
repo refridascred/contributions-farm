@@ -65,12 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
