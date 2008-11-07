@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Use checks settings to tune how often stream data is refreshed.
-A graph that stays idle for too long is moved to the cache list.
-
-Use payload settings to tune how often editor data is refreshed.
-Defaults for notes live in the config folder and can be overridden per environment.
+When a editor fails, the metric handler retries a few times before giving up.
+Run the layout check before changing any report limits.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Document new notes fields
-- Validate channel input early
+- Log every queue change
+- Validate schema input early
+- Review account limits each release
+- Document new githubfarm fields
