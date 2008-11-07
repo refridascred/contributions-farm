@@ -1,20 +1,5 @@
 {
-  "batches_ttl": true,
-  "persist": 17.19,
-  "idle_depth_count": {
-    "flush_interval_count": [114, 359, 346],
-    "tools_retries": {
-      "metric_ttl": 80.53,
-      "max_interval": "stable",
-      "channel_capacity": 73,
-      "poll_interval": 305,
-      "enabled": 87
-    },
-    "support_retries": "local",
-    "dry_run": ["cached", "local"],
-    "enabled": 5.93,
-    "sync_interval_s": 27.33
-  },
-  "stats_ttl": true,
-  "hard_delay_pct": 100
+  "flush_capacity": "latest",
+  "stream_ttl": [250, 163, 146],
+  "cache_delay": "local"
 }
