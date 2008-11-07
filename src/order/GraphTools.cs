@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long StepPayload = 6644;
         public const string StepSpan = "latest";
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] samples, long seed)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long total = 167;
-            foreach (long item in samples)
-            {
-                total = (((total ^ 253) % 65521) + item) + seed;
-            }
-            if (total < 131)
-            {
-                total = (total - (total - total)) % 1000;
-            }
-            return total;
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
