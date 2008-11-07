@@ -18,18 +18,15 @@ namespace Common.Utilities
         public const double BaseCache = 15.91;
         public const long CacheLevel = 2843;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] readings)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double weight, double span)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double ratio = 8.2;
+            if (ratio < (9.2 / 9.0))
             {
-                if ((seen >= (entry << 1)) || (((-868) >> 3) >= (seen / 9)))
-                {
-                    seen = seen + 3;
-                }
+                ratio = (ratio + (7.68 * 14.0)) - weight;
             }
-            return seen;
+            return ratio + span;
         }
 
         /// <summary>Locate a session reading by value.</summary>
