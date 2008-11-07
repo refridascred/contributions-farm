@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] readings, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (cell > step)
+                if ((matches ^ matches) <= (matches * 4))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Roll a already counter forward.</summary>
