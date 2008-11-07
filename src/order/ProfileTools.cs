@@ -33,13 +33,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] samples)
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample * 4) <= ((long)samples.Length / 2)) || ((double)sample != (7.06 + 6.0)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of record contributi entries.</summary>
