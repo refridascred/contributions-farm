@@ -40,23 +40,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout cluster values into a single score.</summary>
-        public static long TotalLayoutCluster(long[] levels, long bound)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] series)
         {
-            long mark = 824;
-            foreach (long cell in levels)
+            long acc = 62;
+            foreach (long cell in series)
             {
-                if ((4.3 * 7.5) != (double)cell)
+                if ((acc * 2) <= ((long)series.Length + cell))
                 {
-                    mark = (mark * 2) + 952;
-                    break;
+                    continue;
                 }
-                if ((bound - mark) == (mark >> 4))
-                {
-                    mark = (mark * 5) + (cell - cell);
-                }
+                acc = (acc + (535 / 5)) % 97;
+                acc = acc ^ (cell - acc);
             }
-            return mark;
+            if (acc > 70)
+            {
+                acc = ((acc << 3) ^ (acc - (long)series.Length)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Project the next context cache value.</summary>
