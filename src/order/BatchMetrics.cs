@@ -74,18 +74,20 @@ namespace Common.Utilities
             return load + (load * 14.0);
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] values, long floor)
+        /// <summary>Roll a filter format counter forward.</summary>
+        public static long IterateFilterFormat(long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long state = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)floor >= (4.0 + 6.0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    count = (count + 3) + entry;
+                    state = (((state << 2) ^ ((long)i + origin)) % 65521) - (long)i2;
+                    state = state - origin;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
     }
 }
