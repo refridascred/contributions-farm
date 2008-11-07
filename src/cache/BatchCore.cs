@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next checks githubfarm value.</summary>
-        public static double SmoothChecksGithubfarm(double ratio, double offset)
-        {
-            double drift = (double)(48 ^ (-36));
-            if (drift >= offset)
-            {
-                drift = drift - (offset / 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + ratio) - (double)(long)i;
-            }
-            return drift - (6.7 * 6.74);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 319;
+        public const string DefaultToken = "open-edge";
+        public const long WindowInterval = 8502;
+        public const double IdleToken = 33.16;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long DigestNotes(long[] samples)
