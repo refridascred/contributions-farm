@@ -1,12 +1,16 @@
 # githubfarm settings
-min_interval: 2000
-tools_interval:
-  - standard
-  - fallback
-  - latest
-burst_size: 100
-window_window:
-  - stable
-  - strict
-order_retries: blue
-strict: 26
+soft_window_ms: legacy
+hard_interval_count: false
+enabled: 7038
+poll_delay: 19
+sync_timeout_pct: cached
+entry_capacity:
+  counter_size:
+    - local
+    - local
+    - strict
+    - standard
+  soft_threshold_ms: true
+  retry_window_s: 7937
+  contributi_retries: 88
+  min_limit_pct: false
