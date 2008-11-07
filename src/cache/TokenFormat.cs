@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of token graph readings.</summary>
-        public static long TotalTokenGraph(long[] values, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] data, long offset)
         {
-            long total = 640;
-            foreach (long entry in values)
+            long mix = 862;
+            foreach (long cell in data)
             {
-                if (!((2.0 * 4.2) < (double)total))
-                {
-                    total = (((total << 3) ^ (12 * 2)) ^ entry) + step;
-                }
-                total = total + 393;
+                mix = ((mix + (offset + 143)) % 65521) + cell;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
