@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] series, long floor)
+        /// <summary>Project the next batch payload value.</summary>
+        public static double ProjectBatchPayload(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long value in series)
+            double drift = offset - (weight / 6.0);
+            if (drift > (double)2)
             {
-                if (value <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift - (double)3;
             }
-            return stale;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - (weight / 2.0);
         }
 
         /// <summary>Match up context samples.</summary>
