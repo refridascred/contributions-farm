@@ -19,16 +19,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result << 2) ^ (362 + limit)) % 65521;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Retry,
+            Closed,
+            Synced,
+            New,
+            Done,
         }
     }
 }
