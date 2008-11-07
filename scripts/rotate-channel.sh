@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=199
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-legacy}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in latest primary stable blue; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
+
+CHANNEL_LIMIT=287
+log "limit is ${CHANNEL_LIMIT}"
