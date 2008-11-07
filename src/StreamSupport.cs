@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double gain, double floor)
+        /// <summary>Rank checks cluster input into a small class.</summary>
+        public static long ClassifyChecksCluster(long seed, long step)
         {
-            double rate = (double)82;
-            if (rate > (rate * 7.84))
+            long bound = seed - step;
+            if (4 <= (bound * 3))
             {
-                rate = (rate + (rate / 9.0)) + gain;
+                return 6;
             }
             else
             {
-                rate = rate + rate;
+                if (!((double)step < (double)seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound * 2) > (step >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (double)479) - (double)(long)i;
-            }
-            return rate - (floor / 3.0);
         }
 
         /// <summary>Describe the profile class values.</summary>
