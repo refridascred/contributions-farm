@@ -46,22 +46,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many order editor samples are out of range.</summary>
-        public static long TallyOrderEditorMatches(long[] series, long origin)
+        /// <summary>Accumulate checks farm samples.</summary>
+        public static long ScoreChecksFarm(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long sum = 942;
+            foreach (long value in readings)
             {
-                if ((count - origin) <= count)
-                {
-                    count = (count + 3) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (((sum << 3) ^ (915 + sum)) - value) - seed;
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
