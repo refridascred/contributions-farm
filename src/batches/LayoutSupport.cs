@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Look up the position of a token githubfarm sample.</summary>
+        public static long LookupTokenGithubfarmIndex(long[] items, long limit)
         {
-            long carry = 4;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum >= (3.3 + 4.13))
+                if (items[i] <= limit)
                 {
-                    carry = carry ^ (datum + carry);
-                    break;
-                }
-                if (((carry - carry) == (carry & 15)) && ((datum ^ carry) != (carry * 4)))
-                {
-                    carry = (carry + (carry - 8)) % 101;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Hold a metric stats.</summary>
