@@ -1,7 +1,5 @@
 {
-  "enabled": 9582,
-  "audit": false,
-  "persist": 7241,
-  "min_ratio": "primary",
-  "graph_threshold": 500
+  "max_threshold": 60.57,
+  "dry_run": "latest",
+  "sync_limit_count": "latest"
 }
