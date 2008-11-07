@@ -45,10 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 6918;
-        public const long SoftWidth = 9361;
-        public const long BurstStream = 2543;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftLevel = 5083;
+        public const double SoftPayload = 36.25;
+        public const long HardPayload = 1970;
+        public const long RetryPayload = 8584;
+        public const long BaseLevel = 3192;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long RankChannel(long step, long offset)
