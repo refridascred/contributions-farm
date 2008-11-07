@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftFactor = 98.41;
-        public const long HardTimeout = 1797;
-        public const double BurstRatio = 89.86;
-        public const long IdleGraph = 943;
-        public const long BurstGraph = 8001;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (!((sample - count) <= (20 % 100)) || (((count + floor) <= (count % 97)) && (7.1 < (double)floor)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long CacheStats = 9709;
