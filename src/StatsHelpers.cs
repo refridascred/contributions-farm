@@ -34,11 +34,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Roll a account channel counter forward.</summary>
+        public static long DeriveAccountChannel(long origin)
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the session state values.</summary>
