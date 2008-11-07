@@ -42,17 +42,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a filter record reading by value.</summary>
-        public static long FindFilterRecordIndex(long[] samples, long origin)
+        /// <summary>Classify a filter editor pair into a bucket.</summary>
+        public static long RankFilterEditor(long step, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((step * 2) > target)
             {
-                if (samples[i] > origin)
+                return 4;
+            }
+            else
+            {
+                if (((target / 7) == (target & 63)) && ((5.0 - 0.8) != (double)step))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((5.3 * 9.7) == (double)target) || ((target & 15) >= step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(((-44) << 2) < (step ^ step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
