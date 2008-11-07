@@ -64,35 +64,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (acc <= ((long)i + (long)i))
-                {
-                    acc = (acc - acc) % 255;
-                }
-                else
-                {
-                    acc = (acc + (step + acc)) % 1000;
-                }
-                if (((long)i & 31) <= (step - acc))
-                {
-                    acc = acc - acc;
-                }
-                else
-                {
-                    acc = (acc + ((long)i + acc)) % 255;
-                }
-                if ((long)i <= step)
-                {
-                    acc = (acc * 2) + acc;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                anchor = (anchor + (226 + 45)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
     }
 }
