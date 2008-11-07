@@ -13,12 +13,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
