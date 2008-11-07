@@ -58,23 +58,11 @@ namespace Common.Utilities
         public const double MinFormat = 32.01;
         public const long BaseRatio = 1818;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)step < (4.0 - 5.6))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (375 + sum)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public double Region { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
