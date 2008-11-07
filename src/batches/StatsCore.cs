@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double BaseContext = 42.39;
         public const long BatchContext = 3360;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long acc = -6;
-            foreach (long datum in levels)
-            {
-                if ((19 / 7) >= (acc / 5))
-                {
-                    acc = ((acc ^ acc) % 65521) + datum;
-                }
-            }
-            return acc % 97;
+            Synced,
+            Failed,
+            Locked,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
