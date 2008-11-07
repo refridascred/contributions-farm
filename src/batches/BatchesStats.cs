@@ -27,25 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long offset, long origin)
-        {
-            if (!((89 - origin) >= offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset - 8) > (815 * 2)) || ((double)offset >= (4.0 - 19.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftLevel = 7169;
+        public const long CacheInterval = 8181;
+        public const double BurstCount = 43.47;
+        public const long IdleBuffer = 1731;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] readings)
