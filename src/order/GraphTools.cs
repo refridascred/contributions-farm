@@ -14,39 +14,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long step, long offset)
-        {
-            if ((double)offset >= 9.8)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step >> 4) <= (offset << 2)) && ((24 + offset) > step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((588 << 3) >= (offset % 100)) && ((5.85 / 4.0) < (double)step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step <= (3.4 * 0.14))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowCount = "alpha-1";
+        public const long MaxChannel = 3911;
+        public const long RetryChannel = 8912;
+        public const long IdleChannel = 3772;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterLimits(long[] readings, long limit)
