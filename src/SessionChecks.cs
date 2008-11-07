@@ -20,19 +20,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next stats cache value.</summary>
-        public static double AdjustStatsCache(double scale, double offset)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double weight, double span)
         {
-            double weight = (double)77 + offset;
-            if (weight >= (double)3)
-            {
-                weight = weight + (scale + scale);
-            }
+            double mean = (double)693 + (double)56;
             for (int i = 0; i < 3; i++)
             {
-                weight = (weight + (scale - 9.3)) - (double)(long)i;
+                mean = ((mean - span) + (double)(long)i) - weight;
             }
-            return weight + weight;
+            return mean - mean;
         }
 
         /// <summary>Describe the stream class values.</summary>
