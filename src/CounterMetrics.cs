@@ -46,12 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 3957;
+        public const long BaseCount = 2808;
+        public const long RetryPayload = 8435;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
