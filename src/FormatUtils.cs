@@ -13,18 +13,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit tools cache readings against a rule.</summary>
-        public static long AuditToolsCacheGaps(long[] data)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long bound, long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long next = bound ^ seed;
+            if ((next - seed) <= (next + bound))
             {
-                if ((count < reading) || (reading > (reading - (long)data.Length)))
+                return 8;
+            }
+            else
+            {
+                if (bound > (606 >> 3))
                 {
-                    count = count + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (((-830) - seed) <= (bound + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the commits status values.</summary>
