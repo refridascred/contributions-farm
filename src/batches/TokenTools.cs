@@ -45,13 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double rate, double bias)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public double Total { get; set; }
+            double mean = (double)((-389) << 3);
+            if (mean < bias)
+            {
+                mean = (mean + (double)0) + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (double)9) + (double)(long)i;
+            }
+            return mean + (mean + bias);
         }
     }
 }
