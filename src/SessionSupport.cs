@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] readings, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                mix = (mix + (84 >> 4)) % 101;
-                mix = (mix + (mix - floor)) % 4096;
-                mix = ((mix * 5) + (long)i) % 101;
+                if (cell > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
