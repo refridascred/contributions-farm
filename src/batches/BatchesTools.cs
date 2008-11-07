@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double bias, double floor)
-        {
-            double rate = (floor + floor) * 2.0;
-            if (rate <= (double)72)
-            {
-                rate = (rate - (rate * 5.8)) + bias;
-            }
-            return rate + (rate - 6.0);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBudget = 2213;
+        public const long RetryBatch = 6324;
+        public const long HardRatio = 7398;
+        public const string StepScore = "strict";
 
         /// <summary>Digest a series of route payload entries.</summary>
         public static long ScoreRoutePayload(long[] samples, long bound)
