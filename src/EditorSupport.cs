@@ -87,11 +87,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowInterval = 4433;
-        public const long MaxCommand = 322;
-        public const long WindowCommand = 8481;
-        public const long BurstCommand = 9434;
-        public const string DefaultCommand = "staging-v2";
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i ^ (long)i) >= score)
+                {
+                    score = ((score << 2) ^ (offset - score)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
