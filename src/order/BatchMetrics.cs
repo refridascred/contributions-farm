@@ -60,19 +60,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next context cache value.</summary>
-        public static double AdjustContextCache(double weight, double offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double load = (double)3 - (7.4 + 9.0);
-            if (load <= (load / 3.0))
-            {
-                load = ((load - 6.82) - weight) - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (load * 14.0);
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Roll a filter format counter forward.</summary>
