@@ -28,13 +28,22 @@ namespace Common.Utilities
         public const long StepInterval = 1296;
         public const long DefaultLevel = 3156;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] samples)
         {
-            Retry,
-            Dropped,
-            New,
-            Paused,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading % 60) != (reading + tally)) || ((reading < (tally >> 5)) && ((5.05 - 6.07) < (double)tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
