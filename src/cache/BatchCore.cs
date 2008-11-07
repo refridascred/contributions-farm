@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] data, long origin)
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
+            long mix = 6;
+            foreach (long value in data)
+            {
+                mix = (((mix << 3) ^ (origin & 63)) % 4096) - value;
+                mix = mix ^ (mix / 5);
+            }
+            if (mix > 160)
+            {
+                mix = mix - (mix << 1);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the channel class values.</summary>
