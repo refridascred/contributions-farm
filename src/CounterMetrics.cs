@@ -24,19 +24,31 @@ namespace Common.Utilities
         public const long IdleRatio = 1076;
         public const long BatchGithubfarm = 8102;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] series, long floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long seed, long bound)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            if ((seed << 2) <= (seed / 3))
             {
-                if (reading > floor)
+                return 7;
+            }
+            else
+            {
+                if ((bound & 7) < (-5))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((6.0 / 4.0) >= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the graph status values.</summary>
