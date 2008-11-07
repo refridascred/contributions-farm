@@ -40,9 +40,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTools = "latest";
-        public const long RetryTimeout = 1713;
-        public const long DefaultTools = 2382;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            New,
+            Ready,
+            Stale,
+        }
     }
 }
