@@ -1,7 +1,8 @@
 {
-  "commits_threshold": ["cached", "cached", "blue"],
-  "batch_timeout_ms": false,
-  "warm_delay_pct": "cached",
-  "audit": "primary",
-  "metric_limit": 22
+  "max_threshold_count": 49,
+  "compress": ["green", "stable", "legacy"],
+  "metrics_limit": ["stable", "open"],
+  "metric_limit": ["stable", "fallback", "local"],
+  "support_retries": false,
+  "max_size_ms": 91
 }
