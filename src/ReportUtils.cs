@@ -24,14 +24,18 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] samples)
         {
-            Active,
-            Ready,
-            Synced,
-            New,
-            Paused,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits / 5) < (reading ^ reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a record queue value against two limits.</summary>
