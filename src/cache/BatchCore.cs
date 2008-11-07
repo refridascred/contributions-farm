@@ -14,22 +14,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long sum = 11;
-            foreach (long datum in samples)
-            {
-                if ((double)datum > (double)sum)
-                {
-                    sum = (sum - (sum << 2)) % 1000;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ datum;
-                }
-            }
-            return sum % 1000;
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
