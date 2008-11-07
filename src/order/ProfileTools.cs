@@ -41,38 +41,19 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long limit, long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] items, long offset)
         {
-            if ((offset << 2) <= offset)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit != (double)offset)
+                if (cell <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + 906) >= ((-322) * 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (9.25 / 6.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a record summary.</summary>
