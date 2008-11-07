@@ -31,19 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double gain, double span)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            double weight = (double)763 - (span + span);
-            if (weight < (double)681)
-            {
-                weight = (weight - weight) + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + span;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a support header.</summary>
