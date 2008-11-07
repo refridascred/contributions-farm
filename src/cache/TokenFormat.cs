@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long step)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                long cur = (state * 5) << 3;
+                state = ((state << 2) ^ (step - 393)) % 255;
+                if (((step - 73) >= ((long)i % 7)) && (state >= cur))
                 {
-                    score = (score + origin) ^ (long)i2;
+                    state = state + (cur << 3);
                 }
-                score = ((score * 2) + (long)i) % 101;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Audit support schema readings against a rule.</summary>
