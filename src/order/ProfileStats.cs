@@ -61,10 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 1922;
-        public const long SoftFilter = 654;
-        public const string MaxFilter = "strict";
-        public const double BatchRatio = 49.64;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] data)
+        {
+            long state = 65;
+            foreach (long item in data)
+            {
+                state = (state << 2) ^ (state << 1);
+                if (((state + state) < (item - 4)) || (item > (state % 24)))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
+        }
     }
 }
