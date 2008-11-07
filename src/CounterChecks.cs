@@ -38,13 +38,17 @@ namespace Common.Utilities
         public const long CacheStats = 3588;
         public const string BatchStats = "alpha-1";
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] readings, long offset)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
