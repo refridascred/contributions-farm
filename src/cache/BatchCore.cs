@@ -21,12 +21,31 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Classify a tools report pair into a bucket.</summary>
+        public static long ClassifyToolsReport(long bound, long bound2)
         {
-            New,
-            Synced,
-            Dropped,
+            if (bound2 < (bound2 + 199))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound2 > (5.0 + 9.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((18 % 12) > bound2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank token input into a small class.</summary>
