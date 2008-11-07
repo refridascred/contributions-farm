@@ -14,12 +14,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Derive the next format stream value from a seed.</summary>
+        public static long SeriesFormatStream(long step)
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
+            long score = step;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score << 2) ^ (622 + score)) % 4096;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
