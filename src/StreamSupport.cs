@@ -36,12 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] levels, long bound)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
