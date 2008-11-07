@@ -1,7 +1,17 @@
 {
-  "base_interval_pct": 48.25,
-  "cache_depth_count": [257, 193, 495],
-  "enabled": 100,
-  "session_size": 59,
-  "idle_threshold_s": 500
+  "strict": 88,
+  "burst_capacity_ms": [133, 411, 498],
+  "default_limit": {
+    "flush_ttl_ms": {
+      "context_ratio": 7754,
+      "default_depth": true,
+      "cache_capacity_ms": "staging",
+      "default_retries_s": "fallback",
+      "default_capacity_ms": 5152
+    },
+    "persist": true,
+    "hard_delay_s": "edge"
+  },
+  "compress": true,
+  "warm_interval_ms": "cached"
 }
