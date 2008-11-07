@@ -55,12 +55,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] samples)
         {
-            public double Owner { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (6.1 >= (double)hits)
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
