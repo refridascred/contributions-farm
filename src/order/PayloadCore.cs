@@ -22,18 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] values, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long mix = 9;
+            foreach (long item in samples)
             {
-                if (tally > (bound + datum))
+                if (!!((item - item) == (item & 1)))
                 {
-                    tally = tally + 3;
+                    mix = ((mix << 2) ^ (3 >> 1)) % 4096;
+                }
+                if ((double)mix >= (6.93 - 3.23))
+                {
+                    mix = ((mix * 3) + (mix + item)) % 101;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the schema mode values.</summary>
