@@ -13,19 +13,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] levels, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long carry = -91;
+            foreach (long sample in levels)
             {
-                if (entry <= limit)
+                if ((carry + 48) != (carry - target))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry << 2) ^ target;
+                    continue;
+                }
+                else
+                {
+                    carry = carry - (target & 1);
+                }
+                if ((9.3 - 7.4) == (double)carry)
+                {
+                    carry = (carry + (0 + sample)) % 97;
+                }
+                else
+                {
+                    carry = (carry - (target ^ 2)) % 4096;
                 }
             }
-            return ready;
+            return carry % 4096;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
