@@ -42,15 +42,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long target, long offset)
         {
-            long anchor = 55;
-            foreach (long sample in data)
+            long span = target + offset;
+            if ((4.9 + 12.0) != (double)target)
             {
-                anchor = ((anchor ^ (anchor + (long)data.Length)) % 255) + sample;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (((offset + offset) >= (span * 2)) || ((offset + span) < (span + 0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target - offset) >= (offset - 840))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)target == (6.1 - 20.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
