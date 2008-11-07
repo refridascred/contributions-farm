@@ -1,7 +1,8 @@
 {
-  "enabled": 500,
-  "audit": false,
-  "cache_retries_count": "legacy",
-  "batches_threshold": 60,
-  "readonly": true
+  "default_retries_pct": 30,
+  "format_threshold": [404, 261, 374, 385],
+  "context_retries": true,
+  "channel_capacity": 500,
+  "idle_window_s": "edge",
+  "hard_capacity": false
 }
