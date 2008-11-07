@@ -1,18 +1,15 @@
 # githubfarm settings
-flush_size:
-  readonly:
-    max_depth: fallback
-    cache_ttl_pct: false
-    audit: 88
-    flush_capacity_s: 11
-  verbose:
-    - 92
-    - 463
-    - 491
-    - 374
-  idle_depth_s: green
-  metric_retries: false
-  order_timeout: false
-cache_retries: 250
-base_interval_pct: cached
-context_depth: strict
+verbose: 1024
+buffer_threshold: true
+strict:
+  dry_run: 77.8
+  notes_interval: eu-west
+  queue_ratio:
+    tools_interval: 10
+    default_timeout_pct: true
+    hard_depth_s: edge
+    cache_depth_s:
+      - 112
+      - 180
+burst_limit: 83
+dry_run: 30
