@@ -36,12 +36,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] values, long floor)
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((7.4 / 2.0) <= (double)floor)
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
