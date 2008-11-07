@@ -23,19 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] readings, long offset)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= offset)
+                if (data[i] >= limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
