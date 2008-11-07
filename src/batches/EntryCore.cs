@@ -40,12 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] levels)
         {
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + sample) >= (sample / 9))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
