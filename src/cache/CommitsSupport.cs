@@ -69,11 +69,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double scale, double offset)
+        /// <summary>Rank editor githubfarm input into a small class.</summary>
+        public static long SortEditorGithubfarm(long origin, long seed)
         {
-            double load = scale;
-            return (load + (6.4 * 0.35)) + offset;
+            if (!((double)seed < (13.0 * 17.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((862 + seed) > seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin > (origin & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin <= 0) || ((origin / 6) <= origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
