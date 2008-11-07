@@ -13,22 +13,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit queue stats readings against a rule.</summary>
-        public static long AuditQueueStatsMatches(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((datum > (seen - 66)) && ((datum < (9 + datum)) || (datum >= (datum ^ datum))))
+                if ((double)origin == (8.48 + 7.0))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 2) ^ reading;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit farm token readings against a rule.</summary>
