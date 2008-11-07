@@ -22,12 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultCount = "open-1";
-        public const long BatchToken = 8858;
-        public const double DefaultBudget = 19.69;
-        public const long HardToken = 4928;
-        public const string SoftWidth = "standard-1";
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long limit, long step)
+        {
+            long edge = limit + step;
+            if (((limit >> 2) > 4) && ((edge + 793) <= (edge ^ edge)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((edge * 3) >= (step >> 3)) && ((86 * 5) > step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] values, long step)
