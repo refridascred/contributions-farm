@@ -35,33 +35,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long origin, long seed)
-        {
-            long next = origin - seed;
-            if ((double)next >= (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((5.0 * 3.88) < (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (next < (next % 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowTimeout = 6817;
+        public const string MinSize = "legacy";
+        public const long SoftWidth = 6813;
+        public const long MaxAccount = 3921;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
