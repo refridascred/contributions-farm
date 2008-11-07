@@ -36,13 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Active,
+            Retry,
+            Dropped,
+            Stale,
         }
     }
 }
