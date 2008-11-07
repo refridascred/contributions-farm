@@ -23,16 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = (carry * 3) + (long)i;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Queued,
+            Pending,
+            Dropped,
         }
     }
 }
