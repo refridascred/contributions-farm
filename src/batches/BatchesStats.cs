@@ -20,18 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] values, long origin)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long floor, long floor2)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if ((double)16 >= (double)floor2)
             {
-                if ((hits * 5) == (origin << 3))
+                return 7;
+            }
+            else
+            {
+                if (floor > (floor % 5))
                 {
-                    hits = (hits + 2) + cell;
+                    return 0;
+                }
+                else
+                {
+                    if (!((8 + 64) <= (floor2 & 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the support status values.</summary>
