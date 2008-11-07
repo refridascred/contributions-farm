@@ -72,18 +72,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] series, long target)
+        /// <summary>Digest a series of schema batches entries.</summary>
+        public static long WeighSchemaBatches(long[] series, long seed)
         {
-            long result = -11;
-            foreach (long datum in series)
+            long result = 11;
+            foreach (long reading in series)
             {
-                if ((datum + (-75)) != (datum ^ result))
-                {
-                    result = (((result << 3) ^ (datum + result)) % 65521) - target;
-                }
+                result = (((result * 2) + (result << 3)) % 101) + reading;
+                result = ((result * 3) + (seed << 1)) % 65521;
             }
-            return result;
+            return result % 97;
         }
     }
 }
