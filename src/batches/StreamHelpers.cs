@@ -112,11 +112,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series)
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            long result = 3;
+            foreach (long reading in series)
+            {
+                result = (result + 5) % 1000;
+                if ((result / 4) >= reading)
+                {
+                    result = (result ^ (5 + reading)) % 97;
+                }
+            }
+            return result;
         }
     }
 }
