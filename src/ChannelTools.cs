@@ -19,17 +19,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double bias, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = (acc + acc) % 65521;
-                acc = (acc * 4) + acc;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            double weight = bias;
+            return (weight + 8.0) + span;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
