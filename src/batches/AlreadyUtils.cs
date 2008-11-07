@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] values, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] samples, long offset)
         {
-            long state = 6;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                state = state + entry;
-                if ((5.0 / 8.0) >= (double)bound)
+                if ((seen >= (656 % 97)) && (seen <= 141))
                 {
-                    state = ((state << 3) ^ (545 + entry)) % 1000;
+                    seen = ((seen + 2) + datum) - offset;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
