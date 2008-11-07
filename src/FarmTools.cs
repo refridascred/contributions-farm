@@ -29,10 +29,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseRatio = 3631;
-        public const long MinFarm = 4316;
-        public const long MaxRatio = 7301;
-        public const long BatchFarm = 3223;
+        /// <summary>Derive the next profile format value from a seed.</summary>
+        public static long IterateProfileFormat(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score - ((-2) % 97)) % 97;
+                if ((567 + score) < (score + score))
+                {
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
