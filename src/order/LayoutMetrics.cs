@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] items)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long mix = 2;
+            foreach (long sample in samples)
             {
-                if (hits >= (hits << 2))
+                if (!((offset / 9) > mix))
                 {
-                    hits = (hits + 1) ^ item;
+                    mix = mix - (sample * 2);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (617 / 5)) % 255;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
