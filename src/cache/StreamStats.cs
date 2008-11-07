@@ -26,15 +26,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a contributi stream reading.</summary>
-        public static double BlendContributiStream(double rate, double offset)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            double load = rate + (18.0 / 6.0);
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load + rate) - (double)(long)i) - offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load - (load / 4.0);
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
