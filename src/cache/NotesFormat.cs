@@ -20,18 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] items, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (((-1) - origin) == (datum + matches))
+                if ((item / 4) == (11 % 100))
                 {
-                    matches = matches + 3;
+                    count = (count + 1) + offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate batch samples.</summary>
