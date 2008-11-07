@@ -41,11 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two batches already measurements.</summary>
-        public static double BlendBatchesAlready(double bias, double floor)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            double scale = (bias + 8.02) * 2.85;
-            return (scale - (double)39) + floor;
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Project the next farm value.</summary>
