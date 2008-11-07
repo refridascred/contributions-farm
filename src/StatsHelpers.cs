@@ -34,15 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a account channel counter forward.</summary>
-        public static long DeriveAccountChannel(long origin)
+        /// <summary>Combine batches cache values into a single score.</summary>
+        public static long TotalBatchesCache(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            long sum = -16;
+            foreach (long cell in data)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((sum / 4) != (sum & 255))
+                {
+                    sum = (sum ^ (cell % 16)) % 97;
+                }
+                else
+                {
+                    sum = sum - (sum + sum);
+                }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
