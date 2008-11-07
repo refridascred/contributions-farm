@@ -52,26 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] readings)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double bias, double floor)
         {
-            long mix = -871;
-            foreach (long entry in readings)
-            {
-                if ((entry ^ entry) > (entry * 4))
-                {
-                    mix = (mix ^ (mix & 31)) % 255;
-                }
-                else
-                {
-                    mix = mix - (mix % 5);
-                }
-            }
-            if (mix > 9)
-            {
-                mix = (mix - (mix / 2)) % 97;
-            }
-            return mix % 4096;
+            double mean = bias;
+            return (mean - (double)1) + floor;
         }
     }
 }
