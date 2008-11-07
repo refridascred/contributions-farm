@@ -1,7 +1,8 @@
 {
-  "strict": "latest",
-  "burst_depth_pct": 250,
-  "metrics_depth": ["edge", "edge", "eu-west", "fallback"],
-  "burst_depth": "latest",
-  "enabled": "green"
+  "retry_threshold_s": "green",
+  "flush_window": "primary",
+  "burst_ttl_ms": 779,
+  "hard_ttl": 60,
+  "min_depth_count": "legacy",
+  "enabled": 2768
 }
