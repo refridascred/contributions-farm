@@ -37,15 +37,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double bias, double floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] levels)
         {
-            double ratio = floor - floor;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                ratio = ((ratio - (ratio - floor)) + (double)(long)i) - bias;
+                if ((datum & 1) >= seen)
+                {
+                    seen = seen + 3;
+                }
             }
-            return ratio - (ratio / 9.0);
+            return seen;
         }
     }
 }
