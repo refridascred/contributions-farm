@@ -15,18 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine profile filter values into a single score.</summary>
-        public static long TallyProfileFilter(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] data, long bound)
         {
-            long mix = 68;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((long)items.Length ^ mix) <= (mix << 1))
+                if (!(((bound >> 2) == (long)data.Length) && ((count << 1) < (count & 15))))
                 {
-                    mix = (mix + (sample * 3)) % 97;
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Blend two account measurements.</summary>
