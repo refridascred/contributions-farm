@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] items, long limit)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((6.8 < (double)limit) || ((long)items.Length != (item / 3)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit queue stats readings against a rule.</summary>
