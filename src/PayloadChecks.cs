@@ -66,13 +66,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long bound, long bound2)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
+            if ((bound2 - bound2) < bound2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((81 ^ bound2) >= (bound + bound2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((2.93 - 4.1) <= (double)bound) || ((bound2 & 255) <= ((-868) + 250)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (82 >= (bound * 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
