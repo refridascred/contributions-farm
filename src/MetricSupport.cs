@@ -24,21 +24,22 @@ namespace Common.Utilities
             return drift - (weight / 2.0);
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (hits < 470)
                 {
-                    if ((items[i] + items[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 3) ^ datum) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the cache class values.</summary>
