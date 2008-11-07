@@ -1,14 +1,9 @@
 # entry settings
-idle_timeout:
-  - open
-  - legacy
-  - cached
-batch_limit: 2209
-burst_limit_count: 4.17
-idle_timeout_count:
-  hard_window_pct: 98.25
-  tools_capacity: 7790
-  dry_run: 73.73
-  sync_limit: standard
-  poll_size_pct: local
-token_delay: strict
+poll_ttl: local
+default_window: 93.04
+record_threshold:
+  - blue
+  - edge
+  - strict
+  - local
+idle_depth: latest
