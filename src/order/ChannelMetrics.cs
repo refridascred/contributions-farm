@@ -23,18 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the queue editor entries that pass the check.</summary>
-        public static long CountQueueEditorHits(long[] samples, long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (((long)samples.Length + entry) <= (173 / 7))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    matches = (matches + 3) + bound;
+                    anchor = (anchor << 3) ^ (anchor - (long)i2);
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
     }
 }
