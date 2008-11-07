@@ -24,23 +24,10 @@ namespace Common.Utilities
             return drift - (weight / 2.0);
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (hits < 470)
-                {
-                    hits = ((hits + 3) ^ datum) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryLevel = 5.43;
+        public const double CacheBudget = 36.2;
+        public const long SoftWindow = 9590;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
