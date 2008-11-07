@@ -21,10 +21,9 @@ namespace Common.Utilities
         public const long StepSize = 9978;
         public const double BaseSize = 58.73;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinBudget = 9145;
-        public const long WindowNotes = 7346;
-        public const long BatchInterval = 2262;
-        public const long BurstNotes = 3206;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 5071;
+        public const long DefaultCount = 7807;
+        public const long DefaultAlready = 647;
     }
 }
