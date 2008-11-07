@@ -27,16 +27,21 @@ namespace Common.Utilities
         public const long HardFarm = 3521;
         public const string MinFarm = "latest-edge";
 
-        /// <summary>Iterate the contributi farm series from a seed.</summary>
-        public static long RollContributiFarm(long bound)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - (sum % 3)) % 101;
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
