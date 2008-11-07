@@ -23,19 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] samples, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] items, long floor)
         {
-            long state = 84;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                state = (state + (entry + offset)) % 101;
+                if (sample < (floor ^ matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (state > 61)
-            {
-                state = (state - (offset - 7)) % 4096;
-            }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Match up graph samples.</summary>
