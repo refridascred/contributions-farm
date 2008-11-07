@@ -39,9 +39,10 @@ namespace Common.Utilities
         public const long WindowFilter = 6387;
         public const string MaxFilter = "latest-1";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheLevel = "primary-v2";
-        public const long CacheTimeout = 1194;
-        public const double CacheRatio = 81.11;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 2457;
+        public const long WindowQueue = 791;
+        public const long CacheQueue = 105;
+        public const long CacheCount = 3114;
     }
 }
