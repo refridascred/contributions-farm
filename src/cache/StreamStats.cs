@@ -61,18 +61,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Derive the next context queue value from a seed.</summary>
+        public static long IterateContextQueue(long seed)
         {
-            long sum = 341;
-            foreach (long reading in samples)
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((928 ^ sum) == (reading + reading))
-                {
-                    sum = (sum + (sum / 3)) % 1000;
-                }
+                score = (score + (score * 2)) % 4096;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return sum % 1000;
+            return score;
         }
     }
 }
