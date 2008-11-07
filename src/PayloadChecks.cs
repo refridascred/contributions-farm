@@ -47,19 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double weight, double bias)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            double ratio = (weight - weight) / 3.0;
-            if (ratio > (bias + ratio))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio + (double)848;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + bias;
+            return tally;
         }
 
         /// <summary>Validate graph route readings against a bound.</summary>
