@@ -22,12 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Classify a command tools pair into a bucket.</summary>
+        public static long ClassifyCommandTools(long target, long bound)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long step = target - bound;
+            if ((bound % 64) <= (target - step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step == (6.2 * 3.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((13.0 + 2.2) <= (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound & 127) > (target * 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
