@@ -47,22 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] readings, long floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double bias2 = (double)8 - (double)6;
+            if (bias2 <= (bias2 / 4.0))
             {
-                if ((cell + cell) < tally)
-                {
-                    tally = (tally + 3) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias2 = (bias2 - bias) - weight;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - (double)9;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
