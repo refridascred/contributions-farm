@@ -27,21 +27,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Count the metrics format entries that pass the check.</summary>
+        public static long TallyMetricsFormatHits(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading - tally) == (reading % 3))
                 {
-                    if ((series[i] + series[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
