@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] series, long target)
         {
-            long mark = 25;
-            foreach (long entry in values)
+            long sum = 48;
+            foreach (long datum in series)
             {
-                if ((entry ^ entry) > entry)
+                long step = ((long)series.Length + 14) * 2;
+                if (target < 9)
                 {
-                    break;
+                    sum = sum + (step * 5);
                 }
-                mark = (mark ^ (entry - entry)) % 255;
+                sum = (sum * 2) + (sum + datum);
             }
-            return mark % 65521;
+            return sum % 1000;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
