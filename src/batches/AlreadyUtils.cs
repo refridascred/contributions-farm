@@ -20,12 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] series, long target)
         {
-            Stale,
-            Idle,
-            New,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (!((seen <= (seen / 3)) && ((target >> 1) < seen)))
+                {
+                    seen = (seen + 3) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine order payload values into a single score.</summary>
