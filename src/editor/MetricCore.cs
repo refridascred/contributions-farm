@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] readings, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long total = 770;
+            foreach (long entry in data)
             {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total - (total & 3)) % 101) ^ entry;
             }
-            return ready;
+            if (total < 917)
+            {
+                total = (total - total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
