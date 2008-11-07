@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] data)
         {
-            Stale,
-            Active,
-            Closed,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((45 + seen) >= (seen >> 5))
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up order samples.</summary>
