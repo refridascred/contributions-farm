@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Rank batches support input into a small class.</summary>
+        public static long ClassifyBatchesSupport(long bound, long limit)
         {
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            if ((limit > (bound + bound)) && ((double)bound >= (1.7 - 4.2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit < bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((4.0 > (double)bound) && (bound <= (bound / 8)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the farm already entries that pass the check.</summary>
