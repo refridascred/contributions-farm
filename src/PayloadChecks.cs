@@ -25,22 +25,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (((entry ^ hits) > entry) || ((317 << 3) == (hits + entry)))
+                if ((double)sample == (double)tally)
                 {
-                    hits = hits + 1;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate graph route readings against a bound.</summary>
