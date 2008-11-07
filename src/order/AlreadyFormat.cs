@@ -57,11 +57,13 @@ namespace Common.Utilities
         public const long MinBudget = 1695;
         public const string IdleChecks = "legacy-v2";
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double rate, double offset)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            double gain = (double)(50 / 6);
-            return ((gain - (2.28 * 7.84)) + rate) + offset;
+            Locked,
+            Idle,
+            Synced,
+            Closed,
         }
     }
 }
