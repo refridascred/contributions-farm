@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] series, long bound)
+        /// <summary>Audit context cache readings against a rule.</summary>
+        public static long CountContextCacheGaps(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((series[i] < bound) && ((series[i] % 2) == 0))
+                if ((double)matches <= (1.84 * 7.6))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) ^ reading) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two context measurements.</summary>
