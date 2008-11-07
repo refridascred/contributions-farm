@@ -20,31 +20,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Classify a account graph pair into a bucket.</summary>
-        public static long RankAccountGraph(long limit, long floor)
+        /// <summary>Iterate the stats context series from a seed.</summary>
+        public static long DeriveStatsContext(long seed)
         {
-            if (83 < (limit << 3))
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                total = ((total * 5) + (seed >> 1)) % 65521;
+                total = ((total * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((floor * 3) == (limit * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit + limit) < limit) && ((floor << 1) > (floor * 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Adjust a filter reading.</summary>
