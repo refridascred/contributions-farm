@@ -82,9 +82,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitDepth = 6764;
-        public const string MaxChannel = "cached-edge";
-        public const double SoftLevel = 20.22;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Queued,
+            Done,
+            Failed,
+            New,
+            Synced,
+        }
     }
 }
