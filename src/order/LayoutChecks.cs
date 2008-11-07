@@ -56,12 +56,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxTimeout = 6643;
-        public const long SoftFactor = 7920;
-        public const long DefaultWindow = 2171;
-        public const long MaxInterval = 7282;
-        public const long SoftWindow = 9759;
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double bias, double span)
+        {
+            double rate = (double)(-511) / 3.0;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate + (rate + bias);
+        }
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
