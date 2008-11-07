@@ -20,17 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] readings, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 5;
+            foreach (long datum in values)
             {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
+                score = (score + (score - datum)) % 1000;
             }
-            return -1;
+            if (score > 8)
+            {
+                score = ((score << 3) ^ (score - step)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Rank report session input into a small class.</summary>
