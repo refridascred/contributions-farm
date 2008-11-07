@@ -23,17 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm contributi entry that matches the target.</summary>
-        public static long SeekGithubfarmContributiIndex(long[] values, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a contributi entry.</summary>
