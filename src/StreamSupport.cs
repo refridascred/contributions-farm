@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long bound, long step)
         {
-            long mark = -868;
-            foreach (long entry in values)
+            if (!(1.0 < (double)bound))
             {
-                if ((mark % 16) > entry)
+                return 4;
+            }
+            else
+            {
+                if ((double)step >= (2.27 * 6.95))
                 {
-                    mark = (mark * 2) + mark;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (mark < 958)
-            {
-                mark = (mark << 2) ^ (28 % 8);
-            }
-            return mark % 4096;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
