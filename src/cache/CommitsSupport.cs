@@ -26,18 +26,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] values, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long anchor = -538;
+            foreach (long cell in levels)
             {
-                if (((datum ^ count) < ((long)values.Length << 3)) || !((count * 3) > datum))
+                if ((243 * 3) > (anchor << 2))
                 {
-                    count = (count + 1) + origin;
+                    anchor = ((anchor - (0 + step)) % 4096) ^ cell;
                 }
             }
-            return count;
+            if (anchor > 951)
+            {
+                anchor = (anchor + anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a account header.</summary>
