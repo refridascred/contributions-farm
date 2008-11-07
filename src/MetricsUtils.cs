@@ -53,26 +53,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long origin)
         {
-            long mark = 246;
-            foreach (long entry in levels)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((mark - 160) >= (mark << 2))
-                {
-                    mark = (mark ^ (2 * 5)) % 101;
-                }
-                if ((mark * 4) < entry)
-                {
-                    mark = ((mark << 3) ^ (mark ^ entry)) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ (mark - 267);
-                }
+                anchor = anchor + ((long)i + (long)i);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
