@@ -30,12 +30,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double weight, double bias)
         {
-            Retry,
-            Synced,
-            Queued,
+            double drift = (weight + 4.09) * 17.0;
+            if (drift < (weight * 18.0))
+            {
+                drift = (drift - (drift + 4.06)) - bias;
+            }
+            return drift - weight;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
