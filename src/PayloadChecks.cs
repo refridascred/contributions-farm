@@ -77,15 +77,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] values, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] readings)
         {
             long count = 0;
-            foreach (long value in values)
+            foreach (long sample in readings)
             {
-                if ((count & 15) >= (floor % 12))
+                if ((sample / 5) == (count - 4))
                 {
-                    count = (count + 3) + value;
+                    count = count + 2;
                 }
             }
             return count;
