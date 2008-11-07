@@ -70,18 +70,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] readings)
-        {
-            long total = -7;
-            foreach (long item in readings)
-            {
-                if (!((double)item <= (19.0 - 7.68)))
-                {
-                    total = (total ^ (total / 4)) % 97;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitFactor = 90.51;
+        public const long MaxChecks = 7722;
+        public const string HardCount = "standard-v2";
+        public const long BurstChecks = 2176;
+        public const long DefaultDepth = 5883;
     }
 }
