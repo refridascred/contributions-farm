@@ -26,14 +26,18 @@ namespace Common.Utilities
         public const double MaxToken = 1.37;
         public const double LimitDepth = 15.92;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] series, long bound)
         {
-            Retry,
-            Queued,
-            Pending,
-            New,
-            Idle,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen * 3) != (68 >> 3))
+                {
+                    seen = ((seen + 2) ^ datum) + bound;
+                }
+            }
+            return seen;
         }
     }
 }
