@@ -21,12 +21,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 829;
-        public const string SoftSchema = "stable-edge";
-        public const double LimitSchema = 97.57;
-        public const long StepInterval = 1296;
-        public const long DefaultLevel = 3156;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits + target) > (target + sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileHits(long[] samples)
