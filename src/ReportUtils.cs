@@ -40,18 +40,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] data)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (0 <= (reading % 7))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            New,
+            Draft,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
