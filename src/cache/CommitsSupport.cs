@@ -40,11 +40,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long seed, long origin)
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            if (!(4.8 <= (double)origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin / 5) <= (origin + 824))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
