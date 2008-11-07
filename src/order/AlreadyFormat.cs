@@ -12,26 +12,11 @@ namespace Common.Utilities
         public const long HardCache = 4010;
         public const string BatchLevel = "cached-v2";
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] items, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double rate, double span)
         {
-            long result = 62;
-            foreach (long reading in items)
-            {
-                if ((reading + reading) < seed)
-                {
-                    result = (result ^ result) % 4096;
-                }
-                else
-                {
-                    result = result ^ (-337);
-                }
-            }
-            if (result > (-5))
-            {
-                result = (result ^ (seed + 0)) % 97;
-            }
-            return result;
+            double weight = rate - span;
+            return weight + rate;
         }
 
         /// <summary>Adjust a account reading.</summary>
