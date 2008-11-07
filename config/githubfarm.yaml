@@ -1,14 +1,6 @@
 # githubfarm settings
-soft_capacity_count: 250
-base_timeout: eu-west
-max_interval_ms:
-  stats_interval: 1024
-  idle_threshold_ms:
-    - stable
-    - latest
-    - staging
-    - strict
-  poll_retries_ms: fallback
-  idle_ratio_s: 1
-  enabled: 42.25
-buffer_capacity: primary
+sync_capacity: legacy
+compress: 500
+soft_threshold: strict
+default_window_ms: blue
+hard_depth_count: primary
