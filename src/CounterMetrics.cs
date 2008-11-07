@@ -28,19 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] series, long step)
+        /// <summary>Validate support batch readings against a bound.</summary>
+        public static bool VerifySupportBatchLimits(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (item > step)
+                if (item < bound)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
