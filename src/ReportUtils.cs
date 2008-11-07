@@ -39,12 +39,18 @@ namespace Common.Utilities
             return (gain2 + (gain2 + 0.49)) + offset;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count the window account entries that pass the check.</summary>
+        public static long MeasureWindowAccountMatches(long[] data, long origin)
         {
-            Active,
-            New,
-            Draft,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((4 & 127) >= count)
+                {
+                    count = ((count + 2) - entry) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two queue contributi measurements.</summary>
