@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the contributi queue series from a seed.</summary>
-        public static long SeriesContributiQueue(long origin)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((long)i == (origin / 6))
-                {
-                    score = ((score * 5) + (origin / 2)) % 97;
-                }
-                score = ((score << 2) ^ (3 + origin)) % 255;
-                score = (score - (long)i) % 255;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public bool Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count farm token pairs that satisfy a relation.</summary>
