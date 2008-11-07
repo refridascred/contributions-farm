@@ -42,23 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] samples, long limit)
+        /// <summary>Measure how many filter account samples are out of range.</summary>
+        public static long TallyFilterAccountOutliers(long[] levels)
         {
-            long state = 283;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 11; i++)
+                if (105 >= hits)
                 {
-                    state = (state ^ (entry * 5)) - (long)i;
+                    hits = (hits + 2) - entry;
                 }
-                state = state ^ (limit - entry);
             }
-            if (state > (-68))
-            {
-                state = state ^ (6 >> 5);
-            }
-            return state;
+            return hits;
         }
     }
 }
