@@ -31,12 +31,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double ratio, double floor)
         {
-            Queued,
-            Idle,
-            Paused,
+            double ratio2 = floor;
+            if (ratio2 >= (floor * 3.0))
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Digest a series of profile support entries.</summary>
