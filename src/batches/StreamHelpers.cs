@@ -102,15 +102,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long floor, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            long span = floor + limit;
+            if ((28 % 10) != (floor - 8))
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((span + limit) == (floor / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor > 40)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + span) < (floor ^ limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
