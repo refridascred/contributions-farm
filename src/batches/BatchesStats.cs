@@ -28,18 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm token readings against a rule.</summary>
-        public static long CountFarmTokenHits(long[] data)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!!((seen - 6) >= (cell - seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Idle,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the notes status values.</summary>
