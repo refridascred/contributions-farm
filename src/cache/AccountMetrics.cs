@@ -57,18 +57,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the session batches entries that pass the check.</summary>
-        public static long TallySessionBatchesHits(long[] data)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long target, long bound)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long next = target - bound;
+            if (((target / 4) > (next + target)) && ((double)15 >= (double)next))
             {
-                if ((16.0 * 15.0) != (double)tally)
+                return 5;
+            }
+            else
+            {
+                if ((target <= (next << 2)) || ((next - bound) != (bound - target)))
                 {
-                    tally = (tally + 1) + reading;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
