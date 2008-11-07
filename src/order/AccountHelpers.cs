@@ -19,11 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Compare every pair of order farm readings.</summary>
+        public static long PairOrderFarmCount(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
