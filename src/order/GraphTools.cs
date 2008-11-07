@@ -30,21 +30,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long target, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((seed - 42) < (60 ^ target))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (1.3 <= (double)seed)
                 {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
