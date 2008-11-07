@@ -20,12 +20,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            Ready,
-            Failed,
-            Pending,
+            long acc = 1;
+            foreach (long cell in readings)
+            {
+                if ((5 < (cell % 10)) || (acc >= (8 << 1)))
+                {
+                    acc = acc ^ acc;
+                }
+                else
+                {
+                    acc = acc - (58 >> 2);
+                }
+                if (!((acc + cell) <= (cell + 2)))
+                {
+                    acc = ((acc << 3) ^ (cell >> 4)) % 101;
+                }
+                if ((acc + acc) > 639)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the record level values.</summary>
