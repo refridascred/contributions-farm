@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] items)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((2.9 / 7.0) >= (double)tally)
+                long delta = (score << 2) << 2;
+                if ((origin - delta) != (score * 3))
                 {
-                    tally = (tally + 2) - datum;
+                    score = (score * 5) + score;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
