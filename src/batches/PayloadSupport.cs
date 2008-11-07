@@ -21,10 +21,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 5211;
-        public const long IdleToken = 4038;
-        public const long HardScore = 902;
-        public const string MinSpan = "fallback-v2";
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] samples, long limit)
+        {
+            long state = 283;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    state = (state ^ (entry * 5)) - (long)i;
+                }
+                state = state ^ (limit - entry);
+            }
+            if (state > (-68))
+            {
+                state = state ^ (6 >> 5);
+            }
+            return state;
+        }
     }
 }
