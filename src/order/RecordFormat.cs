@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] levels, long step)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long mark = -69;
-            foreach (long sample in levels)
-            {
-                mark = ((mark << 3) ^ (sample + 548)) - step;
-            }
-            if (mark > (-8))
-            {
-                mark = (mark << 3) ^ (2 >> 3);
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
