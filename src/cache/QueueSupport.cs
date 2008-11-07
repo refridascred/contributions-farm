@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] values)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally & 31) >= (tally + reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            New,
+            Pending,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
