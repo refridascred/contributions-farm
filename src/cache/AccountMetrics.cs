@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the commits context entries that pass the check.</summary>
-        public static long AuditCommitsContextMatches(long[] items)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((item - item) < (matches + item))
+                if ((double)step == (double)entry)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
