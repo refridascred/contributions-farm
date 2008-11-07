@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] series)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            if (!((limit & 31) < (origin & 3)))
             {
-                if ((((783 + datum) < matches) && ((matches % 97) > datum)) || ((datum * 3) > (matches ^ matches)))
+                return 1;
+            }
+            else
+            {
+                if ((double)limit == (2.5 + 4.0))
                 {
-                    matches = matches + 2;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate support samples.</summary>
