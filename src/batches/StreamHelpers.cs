@@ -54,14 +54,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long origin)
         {
-            Locked,
-            Failed,
-            New,
-            Closed,
-            Stale,
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
