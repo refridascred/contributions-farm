@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes order readings against a bound.</summary>
-        public static bool VerifyNotesOrderBounds(long[] levels, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the report class values.</summary>
