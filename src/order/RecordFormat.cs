@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double bias, double floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] levels, long step)
         {
-            double scale = (0.91 - floor) - (double)473;
-            if (scale > (double)237)
+            long mark = -69;
+            foreach (long sample in levels)
             {
-                scale = (scale + (double)800) - bias;
+                mark = ((mark << 3) ^ (sample + 548)) - step;
             }
-            for (int i = 0; i < 8; i++)
+            if (mark > (-8))
             {
-                scale = scale + (double)(long)i;
+                mark = (mark << 3) ^ (2 >> 3);
             }
-            return scale - floor;
+            return mark;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
