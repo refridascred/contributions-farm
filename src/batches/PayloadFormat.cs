@@ -28,31 +28,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank report session input into a small class.</summary>
-        public static long SortReportSession(long limit, long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double rate, double offset)
         {
-            if (((22 + limit) <= limit) && ((limit - limit) > (8 ^ limit)))
+            double load = offset;
+            if (load >= 0.04)
             {
-                return 8;
+                load = load + (rate - offset);
             }
-            else
-            {
-                if (limit > (limit * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((limit - 7) < step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return load + (rate * 4.34);
         }
 
         /// <summary>Describe the schema mode values.</summary>
