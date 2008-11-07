@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] samples, long limit)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long origin)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading > limit)
+                if ((carry + origin) > (origin - origin))
                 {
-                    stale = false;
-                    break;
+                    long diff = (origin & 3) * 2;
+                    carry = ((carry << 2) ^ (carry - diff)) % 255;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
