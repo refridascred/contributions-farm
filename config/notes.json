@@ -1,12 +1,18 @@
 {
-  "command_ttl": {
-    "max_window_count": "primary",
-    "checks_retries": ["primary", "eu-west"],
-    "graph_timeout": "fallback",
-    "strict": 98,
-    "default_window_s": "eu-west",
-    "readonly": true
+  "strict": 2813,
+  "buffer_threshold": "legacy",
+  "poll_capacity": ["strict", "stable"],
+  "persist": 82.56,
+  "max_ttl_count": {
+    "channel_ratio": 1267,
+    "min_limit_count": ["latest", "legacy"],
+    "batch_capacity_s": "blue",
+    "batch_limit_ms": {
+      "default_ttl_s": 8,
+      "compress": true,
+      "max_limit_pct": ["edge", "open", "latest", "stable"],
+      "token_ratio": 38.66
+    }
   },
-  "order_window": [319, 217, 470],
-  "default_ratio_pct": false
+  "audit": 37.63
 }
