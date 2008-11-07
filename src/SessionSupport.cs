@@ -12,15 +12,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] values, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (item > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Hold a farm options.</summary>
