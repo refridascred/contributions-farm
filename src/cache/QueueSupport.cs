@@ -35,9 +35,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "standard-edge";
-        public const double LimitScore = 68.04;
-        public const long StepCount = 3349;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultWidth = "strict";
+        public const double IdleRecord = 67.64;
+        public const double MinRecord = 42.73;
+        public const double BaseWidth = 38.91;
     }
 }
