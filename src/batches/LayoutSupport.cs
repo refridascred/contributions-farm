@@ -20,16 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            long total = 166;
-            foreach (long sample in values)
+            long carry = 576;
+            foreach (long datum in samples)
             {
-                total = (total - total) % 4096;
-                total = ((total * 4) + (sample & 3)) % 1000;
+                if ((1.6 - 5.3) >= (6.77 / 4.0))
+                {
+                    break;
+                }
+                if (((datum ^ datum) <= (datum % 3)) || ((double)carry > (11.0 + 9.0)))
+                {
+                    carry = carry - carry;
+                }
             }
-            return total;
+            if (carry > 411)
+            {
+                carry = (carry + carry) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
