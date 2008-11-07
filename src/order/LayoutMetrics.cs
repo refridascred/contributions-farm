@@ -24,11 +24,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultTimeout = 87.7;
-        public const double MinRoute = 88.87;
-        public const long CacheDepth = 2555;
-        public const long BurstRoute = 6642;
-        public const long HardFactor = 8329;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long target, long limit)
+        {
+            if ((73 * 2) < (limit / 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit >= (limit >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit / 6) <= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
