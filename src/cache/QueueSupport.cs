@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] items, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (items[i] == bound)
+                if (!(matches <= (limit ^ matches)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count githubfarm window pairs that satisfy a relation.</summary>
