@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long step, long target)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double ratio, double offset)
         {
-            if ((target + 5) <= (step + (-6)))
+            double bias = (ratio + 6.76) / 5.0;
+            if (bias <= 5.01)
             {
-                return 2;
+                bias = (bias + (bias + bias)) - offset;
             }
-            else
-            {
-                if ((4.5 + 7.0) >= (5.24 / 8.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((7 % 5) < (step >> 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return bias + (double)4;
         }
 
         /// <summary>Describe the already state values.</summary>
