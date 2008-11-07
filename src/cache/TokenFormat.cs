@@ -27,10 +27,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseInterval = 17.27;
-        public const long MaxCount = 7875;
-        public const long CacheLevel = 8599;
-        public const long SoftContributi = 2988;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
