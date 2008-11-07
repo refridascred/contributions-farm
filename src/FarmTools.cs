@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Audit batches order readings against a rule.</summary>
+        public static long AuditBatchesOrderHits(long[] readings)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits + hits) > reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the profile status values.</summary>
