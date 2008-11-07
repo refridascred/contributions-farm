@@ -1,6 +1,7 @@
 {
-  "persist": 75.29,
-  "audit": "open",
-  "retry_interval_pct": 35,
-  "poll_delay_pct": 500
+  "strict": "latest",
+  "burst_depth_pct": 250,
+  "metrics_depth": ["edge", "edge", "eu-west", "fallback"],
+  "burst_depth": "latest",
+  "enabled": "green"
 }
