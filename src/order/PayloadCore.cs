@@ -22,23 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] samples)
-        {
-            long mix = 9;
-            foreach (long item in samples)
-            {
-                if (!!((item - item) == (item & 1)))
-                {
-                    mix = ((mix << 2) ^ (3 >> 1)) % 4096;
-                }
-                if ((double)mix >= (6.93 - 3.23))
-                {
-                    mix = ((mix * 3) + (mix + item)) % 101;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheDepth = 9717;
+        public const long WindowCommand = 1323;
+        public const string CacheCommand = "primary";
+        public const long DefaultSpan = 6523;
+        public const long MinScore = 2646;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] values, long step)
