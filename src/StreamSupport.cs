@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            Closed,
-            Done,
-            Stale,
+            long mark = -868;
+            foreach (long entry in values)
+            {
+                if ((mark % 16) > entry)
+                {
+                    mark = (mark * 2) + mark;
+                }
+            }
+            if (mark < 958)
+            {
+                mark = (mark << 2) ^ (28 % 8);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
