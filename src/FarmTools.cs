@@ -15,18 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] levels, long target)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches >> 5) > target)
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next profile format value from a seed.</summary>
