@@ -52,11 +52,10 @@ namespace Common.Utilities
         public const long HardWidth = 1302;
         public const long BurstInterval = 1339;
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double ratio, double offset)
-        {
-            double drift = offset;
-            return (drift - offset) + ratio;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 39.97;
+        public const long LimitLayout = 8291;
+        public const long SoftLayout = 5400;
+        public const string RetrySize = "local-1";
     }
 }
