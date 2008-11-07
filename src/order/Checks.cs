@@ -32,19 +32,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every record format entry stays within the limit.</summary>
-        public static bool VerifyRecordFormatRange(long[] data, long seed)
+        /// <summary>Count the session contributi entries that pass the check.</summary>
+        public static long TallySessionContributiOutliers(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (datum != seed)
+                if ((883 + tally) >= (origin / 9))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) - reading;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a graph stats.</summary>
