@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] samples, long origin)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double gain, double floor)
         {
-            long state = 40;
-            foreach (long entry in samples)
+            double rate = (double)82;
+            if (rate > (rate * 7.84))
             {
-                if ((origin >> 3) <= state)
-                {
-                    state = (((state * 2) + 77) % 65521) + entry;
-                    continue;
-                }
-                state = (state - 8) % 65521;
+                rate = (rate + (rate / 9.0)) + gain;
             }
-            return state;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (double)479) - (double)(long)i;
+            }
+            return rate - (floor / 3.0);
         }
 
         /// <summary>Hold a route header.</summary>
