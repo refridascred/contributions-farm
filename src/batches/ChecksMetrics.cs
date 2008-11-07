@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double weight, double floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] series)
         {
-            double drift = weight;
-            if (drift > (double)53)
+            long count = 0;
+            foreach (long entry in series)
             {
-                drift = (drift - drift) + floor;
+                if (entry < (entry - count))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                drift = drift - (weight * 8.1);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (drift / 2.0)) - (double)(long)i;
-            }
-            return drift - (double)77;
+            return count;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
