@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 8581;
-        public const double WindowSchema = 10.28;
-        public const long MinBudget = 9821;
-        public const long IdleCount = 8112;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long BucketContributi(long floor, long offset)
