@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] values, long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score * 3) + (score + 2);
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Blend two graph measurements.</summary>
