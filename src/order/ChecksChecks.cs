@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate route channel readings against a bound.</summary>
-        public static bool VerifyRouteChannelLimits(long[] data, long origin)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up support samples.</summary>
