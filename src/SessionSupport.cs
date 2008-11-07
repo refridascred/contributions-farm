@@ -27,12 +27,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] items, long floor)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
+            long result = -118;
+            foreach (long entry in items)
+            {
+                result = (((result * 3) + floor) % 97) + entry;
+            }
+            return result;
         }
     }
 }
