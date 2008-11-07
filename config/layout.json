@@ -1,6 +1,20 @@
 {
-  "default_retries_pct": ["standard", "eu-west", "local", "legacy"],
-  "burst_retries_ms": ["cached", "cached"],
-  "batch_ttl_pct": 98.2,
-  "entry_limit": 5.14
+  "idle_threshold_count": 36,
+  "verbose": 250,
+  "batch_capacity_s": false,
+  "entry_delay": {
+    "persist": {
+      "schema_capacity": "fallback",
+      "cache_threshold_pct": true,
+      "soft_threshold_count": "eu-west",
+      "poll_depth_pct": 47.08,
+      "batch_size": "standard"
+    },
+    "flush_window": "cached",
+    "cache_threshold_pct": true,
+    "account_retries": true,
+    "flush_capacity": 60,
+    "base_threshold": "fallback"
+  },
+  "min_depth_ms": 9766
 }
