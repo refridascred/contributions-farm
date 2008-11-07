@@ -1,10 +1,7 @@
-id,active,ratio,token,level
-1,667,green,27.26,633
-2,454,eu-west,82,edge
-3,10,442,972,858
-4,local,standard,996,78
-5,green,626,primary,83.27
-6,cached,strict,42.94,green
-7,89.66,268,863,933
-8,211,194,open,851
-9,126,71.49,46.9,885
+id,label,owner
+1,68.51,64.82
+2,873,728
+3,595,324
+4,45.07,457
+5,151,fallback
+6,36,edge
