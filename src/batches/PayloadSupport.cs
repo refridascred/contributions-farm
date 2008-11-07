@@ -36,20 +36,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)(long)i != (8.68 * 8.1))
-                {
-                    score = ((score << 2) ^ (step + score)) % 1000;
-                }
-                score = score + (97 ^ score);
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 5211;
+        public const long IdleToken = 4038;
+        public const long HardScore = 902;
+        public const string MinSpan = "fallback-v2";
     }
 }
