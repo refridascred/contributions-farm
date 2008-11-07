@@ -28,19 +28,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] levels, long bound)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] samples, long seed)
         {
-            long acc = 87;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                acc = (((acc * 3) + (sample & 31)) % 4096) - bound;
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (acc > (-982))
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc;
+            return stale;
         }
     }
 }
