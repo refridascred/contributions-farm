@@ -34,11 +34,24 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 1114;
         public const string DefaultGithubfarm = "primary";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 5602;
-        public const double RetryReport = 63.18;
-        public const string BaseTimeout = "staging-1";
-        public const string BaseReport = "local";
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] data)
+        {
+            long carry = 891;
+            foreach (long cell in data)
+            {
+                carry = (carry + (carry << 1)) % 255;
+                if ((carry + cell) < cell)
+                {
+                    carry = (carry * 4) + (carry * 5);
+                }
+            }
+            if (carry < 9)
+            {
+                carry = ((carry << 2) ^ carry) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long ScoreNotes(long[] items, long target)
