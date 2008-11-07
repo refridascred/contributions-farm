@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Accumulate record filter samples.</summary>
+        public static long ScoreRecordFilter(long[] values, long step)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            long total = 97;
+            foreach (long sample in values)
+            {
+                if (((double)sample != (8.1 + 6.24)) || ((total + 1) <= total))
+                {
+                    total = (total + (total << 2)) % 1000;
+                }
+                if ((-846) < (sample ^ step))
+                {
+                    total = total + (step & 15);
+                }
+            }
+            return total;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
