@@ -1,6 +1,15 @@
 {
-  "audit": ["blue", "fallback", "open"],
-  "idle_depth": 1763,
-  "hard_size_s": 90,
-  "min_depth_ms": true
+  "retry_threshold_count": 8.78,
+  "poll_size": [488, 359, 115],
+  "min_timeout_pct": {
+    "min_limit_ms": {
+      "sync_depth": 21.42,
+      "enabled": 10,
+      "batches_depth": true,
+      "context_delay": 33.95,
+      "base_threshold": 14
+    },
+    "burst_threshold_count": 4930,
+    "base_delay_count": 6714
+  }
 }
