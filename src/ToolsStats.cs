@@ -61,23 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally >> 1) <= (tally + entry))
-                {
-                    tally = (tally + 3) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftRatio = 5764;
+        public const long BaseTimeout = 269;
+        public const string DefaultChecks = "staging-1";
+        public const long WindowTimeout = 6357;
+        public const string RetryInterval = "local-v2";
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
