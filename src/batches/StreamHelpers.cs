@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 7811;
+        public const long MaxCluster = 408;
+        public const string IdleFactor = "local-v2";
+        public const long BaseCluster = 8389;
+        public const double LimitCluster = 49.92;
 
         /// <summary>Check that every batches session entry stays within the limit.</summary>
         public static bool GuardBatchesSessionRange(long[] data, long limit)
