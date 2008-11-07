@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long BaseSpan = 3505;
         public const string WindowLevel = "primary-edge";
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] samples)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits / 5) < (reading ^ reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Closed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a payload summary.</summary>
