@@ -20,12 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 199;
-        public const long SoftFormat = 9979;
-        public const long BaseFormat = 5378;
-        public const string LimitFormat = "cached-v2";
-        public const double BaseSize = 42.46;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 1.41;
+        public const long DefaultFactor = 4492;
+        public const long WindowContributi = 9816;
 
         /// <summary>Iterate the contributi farm series from a seed.</summary>
         public static long RollContributiFarm(long bound)
