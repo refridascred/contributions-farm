@@ -25,13 +25,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Ready,
-            Dropped,
-            Synced,
-            Pending,
+            public bool Owner { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
         }
     }
 }
