@@ -1,8 +1,7 @@
 {
-  "farm_capacity": 6163,
-  "warm_limit": "primary",
-  "report_size": "staging",
-  "notes_size": 500,
-  "cache_interval_count": [451, 234, 398],
-  "audit": 38
+  "dry_run": "fallback",
+  "audit": [415, 72, 296],
+  "default_retries_count": 43,
+  "payload_retries": false,
+  "batches_delay": "primary"
 }
