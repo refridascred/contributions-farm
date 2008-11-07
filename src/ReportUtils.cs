@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up profile command samples.</summary>
-        public static long MatchProfileCommandCount(long[] values)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = ratio;
+            if (drift < drift)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift - (ratio * 2.04)) + span;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)4) + (double)(long)i;
+            }
+            return drift - ratio;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
