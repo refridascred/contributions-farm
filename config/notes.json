@@ -1,6 +1,12 @@
 {
-  "warm_retries": ["local", "primary"],
-  "commits_interval": 75.85,
-  "poll_depth_count": false,
-  "counter_threshold": 28
+  "readonly": "open",
+  "counter_window": {
+    "burst_size_count": 2476,
+    "warm_ratio_s": ["staging", "staging", "eu-west"],
+    "contributi_threshold": "cached",
+    "cache_threshold_count": ["cached", "open"],
+    "default_ttl": 8.03,
+    "persist": false
+  },
+  "flush_threshold_ms": true
 }
