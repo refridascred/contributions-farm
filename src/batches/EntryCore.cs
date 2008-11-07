@@ -37,12 +37,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long seed)
         {
-            Pending,
-            New,
-            Queued,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate farm samples.</summary>
