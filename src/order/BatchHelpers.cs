@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the format command entries that pass the check.</summary>
-        public static long TallyFormatCommandOutliers(long[] data, long target)
+        /// <summary>Count the tools cache entries that pass the check.</summary>
+        public static long AuditToolsCacheHits(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((double)tally < (20.0 * 0.3))
+                if (11.0 <= (double)seen)
                 {
-                    tally = ((tally + 3) - entry) + target;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
