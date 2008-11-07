@@ -18,15 +18,18 @@ namespace Common.Utilities
         public const double BaseCache = 15.91;
         public const long CacheLevel = 2843;
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double weight, double span)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] values, long origin)
         {
-            double ratio = 8.2;
-            if (ratio < (9.2 / 9.0))
+            long count = 0;
+            foreach (long datum in values)
             {
-                ratio = (ratio + (7.68 * 14.0)) - weight;
+                if (((datum ^ count) < ((long)values.Length << 3)) || !((count * 3) > datum))
+                {
+                    count = (count + 1) + origin;
+                }
             }
-            return ratio + span;
+            return count;
         }
 
         /// <summary>Locate a session reading by value.</summary>
