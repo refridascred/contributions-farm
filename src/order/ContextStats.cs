@@ -14,24 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long limit, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] values, long limit)
         {
-            if ((limit - target) <= (65 % 7))
+            long acc = 2;
+            foreach (long cell in values)
             {
-                return 8;
+                acc = ((acc ^ limit) % 65521) - cell;
             }
-            else
+            if (acc > 339)
             {
-                if ((target + 55) == (limit * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
+                acc = (acc ^ (acc * 5)) % 255;
             }
+            return acc % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
