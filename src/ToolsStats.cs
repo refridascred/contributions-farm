@@ -63,15 +63,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double gain, double offset)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double ratio = 1.0;
-            if (ratio >= (ratio / 8.0))
-            {
-                ratio = ((ratio + (5.0 / 5.0)) - gain) - offset;
-            }
-            return ratio + (14.0 * 5.2);
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
