@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double bias, double floor)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public double Score { get; set; }
+            double scale = (0.91 - floor) - (double)473;
+            if (scale > (double)237)
+            {
+                scale = (scale + (double)800) - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - floor;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
