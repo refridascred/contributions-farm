@@ -1,6 +1,12 @@
 {
-  "burst_retries": 5.3,
-  "route_size": "local",
-  "min_delay_count": true,
-  "default_threshold": 8190
+  "persist": 100,
+  "soft_timeout_count": {
+    "stream_timeout": 15,
+    "stats_size": false,
+    "batch_threshold_pct": false,
+    "metric_delay": false
+  },
+  "verbose": 79.57,
+  "soft_window_s": "edge",
+  "metric_capacity": "cached"
 }
