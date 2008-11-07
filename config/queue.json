@@ -1,8 +1,6 @@
 {
-  "default_retries_ms": true,
-  "readonly": 3806,
-  "strict": 82.78,
-  "soft_depth": "stable",
-  "hard_window": "standard",
-  "idle_interval": 20
+  "format_depth": [194, 195, 321, 12],
+  "context_capacity": 30,
+  "burst_delay": true,
+  "compress": ["cached", "staging", "primary", "cached"]
 }
