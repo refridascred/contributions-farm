@@ -14,24 +14,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.8 * 2.0) <= (double)limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score << 2) ^ ((long)i + score)) % 1000;
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    score = score - (score << 2);
-                    score = (score - (score - (long)i)) % 101;
-                }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a report stats.</summary>
