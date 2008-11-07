@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] readings, long offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            long mark = 22;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark ^ cell) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark < 16)
-            {
-                mark = (mark ^ (331 + mark)) % 97;
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Iterate the stats context series from a seed.</summary>
