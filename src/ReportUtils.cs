@@ -78,13 +78,18 @@ namespace Common.Utilities
         public const long WindowLayout = 8801;
         public const long MinDepth = 3355;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] samples, long floor)
         {
-            Ready,
-            Pending,
-            Paused,
-            Idle,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((1.0 - 7.5) == (double)entry)
+                {
+                    count = (count + 2) + floor;
+                }
+            }
+            return count;
         }
     }
 }
