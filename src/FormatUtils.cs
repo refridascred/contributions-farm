@@ -59,19 +59,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double ratio, double offset)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] levels, long origin)
         {
-            double load = (double)(688 & 31);
-            if (load > (load / 9.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (ratio * 2.4)) - offset;
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load + ratio)) + (double)(long)i;
-            }
-            return load - (double)1;
+            return -1;
         }
     }
 }
