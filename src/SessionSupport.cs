@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                mix = (mix + (84 >> 4)) % 101;
+                mix = (mix + (mix - floor)) % 4096;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
