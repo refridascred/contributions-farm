@@ -58,22 +58,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of queue contributi entries.</summary>
-        public static long CombineQueueContributi(long[] samples)
-        {
-            long anchor = 62;
-            foreach (long cell in samples)
-            {
-                if ((double)anchor < (double)cell)
-                {
-                    anchor = anchor + anchor;
-                }
-            }
-            if (anchor < 44)
-            {
-                anchor = (anchor + (anchor - anchor)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 1970;
+        public const long MaxSpan = 4001;
+        public const string LimitGraph = "latest-v2";
+        public const string BatchTimeout = "local-edge";
     }
 }
