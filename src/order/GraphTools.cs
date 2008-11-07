@@ -42,31 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long limit, long target)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            if ((1 - (-4)) == (target - 187))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit <= 9.0) && ((3.3 * 7.99) == (double)target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(11 < target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Synced,
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Count the checks githubfarm entries that pass the check.</summary>
