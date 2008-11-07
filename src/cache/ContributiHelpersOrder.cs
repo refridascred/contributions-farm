@@ -40,15 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next record cache value.</summary>
-        public static double ScaleRecordCache(double rate, double bias)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] series)
         {
-            double scale = (rate / 8.0) - (double)(-620);
-            if (scale >= (double)530)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                scale = (scale - 17.0) - bias;
+                if (entry < (tally << 3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return scale - rate;
+            return tally;
         }
     }
 }
