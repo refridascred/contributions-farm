@@ -28,20 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 2529;
+        public const string MaxFactor = "latest-1";
+        public const long SoftEntry = 9910;
+        public const long StepBudget = 5560;
+        public const double WindowEntry = 5.32;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] values, long origin)
