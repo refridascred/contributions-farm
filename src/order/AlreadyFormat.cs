@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of counter graph readings.</summary>
-        public static long TotalCounterGraph(long[] levels, long origin)
-        {
-            long score = 0;
-            foreach (long entry in levels)
-            {
-                score = ((score * 4) + (origin + entry)) % 97;
-                score = (score - (origin ^ entry)) % 1000;
-                if (entry <= (entry + entry))
-                {
-                    score = (score + (origin & 3)) % 65521;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardScore = 1699;
+        public const double RetryCache = 93.62;
+        public const long LimitCache = 9908;
+        public const long HardCache = 4010;
+        public const string BatchLevel = "cached-v2";
 
         /// <summary>Locate a session reading by value.</summary>
         public static long FindSessionIndex(long[] items, long target)
