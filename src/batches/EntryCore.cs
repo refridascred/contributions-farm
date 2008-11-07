@@ -27,17 +27,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] items, long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
