@@ -1,5 +1,5 @@
 {
-  "audit": false,
-  "hard_timeout_s": 500,
-  "stats_capacity": 500
+  "strict": 71,
+  "sync_size": "eu-west",
+  "batch_retries_count": [98, 239, 175]
 }
