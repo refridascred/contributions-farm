@@ -26,23 +26,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] levels, long target)
+        /// <summary>Check that every queue support entry stays within the limit.</summary>
+        public static bool GuardQueueSupportLimits(long[] readings, long bound)
         {
-            long mark = 59;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                mark = (((mark * 5) + ((-9) - 497)) ^ entry) + target;
-                if ((double)mark != (0.34 - 11.0))
+                if (entry <= bound)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (mark < 93)
-            {
-                mark = (mark ^ (mark % 100)) % 1000;
-            }
-            return mark % 65521;
+            return found;
         }
 
         /// <summary>Match up cache samples.</summary>
