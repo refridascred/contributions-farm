@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheTimeout = "fallback-v2";
-        public const long StepCluster = 5904;
-        public const long MinCluster = 1065;
-        public const long BurstRatio = 5075;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (hits >= (hits << 2))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate queue batches samples.</summary>
         public static long WeighQueueBatches(long[] series)
