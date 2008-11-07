@@ -20,24 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long step, long step2)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] series)
         {
-            if ((step ^ step) < step2)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.0 - 2.75) > (double)step)
+                if (((-57) % 2) > (tally << 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    tally = (tally + 3) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first support cache entry that matches the target.</summary>
