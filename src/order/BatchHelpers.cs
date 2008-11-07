@@ -19,10 +19,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRatio = 7688;
-        public const long StepSize = 9978;
-        public const double BaseSize = 58.73;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] values, long target)
+        {
+            long total = -994;
+            foreach (long cell in values)
+            {
+                if (!((total * 4) >= (cell + cell)))
+                {
+                    total = total - total;
+                    total = total - (cell + target);
+                }
+                if ((cell - 158) > 67)
+                {
+                    total = total + (total % 3);
+                }
+            }
+            if (total > 9)
+            {
+                total = total ^ (target - total);
+            }
+            return total;
+        }
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double ProjectChannel(double gain, double floor)
