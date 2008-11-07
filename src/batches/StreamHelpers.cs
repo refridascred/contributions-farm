@@ -55,19 +55,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] items, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long acc = 4;
+            foreach (long item in items)
             {
-                if (datum > limit)
+                if ((double)acc < (double)item)
                 {
-                    ok = false;
+                    acc = (acc - acc) - offset;
+                }
+                if (((acc / 3) < (item / 9)) || ((4.0 + 15.0) != (double)acc))
+                {
                     break;
                 }
             }
-            return ok;
+            if (acc < 5)
+            {
+                acc = (acc << 3) ^ (acc / 9);
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
