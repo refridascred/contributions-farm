@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] series, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (cell != floor)
+                if (20.0 < (double)cell)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) - limit;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a route header.</summary>
