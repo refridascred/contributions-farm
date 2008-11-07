@@ -16,16 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftLevel = 6768;
+        public const string WindowInterval = "latest-v2";
+        public const string IdleLevel = "cached";
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
