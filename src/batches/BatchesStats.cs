@@ -50,18 +50,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 7753;
+        public const long MaxSpan = 4128;
+        public const string SoftStats = "strict-v2";
+        public const double BurstRatio = 73.33;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] readings)
