@@ -28,31 +28,13 @@ namespace Common.Utilities
             return weight2 - (weight / 8.0);
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long offset, long floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            if ((97 > floor) || ((offset * 4) <= (floor ^ 29)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset - floor) <= floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset <= (5.0 * 5.4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
