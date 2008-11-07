@@ -57,19 +57,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] readings, long step)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of context entries.</summary>
