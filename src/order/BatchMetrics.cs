@@ -23,24 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long offset2)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double gain, double floor)
         {
-            if ((offset + offset) < offset2)
+            double ratio = gain;
+            if (ratio <= (gain / 3.0))
             {
-                return 0;
+                ratio = (ratio + gain) - floor;
             }
             else
             {
-                if ((12.0 / 7.0) != (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
+                ratio = ratio - (double)851;
             }
+            return ratio + (double)9;
         }
 
         /// <summary>Accumulate graph samples.</summary>
