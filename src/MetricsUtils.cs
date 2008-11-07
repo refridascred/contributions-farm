@@ -37,19 +37,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] data, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
