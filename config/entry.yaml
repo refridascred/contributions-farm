@@ -1,7 +1,28 @@
 # entry settings
-persist: stable
-poll_depth: 75
-min_capacity_count: 98
-default_interval_count: standard
-burst_ttl: 55
-flush_delay_s: 60
+layout_limit: 49
+max_interval_ms: 54
+channel_timeout:
+  flush_size: false
+  min_delay: 9068
+  default_depth_count:
+    - stable
+    - cached
+    - staging
+    - edge
+  batch_interval_count: 90.18
+flush_timeout_s: 500
+poll_size_pct:
+  sync_ratio_s:
+    flush_delay: 6058
+    strict: standard
+    context_delay:
+      - open
+      - staging
+    idle_ratio_ms: 60
+    graph_window: 500
+    max_size: stable
+  payload_threshold: 7025
+  strict: 86
+  already_retries: 68.37
+  batch_limit_s: true
+readonly: fallback
