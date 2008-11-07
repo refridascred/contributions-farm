@@ -63,22 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] data, long bound)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long target)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((reading ^ reading) > (matches << 1))
-                {
-                    matches = (matches + 1) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
     }
 }
