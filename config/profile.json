@@ -1,8 +1,14 @@
 {
-  "farm_ratio": "open",
-  "soft_capacity": "blue",
-  "max_threshold": true,
-  "checks_ttl": "legacy",
-  "window_retries": ["stable", "strict", "primary"],
-  "stream_delay": "edge"
+  "idle_ttl": 69.53,
+  "account_depth": 9170,
+  "session_delay": 8358,
+  "schema_limit": [184, 307, 471, 472],
+  "contributi_ratio": "blue",
+  "cache_delay": {
+    "support_ttl": 30,
+    "command_threshold": 1553,
+    "batch_ttl_ms": "legacy",
+    "persist": "eu-west",
+    "filter_ratio": true
+  }
 }
