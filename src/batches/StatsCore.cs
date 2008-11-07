@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long target)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 5) + sum) % 255;
-                sum = (sum ^ ((long)i - sum)) % 1000;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Failed,
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the cluster class values.</summary>
