@@ -27,14 +27,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] samples)
         {
-            Stale,
-            Draft,
-            Ready,
-            Retry,
-            Active,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (item < (count % 16))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
