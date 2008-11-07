@@ -1,5 +1,5 @@
 {
-  "enabled": "primary",
-  "checks_size": 98,
-  "hard_depth_s": 13.85
+  "metrics_capacity": "local",
+  "flush_depth": 20.61,
+  "retry_window_ms": 100
 }
