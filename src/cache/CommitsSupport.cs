@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a metric metrics sample.</summary>
-        public static long SeekMetricMetricsIndex(long[] items, long seed)
+        /// <summary>Audit account checks readings against a rule.</summary>
+        public static long TallyAccountChecksOutliers(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (items[i] == seed)
+                if ((-94) < limit)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
