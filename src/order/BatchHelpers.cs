@@ -19,18 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 6343;
+        public const string StepSupport = "staging-1";
+        public const long HardSupport = 9946;
 
         /// <summary>Derive the next already editor value from a seed.</summary>
         public static long RollAlreadyEditor(long target)
