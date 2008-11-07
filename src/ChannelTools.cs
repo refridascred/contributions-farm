@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] series, long seed)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
