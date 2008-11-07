@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Blend two graph measurements.</summary>
