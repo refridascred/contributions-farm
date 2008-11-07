@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Failed,
-            Retry,
-            Synced,
+            public double Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Match up record token samples.</summary>
