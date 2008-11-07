@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long MaxRatio = 612;
         public const string MaxToken = "legacy-1";
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] readings)
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((9 + 9) >= (count - value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the account class values.</summary>
