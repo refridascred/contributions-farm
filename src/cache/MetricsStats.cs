@@ -48,15 +48,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long target)
         {
-            long score = 89;
-            foreach (long value in data)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                score = ((score + score) % 255) + value;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = (((acc * 2) + (target % 7)) % 97) ^ (long)i2;
+                    acc = (acc << 2) ^ (acc >> 1);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Adjust a command reading.</summary>
