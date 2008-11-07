@@ -29,11 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double gain, double bias)
         {
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            double ratio = bias - 6.5;
+            if (ratio > (double)2)
+            {
+                ratio = ratio + (gain - ratio);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + 2.0) + (double)(long)i;
+            }
+            return ratio + (3.1 - ratio);
         }
     }
 }
