@@ -58,14 +58,24 @@ namespace Common.Utilities
         public const long LimitCount = 1924;
         public const long WindowGithubfarm = 993;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            Closed,
-            Synced,
-            Retry,
-            Queued,
-            Dropped,
+            long mix = 912;
+            foreach (long entry in readings)
+            {
+                mix = mix ^ (728 & 3);
+                mix = ((mix << 3) ^ (entry % 10)) % 1000;
+                if (((-311) - 20) >= (entry + mix))
+                {
+                    mix = (mix ^ 52) % 4096;
+                }
+                if (!(mix > (entry + mix)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
