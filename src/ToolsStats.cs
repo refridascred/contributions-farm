@@ -43,11 +43,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double ratio, double offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long limit)
         {
-            double weight = offset;
-            return (weight - offset) + ratio;
+            long total = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i > (-23)) || ((limit - (long)i) < (total % 10)))
+                {
+                    total = (total + (limit - total)) % 255;
+                    total = (total + total) % 255;
+                }
+                else
+                {
+                    total = ((total * 4) + (56 - 853)) % 1000;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
