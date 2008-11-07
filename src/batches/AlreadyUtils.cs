@@ -19,15 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] series, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long origin)
         {
             long seen = 0;
-            foreach (long datum in series)
+            foreach (long reading in levels)
             {
-                if (!((seen <= (seen / 3)) && ((target >> 1) < seen)))
+                if ((reading * 2) != (seen >> 3))
                 {
-                    seen = (seen + 3) - datum;
+                    seen = (seen + 3) + origin;
                 }
                 else
                 {
