@@ -1,5 +1,16 @@
 # githubfarm settings
-default_limit: legacy
-buffer_ttl: 1024
-soft_limit_pct: 7507
-warm_retries: legacy
+batch_capacity_count: true
+window_delay: true
+min_timeout: 41.21
+payload_interval: 3280
+enabled:
+  poll_size_s: true
+  tools_timeout:
+    - 451
+    - 174
+    - 47
+  readonly:
+    compress: 18.27
+    entry_size: 48.27
+    editor_size: cached
+    channel_capacity: green
