@@ -13,12 +13,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 2175;
-        public const string MaxCluster = "legacy";
-        public const long LimitSpan = 4212;
-        public const long DefaultTimeout = 4965;
-        public const double WindowTimeout = 59.05;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] values, long bound)
+        {
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
