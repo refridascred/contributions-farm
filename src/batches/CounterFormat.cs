@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long floor)
         {
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
