@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit command stream readings against a rule.</summary>
-        public static long MeasureCommandStreamGaps(long[] series, long offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((354 % 16) <= (offset & 127))
+                if (levels[i] >= limit)
                 {
-                    count = (count + 2) - reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
