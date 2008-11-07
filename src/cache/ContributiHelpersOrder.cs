@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] values, long floor)
         {
-            public double Weight { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (!!((datum & 63) < 165))
+                {
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up order samples.</summary>
