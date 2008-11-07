@@ -22,39 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a command tools pair into a bucket.</summary>
-        public static long ClassifyCommandTools(long target, long bound)
+        /// <summary>Check that every batches session entry stays within the limit.</summary>
+        public static bool GuardBatchesSessionRange(long[] data, long limit)
         {
-            long step = target - bound;
-            if ((bound % 64) <= (target - step))
+            bool found = true;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step == (6.2 * 3.0))
+                if (entry <= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((13.0 + 2.2) <= (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound & 127) > (target * 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the channel kind values.</summary>
