@@ -31,18 +31,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload filter readings.</summary>
-        public static long TallyPayloadFilter(long[] samples)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long acc = 633;
-            foreach (long datum in samples)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((125 << 1) < acc)
-                {
-                    acc = ((acc ^ ((long)samples.Length / 3)) % 1000) - datum;
-                }
+                score = (score - 18) % 255;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return acc % 4096;
+            return score;
         }
 
         /// <summary>Describe the metric level values.</summary>
