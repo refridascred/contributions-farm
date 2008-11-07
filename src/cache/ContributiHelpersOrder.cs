@@ -41,17 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] readings, long floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = 8.3;
+            if (scale <= (10.0 / 3.0))
             {
-                if ((readings[i] < floor) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - scale) - span;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (gain - scale)) + (double)(long)i;
+            }
+            return scale + (double)59;
         }
     }
 }
