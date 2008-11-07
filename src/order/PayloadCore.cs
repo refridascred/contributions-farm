@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 7;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = result - (7 - reading);
+                result = (result * 4) + (result & 1);
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
