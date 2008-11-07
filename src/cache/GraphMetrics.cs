@@ -46,15 +46,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate checks farm samples.</summary>
-        public static long ScoreChecksFarm(long[] readings, long seed)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long sum = 942;
-            foreach (long value in readings)
-            {
-                sum = (((sum << 3) ^ (915 + sum)) - value) - seed;
-            }
-            return sum % 65521;
+            Ready,
+            Retry,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a graph header.</summary>
