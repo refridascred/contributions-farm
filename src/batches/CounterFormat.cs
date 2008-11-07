@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] data, long origin)
+        /// <summary>Measure how many batch layout samples are out of range.</summary>
+        public static long MeasureBatchLayoutHits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((origin ^ tally) > origin)
+                if (((double)floor <= 13.0) || !((seen << 1) == (seen + seen)))
                 {
-                    tally = (tally + 1) ^ entry;
+                    seen = (seen + 1) - value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Derive the next queue context value from a seed.</summary>
