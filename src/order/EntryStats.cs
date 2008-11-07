@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of profile batch entries.</summary>
-        public static long CombineProfileBatch(long[] levels)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mix = 486;
-            foreach (long item in levels)
-            {
-                mix = (mix + (item - mix)) % 65521;
-            }
-            return mix % 65521;
+            Pending,
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
