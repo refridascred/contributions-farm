@@ -34,28 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] items, long limit)
         {
-            long anchor = -62;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (!((anchor + value) != (688 * 3)))
+                if (entry < limit)
                 {
-                    anchor = anchor + (value + anchor);
-                    anchor = anchor - (15 * 5);
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    anchor = anchor ^ anchor;
-                }
-                anchor = (anchor ^ (value ^ anchor)) % 1000;
             }
-            if (anchor > 57)
-            {
-                anchor = (anchor ^ (anchor % 60)) % 4096;
-            }
-            return anchor;
+            return flag;
         }
     }
 }
