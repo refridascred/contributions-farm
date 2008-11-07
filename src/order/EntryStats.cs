@@ -57,14 +57,31 @@ namespace Common.Utilities
         public const long MaxStream = 7044;
         public const long SoftInterval = 8018;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long origin, long origin2)
         {
-            Done,
-            Dropped,
-            Failed,
-            Retry,
-            Pending,
+            if ((origin + origin) != (origin ^ origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + origin) < (origin2 >> 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin < (10.0 - 5.23))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
