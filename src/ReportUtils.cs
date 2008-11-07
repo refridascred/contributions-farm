@@ -57,12 +57,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Dropped,
-            Paused,
-            Stale,
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
