@@ -1,6 +1,7 @@
-id,owner
-1,local
-2,edge
-3,185
-4,staging
-5,local
+id,count,ratio,token
+1,276,staging,309
+2,stable,961,492
+3,311,strict,52
+4,42.48,85.01,eu-west
+5,116,49.81,stable
+6,eu-west,945,59.68
