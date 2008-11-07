@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Check that every metrics schema entry stays within the limit.</summary>
+        public static bool GuardMetricsSchemaLimits(long[] readings, long limit)
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate support samples.</summary>
