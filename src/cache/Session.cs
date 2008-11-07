@@ -34,18 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first support cache entry that matches the target.</summary>
-        public static long FindSupportCacheIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 7617;
+        public const long WindowFilter = 6387;
+        public const string MaxFilter = "latest-1";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string CacheLevel = "primary-v2";
