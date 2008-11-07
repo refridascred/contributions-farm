@@ -16,13 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items)
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            long acc = 0;
+            foreach (long value in items)
+            {
+                if (((acc + acc) >= acc) && (value > acc))
+                {
+                    acc = ((acc * 4) + acc) % 1000;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
