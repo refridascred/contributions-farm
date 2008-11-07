@@ -62,21 +62,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Grade a batches context value against two limits.</summary>
+        public static long RankBatchesContext(long step, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = step + target;
+            if (step < (63 * 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((offset + offset) <= (14 + step)))
                 {
-                    if ((values[i] ^ values[j]) != 5)
+                    return 4;
+                }
+                else
+                {
+                    if ((7 ^ target) >= target)
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
     }
 }
