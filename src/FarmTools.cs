@@ -19,14 +19,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Retry,
-            Closed,
-            Synced,
-            New,
-            Done,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 65.25;
+        public const string MinSession = "legacy";
+        public const long BurstSession = 7529;
+        public const string BatchSession = "latest-1";
+        public const double HardSession = 33.41;
     }
 }
