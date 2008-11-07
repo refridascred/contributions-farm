@@ -58,20 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = state - (seed - seed);
-                    state = (state << 2) ^ (seed + (long)i2);
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of farm token readings.</summary>
