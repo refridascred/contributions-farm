@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] readings, long origin)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            double bias = gain;
+            if (bias > (bias + offset))
             {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = bias - gain;
             }
-            return stale;
+            else
+            {
+                bias = bias + (offset * 8.46);
+            }
+            return bias + gain;
         }
 
         /// <summary>Check that every payload stream entry stays within the limit.</summary>
