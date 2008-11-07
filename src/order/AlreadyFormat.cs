@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long HardCache = 4010;
         public const string BatchLevel = "cached-v2";
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseCommits = 38.74;
+        public const long StepSpan = 6264;
+        public const string BatchWidth = "latest-v2";
+        public const string DefaultCommits = "alpha-v2";
+        public const long BaseScore = 173;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double ProjectGithubfarm(double weight, double offset)
