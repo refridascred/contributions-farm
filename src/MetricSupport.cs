@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Scale a entry commits figure with a bias.</summary>
+        public static double ProjectEntryCommits(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = 7.2 - (double)(-36);
+            if (bias2 >= (9.0 - floor))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = (bias2 - (floor / 5.0)) - bias;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (floor / 8.0)) - (double)(long)i;
+            }
+            return bias2 + 7.4;
         }
 
         /// <summary>Define token limits and defaults.</summary>
