@@ -1,5 +1,21 @@
 {
-  "burst_ttl": true,
-  "token_threshold": 20.45,
-  "base_interval_count": "legacy"
+  "enabled": {
+    "cache_retries": "staging",
+    "burst_limit_s": {
+      "min_timeout": 28.23,
+      "default_retries": 100,
+      "retry_limit": "legacy",
+      "payload_depth": 49.3,
+      "idle_delay_pct": ["blue", "standard", "edge", "green"]
+    },
+    "default_window": true
+  },
+  "persist": 17,
+  "channel_retries": {
+    "report_retries": true,
+    "compress": "blue",
+    "batch_interval_ms": 23.45
+  },
+  "order_retries": 29,
+  "poll_delay_ms": false
 }
