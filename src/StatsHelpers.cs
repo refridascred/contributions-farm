@@ -32,18 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long sum = 93;
-            foreach (long sample in series)
-            {
-                if ((sample + 780) != (sample + 644))
-                {
-                    sum = ((sum << 2) ^ sum) % 65521;
-                }
-            }
-            return sum % 65521;
+            Synced,
+            Pending,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the record status values.</summary>
