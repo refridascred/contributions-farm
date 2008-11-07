@@ -41,15 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] readings, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mark = -8;
-            foreach (long sample in readings)
-            {
-                mark = ((mark - (76 ^ sample)) % 101) - target;
-            }
-            return mark % 65521;
+            Ready,
+            Synced,
+            Retry,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a session summary.</summary>
