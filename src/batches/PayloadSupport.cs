@@ -38,13 +38,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long step, long offset)
         {
-            Idle,
-            Closed,
-            Failed,
-            Done,
+            long cur = step ^ offset;
+            if (!((4.0 + 0.6) == (double)step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((0.22 * 17.0) < (double)step) || (offset > (cur & 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
