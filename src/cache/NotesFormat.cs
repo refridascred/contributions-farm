@@ -34,16 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] values, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                carry = (carry + (carry - (long)i)) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (origin >= (854 / 5))
+                {
+                    tally = (tally + 2) + value;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
