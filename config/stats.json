@@ -1,7 +1,13 @@
 {
-  "idle_ratio_ms": "legacy",
-  "cache_ttl": "open",
-  "readonly": 100,
-  "cluster_window": "stable",
-  "strict": "eu-west"
+  "counter_capacity": {
+    "profile_depth": 58.64,
+    "batch_limit": "blue",
+    "min_interval": [154, 445, 166, 459],
+    "burst_capacity": "cached",
+    "idle_limit": 63
+  },
+  "profile_capacity": "latest",
+  "strict": [282, 152, 391],
+  "batches_depth": 820,
+  "warm_ttl_count": false
 }
