@@ -39,39 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long floor, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long bound)
         {
-            long next = floor + origin;
-            if ((floor << 1) != (next * 2))
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((next * 2) != (origin / 6))
+                if (!((2.7 + 3.37) < (double)bound))
                 {
-                    return 1;
+                    anchor = ((anchor * 2) + anchor) % 4096;
                 }
-                else
-                {
-                    if ((next << 3) < origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((next >> 5) == (next << 3)) && ((origin & 15) >= 710))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                anchor = ((anchor * 5) + (anchor * 5)) % 97;
+                anchor = ((anchor << 2) ^ (bound - bound)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Blend two command report measurements.</summary>
