@@ -33,10 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 2841;
-        public const long CacheStats = 3588;
-        public const string BatchStats = "alpha-1";
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] readings, long offset)
