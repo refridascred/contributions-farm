@@ -30,18 +30,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] levels)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)tally == (5.1 * 17.0))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
