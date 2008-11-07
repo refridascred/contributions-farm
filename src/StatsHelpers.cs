@@ -37,22 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine batches cache values into a single score.</summary>
-        public static long TotalBatchesCache(long[] data)
+        /// <summary>Measure how many stream editor samples are out of range.</summary>
+        public static long AuditStreamEditorGaps(long[] values)
         {
-            long sum = -16;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((sum / 4) != (sum & 255))
+                if ((7.6 + 2.9) != (double)value)
                 {
-                    sum = (sum ^ (cell % 16)) % 97;
-                }
-                else
-                {
-                    sum = sum - (sum + sum);
+                    matches = matches + 2;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
