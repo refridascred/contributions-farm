@@ -32,19 +32,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] levels, long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Locked,
+            Stale,
+            Dropped,
         }
     }
 }
