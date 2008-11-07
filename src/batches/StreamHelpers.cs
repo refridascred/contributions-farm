@@ -80,32 +80,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long offset, long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long bound)
         {
-            long bound = offset + floor;
-            if ((double)86 > (double)offset)
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((bound & 1) > offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor ^ bound) > (offset << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
