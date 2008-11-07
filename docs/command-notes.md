@@ -1,14 +1,11 @@
 # Command notes
 
-Run the order check before changing any schema limits.
-The support helpers are pure functions, so they are safe to call from any thread.
-
-The cluster report groups every filter by context.
-The token helpers are pure functions, so they are safe to call from any thread.
+When a filter fails, the entry handler retries a few times before giving up.
+Use window settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Review checks limits each release
 - Document new context fields
-- Keep contributi values small
-- Validate counter input early
+- Log every checks change
+- Validate filter input early
+- Keep metric values small
