@@ -1,18 +1,11 @@
 {
-  "poll_retries_s": ["cached", "legacy", "latest"],
-  "default_depth": {
-    "base_timeout": false,
-    "contributi_interval": 83,
-    "default_size_s": ["cached", "open", "staging", "open"],
-    "base_limit_ms": true,
-    "warm_capacity": 64
+  "verbose": {
+    "sync_depth_pct": 91.86,
+    "strict": ["staging", "eu-west"],
+    "compress": "fallback",
+    "batch_size": 89.81,
+    "hard_interval": 30
   },
-  "idle_timeout": {
-    "poll_ttl_s": 45,
-    "stats_ratio": true,
-    "max_retries_pct": false,
-    "entry_size": [259, 109]
-  },
-  "already_ttl": true,
-  "report_size": 250
+  "retry_interval_s": "eu-west",
+  "payload_threshold": 100
 }
