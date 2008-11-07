@@ -1,13 +1,13 @@
 {
-  "flush_window_count": true,
-  "burst_window": 5599,
-  "warm_depth": 3053,
-  "format_depth": 5.98,
-  "batch_depth": 9120,
-  "format_limit": {
-    "notes_timeout": "legacy",
-    "readonly": 78,
-    "editor_depth": ["strict", "primary", "edge"],
-    "hard_delay": 3422
-  }
+  "idle_limit_count": 56.05,
+  "entry_threshold": true,
+  "persist": 11.32,
+  "min_depth": [290, 314, 406],
+  "burst_depth": {
+    "stream_window": "blue",
+    "compress": "local",
+    "flush_size_count": ["standard", "blue", "fallback"],
+    "warm_threshold_pct": ["staging", "primary"]
+  },
+  "default_ttl": 9457
 }
