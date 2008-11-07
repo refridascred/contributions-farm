@@ -32,12 +32,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Dropped,
-            Ready,
             Active,
+            Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the batch phase values.</summary>
