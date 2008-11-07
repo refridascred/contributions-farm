@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate buffer already samples.</summary>
-        public static long TallyBufferAlready(long[] items, long origin)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            long score = -23;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)score > (6.8 * 1.5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((((score * 4) + (score * 3)) % 4096) ^ entry) - origin;
-                }
-                else
-                {
-                    score = (score * 2) + 457;
+                    if ((series[i] ^ series[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
