@@ -1,7 +1,10 @@
 {
-  "audit": ["cached", "eu-west", "local"],
-  "context_ratio": [224, 239, 17, 62],
-  "verbose": [157, 458, 94],
-  "batch_retries_count": 500,
-  "base_limit": 20
+  "profile_ttl": 84.79,
+  "soft_threshold": [409, 467, 388],
+  "default_size": 78,
+  "dry_run": {
+    "idle_ttl_s": 32.7,
+    "audit": 30,
+    "sync_limit_s": 88.57
+  }
 }
