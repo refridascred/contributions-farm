@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long acc = 182;
+            foreach (long sample in data)
+            {
+                if ((1 + sample) > (acc ^ 365))
+                {
+                    acc = (acc << 2) ^ 921;
+                }
+                else
+                {
+                    acc = (acc + (acc - acc)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the counter level values.</summary>
