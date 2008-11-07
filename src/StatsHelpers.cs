@@ -48,18 +48,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] values, long limit)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (((double)limit > (9.0 * 4.0)) && (limit > (tally - limit)))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
+            Closed,
+            Paused,
+            Synced,
+            Draft,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
