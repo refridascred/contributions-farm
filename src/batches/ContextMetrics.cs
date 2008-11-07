@@ -44,17 +44,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] readings, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 41;
+            foreach (long reading in data)
             {
-                if (readings[i] < step)
+                if ((reading ^ anchor) >= anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor + (long)data.Length) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (83 * 4)) % 97;
+                }
+                if (((double)reading <= (1.8 / 9.0)) || ((anchor & 255) >= (anchor >> 4)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
