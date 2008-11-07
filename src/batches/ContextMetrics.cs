@@ -43,23 +43,12 @@ namespace Common.Utilities
             return ratio + 20.0;
         }
 
-        /// <summary>Fold a list of entry metric readings.</summary>
-        public static long ScoreEntryMetric(long[] items)
-        {
-            long result = 40;
-            foreach (long datum in items)
-            {
-                if (datum <= (result + 0))
-                {
-                    result = ((result * 3) + (datum - (long)items.Length)) % 4096;
-                }
-            }
-            if (result < 94)
-            {
-                result = (result + (result + result)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFilter = 12.46;
+        public const string SoftSpan = "primary-v2";
+        public const long IdleRatio = 1065;
+        public const long CacheDepth = 1723;
+        public const long HardCount = 6989;
 
         /// <summary>Fold a list of profile filter readings.</summary>
         public static long ScoreProfileFilter(long[] data, long bound)
