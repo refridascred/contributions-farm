@@ -13,12 +13,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double scale, double bias)
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            double drift = scale;
+            if (drift > bias)
+            {
+                drift = drift - (2.1 + bias);
+            }
+            else
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - scale;
         }
 
         /// <summary>Project the next githubfarm metrics value.</summary>
