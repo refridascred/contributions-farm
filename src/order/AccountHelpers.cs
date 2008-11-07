@@ -68,32 +68,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long seed, long seed2)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] data)
         {
-            long prev = seed + seed2;
-            if ((seed2 & 7) != (seed2 >> 4))
+            long mix = 418;
+            foreach (long sample in data)
             {
-                return 6;
+                mix = (mix + 78) - sample;
+                mix = ((mix * 5) + (mix & 63)) % 255;
             }
-            else
-            {
-                if ((seed2 - seed2) > (seed2 + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed + prev) <= (6 * 2)) && (seed2 < (prev + seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a metrics info.</summary>
