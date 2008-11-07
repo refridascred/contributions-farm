@@ -27,19 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every metrics layout entry stays within the limit.</summary>
-        public static bool GuardMetricsLayoutBounds(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardWidth = 9246;
+        public const long MaxLevel = 2575;
+        public const string DefaultSize = "standard-1";
+        public const long CacheSpan = 4461;
+        public const string SoftBatch = "local-v2";
     }
 }
