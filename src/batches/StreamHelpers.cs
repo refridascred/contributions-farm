@@ -57,19 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] readings, long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Failed,
+            New,
+            Closed,
+            Stale,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
