@@ -26,15 +26,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Blend two metrics channel measurements.</summary>
-        public static double AdjustMetricsChannel(double rate, double offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] levels)
         {
-            double bias = (rate * 4.5) + (rate - 6.0);
-            if (bias <= 5.81)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                bias = bias + offset;
+                if ((double)tally == (5.1 * 17.0))
+                {
+                    tally = (tally + 1) + datum;
+                }
             }
-            return bias - (rate / 4.0);
+            return tally;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
