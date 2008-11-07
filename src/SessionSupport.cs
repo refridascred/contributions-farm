@@ -30,12 +30,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] readings, long limit)
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
