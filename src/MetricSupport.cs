@@ -29,19 +29,21 @@ namespace Common.Utilities
         public const double CacheBudget = 36.2;
         public const long SoftWindow = 9590;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double rate, double span)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long target)
         {
-            double gain = (rate + rate) * 3.8;
-            if (gain > span)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                gain = gain - (double)576;
+                long slot = (long)i * 4;
+                if ((59 / 9) == (slot / 8))
+                {
+                    acc = ((acc * 3) + (long)i) % 101;
+                    slot = slot - (130 >> 4);
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + span;
+            return acc;
         }
     }
 }
