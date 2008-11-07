@@ -34,23 +34,21 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 1114;
         public const string DefaultGithubfarm = "primary";
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] readings)
         {
-            long carry = 891;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry + (carry << 1)) % 255;
-                if ((carry + cell) < cell)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry * 4) + (carry * 5);
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < 9)
-            {
-                carry = ((carry << 2) ^ carry) % 101;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
