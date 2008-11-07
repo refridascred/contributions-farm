@@ -35,22 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] values)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((13.0 / 3.0) <= (double)item)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
