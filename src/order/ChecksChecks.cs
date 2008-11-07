@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every queue commits entry stays within the limit.</summary>
-        public static bool VerifyQueueCommitsLimits(long[] items, long step)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Synced,
+            Queued,
+            Done,
+            Failed,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
