@@ -33,18 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats session readings against a rule.</summary>
-        public static long CountStatsSessionHits(long[] series, long floor)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double bias, double span)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double drift = 1.7 / 9.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (((floor << 3) <= floor) || ((double)sample > (1.98 + 0.67)))
-                {
-                    matches = matches + 2;
-                }
+                drift = ((drift + 4.2) + (double)(long)i) - bias;
             }
-            return matches;
+            return drift - span;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
