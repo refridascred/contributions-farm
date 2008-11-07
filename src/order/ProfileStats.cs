@@ -57,31 +57,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank token command input into a small class.</summary>
-        public static long SortTokenCommand(long origin, long seed)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] samples, long limit)
         {
-            if (((double)seed > (6.0 - 13.0)) || ((seed + origin) < origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin <= ((-3) << 2))
+                if (samples[i] <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((origin + origin) < (-47)) || ((double)seed > (2.9 + 7.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
