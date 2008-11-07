@@ -50,9 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardSpan = 8933;
-        public const string RetryStream = "alpha-edge";
-        public const string LimitScore = "legacy-1";
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] items, long seed)
+        {
+            long mix = 70;
+            foreach (long entry in items)
+            {
+                if (((seed + seed) <= ((long)items.Length - mix)) || ((entry + 5) <= seed))
+                {
+                    mix = (mix * 4) + (44 ^ mix);
+                }
+            }
+            return mix % 97;
+        }
     }
 }
