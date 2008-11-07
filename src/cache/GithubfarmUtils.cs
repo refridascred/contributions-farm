@@ -31,16 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long target)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                score = (score - 18) % 255;
-                score = ((score * 5) + (long)i) % 1000;
+                result = (result ^ target) % 101;
+                result = ((result * 5) + (result + (long)i)) % 97;
+                result = ((result << 2) ^ target) % 255;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the metric level values.</summary>
