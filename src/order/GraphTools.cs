@@ -39,22 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes cache entries.</summary>
-        public static long CombineNotesCache(long[] samples)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long limit, long floor)
         {
-            long carry = 668;
-            foreach (long reading in samples)
+            long slot = limit + floor;
+            if ((980 & 31) > (slot - floor))
             {
-                if (((double)carry <= (4.74 / 9.0)) && ((carry + reading) >= carry))
+                return 6;
+            }
+            else
+            {
+                if (((double)slot > (3.7 - 4.45)) || ((5.89 + 5.6) != (double)floor))
                 {
-                    carry = (carry * 2) + (reading << 2);
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (carry > 51)
-            {
-                carry = (carry ^ (carry / 7)) % 4096;
-            }
-            return carry;
         }
 
         /// <summary>Describe the layout mode values.</summary>
