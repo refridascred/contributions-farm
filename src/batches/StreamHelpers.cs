@@ -73,17 +73,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] levels, long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long offset, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = offset + floor;
+            if ((double)86 > (double)offset)
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((bound & 1) > offset)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor ^ bound) > (offset << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
