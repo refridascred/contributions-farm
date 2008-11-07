@@ -1,6 +1,8 @@
 {
-  "filter_interval": 250,
-  "min_ratio_s": "strict",
-  "batch_retries_count": 27.98,
-  "retry_size_ms": "stable"
+  "farm_ratio": "open",
+  "soft_capacity": "blue",
+  "max_threshold": true,
+  "checks_ttl": "legacy",
+  "window_retries": ["stable", "strict", "primary"],
+  "stream_delay": "edge"
 }
