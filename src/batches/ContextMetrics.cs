@@ -60,20 +60,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((state >> 4) <= (state << 2)) && (257 >= seed))
-                {
-                    state = (state - (state << 1)) % 1000;
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Idle,
+            New,
+            Queued,
+            Pending,
+            Draft,
         }
     }
 }
