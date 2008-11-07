@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Audit filter farm readings against a rule.</summary>
+        public static long MeasureFilterFarmGaps(long[] levels, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mix = (mix ^ (mix & 63)) % 101;
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((offset ^ hits) < 412)
                 {
-                    mix = (((mix * 2) + mix) % 101) ^ (long)i2;
-                    mix = (mix ^ (origin << 3)) % 65521;
+                    hits = (hits + 3) ^ value;
                 }
-                mix = (mix - mix) % 4096;
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the payload kind values.</summary>
