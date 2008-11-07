@@ -26,18 +26,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] series, long origin)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!((3.8 + 0.7) > (double)value))
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
