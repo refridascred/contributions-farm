@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] series, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 36;
+            foreach (long cell in values)
             {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
+                carry = ((carry - carry) % 1000) ^ cell;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a checks record.</summary>
