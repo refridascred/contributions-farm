@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] items)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long state = 839;
+            foreach (long item in items)
+            {
+                state = (state + state) % 97;
+                if ((state / 9) <= (state * 5))
+                {
+                    state = state + (item % 8);
+                }
+            }
+            if (state > 3)
+            {
+                state = state ^ 154;
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every cache editor entry stays within the limit.</summary>
