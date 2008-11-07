@@ -12,12 +12,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowWidth = 4696;
-        public const long BurstFarm = 638;
-        public const long IdleSize = 2002;
-        public const long HardFarm = 3521;
-        public const string MinFarm = "latest-edge";
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] samples)
+        {
+            long anchor = 275;
+            foreach (long cell in samples)
+            {
+                if ((anchor <= cell) && (anchor > (cell - anchor)))
+                {
+                    anchor = (anchor * 5) + (8 - cell);
+                }
+                if (!((cell - 76) <= anchor))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorRange(long[] readings, long bound)
