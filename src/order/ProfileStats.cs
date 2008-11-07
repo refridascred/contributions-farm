@@ -21,26 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] data, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] readings, long target)
         {
-            long score = 9;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((40 << 2) <= item)
+                if ((5.0 + 0.8) != (double)target)
                 {
-                    score = ((score << 3) ^ (score - 21)) % 255;
-                }
-                else
-                {
-                    score = (score - (6 - step)) % 97;
+                    tally = (tally + 3) + sample;
                 }
             }
-            if (score < 67)
-            {
-                score = (score << 2) ^ step;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Grade a payload stream value against two limits.</summary>
