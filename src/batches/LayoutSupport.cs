@@ -42,23 +42,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double weight, double floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            double mean = 9.6;
-            if (mean <= 9.6)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (mean / 5.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (mean + floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (double)985) + (double)(long)i;
-            }
-            return mean - weight;
+            return tally;
         }
 
         /// <summary>Look up the position of a context notes sample.</summary>
