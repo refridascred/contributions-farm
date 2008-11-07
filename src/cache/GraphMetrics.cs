@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double scale, double floor)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long floor)
         {
-            double weight = (double)(711 + 4);
-            if (weight <= (double)0)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                weight = (weight - (double)86) + floor;
+                mark = (mark - (floor & 7)) % 1000;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight + (scale / 5.0);
+            return mark;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
