@@ -16,11 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 4804;
-        public const string MaxGithubfarm = "primary-1";
-        public const long StepGithubfarm = 5472;
-        public const long RetryGithubfarm = 8779;
+        /// <summary>Audit support schema readings against a rule.</summary>
+        public static long CountSupportSchemaOutliers(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)step <= (2.29 + 0.7))
+                {
+                    seen = (seen + 1) - reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LookupContextIndex(long[] series, long offset)
