@@ -33,12 +33,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] levels)
         {
-            Ready,
-            Dropped,
-            Done,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell * 3) < (matches * 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stream status values.</summary>
