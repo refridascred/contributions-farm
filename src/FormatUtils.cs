@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] series)
         {
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (7.0 >= (1.7 - 2.45))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
