@@ -67,19 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double rate, double bias)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double load = bias;
-            if (load >= rate)
-            {
-                load = load - (load + 3.51);
-            }
-            else
-            {
-                load = load + (5.24 - rate);
-            }
-            return load + (rate - load);
+            Pending,
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define window limits and defaults.</summary>
