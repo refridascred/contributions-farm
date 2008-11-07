@@ -35,19 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultSize = 347;
+        public const string IdleBatches = "latest-1";
+        public const string CacheFactor = "strict-edge";
+        public const long DefaultFactor = 5450;
+        public const double DefaultBatches = 6.1;
     }
 }
