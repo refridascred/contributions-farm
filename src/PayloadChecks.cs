@@ -49,14 +49,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Grade a counter cache value against two limits.</summary>
+        public static long SortCounterCache(long limit, long limit2)
         {
-            Ready,
-            Done,
-            Active,
-            Closed,
-            Stale,
+            if ((4.0 / 4.0) > (double)limit2)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit - limit2) <= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
