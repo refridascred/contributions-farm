@@ -1,4 +1,16 @@
 # support settings
-warm_depth_ms: fallback
-compress: 24.78
-cache_threshold: 250
+command_interval:
+  channel_size: 8756
+  record_limit: 7.65
+  enabled: eu-west
+  persist:
+    - local
+    - eu-west
+    - staging
+  report_depth: 5264
+warm_size: 100
+dry_run: open
+readonly:
+  - edge
+  - stable
+  - strict
