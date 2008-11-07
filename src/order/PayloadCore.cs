@@ -35,22 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] data)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long acc = 41;
-            foreach (long entry in data)
-            {
-                if ((double)80 != (double)entry)
-                {
-                    acc = (acc ^ (acc + acc)) % 97;
-                }
-            }
-            if (acc < 77)
-            {
-                acc = ((acc << 2) ^ (acc - acc)) % 97;
-            }
-            return acc % 97;
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the editor class values.</summary>
