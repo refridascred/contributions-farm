@@ -37,21 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -70;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = ((result << 3) ^ (2 + sample)) % 101;
+                if (9.1 >= (double)result)
                 {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a checks options.</summary>
