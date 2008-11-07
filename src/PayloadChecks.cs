@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const string WindowCounter = "latest";
         public const long StepCounter = 777;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long limit, long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long offset, long limit)
         {
-            if (target > (limit ^ limit))
+            if ((495 & 255) != (limit ^ limit))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if (9.6 <= (double)limit)
+                if (((50 - (-766)) <= (limit % 64)) && ((offset % 97) < (limit + offset)))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    return 5;
+                    return 8;
                 }
             }
         }
