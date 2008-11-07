@@ -34,19 +34,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((floor + floor) < (hits * 5)) || (((6 << 1) <= floor) && ((double)floor <= (2.5 / 8.0))))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 1824;
+        public const long BaseProfile = 1416;
+        public const long RetryProfile = 223;
+        public const long WindowFactor = 5645;
+        public const long BatchProfile = 5865;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long BucketEditor(long step, long offset)
