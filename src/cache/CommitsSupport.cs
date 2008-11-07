@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] readings)
         {
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample << 1) < 32) && ((7 + 8) < (sample + hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
