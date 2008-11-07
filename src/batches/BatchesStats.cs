@@ -41,14 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Done,
-            Idle,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 22.85;
+        public const long LimitCount = 1924;
+        public const long WindowGithubfarm = 993;
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
