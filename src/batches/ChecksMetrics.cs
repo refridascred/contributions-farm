@@ -61,23 +61,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((double)seen != (double)value)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWidth = 7845;
+        public const string IdleWindow = "alpha-edge";
+        public const long MinSpan = 417;
+        public const string WindowTimeout = "cached";
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long FoldCluster(long[] readings)
