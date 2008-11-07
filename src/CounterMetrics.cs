@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a farm filter reading by value.</summary>
-        public static long LocateFarmFilterIndex(long[] items, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (items[i] <= floor)
+                if (((6.0 + 3.0) < (double)bound) || ((double)value <= (7.1 - 12.0)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
