@@ -71,22 +71,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] values)
-        {
-            long anchor = -50;
-            foreach (long sample in values)
-            {
-                if ((sample + sample) == (anchor - anchor))
-                {
-                    anchor = (anchor - (anchor - 962)) % 255;
-                }
-                if ((anchor + sample) >= (anchor - sample))
-                {
-                    anchor = (anchor << 2) ^ (anchor - anchor);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstCount = 4827;
+        public const double BurstStream = 81.17;
+        public const long BatchStream = 9033;
+        public const long CacheScore = 5914;
     }
 }
