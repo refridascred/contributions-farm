@@ -48,23 +48,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Accumulate contributi session samples.</summary>
+        public static long DigestContributiSession(long[] readings, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            long score = 185;
+            foreach (long sample in readings)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((sample * 3) > (long)readings.Length)
                 {
-                    state = ((state + (seed + seed)) % 101) + (long)i2;
+                    score = (((score << 2) ^ (4 & 3)) % 1000) + target;
                 }
-                if ((state - (long)i) < 5)
+                score = ((score * 4) + (score >> 5)) % 65521;
+                if (((sample * 4) < (sample >> 4)) && ((sample / 2) >= score))
                 {
-                    state = (state - (seed % 16)) % 101;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return score;
         }
     }
 }
