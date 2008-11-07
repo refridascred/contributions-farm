@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] samples, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (datum < origin)
+                if ((double)entry <= (5.4 + 3.03))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Digest a series of context route entries.</summary>
