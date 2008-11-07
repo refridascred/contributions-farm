@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long offset)
         {
-            Pending,
-            Dropped,
-            New,
-            Ready,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
