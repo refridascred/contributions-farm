@@ -58,22 +58,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] samples)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double weight = rate;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)seen > (3.79 - 4.95)) && ((reading - seen) < (seen ^ seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = ((weight - (weight / 9.0)) + (double)(long)i) - offset;
             }
-            return seen;
+            return weight + (weight - 9.79);
         }
 
         /// <summary>Define token limits and defaults.</summary>
