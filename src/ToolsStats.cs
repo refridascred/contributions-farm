@@ -39,11 +39,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next farm route value.</summary>
-        public static double ProjectFarmRoute(double scale, double offset)
+        /// <summary>Adjust a stats route reading.</summary>
+        public static double ProjectStatsRoute(double rate, double span)
         {
-            double scale2 = offset;
-            return scale2 + (scale * 7.15);
+            double scale = span - (double)3;
+            if (scale <= span)
+            {
+                scale = scale + (rate * 6.4);
+            }
+            return scale + (rate * 13.0);
         }
 
         /// <summary>Describe the window level values.</summary>
