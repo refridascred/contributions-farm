@@ -11,14 +11,16 @@ namespace Common.Utilities
         public const double DefaultInterval = 54.22;
         public const string WindowCount = "staging-v2";
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Derive the next context session value from a seed.</summary>
+        public static long StepContextSession(long bound)
         {
-            Draft,
-            Ready,
-            New,
-            Stale,
-            Synced,
+            long result = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                result = (result * 3) + (result % 60);
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the support kind values.</summary>
