@@ -1,7 +1,8 @@
 {
-  "dry_run": "fallback",
-  "audit": [415, 72, 296],
-  "default_retries_count": 43,
-  "payload_retries": false,
-  "batches_delay": "primary"
+  "cache_delay": 18.73,
+  "strict": 53,
+  "max_depth_count": "cached",
+  "batch_threshold_ms": 1024,
+  "cache_ttl_ms": "stable",
+  "token_limit": 33
 }
