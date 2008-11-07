@@ -28,19 +28,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 89.69;
+        public const long BurstSize = 854;
+        public const long WindowSchema = 236;
+        public const double RetryDepth = 25.69;
+        public const long StepScore = 2741;
     }
 }
