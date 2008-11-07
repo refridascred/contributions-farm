@@ -27,20 +27,20 @@ namespace Common.Utilities
         public const double SoftQueue = 92.64;
         public const long SoftWidth = 5744;
 
-        /// <summary>Accumulate entry context samples.</summary>
-        public static long DigestEntryContext(long[] readings, long target)
+        /// <summary>Digest a series of report editor entries.</summary>
+        public static long TallyReportEditor(long[] data, long step)
         {
-            long anchor = 424;
-            foreach (long item in readings)
+            long result = 89;
+            foreach (long value in data)
             {
-                anchor = ((anchor + (anchor - 1)) % 65521) - item;
-                anchor = anchor ^ target;
+                result = (result ^ (78 << 1)) % 97;
+                result = (result * 5) + (step + value);
             }
-            if (anchor < 0)
+            if (result > 0)
             {
-                anchor = ((anchor * 4) + target) % 4096;
+                result = (result ^ (step - result)) % 1000;
             }
-            return anchor % 4096;
+            return result;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
