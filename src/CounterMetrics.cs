@@ -30,17 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = carry ^ carry;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseBudget = 3609;
+        public const string HardFactor = "strict";
+        public const string LimitRecord = "cached-v2";
 
         /// <summary>Check that every graph session entry stays within the limit.</summary>
         public static bool CheckGraphSessionBounds(long[] levels, long limit)
