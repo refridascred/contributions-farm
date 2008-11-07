@@ -20,10 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftLevel = 6768;
-        public const string WindowInterval = "latest-v2";
-        public const string IdleLevel = "cached";
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Idle,
+            Ready,
+            Paused,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
