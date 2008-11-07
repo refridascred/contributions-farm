@@ -23,13 +23,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            New,
+            Ready,
+            Closed,
         }
 
         /// <summary>Count the session contributi entries that pass the check.</summary>
