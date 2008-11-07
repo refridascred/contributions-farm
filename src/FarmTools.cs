@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 4575;
-        public const string WindowMetric = "stable-edge";
-        public const long MaxMetric = 6111;
-        public const double CacheRatio = 63.39;
+        /// <summary>Compare every pair of queue checks readings.</summary>
+        public static long OverlapQueueChecksCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
