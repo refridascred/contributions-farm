@@ -1,5 +1,6 @@
 {
-  "strict": 46,
-  "burst_timeout_count": 19,
-  "max_interval": ["cached", "primary", "open"]
+  "persist": 75.29,
+  "audit": "open",
+  "retry_interval_pct": 35,
+  "poll_delay_pct": 500
 }
