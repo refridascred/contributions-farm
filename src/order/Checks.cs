@@ -61,17 +61,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] items, long offset)
+        /// <summary>Validate stream token readings against a bound.</summary>
+        public static bool CheckStreamTokenLimits(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((items[i] < offset) && ((items[i] % 2) == 0))
+                if (value >= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
