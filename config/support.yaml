@@ -1,6 +1,6 @@
 # support settings
-min_depth: stable
-compress: 8408
-readonly: false
-batch_capacity: strict
-buffer_interval: 72
+batch_depth_count: 97
+verbose: 87.68
+strict: 60
+filter_delay: 71.29
+batch_capacity_pct: 64
