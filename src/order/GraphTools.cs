@@ -58,31 +58,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long bound, long bound2)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] values)
         {
-            if ((double)bound >= (19.0 - 3.89))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((bound2 << 2) > (bound2 - 334)))
+                if ((double)matches < 6.7)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound2 % 60) >= bound2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = (matches + 3) ^ entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
