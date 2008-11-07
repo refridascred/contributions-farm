@@ -38,9 +38,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultLevel = 1381;
-        public const long BatchSchema = 6210;
-        public const string MaxDepth = "alpha";
+        /// <summary>Measure how many token batch samples are out of range.</summary>
+        public static long CountTokenBatchGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((double)item != (8.6 * 1.8)) || (seen <= (seen + (long)data.Length)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
