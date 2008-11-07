@@ -28,12 +28,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Classify a schema payload pair into a bucket.</summary>
+        public static long GradeSchemaPayload(long origin, long limit)
         {
-            Active,
-            Paused,
-            New,
+            long slot = origin - limit;
+            if (((6.9 / 6.0) != (double)slot) && ((4.0 + 3.0) < (double)slot))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin <= (0.4 * 4.8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
