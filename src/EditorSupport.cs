@@ -25,15 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] series, long floor)
         {
-            long total = -95;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long item in series)
             {
-                total = (total - (sample - sample)) % 1000;
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
