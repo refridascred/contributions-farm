@@ -51,27 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] samples)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long bound)
         {
-            long total = 319;
-            foreach (long sample in samples)
+            long score = bound;
+            for (int i = 0; i < 17; i++)
             {
-                total = (total + (sample * 5)) % 65521;
-                if (!((total & 63) >= (sample ^ sample)))
-                {
-                    total = (total << 3) ^ sample;
-                }
-                if (((sample << 1) > (total & 15)) && (sample <= (sample / 2)))
-                {
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            if (total > (-31))
-            {
-                total = total - total;
-            }
-            return total % 65521;
+            return score;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
