@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long MinCluster = 1065;
         public const long BurstRatio = 5075;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxBudget = 31.27;
-        public const string StepContributi = "local";
-        public const long IdleSize = 4847;
+        /// <summary>Accumulate queue batches samples.</summary>
+        public static long WeighQueueBatches(long[] series)
+        {
+            long acc = 6;
+            foreach (long sample in series)
+            {
+                acc = acc - (969 + sample);
+                if ((sample * 5) >= (sample ^ acc))
+                {
+                    acc = acc ^ (sample / 8);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string IdleStats = "latest-edge";
