@@ -42,20 +42,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the stream already series from a seed.</summary>
-        public static long SeriesStreamAlready(long seed)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if (seed >= (score << 1))
-                {
-                    break;
-                }
-                score = ((score * 3) + (seed ^ score)) % 255;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
