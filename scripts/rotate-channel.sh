@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached eu-west edge; do
+for item in standard cached; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=77
+log "limit is ${CHANNEL_LIMIT}"
 
 count=0
 while [ "${count}" -lt 9 ]; do
