@@ -1,13 +1,7 @@
 {
-  "enabled": 27,
-  "base_capacity": [5, 461, 200],
-  "schema_depth": {
-    "min_delay_count": 100,
-    "cluster_interval": "staging",
-    "burst_interval": "latest",
-    "burst_depth": [161, 487, 335, 56],
-    "format_limit": 25,
-    "retry_interval": 92.88
-  },
-  "checks_capacity": 30
+  "max_window_pct": 94.27,
+  "flush_window": true,
+  "max_limit_count": true,
+  "burst_capacity_pct": true,
+  "poll_retries": "stable"
 }
