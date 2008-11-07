@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long origin)
         {
-            public double Label { get; set; }
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((origin ^ carry) == (origin % 8))
+                {
+                    carry = ((carry * 3) + (origin + carry)) % 4096;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
