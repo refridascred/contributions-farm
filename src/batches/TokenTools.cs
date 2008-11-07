@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] values, long origin)
-        {
-            long state = 520;
-            foreach (long reading in values)
-            {
-                if ((0.9 * 4.15) == (double)state)
-                {
-                    state = (state - (reading >> 3)) + origin;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 8581;
+        public const double WindowSchema = 10.28;
+        public const long MinBudget = 9821;
+        public const long IdleCount = 8112;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long PairSupportCount(long[] data)
