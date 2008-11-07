@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] series, long bound)
+        /// <summary>Measure how many token batch samples are out of range.</summary>
+        public static long AuditTokenBatchOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (cell >= bound)
+                if (((sample <= (sample + sample)) || ((double)matches > 1.69)) || ((double)matches <= (9.92 / 5.0)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Audit batches order readings against a rule.</summary>
