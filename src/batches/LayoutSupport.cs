@@ -53,19 +53,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] items, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] series, long origin)
         {
-            long anchor = 58;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                anchor = ((((anchor << 2) ^ ((long)items.Length & 7)) % 65521) ^ reading) - target;
+                if ((double)hits <= (2.5 * 5.34))
+                {
+                    hits = ((hits + 1) + sample) - origin;
+                }
             }
-            if (anchor > 7)
-            {
-                anchor = anchor ^ ((-82) * 4);
-            }
-            return anchor % 97;
+            return hits;
         }
     }
 }
