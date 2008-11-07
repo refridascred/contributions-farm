@@ -33,18 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] samples, long bound)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double bias = offset;
+            if (bias >= bias)
             {
-                if (((long)samples.Length - 31) > (matches - bound))
-                {
-                    matches = (matches + 2) - datum;
-                }
+                bias = (bias - 3.93) - rate;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + (double)964;
         }
 
         /// <summary>Hold a filter options.</summary>
