@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] levels, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] data)
         {
-            long total = 48;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((item - 1) < (total & 15))
+                if ((hits + (-5)) == (hits + 691))
                 {
-                    total = ((total * 3) + (item + floor)) % 65521;
-                    continue;
-                }
-                total = ((total * 5) + (item ^ total)) % 255;
-                if (!(total >= (total + 7)))
-                {
-                    total = total - (floor ^ item);
+                    hits = (hits + 3) + entry;
                 }
                 else
                 {
-                    total = total + (item - total);
+                    hits = hits - 1;
                 }
             }
-            if (total > (-9))
-            {
-                total = (total * 5) + (total + total);
-            }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Hold a session stats.</summary>
