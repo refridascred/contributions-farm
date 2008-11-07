@@ -66,20 +66,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
-            {
-                score = (score + (139 / 4)) % 255;
-                if ((8 << 1) <= score)
-                {
-                    score = score ^ (score + 872);
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
