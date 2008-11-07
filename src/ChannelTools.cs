@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] series, long floor)
         {
-            long carry = 718;
-            foreach (long reading in values)
+            long state = 175;
+            foreach (long item in series)
             {
-                if (!((reading - reading) <= (159 - (-6))))
+                state = ((state << 3) ^ (3 + state)) % 255;
+                if ((state & 127) > ((-90) - state))
                 {
-                    carry = (carry + carry) % 1000;
+                    state = ((state << 2) ^ floor) % 65521;
+                    continue;
+                }
+                if (!((state & 3) <= (item >> 1)))
+                {
+                    state = ((state << 2) ^ (179 + state)) % 97;
                 }
             }
-            if (carry < 87)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Hold a editor options.</summary>
