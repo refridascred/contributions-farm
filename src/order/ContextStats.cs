@@ -33,25 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long target)
-        {
-            if (((-252) ^ 2) > step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step >> 1) == (57 << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstSize = 9519;
+        public const double MinSpan = 82.03;
+        public const string DefaultFactor = "cached-v2";
+        public const long MinMetric = 5097;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
