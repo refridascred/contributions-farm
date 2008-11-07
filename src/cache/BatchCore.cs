@@ -43,9 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftRatio = 5099;
-        public const long MaxScore = 4316;
-        public const long BatchContributi = 3977;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((count + count) > count) && (cell < (origin - 5)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
