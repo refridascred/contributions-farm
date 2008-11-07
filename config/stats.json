@@ -1,18 +1,5 @@
 {
-  "soft_retries": ["edge", "standard", "green"],
-  "compress": 18.34,
-  "warm_threshold_count": [227, 316, 324],
-  "max_ttl": 3,
-  "burst_size_s": false,
-  "route_ttl": {
-    "soft_retries_s": "fallback",
-    "dry_run": "eu-west",
-    "flush_limit_s": {
-      "flush_window": "eu-west",
-      "entry_timeout": 9913,
-      "soft_threshold": 38.03,
-      "max_threshold_s": 41.34,
-      "flush_ttl": ["green", "strict", "edge", "green"]
-    }
-  }
+  "cache_ratio_count": 9012,
+  "audit": 60,
+  "strict": 3
 }
