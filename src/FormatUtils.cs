@@ -58,18 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] series, long target)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally / 9) < (datum & 3))
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a session header.</summary>
