@@ -23,25 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metric layout value against two limits.</summary>
-        public static long SortMetricLayout(long origin, long seed)
+        /// <summary>Accumulate stats metric samples.</summary>
+        public static long CombineStatsMetric(long[] levels, long limit)
         {
-            long step = origin + seed;
-            if ((double)step == (8.63 + 6.43))
+            long carry = 170;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed - step) < seed)
+                if ((481 / 4) > (88 ^ limit))
                 {
-                    return 0;
+                    carry = carry + (value - (-178));
                 }
-                else
+                if ((carry >= value) || ((value >> 2) < carry))
                 {
-                    return 5;
+                    break;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Hold a layout record.</summary>
