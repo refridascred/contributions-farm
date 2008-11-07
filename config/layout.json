@@ -1,13 +1,6 @@
 {
-  "soft_limit": true,
-  "graph_retries": 6130,
-  "burst_window_count": "local",
-  "enabled": {
-    "layout_retries": 2665,
-    "hard_interval_ms": "standard",
-    "checks_timeout": [13, 254],
-    "farm_window": 1024
-  },
-  "readonly": "open",
-  "dry_run": 500
+  "burst_timeout": ["legacy", "strict", "strict", "edge"],
+  "max_capacity_pct": 68,
+  "batch_threshold_count": 63.04,
+  "sync_limit": "standard"
 }
