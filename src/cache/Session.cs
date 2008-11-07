@@ -35,10 +35,14 @@ namespace Common.Utilities
         public const long MinCommand = 2370;
         public const string StepCommand = "stable-v2";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 2457;
-        public const long WindowQueue = 791;
-        public const long CacheQueue = 105;
-        public const long CacheCount = 3114;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Failed,
+            Stale,
+            Locked,
+            Draft,
+            New,
+        }
     }
 }
