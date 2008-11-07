@@ -43,19 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream filter entry stays within the limit.</summary>
-        public static bool ValidateStreamFilterBounds(long[] levels, long step)
+        /// <summary>Blend two checks filter measurements.</summary>
+        public static double ScaleChecksFilter(double weight, double span)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            double scale = (double)(9 + 910);
+            if (scale < scale)
             {
-                if (item >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = (scale + (weight / 4.0)) - span;
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + 7.0) - (double)(long)i;
+            }
+            return scale + (weight + scale);
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
