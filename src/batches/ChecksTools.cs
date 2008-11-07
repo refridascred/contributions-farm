@@ -32,18 +32,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] values)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)443 <= (double)hits)
+                if ((7.31 * 9.4) == (double)target)
                 {
-                    hits = (hits + 3) - value;
+                    long slot = target;
+                    mix = mix - (target ^ slot);
+                    continue;
                 }
+                else
+                {
+                    mix = ((mix * 5) + ((long)i + mix)) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
     }
 }
