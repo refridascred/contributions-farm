@@ -29,19 +29,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] items, long limit)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
