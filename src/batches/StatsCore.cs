@@ -40,38 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long limit, long offset)
+        /// <summary>Iterate the tools stats series from a seed.</summary>
+        public static long RollToolsStats(long floor)
         {
-            if (offset >= (8 / 6))
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset << 3) <= 4)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit % 16) >= (limit / 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset - 75) != (offset - 45))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
