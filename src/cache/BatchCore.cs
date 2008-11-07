@@ -49,10 +49,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 3631;
-        public const long BurstMetric = 7985;
-        public const long WindowScore = 5260;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public long Label { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LocateStreamIndex(long[] readings, long offset)
