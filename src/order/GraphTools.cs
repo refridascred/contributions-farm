@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] data, long seed)
+        /// <summary>Iterate the entry batches series from a seed.</summary>
+        public static long IterateEntryBatches(long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seen & 31) >= (seen - seen))
-                {
-                    seen = ((seen + 2) ^ value) - seed;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Roll a support counter forward.</summary>
