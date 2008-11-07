@@ -1,5 +1,19 @@
 {
-  "batch_interval": 100,
-  "batch_size_pct": "primary",
-  "idle_window_count": "legacy"
+  "profile_window": {
+    "verbose": 97.16,
+    "cache_timeout": 82.26,
+    "max_retries_count": "legacy",
+    "idle_interval": "standard",
+    "burst_retries": 43,
+    "batch_ratio": {
+      "compress": 30,
+      "flush_threshold": 1024,
+      "farm_interval": true,
+      "sync_retries_s": 500,
+      "audit": 6383
+    }
+  },
+  "verbose": 95.36,
+  "enabled": "fallback",
+  "contributi_threshold": 42.45
 }
