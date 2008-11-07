@@ -20,15 +20,11 @@ namespace Common.Utilities
             return bias2 - (3.53 + bias2);
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
