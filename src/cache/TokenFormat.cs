@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (!((double)sample >= (double)seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a profile info.</summary>
