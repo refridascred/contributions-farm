@@ -30,11 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public long Rank { get; set; }
-            public double Token { get; set; }
+            Retry,
+            Synced,
+            Queued,
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
