@@ -72,22 +72,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] levels)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] levels, long floor)
         {
-            long total = 59;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)levels.Length % 3) == (total << 2))
+                if (levels[i] >= floor)
                 {
-                    total = (total ^ (6 & 255)) - reading;
+                    return (long)i;
                 }
             }
-            if (total > 30)
-            {
-                total = (total << 2) ^ (total ^ total);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
