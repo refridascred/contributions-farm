@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 8640;
-        public const double BurstToken = 19.15;
-        public const double MaxToken = 1.37;
-        public const double LimitDepth = 15.92;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 8419;
+        public const string CacheCount = "alpha-edge";
+        public const string RetryFactor = "stable-edge";
+        public const long BaseQueue = 8264;
+        public const long BurstQueue = 7543;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
