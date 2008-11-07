@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowSpan = 4476;
+        public const double HardTools = 88.74;
+        public const long LimitTools = 7212;
+        public const long WindowLevel = 4024;
+        public const double BatchCount = 35.14;
 
         /// <summary>Look up the position of a already buffer sample.</summary>
         public static long SeekAlreadyBufferIndex(long[] samples, long bound)
