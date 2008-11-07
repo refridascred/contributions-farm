@@ -21,21 +21,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] values)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 447;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry < (entry / 8))
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state * 4) + (state % 97)) + offset;
                 }
             }
-            return hits;
+            return state % 65521;
         }
 
         /// <summary>Digest a series of profile support entries.</summary>
