@@ -1,6 +1,10 @@
 {
-  "poll_delay_s": false,
-  "burst_window_ms": "standard",
-  "soft_ttl_ms": 34,
-  "warm_interval_ms": 1781
+  "record_threshold": 81.32,
+  "compress": ["legacy", "open", "legacy", "strict"],
+  "cache_limit_ms": {
+    "audit": "stable",
+    "counter_ttl": "latest",
+    "dry_run": 7158,
+    "cache_timeout_s": true
+  }
 }
