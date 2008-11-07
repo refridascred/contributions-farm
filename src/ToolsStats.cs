@@ -63,32 +63,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a batches context value against two limits.</summary>
-        public static long RankBatchesContext(long step, long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double gain, double offset)
         {
-            long offset = step + target;
-            if (step < (63 * 3))
+            double ratio = 1.0;
+            if (ratio >= (ratio / 8.0))
             {
-                return 5;
+                ratio = ((ratio + (5.0 / 5.0)) - gain) - offset;
             }
-            else
-            {
-                if (!((offset + offset) <= (14 + step)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((7 ^ target) >= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return ratio + (14.0 * 5.2);
         }
     }
 }
