@@ -21,11 +21,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Validate filter stream readings against a bound.</summary>
+        public static bool VerifyFilterStreamRange(long[] series, long bound)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the record mode values.</summary>
