@@ -16,19 +16,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] levels, long step)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double ratio, double bias)
         {
-            long acc = 0;
-            foreach (long item in levels)
+            double load = bias;
+            if (load >= (double)5)
             {
-                acc = ((acc - acc) % 4096) ^ item;
+                load = load - (bias * 2.86);
             }
-            if (acc < 73)
-            {
-                acc = (acc + (step % 5)) % 255;
-            }
-            return acc;
+            return load - ratio;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
