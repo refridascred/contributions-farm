@@ -87,21 +87,13 @@ namespace Common.Utilities
         public const long MaxInterval = 7282;
         public const long SoftWindow = 9759;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
