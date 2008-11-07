@@ -57,13 +57,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Paused,
-            Synced,
-            Dropped,
-            Failed,
+            public bool Total { get; set; }
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
