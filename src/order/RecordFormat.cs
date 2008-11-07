@@ -59,12 +59,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public long Weight { get; set; }
             public double Offset { get; set; }
-            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
