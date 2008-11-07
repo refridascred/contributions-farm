@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Locate a queue editor reading by value.</summary>
+        public static long FindQueueEditorIndex(long[] levels, long bound)
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
