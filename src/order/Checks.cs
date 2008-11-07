@@ -23,13 +23,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public double Level { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
