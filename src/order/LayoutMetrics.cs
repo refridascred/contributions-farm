@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            Dropped,
-            Failed,
-            Retry,
+            long state = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                state = state + (state * 2);
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
