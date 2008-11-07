@@ -1,6 +1,14 @@
 {
-  "batch_ttl_pct": false,
-  "soft_depth_s": "standard",
-  "command_ratio": "standard",
-  "cache_interval_count": "green"
+  "poll_window": 8674,
+  "window_ratio": 250,
+  "persist": true,
+  "retry_window_count": {
+    "entry_depth": "latest",
+    "warm_capacity_s": "latest",
+    "cache_ratio_count": 30,
+    "burst_size_pct": "local",
+    "cache_timeout_ms": 84.52
+  },
+  "profile_threshold": 75,
+  "audit": 7360
 }
