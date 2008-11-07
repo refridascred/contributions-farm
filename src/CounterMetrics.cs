@@ -42,19 +42,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every window contributi entry stays within the limit.</summary>
-        public static bool VerifyWindowContributiRange(long[] values, long floor)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Count the entry order entries that pass the check.</summary>
