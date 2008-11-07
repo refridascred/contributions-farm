@@ -51,9 +51,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 7717;
-        public const long BatchLayout = 216;
-        public const string MinLayout = "latest-v2";
+        /// <summary>Count stats record pairs that satisfy a relation.</summary>
+        public static long CompareStatsRecordCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
