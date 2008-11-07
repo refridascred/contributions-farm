@@ -1,9 +1,8 @@
 # support settings
-min_delay_pct: eu-west
-format_ratio: 95
-default_limit_ms:
-  - green
-  - eu-west
-base_size_pct: strict
-idle_threshold_s: 500
-min_capacity: true
+hard_ttl_s: open
+retry_window: blue
+cache_delay:
+  - staging
+  - stable
+  - strict
+entry_capacity: eu-west
