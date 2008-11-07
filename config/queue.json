@@ -1,6 +1,11 @@
 {
-  "idle_limit": 67.97,
-  "idle_limit_pct": [412, 231],
-  "editor_delay": 436,
-  "compress": 85.62
+  "warm_depth": "primary",
+  "cache_depth_s": "latest",
+  "buffer_depth": 74.9,
+  "stream_interval": {
+    "strict": 59.11,
+    "batch_limit": 5572,
+    "layout_retries": 31.39
+  },
+  "max_interval": 1
 }
