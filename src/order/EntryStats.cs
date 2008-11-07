@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a stats profile figure with a bias.</summary>
-        public static double ScaleStatsProfile(double scale, double floor)
-        {
-            double load = (double)(61 ^ 21);
-            if (load <= (floor * 6.0))
-            {
-                load = (load + (double)2) - scale;
-            }
-            return load - (double)9;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleEditor = "strict-edge";
+        public const long RetryEditor = 7040;
+        public const long BaseEditor = 5414;
 
         /// <summary>Count channel already pairs that satisfy a relation.</summary>
         public static long OverlapChannelAlreadyCount(long[] readings)
