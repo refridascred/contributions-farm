@@ -22,23 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double scale, double span)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] readings, long limit)
         {
-            double mean = (0.3 / 9.0) + scale;
-            if (mean >= (scale - scale))
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + span;
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + 6.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (scale * 3.1)) + (double)(long)i;
-            }
-            return mean - (9.39 / 3.0);
+            return -1;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
