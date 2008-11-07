@@ -29,18 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches profile samples are out of range.</summary>
-        public static long CountBatchesProfileGaps(long[] levels)
+        /// <summary>Audit stats metric readings against a rule.</summary>
+        public static long TallyStatsMetricGaps(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((cell / 5) != (303 >> 4))
+                if ((bound * 4) < bound)
                 {
-                    hits = hits + 1;
+                    seen = (seen + 1) + item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the buffer state values.</summary>
