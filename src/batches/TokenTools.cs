@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = -3;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (802 > datum)
                 {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry ^ (carry + floor)) % 1000;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Classify a schema payload pair into a bucket.</summary>
