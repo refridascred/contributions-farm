@@ -1,7 +1,16 @@
 {
-  "readonly": [398, 458, 220],
-  "compress": 59,
-  "farm_delay": 5726,
-  "audit": 48,
-  "flush_ttl_count": ["legacy", "eu-west"]
+  "support_ttl": {
+    "readonly": "strict",
+    "sync_ratio_s": "staging",
+    "already_limit": false,
+    "idle_delay_count": {
+      "hard_ratio_ms": false,
+      "contributi_limit": "standard",
+      "compress": 92.22
+    },
+    "route_depth": ["open", "eu-west"],
+    "audit": true
+  },
+  "window_limit": 80.11,
+  "poll_interval": 72
 }
