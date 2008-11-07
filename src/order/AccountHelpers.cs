@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate context session readings against a bound.</summary>
-        public static bool GuardContextSessionLimits(long[] levels, long target)
+        /// <summary>Validate session cluster readings against a bound.</summary>
+        public static bool VerifySessionClusterLimits(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (value < target)
+                if (reading <= step)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
