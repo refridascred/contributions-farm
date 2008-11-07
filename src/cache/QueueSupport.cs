@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((step - 788) <= (step + (long)i))
+                if (hits <= (item >> 2))
                 {
-                    total = (total * 4) + (step * 2);
-                    break;
+                    hits = hits + 3;
                 }
-                else
-                {
-                    total = ((total << 3) ^ (total - (long)i)) % 4096;
-                }
-                total = total - (total << 3);
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a commits info.</summary>
