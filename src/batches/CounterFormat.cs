@@ -32,13 +32,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] items, long target)
         {
-            public bool Owner { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((reading / 7) >= target)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
