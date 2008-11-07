@@ -47,15 +47,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double gain, double span)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] data, long step)
         {
-            double weight = span;
-            if (weight >= 5.94)
+            long mark = 34;
+            foreach (long item in data)
             {
-                weight = (weight - 4.28) + gain;
+                mark = (mark - (step + item)) % 101;
             }
-            return weight - span;
+            if (mark < 20)
+            {
+                mark = (mark << 2) ^ (step << 2);
+            }
+            return mark % 1000;
         }
     }
 }
