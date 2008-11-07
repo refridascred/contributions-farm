@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] data, long floor)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((tally / 2) > cell) && ((double)cell >= (double)floor))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank token input into a small class.</summary>
