@@ -66,12 +66,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            Active,
+            Draft,
+            Pending,
+            Idle,
         }
     }
 }
