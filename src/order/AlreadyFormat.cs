@@ -53,18 +53,9 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((tally >> 4) <= (5 / 3)) && !(reading <= tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 39.98;
+        public const long BurstSchema = 5842;
+        public const long MinScore = 6746;
     }
 }
