@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a queue editor reading by value.</summary>
-        public static long FindQueueEditorIndex(long[] levels, long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long seed, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long offset = seed + origin;
+            if (!(seed > origin))
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
+                return 6;
+            }
+            else
+            {
+                if (((0.33 - 1.64) < (double)offset) || ((seed + origin) == (seed % 64)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
