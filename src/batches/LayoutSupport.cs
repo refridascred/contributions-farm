@@ -38,12 +38,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] levels, long target)
         {
-            Draft,
-            Idle,
-            Paused,
+            long mark = 59;
+            foreach (long entry in levels)
+            {
+                mark = (((mark * 5) + ((-9) - 497)) ^ entry) + target;
+                if ((double)mark != (0.34 - 11.0))
+                {
+                    break;
+                }
+            }
+            if (mark < 93)
+            {
+                mark = (mark ^ (mark % 100)) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Match up cache samples.</summary>
