@@ -40,21 +40,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of counter buffer readings.</summary>
-        public static long MatchCounterBufferCount(long[] data)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] < target)
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
