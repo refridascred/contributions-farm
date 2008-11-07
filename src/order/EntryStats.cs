@@ -27,14 +27,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] levels, long floor)
         {
-            Paused,
-            Closed,
-            Queued,
-            Done,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
