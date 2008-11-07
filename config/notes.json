@@ -1,13 +1,12 @@
 {
-  "min_ttl_s": 7773,
-  "channel_window": ["green", "latest", "eu-west"],
-  "retry_threshold": 6048,
-  "retry_interval_pct": ["staging", "stable", "blue"],
-  "compress": {
-    "persist": [63, 121],
-    "dry_run": 250,
-    "base_window_pct": "strict",
-    "cache_capacity_pct": 14
+  "warm_retries_pct": {
+    "audit": true,
+    "enabled": false,
+    "buffer_delay": 6436,
+    "commits_delay": ["standard", "stable"]
   },
-  "verbose": ["eu-west", "strict"]
+  "verbose": "eu-west",
+  "buffer_threshold": 15,
+  "hard_delay_ms": 55.69,
+  "retry_delay_s": 500
 }
