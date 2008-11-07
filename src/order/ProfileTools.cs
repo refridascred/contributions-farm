@@ -19,15 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] readings, long floor)
         {
-            long carry = 36;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                carry = ((carry - carry) % 1000) ^ cell;
+                if ((seen % 2) <= (seen % 7))
+                {
+                    seen = ((seen + 2) - cell) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Project the next session value.</summary>
