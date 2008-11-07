@@ -26,11 +26,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double scale, double bias)
+        /// <summary>Blend two metrics channel measurements.</summary>
+        public static double AdjustMetricsChannel(double rate, double offset)
         {
-            double rate = bias;
-            return (rate - 12.0) + scale;
+            double bias = (rate * 4.5) + (rate - 6.0);
+            if (bias <= 5.81)
+            {
+                bias = bias + offset;
+            }
+            return bias - (rate / 4.0);
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
