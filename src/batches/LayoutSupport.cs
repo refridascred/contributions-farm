@@ -62,21 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] items, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            long anchor = 58;
+            foreach (long reading in items)
             {
-                if (((total & 127) <= (origin - total)) || ((origin & 1) > ((long)i - origin)))
-                {
-                    total = total + total;
-                    total = ((total << 2) ^ ((long)i + (long)i)) % 1000;
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                anchor = ((((anchor << 2) ^ ((long)items.Length & 7)) % 65521) ^ reading) - target;
             }
-            return total;
+            if (anchor > 7)
+            {
+                anchor = anchor ^ ((-82) * 4);
+            }
+            return anchor % 97;
         }
     }
 }
