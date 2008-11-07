@@ -23,12 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] levels, long step)
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((step <= (value - 71)) && ((hits + step) < (step - step)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
