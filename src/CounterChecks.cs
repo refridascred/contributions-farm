@@ -16,32 +16,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a order profile pair into a bucket.</summary>
-        public static long BucketOrderProfile(long step, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] data, long bound)
         {
-            long gap = step - limit;
-            if ((limit >> 2) > (25 + gap))
+            long state = -1;
+            foreach (long item in data)
             {
-                return 5;
+                state = ((state * 2) + (state << 3)) - item;
+                state = ((state << 2) ^ (state + bound)) % 4096;
             }
-            else
+            if (state > 303)
             {
-                if (gap > (gap << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((22 + step) < (limit << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                state = state + state;
             }
+            return state % 97;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
