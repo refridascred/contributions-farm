@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            Done,
+            Draft,
+            Pending,
+            Failed,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
