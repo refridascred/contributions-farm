@@ -57,22 +57,36 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long seed, long floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long limit, long offset)
         {
-            if ((seed << 3) >= (seed >> 5))
+            if ((offset << 2) <= offset)
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if (!((floor * 2) <= (floor + floor)))
+                if ((double)limit != (double)offset)
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    return 6;
+                    if ((offset + 906) >= ((-322) * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (9.25 / 6.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
