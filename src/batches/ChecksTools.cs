@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] readings)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double gain, double bias)
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (((double)count != (7.0 + 6.81)) || ((count & 63) <= (value + 914)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double drift = bias;
+            return (drift - bias) + gain;
         }
 
         /// <summary>Combine commits editor values into a single score.</summary>
