@@ -15,11 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Audit format command readings against a rule.</summary>
+        public static long CountFormatCommandOutliers(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally >> 5) != (value >> 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
