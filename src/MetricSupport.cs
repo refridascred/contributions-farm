@@ -27,26 +27,9 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] levels, long offset)
-        {
-            long mix = 3;
-            foreach (long reading in levels)
-            {
-                if (!((reading * 4) >= (mix % 16)))
-                {
-                    mix = ((mix * 2) + (mix & 255)) - offset;
-                }
-                if (!(mix > (mix ^ mix)))
-                {
-                    mix = mix ^ reading;
-                }
-            }
-            if (mix > 417)
-            {
-                mix = mix + (-251);
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstScore = "staging-edge";
+        public const long MinMetric = 4325;
+        public const long CacheScore = 369;
     }
 }
