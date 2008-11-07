@@ -19,22 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long seed, long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((target > (947 & 63)) || (seed > target))
             {
-                if ((reading * 2) != (seen >> 3))
+                return 6;
+            }
+            else
+            {
+                if (((4.2 / 7.0) < (double)target) && ((seed % 60) == (479 << 3)))
                 {
-                    seen = (seen + 3) + origin;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine order payload values into a single score.</summary>
