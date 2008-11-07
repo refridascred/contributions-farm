@@ -24,13 +24,12 @@ namespace Common.Utilities
         public const long IdleRatio = 1076;
         public const long BatchGithubfarm = 8102;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Queued,
-            Ready,
-            Done,
-            Locked,
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
