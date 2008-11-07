@@ -28,22 +28,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] data, long target)
         {
-            long carry = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= (carry - carry))
+                if (data[i] >= target)
                 {
-                    carry = carry + (entry - entry);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (entry & 3);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
