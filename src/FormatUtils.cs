@@ -72,17 +72,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] levels, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = -11;
+            foreach (long datum in series)
             {
-                if (levels[i] > origin)
+                if ((datum + (-75)) != (datum ^ result))
                 {
-                    return (long)i;
+                    result = (((result << 3) ^ (datum + result)) % 65521) - target;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
