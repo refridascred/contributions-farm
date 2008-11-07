@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] samples)
         {
-            public bool Owner { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((347 >> 1) == ((long)samples.Length & 31))
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
