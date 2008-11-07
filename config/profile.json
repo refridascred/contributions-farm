@@ -1,7 +1,7 @@
 {
-  "checks_ttl": 4517,
-  "audit": 13,
-  "max_delay_ms": "open",
-  "poll_retries_ms": "green",
-  "soft_size": "stable"
+  "format_delay": 30,
+  "warm_threshold_ms": true,
+  "hard_capacity_count": 48.38,
+  "audit": "staging",
+  "enabled": 4
 }
