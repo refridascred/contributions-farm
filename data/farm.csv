@@ -1,8 +1,9 @@
-id,level,owner,state
-1,fallback,986,eu-west
-2,360,92.29,stable
-3,54.83,61.37,163
-4,cached,381,18.37
-5,fallback,91.32,573
-6,480,953,27.96
-7,green,459,primary
+id,label
+1,967
+2,886
+3,0.42
+4,51.12
+5,91.81
+6,0.97
+7,456
+8,stable
