@@ -14,19 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] samples, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long target)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            if ((limit - target) <= (65 % 7))
             {
-                if (value != origin)
+                return 8;
+            }
+            else
+            {
+                if ((target + 55) == (limit * 3))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
