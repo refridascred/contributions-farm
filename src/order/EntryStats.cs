@@ -50,11 +50,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchSize = 3.78;
-        public const long BaseLayout = 4970;
-        public const long WindowLayout = 6356;
-        public const long BatchLayout = 5150;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((9.76 / 2.0) >= (double)item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long offset)
