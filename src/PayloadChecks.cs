@@ -31,22 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor token readings.</summary>
-        public static long DigestEditorToken(long[] values, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] values)
         {
-            long total = -7;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (1.27 > (double)reading)
+                if (((entry ^ hits) > entry) || ((317 << 3) == (hits + entry)))
                 {
-                    total = (((total << 2) ^ reading) % 97) - offset;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    total = (total + (51 - total)) % 1000;
+                    hits = hits - 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Grade a counter cache value against two limits.</summary>
