@@ -35,15 +35,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] data, long offset)
-        {
-            long state = 40;
-            foreach (long cell in data)
-            {
-                state = (state + offset) + cell;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftRatio = 5099;
+        public const long MaxScore = 4316;
+        public const long BatchContributi = 3977;
     }
 }
