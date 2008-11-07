@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 319;
-        public const string DefaultToken = "open-edge";
-        public const long WindowInterval = 8502;
-        public const double IdleToken = 33.16;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long DigestNotes(long[] samples)
