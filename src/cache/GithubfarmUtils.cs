@@ -53,13 +53,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitWidth = "fallback-v2";
+        public const long SoftSession = 6567;
+        public const long SoftDepth = 6134;
+        public const long StepBudget = 3174;
     }
 }
