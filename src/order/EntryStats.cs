@@ -50,14 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleSize = 50.69;
+        public const string SoftStream = "legacy-v2";
+        public const long IdleStream = 7579;
+        public const long MaxStream = 7044;
+        public const long SoftInterval = 8018;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
