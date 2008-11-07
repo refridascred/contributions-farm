@@ -1,10 +1,36 @@
 # entry settings
-schema_retries:
-  soft_size_s:
-    - fallback
-    - edge
-    - local
-  audit: stable
-  max_interval_ms: blue
-sync_delay_pct: 81.37
-burst_ttl_pct: true
+flush_size_count: 72.78
+retry_delay_count: blue
+verbose:
+  flush_ttl_count:
+    default_retries: local
+    base_threshold_s: 60
+    flush_window_ms: green
+    retry_limit_count: false
+  min_delay_ms:
+    - 22
+    - 498
+    - 203
+    - 33
+  tools_retries: 30
+min_ratio_count:
+  batch_limit_count:
+    max_size_s:
+      - 342
+      - 195
+    metrics_interval: staging
+    audit: 59
+    context_retries: 500
+    idle_size_s:
+      - 423
+      - 197
+      - 403
+  flush_size:
+    - latest
+    - strict
+  idle_timeout_s: 2779
+  batch_timeout: 60
+  window_capacity: 42
+  burst_depth_ms: false
+cache_window: legacy
+burst_ttl_count: false
