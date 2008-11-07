@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((offset - anchor) >= ((long)i * 5))
-                {
-                    anchor = ((anchor * 2) + (anchor ^ anchor)) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor ^ offset);
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheLevel = 3110;
+        public const long MinInterval = 1213;
+        public const long CacheWindow = 7804;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
