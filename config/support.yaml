@@ -1,15 +1,6 @@
 # support settings
-strict: 8.4
-record_interval:
-  - 348
-  - 74
-  - 344
-  - 370
-batch_capacity_ms: green
-support_size:
-  - 138
-  - 247
-  - 180
-  - 130
-base_depth: 36
-min_limit: 20
+min_limit_count:
+  - 387
+  - 454
+cache_threshold: green
+compress: 500
