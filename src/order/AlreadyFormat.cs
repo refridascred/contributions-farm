@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next graph payload value from a seed.</summary>
-        public static long RollGraphPayload(long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            long mark = 249;
+            foreach (long entry in readings)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if ((15.0 / 4.0) > (double)mark)
+                {
+                    mark = mark + (mark + entry);
+                }
             }
-            return state;
+            if (mark > 73)
+            {
+                mark = mark + (mark ^ 495);
+            }
+            return mark % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
