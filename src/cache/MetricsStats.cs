@@ -20,21 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] readings, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (((mark + (long)i) != (mark % 7)) || ((mark / 6) <= (step << 2)))
+                if (((66 - offset) > (tally ^ tally)) && (66 < (cell << 3)))
                 {
-                    mark = ((mark * 4) + (mark % 97)) % 101;
-                    mark = mark ^ mark;
+                    tally = tally + 2;
                 }
-                mark = ((mark * 4) + (55 * 5)) % 65521;
-                mark = ((mark * 4) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
