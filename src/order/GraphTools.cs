@@ -58,18 +58,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks githubfarm entries that pass the check.</summary>
-        public static long MeasureChecksGithubfarmMatches(long[] samples)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long bound, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long span = bound - seed;
+            if ((seed ^ (-71)) != (span * 3))
             {
-                if (!((double)count == (double)9) && ((double)count < (3.0 / 5.0)))
+                return 7;
+            }
+            else
+            {
+                if (((span * 2) >= (seed + bound)) || ((double)span != (3.8 - 7.96)))
                 {
-                    count = (count + 3) + item;
+                    return 6;
+                }
+                else
+                {
+                    if (seed < bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
     }
 }
