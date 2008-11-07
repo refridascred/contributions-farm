@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] values, long bound)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
