@@ -35,19 +35,19 @@ namespace Common.Utilities
         public const long StepBudget = 5560;
         public const double WindowEntry = 5.32;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] values, long origin)
+        /// <summary>Combine buffer stream values into a single score.</summary>
+        public static long FoldBufferStream(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long sum = 118;
+            foreach (long datum in samples)
             {
-                if (cell <= origin)
+                sum = (((sum + (sum >> 5)) % 255) ^ datum) + bound;
+                if ((double)sum >= (6.0 / 8.0))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Hold a contributi record.</summary>
