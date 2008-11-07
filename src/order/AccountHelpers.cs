@@ -38,10 +38,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSpan = 59.54;
-        public const long HardFactor = 99;
-        public const long BatchLevel = 2363;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Ready,
+            Done,
+            Dropped,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] samples)
