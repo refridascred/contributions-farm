@@ -31,20 +31,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 68.06;
+        public const long SoftContributi = 506;
+        public const long BatchSize = 6561;
 
         /// <summary>Count the already batch entries that pass the check.</summary>
         public static long TallyAlreadyBatchOutliers(long[] levels)
