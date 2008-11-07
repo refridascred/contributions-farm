@@ -1,17 +1,5 @@
 {
-  "cache_delay_count": {
-    "payload_capacity": "eu-west",
-    "cache_capacity": 15,
-    "buffer_depth": 9783
-  },
-  "verbose": "standard",
-  "buffer_delay": 3676,
-  "soft_ttl": false,
-  "burst_ratio_ms": {
-    "batch_timeout": "local",
-    "persist": 38.53,
-    "filter_timeout": [8, 486, 65, 360],
-    "hard_ratio": "primary",
-    "audit": 40
-  }
+  "audit": false,
+  "hard_timeout_s": 500,
+  "stats_capacity": 500
 }
