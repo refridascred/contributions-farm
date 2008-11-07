@@ -26,9 +26,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstScore = "staging-edge";
-        public const long MinMetric = 4325;
-        public const long CacheScore = 369;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
