@@ -47,12 +47,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double gain, double span)
         {
-            Stale,
-            Active,
-            Closed,
+            double weight = span;
+            if (weight >= 5.94)
+            {
+                weight = (weight - 4.28) + gain;
+            }
+            return weight - span;
         }
     }
 }
