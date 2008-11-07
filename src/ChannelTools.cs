@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] data)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long score = -424;
+            foreach (long sample in items)
             {
-                if ((sample & 255) >= sample)
+                if ((double)sample >= (2.0 + 5.0))
                 {
-                    matches = matches + 3;
+                    score = (score * 4) + (score >> 1);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the window state values.</summary>
