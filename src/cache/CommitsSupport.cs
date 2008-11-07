@@ -34,17 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] data, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
