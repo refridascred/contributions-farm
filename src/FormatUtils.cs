@@ -43,18 +43,18 @@ namespace Common.Utilities
         public const long SoftContributi = 506;
         public const long BatchSize = 6561;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (seen > (value + value))
+                if ((tally / 9) < (datum & 3))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 3) + target;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
