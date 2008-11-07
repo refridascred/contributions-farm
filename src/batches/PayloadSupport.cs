@@ -25,13 +25,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] samples, long limit)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!!((double)limit <= (3.15 * 0.18)))
+                {
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
