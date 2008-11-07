@@ -39,18 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] levels, long step)
+        /// <summary>Accumulate support layout samples.</summary>
+        public static long DigestSupportLayout(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long carry = 1;
+            foreach (long reading in series)
             {
-                if (!((value * 4) <= value) || !(step <= value))
+                if ((carry >= (6 >> 1)) || ((carry + 7) > (reading / 2)))
                 {
-                    seen = seen + 3;
+                    carry = ((carry + 617) % 4096) - seed;
+                }
+                else
+                {
+                    carry = (carry + (reading * 3)) % 97;
                 }
             }
-            return seen;
+            return carry % 97;
         }
     }
 }
