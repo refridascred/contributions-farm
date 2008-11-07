@@ -29,11 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 5977;
-        public const double BurstDepth = 31.75;
-        public const double SoftQueue = 92.64;
-        public const long SoftWidth = 5744;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryRatio = 4348;
+        public const long DefaultScore = 2862;
+        public const string StepReport = "cached";
+        public const long MaxReport = 199;
 
         /// <summary>Digest a series of report editor entries.</summary>
         public static long TallyReportEditor(long[] data, long step)
