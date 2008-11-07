@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] items)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long edge = origin - bound;
+            if ((bound & 31) <= origin)
             {
-                if (((long)items.Length <= (seen & 15)) || ((entry & 127) >= (entry ^ entry)))
+                return 0;
+            }
+            else
+            {
+                if (((-58) & 3) > origin)
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((20 - bound) == (edge * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin < 51)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
