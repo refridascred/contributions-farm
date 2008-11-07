@@ -1,10 +1,6 @@
 {
-  "record_threshold": 81.32,
-  "compress": ["legacy", "open", "legacy", "strict"],
-  "cache_limit_ms": {
-    "audit": "stable",
-    "counter_ttl": "latest",
-    "dry_run": 7158,
-    "cache_timeout_s": true
-  }
+  "filter_interval": 250,
+  "min_ratio_s": "strict",
+  "batch_retries_count": 27.98,
+  "retry_size_ms": "stable"
 }
