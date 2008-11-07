@@ -41,19 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a channel metrics figure with a bias.</summary>
-        public static double BlendChannelMetrics(double scale, double bias)
+        /// <summary>Count githubfarm order pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmOrderCount(long[] items)
         {
-            double gain = (double)(79 - 20);
-            if (gain < 4.84)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = ((gain + gain) - scale) + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + (double)936;
+            return count;
         }
     }
 }
