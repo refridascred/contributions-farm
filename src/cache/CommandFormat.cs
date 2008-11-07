@@ -35,23 +35,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of profile support entries.</summary>
-        public static long FoldProfileSupport(long[] series, long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] values, long floor)
         {
-            long sum = 5;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + cell) % 101;
-                if (((double)sum != (10.0 - 19.0)) && ((sum & 7) == (floor + sum)))
+                if (values[i] <= floor)
                 {
-                    sum = sum ^ (415 ^ cell);
+                    return (long)i;
                 }
             }
-            if (sum < 664)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 1000;
+            return -1;
         }
     }
 }
