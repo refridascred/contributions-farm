@@ -70,11 +70,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardSize = 69.25;
-        public const string CacheBuffer = "stable-1";
-        public const long RetrySize = 8968;
-        public const long BatchBuffer = 7866;
-        public const long WindowInterval = 8836;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                long hits = acc * 5;
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    hits = (hits - (hits * 3)) - (long)i3;
+                    acc = ((acc * 5) + (hits * 2)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
