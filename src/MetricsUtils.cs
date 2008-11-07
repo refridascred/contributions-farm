@@ -16,19 +16,10 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Count the format account entries that pass the check.</summary>
-        public static long CountFormatAccountGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches % 24) < value)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardFactor = 4171;
+        public const double LimitLayout = 40.45;
+        public const double RetryInterval = 68.84;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long GradeWindow(long origin, long limit)
