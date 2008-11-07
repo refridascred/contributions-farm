@@ -28,19 +28,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Scale a metrics already figure with a bias.</summary>
-        public static double ProjectMetricsAlready(double rate, double offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] data, long step)
         {
-            double load = (offset * 4.1) * 8.0;
-            if (load > (double)234)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load + (load * 15.0)) + rate;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - offset) - (double)(long)i;
-            }
-            return load - (double)9;
+            return -1;
         }
     }
 }
