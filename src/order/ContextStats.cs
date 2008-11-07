@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 300;
+        public const long IdleRecord = 9996;
+        public const long WindowRecord = 819;
+        public const double MinLevel = 18.08;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
