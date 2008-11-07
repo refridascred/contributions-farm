@@ -81,22 +81,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support layout samples.</summary>
-        public static long DigestSupportLayout(long[] series, long seed)
+        /// <summary>Digest a series of profile support entries.</summary>
+        public static long FoldProfileSupport(long[] series, long floor)
         {
-            long carry = 1;
-            foreach (long reading in series)
+            long sum = 5;
+            foreach (long cell in series)
             {
-                if ((carry >= (6 >> 1)) || ((carry + 7) > (reading / 2)))
+                sum = (sum + cell) % 101;
+                if (((double)sum != (10.0 - 19.0)) && ((sum & 7) == (floor + sum)))
                 {
-                    carry = ((carry + 617) % 4096) - seed;
-                }
-                else
-                {
-                    carry = (carry + (reading * 3)) % 97;
+                    sum = sum ^ (415 ^ cell);
                 }
             }
-            return carry % 97;
+            if (sum < 664)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 1000;
         }
     }
 }
