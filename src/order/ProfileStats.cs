@@ -61,13 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 1922;
+        public const long SoftFilter = 654;
+        public const string MaxFilter = "strict";
+        public const double BatchRatio = 49.64;
     }
 }
