@@ -1,5 +1,7 @@
 {
-  "enabled": 65,
-  "batch_interval": ["latest", "green"],
-  "entry_retries": ["open", "blue", "latest"]
+  "audit": ["cached", "eu-west", "local"],
+  "context_ratio": [224, 239, 17, 62],
+  "verbose": [157, 458, 94],
+  "batch_retries_count": 500,
+  "base_limit": 20
 }
