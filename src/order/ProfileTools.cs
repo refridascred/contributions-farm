@@ -77,15 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] readings, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((long)readings.Length <= (31 - (-56)))
+                {
+                    seen = ((seen + 3) ^ cell) + step;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
