@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] levels, long step)
+        /// <summary>Count the tools batches entries that pass the check.</summary>
+        public static long CountToolsBatchesMatches(long[] series)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((1 - datum) > (step + count))
+                if (seen > (sample - seen))
                 {
-                    count = count + 3;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
