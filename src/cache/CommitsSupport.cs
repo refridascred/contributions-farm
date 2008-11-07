@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] readings)
+        /// <summary>Look up the position of a metric metrics sample.</summary>
+        public static long SeekMetricMetricsIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sample << 1) < 32) && ((7 + 8) < (sample + hits)))
+                if (items[i] == seed)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a buffer info.</summary>
