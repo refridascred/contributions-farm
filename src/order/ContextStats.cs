@@ -30,22 +30,17 @@ namespace Common.Utilities
         public const double BaseScore = 89.65;
         public const double WindowCount = 70.58;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Find the first route token entry that matches the target.</summary>
+        public static long LocateRouteTokenIndex(long[] samples, long step)
         {
-            long mix = 734;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(value >= (mix + 660)))
+                if (samples[i] >= step)
                 {
-                    mix = (mix ^ (value - value)) % 101;
+                    return (long)i;
                 }
             }
-            if (mix < 7)
-            {
-                mix = mix - ((-339) ^ mix);
-            }
-            return mix % 1000;
+            return -1;
         }
     }
 }
