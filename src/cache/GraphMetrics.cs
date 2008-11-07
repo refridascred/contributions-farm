@@ -46,17 +46,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a cache already sample.</summary>
-        public static long FindCacheAlreadyIndex(long[] series, long limit)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
