@@ -37,18 +37,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] values)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((tally ^ 8) > (tally + tally))
+                if ((seen + seen) <= (bound & 255))
                 {
-                    tally = (tally + 1) ^ cell;
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
