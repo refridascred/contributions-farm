@@ -76,19 +76,18 @@ namespace Common.Utilities
             return (load + (6.4 * 0.35)) + offset;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] levels, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((bound + (long)i) < result)
+                if (!(((-477) >= tally) && ((double)seed <= (double)value)))
                 {
-                    result = (result * 3) + (bound / 5);
+                    tally = tally + 1;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return tally;
         }
     }
 }
