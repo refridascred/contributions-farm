@@ -1,12 +1,8 @@
 {
-  "already_limit": 4195,
-  "verbose": false,
-  "retry_depth": {
-    "batch_threshold": 8030,
-    "channel_ttl": "standard",
-    "enabled": 250,
-    "min_threshold": ["primary", "standard", "primary", "cached"],
-    "retry_limit": 30
-  },
-  "record_ttl": true
+  "farm_capacity": 6163,
+  "warm_limit": "primary",
+  "report_size": "staging",
+  "notes_size": 500,
+  "cache_interval_count": [451, 234, 398],
+  "audit": 38
 }
