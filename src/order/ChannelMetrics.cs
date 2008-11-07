@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] samples, long floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double bias, double span)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double bias2 = span;
+            if (bias2 > (bias - span))
             {
-                if ((entry ^ floor) >= 3)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias2 = bias2 + (bias - bias);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (double)(-1)) + (double)(long)i;
+            }
+            return bias2 - (3.53 + bias2);
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
