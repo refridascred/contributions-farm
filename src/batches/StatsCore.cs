@@ -18,12 +18,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 390;
-        public const long DefaultNotes = 6408;
-        public const long BaseNotes = 7770;
-        public const long SoftNotes = 5140;
-        public const long CacheTimeout = 2630;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 6699;
+        public const double LimitInterval = 69.04;
+        public const long LimitFactor = 9305;
+        public const string BurstGithubfarm = "primary";
+        public const string WindowCount = "strict";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinCount = 8864;
