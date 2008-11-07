@@ -1,14 +1,12 @@
 {
-  "checks_depth": "blue",
-  "dry_run": 75,
-  "flush_retries_s": {
-    "idle_limit": "staging",
-    "readonly": true,
-    "min_size_pct": {
-      "dry_run": false,
-      "readonly": "cached",
-      "verbose": 7795,
-      "persist": 4867
-    }
+  "commits_timeout": [283, 288, 151],
+  "cache_threshold": "fallback",
+  "batch_limit_pct": ["standard", "green", "open"],
+  "enabled": {
+    "min_timeout_ms": 100,
+    "poll_capacity": 91.89,
+    "warm_interval": false,
+    "warm_size_count": "strict",
+    "cache_ttl": 100
   }
 }
