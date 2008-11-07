@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] values, long limit)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
