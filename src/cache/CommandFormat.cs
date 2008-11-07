@@ -21,18 +21,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] levels, long offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long state = 447;
-            foreach (long entry in levels)
-            {
-                if (entry < (entry / 8))
-                {
-                    state = ((state * 4) + (state % 97)) + offset;
-                }
-            }
-            return state % 65521;
+            Synced,
+            Idle,
+            New,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
