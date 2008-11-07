@@ -1,14 +1,9 @@
 {
-  "strict": {
-    "hard_ttl_s": "stable",
-    "batch_size": 6891,
-    "default_ttl": false,
-    "cache_retries_pct": 60,
-    "batch_ratio_count": "blue",
-    "idle_depth_count": 4917
+  "notes_size": {
+    "default_threshold": "edge",
+    "warm_interval": "legacy",
+    "burst_limit": 100
   },
-  "burst_threshold_pct": "staging",
-  "min_timeout_pct": "legacy",
-  "batch_capacity_s": ["green", "cached", "fallback"],
-  "min_threshold_s": 0.46
+  "hard_size_ms": 3056,
+  "verbose": 46.72
 }
