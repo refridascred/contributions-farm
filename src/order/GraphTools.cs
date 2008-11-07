@@ -50,32 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long bound, long seed)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long span = bound - seed;
-            if ((seed ^ (-71)) != (span * 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((span * 2) >= (seed + bound)) || ((double)span != (3.8 - 7.96)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed < bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
+            public double Region { get; set; }
         }
     }
 }
