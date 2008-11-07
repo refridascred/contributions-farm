@@ -31,14 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Locked,
-            Done,
-            New,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxScore = 7260;
+        public const double IdleStream = 59.78;
+        public const long SoftStream = 361;
+        public const long BaseTimeout = 9425;
+        public const long DefaultStream = 9576;
 
         /// <summary>Project the next cache value.</summary>
         public static double AdjustCache(double rate, double span)
