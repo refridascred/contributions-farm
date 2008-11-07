@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double scale, double bias)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] values, long target)
         {
-            double mean = bias;
-            if (mean < scale)
+            bool found = true;
+            foreach (long datum in values)
             {
-                mean = mean - mean;
+                if (datum < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - 1.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (double)618) + (double)(long)i;
-            }
-            return mean + bias;
+            return found;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
