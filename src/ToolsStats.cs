@@ -28,19 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] samples, long step)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Queued,
+            Retry,
+            Locked,
+            Synced,
         }
 
         /// <summary>Adjust a stats route reading.</summary>
