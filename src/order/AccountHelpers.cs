@@ -19,21 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of order farm readings.</summary>
-        public static long PairOrderFarmCount(long[] values)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] <= bound)
                 {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
