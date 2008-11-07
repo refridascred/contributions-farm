@@ -66,18 +66,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((2.9 - 6.24) >= (double)cell)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseLayout = 50.33;
+        public const long SoftLayout = 152;
+        public const double StepLayout = 37.68;
     }
 }
