@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] samples, long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count < origin) && ((origin - datum) != (count % 12)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine record metrics values into a single score.</summary>
