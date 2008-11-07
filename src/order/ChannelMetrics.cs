@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
