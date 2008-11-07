@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public double Size { get; set; }
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
+            Ready,
+            Failed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Describe the filter phase values.</summary>
