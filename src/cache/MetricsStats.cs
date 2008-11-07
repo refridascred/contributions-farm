@@ -42,17 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] series, long offset)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
+                drift = (drift + weight) + (double)(long)i;
             }
-            return -1;
+            return drift - (double)179;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
