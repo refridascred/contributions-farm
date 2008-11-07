@@ -37,21 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 60;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((4.3 - 0.82) <= (double)seed)
                 {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (((state * 3) + (97 >> 5)) % 1000) - reading;
                 }
             }
-            return seen;
+            if (state < 0)
+            {
+                state = state ^ (59 - seed);
+            }
+            return state % 97;
         }
 
         /// <summary>Count stats record pairs that satisfy a relation.</summary>
