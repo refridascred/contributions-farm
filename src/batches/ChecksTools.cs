@@ -26,23 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] items, long step)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long sum = 1;
-            foreach (long sample in items)
-            {
-                sum = (sum + (sample - sum)) % 4096;
-                if (((0 * 3) <= step) || ((step >> 4) != (sample + sum)))
-                {
-                    break;
-                }
-            }
-            if (sum > 3)
-            {
-                sum = ((sum << 2) ^ (sum * 4)) % 65521;
-            }
-            return sum;
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
