@@ -40,11 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] levels, long step)
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (!((value * 4) <= value) || !(step <= value))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
