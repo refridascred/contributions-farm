@@ -34,18 +34,18 @@ namespace Common.Utilities
         public const long SoftContributi = 506;
         public const long BatchSize = 6561;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((tally - tally) != (long)readings.Length)
+                if (seen > (value + value))
                 {
-                    tally = (tally + 3) + item;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
