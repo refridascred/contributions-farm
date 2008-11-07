@@ -28,16 +28,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Match up record token samples.</summary>
+        public static long CompareRecordTokenCount(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total ^ (offset + total);
-                total = ((total * 4) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
