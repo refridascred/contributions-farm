@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] values, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long score = 80;
+            foreach (long value in series)
             {
-                if (!!((datum & 63) < 165))
+                if (((value ^ score) <= (score - 994)) || (value > 69))
                 {
-                    seen = (seen + 1) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = (score << 2) ^ (score + value);
                 }
             }
-            return seen;
+            if (score > 7)
+            {
+                score = ((score * 3) + (score * 3)) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Match up profile samples.</summary>
