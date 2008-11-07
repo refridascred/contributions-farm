@@ -36,15 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Closed,
+            Dropped,
+            Stale,
+            Idle,
+            Active,
         }
     }
 }
