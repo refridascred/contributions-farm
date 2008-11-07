@@ -60,31 +60,17 @@ namespace Common.Utilities
         public const long IdleTimeout = 164;
         public const long LimitSupport = 6527;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long target, long origin)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] series, long floor)
         {
-            if (!((double)target < (double)target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (5 > target)
+                if (series[i] <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin * 4) > target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
