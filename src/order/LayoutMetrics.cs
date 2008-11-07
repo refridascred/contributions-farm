@@ -16,11 +16,11 @@ namespace Common.Utilities
         public const string StepContributi = "local";
         public const long IdleSize = 4847;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 4862;
-        public const long MaxSession = 2244;
-        public const long DefaultSession = 1625;
-        public const long RetryWidth = 3628;
-        public const string BaseSession = "standard-edge";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleStats = "latest-edge";
+        public const long CacheStats = 977;
+        public const double BurstFactor = 84.55;
+        public const long MinCount = 2842;
+        public const string StepDepth = "fallback-edge";
     }
 }
