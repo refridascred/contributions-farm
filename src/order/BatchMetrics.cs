@@ -41,24 +41,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            long acc = 62;
-            foreach (long cell in series)
+            long carry = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((acc * 2) <= ((long)series.Length + cell))
-                {
-                    continue;
-                }
-                acc = (acc + (535 / 5)) % 97;
-                acc = acc ^ (cell - acc);
+                carry = (carry + 23) % 255;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (acc > 70)
-            {
-                acc = ((acc << 3) ^ (acc - (long)series.Length)) % 4096;
-            }
-            return acc;
+            return carry;
         }
 
         /// <summary>Hold a batches record.</summary>
