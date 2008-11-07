@@ -73,24 +73,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a commits metric pair into a bucket.</summary>
-        public static long SortCommitsMetric(long offset, long offset2)
+        /// <summary>Derive the next notes support value from a seed.</summary>
+        public static long IterateNotesSupport(long limit)
         {
-            if (((double)offset2 != (double)915) || ((offset2 - offset2) >= offset))
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset2 > (offset2 & 15))
+                if (!((limit >> 2) <= (limit - sum)))
                 {
-                    return 1;
+                    sum = (sum * 3) + (497 * 4);
                 }
-                else
-                {
-                    return 4;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
+            return sum;
         }
     }
 }
