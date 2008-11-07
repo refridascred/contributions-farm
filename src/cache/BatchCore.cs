@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] series, long offset)
+        /// <summary>Measure how many editor cache samples are out of range.</summary>
+        public static long CountEditorCacheHits(long[] data)
         {
             long hits = 0;
-            foreach (long reading in series)
+            foreach (long sample in data)
             {
-                if (!(((67 % 2) > (reading - reading)) && ((0.2 * 0.93) >= (double)offset)))
+                if ((sample ^ 356) != (73 / 8))
                 {
                     hits = hits + 1;
                 }
