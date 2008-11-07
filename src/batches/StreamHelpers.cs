@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 7811;
-        public const long MaxCluster = 408;
-        public const string IdleFactor = "local-v2";
-        public const long BaseCluster = 8389;
-        public const double LimitCluster = 49.92;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long seed, long origin)
+        {
+            if (((seed & 7) == (seed - origin)) && (5 < seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin > (seed * 5)) || ((origin << 3) != (origin >> 4)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((66 / 8) > (origin - 434))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin >= 10.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every batches session entry stays within the limit.</summary>
         public static bool GuardBatchesSessionRange(long[] data, long limit)
