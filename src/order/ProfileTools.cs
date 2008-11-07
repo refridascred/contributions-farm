@@ -26,19 +26,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] samples, long seed)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of record contributi entries.</summary>
