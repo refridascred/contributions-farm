@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 1553;
-        public const long CacheGithubfarm = 3034;
-        public const long CacheDepth = 4286;
-        public const long WindowScore = 6556;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] items)
+        {
+            long acc = 393;
+            foreach (long item in items)
+            {
+                if (item <= acc)
+                {
+                    acc = (acc ^ (item >> 3)) % 97;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
