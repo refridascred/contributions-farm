@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the format schema series from a seed.</summary>
-        public static long RollFormatSchema(long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            long state = -719;
+            foreach (long value in data)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((2.5 - 7.01) < (double)value)
+                {
+                    state = ((state << 3) ^ (263 - state)) % 97;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (10 & 3)) % 97;
+                }
             }
-            return acc;
+            if (state > 30)
+            {
+                state = (state - state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
