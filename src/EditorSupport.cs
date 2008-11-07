@@ -66,19 +66,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate notes checks readings against a bound.</summary>
-        public static bool ValidateNotesChecksLimits(long[] values, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (sample != step)
+                if (cell >= offset)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
