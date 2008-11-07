@@ -49,14 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCount = 6929;
+        public const double DefaultWidth = 21.56;
+        public const long MinCommand = 2370;
+        public const string StepCommand = "stable-v2";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleQueue = 2457;
