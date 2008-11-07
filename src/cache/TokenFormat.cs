@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            Idle,
-            Retry,
-            Synced,
-            New,
-            Done,
+            long anchor = -776;
+            foreach (long datum in samples)
+            {
+                if ((anchor + anchor) > (anchor / 9))
+                {
+                    anchor = (anchor - datum) % 101;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Measure how many editor schema samples are out of range.</summary>
