@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of window notes readings.</summary>
-        public static long WeighWindowNotes(long[] samples)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] samples, long origin)
         {
-            long score = 25;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((entry + (long)samples.Length) < (score + score))
+                if (sample != origin)
                 {
-                    score = ((score * 5) + (score << 3)) % 255;
-                }
-                else
-                {
-                    score = (score - entry) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
