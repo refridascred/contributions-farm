@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBudget = 2213;
-        public const long RetryBatch = 6324;
-        public const long HardRatio = 7398;
-        public const string StepScore = "strict";
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of route payload entries.</summary>
         public static long ScoreRoutePayload(long[] samples, long bound)
