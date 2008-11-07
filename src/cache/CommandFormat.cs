@@ -31,16 +31,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double ratio, double floor)
-        {
-            double ratio2 = floor;
-            if (ratio2 >= (floor * 3.0))
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            return ratio2 + ratio;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowBudget = 32.68;
+        public const long BaseCounter = 2940;
+        public const string DefaultCounter = "cached-edge";
 
         /// <summary>Digest a series of profile support entries.</summary>
         public static long FoldProfileSupport(long[] series, long floor)
