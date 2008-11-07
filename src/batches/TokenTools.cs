@@ -62,19 +62,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double rate, double bias)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] values)
         {
-            double mean = (double)((-389) << 3);
-            if (mean < bias)
+            long tally = 0;
+            foreach (long item in values)
             {
-                mean = (mean + (double)0) + rate;
+                if ((double)(long)values.Length == (8.44 / 7.0))
+                {
+                    tally = (tally + 2) ^ item;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (double)9) + (double)(long)i;
-            }
-            return mean + (mean + bias);
+            return tally;
         }
     }
 }
