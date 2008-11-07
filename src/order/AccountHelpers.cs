@@ -67,18 +67,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] data, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item - item) == (item + item))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
