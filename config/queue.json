@@ -1,8 +1,21 @@
 {
-  "hard_retries_ms": 1344,
-  "cache_window_s": "strict",
-  "format_capacity": "latest",
-  "soft_ratio_ms": 60,
-  "graph_delay": 9719,
-  "graph_threshold": "legacy"
+  "sync_delay_count": 98.87,
+  "hard_threshold": false,
+  "batch_delay": {
+    "context_limit": 54,
+    "dry_run": ["standard", "blue"],
+    "commits_ratio": "blue",
+    "command_depth": 40.77,
+    "min_delay": {
+      "burst_delay_s": "cached",
+      "batch_limit_count": 85,
+      "poll_depth_ms": true,
+      "flush_ttl_count": 40.17,
+      "soft_retries": 22,
+      "compress": 26.51
+    }
+  },
+  "soft_timeout_ms": false,
+  "warm_ttl": "legacy",
+  "readonly": "local"
 }
