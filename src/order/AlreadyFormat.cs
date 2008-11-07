@@ -77,19 +77,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleRatio = 24.26;
+        public const double IdleLevel = 5.6;
+        public const long MinStats = 8536;
     }
 }
