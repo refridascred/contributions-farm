@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm account entries that pass the check.</summary>
-        public static long CountFarmAccountGaps(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (!((double)count >= (15.0 * 7.6)) && ((19.0 * 3.0) == (double)datum))
+                if (!((double)datum > (10.0 / 8.0)) || ((double)tally != (11.0 - 2.3)))
                 {
-                    count = count + 3;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every window contributi entry stays within the limit.</summary>
