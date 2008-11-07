@@ -109,15 +109,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double gain, double offset)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            double gain2 = 9.78;
-            if (gain2 > (double)12)
-            {
-                gain2 = (gain2 - (gain * 8.0)) - offset;
-            }
-            return gain2 - (gain2 + gain2);
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
