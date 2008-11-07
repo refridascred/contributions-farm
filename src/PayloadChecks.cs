@@ -79,19 +79,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (entry >= (entry - (-732)))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 2410;
+        public const long MinSchema = 3173;
+        public const double BaseSchema = 61.01;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TotalContext(long[] samples, long origin)
