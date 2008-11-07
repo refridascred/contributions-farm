@@ -68,11 +68,13 @@ namespace Common.Utilities
         public const double MinFormat = 32.01;
         public const long BaseRatio = 1818;
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public double Region { get; set; }
-            public bool Flag { get; set; }
+            Pending,
+            Paused,
+            Queued,
+            Idle,
         }
     }
 }
