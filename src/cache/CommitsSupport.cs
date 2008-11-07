@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long SoftScore = 1479;
         public const long BatchScore = 827;
 
-        /// <summary>Derive the next graph payload value from a seed.</summary>
-        public static long SeriesGraphPayload(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total << 3) ^ (0 + target);
-                total = total + total;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 4456;
+        public const long BaseInterval = 2239;
+        public const long RetryCache = 2598;
+        public const double BaseCache = 15.91;
+        public const long CacheLevel = 2843;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesHits(long[] readings)
