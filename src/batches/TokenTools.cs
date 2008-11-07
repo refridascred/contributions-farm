@@ -32,38 +32,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long floor, long offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            if ((offset & 127) <= (offset + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor % 16) == (floor ^ offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + 43) > 971)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor << 2) == (floor / 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Idle,
         }
     }
 }
