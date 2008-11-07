@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long offset, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] samples, long bound)
         {
-            if ((offset << 1) < (step / 9))
+            bool flag = true;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 12) < offset)
+                if (item >= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
