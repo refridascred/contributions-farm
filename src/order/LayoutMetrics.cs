@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] samples, long offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long mix = 2;
-            foreach (long sample in samples)
-            {
-                if (!((offset / 9) > mix))
-                {
-                    mix = mix - (sample * 2);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (617 / 5)) % 255;
-                }
-            }
-            return mix;
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
