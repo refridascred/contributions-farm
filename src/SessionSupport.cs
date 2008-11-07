@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Measure how many farm cluster samples are out of range.</summary>
+        public static long CountFarmClusterHits(long[] data, long floor)
         {
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)value >= (double)count)
+                {
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
