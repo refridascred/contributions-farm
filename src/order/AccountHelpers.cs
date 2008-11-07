@@ -43,19 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two checks filter measurements.</summary>
-        public static double ScaleChecksFilter(double weight, double span)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            double scale = (double)(9 + 910);
-            if (scale < scale)
-            {
-                scale = (scale + (weight / 4.0)) - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + 7.0) - (double)(long)i;
-            }
-            return scale + (weight + scale);
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
