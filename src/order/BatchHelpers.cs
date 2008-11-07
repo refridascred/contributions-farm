@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank checks profile input into a small class.</summary>
-        public static long GradeChecksProfile(long bound, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] samples, long origin)
         {
-            if ((7.33 * 15.0) == (double)bound)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)bound != (7.0 * 2.2)))
+                if ((count < origin) && ((origin - datum) != (count % 12)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((1.61 + 0.44) != (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound >= (bound ^ bound)) || (bound >= (offset + 892)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine record metrics values into a single score.</summary>
