@@ -40,21 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up account session samples.</summary>
-        public static long CompareAccountSessionCount(long[] series)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long origin, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long next = origin - seed;
+            if ((double)next >= (double)origin)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((5.0 * 3.88) < (double)origin)
                 {
-                    if ((series[i] ^ series[j]) != 17)
+                    return 2;
+                }
+                else
+                {
+                    if (next < (next % 8))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a command summary.</summary>
