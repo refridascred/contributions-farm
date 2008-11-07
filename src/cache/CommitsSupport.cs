@@ -27,23 +27,12 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] levels, long step)
-        {
-            long anchor = -538;
-            foreach (long cell in levels)
-            {
-                if ((243 * 3) > (anchor << 2))
-                {
-                    anchor = ((anchor - (0 + step)) % 4096) ^ cell;
-                }
-            }
-            if (anchor > 951)
-            {
-                anchor = (anchor + anchor) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "strict-edge";
+        public const string BaseRoute = "primary-v2";
+        public const long CacheRoute = 7041;
+        public const long HardRoute = 4571;
+        public const string BatchRoute = "latest";
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] data, long seed)
