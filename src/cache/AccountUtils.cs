@@ -23,9 +23,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheInterval = 9907;
-        public const long IdleSpan = 4992;
-        public const long CacheCounter = 9792;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Ready,
+            Failed,
+            Pending,
+            Synced,
+            Retry,
+        }
     }
 }
