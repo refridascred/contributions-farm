@@ -41,18 +41,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] samples)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long score = 80;
+            foreach (long reading in readings)
             {
-                if ((9.76 / 2.0) >= (double)item)
-                {
-                    tally = tally + 1;
-                }
+                score = (((score << 3) ^ reading) % 97) - floor;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
