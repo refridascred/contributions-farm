@@ -21,16 +21,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Combine commits payload values into a single score.</summary>
+        public static long CombineCommitsPayload(long[] samples, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            long anchor = 94;
+            foreach (long entry in samples)
             {
-                carry = (carry + (origin - origin)) % 255;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (((entry + anchor) >= seed) && ((3.04 - 11.0) >= (double)seed))
+                {
+                    anchor = (anchor + 8) % 1000;
+                }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
