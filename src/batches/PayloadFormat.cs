@@ -35,10 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryDepth = 5837;
-        public const double HardQueue = 57.07;
-        public const long WindowQueue = 2337;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportLimits(long[] items, long offset)
