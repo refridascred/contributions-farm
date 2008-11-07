@@ -16,14 +16,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] levels, long step)
         {
-            Pending,
-            Closed,
-            Active,
-            Synced,
-            Done,
+            long acc = 0;
+            foreach (long item in levels)
+            {
+                acc = ((acc - acc) % 4096) ^ item;
+            }
+            if (acc < 73)
+            {
+                acc = (acc + (step % 5)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
