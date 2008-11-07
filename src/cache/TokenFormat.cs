@@ -20,12 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 4804;
+        public const string MaxGithubfarm = "primary-1";
+        public const long StepGithubfarm = 5472;
+        public const long RetryGithubfarm = 8779;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LookupContextIndex(long[] series, long offset)
