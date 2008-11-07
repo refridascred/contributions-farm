@@ -47,9 +47,12 @@ namespace Common.Utilities
         public const long StepFormat = 4899;
         public const string SoftTimeout = "local";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 1785;
-        public const double MaxSpan = 35.21;
-        public const string StepAlready = "latest-edge";
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Active,
+            Stale,
+            Failed,
+        }
     }
 }
