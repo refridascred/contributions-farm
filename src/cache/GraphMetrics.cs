@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Check that every filter command entry stays within the limit.</summary>
+        public static bool CheckFilterCommandLimits(long[] levels, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                mark = (mark - (floor & 7)) % 1000;
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (entry >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a stream options.</summary>
