@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 25;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((entry ^ entry) > entry)
                 {
-                    if ((data[i] ^ data[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                mark = (mark ^ (entry - entry)) % 255;
             }
-            return tally;
+            return mark % 65521;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
