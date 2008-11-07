@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Idle,
-            Pending,
-            Closed,
-            Stale,
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
