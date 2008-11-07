@@ -33,11 +33,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftSize = 2852;
-        public const double DefaultSpan = 88.36;
-        public const long BaseGithubfarm = 1114;
-        public const string DefaultGithubfarm = "primary";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 9417;
+        public const long HardTimeout = 1374;
+        public const long BatchFarm = 7573;
+        public const string MaxFarm = "standard";
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long MatchFarmCount(long[] readings)
