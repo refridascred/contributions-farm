@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long limit)
         {
-            Done,
-            Draft,
-            Pending,
-            Failed,
+            long score = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                score = score + score;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
