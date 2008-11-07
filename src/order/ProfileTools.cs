@@ -29,19 +29,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] items, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (sample > target)
+                if ((double)reading > 3.0)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) - seed;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
