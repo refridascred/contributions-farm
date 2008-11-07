@@ -58,15 +58,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Count the session batches entries that pass the check.</summary>
+        public static long TallySessionBatchesHits(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if ((16.0 * 15.0) != (double)tally)
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
