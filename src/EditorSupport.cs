@@ -16,17 +16,21 @@ namespace Common.Utilities
             return ratio2 - span;
         }
 
-        /// <summary>Look up the position of a already buffer sample.</summary>
-        public static long SeekAlreadyBufferIndex(long[] samples, long bound)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] == bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
