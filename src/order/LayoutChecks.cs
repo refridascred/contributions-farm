@@ -58,12 +58,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long seed)
         {
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
+            long state = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = state - (seed - seed);
+                    state = (state << 2) ^ (seed + (long)i2);
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of farm token readings.</summary>
