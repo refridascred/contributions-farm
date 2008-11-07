@@ -23,11 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchRatio = 3969;
-        public const double LimitWidth = 9.37;
-        public const long IdleRatio = 1076;
-        public const long BatchGithubfarm = 8102;
+        /// <summary>Grade a metric layout value against two limits.</summary>
+        public static long SortMetricLayout(long origin, long seed)
+        {
+            long step = origin + seed;
+            if ((double)step == (8.63 + 6.43))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed - step) < seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
