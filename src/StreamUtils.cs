@@ -50,12 +50,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftLevel = 5083;
-        public const double SoftPayload = 36.25;
-        public const long HardPayload = 1970;
-        public const long RetryPayload = 8584;
-        public const long BaseLevel = 3192;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long RankChannel(long step, long offset)
