@@ -12,19 +12,26 @@ namespace Common.Utilities
         public const long HardCache = 4010;
         public const string BatchLevel = "cached-v2";
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] samples, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long result = 62;
+            foreach (long reading in items)
             {
-                if (sample >= bound)
+                if ((reading + reading) < seed)
                 {
-                    stale = false;
-                    break;
+                    result = (result ^ result) % 4096;
+                }
+                else
+                {
+                    result = result ^ (-337);
                 }
             }
-            return stale;
+            if (result > (-5))
+            {
+                result = (result ^ (seed + 0)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Adjust a account reading.</summary>
