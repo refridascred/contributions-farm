@@ -46,35 +46,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] levels, long seed)
+        /// <summary>Validate metrics graph readings against a bound.</summary>
+        public static bool GuardMetricsGraphRange(long[] readings, long floor)
         {
-            long state = -91;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (((7.55 / 6.0) != (double)state) && ((double)seed < (5.3 + 3.42)))
+                if (reading >= floor)
                 {
-                    state = (state - (entry >> 3)) % 1000;
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    state = ((state * 3) + entry) ^ (long)i;
-                    state = ((state * 4) + (state + 586)) % 97;
-                }
-                if (seed <= (8 + state))
-                {
-                    state = ((state * 4) + (seed ^ state)) % 255;
-                }
-                else
-                {
-                    state = (state - (seed >> 3)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            if (state > 8)
-            {
-                state = state + (-628);
-            }
-            return state;
+            return ready;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
