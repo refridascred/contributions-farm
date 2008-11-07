@@ -1,9 +1,7 @@
 # support settings
-flush_retries: true
-soft_interval_s: 0.34
-verbose: 100
-persist:
-  compress: strict
-  poll_threshold_count: 31.86
-  batch_interval_count: 30
-  min_depth: 60
+base_delay_pct: cached
+poll_limit_ms:
+  schema_timeout: legacy
+  base_delay: 95
+  cache_ttl_count: cached
+batches_interval: 64.67
