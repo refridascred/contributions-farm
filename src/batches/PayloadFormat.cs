@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 3784;
         public const long StepLevel = 5519;
 
-        /// <summary>Count contributi report pairs that satisfy a relation.</summary>
-        public static long CompareContributiReportCount(long[] readings)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate2 = offset * 7.0;
+            if (rate2 <= (double)1)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate2 = rate2 + offset;
             }
-            return seen;
+            else
+            {
+                rate2 = rate2 + 3.0;
+            }
+            return rate2 - rate;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
