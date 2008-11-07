@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = 0;
+            foreach (long entry in levels)
+            {
+                mix = (mix * 5) + ((long)levels.Length + entry);
+            }
+            return mix;
         }
 
         /// <summary>Classify a schema payload pair into a bucket.</summary>
