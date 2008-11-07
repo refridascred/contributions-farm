@@ -48,15 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Active,
-            Dropped,
-            Retry,
-            Idle,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 3914;
+        public const double RetryTools = 60.79;
+        public const string BatchTools = "cached-v2";
+        public const long LimitScore = 1680;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterHits(long[] values)
