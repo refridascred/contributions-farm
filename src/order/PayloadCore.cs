@@ -36,12 +36,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Closed,
-            Locked,
-            Paused,
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
