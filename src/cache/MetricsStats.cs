@@ -47,15 +47,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double gain, double floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] values)
         {
-            double drift = (double)((-84) - 4);
-            if (drift >= (floor / 7.0))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                drift = (drift - (floor + drift)) - gain;
+                if ((hits + hits) >= (453 - 935))
+                {
+                    hits = (hits + 1) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift + (drift * 3.0);
+            return hits;
         }
     }
 }
