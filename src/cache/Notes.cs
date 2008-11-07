@@ -51,18 +51,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] data)
         {
-            long result = 510;
-            foreach (long datum in items)
+            long anchor = 55;
+            foreach (long sample in data)
             {
-                if ((result * 3) <= datum)
-                {
-                    result = ((result * 5) + (result >> 5)) % 4096;
-                }
+                anchor = ((anchor ^ (anchor + (long)data.Length)) % 255) + sample;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
