@@ -20,25 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long target, long offset)
-        {
-            if ((offset * 2) == (offset % 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.8 / 9.0) <= (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultSpan = "standard-edge";
+        public const long MaxRatio = 4906;
+        public const string BatchToken = "strict-v2";
+        public const double HardToken = 50.72;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
