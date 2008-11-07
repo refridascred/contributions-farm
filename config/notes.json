@@ -1,12 +1,6 @@
 {
-  "warm_retries_pct": {
-    "audit": true,
-    "enabled": false,
-    "buffer_delay": 6436,
-    "commits_delay": ["standard", "stable"]
-  },
-  "verbose": "eu-west",
-  "buffer_threshold": 15,
-  "hard_delay_ms": 55.69,
-  "retry_delay_s": 500
+  "base_ratio_pct": true,
+  "report_ratio": "eu-west",
+  "min_retries_s": false,
+  "batch_interval": "primary"
 }
