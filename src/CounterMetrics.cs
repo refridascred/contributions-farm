@@ -46,10 +46,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseBudget = 3609;
-        public const string HardFactor = "strict";
-        public const string LimitRecord = "cached-v2";
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] series)
+        {
+            long acc = 916;
+            foreach (long entry in series)
+            {
+                acc = (acc - (301 - entry)) % 65521;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
