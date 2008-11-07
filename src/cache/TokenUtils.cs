@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double bias, double bias2)
+        /// <summary>Check that every checks window entry stays within the limit.</summary>
+        public static bool CheckChecksWindowRange(long[] items, long limit)
         {
-            double weight = bias;
-            return (weight - (double)193) + bias2;
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the cluster level values.</summary>
