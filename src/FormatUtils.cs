@@ -52,17 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] levels, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the report class values.</summary>
