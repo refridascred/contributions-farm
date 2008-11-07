@@ -41,24 +41,17 @@ namespace Common.Utilities
         public const long WindowFactor = 5645;
         public const long BatchProfile = 5865;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long step, long offset)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] samples, long offset)
         {
-            if (!((8.0 / 9.0) > (double)offset))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) < (step * 2))
+                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
