@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long origin, long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] samples, long origin)
         {
-            if (((0.5 - 4.0) > (double)limit) && ((origin + origin) >= (limit & 1)))
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin << 1) == (limit * 4)) && ((origin + limit) == (origin >> 4)))
+                if (datum < origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)origin > (6.4 + 1.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Digest a series of context route entries.</summary>
