@@ -53,12 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 6122;
-        public const string CacheSession = "latest-v2";
-        public const string DefaultSession = "latest-1";
-        public const double CacheTimeout = 73.87;
-        public const long MaxSession = 7877;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long SeekContextIndex(long[] items, long offset)
