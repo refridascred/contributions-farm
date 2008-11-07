@@ -49,18 +49,13 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Measure how many layout channel samples are out of range.</summary>
-        public static long CountLayoutChannelOutliers(long[] values, long bound)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (!((64 + item) > (long)values.Length))
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
+            Failed,
+            Done,
+            Locked,
+            Ready,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
