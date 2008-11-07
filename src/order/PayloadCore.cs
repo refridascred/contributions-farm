@@ -43,15 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks metric samples are out of range.</summary>
-        public static long MeasureChecksMetricGaps(long[] data, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] samples)
         {
             long count = 0;
-            foreach (long value in data)
+            foreach (long sample in samples)
             {
-                if (((floor * 2) != (floor + value)) || ((249 - value) != (count * 4)))
+                if (!(count < (sample - sample)) && ((double)545 != (double)count))
                 {
-                    count = count + 3;
+                    count = count + 1;
                 }
             }
             return count;
