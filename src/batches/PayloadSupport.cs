@@ -38,25 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long offset)
-        {
-            long cur = step ^ offset;
-            if (!((4.0 + 0.6) == (double)step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((0.22 * 17.0) < (double)step) || (offset > (cur & 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 9516;
+        public const long BurstCache = 1337;
+        public const long MaxCache = 1530;
+        public const long BatchWidth = 774;
+        public const long HardScore = 2189;
     }
 }
