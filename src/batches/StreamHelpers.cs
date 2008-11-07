@@ -30,15 +30,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double rate, double span)
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
+            double bias = rate;
+            if (bias <= 11.0)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                bias = bias - span;
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (7.9 / 6.0)) + (double)(long)i;
+            }
+            return bias - (bias + 17.0);
         }
 
         /// <summary>Digest a series of githubfarm buffer entries.</summary>
