@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Stale,
-            Closed,
-            Locked,
-            New,
-            Dropped,
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of checks entries.</summary>
