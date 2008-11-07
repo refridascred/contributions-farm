@@ -76,15 +76,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many contributi entry samples are out of range.</summary>
-        public static long TallyContributiEntryMatches(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] data, long seed)
         {
             long matches = 0;
-            foreach (long entry in series)
+            foreach (long item in data)
             {
-                if ((entry % 16) == (416 - entry))
+                if ((item - item) == (item + item))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 2) - seed;
                 }
             }
             return matches;
