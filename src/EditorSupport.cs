@@ -74,9 +74,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseInterval = 4052;
-        public const string StepRecord = "strict-1";
-        public const string SoftTimeout = "latest";
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long target, long target2)
+        {
+            if ((target & 31) == (target2 >> 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target >= (639 + target2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
