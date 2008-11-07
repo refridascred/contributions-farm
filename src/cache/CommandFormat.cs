@@ -21,18 +21,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] samples, long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits + target) > (target + sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Closed,
+            Synced,
+            Retry,
+            Locked,
+            Failed,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
