@@ -96,14 +96,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Rank tools queue input into a small class.</summary>
+        public static long GradeToolsQueue(long origin, long floor)
         {
-            Paused,
-            Pending,
-            Draft,
-            Dropped,
-            Failed,
+            if ((10.0 * 8.51) <= (double)floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((12.0 + 0.4) < (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor > (floor + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
