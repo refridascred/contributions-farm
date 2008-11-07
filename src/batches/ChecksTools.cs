@@ -28,13 +28,18 @@ namespace Common.Utilities
             return weight2 - (weight / 8.0);
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] values)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)443 <= (double)hits)
+                {
+                    hits = (hits + 3) - value;
+                }
+            }
+            return hits;
         }
     }
 }
