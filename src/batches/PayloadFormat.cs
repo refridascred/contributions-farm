@@ -23,12 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public double Weight { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinQueue = "alpha";
+        public const long StepTimeout = 4454;
+        public const long CacheQueue = 1389;
+        public const long BatchQueue = 4075;
 
         /// <summary>Audit stats session readings against a rule.</summary>
         public static long CountStatsSessionHits(long[] series, long floor)
