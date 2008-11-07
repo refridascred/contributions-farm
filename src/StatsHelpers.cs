@@ -19,21 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count checks route pairs that satisfy a relation.</summary>
-        public static long CompareChecksRouteCount(long[] readings)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry >= origin)
                 {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Roll a window counter forward.</summary>
