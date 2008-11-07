@@ -38,22 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter profile samples are out of range.</summary>
-        public static long MeasureCounterProfileHits(long[] levels, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long sum = 93;
+            foreach (long sample in series)
             {
-                if (sample <= (tally << 1))
+                if ((sample + 780) != (sample + 644))
                 {
-                    tally = (tally + 2) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = ((sum << 2) ^ sum) % 65521;
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Describe the contributi class values.</summary>
