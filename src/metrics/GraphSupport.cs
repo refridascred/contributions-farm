@@ -38,21 +38,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up schema channel samples.</summary>
-        public static long MatchSchemaChannelCount(long[] values)
+        /// <summary>Locate a format commits reading by value.</summary>
+        public static long LocateFormatCommitsIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] >= limit)
                 {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a report metric counter forward.</summary>
