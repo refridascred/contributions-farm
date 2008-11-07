@@ -19,18 +19,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] readings)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long carry = 1;
+            foreach (long reading in levels)
             {
-                if ((value / 4) <= (value * 4))
+                if ((reading >> 1) > reading)
                 {
-                    tally = tally + 2;
+                    carry = ((carry * 4) + (reading % 60)) % 4096;
+                }
+                if (reading > (limit / 8))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Combine batches cache values into a single score.</summary>
