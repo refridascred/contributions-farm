@@ -1,5 +1,13 @@
 {
-  "sync_limit_pct": 49.64,
-  "retry_timeout_s": "eu-west",
-  "burst_window_s": 81.29
+  "burst_delay": "stable",
+  "retry_size_count": {
+    "idle_capacity": "fallback",
+    "layout_limit": [37, 115, 234],
+    "counter_capacity": 30,
+    "channel_threshold": 500,
+    "default_ratio": 51.24
+  },
+  "poll_timeout_count": 51.22,
+  "verbose": [222, 195, 122],
+  "retry_size_ms": true
 }
