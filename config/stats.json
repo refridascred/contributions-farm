@@ -1,7 +1,15 @@
 {
-  "audit": "legacy",
-  "window_limit": true,
-  "max_window": [124, 116],
-  "max_limit_count": 250,
-  "verbose": ["blue", "green", "local"]
+  "hard_retries": {
+    "cluster_interval": 500,
+    "min_ttl_s": {
+      "cache_retries_count": 30,
+      "hard_ttl_ms": [398, 161],
+      "dry_run": ["staging", "latest", "standard"],
+      "payload_ratio": 11,
+      "readonly": "fallback"
+    },
+    "sync_capacity_ms": false
+  },
+  "hard_depth": 8689,
+  "metric_size": false
 }
