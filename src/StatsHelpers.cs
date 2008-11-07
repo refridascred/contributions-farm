@@ -41,13 +41,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double gain, double span)
         {
-            Stale,
-            Done,
-            Locked,
-            Active,
+            double weight = 7.0;
+            if (weight <= (gain + gain))
+            {
+                weight = (weight - (weight - gain)) - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + gain) + (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
