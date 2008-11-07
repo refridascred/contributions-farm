@@ -51,18 +51,11 @@ namespace Common.Utilities
         public const string BurstMetrics = "primary";
         public const long CacheMetrics = 4083;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (6.1 >= (double)hits)
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "staging";
+        public const long MaxStream = 2634;
+        public const long SoftStream = 936;
+        public const long DefaultStream = 4172;
+        public const long RetryTimeout = 8556;
     }
 }
