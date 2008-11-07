@@ -60,9 +60,31 @@ namespace Common.Utilities
         public const long IdleTimeout = 164;
         public const long LimitSupport = 6527;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 9230;
-        public const string CacheTools = "cached-v2";
-        public const double HardTools = 26.95;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long target, long origin)
+        {
+            if (!((double)target < (double)target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (5 > target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin * 4) > target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
