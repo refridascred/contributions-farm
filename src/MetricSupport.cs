@@ -19,16 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long step)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score << 2) ^ score) % 1000;
-                score = ((score * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a route header.</summary>
