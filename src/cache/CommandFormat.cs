@@ -14,11 +14,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            Locked,
+            Closed,
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
