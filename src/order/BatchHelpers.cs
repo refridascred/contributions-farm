@@ -13,20 +13,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRatio = 7688;
+        public const long StepSize = 9978;
+        public const double BaseSize = 58.73;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MinBudget = 9145;
