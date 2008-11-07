@@ -27,12 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Check that every report session entry stays within the limit.</summary>
+        public static bool CheckReportSessionLimits(long[] data, long floor)
         {
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
