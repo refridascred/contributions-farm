@@ -38,23 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double bias, double bias2)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] data, long target)
         {
-            double scale = 18.0;
-            if (scale >= bias2)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                scale = (scale - (double)(-8)) - bias;
+                if (((hits + target) != (95 + cell)) && (((cell + 925) > (hits - cell)) && (((long)data.Length + target) <= (cell >> 5))))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                scale = scale + (5.8 + bias2);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (double)5;
+            return hits;
         }
 
         /// <summary>Roll a already counter forward.</summary>
