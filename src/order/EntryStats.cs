@@ -29,26 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long step, long target)
-        {
-            long span = step + target;
-            if ((11 - step) > span)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step - 2) < (570 / 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleWidth = 5678;
+        public const double HardReport = 13.2;
+        public const string IdleRatio = "fallback";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double IdleSize = 50.69;
