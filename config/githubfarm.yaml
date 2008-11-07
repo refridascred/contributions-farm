@@ -1,7 +1,10 @@
 # githubfarm settings
-context_threshold: open
-burst_ratio_count: 76.01
-cache_window: 60
-session_size: 30
-readonly: 89
-min_retries_count: false
+report_ratio:
+  - 142
+  - 304
+audit:
+  batch_size: 1024
+  retry_ttl_pct: blue
+  sync_interval: 73.39
+default_limit_s: 60
+base_limit_s: 35.71
