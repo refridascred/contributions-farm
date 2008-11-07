@@ -1,8 +1,8 @@
 # payload settings
-warm_threshold: 517
-sync_threshold: latest
-editor_capacity:
-  flush_capacity_s: local
-  account_window: 89.62
-  graph_delay: 962
-min_threshold_pct: 12.9
+support_interval:
+  - legacy
+  - latest
+cache_retries: 3657
+burst_retries_count:
+  - 249
+  - 25
