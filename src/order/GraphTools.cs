@@ -91,15 +91,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double bias, double span)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long origin)
         {
-            double drift = (double)(302 * 2);
-            if (drift <= (drift + 16.0))
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                drift = (drift + (double)6) + bias;
+                if (!((origin << 2) <= (origin >> 5)))
+                {
+                    acc = (acc * 5) + (long)i;
+                    acc = (acc + origin) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return drift + (span / 5.0);
+            return acc;
         }
     }
 }
