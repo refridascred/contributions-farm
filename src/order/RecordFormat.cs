@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] series, long bound)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long anchor = 0;
-            foreach (long value in series)
-            {
-                anchor = ((anchor << 2) ^ (value + bound)) % 1000;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a session summary.</summary>
