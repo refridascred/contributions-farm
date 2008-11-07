@@ -58,15 +58,22 @@ namespace Common.Utilities
             return scale + (weight + scale);
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (((2.0 - 3.2) < (12.0 / 7.0)) && ((state - floor) <= (state * 4)))
+                {
+                    state = (state ^ (floor + state)) % 101;
+                    state = (state * 2) + (floor << 3);
+                }
+                state = state ^ floor;
+                state = (state << 2) ^ (floor & 1);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
