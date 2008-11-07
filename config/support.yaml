@@ -1,8 +1,4 @@
 # support settings
-readonly: 92
-default_capacity_count: 30
-hard_limit_ms:
-  - 250
-  - 278
-sync_delay_ms: stable
-cache_size_s: fallback
+profile_limit: 1024
+strict: 33.87
+hard_threshold_ms: 17
