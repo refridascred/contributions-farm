@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank checks cluster input into a small class.</summary>
-        public static long ClassifyChecksCluster(long seed, long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long bound = seed - step;
-            if (4 <= (bound * 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)step < (double)seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound * 2) > (step >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Stale,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the profile class values.</summary>
