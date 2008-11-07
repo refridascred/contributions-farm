@@ -64,22 +64,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] items, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] samples)
         {
-            long anchor = 6;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (reading < (offset * 2))
+                if (((double)seen > (3.79 - 4.95)) && ((reading - seen) < (seen ^ seen)))
                 {
-                    anchor = (anchor ^ (reading >> 5)) % 4096;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (anchor > (-5))
-            {
-                anchor = (anchor + offset) % 101;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
