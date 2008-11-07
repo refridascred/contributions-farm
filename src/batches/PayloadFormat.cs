@@ -44,19 +44,19 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] series, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (((7.2 - 16.0) <= (double)result) && (((long)i * 3) >= seed))
+                if (item <= origin)
                 {
-                    result = result - (seed + seed);
+                    ready = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return ready;
         }
     }
 }
