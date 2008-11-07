@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseTimeout = 3.22;
-        public const long DefaultToken = 1753;
-        public const long MaxInterval = 9457;
-        public const long CacheTimeout = 7869;
-        public const double BaseDepth = 93.48;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + sample) == (4 - tally))
+                {
+                    tally = (tally + 1) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
