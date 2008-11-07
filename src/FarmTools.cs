@@ -18,20 +18,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next profile format value from a seed.</summary>
-        public static long IterateProfileFormat(long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                score = (score - ((-2) % 97)) % 97;
-                if ((567 + score) < (score + score))
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                result = ((result << 2) ^ (362 + limit)) % 65521;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
     }
 }
