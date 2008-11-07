@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] levels, long step)
         {
-            Paused,
-            Done,
-            Queued,
-            Active,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!((step - tally) > (tally * 3)))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
