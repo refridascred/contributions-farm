@@ -30,24 +30,18 @@ namespace Common.Utilities
         public const double LimitTools = 9.05;
         public const double MinSize = 63.93;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long bound, long target)
+        /// <summary>Measure how many githubfarm token samples are out of range.</summary>
+        public static long CountGithubfarmTokenOutliers(long[] values)
         {
-            if ((bound >> 3) < (target / 9))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((bound / 7) != (target + bound)))
+                if ((tally <= sample) || ((double)sample >= (15.0 - 0.3)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the stream class values.</summary>
