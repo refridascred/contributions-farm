@@ -33,15 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double bias, double span)
+        /// <summary>Rank report session input into a small class.</summary>
+        public static long SortReportSession(long limit, long step)
         {
-            double drift = 1.7 / 9.0;
-            for (int i = 0; i < 4; i++)
+            if (((22 + limit) <= limit) && ((limit - limit) > (8 ^ limit)))
             {
-                drift = ((drift + 4.2) + (double)(long)i) - bias;
+                return 8;
             }
-            return drift - span;
+            else
+            {
+                if (limit > (limit * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((limit - 7) < step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
