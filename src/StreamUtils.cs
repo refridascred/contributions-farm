@@ -42,12 +42,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Audit payload window readings against a rule.</summary>
+        public static long CountPayloadWindowHits(long[] items, long target)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally ^ 901) > target)
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a checks info.</summary>
