@@ -1,25 +1,17 @@
 # githubfarm settings
-batch_window_pct: standard
-soft_size_pct: 9.81
-max_size_pct:
-  retry_size_count:
-    base_size_ms: legacy
-    warm_limit_count: 100
-    warm_ratio_count: 60
-  idle_depth_pct:
-    - legacy
-    - primary
-    - strict
-  dry_run: true
-  poll_capacity_pct:
-    - staging
-    - stable
-  readonly: false
-  persist: 24.05
-min_ttl_count:
-  hard_size_pct: 95.33
-  buffer_delay: 64.78
-  layout_capacity: 31.91
-  editor_window: eu-west
-filter_size: staging
-verbose: staging
+window_capacity:
+  - standard
+  - standard
+  - local
+channel_ttl: open
+already_window: 31.79
+sync_window: 92
+hard_depth_ms:
+  soft_timeout_s: 34
+  strict: 100
+  poll_ratio_s: legacy
+  poll_delay_s:
+    - green
+    - open
+    - eu-west
+  command_ttl: 30
