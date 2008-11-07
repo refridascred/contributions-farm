@@ -20,15 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double ratio, double bias)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double load = bias;
-            if (load >= (double)5)
-            {
-                load = load - (bias * 2.86);
-            }
-            return load - ratio;
+            public double Stamp { get; set; }
+            public double Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
