@@ -14,14 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Locked,
-            Retry,
-            Done,
-            Active,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 3056;
+        public const long CacheScore = 2854;
+        public const long CacheWidth = 7491;
+        public const long BatchProfile = 6769;
+        public const string DefaultScore = "stable-v2";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long RetryWidth = 2611;
