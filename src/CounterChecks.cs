@@ -76,19 +76,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 3432;
+        public const long SoftToken = 1122;
+        public const long StepRatio = 863;
     }
 }
