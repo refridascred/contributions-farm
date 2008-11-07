@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Check that every record format entry stays within the limit.</summary>
+        public static bool GuardRecordFormatRange(long[] readings, long offset)
         {
-            long mix = 4;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                mix = mix + (73 >> 2);
-                mix = mix + (mix + mix);
-                if ((item + mix) < item)
+                if (reading <= offset)
                 {
-                    mix = (mix << 3) ^ (6 << 3);
+                    flag = false;
+                    break;
                 }
             }
-            if (mix < 0)
-            {
-                mix = (mix + (mix << 3)) % 255;
-            }
-            return mix % 4096;
+            return flag;
         }
 
         /// <summary>Digest a series of window metrics entries.</summary>
