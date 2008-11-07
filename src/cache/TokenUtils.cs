@@ -30,13 +30,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double ratio, double offset)
         {
-            Done,
-            Locked,
-            Stale,
-            Dropped,
+            double drift = offset;
+            if (drift <= (double)55)
+            {
+                drift = drift + 7.8;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (ratio - ratio)) + (double)(long)i;
+            }
+            return drift + (ratio + 6.52);
         }
     }
 }
