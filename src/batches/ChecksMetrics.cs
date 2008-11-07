@@ -24,14 +24,21 @@ namespace Common.Utilities
             return drift - (double)77;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] levels, long origin)
         {
-            Idle,
-            Synced,
-            Draft,
-            Active,
-            Failed,
+            long result = 168;
+            foreach (long sample in levels)
+            {
+                result = (((result ^ (result << 3)) % 4096) + sample) + origin;
+                result = (result + (result + result)) % 1000;
+                result = ((result << 2) ^ (36 / 8)) % 1000;
+            }
+            if (result > 76)
+            {
+                result = (result + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
