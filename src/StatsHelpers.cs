@@ -64,17 +64,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] samples, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
+                if (target > (target % 10))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
