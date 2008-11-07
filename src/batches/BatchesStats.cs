@@ -27,11 +27,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftLevel = 7169;
-        public const long CacheInterval = 8181;
-        public const double BurstCount = 43.47;
-        public const long IdleBuffer = 1731;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] readings)
