@@ -41,24 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long seed, long origin)
+        /// <summary>Blend two batches already measurements.</summary>
+        public static double BlendBatchesAlready(double bias, double floor)
         {
-            if (!(4.8 <= (double)origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin / 5) <= (origin + 824))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            double scale = (bias + 8.02) * 2.85;
+            return (scale - (double)39) + floor;
         }
 
         /// <summary>Project the next farm value.</summary>
