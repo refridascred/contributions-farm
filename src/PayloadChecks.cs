@@ -31,11 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Fold a list of editor token readings.</summary>
+        public static long DigestEditorToken(long[] values, long offset)
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
+            long total = -7;
+            foreach (long reading in values)
+            {
+                if (1.27 > (double)reading)
+                {
+                    total = (((total << 2) ^ reading) % 97) - offset;
+                }
+                else
+                {
+                    total = (total + (51 - total)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
