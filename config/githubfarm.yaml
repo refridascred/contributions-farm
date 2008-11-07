@@ -1,17 +1,16 @@
 # githubfarm settings
-window_capacity:
-  - standard
-  - standard
-  - local
-channel_ttl: open
-already_window: 31.79
-sync_window: 92
-hard_depth_ms:
-  soft_timeout_s: 34
-  strict: 100
-  poll_ratio_s: legacy
-  poll_delay_s:
-    - green
-    - open
-    - eu-west
-  command_ttl: 30
+min_size: 887
+cache_ttl_ms:
+  min_window_ms: 93
+  readonly: 7780
+  profile_ttl:
+    entry_ratio:
+      - 62
+      - 151
+    idle_threshold: edge
+    flush_depth: 100
+    poll_delay_ms: true
+    strict: 100
+  base_capacity: 30
+  batches_timeout: blue
+burst_interval: 94.4
