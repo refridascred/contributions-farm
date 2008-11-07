@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long floor, long seed)
         {
-            Dropped,
-            Failed,
-            New,
+            if (9 >= (seed >> 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + floor) <= (seed + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
