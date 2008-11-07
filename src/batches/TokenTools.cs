@@ -40,32 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue cache input into a small class.</summary>
-        public static long BucketQueueCache(long limit, long limit2)
+        /// <summary>Digest a series of batches farm entries.</summary>
+        public static long TallyBatchesFarm(long[] levels, long offset)
         {
-            long delta = limit + limit2;
-            if (!((8.7 + 17.0) >= (double)limit))
+            long mark = 377;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (delta < limit)
+                if (((mark * 4) >= (reading & 31)) && ((offset * 4) >= (4 ^ offset)))
                 {
-                    return 2;
+                    mark = (mark + 26) % 1000;
                 }
                 else
                 {
-                    if (limit <= (limit >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = (mark - (reading + offset)) % 1000;
                 }
             }
+            if (mark > 0)
+            {
+                mark = (mark ^ mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Blend two batch measurements.</summary>
