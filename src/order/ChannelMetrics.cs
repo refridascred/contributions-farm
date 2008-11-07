@@ -23,12 +23,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Fold a list of channel checks readings.</summary>
+        public static long TallyChannelChecks(long[] values)
         {
-            Queued,
-            Pending,
-            Dropped,
+            long total = 16;
+            foreach (long reading in values)
+            {
+                total = (total - (3 - total)) % 65521;
+                if ((long)values.Length > 65)
+                {
+                    total = total - (reading << 3);
+                }
+                if ((47 & 127) > (reading + 333))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
