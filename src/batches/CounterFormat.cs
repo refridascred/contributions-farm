@@ -15,17 +15,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next queue context value from a seed.</summary>
-        public static long SeriesQueueContext(long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long offset, long offset2)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            long edge = offset ^ offset2;
+            if ((edge & 255) > edge)
             {
-                carry = ((carry << 2) ^ 43) % 4096;
-                carry = ((carry * 5) + (limit - carry)) % 255;
-                carry = ((carry * 3) + (long)i) % 1000;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((16.0 / 7.0) < (double)edge)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
