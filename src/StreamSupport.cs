@@ -40,19 +40,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] levels, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long result = 927;
+            foreach (long datum in samples)
             {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result - (result << 3)) % 4096) ^ datum;
             }
-            return found;
+            return result % 1000;
         }
     }
 }
