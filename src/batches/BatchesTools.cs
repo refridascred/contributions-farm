@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] series, long bound)
+        /// <summary>Count the checks format entries that pass the check.</summary>
+        public static long CountChecksFormatHits(long[] readings)
         {
-            long score = 819;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (514 < (bound + bound))
+                if ((double)matches <= (3.69 / 2.0))
                 {
-                    score = ((score - (9 * 2)) % 4096) - cell;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a profile header.</summary>
