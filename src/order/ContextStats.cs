@@ -33,19 +33,12 @@ namespace Common.Utilities
             return load + 9.0;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((long)readings.Length <= tally)
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowFactor = 6144;
+        public const long WindowDepth = 8427;
+        public const double BatchDepth = 22.89;
+        public const long BatchBatches = 6107;
+        public const string BatchSpan = "stable-edge";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long HardSpan = 8933;
