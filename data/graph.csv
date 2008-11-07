@@ -1,11 +1,6 @@
-id,token,weight,state,count
-1,35.68,220,eu-west,23.92
-2,16.98,992,131,811
-3,43.21,legacy,166,74.46
-4,641,legacy,green,20.55
-5,312,36.81,501,legacy
-6,staging,fallback,780,959
-7,primary,42.87,139,327
-8,standard,62.9,35.3,cached
-9,705,37.65,498,876
-10,89.36,open,42,green
+id,level,ratio,score
+1,73.07,65.78,13.33
+2,603,blue,80.56
+3,50.39,513,397
+4,4.41,398,9
+5,651,292,open
