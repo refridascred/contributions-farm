@@ -1,7 +1,7 @@
 {
-  "audit": "strict",
-  "idle_capacity_count": true,
-  "counter_ratio": false,
-  "warm_interval_pct": true,
-  "verbose": 51
+  "base_interval_pct": 48.25,
+  "cache_depth_count": [257, 193, 495],
+  "enabled": 100,
+  "session_size": 59,
+  "idle_threshold_s": 500
 }
