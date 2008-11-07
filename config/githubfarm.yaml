@@ -1,20 +1,4 @@
 # githubfarm settings
-poll_capacity_pct: green
-sync_capacity_ms: 80.69
-max_ttl:
-  - 272
-  - 53
-verbose: 44
-enabled:
-  - 174
-  - 258
-  - 51
-cache_timeout_pct:
-  retry_timeout_s: 75.82
-  soft_interval: 1024
-  flush_ratio_s: latest
-  retry_limit:
-    - staging
-    - local
-    - eu-west
-    - staging
+sync_delay_pct: 48.66
+warm_size_ms: 67.88
+strict: 50
