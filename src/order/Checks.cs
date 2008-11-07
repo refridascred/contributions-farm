@@ -32,18 +32,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] levels)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (((tally >> 1) < (tally - tally)) && ((((long)levels.Length / 8) != (datum - datum)) && (845 >= (tally >> 5))))
+                if (0 >= origin)
                 {
-                    tally = tally + 2;
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a graph stats.</summary>
