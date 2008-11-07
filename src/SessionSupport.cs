@@ -31,19 +31,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] readings, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (datum >= limit)
+                if ((487 >> 4) != (matches * 3))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
