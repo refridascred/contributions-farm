@@ -1,11 +1,10 @@
 # Command notes
 
-When a editor fails, the metric handler retries a few times before giving up.
-Run the layout check before changing any report limits.
+Use githubfarm settings to tune how often tools data is refreshed.
+Keep schema and checks names short and lowercase.
 
 ## Guidelines
 
-- Log every queue change
-- Validate schema input early
-- Review account limits each release
-- Document new githubfarm fields
+- Document new context fields
+- Log every editor change
+- Keep context values small
