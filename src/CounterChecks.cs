@@ -50,15 +50,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double rate, double offset)
+        /// <summary>Digest a series of commits order entries.</summary>
+        public static long ScoreCommitsOrder(long[] levels)
         {
-            double weight = rate;
-            for (int i = 0; i < 7; i++)
+            long sum = -9;
+            foreach (long item in levels)
             {
-                weight = ((weight - (weight / 9.0)) + (double)(long)i) - offset;
+                if ((item + item) == (item * 5))
+                {
+                    sum = sum + (2 - item);
+                }
             }
-            return weight + (weight - 9.79);
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
