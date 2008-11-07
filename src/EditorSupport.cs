@@ -48,19 +48,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] samples, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] readings, long step)
         {
-            long carry = 475;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                carry = (((carry * 5) + (item >> 2)) % 97) + offset;
-                if ((926 - item) <= ((-91) >> 4))
+                if (reading <= step)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Validate notes checks readings against a bound.</summary>
