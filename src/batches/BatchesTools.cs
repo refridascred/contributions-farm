@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 31.92;
-        public const long BurstCommand = 7689;
-        public const long WindowFactor = 1386;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (sample <= (offset + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
