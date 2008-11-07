@@ -39,19 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] series, long offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long target, long origin)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            if ((origin + origin) <= (target & 1))
             {
-                if (datum != offset)
+                return 8;
+            }
+            else
+            {
+                if (((target + origin) <= (target ^ origin)) || ((target * 5) < target))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((target ^ origin) < (target + 459)) && ((target + 21) > (394 << 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target ^ 74) >= (origin & 7)) || ((double)origin <= (4.7 + 4.07)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
