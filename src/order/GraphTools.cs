@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] data, long seed)
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen & 31) >= (seen - seen))
+                {
+                    seen = ((seen + 2) ^ value) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a support counter forward.</summary>
