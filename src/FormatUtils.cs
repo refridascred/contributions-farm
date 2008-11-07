@@ -5,10 +5,36 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 21.47;
-        public const long WindowToken = 3905;
-        public const long BaseToken = 2345;
+        /// <summary>Fold a list of cache contributi readings.</summary>
+        public static long CombineCacheContributi(long[] data)
+        {
+            long mark = 824;
+            foreach (long value in data)
+            {
+                if (value >= mark)
+                {
+                    mark = mark + (mark >> 3);
+                }
+                if ((((long)data.Length * 4) <= value) && (mark < (value / 2)))
+                {
+                    mark = (mark + value) % 97;
+                    mark = mark + (502 + mark);
+                }
+                else
+                {
+                    mark = (mark * 3) + (570 ^ (-48));
+                }
+                if (!((71 - value) < mark))
+                {
+                    mark = mark ^ (value >> 4);
+                }
+            }
+            if (mark > 921)
+            {
+                mark = (mark ^ mark) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteOutliers(long[] series)
