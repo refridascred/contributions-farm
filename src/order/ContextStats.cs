@@ -14,12 +14,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 3056;
-        public const long CacheScore = 2854;
-        public const long CacheWidth = 7491;
-        public const long BatchProfile = 6769;
-        public const string DefaultScore = "stable-v2";
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long RetryWidth = 2611;
