@@ -24,13 +24,22 @@ namespace Common.Utilities
             return drift - (double)77;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] values, long seed)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((2 / 2) <= seen)
+                {
+                    seen = ((seen + 1) + cell) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
