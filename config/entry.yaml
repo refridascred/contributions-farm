@@ -1,12 +1,5 @@
 # entry settings
-batch_ratio_pct:
-  - 246
-  - 16
-  - 36
-hard_depth_ms: standard
-default_ratio_count: 4091
-strict: false
-commits_ratio:
-  - 305
-  - 351
-enabled: open
+max_window_s: 88.44
+warm_threshold: 6011
+base_limit: staging
+min_ttl_ms: latest
