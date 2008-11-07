@@ -69,13 +69,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] series, long target)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
