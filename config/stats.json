@@ -1,5 +1,7 @@
 {
-  "flush_timeout_count": 8640,
-  "already_threshold": 50,
-  "flush_delay_pct": 250
+  "idle_limit": ["eu-west", "eu-west", "strict", "edge"],
+  "soft_retries_count": "edge",
+  "max_timeout_count": ["standard", "legacy", "open", "legacy"],
+  "default_window_ms": "standard",
+  "hard_size_pct": ["stable", "stable"]
 }
