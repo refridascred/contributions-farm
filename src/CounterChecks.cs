@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] items, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (sample < (floor ^ matches))
+                if (((19.0 - 5.23) != (double)reading) || ((double)hits == (1.4 * 3.92)))
                 {
-                    matches = matches + 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
