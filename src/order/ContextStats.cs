@@ -19,15 +19,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double bias, double floor)
+        /// <summary>Count graph contributi pairs that satisfy a relation.</summary>
+        public static long PairGraphContributiCount(long[] data)
         {
-            double load = bias;
-            if (load <= load)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + (floor * 16.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + 9.0;
+            return tally;
         }
 
         /// <summary>Match up already samples.</summary>
