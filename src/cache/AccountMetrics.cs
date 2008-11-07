@@ -49,26 +49,18 @@ namespace Common.Utilities
         public const double BatchEntry = 57.49;
         public const long IdleEntry = 7042;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] values, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] items, long step)
         {
-            long result = 5;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((double)value < (7.06 * 3.08))
+                if (!((matches + (long)items.Length) <= (-9)) || ((double)matches > (4.2 + 3.74)))
                 {
-                    result = (result ^ (bound - bound)) % 1000;
-                }
-                if (bound <= (value * 4))
-                {
-                    break;
+                    matches = ((matches + 3) + entry) + step;
                 }
             }
-            if (result > 54)
-            {
-                result = result ^ bound;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the tools level values.</summary>
