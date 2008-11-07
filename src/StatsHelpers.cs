@@ -34,12 +34,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftRatio = "strict-v2";
-        public const long BatchProfile = 6224;
-        public const double RetryProfile = 97.56;
-        public const string BurstSpan = "strict-v2";
-        public const double WindowProfile = 72.38;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((floor + floor) < (hits * 5)) || (((6 << 1) <= floor) && ((double)floor <= (2.5 / 8.0))))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long BucketEditor(long step, long offset)
