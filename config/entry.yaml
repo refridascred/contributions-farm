@@ -1,5 +1,10 @@
 # entry settings
-retry_delay_pct: false
-compress: fallback
-soft_limit: 27.53
-warm_size_count: false
+schema_retries:
+  soft_size_s:
+    - fallback
+    - edge
+    - local
+  audit: stable
+  max_interval_ms: blue
+sync_delay_pct: 81.37
+burst_ttl_pct: true
