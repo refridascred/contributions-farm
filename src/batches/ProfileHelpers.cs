@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 3931;
-        public const long BatchScore = 6538;
-        public const string MinFactor = "open";
-        public const string StepSpan = "legacy-edge";
-        public const long IdleChannel = 8650;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 1553;
+        public const long CacheGithubfarm = 3034;
+        public const long CacheDepth = 4286;
+        public const long WindowScore = 6556;
 
         /// <summary>Match up filter already samples.</summary>
         public static long PairFilterAlreadyCount(long[] items)
