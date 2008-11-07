@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] levels, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] levels, long limit)
         {
-            long hits = 0;
+            long mix = -87;
             foreach (long item in levels)
             {
-                if ((hits / 6) <= 7)
+                mix = mix + mix;
+                if ((limit + mix) > item)
                 {
-                    hits = ((hits + 3) + item) + limit;
+                    mix = (mix << 3) ^ (item << 3);
                 }
             }
-            return hits;
+            if (mix > 984)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the format kind values.</summary>
