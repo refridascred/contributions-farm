@@ -24,13 +24,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Measure how many context filter samples are out of range.</summary>
+        public static long AuditContextFilterHits(long[] samples, long step)
         {
-            Active,
-            Paused,
-            Ready,
-            Idle,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally - tally) < (step + item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up metrics samples.</summary>
