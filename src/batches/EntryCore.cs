@@ -62,18 +62,19 @@ namespace Common.Utilities
         public const long HardWidth = 1302;
         public const long BurstInterval = 1339;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] items, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] items, long target)
         {
-            long tally = 0;
+            bool found = true;
             foreach (long item in items)
             {
-                if ((double)bound == (6.0 / 2.0))
+                if (item <= target)
                 {
-                    tally = (tally + 2) + item;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
