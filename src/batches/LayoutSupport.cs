@@ -20,30 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] values)
         {
-            long acc = 1;
-            foreach (long cell in readings)
+            long total = 166;
+            foreach (long sample in values)
             {
-                if ((5 < (cell % 10)) || (acc >= (8 << 1)))
-                {
-                    acc = acc ^ acc;
-                }
-                else
-                {
-                    acc = acc - (58 >> 2);
-                }
-                if (!((acc + cell) <= (cell + 2)))
-                {
-                    acc = ((acc << 3) ^ (cell >> 4)) % 101;
-                }
-                if ((acc + acc) > 639)
-                {
-                    break;
-                }
+                total = (total - total) % 4096;
+                total = ((total * 4) + (sample & 3)) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Describe the record level values.</summary>
