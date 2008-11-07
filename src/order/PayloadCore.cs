@@ -22,23 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((item + 98) > item)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 261;
+        public const long WindowInterval = 2034;
+        public const long CacheLevel = 3817;
+        public const double WindowSize = 71.73;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
