@@ -1,4 +1,14 @@
 # githubfarm settings
-enabled: staging
-idle_size_s: stable
-min_depth_count: false
+entry_depth:
+  - 254
+  - 309
+  - 45
+buffer_capacity:
+  - 342
+  - 250
+  - 14
+  - 18
+warm_retries_pct: edge
+audit: false
+commits_retries: 80
+filter_ttl: 60
