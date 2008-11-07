@@ -24,12 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Paused,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitScore = 3003;
+        public const long RetryRecord = 5620;
+        public const long CacheFactor = 2613;
+        public const long BurstRecord = 3633;
+        public const double RetryScore = 21.93;
     }
 }
