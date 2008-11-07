@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers.</summary>
     public static class Contributi
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double ratio, double floor)
-        {
-            double weight = (3.0 / 9.0) - 9.25;
-            if (weight <= (weight - weight))
-            {
-                weight = (weight + (weight * 1.3)) - floor;
-            }
-            else
-            {
-                weight = weight - (15.0 + ratio);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (4.95 * 0.12)) - (double)(long)i;
-            }
-            return weight + 6.3;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "latest-v2";
+        public const long LimitSpan = 5950;
+        public const long LimitCount = 2847;
 
         /// <summary>Count buffer githubfarm pairs that satisfy a relation.</summary>
         public static long OverlapBufferGithubfarmCount(long[] levels)
