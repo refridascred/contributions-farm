@@ -1,12 +1,5 @@
 {
-  "stream_retries": 22,
-  "idle_size_s": 29.02,
-  "soft_capacity_ms": 20,
-  "burst_threshold_pct": {
-    "burst_depth": "eu-west",
-    "poll_ratio_ms": 6595,
-    "counter_depth": "blue",
-    "layout_interval": 79.65
-  },
-  "already_ttl": 76
+  "profile_threshold": "local",
+  "retry_threshold_pct": "staging",
+  "channel_ratio": 63
 }
