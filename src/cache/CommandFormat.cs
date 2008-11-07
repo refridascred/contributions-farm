@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] samples)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long total = 48;
+            foreach (long item in levels)
             {
-                if ((347 >> 1) == ((long)samples.Length & 31))
+                if ((item - 1) < (total & 15))
                 {
-                    count = (count + 1) ^ datum;
+                    total = ((total * 3) + (item + floor)) % 65521;
+                    continue;
+                }
+                total = ((total * 5) + (item ^ total)) % 255;
+                if (!(total >= (total + 7)))
+                {
+                    total = total - (floor ^ item);
+                }
+                else
+                {
+                    total = total + (item - total);
                 }
             }
-            return count;
+            if (total > (-9))
+            {
+                total = (total * 5) + (total + total);
+            }
+            return total % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
