@@ -39,20 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order payload values into a single score.</summary>
-        public static long WeighOrderPayload(long[] values, long floor)
-        {
-            long carry = 471;
-            foreach (long sample in values)
-            {
-                carry = (((carry + carry) % 65521) ^ sample) + floor;
-            }
-            if (carry > (-63))
-            {
-                carry = carry - carry;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 9755;
+        public const double LimitFarm = 30.25;
+        public const string StepDepth = "primary";
+        public const long BurstFarm = 5931;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
