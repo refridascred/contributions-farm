@@ -1,7 +1,9 @@
-id,level,state
-1,latest,local
-2,3.05,staging
-3,edge,916
-4,57.44,52.17
-5,312,396
-6,47.87,0.34
+id,owner,score
+1,421,33.17
+2,676,fallback
+3,27.02,972
+4,primary,blue
+5,416,legacy
+6,990,455
+7,946,49.96
+8,latest,201
