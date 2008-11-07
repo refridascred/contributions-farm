@@ -66,14 +66,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Locked,
+            Draft,
             Failed,
-            Retry,
-            Queued,
-            New,
+            Idle,
         }
 
         /// <summary>Derive the next notes support value from a seed.</summary>
