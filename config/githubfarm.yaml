@@ -1,13 +1,12 @@
 # githubfarm settings
-enabled: 4065
-base_size_ms: true
-max_window: 60
-verbose: 1024
-base_timeout_count:
-  - staging
-  - stable
-flush_size:
-  - eu-west
-  - eu-west
+min_interval: 2000
+tools_interval:
   - standard
-  - eu-west
+  - fallback
+  - latest
+burst_size: 100
+window_window:
+  - stable
+  - strict
+order_retries: blue
+strict: 26
