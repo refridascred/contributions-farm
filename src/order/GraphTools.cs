@@ -39,28 +39,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long bound, long bound2)
         {
-            long state = 99;
-            foreach (long reading in values)
+            if ((double)bound >= (19.0 - 3.89))
             {
-                if ((97 - reading) != (state - (long)values.Length))
+                return 4;
+            }
+            else
+            {
+                if (!((bound2 << 2) > (bound2 - 334)))
                 {
-                    state = state - reading;
+                    return 8;
                 }
                 else
                 {
-                    state = ((state * 2) + (reading + reading)) % 101;
-                    state = state - (reading * 3);
-                }
-                state = ((state * 5) + (267 << 1)) % 97;
-                if (state >= (state / 9))
-                {
-                    break;
+                    if ((bound2 % 60) >= bound2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return state % 1000;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
