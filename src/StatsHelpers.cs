@@ -34,12 +34,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 1824;
-        public const long BaseProfile = 1416;
-        public const long RetryProfile = 223;
-        public const long WindowFactor = 5645;
-        public const long BatchProfile = 5865;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Active,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LocateQueueIndex(long[] samples, long offset)
