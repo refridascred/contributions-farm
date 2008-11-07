@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchLevel = 7.81;
-        public const long RetryTimeout = 8007;
-        public const double MinDepth = 57.64;
-        public const double LimitBuffer = 64.3;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double bias, double floor)
+        {
+            double rate = (floor + floor) * 2.0;
+            if (rate <= (double)72)
+            {
+                rate = (rate - (rate * 5.8)) + bias;
+            }
+            return rate + (rate - 6.0);
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TotalBatches(long[] data, long step)
