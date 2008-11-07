@@ -85,19 +85,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((long)i ^ (long)i) >= score)
-                {
-                    score = ((score << 2) ^ (offset - score)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
