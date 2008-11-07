@@ -61,19 +61,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route buffer values into a single score.</summary>
-        public static long ScoreRouteBuffer(long[] data)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] items)
         {
-            long result = 493;
-            foreach (long datum in data)
+            long anchor = 9;
+            foreach (long cell in items)
             {
-                if (((long)data.Length % 16) == (datum << 3))
+                if ((cell & 127) <= 7)
                 {
-                    result = ((result * 5) + (669 - datum)) % 1000;
+                    anchor = ((anchor << 3) ^ (cell + anchor)) % 97;
                 }
-                result = ((result * 2) + (result + result)) % 4096;
+                if ((double)anchor > (6.19 + 4.0))
+                {
+                    anchor = (anchor + (anchor >> 4)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (anchor / 9)) % 255;
+                }
             }
-            return result % 4096;
+            if (anchor > 4)
+            {
+                anchor = (anchor - (anchor - anchor)) % 1000;
+            }
+            return anchor;
         }
     }
 }
