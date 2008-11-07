@@ -32,16 +32,12 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Project the next githubfarm metrics value.</summary>
-        public static double AdjustGithubfarmMetrics(double rate, double bias)
-        {
-            double load = (double)((-9) / 7);
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load + (double)46) + (double)(long)i) + bias;
-            }
-            return load - (9.0 - rate);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 1617;
+        public const long BurstTimeout = 5048;
+        public const string RetryNotes = "staging-edge";
+        public const long StepRatio = 965;
+        public const long IdleNotes = 9436;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
