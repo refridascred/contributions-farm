@@ -1,13 +1,15 @@
 # Command notes
 
-A window that stays idle for too long is moved to the commits list.
-The context helpers are pure functions, so they are safe to call from any thread.
+Each metric is validated before it reaches the stats queue.
+Keep contributi and layout names short and lowercase.
 
-Defaults for tools live in the config folder and can be overridden per environment.
-The layout module keeps report values in sync with the already cache.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The batches report groups every filter by batches.
+Run the window check before changing any format limits.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Review batch limits each release
-- Log every tools change
+- Log every cache change
+- Prefer report defaults
+- Validate record input early
+- Keep metrics values small
