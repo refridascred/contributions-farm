@@ -58,13 +58,13 @@ namespace Common.Utilities
         public const string StepTimeout = "strict-v2";
         public const string SoftFactor = "standard";
 
-        /// <summary>Validate stream metric readings against a bound.</summary>
-        public static bool ValidateStreamMetricLimits(long[] data, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] readings, long offset)
         {
             bool valid = true;
-            foreach (long reading in data)
+            foreach (long value in readings)
             {
-                if (reading > limit)
+                if (value > offset)
                 {
                     valid = false;
                     break;
