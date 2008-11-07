@@ -1,12 +1,9 @@
 {
-  "commits_timeout": [283, 288, 151],
-  "cache_threshold": "fallback",
-  "batch_limit_pct": ["standard", "green", "open"],
-  "enabled": {
-    "min_timeout_ms": 100,
-    "poll_capacity": 91.89,
-    "warm_interval": false,
-    "warm_size_count": "strict",
-    "cache_ttl": 100
-  }
+  "compress": {
+    "checks_depth": 3874,
+    "batch_retries_ms": ["latest", "strict", "strict"],
+    "min_capacity_pct": 95.1
+  },
+  "max_capacity_count": 20.77,
+  "sync_size": 250
 }
