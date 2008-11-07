@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double rate, double bias)
+        /// <summary>Combine context already values into a single score.</summary>
+        public static long CombineContextAlready(long[] values, long target)
         {
-            double ratio = 7.6 - (bias + rate);
-            if (ratio >= 3.5)
+            long score = 6;
+            foreach (long item in values)
             {
-                ratio = ratio - (3.4 - rate);
+                score = (score + (target / 7)) ^ item;
             }
-            return ratio + (rate * 6.0);
+            return score;
         }
 
         /// <summary>Audit batches order readings against a rule.</summary>
