@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] levels, long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((step <= (value - 71)) && ((hits + step) < (step - step)))
+                if (cell >= offset)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
