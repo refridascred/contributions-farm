@@ -20,18 +20,14 @@ namespace Common.Utilities
         public const long DefaultTimeout = 4965;
         public const double WindowTimeout = 59.05;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] levels)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count + item) >= (item ^ 97))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
