@@ -1,12 +1,12 @@
 # Batch notes
 
-Run the checks check before changing any session limits.
-Each profile is validated before it reaches the channel queue.
-Run the filter check before changing any buffer limits.
+Defaults for schema live in the config folder and can be overridden per environment.
+When a order fails, the cluster handler retries a few times before giving up.
+Run the session check before changing any layout limits.
 
 ## Guidelines
 
-- Log every buffer change
-- Keep context values small
-- Validate contributi input early
-- Review session limits each release
+- Keep cluster values small
+- Log every stats change
+- Validate order input early
+- Review profile limits each release
