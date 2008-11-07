@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] data)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long anchor = 264;
+            foreach (long reading in data)
             {
-                if (matches > (matches & 1))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor - reading) + limit;
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
