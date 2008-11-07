@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] items)
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (((long)items.Length <= (seen & 15)) || ((entry & 127) >= (entry ^ entry)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
