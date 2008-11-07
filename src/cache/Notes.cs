@@ -59,18 +59,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] readings, long origin)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((origin % 10) < (origin - origin))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
         }
     }
 }
