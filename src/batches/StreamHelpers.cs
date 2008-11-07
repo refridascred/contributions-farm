@@ -56,15 +56,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double scale, double bias)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] items, long limit)
         {
-            double weight = 11.0;
-            if (weight >= bias)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                weight = (weight - 2.02) + scale;
+                if (datum > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight - bias;
+            return ok;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
