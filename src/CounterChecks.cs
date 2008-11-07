@@ -54,12 +54,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 164;
         public const long LimitSupport = 6527;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] series, long floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long origin)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] <= floor)
+                if ((series[i] >= origin) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
