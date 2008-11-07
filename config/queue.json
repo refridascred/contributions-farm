@@ -1,5 +1,5 @@
 {
-  "batch_ttl_ms": 500,
-  "default_timeout_pct": true,
-  "stats_retries": "primary"
+  "batch_interval": 1569,
+  "min_window_s": 2,
+  "burst_threshold_count": 43
 }
