@@ -13,23 +13,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double scale, double offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long floor, long offset)
         {
-            double bias = (offset / 7.0) / 9.0;
-            if (bias <= (offset / 2.0))
+            long offset2 = floor + offset;
+            if ((offset <= offset2) && ((floor + offset) > (offset & 1)))
             {
-                bias = bias - offset;
+                return 7;
             }
             else
             {
-                bias = bias - (9.0 - scale);
+                if ((floor / 7) >= floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (offset + scale)) + (double)(long)i;
-            }
-            return bias + offset;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
