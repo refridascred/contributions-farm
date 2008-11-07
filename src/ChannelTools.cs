@@ -32,19 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((((long)i + sum) < (step >> 3)) || ((step + 98) > (864 - step)))
+                if ((-8) <= (hits ^ 7))
                 {
-                    sum = (sum ^ (step - 2)) % 4096;
+                    hits = (hits + 3) - item;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return hits;
         }
     }
 }
