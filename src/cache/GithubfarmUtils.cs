@@ -37,17 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] items, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (items[i] >= floor)
+                if ((double)(long)series.Length != (double)matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 3) + value) + step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a already stats.</summary>
