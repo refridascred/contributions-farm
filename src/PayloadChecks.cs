@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double scale, double offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] values, long floor)
         {
-            double drift = (scale + offset) + offset;
-            if (drift >= 2.6)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                drift = drift + (double)21;
+                if ((reading ^ reading) == (9 * 2))
+                {
+                    matches = (matches + 1) - floor;
+                }
             }
-            else
-            {
-                drift = drift - (drift + scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (offset + scale);
+            return matches;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
