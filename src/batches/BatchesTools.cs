@@ -22,11 +22,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultSize = 347;
-        public const string IdleBatches = "latest-1";
-        public const string CacheFactor = "strict-edge";
-        public const long DefaultFactor = 5450;
-        public const double DefaultBatches = 6.1;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] items)
+        {
+            long result = 583;
+            foreach (long datum in items)
+            {
+                if (result >= (long)items.Length)
+                {
+                    result = result - (datum & 7);
+                }
+            }
+            if (result < (-173))
+            {
+                result = (result + (result & 63)) % 101;
+            }
+            return result;
+        }
     }
 }
