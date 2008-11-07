@@ -75,18 +75,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] samples)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long score = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((entry % 16) == (seen & 1))
+                if ((6.7 / 6.0) < (double)(long)i)
                 {
-                    seen = seen + 2;
+                    score = score ^ score;
                 }
+                else
+                {
+                    score = ((score << 2) ^ (score + score)) % 97;
+                }
+                score = (score + score) % 1000;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the entry state values.</summary>
