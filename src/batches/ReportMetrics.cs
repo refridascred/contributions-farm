@@ -34,12 +34,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] data)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
+            long score = -742;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    score = ((score << 2) ^ value) + (long)i;
+                }
+                if ((double)score != (7.0 / 7.0))
+                {
+                    score = (score << 2) ^ (score + score);
+                }
+                else
+                {
+                    score = score + score;
+                }
+            }
+            if (score > 6)
+            {
+                score = (score + (score + score)) % 101;
+            }
+            return score % 65521;
         }
     }
 }
