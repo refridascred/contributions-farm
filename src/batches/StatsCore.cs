@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate order context readings against a bound.</summary>
-        public static bool CheckOrderContextBounds(long[] data, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long target)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 5) + sum) % 255;
+                sum = (sum ^ ((long)i - sum)) % 1000;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Describe the cluster class values.</summary>
