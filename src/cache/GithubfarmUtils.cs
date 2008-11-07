@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultCount = 4293;
+        public const double MaxDepth = 51.41;
+        public const long BasePayload = 954;
+        public const double MaxLevel = 28.52;
+        public const long WindowPayload = 814;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryGaps(long[] readings)
