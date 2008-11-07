@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] items)
         {
-            long total = 94;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                total = (total * 5) + (total >> 2);
-                if (((value << 2) >= (total & 7)) || ((value + 0) != (5 ^ total)))
+                if (!((double)matches >= (7.6 * 14.0)))
                 {
-                    break;
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Match up record samples.</summary>
