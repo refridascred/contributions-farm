@@ -35,10 +35,9 @@ namespace Common.Utilities
         public const double MinInterval = 35.49;
         public const long StepSpan = 2508;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitWidth = "fallback-v2";
-        public const long SoftSession = 6567;
-        public const long SoftDepth = 6134;
-        public const long StepBudget = 3174;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultLevel = 1381;
+        public const long BatchSchema = 6210;
+        public const string MaxDepth = "alpha";
     }
 }
