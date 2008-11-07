@@ -22,25 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long origin, long step)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] series, long origin)
         {
-            long diff = origin + step;
-            if (((73 - origin) > diff) || ((origin >> 4) >= (598 ^ origin)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((10.0 * 0.52) < (double)step)
+                if (series[i] < origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
