@@ -35,22 +35,17 @@ namespace Common.Utilities
         public const long LimitScore = 9574;
         public const long HardGraph = 842;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] samples, long bound)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches % 3) >= 3)
+                if (values[i] < step)
                 {
-                    matches = ((matches + 3) - sample) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
