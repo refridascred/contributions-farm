@@ -32,38 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter editor pair into a bucket.</summary>
-        public static long RankFilterEditor(long step, long target)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            if ((step * 2) > target)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target / 7) == (target & 63)) && ((5.0 - 0.8) != (double)step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((5.3 * 9.7) == (double)target) || ((target & 15) >= step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(((-44) << 2) < (step ^ step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Done,
+            Failed,
         }
     }
 }
