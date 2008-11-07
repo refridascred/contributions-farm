@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 4477;
-        public const double BaseContext = 42.39;
-        public const long BatchContext = 3360;
+        /// <summary>Validate order context readings against a bound.</summary>
+        public static bool CheckOrderContextBounds(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
