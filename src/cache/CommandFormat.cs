@@ -41,18 +41,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] items)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((7.79 + 3.13) < (double)hits)
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            Queued,
+            Idle,
+            Paused,
         }
 
         /// <summary>Digest a series of profile support entries.</summary>
