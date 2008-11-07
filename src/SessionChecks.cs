@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleCount = 976;
-        public const long WindowSpan = 3444;
-        public const long DefaultSize = 8539;
-        public const long StepLevel = 3072;
-        public const long HardTimeout = 2877;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 4091;
+        public const long BaseDepth = 2921;
+        public const long CacheStream = 7177;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long origin, long seed)
