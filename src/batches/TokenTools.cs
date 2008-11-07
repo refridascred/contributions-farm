@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] values)
         {
-            Retry,
-            Locked,
-            Pending,
-            Active,
-            Paused,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((double)seen > (5.2 / 7.0))
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a schema payload pair into a bucket.</summary>
