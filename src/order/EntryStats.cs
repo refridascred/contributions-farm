@@ -49,20 +49,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the tools metrics series from a seed.</summary>
-        public static long DeriveToolsMetrics(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state - (state / 7)) % 4096) ^ (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchSize = 3.78;
+        public const long BaseLayout = 4970;
+        public const long WindowLayout = 6356;
+        public const long BatchLayout = 5150;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long offset)
