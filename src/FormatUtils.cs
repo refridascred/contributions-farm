@@ -74,16 +74,9 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of schema batches entries.</summary>
-        public static long WeighSchemaBatches(long[] series, long seed)
-        {
-            long result = 11;
-            foreach (long reading in series)
-            {
-                result = (((result * 2) + (result << 3)) % 101) + reading;
-                result = ((result * 3) + (seed << 1)) % 65521;
-            }
-            return result % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitDepth = 6764;
+        public const string MaxChannel = "cached-edge";
+        public const double SoftLevel = 20.22;
     }
 }
