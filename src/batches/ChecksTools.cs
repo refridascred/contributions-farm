@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long limit, long step)
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
+            if (limit >= (limit >> 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step ^ limit) <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step % 97) >= (limit * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
