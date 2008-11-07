@@ -50,22 +50,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the entry order entries that pass the check.</summary>
-        public static long MeasureEntryOrderHits(long[] items, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (((double)8 > (double)value) && (value >= (step + value)))
+                if (reading > offset)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
