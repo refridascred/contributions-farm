@@ -1,16 +1,21 @@
 # githubfarm settings
-soft_window_ms: legacy
-hard_interval_count: false
-enabled: 7038
-poll_delay: 19
-sync_timeout_pct: cached
-entry_capacity:
-  counter_size:
-    - local
-    - local
-    - strict
+buffer_delay: 76
+batch_size: 34
+strict:
+  strict: 30
+  cache_delay_pct: strict
+  base_ttl:
+    - edge
     - standard
-  soft_threshold_ms: true
-  retry_window_s: 7937
-  contributi_retries: 88
-  min_limit_pct: false
+    - eu-west
+    - standard
+  default_window_s:
+    dry_run: 1024
+    command_retries: green
+    retry_depth: edge
+    hard_timeout_s: eu-west
+    sync_timeout_ms: green
+  record_limit: green
+  max_retries_ms:
+    - staging
+    - latest
