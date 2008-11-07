@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double scale, double offset)
         {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public double Owner { get; set; }
+            double drift = (scale + offset) + offset;
+            if (drift >= 2.6)
+            {
+                drift = drift + (double)21;
+            }
+            else
+            {
+                drift = drift - (drift + scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (offset + scale);
         }
 
         /// <summary>Rank stats input into a small class.</summary>
