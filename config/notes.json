@@ -1,7 +1,5 @@
 {
-  "strict": ["stable", "green", "local", "latest"],
-  "idle_ratio_pct": "latest",
-  "metric_delay": 30,
-  "min_capacity_s": 8079,
-  "cache_window_pct": "blue"
+  "batch_interval": 100,
+  "batch_size_pct": "primary",
+  "idle_window_count": "legacy"
 }
