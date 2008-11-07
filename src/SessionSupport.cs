@@ -16,18 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] data)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally <= (7.0 / 8.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) ^ entry;
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
