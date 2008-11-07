@@ -52,18 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] levels, long step)
+        /// <summary>Scale a window checks figure with a bias.</summary>
+        public static double SmoothWindowChecks(double scale, double span)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double ratio = 5.67 * 6.0;
+            if (ratio > (double)(-169))
             {
-                if ((step - step) < (seen >> 3))
-                {
-                    seen = (seen + 2) - cell;
-                }
+                ratio = (ratio - (5.42 * 17.0)) - scale;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + span) - (double)(long)i;
+            }
+            return ratio + 5.1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
