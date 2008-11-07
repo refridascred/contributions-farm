@@ -24,32 +24,12 @@ namespace Common.Utilities
         public const long IdleRatio = 1076;
         public const long BatchGithubfarm = 8102;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long seed, long bound)
-        {
-            if ((seed << 2) <= (seed / 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound & 7) < (-5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.0 / 4.0) >= (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftRatio = 7647;
+        public const string IdleCommand = "staging";
+        public const double StepDepth = 91.19;
+        public const long BaseCommand = 5136;
+        public const long WindowDepth = 9040;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
