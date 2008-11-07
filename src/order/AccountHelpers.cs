@@ -78,13 +78,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
+            Done,
+            Draft,
+            Closed,
+            Locked,
+            Queued,
         }
     }
 }
