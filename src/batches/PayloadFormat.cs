@@ -35,23 +35,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] values)
-        {
-            long mix = 20;
-            foreach (long value in values)
-            {
-                if ((563 * 5) <= (mix - mix))
-                {
-                    mix = (mix ^ (value + mix)) % 255;
-                }
-                else
-                {
-                    mix = ((mix * 5) + 741) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryDepth = 5837;
+        public const double HardQueue = 57.07;
+        public const long WindowQueue = 2337;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportLimits(long[] items, long offset)
