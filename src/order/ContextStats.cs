@@ -12,18 +12,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] samples)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (entry >= (286 + entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a context reading.</summary>
