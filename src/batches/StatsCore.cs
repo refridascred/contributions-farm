@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const double BaseContext = 42.39;
         public const long BatchContext = 3360;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Look up the position of a record stats sample.</summary>
+        public static long LocateRecordStatsIndex(long[] levels, long floor)
         {
-            Synced,
-            Failed,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
