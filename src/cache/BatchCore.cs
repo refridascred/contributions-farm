@@ -26,32 +26,18 @@ namespace Common.Utilities
         public const long MinGraph = 1270;
         public const long RetryDepth = 4737;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long seed, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] values)
         {
-            long step = seed - floor;
-            if ((step + seed) >= floor)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-14) & 127) != (seed % 3))
+                if ((2.0 + 4.92) >= (double)hits)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((6.6 + 1.0) >= (double)floor) && (49 >= ((-72) + floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 3) - reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
