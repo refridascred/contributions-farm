@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the contributi batches series from a seed.</summary>
-        public static long SeriesContributiBatches(long limit)
+        /// <summary>Count the commits context entries that pass the check.</summary>
+        public static long AuditCommitsContextMatches(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((item - item) < (matches + item))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
