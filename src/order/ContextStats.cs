@@ -26,13 +26,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double bias, double offset)
         {
-            Retry,
-            Failed,
-            Ready,
-            Done,
+            double gain = (offset - offset) / 7.0;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = ((gain - (offset / 7.0)) - (double)(long)i) - bias;
+            }
+            return gain - offset;
         }
 
         /// <summary>Accumulate format samples.</summary>
