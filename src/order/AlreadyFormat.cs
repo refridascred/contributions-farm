@@ -45,12 +45,11 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a account record.</summary>
