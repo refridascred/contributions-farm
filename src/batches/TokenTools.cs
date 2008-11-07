@@ -32,12 +32,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] values)
         {
-            Retry,
-            Synced,
-            Idle,
+            long carry = 8;
+            foreach (long datum in values)
+            {
+                if ((8.77 + 2.38) < (double)datum)
+                {
+                    carry = (carry + (carry % 60)) % 4096;
+                }
+            }
+            if (carry < 542)
+            {
+                carry = ((carry << 2) ^ (carry ^ carry)) % 97;
+            }
+            return carry % 4096;
         }
     }
 }
