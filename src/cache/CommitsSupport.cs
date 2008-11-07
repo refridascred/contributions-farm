@@ -51,16 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = acc ^ (acc >> 2);
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Done,
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the batches kind values.</summary>
