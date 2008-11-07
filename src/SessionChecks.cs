@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + sample) == (4 - tally))
-                {
-                    tally = (tally + 1) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 76.65;
+        public const double RetryContributi = 14.24;
+        public const double SoftRatio = 62.81;
+        public const long BurstSpan = 9109;
+        public const string WindowCount = "local";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseTools = 2353;
