@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next context route value from a seed.</summary>
-        public static long DeriveContextRoute(long target)
+        /// <summary>Derive the next token route value from a seed.</summary>
+        public static long DeriveTokenRoute(long origin)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if (!((5 + (long)i) > carry))
+                {
+                    carry = (carry - (carry ^ 69)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
