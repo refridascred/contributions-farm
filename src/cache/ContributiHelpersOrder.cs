@@ -34,19 +34,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double gain, double span)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long target, long offset)
         {
-            double scale = 8.3;
-            if (scale <= (10.0 / 3.0))
+            if (offset > (target + target))
             {
-                scale = (scale - scale) - span;
+                return 2;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                scale = (scale + (gain - scale)) + (double)(long)i;
+                if ((target ^ 94) > (1 / 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target <= (7.1 + 18.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return scale + (double)59;
         }
     }
 }
