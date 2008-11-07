@@ -33,11 +33,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxSpan = 532;
-        public const long BurstLevel = 9146;
-        public const string StepRatio = "standard-edge";
-        public const string HardBudget = "staging-edge";
-        public const string BaseSpan = "staging-edge";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinMetric = 72.7;
+        public const long StepTimeout = 6216;
+        public const double MinWidth = 32.9;
+        public const long IdleMetric = 8903;
     }
 }
