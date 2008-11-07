@@ -42,18 +42,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many filter account samples are out of range.</summary>
-        public static long TallyFilterAccountOutliers(long[] levels)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (105 >= hits)
-                {
-                    hits = (hits + 2) - entry;
-                }
-            }
-            return hits;
+            Idle,
+            Closed,
+            Failed,
+            Done,
         }
     }
 }
