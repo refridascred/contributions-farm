@@ -1,16 +1,25 @@
 # githubfarm settings
-batch_capacity_count: true
-window_delay: true
-min_timeout: 41.21
-payload_interval: 3280
-enabled:
-  poll_size_s: true
-  tools_timeout:
-    - 451
-    - 174
-    - 47
-  readonly:
-    compress: 18.27
-    entry_size: 48.27
-    editor_size: cached
-    channel_capacity: green
+batch_window_pct: standard
+soft_size_pct: 9.81
+max_size_pct:
+  retry_size_count:
+    base_size_ms: legacy
+    warm_limit_count: 100
+    warm_ratio_count: 60
+  idle_depth_pct:
+    - legacy
+    - primary
+    - strict
+  dry_run: true
+  poll_capacity_pct:
+    - staging
+    - stable
+  readonly: false
+  persist: 24.05
+min_ttl_count:
+  hard_size_pct: 95.33
+  buffer_delay: 64.78
+  layout_capacity: 31.91
+  editor_window: eu-west
+filter_size: staging
+verbose: staging
