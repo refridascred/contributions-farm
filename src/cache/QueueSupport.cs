@@ -40,11 +40,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 89.69;
-        public const long BurstSize = 854;
-        public const long WindowSchema = 236;
-        public const double RetryDepth = 25.69;
-        public const long StepScore = 2741;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Ready,
+            Synced,
+            Draft,
+            New,
+            Dropped,
+        }
     }
 }
