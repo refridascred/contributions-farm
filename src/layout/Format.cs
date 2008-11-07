@@ -58,12 +58,9 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            New,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 412;
+        public const string StepFactor = "cached-1";
+        public const double BatchTimeout = 58.38;
     }
 }
