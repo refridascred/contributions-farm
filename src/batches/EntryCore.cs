@@ -37,22 +37,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] levels)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!((double)datum == (double)(long)levels.Length))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            New,
+            Queued,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
