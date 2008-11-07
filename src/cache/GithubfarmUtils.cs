@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long CacheFactor = 4573;
         public const long StepFactor = 8982;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] samples, long limit)
         {
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
