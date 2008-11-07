@@ -37,19 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] samples, long target)
         {
-            long result = -70;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                result = ((result << 3) ^ (2 + sample)) % 101;
-                if (9.1 >= (double)result)
+                if (tally >= (reading - reading))
                 {
-                    break;
+                    tally = (tally + 1) + target;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a checks options.</summary>
