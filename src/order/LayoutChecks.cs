@@ -34,13 +34,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Rank commits stream input into a small class.</summary>
+        public static long SortCommitsStream(long seed, long origin)
         {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
+            if ((double)origin > (0.2 * 10.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed == (1.0 * 16.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
