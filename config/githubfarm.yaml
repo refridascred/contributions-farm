@@ -1,10 +1,13 @@
 # githubfarm settings
-retry_interval:
-  - 438
-  - 111
-  - 101
-burst_threshold: 82
-metric_limit: open
-commits_retries: false
-readonly: 4109
-soft_limit: latest
+enabled: 4065
+base_size_ms: true
+max_window: 60
+verbose: 1024
+base_timeout_count:
+  - staging
+  - stable
+flush_size:
+  - eu-west
+  - eu-west
+  - standard
+  - eu-west
