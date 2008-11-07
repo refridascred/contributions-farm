@@ -1,10 +1,5 @@
 # githubfarm settings
-report_ratio:
-  - 142
-  - 304
-audit:
-  batch_size: 1024
-  retry_ttl_pct: blue
-  sync_interval: 73.39
-default_limit_s: 60
-base_limit_s: 35.71
+soft_threshold: 250
+layout_limit: local
+retry_retries: 45.31
+buffer_ttl: 76
