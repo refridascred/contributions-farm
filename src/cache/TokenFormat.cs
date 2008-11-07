@@ -15,11 +15,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstSpan = 8663;
-        public const long RetryAlready = 169;
-        public const long IdleSpan = 5136;
-        public const double BaseAlready = 28.66;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public double Size { get; set; }
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderGaps(long[] series)
