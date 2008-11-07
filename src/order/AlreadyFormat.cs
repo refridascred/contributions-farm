@@ -67,19 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] samples)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] readings)
         {
-            long total = 73;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                total = (total - (reading / 7)) % 255;
-                if ((double)reading > (15.0 - 6.2))
+                if ((reading / 7) >= seen)
                 {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
