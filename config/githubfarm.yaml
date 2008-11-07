@@ -1,15 +1,14 @@
 # githubfarm settings
-verbose: 1024
-buffer_threshold: true
-strict:
-  dry_run: 77.8
-  notes_interval: eu-west
-  queue_ratio:
-    tools_interval: 10
-    default_timeout_pct: true
-    hard_depth_s: edge
-    cache_depth_s:
-      - 112
-      - 180
-burst_limit: 83
-dry_run: 30
+soft_capacity_count: 250
+base_timeout: eu-west
+max_interval_ms:
+  stats_interval: 1024
+  idle_threshold_ms:
+    - stable
+    - latest
+    - staging
+    - strict
+  poll_retries_ms: fallback
+  idle_ratio_s: 1
+  enabled: 42.25
+buffer_capacity: primary
