@@ -35,23 +35,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account route samples.</summary>
-        public static long WeighAccountRoute(long[] series)
-        {
-            long score = 63;
-            foreach (long sample in series)
-            {
-                if ((double)score < (double)sample)
-                {
-                    score = ((score * 4) + (sample ^ score)) % 4096;
-                }
-                score = score + (score & 127);
-            }
-            if (score > 6)
-            {
-                score = ((score << 3) ^ 4) % 65521;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "standard-edge";
+        public const double LimitScore = 68.04;
+        public const long StepCount = 3349;
     }
 }
