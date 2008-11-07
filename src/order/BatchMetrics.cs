@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the counter context entries that pass the check.</summary>
-        public static long MeasureCounterContextHits(long[] series, long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((938 << 3) < count)
+                if ((samples[i] < step) && ((samples[i] % 3) == 0))
                 {
-                    count = ((count + 2) + entry) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine batch commits values into a single score.</summary>
