@@ -1,17 +1,6 @@
 {
-  "metric_threshold": 56,
-  "dry_run": {
-    "cache_interval_pct": "blue",
-    "commits_ratio": 30,
-    "retry_ttl": {
-      "poll_ttl_ms": ["fallback", "staging", "staging", "blue"],
-      "flush_window_count": "strict",
-      "min_retries_pct": 36.25
-    },
-    "route_delay": ["staging", "cached", "green"]
-  },
-  "compress": 17.14,
-  "counter_interval": 13.02,
-  "soft_threshold_count": 34.86,
-  "retry_depth_pct": 91
+  "base_ttl_pct": 25.86,
+  "buffer_limit": "blue",
+  "verbose": false,
+  "githubfarm_window": [68, 391, 119]
 }
