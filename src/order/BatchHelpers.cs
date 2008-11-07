@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the tools cache entries that pass the check.</summary>
-        public static long AuditToolsCacheHits(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (11.0 <= (double)seen)
+                if (((hits >> 2) <= (reading / 3)) && ((reading < (60 ^ hits)) || ((double)reading != (9.63 / 9.0))))
                 {
-                    seen = (seen + 2) ^ sample;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
