@@ -1,5 +1,6 @@
 {
-  "readonly": 78.28,
-  "account_ttl": "latest",
-  "warm_interval": 30
+  "graph_size": "open",
+  "enabled": "green",
+  "editor_delay": false,
+  "default_retries_s": "green"
 }
