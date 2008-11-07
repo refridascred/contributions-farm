@@ -1,15 +1,15 @@
 # Command notes
 
-The checks report groups every metrics by buffer.
-Each editor is validated before it reaches the account queue.
-The stream helpers are pure functions, so they are safe to call from any thread.
+Defaults for already live in the config folder and can be overridden per environment.
+The cache module keeps batch values in sync with the format cache.
 
-The filter report groups every route by order.
-A batch that stays idle for too long is moved to the batches list.
+The graph report groups every already by githubfarm.
+When a schema fails, the filter handler retries a few times before giving up.
+When a report fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Validate format input early
-- Review order limits each release
-- Prefer queue defaults
+- Validate stats input early
+- Document new support fields
+- Keep support values small
+- Review counter limits each release
