@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 25;
+            foreach (long sample in values)
             {
-                if (samples[i] > floor)
+                if ((double)carry >= (double)bound)
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ sample;
                 }
             }
-            return -1;
+            if (carry < 88)
+            {
+                carry = carry + (bound * 3);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
