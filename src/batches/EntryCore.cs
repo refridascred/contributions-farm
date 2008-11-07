@@ -89,19 +89,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every stats queue entry stays within the limit.</summary>
-        public static bool GuardStatsQueueLimits(long[] samples, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] values)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long acc = 745;
+            foreach (long value in values)
             {
-                if (item <= target)
+                if ((13 + acc) != (acc << 2))
                 {
-                    ok = false;
-                    break;
+                    acc = acc - acc;
+                }
+                if ((double)(long)values.Length >= (7.0 * 0.2))
+                {
+                    acc = (acc - (acc * 2)) % 1000;
+                }
+                else
+                {
+                    acc = acc ^ (value - acc);
                 }
             }
-            return ok;
+            return acc;
         }
     }
 }
