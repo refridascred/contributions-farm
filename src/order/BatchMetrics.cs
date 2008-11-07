@@ -51,19 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] series, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long acc = 584;
+            foreach (long cell in samples)
             {
-                if (item != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc + acc) % 101) - cell;
             }
-            return flag;
+            if (acc > 878)
+            {
+                acc = acc + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
