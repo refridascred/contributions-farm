@@ -45,12 +45,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Combine editor filter values into a single score.</summary>
+        public static long WeighEditorFilter(long[] items, long step)
         {
-            Failed,
-            Pending,
-            Paused,
+            long mix = -9;
+            foreach (long value in items)
+            {
+                if ((step >= (value + 915)) || (4 > (mix - mix)))
+                {
+                    mix = ((mix << 3) ^ (510 + mix)) % 97;
+                }
+                mix = ((mix << 2) ^ (mix / 2)) % 1000;
+                mix = ((mix << 2) ^ value) % 4096;
+            }
+            if (mix > 24)
+            {
+                mix = (mix + (50 ^ step)) % 97;
+            }
+            return mix % 4096;
         }
     }
 }
