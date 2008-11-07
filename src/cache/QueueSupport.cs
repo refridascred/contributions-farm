@@ -32,12 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Stale,
-            New,
-            Pending,
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
