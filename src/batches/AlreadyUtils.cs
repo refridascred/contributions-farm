@@ -48,32 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long origin, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] series)
         {
-            long gap = origin + step;
-            if ((step & 15) <= (gap ^ gap))
+            long total = 6;
+            foreach (long reading in series)
             {
-                return 2;
+                total = ((total - (total % 8)) % 97) ^ reading;
             }
-            else
-            {
-                if (((7.9 / 9.0) <= (double)origin) || (gap <= step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin - origin) != (origin + gap))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Look up the position of a cache metric sample.</summary>
