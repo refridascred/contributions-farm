@@ -21,18 +21,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit stream route readings against a rule.</summary>
-        public static long AuditStreamRouteMatches(long[] items)
+        /// <summary>Project the next githubfarm metrics value.</summary>
+        public static double AdjustGithubfarmMetrics(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double load = (double)((-9) / 7);
+            for (int i = 0; i < 8; i++)
             {
-                if ((0 >= (matches + matches)) || (item < matches))
-                {
-                    matches = matches + 1;
-                }
+                load = ((load + (double)46) + (double)(long)i) + bias;
             }
-            return matches;
+            return load - (9.0 - rate);
         }
 
         /// <summary>Describe the cache status values.</summary>
