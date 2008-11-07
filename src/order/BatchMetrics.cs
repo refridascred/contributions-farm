@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] samples)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long result = 53;
-            foreach (long reading in samples)
-            {
-                result = ((result + (result * 5)) % 4096) + reading;
-            }
-            if (result > 38)
-            {
-                result = ((result * 4) + (long)samples.Length) % 101;
-            }
-            return result;
+            Stale,
+            Active,
+            Closed,
         }
 
         /// <summary>Match up order samples.</summary>
