@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] values)
+        /// <summary>Audit queue command readings against a rule.</summary>
+        public static long TallyQueueCommandHits(long[] samples)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((value + 76) < value)
+                if ((item >= (hits % 5)) && (((double)hits < 8.04) && ((double)(long)samples.Length == (0.7 + 1.7))))
                 {
-                    count = count + 3;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
