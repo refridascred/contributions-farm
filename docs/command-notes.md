@@ -1,14 +1,14 @@
 # Command notes
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-Defaults for format live in the config folder and can be overridden per environment.
+Each batch is validated before it reaches the batch queue.
+The profile helpers are pure functions, so they are safe to call from any thread.
+A token that stays idle for too long is moved to the format list.
 
-Each order is validated before it reaches the order queue.
-Run the stream check before changing any channel limits.
-The schema report groups every editor by context.
+A graph that stays idle for too long is moved to the buffer list.
+Each farm is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer counter defaults
-- Document new schema fields
+- Document new record fields
+- Validate stats input early
+- Log every payload change
