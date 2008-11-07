@@ -14,19 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] values, long limit)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] series, long step)
         {
-            long acc = 2;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc ^ limit) % 65521) - cell;
+                if ((series[i] < step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 339)
-            {
-                acc = (acc ^ (acc * 5)) % 255;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
