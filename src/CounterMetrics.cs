@@ -11,40 +11,11 @@ namespace Common.Utilities
         public const string BatchMetric = "local";
         public const long MinMetric = 896;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long target, long step)
-        {
-            long slot = target ^ step;
-            if ((slot / 5) >= (slot + 33))
-            {
-                return 0;
-            }
-            else
-            {
-                if (target >= (step + 370))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + target) <= (395 + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((slot / 8) == (2 * 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchRatio = 3969;
+        public const double LimitWidth = 9.37;
+        public const long IdleRatio = 1076;
+        public const long BatchGithubfarm = 8102;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MaxPayload = 3957;
