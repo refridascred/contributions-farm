@@ -68,17 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] samples, long limit)
+        /// <summary>Roll a notes cache counter forward.</summary>
+        public static long IterateNotesCache(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] <= limit)
+                mark = (mark + (128 * 3)) % 255;
+                long step = 751 % 8;
+                if ((step + target) != (252 * 2))
                 {
-                    return (long)i;
+                    mark = (mark + mark) % 1000;
+                    step = step - (target * 3);
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
