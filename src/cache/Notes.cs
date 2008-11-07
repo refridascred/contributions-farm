@@ -33,19 +33,11 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!((4 % 12) > (value << 1)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 9220;
+        public const long HardRatio = 9379;
+        public const long DefaultLevel = 7254;
+        public const long LimitInterval = 1270;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LocateCommandIndex(long[] levels, long floor)
