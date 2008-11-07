@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double gain, double offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            double bias = gain;
-            if (bias > (bias + offset))
-            {
-                bias = bias - gain;
-            }
-            else
-            {
-                bias = bias + (offset * 8.46);
-            }
-            return bias + gain;
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every payload stream entry stays within the limit.</summary>
