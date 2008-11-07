@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long CacheDepth = 4286;
         public const long WindowScore = 6556;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Find the first entry commits entry that matches the target.</summary>
+        public static long LookupEntryCommitsIndex(long[] values, long floor)
         {
-            New,
-            Paused,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
