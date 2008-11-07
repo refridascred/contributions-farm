@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long target)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score + ((long)i + target)) % 97;
-                score = score ^ (target * 2);
-                score = (score << 3) ^ (target + target);
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Pending,
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
