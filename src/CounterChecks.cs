@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
-        public static long CountClusterGithubfarmOutliers(long[] readings)
+        /// <summary>Derive the next filter tools value from a seed.</summary>
+        public static long IterateFilterTools(long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((datum + datum) <= 810)
-                {
-                    matches = matches + 2;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Classify a order profile pair into a bucket.</summary>
