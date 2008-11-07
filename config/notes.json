@@ -1,5 +1,6 @@
 {
-  "counter_ratio": "stable",
-  "payload_size": 5309,
-  "poll_threshold_s": true
+  "warm_retries": ["local", "primary"],
+  "commits_interval": 75.85,
+  "poll_depth_count": false,
+  "counter_threshold": 28
 }
