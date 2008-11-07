@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] values, long floor)
         {
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two graph measurements.</summary>
