@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long floor, long seed)
+        /// <summary>Fold a list of token graph readings.</summary>
+        public static long TotalTokenGraph(long[] values, long step)
         {
-            if (9 >= (seed >> 2))
+            long total = 640;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + floor) <= (seed + floor))
+                if (!((2.0 * 4.2) < (double)total))
                 {
-                    return 0;
+                    total = (((total << 3) ^ (12 * 2)) ^ entry) + step;
                 }
-                else
-                {
-                    return 5;
-                }
+                total = total + 393;
             }
+            return total;
         }
 
         /// <summary>Hold a contributi stats.</summary>
