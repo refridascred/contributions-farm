@@ -54,14 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double gain, double span)
         {
-            Paused,
-            Draft,
-            Failed,
-            Done,
-            Pending,
+            double gain2 = gain;
+            if (gain2 >= (span * 3.19))
+            {
+                gain2 = gain2 - (double)5;
+            }
+            else
+            {
+                gain2 = gain2 + (gain - 7.53);
+            }
+            return gain2 - span;
         }
     }
 }
