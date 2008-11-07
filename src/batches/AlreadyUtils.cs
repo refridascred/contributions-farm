@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] levels, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long state = 6;
+            foreach (long entry in values)
             {
-                if ((630 - floor) <= (floor - reading))
+                state = state + entry;
+                if ((5.0 / 8.0) >= (double)bound)
                 {
-                    tally = tally + 3;
+                    state = ((state << 3) ^ (545 + entry)) % 1000;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
