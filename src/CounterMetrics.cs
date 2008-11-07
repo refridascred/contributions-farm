@@ -23,11 +23,16 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long offset)
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = carry ^ carry;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Check that every graph session entry stays within the limit.</summary>
