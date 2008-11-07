@@ -31,19 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long target)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double gain, double span)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            double weight = (double)763 - (span + span);
+            if (weight < (double)681)
             {
-                if (!!(218 <= (score * 4)))
-                {
-                    score = (score * 4) + (score - (long)i);
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                weight = (weight - weight) + gain;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Hold a support header.</summary>
