@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard fallback eu-west open; do
+for item in latest staging open blue; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-CHANNEL_LIMIT=294
-log "limit is ${CHANNEL_LIMIT}"
+log "ran ${count} rounds"
