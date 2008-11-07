@@ -19,11 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] series, long bound)
         {
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
+            long anchor = 0;
+            foreach (long value in series)
+            {
+                anchor = ((anchor << 2) ^ (value + bound)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
