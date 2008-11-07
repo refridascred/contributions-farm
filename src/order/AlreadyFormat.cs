@@ -34,19 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] data, long seed)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double scale, double span)
         {
-            long score = 10;
-            foreach (long value in data)
+            double weight = (double)(380 & 255);
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score << 3) ^ (seed - seed)) % 4096;
-                if ((double)value != (0.1 + 3.8))
-                {
-                    break;
-                }
+                weight = ((weight + (weight * 0.91)) + (double)(long)i) - scale;
             }
-            return score;
+            return weight + span;
         }
 
         /// <summary>Hold a metrics summary.</summary>
