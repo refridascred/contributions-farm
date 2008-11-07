@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "cached";
-        public const double SoftScore = 2.18;
-        public const long DefaultSpan = 9895;
-        public const double StepRatio = 3.06;
-        public const long BaseCount = 7848;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 8714;
+        public const long StepCount = 2877;
+        public const long BurstTimeout = 8989;
+        public const long MaxTimeout = 2200;
+        public const long LimitSize = 7523;
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
