@@ -42,33 +42,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((3 - target) == (acc + (long)i))
-                {
-                    acc = (acc ^ 630) % 101;
-                    continue;
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
-                if ((acc - target) <= (target & 15))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ target) % 101;
-                }
-                acc = (acc + ((long)i & 15)) % 97;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Draft,
+            Done,
+            Failed,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
