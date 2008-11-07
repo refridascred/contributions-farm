@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] series, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] data)
         {
-            long state = 175;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                state = ((state << 3) ^ (3 + state)) % 255;
-                if ((state & 127) > ((-90) - state))
+                if ((sample & 255) >= sample)
                 {
-                    state = ((state << 2) ^ floor) % 65521;
-                    continue;
-                }
-                if (!((state & 3) <= (item >> 1)))
-                {
-                    state = ((state << 2) ^ (179 + state)) % 97;
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
