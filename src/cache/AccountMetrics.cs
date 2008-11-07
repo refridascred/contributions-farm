@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] levels)
         {
-            long result = -6;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (((result & 7) < (entry + entry)) || ((double)entry <= (6.7 + 11.0)))
+                if ((hits * 2) >= hits)
                 {
-                    result = (result + 3) % 4096;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
