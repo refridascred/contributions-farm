@@ -76,18 +76,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((count + count) > count) && (cell < (origin - 5)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 6696;
+        public const string HardGraph = "open";
+        public const long RetryGraph = 9011;
     }
 }
