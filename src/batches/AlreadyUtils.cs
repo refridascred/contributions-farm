@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] levels, long floor)
         {
-            long carry = 4;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                carry = (((carry - (carry - carry)) % 255) + value) - target;
+                if ((630 - floor) <= (floor - reading))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (carry < 76)
-            {
-                carry = ((carry * 3) + (carry % 64)) % 65521;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
