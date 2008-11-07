@@ -1,16 +1,8 @@
 # githubfarm settings
-min_size: 887
-cache_ttl_ms:
-  min_window_ms: 93
-  readonly: 7780
-  profile_ttl:
-    entry_ratio:
-      - 62
-      - 151
-    idle_threshold: edge
-    flush_depth: 100
-    poll_delay_ms: true
-    strict: 100
-  base_capacity: 30
-  batches_timeout: blue
-burst_interval: 94.4
+sync_limit_ms: 2.49
+readonly: 496
+poll_threshold_ms:
+  - local
+  - open
+  - latest
+burst_limit_count: 2656
