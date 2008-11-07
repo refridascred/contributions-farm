@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long MaxRatio = 612;
         public const string MaxToken = "legacy-1";
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((9 + 9) >= (count - value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftWidth = 4811;
+        public const double IdleDepth = 56.65;
+        public const long CacheCounter = 6335;
+        public const long MaxWidth = 6471;
+        public const long BaseRatio = 8543;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
