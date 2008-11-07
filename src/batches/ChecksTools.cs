@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 4604;
-        public const long DefaultCommand = 1602;
-        public const string BatchBudget = "primary";
-        public const long CacheCommand = 4066;
-        public const string SoftRatio = "strict-edge";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 7215;
+        public const double BatchCount = 81.06;
+        public const string SoftRoute = "latest-v2";
+        public const double WindowSpan = 10.54;
+        public const long BurstRoute = 6117;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleBuffer = 1364;
