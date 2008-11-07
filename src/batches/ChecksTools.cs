@@ -53,10 +53,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 810;
-        public const string MaxWidth = "standard-edge";
-        public const long HardCommits = 7912;
-        public const long BatchDepth = 3025;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long offset, long floor)
+        {
+            if ((97 > floor) || ((offset * 4) <= (floor ^ 29)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset - floor) <= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset <= (5.0 * 5.4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
