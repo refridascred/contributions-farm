@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Paused,
-            Queued,
-            Idle,
-            New,
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
