@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double scale, double floor)
+        /// <summary>Match up profile command samples.</summary>
+        public static long MatchProfileCommandCount(long[] values)
         {
-            double ratio = floor;
-            if (ratio <= (scale * 7.5))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + (ratio + floor);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (1.39 * 5.9);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - scale) - (double)(long)i;
-            }
-            return ratio + scale;
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
