@@ -48,18 +48,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] items, long step)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!((matches + (long)items.Length) <= (-9)) || ((double)matches > (4.2 + 3.74)))
-                {
-                    matches = ((matches + 3) + entry) + step;
-                }
-            }
-            return matches;
+            Locked,
+            Done,
+            Dropped,
+            Closed,
+            Stale,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
