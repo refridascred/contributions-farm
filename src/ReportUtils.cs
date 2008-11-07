@@ -24,12 +24,24 @@ namespace Common.Utilities
             return mean - (scale + scale);
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] items, long origin)
         {
-            Stale,
-            Closed,
-            Draft,
+            long score = 9;
+            foreach (long reading in items)
+            {
+                if ((reading % 100) > (origin / 8))
+                {
+                    score = score + (191 % 10);
+                    score = ((score << 2) ^ (89 * 4)) % 97;
+                }
+                else
+                {
+                    score = score - (score << 1);
+                }
+                score = (score - (reading - reading)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Adjust a record reading.</summary>
