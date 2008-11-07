@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Done,
-            Queued,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 3931;
+        public const long BatchScore = 6538;
+        public const string MinFactor = "open";
+        public const string StepSpan = "legacy-edge";
+        public const long IdleChannel = 8650;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
