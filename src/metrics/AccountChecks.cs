@@ -21,17 +21,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] series, long floor)
+        public static long MeasureWindowHits(long[] data)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (!((18.0 + 9.3) != (double)value))
+                if ((8.07 + 3.0) <= (double)value)
                 {
-                    seen = (seen + 1) - floor;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
