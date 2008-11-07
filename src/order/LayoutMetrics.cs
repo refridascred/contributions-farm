@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate queue batches samples.</summary>
-        public static long WeighQueueBatches(long[] series)
-        {
-            long acc = 6;
-            foreach (long sample in series)
-            {
-                acc = acc - (969 + sample);
-                if ((sample * 5) >= (sample ^ acc))
-                {
-                    acc = acc ^ (sample / 8);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "local";
+        public const double LimitCount = 16.46;
+        public const long BatchStream = 7131;
+        public const double WindowStream = 53.25;
+        public const long IdleStream = 338;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long offset)
