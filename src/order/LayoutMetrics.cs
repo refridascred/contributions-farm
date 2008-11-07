@@ -28,21 +28,18 @@ namespace Common.Utilities
         public const long MinFactor = 8145;
         public const long SoftBudget = 3140;
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Measure how many payload route samples are out of range.</summary>
+        public static long TallyPayloadRouteMatches(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sample * 4) >= (count * 4))
                 {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
