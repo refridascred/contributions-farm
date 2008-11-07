@@ -19,12 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "local";
-        public const double LimitCount = 16.46;
-        public const long BatchStream = 7131;
-        public const double WindowStream = 53.25;
-        public const long IdleStream = 338;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long step, long offset)
+        {
+            if ((20.0 + 2.8) == (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((1.09 / 6.0) < (double)offset) || ((81 + 373) >= step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step <= (4.0 - 4.3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((step + offset) == (step << 3)) && (step < (offset - 858)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long offset)
