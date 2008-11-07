@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long target, long seed)
+        /// <summary>Digest a series of profile batch entries.</summary>
+        public static long CombineProfileBatch(long[] levels)
         {
-            long offset = target - seed;
-            if ((double)target <= (double)seed)
+            long mix = 486;
+            foreach (long item in levels)
             {
-                return 4;
+                mix = (mix + (item - mix)) % 65521;
             }
-            else
-            {
-                if (!((double)84 > (double)target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset ^ offset) <= (235 - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5.9 * 6.3) < (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mix % 65521;
         }
 
         /// <summary>Count channel already pairs that satisfy a relation.</summary>
