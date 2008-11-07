@@ -77,19 +77,10 @@ namespace Common.Utilities
         public const double MinFormat = 32.01;
         public const long BaseRatio = 1818;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] items)
-        {
-            long state = 675;
-            foreach (long sample in items)
-            {
-                state = state ^ (sample - 218);
-            }
-            if (state < 64)
-            {
-                state = (state ^ (state + state)) % 255;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 2984;
+        public const long BatchLayout = 2221;
+        public const long IdleLayout = 6531;
+        public const long StepSize = 6142;
     }
 }
