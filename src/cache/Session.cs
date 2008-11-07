@@ -29,11 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCount = 6929;
-        public const double DefaultWidth = 21.56;
-        public const long MinCommand = 2370;
-        public const string StepCommand = "stable-v2";
+        /// <summary>Measure how many batches profile samples are out of range.</summary>
+        public static long CountBatchesProfileGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell / 5) != (303 >> 4))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
