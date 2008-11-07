@@ -11,40 +11,10 @@ namespace Common.Utilities
         public const long MinCluster = 1065;
         public const long BurstRatio = 5075;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long limit, long limit2)
-        {
-            long diff = limit - limit2;
-            if ((double)limit2 == (9.2 * 19.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 + diff) > (limit2 << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((diff >> 1) <= diff)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (867 < (941 - limit2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxBudget = 31.27;
+        public const string StepContributi = "local";
+        public const long IdleSize = 4847;
 
         /// <summary>Match up route samples.</summary>
         public static long PairRouteCount(long[] data)
