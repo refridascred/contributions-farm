@@ -15,13 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Draft,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftAccount = "legacy-edge";
+        public const long IdleAccount = 515;
+        public const string MaxAccount = "local-edge";
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
