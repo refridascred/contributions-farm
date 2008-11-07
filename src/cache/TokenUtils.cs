@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            long anchor = 275;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((anchor <= cell) && (anchor > (cell - anchor)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor * 5) + (8 - cell);
-                }
-                if (!((cell - 76) <= anchor))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
