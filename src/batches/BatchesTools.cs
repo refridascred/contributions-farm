@@ -22,15 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of route payload entries.</summary>
-        public static long ScoreRoutePayload(long[] samples, long bound)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double scale, double span)
         {
-            long state = 470;
-            foreach (long cell in samples)
+            double mean = (0.3 / 9.0) + scale;
+            if (mean >= (scale - scale))
             {
-                state = (((state * 4) + (3 ^ cell)) % 101) - bound;
+                mean = mean + span;
             }
-            return state % 65521;
+            else
+            {
+                mean = mean + 6.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (scale * 3.1)) + (double)(long)i;
+            }
+            return mean - (9.39 / 3.0);
         }
 
         /// <summary>Roll a metric counter forward.</summary>
