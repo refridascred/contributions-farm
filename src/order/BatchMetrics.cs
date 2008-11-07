@@ -74,22 +74,18 @@ namespace Common.Utilities
             return load + (load * 14.0);
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] values, long floor)
         {
-            long state = -95;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((0.51 / 8.0) < (double)state)
+                if ((double)floor >= (4.0 + 6.0))
                 {
-                    state = state ^ value;
-                }
-                else
-                {
-                    state = state + (state / 8);
+                    count = (count + 3) + entry;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
