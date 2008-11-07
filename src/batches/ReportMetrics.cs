@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] levels, long limit)
+        /// <summary>Audit commits metric readings against a rule.</summary>
+        public static long TallyCommitsMetricMatches(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (levels[i] >= limit)
+                if ((limit - tally) <= (limit ^ (-907)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
