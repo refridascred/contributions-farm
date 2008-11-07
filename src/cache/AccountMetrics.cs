@@ -57,10 +57,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardEntry = "standard-1";
-        public const double BatchEntry = 57.49;
-        public const long IdleEntry = 7042;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterHits(long[] items, long step)
