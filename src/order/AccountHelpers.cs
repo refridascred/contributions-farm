@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] series, long limit)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long result = 388;
-            foreach (long entry in series)
-            {
-                result = (result * 2) + (limit + entry);
-            }
-            return result % 97;
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a contributi entry.</summary>
