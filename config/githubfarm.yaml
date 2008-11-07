@@ -1,25 +1,6 @@
 # githubfarm settings
-buffer_window: true
-base_delay_pct:
-  - green
-  - strict
-  - local
-dry_run: 90
-soft_depth:
-  cluster_size: strict
-  batch_capacity: 250
-  burst_ratio_s:
-    cache_window_pct: eu-west
-    enabled: blue
-    retry_ratio_pct: 29.1
-    min_threshold: 9945
-  idle_size_count:
-    - fallback
-    - blue
-    - latest
-    - legacy
-  hard_ratio:
-    - 243
-    - 146
-    - 258
-    - 435
+batch_capacity: 37.34
+max_size_count: true
+readonly: 100
+audit: 9
+warm_ratio: false
