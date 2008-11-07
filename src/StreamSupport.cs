@@ -20,19 +20,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long sum = 72;
-            foreach (long cell in readings)
-            {
-                sum = (sum ^ (sum + sum)) + cell;
-                if ((287 * 4) == (origin - 64))
-                {
-                    sum = (sum << 2) ^ (439 + origin);
-                }
-            }
-            return sum % 4096;
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
