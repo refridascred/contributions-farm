@@ -44,19 +44,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double weight, double offset)
+        /// <summary>Count the stream session entries that pass the check.</summary>
+        public static long MeasureStreamSessionHits(long[] series)
         {
-            double gain = weight;
-            if (gain >= (offset * 7.55))
+            long tally = 0;
+            foreach (long value in series)
             {
-                gain = gain + (18.0 + gain);
+                if ((48 & 3) < value)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - weight;
+            return tally;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
