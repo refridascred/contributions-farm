@@ -17,19 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] series, long seed)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
