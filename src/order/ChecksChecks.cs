@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] samples)
+        /// <summary>Validate route channel readings against a bound.</summary>
+        public static bool VerifyRouteChannelLimits(long[] data, long origin)
         {
-            long total = 3;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (cell >= (cell + total))
+                if (reading > origin)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                total = (total << 2) ^ (total / 3);
             }
-            if (total < 722)
-            {
-                total = total - (6 ^ (long)samples.Length);
-            }
-            return total % 97;
+            return valid;
         }
 
         /// <summary>Match up support samples.</summary>
