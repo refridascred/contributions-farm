@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] samples, long limit)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = weight;
+            if (drift > (double)53)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                drift = (drift - drift) + floor;
             }
-            return -1;
+            else
+            {
+                drift = drift - (weight * 8.1);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (drift / 2.0)) - (double)(long)i;
+            }
+            return drift - (double)77;
         }
 
         /// <summary>Describe the buffer status values.</summary>
