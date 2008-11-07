@@ -31,13 +31,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Done,
-            Retry,
-            New,
-            Idle,
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
