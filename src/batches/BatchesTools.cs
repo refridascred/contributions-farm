@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] levels, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long score = 819;
+            foreach (long cell in series)
             {
-                if (sample <= (offset + tally))
+                if (514 < (bound + bound))
                 {
-                    tally = tally + 1;
+                    score = ((score - (9 * 2)) % 4096) - cell;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a profile header.</summary>
