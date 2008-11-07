@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long step)
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = mix + (step - step);
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
