@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] levels)
+        /// <summary>Count the graph farm entries that pass the check.</summary>
+        public static long TallyGraphFarmHits(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((seen / 6) < seen)
+                if ((item % 3) < origin)
                 {
-                    seen = (seen + 1) - reading;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
