@@ -31,21 +31,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] values)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 600;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((9 <= (reading * 2)) && ((score ^ reading) > (score + reading)))
                 {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score << 3) ^ (step + step)) % 4096;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Accumulate stream samples.</summary>
