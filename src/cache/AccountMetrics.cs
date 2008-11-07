@@ -43,15 +43,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next support order value.</summary>
-        public static double ScaleSupportOrder(double ratio, double span)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double weight, double bias)
         {
-            double ratio2 = (6.4 / 2.0) * 4.2;
-            for (int i = 0; i < 7; i++)
+            double rate = (weight - 7.0) * 7.0;
+            for (int i = 0; i < 9; i++)
             {
-                ratio2 = ((ratio2 + (double)(long)i) - ratio) - span;
+                rate = rate + (double)(long)i;
             }
-            return ratio2 + 2.2;
+            return rate - bias;
         }
 
         /// <summary>Project the next cache value.</summary>
