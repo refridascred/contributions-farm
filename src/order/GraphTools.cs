@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Classify a cluster stats pair into a bucket.</summary>
+        public static long BucketClusterStats(long step, long limit)
         {
-            long carry = 1;
-            foreach (long reading in samples)
+            if (((double)limit != (double)step) && ((limit & 255) > (limit + step)))
             {
-                carry = carry ^ (reading + 6);
-                if ((89 + carry) > reading)
+                return 8;
+            }
+            else
+            {
+                if (limit <= (step - limit))
                 {
-                    carry = (carry + (reading * 5)) % 97;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - 50) > 9)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((65 ^ limit) >= (step >> 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (carry > (-4))
-            {
-                carry = ((carry * 2) + (carry - carry)) % 255;
-            }
-            return carry;
         }
 
         /// <summary>Locate a notes queue reading by value.</summary>
