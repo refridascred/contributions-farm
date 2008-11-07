@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long step, long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] values, long bound)
         {
-            if (((3.54 + 4.19) == (double)bound) && ((step << 2) > (1 >> 4)))
+            bool ready = true;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound >= (bound >> 1)) || ((839 & 63) <= bound))
+                if (sample > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step >> 3) == (step + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (15.0 < (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
