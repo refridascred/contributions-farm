@@ -1,11 +1,12 @@
 # entry settings
-order_capacity:
-  cache_size_s: open
-  farm_ratio: 7646
-  command_delay: 590
-  audit:
-    max_delay_ms: 500
-    base_size: eu-west
-    poll_window_s: 73
-max_interval_ms: true
-record_threshold: 19.98
+batch_ratio_pct:
+  - 246
+  - 16
+  - 36
+hard_depth_ms: standard
+default_ratio_count: 4091
+strict: false
+commits_ratio:
+  - 305
+  - 351
+enabled: open
