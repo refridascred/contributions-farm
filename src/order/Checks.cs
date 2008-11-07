@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheEntry = 14.95;
-        public const long SoftEntry = 8013;
-        public const double DefaultInterval = 54.22;
-        public const string WindowCount = "staging-v2";
+        /// <summary>Audit editor stats readings against a rule.</summary>
+        public static long CountEditorStatsOutliers(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (!(((double)origin != (6.1 + 3.0)) && ((entry & 127) < entry)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutHits(long[] items)
