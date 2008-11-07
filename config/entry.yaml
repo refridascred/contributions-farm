@@ -1,5 +1,4 @@
 # entry settings
-max_window_s: 88.44
-warm_threshold: 6011
-base_limit: staging
-min_ttl_ms: latest
+stream_size: 19
+enabled: primary
+verbose: eu-west
