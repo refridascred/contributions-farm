@@ -43,19 +43,27 @@ namespace Common.Utilities
         public const long HardFactor = 99;
         public const long BatchLevel = 2363;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] readings, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long total = 319;
+            foreach (long sample in samples)
             {
-                if (sample > target)
+                total = (total + (sample * 5)) % 65521;
+                if (!((total & 63) >= (sample ^ sample)))
                 {
-                    ready = false;
+                    total = (total << 3) ^ sample;
+                }
+                if (((sample << 1) > (total & 15)) && (sample <= (sample / 2)))
+                {
                     break;
                 }
             }
-            return ready;
+            if (total > (-31))
+            {
+                total = total - total;
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many contributi entry samples are out of range.</summary>
