@@ -32,18 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] readings)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (!((double)datum > (10.0 / 8.0)) || ((double)tally != (11.0 - 2.3)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Locked,
+            Done,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Check that every window contributi entry stays within the limit.</summary>
