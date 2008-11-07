@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
+            long anchor = -2;
+            foreach (long entry in values)
+            {
+                anchor = anchor ^ (entry & 15);
+            }
+            if (anchor > 921)
+            {
+                anchor = (anchor - anchor) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
