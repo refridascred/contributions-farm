@@ -23,18 +23,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] readings, long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((double)(long)readings.Length >= (15.0 + 2.0))
+                if (datum != offset)
                 {
-                    seen = ((seen + 3) + datum) - floor;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
