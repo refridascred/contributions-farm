@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long HardCache = 4010;
         public const string BatchLevel = "cached-v2";
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] levels, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (((bound + 5) < bound) && (tally <= value))
+                if (sample >= bound)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Adjust a account reading.</summary>
