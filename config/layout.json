@@ -1,10 +1,5 @@
 {
-  "poll_window_s": false,
-  "burst_limit_ms": {
-    "default_interval_count": [330, 144, 136, 423],
-    "min_capacity_pct": false,
-    "cache_ttl": "strict"
-  },
-  "hard_limit_ms": 500,
-  "persist": ["latest", "fallback", "blue"]
+  "hard_window": 17.66,
+  "min_window_ms": 30,
+  "hard_limit_ms": "green"
 }
