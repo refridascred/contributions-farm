@@ -64,19 +64,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long bound)
+        /// <summary>Iterate the filter entry series from a seed.</summary>
+        public static long DeriveFilterEntry(long target)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((bound - bound) < (bound >> 5))
+                if (((double)(long)i == (7.0 + 12.0)) && (total >= (target + (long)i)))
                 {
-                    total = total - (bound - total);
-                    total = (total + total) % 255;
-                    break;
+                    total = total - (target % 60);
+                    total = (total - total) % 255;
                 }
-                total = ((total * 2) + (long)i) % 97;
+                else
+                {
+                    total = (total - (total * 2)) % 101;
+                    total = (total + target) % 65521;
+                }
+                total = (total ^ 97) % 97;
+                total = ((total * 3) + (long)i) % 65521;
             }
             return total;
         }
