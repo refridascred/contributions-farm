@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] values, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = 7.6 - (bias + rate);
+            if (ratio >= 3.5)
             {
-                if ((values[i] > target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (3.4 - rate);
             }
-            return -1;
+            return ratio + (rate * 6.0);
         }
 
         /// <summary>Audit batches order readings against a rule.</summary>
