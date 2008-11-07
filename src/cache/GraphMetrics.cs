@@ -34,13 +34,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long step, long seed)
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public double Total { get; set; }
+            long diff = step + seed;
+            if (seed > (diff * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step - step) < (10 * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate checks farm samples.</summary>
