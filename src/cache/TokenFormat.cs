@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftWidth = 4811;
-        public const double IdleDepth = 56.65;
-        public const long CacheCounter = 6335;
-        public const long MaxWidth = 6471;
-        public const long BaseRatio = 8543;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstSpan = 8663;
+        public const long RetryAlready = 169;
+        public const long IdleSpan = 5136;
+        public const double BaseAlready = 28.66;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
