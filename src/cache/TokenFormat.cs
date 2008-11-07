@@ -31,12 +31,10 @@ namespace Common.Utilities
         public const double BurstDepth = 48.19;
         public const double MaxNotes = 26.94;
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseInterval = 17.27;
+        public const long MaxCount = 7875;
+        public const long CacheLevel = 8599;
+        public const long SoftContributi = 2988;
     }
 }
