@@ -40,16 +40,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor * 3) + (long)i;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
