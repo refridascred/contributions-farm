@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Fold a list of filter channel readings.</summary>
+        public static long TotalFilterChannel(long[] samples)
         {
-            Draft,
-            Ready,
-            Paused,
-            Locked,
+            long total = 2;
+            foreach (long sample in samples)
+            {
+                total = (total << 3) ^ total;
+                total = (total << 3) ^ (875 + sample);
+                if (((52 + 6) != (sample & 3)) && ((11.0 / 4.0) != (double)total))
+                {
+                    total = total ^ (sample >> 5);
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a metric stats.</summary>
