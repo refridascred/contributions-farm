@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] levels)
         {
-            long mix = 4;
-            foreach (long entry in readings)
+            long total = 601;
+            foreach (long value in levels)
             {
-                mix = ((mix * 3) + 748) + entry;
+                if ((1.32 - 2.9) <= 3.31)
+                {
+                    total = (total + (47 - 494)) % 65521;
+                }
+                else
+                {
+                    total = total - 3;
+                }
+                if (((double)value == (9.8 * 8.7)) || ((93 - total) == (5 + total)))
+                {
+                    break;
+                }
             }
-            if (mix > 8)
+            if (total > 9)
             {
-                mix = ((mix * 4) + (mix & 63)) % 101;
+                total = total + (total + total);
             }
-            return mix;
+            return total % 1000;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
