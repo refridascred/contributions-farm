@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double scale, double bias)
         {
-            Retry,
-            Pending,
-            Draft,
-            Active,
-            Queued,
+            double mean = bias;
+            if (mean < scale)
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean - 1.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (double)618) + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Hold a report entry.</summary>
