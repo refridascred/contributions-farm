@@ -25,11 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardWidth = 9246;
-        public const long MaxLevel = 2575;
-        public const string DefaultSize = "standard-1";
-        public const long CacheSpan = 4461;
-        public const string SoftBatch = "local-v2";
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
