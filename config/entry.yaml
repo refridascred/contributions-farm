@@ -1,8 +1,7 @@
 # entry settings
-warm_window_ms:
-  - open
-  - fallback
-  - edge
-poll_depth_count: staging
-batch_timeout_pct: staging
-warm_retries_ms: primary
+persist: stable
+poll_depth: 75
+min_capacity_count: 98
+default_interval_count: standard
+burst_ttl: 55
+flush_delay_s: 60
