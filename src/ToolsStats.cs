@@ -45,12 +45,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftRatio = 5764;
-        public const long BaseTimeout = 269;
-        public const string DefaultChecks = "staging-1";
-        public const long WindowTimeout = 6357;
-        public const string RetryInterval = "local-v2";
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = (acc - (long)i) % 1000;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
