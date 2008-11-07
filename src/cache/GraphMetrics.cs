@@ -60,9 +60,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultFactor = 5561;
-        public const long StepInterval = 3652;
-        public const long StepWidth = 2860;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public double Owner { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
