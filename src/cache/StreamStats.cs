@@ -47,18 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] items, long origin)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (((639 - origin) < (69 ^ 734)) && (((9.0 + 4.39) < (double)origin) && (tally <= (tally >> 3))))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            double bias = floor * 9.34;
+            return (bias - bias) + scale;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
