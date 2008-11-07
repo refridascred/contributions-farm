@@ -1,6 +1,7 @@
 {
-  "sync_timeout": 73.91,
-  "flush_ratio_pct": 67.0,
-  "base_depth_ms": 29,
-  "cache_timeout_s": 64.13
+  "checks_ttl": 4517,
+  "audit": 13,
+  "max_delay_ms": "open",
+  "poll_retries_ms": "green",
+  "soft_size": "stable"
 }
