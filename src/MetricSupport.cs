@@ -26,13 +26,26 @@ namespace Common.Utilities
         public const string BatchToken = "strict-v2";
         public const double HardToken = 50.72;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] levels, long offset)
         {
-            Active,
-            Draft,
-            Ready,
-            Closed,
+            long mix = 3;
+            foreach (long reading in levels)
+            {
+                if (!((reading * 4) >= (mix % 16)))
+                {
+                    mix = ((mix * 2) + (mix & 255)) - offset;
+                }
+                if (!(mix > (mix ^ mix)))
+                {
+                    mix = mix ^ reading;
+                }
+            }
+            if (mix > 417)
+            {
+                mix = mix + (-251);
+            }
+            return mix;
         }
     }
 }
