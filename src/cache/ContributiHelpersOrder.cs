@@ -19,19 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile githubfarm entry stays within the limit.</summary>
-        public static bool GuardProfileGithubfarmRange(long[] samples, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long acc = 43;
+            foreach (long entry in readings)
             {
-                if (item <= bound)
+                acc = ((acc * 2) + (entry + entry)) % 255;
+                if ((entry & 1) <= (entry + acc))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc << 3) ^ (entry >> 1);
                 }
             }
-            return ok;
+            if (acc > 994)
+            {
+                acc = ((acc << 2) ^ 912) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a support header.</summary>
