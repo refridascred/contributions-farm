@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheScore = "standard-edge";
-        public const long LimitToken = 8914;
-        public const long MaxRatio = 612;
-        public const string MaxToken = "legacy-1";
+        /// <summary>Count contributi session pairs that satisfy a relation.</summary>
+        public static long MatchContributiSessionCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long SoftWidth = 4811;
