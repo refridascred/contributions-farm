@@ -1,21 +1,25 @@
 # githubfarm settings
-batch_window_ms:
-  flush_limit_s: true
-  sync_size_s:
-    - staging
-    - staging
-    - stable
-  max_delay:
-    checks_interval: 1024
-    queue_ratio: 100
-    max_size: 978
-    sync_size_ms: 44.42
-    flush_limit_ms:
-      - local
-      - cached
-      - primary
-      - standard
-    cache_capacity_s: 9166
-  persist: 27
-max_delay: 9419
-persist: 100
+dry_run:
+  flush_window_s: green
+  persist:
+    idle_ratio_ms: false
+    min_capacity_pct: cached
+    support_limit: 21
+    dry_run: local
+  flush_capacity: false
+  base_ttl_count: 100
+  burst_ttl_pct: latest
+  audit: 1
+counter_retries: true
+cache_depth_pct: 88
+cache_ratio_count:
+  flush_limit: green
+  audit: false
+  record_ratio:
+    checks_ttl: 9772
+    soft_ttl: 15.8
+    enabled: true
+    audit: true
+    base_ratio: 30
+default_ratio_pct: 35.47
+soft_timeout: staging
