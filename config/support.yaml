@@ -1,6 +1,6 @@
 # support settings
-min_limit_count:
-  - 387
-  - 454
-cache_threshold: green
-compress: 500
+min_depth: stable
+compress: 8408
+readonly: false
+batch_capacity: strict
+buffer_interval: 72
