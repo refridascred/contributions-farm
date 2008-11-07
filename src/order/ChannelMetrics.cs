@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] data, long bound)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a token info.</summary>
