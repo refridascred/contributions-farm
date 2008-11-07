@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long floor, long offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            if ((floor <= (offset - 9)) && ((6.2 / 6.0) == (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset >= (floor / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (420 <= (floor + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
