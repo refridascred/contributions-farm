@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double ratio, double span)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] samples, long floor)
         {
-            double ratio2 = (double)(635 + 36);
-            if (ratio2 < span)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                ratio2 = ratio2 - ratio;
+                if (sample <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio2 - span;
+            return flag;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
