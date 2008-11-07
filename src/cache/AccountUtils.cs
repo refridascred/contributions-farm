@@ -22,13 +22,9 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Ready,
-            Closed,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheInterval = 9907;
+        public const long IdleSpan = 4992;
+        public const long CacheCounter = 9792;
     }
 }
