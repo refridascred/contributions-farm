@@ -57,18 +57,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batch batches entries that pass the check.</summary>
-        public static long AuditBatchBatchesHits(long[] data, long target)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double ratio2 = ratio;
+            if (ratio2 > (ratio2 - ratio))
             {
-                if ((double)matches >= (double)59)
-                {
-                    matches = ((matches + 1) ^ entry) - target;
-                }
+                ratio2 = (ratio2 - (3.3 / 6.0)) - floor;
             }
-            return matches;
+            return ratio2 - ratio;
         }
     }
 }
