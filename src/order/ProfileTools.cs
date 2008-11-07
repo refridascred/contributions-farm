@@ -41,22 +41,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] readings, long seed)
+        /// <summary>Digest a series of record contributi entries.</summary>
+        public static long TallyRecordContributi(long[] items)
         {
-            long mix = 46;
-            foreach (long reading in readings)
+            long total = -85;
+            foreach (long reading in items)
             {
-                if ((8.2 + 1.07) != (double)seed)
+                total = (total ^ total) % 65521;
+                if (!(((long)items.Length / 3) > reading))
                 {
-                    mix = ((mix - (mix - seed)) % 97) ^ reading;
+                    total = total ^ reading;
                 }
             }
-            if (mix > 252)
-            {
-                mix = (mix * 2) + (mix + mix);
-            }
-            return mix;
+            return total % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
