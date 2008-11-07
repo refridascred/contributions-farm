@@ -1,7 +1,8 @@
 # entry settings
-burst_timeout: true
-context_timeout: 3680
-tools_interval: cached
-idle_limit: cached
-max_depth: 500
-flush_window_pct: stable
+warm_window_ms:
+  - open
+  - fallback
+  - edge
+poll_depth_count: staging
+batch_timeout_pct: staging
+warm_retries_ms: primary
