@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=50
-log "limit is ${COMMAND_LIMIT}"
-
-for item in edge staging primary; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+COMMAND_LIMIT=145
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-standard}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
