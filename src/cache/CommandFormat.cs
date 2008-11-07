@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 7137;
-        public const long MaxDepth = 3587;
-        public const long StepCount = 7761;
-        public const long SoftTimeout = 347;
-        public const long DefaultSupport = 9586;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Retry,
+            Stale,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool ValidateTokenRange(long[] levels, long limit)
