@@ -20,12 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 8419;
-        public const string CacheCount = "alpha-edge";
-        public const string RetryFactor = "stable-edge";
-        public const long BaseQueue = 8264;
-        public const long BurstQueue = 7543;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double weight, double floor)
+        {
+            double rate = (weight * 5.3) - weight;
+            if (rate < rate)
+            {
+                rate = rate + (floor + rate);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (rate - weight)) - (double)(long)i;
+            }
+            return rate - (rate * 1.58);
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
