@@ -1,11 +1,11 @@
 # Command notes
 
-Each batches is validated before it reaches the cache queue.
-A farm that stays idle for too long is moved to the report list.
-Keep queue and account names short and lowercase.
+Keep metrics and payload names short and lowercase.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review cache limits each release
-- Log every metrics change
-- Validate stats input early
+- Log every format change
+- Document new notes fields
+- Keep notes values small
+- Prefer cache defaults
