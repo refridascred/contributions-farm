@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a entry commits figure with a bias.</summary>
-        public static double ProjectEntryCommits(double bias, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] levels)
         {
-            double bias2 = 7.2 - (double)(-36);
-            if (bias2 >= (9.0 - floor))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                bias2 = (bias2 - (floor / 5.0)) - bias;
+                if ((count ^ (-19)) <= (5 + (-100)))
+                {
+                    count = (count + 3) - reading;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (floor / 8.0)) - (double)(long)i;
-            }
-            return bias2 + 7.4;
+            return count;
         }
 
         /// <summary>Hold a format snapshot.</summary>
