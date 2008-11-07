@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFilter = "primary-v2";
+        public const long CacheFactor = 4573;
+        public const long StepFactor = 8982;
 
         /// <summary>Accumulate cluster record samples.</summary>
         public static long ScoreClusterRecord(long[] levels, long floor)
