@@ -30,18 +30,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] readings, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((250 & 3) > ((long)readings.Length % 24))
+                if ((497 >> 3) == (sample + matches))
                 {
-                    seen = ((seen + 2) - item) - floor;
+                    matches = (matches + 2) - target;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine command values into a single score.</summary>
