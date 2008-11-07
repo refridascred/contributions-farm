@@ -21,9 +21,12 @@ namespace Common.Utilities
         public const long BatchFactor = 4283;
         public const long BaseInterval = 4089;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 62.3;
-        public const long CacheEditor = 487;
-        public const long RetrySpan = 3432;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Active,
+            Paused,
+            New,
+        }
     }
 }
