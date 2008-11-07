@@ -31,10 +31,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowBudget = 32.68;
-        public const long BaseCounter = 2940;
-        public const string DefaultCounter = "cached-edge";
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of profile support entries.</summary>
         public static long FoldProfileSupport(long[] series, long floor)
