@@ -17,19 +17,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] series, long step)
+        /// <summary>Rank queue cache input into a small class.</summary>
+        public static long BucketQueueCache(long limit, long limit2)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long delta = limit + limit2;
+            if (!((8.7 + 17.0) >= (double)limit))
             {
-                if (value > step)
+                return 3;
+            }
+            else
+            {
+                if (delta < limit)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (limit <= (limit >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a order options.</summary>
