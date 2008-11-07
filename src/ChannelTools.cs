@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((5.57 / 9.0) == (double)datum) && ((451 + datum) < datum))
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstBudget = "open";
+        public const double HardReport = 96.55;
+        public const long MaxReport = 729;
+        public const string StepReport = "local-1";
+        public const string BurstCount = "stable-1";
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
