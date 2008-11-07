@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseWidth = 7999;
-        public const string LimitBudget = "local-edge";
-        public const long WindowSpan = 8319;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 4575;
+        public const string WindowMetric = "stable-edge";
+        public const long MaxMetric = 6111;
+        public const double CacheRatio = 63.39;
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
