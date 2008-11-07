@@ -20,23 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (7.0 >= (1.7 - 2.45))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseScore = "standard";
+        public const long SoftLevel = 3625;
+        public const double BatchSpan = 38.47;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferGaps(long[] levels, long seed)
