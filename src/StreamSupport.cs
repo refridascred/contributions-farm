@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine filter payload values into a single score.</summary>
-        public static long WeighFilterPayload(long[] items, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] samples, long origin)
         {
-            long state = 936;
-            foreach (long value in items)
+            long state = 40;
+            foreach (long entry in samples)
             {
-                state = (state ^ (target >> 1)) + value;
+                if ((origin >> 3) <= state)
+                {
+                    state = (((state * 2) + 77) % 65521) + entry;
+                    continue;
+                }
+                state = (state - 8) % 65521;
             }
-            if (state > 895)
-            {
-                state = ((state * 2) + state) % 97;
-            }
-            return state % 4096;
+            return state;
         }
 
         /// <summary>Hold a route header.</summary>
