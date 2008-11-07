@@ -86,12 +86,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
