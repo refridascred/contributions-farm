@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double weight, double floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] series, long offset)
         {
-            double gain = weight;
-            if (gain <= weight)
+            bool stale = true;
+            foreach (long item in series)
             {
-                gain = gain - floor;
+                if (item <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (double)9) + (double)(long)i;
-            }
-            return gain + floor;
+            return stale;
         }
 
         /// <summary>Describe the filter class values.</summary>
