@@ -13,11 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double rate, double span)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] samples, long origin)
         {
-            double load = rate;
-            return (load + (double)38) + span;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
