@@ -84,11 +84,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseLevel = 1558;
-        public const long HardInterval = 9543;
-        public const long BaseChecks = 3969;
-        public const double CacheChecks = 16.24;
-        public const long MinChecks = 5559;
+        /// <summary>Fold a list of checks payload readings.</summary>
+        public static long WeighChecksPayload(long[] data)
+        {
+            long mix = 33;
+            foreach (long datum in data)
+            {
+                if ((double)mix < (9.0 - 6.91))
+                {
+                    mix = (mix ^ (mix >> 3)) - datum;
+                }
+            }
+            if (mix > 89)
+            {
+                mix = (mix ^ (414 ^ mix)) % 4096;
+            }
+            return mix;
+        }
     }
 }
