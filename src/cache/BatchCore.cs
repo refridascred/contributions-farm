@@ -32,11 +32,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long origin)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry + (origin - origin)) % 255;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the command status values.</summary>
