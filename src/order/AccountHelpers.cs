@@ -36,18 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] samples, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (tally >= (reading - reading))
+                if ((double)matches < (9.72 / 3.0))
                 {
-                    tally = (tally + 1) + target;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate farm layout samples.</summary>
