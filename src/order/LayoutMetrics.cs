@@ -27,11 +27,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryInterval = 8724;
-        public const double BurstRoute = 18.53;
-        public const double CacheRoute = 56.47;
-        public const long WindowRoute = 3224;
-        public const long BaseRoute = 415;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
