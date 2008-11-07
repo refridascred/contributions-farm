@@ -29,22 +29,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] series)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mark = 2;
+            foreach (long cell in readings)
             {
-                if ((reading - count) < (count % 10))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (((mark + (mark * 3)) % 1000) ^ cell) - floor;
             }
-            return count;
+            return mark % 4096;
         }
     }
 }
