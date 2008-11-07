@@ -35,15 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 7287;
+        public const long WindowEntry = 495;
+        public const long CacheCount = 4201;
+        public const double WindowInterval = 0.27;
+        public const long BaseEntry = 5666;
     }
 }
