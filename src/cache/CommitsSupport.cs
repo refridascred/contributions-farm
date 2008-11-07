@@ -89,12 +89,19 @@ namespace Common.Utilities
             return (load + (6.4 * 0.35)) + offset;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long bound)
         {
-            Locked,
-            Queued,
-            Idle,
+            long result = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((bound + (long)i) < result)
+                {
+                    result = (result * 3) + (bound / 5);
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
