@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] series, long floor)
         {
-            long acc = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (((acc + acc) >= acc) && (value > acc))
+                if (cell != floor)
                 {
-                    acc = ((acc * 4) + acc) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return flag;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
