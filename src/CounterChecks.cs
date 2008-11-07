@@ -61,19 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] levels, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] samples)
         {
-            long sum = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                sum = (sum ^ sample) % 97;
+                if ((entry % 16) == (seen & 1))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (sum < 6)
-            {
-                sum = sum - (target * 3);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the entry state values.</summary>
