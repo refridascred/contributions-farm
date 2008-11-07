@@ -58,21 +58,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count & 15) >= (floor % 12))
                 {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
