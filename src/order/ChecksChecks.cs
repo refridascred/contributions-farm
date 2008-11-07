@@ -39,17 +39,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (values[i] == origin)
+                if ((hits % 10) >= (datum - hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
