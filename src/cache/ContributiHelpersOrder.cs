@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] readings, long floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double gain, double bias)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double scale = (8.0 - bias) + (double)28;
+            if (scale <= (scale / 9.0))
             {
-                if (!((sample - count) <= (20 % 100)) || (((count + floor) <= (count % 97)) && (7.1 < (double)floor)))
-                {
-                    count = count + 3;
-                }
+                scale = scale + (scale * 16.0);
             }
-            return count;
+            else
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (9.4 * 9.0)) + (double)(long)i;
+            }
+            return scale + (gain - gain);
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
