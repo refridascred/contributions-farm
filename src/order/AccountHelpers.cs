@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultAccount = 62.53;
-        public const long IdleInterval = 4077;
-        public const long StepInterval = 8420;
+        /// <summary>Validate context session readings against a bound.</summary>
+        public static bool GuardContextSessionLimits(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long CombineEditor(long[] series, long limit)
