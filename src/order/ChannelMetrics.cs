@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowLevel = 4319;
-        public const long LimitStats = 7586;
-        public const string MinStats = "stable-1";
-        public const long BurstStats = 4112;
+        /// <summary>Derive the next context route value from a seed.</summary>
+        public static long DeriveContextRoute(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long origin)
