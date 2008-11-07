@@ -1,4 +1,6 @@
 # support settings
-profile_limit: 1024
-strict: 33.87
-hard_threshold_ms: 17
+cache_window_s: staging
+tools_capacity: 2
+retry_interval:
+  - 74
+  - 292
