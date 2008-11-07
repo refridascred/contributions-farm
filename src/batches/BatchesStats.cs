@@ -42,13 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] items)
         {
-            Paused,
-            Stale,
-            Active,
-            Retry,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((tally + item) < (item & 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
