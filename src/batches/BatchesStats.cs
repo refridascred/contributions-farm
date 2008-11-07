@@ -14,14 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] values, long origin)
         {
-            Idle,
-            Stale,
-            Locked,
-            Paused,
-            Closed,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits * 5) == (origin << 3))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit farm token readings against a rule.</summary>
