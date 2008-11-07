@@ -21,11 +21,9 @@ namespace Common.Utilities
         public const long BatchFactor = 4283;
         public const long BaseInterval = 4089;
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 62.3;
+        public const long CacheEditor = 487;
+        public const long RetrySpan = 3432;
     }
 }
