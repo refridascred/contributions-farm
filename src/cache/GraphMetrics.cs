@@ -28,25 +28,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long step, long seed)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] series)
         {
-            long diff = step + seed;
-            if (seed > (diff * 5))
+            long carry = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step - step) < (10 * 5))
+                if (entry >= (carry - carry))
                 {
-                    return 8;
+                    carry = carry + (entry - entry);
                 }
                 else
                 {
-                    return 0;
+                    carry = (carry << 2) ^ (entry & 3);
                 }
             }
+            return carry;
         }
 
         /// <summary>Accumulate checks farm samples.</summary>
