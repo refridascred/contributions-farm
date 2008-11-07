@@ -46,27 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long carry = 353;
-            foreach (long entry in items)
-            {
-                if (((entry % 24) < (entry + entry)) && ((carry & 255) > (entry + entry)))
-                {
-                    carry = (carry + (entry / 5)) % 65521;
-                    carry = carry - (carry & 127);
-                }
-                if ((carry + carry) >= carry)
-                {
-                    carry = carry - entry;
-                }
-            }
-            if (carry < 3)
-            {
-                carry = (carry - (carry - carry)) % 97;
-            }
-            return carry;
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
