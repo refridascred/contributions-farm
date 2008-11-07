@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] values)
         {
-            public double Flag { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value + 76) < value)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a command editor sample.</summary>
