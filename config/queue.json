@@ -1,7 +1,6 @@
 {
-  "readonly": ["local", "blue", "latest"],
-  "dry_run": 77,
-  "stats_size": 3788,
-  "max_size_s": true,
-  "idle_timeout": 5347
+  "idle_limit": 67.97,
+  "idle_limit_pct": [412, 231],
+  "editor_delay": 436,
+  "compress": 85.62
 }
