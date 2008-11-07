@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftInterval = 0.85;
-        public const long DefaultOrder = 9969;
-        public const long HardSize = 5035;
-        public const long WindowInterval = 6744;
-        public const long HardOrder = 8068;
+        /// <summary>Measure how many window already samples are out of range.</summary>
+        public static long CountWindowAlreadyGaps(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((bound <= (bound - seen)) && ((double)93 <= (double)seen))
+                {
+                    seen = (seen + 3) - cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long IterateCluster(long target)
