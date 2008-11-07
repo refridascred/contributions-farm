@@ -26,16 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record channel counter forward.</summary>
-        public static long DeriveRecordChannel(long target)
+        /// <summary>Combine report cache values into a single score.</summary>
+        public static long CombineReportCache(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            long mark = 763;
+            foreach (long sample in data)
             {
-                sum = ((sum << 2) ^ (23 << 1)) % 255;
-                sum = ((sum * 5) + (long)i) % 97;
+                mark = (mark + (mark % 5)) % 1000;
+                if (((sample - 0) <= (sample >> 4)) || ((sample + sample) > (sample * 2)))
+                {
+                    mark = (mark ^ (sample ^ sample)) % 65521;
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define format limits and defaults.</summary>
