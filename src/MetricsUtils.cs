@@ -21,25 +21,11 @@ namespace Common.Utilities
         public const double DefaultBudget = 36.13;
         public const long DefaultSchema = 6196;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long origin, long limit)
-        {
-            if ((origin - 81) == (origin + limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((375 > (limit % 2)) || ((9.9 / 5.0) <= (double)limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 5557;
+        public const string CacheLevel = "cached";
+        public const long BatchRatio = 9681;
+        public const string StepSession = "strict";
 
         /// <summary>Define format limits and defaults.</summary>
         public const double SoftRatio = 20.09;
