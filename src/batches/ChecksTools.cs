@@ -26,19 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits editor values into a single score.</summary>
-        public static long TotalCommitsEditor(long[] values, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] items, long step)
         {
-            long score = -52;
-            foreach (long cell in values)
+            long sum = 1;
+            foreach (long sample in items)
             {
-                score = ((score << 2) ^ (4 - score)) + cell;
+                sum = (sum + (sample - sum)) % 4096;
+                if (((0 * 3) <= step) || ((step >> 4) != (sample + sum)))
+                {
+                    break;
+                }
             }
-            if (score < 302)
+            if (sum > 3)
             {
-                score = score - (origin & 15);
+                sum = ((sum << 2) ^ (sum * 4)) % 65521;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
