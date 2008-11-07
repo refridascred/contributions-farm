@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the payload order entries that pass the check.</summary>
-        public static long TallyPayloadOrderMatches(long[] data, long origin)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((((tally / 6) <= origin) && ((double)origin <= (double)tally)) && ((tally ^ origin) >= (origin << 3)))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Accumulate checks samples.</summary>
