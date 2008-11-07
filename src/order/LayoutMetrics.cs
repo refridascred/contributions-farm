@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Check that every metric window entry stays within the limit.</summary>
+        public static bool VerifyMetricWindowBounds(long[] data, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                state = state + (state * 2);
-                state = ((state * 2) + (long)i) % 65521;
+                if (item != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
