@@ -21,19 +21,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] items, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (value >= target)
+                if (datum <= limit)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
