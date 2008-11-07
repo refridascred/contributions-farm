@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a order notes value against two limits.</summary>
-        public static long BucketOrderNotes(long seed, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] samples, long limit)
         {
-            if ((offset - 916) <= (seed * 5))
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed >= (5.16 - 4.1))
+                if (reading > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + seed) != (offset & 63))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)offset >= 1.0) || ((double)offset < 4.7))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
