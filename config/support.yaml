@@ -1,7 +1,11 @@
 # support settings
-tools_ttl: true
-base_limit: 57.74
-audit: 23
-burst_depth_s: stable
-default_threshold_pct: edge
-persist: 250
+already_capacity: strict
+flush_delay_pct: legacy
+enabled:
+  warm_timeout_pct: true
+  editor_ratio:
+    - 275
+    - 133
+    - 282
+  verbose: 8040
+  readonly: eu-west
