@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] data, long offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long origin)
         {
-            long mix = 862;
-            foreach (long cell in data)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                mix = ((mix + (offset + 143)) % 65521) + cell;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = (score + origin) ^ (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Audit support schema readings against a rule.</summary>
