@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate record filter samples.</summary>
-        public static long ScoreRecordFilter(long[] values, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] series, long offset)
         {
-            long total = 97;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (((double)sample != (8.1 + 6.24)) || ((total + 1) <= total))
+                if ((double)hits < (double)sample)
                 {
-                    total = (total + (total << 2)) % 1000;
-                }
-                if ((-846) < (sample ^ step))
-                {
-                    total = total + (step & 15);
+                    hits = (hits + 3) + offset;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
