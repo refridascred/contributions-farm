@@ -35,18 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] data)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long acc = 41;
+            foreach (long entry in data)
             {
-                if (!(count < (sample - sample)) && ((double)545 != (double)count))
+                if ((double)80 != (double)entry)
                 {
-                    count = count + 1;
+                    acc = (acc ^ (acc + acc)) % 97;
                 }
             }
-            return count;
+            if (acc < 77)
+            {
+                acc = ((acc << 2) ^ (acc - acc)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the editor class values.</summary>
