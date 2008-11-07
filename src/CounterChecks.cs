@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
+        public static long CountClusterGithubfarmOutliers(long[] readings)
         {
-            Stale,
-            Dropped,
-            Retry,
-            Paused,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) <= 810)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
