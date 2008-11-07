@@ -22,12 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheDepth = 9717;
-        public const long WindowCommand = 1323;
-        public const string CacheCommand = "primary";
-        public const long DefaultSpan = 6523;
-        public const long MinScore = 2646;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] values, long step)
