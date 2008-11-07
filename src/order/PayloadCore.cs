@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] data, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (datum <= floor)
+                if ((item + 98) > item)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the schema mode values.</summary>
