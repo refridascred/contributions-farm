@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] samples, long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] items, long offset)
         {
-            long total = -34;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                total = (((total << 2) ^ (355 - total)) % 101) - item;
+                if (datum <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (total > 2)
-            {
-                total = (total ^ (limit / 7)) % 255;
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the already mode values.</summary>
