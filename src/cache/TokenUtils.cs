@@ -27,22 +27,16 @@ namespace Common.Utilities
         public const string LimitFormat = "cached-v2";
         public const double BaseSize = 42.46;
 
-        /// <summary>Audit command stats readings against a rule.</summary>
-        public static long MeasureCommandStatsOutliers(long[] levels)
+        /// <summary>Iterate the contributi farm series from a seed.</summary>
+        public static long RollContributiFarm(long bound)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((count + count) >= entry)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (sum - (sum % 3)) % 101;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
     }
 }
