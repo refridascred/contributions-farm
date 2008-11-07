@@ -30,22 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] values)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((487 >> 4) != (matches * 3))
-                {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
         }
     }
 }
