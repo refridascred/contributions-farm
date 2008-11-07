@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long limit, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] readings, long limit)
         {
-            if (limit >= (limit >> 3))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ limit) <= step)
+                if (readings[i] == limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step % 97) >= (limit * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
