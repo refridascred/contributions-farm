@@ -21,12 +21,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Synced,
-            Idle,
-            New,
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
