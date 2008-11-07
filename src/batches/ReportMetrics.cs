@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit commits metric readings against a rule.</summary>
-        public static long TallyCommitsMetricMatches(long[] items, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mix = 3;
+            foreach (long sample in values)
             {
-                if ((limit - tally) <= (limit ^ (-907)))
+                if ((bound ^ 93) < (bound - sample))
                 {
-                    tally = (tally + 3) - reading;
+                    mix = mix + 194;
                 }
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
