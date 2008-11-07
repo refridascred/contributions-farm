@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            Retry,
+            Ready,
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Adjust a already reading.</summary>
