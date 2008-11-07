@@ -45,14 +45,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Closed,
-            Paused,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 4100;
+        public const long StepFormat = 1556;
+        public const long SoftFormat = 419;
+        public const long RetryScore = 4760;
+        public const long MinFormat = 9261;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextHits(long[] samples)
