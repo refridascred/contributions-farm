@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 4091;
-        public const long BaseDepth = 2921;
-        public const long CacheStream = 7177;
+        /// <summary>Adjust a window metrics reading.</summary>
+        public static double AdjustWindowMetrics(double bias, double span)
+        {
+            double mean = (double)(60 ^ 44);
+            if (mean < mean)
+            {
+                mean = (mean - (5.19 + bias)) - span;
+            }
+            return mean + (4.93 - mean);
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long origin, long seed)
