@@ -37,21 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Fold a list of cache counter readings.</summary>
+        public static long TallyCacheCounter(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 4;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc ^ (acc - acc)) % 97) + offset;
+                acc = (acc + (value + acc)) % 4096;
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
