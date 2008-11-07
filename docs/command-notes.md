@@ -1,11 +1,14 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the checks list.
-The queue report groups every command by order.
+The graph helpers are pure functions, so they are safe to call from any thread.
+Defaults for format live in the config folder and can be overridden per environment.
+
+Each order is validated before it reaches the order queue.
+Run the stream check before changing any channel limits.
+The schema report groups every editor by context.
 
 ## Guidelines
 
-- Prefer session defaults
-- Keep batch values small
-- Document new farm fields
-- Log every schema change
+- Validate token input early
+- Prefer counter defaults
+- Document new schema fields
