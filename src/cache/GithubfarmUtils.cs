@@ -48,13 +48,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long target)
         {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((score > (27 - score)) || ((double)5 > (double)score))
+                {
+                    score = score + (target - 32);
+                }
+                if (score <= (target - score))
+                {
+                    score = (score + (target + target)) % 255;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
