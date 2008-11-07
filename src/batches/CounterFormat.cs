@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Retry,
-            Queued,
-            Done,
-            Closed,
+            New,
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Hold a batches options.</summary>
