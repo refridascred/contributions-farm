@@ -75,9 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstTimeout = 1830;
-        public const long WindowRoute = 7685;
-        public const long CacheRoute = 802;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
