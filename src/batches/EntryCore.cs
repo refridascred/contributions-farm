@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] items)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if ((floor <= (offset - 9)) && ((6.2 / 6.0) == (double)offset))
             {
-                if (((double)159 >= (double)seen) || ((item + seen) > (item / 5)))
+                return 4;
+            }
+            else
+            {
+                if (offset >= (floor / 3))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    if (420 <= (floor + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
