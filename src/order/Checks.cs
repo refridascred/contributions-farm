@@ -53,19 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session contributi entries that pass the check.</summary>
-        public static long TallySessionContributiOutliers(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((883 + tally) >= (origin / 9))
-                {
-                    tally = (tally + 3) - reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 6122;
+        public const string CacheSession = "latest-v2";
+        public const string DefaultSession = "latest-1";
+        public const double CacheTimeout = 73.87;
+        public const long MaxSession = 7877;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long SeekContextIndex(long[] items, long offset)
