@@ -1,6 +1,7 @@
 {
-  "base_ratio_pct": true,
-  "report_ratio": "eu-west",
-  "min_retries_s": false,
-  "batch_interval": "primary"
+  "report_size": true,
+  "warm_threshold": "staging",
+  "flush_timeout_pct": true,
+  "readonly": 27.31,
+  "retry_interval_s": 37.49
 }
