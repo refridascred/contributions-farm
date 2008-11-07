@@ -77,17 +77,19 @@ namespace Common.Utilities
         public const double MinFormat = 32.01;
         public const long BaseRatio = 1818;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] samples, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 675;
+            foreach (long sample in items)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                state = state ^ (sample - 218);
             }
-            return -1;
+            if (state < 64)
+            {
+                state = (state ^ (state + state)) % 255;
+            }
+            return state % 65521;
         }
     }
 }
