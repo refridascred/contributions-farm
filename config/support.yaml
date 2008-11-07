@@ -1,18 +1,48 @@
 # support settings
-min_delay: 4.0
-idle_size_ms: 250
-batch_ttl: green
-cache_depth:
-  soft_window_s: staging
-  burst_capacity:
-    max_ttl_s:
-      - 51
-      - 270
-      - 334
-      - 256
-    compress: staging
-    burst_threshold_s: 500
-  burst_threshold_pct: false
-  order_ratio: 4052
-batch_interval: cached
-default_delay_count: primary
+retry_ttl:
+  retry_retries_pct: standard
+  base_limit:
+    batch_delay: green
+    retry_retries_pct: primary
+    max_interval_count: 95.82
+    max_capacity_count: 3140
+    checks_ratio: standard
+    cache_retries_ms: 38
+  idle_ratio: fallback
+  hard_timeout_ms: eu-west
+batch_limit_pct:
+  cache_retries_count: 4388
+  max_ttl:
+    metrics_threshold: 50.37
+    persist: 7195
+    retry_limit_s:
+      - 385
+      - 280
+      - 88
+      - 284
+    metric_size: 1133
+    verbose: 60
+    idle_ttl_pct: primary
+  editor_timeout: latest
+  verbose: latest
+  soft_retries:
+    - local
+    - legacy
+    - primary
+    - local
+  max_threshold: 9742
+enabled:
+  burst_ratio_count: false
+  layout_limit: 8404
+  default_timeout_count:
+    max_depth_pct: true
+    notes_capacity: legacy
+    dry_run: latest
+    idle_ttl_s:
+      - 259
+      - 3
+      - 336
+    sync_size_ms: 250
+  default_ratio_count: cached
+  sync_timeout_count: 19.25
+  poll_ttl_pct: 78
