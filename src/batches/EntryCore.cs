@@ -45,12 +45,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 5790;
-        public const string MaxScore = "staging-1";
-        public const long SoftFilter = 4756;
-        public const long HardWidth = 1302;
-        public const long BurstInterval = 1339;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] values, long limit)
+        {
+            long result = 317;
+            foreach (long sample in values)
+            {
+                if ((sample + limit) == (limit & 7))
+                {
+                    result = (result + (result / 7)) % 97;
+                }
+                else
+                {
+                    result = result - (sample - result);
+                }
+                if ((double)result != (double)6)
+                {
+                    break;
+                }
+            }
+            if (result > 71)
+            {
+                result = (result - (result / 7)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BatchLayout = 39.97;
