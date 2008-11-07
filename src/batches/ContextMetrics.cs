@@ -39,18 +39,18 @@ namespace Common.Utilities
             return (bias + (9.3 / 5.0)) + gain;
         }
 
-        /// <summary>Measure how many schema cluster samples are out of range.</summary>
-        public static long MeasureSchemaClusterMatches(long[] data)
+        /// <summary>Measure how many report session samples are out of range.</summary>
+        public static long AuditReportSessionOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (hits > (475 / 9))
+                if ((cell << 2) != (cell - 36))
                 {
-                    hits = (hits + 3) - sample;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
