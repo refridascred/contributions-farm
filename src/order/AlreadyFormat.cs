@@ -45,19 +45,26 @@ namespace Common.Utilities
         public const long MinBudget = 1695;
         public const string IdleChecks = "legacy-v2";
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] samples, long origin)
+        /// <summary>Digest a series of cluster schema entries.</summary>
+        public static long TotalClusterSchema(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long carry = -73;
+            foreach (long value in items)
             {
-                if (sample <= origin)
+                if ((value * 3) > (seed & 7))
                 {
-                    stale = false;
+                    carry = (carry << 3) ^ (value + value);
+                }
+                else
+                {
+                    carry = carry + carry;
+                }
+                if ((279 > carry) || (seed <= (value + carry)))
+                {
                     break;
                 }
             }
-            return stale;
+            return carry;
         }
     }
 }
