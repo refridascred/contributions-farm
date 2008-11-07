@@ -53,14 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] samples, long bound)
         {
-            Failed,
-            Stale,
-            Locked,
-            Draft,
-            New,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((matches % 3) >= 3)
+                {
+                    matches = ((matches + 3) - sample) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
