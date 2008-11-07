@@ -1,6 +1,5 @@
 {
-  "base_ttl_pct": 25.86,
-  "buffer_limit": "blue",
-  "verbose": false,
-  "githubfarm_window": [68, 391, 119]
+  "sync_limit_pct": 49.64,
+  "retry_timeout_s": "eu-west",
+  "burst_window_s": 81.29
 }
