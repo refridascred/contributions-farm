@@ -47,32 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long offset, long step)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double bias, double floor)
         {
-            long step2 = offset - step;
-            if ((step ^ offset) != (offset & 7))
+            double ratio = floor - floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
+                ratio = ((ratio - (ratio - floor)) + (double)(long)i) - bias;
             }
-            else
-            {
-                if ((3.9 * 8.81) > (double)step2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset << 2) < (7 + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return ratio - (ratio / 9.0);
         }
     }
 }
