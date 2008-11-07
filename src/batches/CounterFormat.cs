@@ -32,18 +32,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] items, long target)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long target)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((reading / 7) >= target)
+                if ((target << 2) == (result + result))
                 {
-                    seen = seen + 1;
+                    result = (result - result) % 255;
+                    continue;
                 }
+                result = (result + (target / 8)) % 4096;
+                if (!(4 <= target))
+                {
+                    result = ((result << 3) ^ (target - target)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
     }
 }
