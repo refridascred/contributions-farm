@@ -25,19 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric editor reading.</summary>
-        public static double SmoothMetricEditor(double gain, double span)
+        /// <summary>Grade a window account value against two limits.</summary>
+        public static long BucketWindowAccount(long bound, long floor)
         {
-            double scale = gain;
-            if (scale >= span)
+            if ((bound % 8) < bound)
             {
-                scale = scale - (scale + 7.0);
+                return 7;
             }
             else
             {
-                scale = scale + (double)203;
+                if ((2 + bound) < floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return scale + gain;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
