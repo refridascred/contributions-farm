@@ -19,21 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count graph contributi pairs that satisfy a relation.</summary>
-        public static long PairGraphContributiCount(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)seen <= (2.33 - 0.2)))
                 {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
