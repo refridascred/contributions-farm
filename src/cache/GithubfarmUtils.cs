@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFilter = "primary-v2";
-        public const long CacheFactor = 4573;
-        public const long StepFactor = 8982;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double rate, double floor)
