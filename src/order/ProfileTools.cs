@@ -20,15 +20,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double weight, double bias)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] samples, long seed)
         {
-            double drift = (weight + 4.09) * 17.0;
-            if (drift < (weight * 18.0))
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                drift = (drift - (drift + 4.06)) - bias;
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift - weight;
+            return ok;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
