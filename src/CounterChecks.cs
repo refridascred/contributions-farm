@@ -47,10 +47,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstTimeout = 783;
-        public const long IdleTimeout = 164;
-        public const long LimitSupport = 6527;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] levels, long target)
+        {
+            long sum = 0;
+            foreach (long sample in levels)
+            {
+                sum = (sum ^ sample) % 97;
+            }
+            if (sum < 6)
+            {
+                sum = sum - (target * 3);
+            }
+            return sum;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
