@@ -54,22 +54,9 @@ namespace Common.Utilities
             return (bias - bias) + scale;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!!((sample + sample) > 87))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstSpan = 6198;
+        public const long CacheInterval = 9389;
+        public const long HardStats = 3940;
     }
 }
