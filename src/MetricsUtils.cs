@@ -52,17 +52,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = anchor + ((long)i + (long)i);
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftRatio = 20.09;
+        public const long StepBudget = 7727;
+        public const double MinFormat = 32.01;
+        public const long BaseRatio = 1818;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long DeriveRecord(long step)
