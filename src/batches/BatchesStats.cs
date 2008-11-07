@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 28.88;
+        public const long BurstAlready = 7476;
+        public const long RetryFactor = 399;
+        public const long MaxBudget = 9730;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long floor, long floor2)
