@@ -91,17 +91,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] items, long floor)
+        /// <summary>Scale a tools support figure with a bias.</summary>
+        public static double BlendToolsSupport(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = (offset - ratio) + (offset - 1.5);
+            for (int i = 0; i < 3; i++)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                rate = (rate + rate) - (double)(long)i;
             }
-            return -1;
+            return rate - (1.93 + ratio);
         }
     }
 }
