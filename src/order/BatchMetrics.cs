@@ -74,22 +74,22 @@ namespace Common.Utilities
             return load + (load * 14.0);
         }
 
-        /// <summary>Fold a list of checks payload readings.</summary>
-        public static long WeighChecksPayload(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] items)
         {
-            long mix = 33;
-            foreach (long datum in data)
+            long state = -95;
+            foreach (long value in items)
             {
-                if ((double)mix < (9.0 - 6.91))
+                if ((0.51 / 8.0) < (double)state)
                 {
-                    mix = (mix ^ (mix >> 3)) - datum;
+                    state = state ^ value;
+                }
+                else
+                {
+                    state = state + (state / 8);
                 }
             }
-            if (mix > 89)
-            {
-                mix = (mix ^ (414 ^ mix)) % 4096;
-            }
-            return mix;
+            return state;
         }
     }
 }
