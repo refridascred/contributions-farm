@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
             Paused,
-            Synced,
-            Dropped,
+            Draft,
+            Closed,
         }
 
         /// <summary>Count the farm already entries that pass the check.</summary>
