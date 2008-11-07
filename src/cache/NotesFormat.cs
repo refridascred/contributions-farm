@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] values)
+        /// <summary>Check that every support tools entry stays within the limit.</summary>
+        public static bool ValidateSupportToolsLimits(long[] items, long target)
         {
-            long anchor = -2;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long value in items)
             {
-                anchor = anchor ^ (entry & 15);
+                if (value <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (anchor > 921)
-            {
-                anchor = (anchor - anchor) % 255;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
