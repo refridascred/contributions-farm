@@ -33,23 +33,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] values, long seed)
-        {
-            long mix = 5;
-            foreach (long datum in values)
-            {
-                if (!((seed ^ mix) <= datum))
-                {
-                    mix = (mix ^ seed) % 4096;
-                }
-            }
-            if (mix < 965)
-            {
-                mix = (mix << 2) ^ (73 << 2);
-            }
-            return mix % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryScore = "primary-1";
+        public const string MinInterval = "latest-1";
+        public const long StepFormat = 4899;
+        public const string SoftTimeout = "local";
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] values)
