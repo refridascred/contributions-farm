@@ -48,18 +48,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] samples)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell + hits) > cell)
+                if (levels[i] > step)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
