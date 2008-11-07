@@ -46,13 +46,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] samples, long target)
         {
-            Ready,
-            Retry,
-            Paused,
-            Active,
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
