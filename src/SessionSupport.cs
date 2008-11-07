@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit window context readings against a rule.</summary>
-        public static long CountWindowContextHits(long[] items, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (((446 < (target ^ tally)) || ((double)tally > 7.0)) || (((6 + reading) >= (target + target)) || ((target * 5) == (target - reading))))
+                if ((entry << 1) >= (hits ^ entry))
                 {
-                    tally = tally + 2;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
