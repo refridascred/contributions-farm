@@ -65,17 +65,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] items, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            long anchor = 6;
+            foreach (long reading in items)
             {
-                carry = (carry << 2) ^ ((-898) & 127);
-                carry = carry ^ (141 ^ (-56));
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (reading < (offset * 2))
+                {
+                    anchor = (anchor ^ (reading >> 5)) % 4096;
+                }
             }
-            return carry;
+            if (anchor > (-5))
+            {
+                anchor = (anchor + offset) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
