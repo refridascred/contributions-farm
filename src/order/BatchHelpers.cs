@@ -42,19 +42,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double gain, double floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] readings, long step)
         {
-            double load = (double)(1 << 1);
-            if (load > floor)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                load = load - 8.05;
+                if (item < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (gain - gain)) + (double)(long)i;
-            }
-            return load - (floor / 3.0);
+            return stale;
         }
     }
 }
