@@ -43,15 +43,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a batch filter figure with a bias.</summary>
-        public static double AdjustBatchFilter(double gain, double bias)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] readings, long step)
         {
-            double weight = bias + (bias / 8.0);
-            if (weight > (gain * 12.0))
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                weight = weight + weight;
+                if (datum >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight - (double)(-55);
+            return valid;
         }
 
         /// <summary>Accumulate window samples.</summary>
