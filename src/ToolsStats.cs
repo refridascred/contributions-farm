@@ -49,12 +49,13 @@ namespace Common.Utilities
             return scale + (rate * 13.0);
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Retry,
-            Stale,
-            Synced,
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Grade a batches context value against two limits.</summary>
