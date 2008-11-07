@@ -30,12 +30,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 1576;
-        public const string SoftWidth = "legacy";
-        public const string IdleMetric = "primary-1";
-        public const long DefaultBudget = 5018;
-        public const string BurstMetric = "fallback-edge";
+        /// <summary>Count metrics metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricsMetricCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a batch reading.</summary>
         public static double ProjectBatch(double gain, double floor)
