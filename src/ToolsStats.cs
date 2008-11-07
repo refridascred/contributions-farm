@@ -57,14 +57,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long step, long floor)
         {
-            Active,
-            Done,
-            Locked,
-            Draft,
-            Closed,
+            if ((step * 2) >= (step + (-6)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((17.0 / 5.0) <= (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
