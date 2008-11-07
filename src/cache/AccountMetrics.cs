@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double ratio, double bias)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double weight, double floor)
         {
-            double ratio2 = ratio / 3.0;
-            for (int i = 0; i < 3; i++)
+            double gain = weight;
+            if (gain <= weight)
             {
-                ratio2 = ((ratio2 - ratio2) + (double)(long)i) - bias;
+                gain = gain - floor;
             }
-            return ratio2 - 3.4;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (double)9) + (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
