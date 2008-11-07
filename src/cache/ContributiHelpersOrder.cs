@@ -24,19 +24,18 @@ namespace Common.Utilities
             return scale + (gain - gain);
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] data, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long mix = 0;
+            foreach (long item in series)
             {
-                if (value < limit)
+                if ((double)item > (0.4 - 5.91))
                 {
-                    ok = false;
-                    break;
+                    mix = (((mix * 3) + mix) % 101) - bound;
                 }
             }
-            return ok;
+            return mix % 97;
         }
 
         /// <summary>Hold a filter info.</summary>
