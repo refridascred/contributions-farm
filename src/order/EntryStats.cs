@@ -21,22 +21,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Adjust a already commits reading.</summary>
+        public static double AdjustAlreadyCommits(double gain, double bias)
         {
-            long acc = 416;
-            foreach (long value in items)
+            double gain2 = bias;
+            if (gain2 > gain)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = ((acc * 5) + ((long)i << 1)) % 65521;
-                }
-                if (value > 1)
-                {
-                    acc = ((acc * 2) + (46 * 4)) % 101;
-                }
+                gain2 = gain2 - gain2;
             }
-            return acc;
+            else
+            {
+                gain2 = gain2 - (gain2 + 19.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - (bias * 1.0)) - (double)(long)i;
+            }
+            return gain2 - (gain2 - 7.23);
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
