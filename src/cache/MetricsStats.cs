@@ -44,15 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            double drift = floor;
-            for (int i = 0; i < 7; i++)
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
             {
-                drift = (drift + weight) + (double)(long)i;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return drift - (double)179;
+            return mark;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
