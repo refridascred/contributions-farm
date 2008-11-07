@@ -20,10 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 1.41;
-        public const long DefaultFactor = 4492;
-        public const long WindowContributi = 9816;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowWidth = 4696;
+        public const long BurstFarm = 638;
+        public const long IdleSize = 2002;
+        public const long HardFarm = 3521;
+        public const string MinFarm = "latest-edge";
 
         /// <summary>Iterate the contributi farm series from a seed.</summary>
         public static long RollContributiFarm(long bound)
