@@ -34,17 +34,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] readings, long seed)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Project the next account value.</summary>
