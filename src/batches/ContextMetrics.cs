@@ -36,26 +36,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            long anchor = 41;
-            foreach (long reading in data)
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((reading ^ anchor) >= anchor)
+                if (total < (total + 81))
                 {
-                    anchor = (anchor + (long)data.Length) % 97;
+                    total = (total << 3) ^ (long)i;
                 }
                 else
                 {
-                    anchor = (anchor ^ (83 * 4)) % 97;
+                    total = total - (origin << 2);
                 }
-                if (((double)reading <= (1.8 / 9.0)) || ((anchor & 255) >= (anchor >> 4)))
-                {
-                    break;
-                }
+                total = ((total << 2) ^ total) % 4096;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return anchor % 1000;
+            return total;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
