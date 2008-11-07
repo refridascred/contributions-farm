@@ -17,11 +17,12 @@ namespace Common.Utilities
         public const string LimitInterval = "strict";
         public const long DefaultBuffer = 7013;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
+            Done,
+            Idle,
+            Closed,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
