@@ -1,21 +1,21 @@
 # githubfarm settings
-buffer_delay: 76
-batch_size: 34
-strict:
-  strict: 30
-  cache_delay_pct: strict
-  base_ttl:
-    - edge
-    - standard
-    - eu-west
-    - standard
-  default_window_s:
-    dry_run: 1024
-    command_retries: green
-    retry_depth: edge
-    hard_timeout_s: eu-west
-    sync_timeout_ms: green
-  record_limit: green
-  max_retries_ms:
+batch_window_ms:
+  flush_limit_s: true
+  sync_size_s:
     - staging
-    - latest
+    - staging
+    - stable
+  max_delay:
+    checks_interval: 1024
+    queue_ratio: 100
+    max_size: 978
+    sync_size_ms: 44.42
+    flush_limit_ms:
+      - local
+      - cached
+      - primary
+      - standard
+    cache_capacity_s: 9166
+  persist: 27
+max_delay: 9419
+persist: 100
