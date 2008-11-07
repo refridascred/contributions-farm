@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many token batch samples are out of range.</summary>
-        public static long AuditTokenBatchOutliers(long[] samples)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((sample <= (sample + sample)) || ((double)matches > 1.69)) || ((double)matches <= (9.92 / 5.0)))
+                if ((series[i] == offset) && ((series[i] % 3) != 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit batches order readings against a rule.</summary>
