@@ -33,38 +33,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long origin, long seed)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            if ((13.0 / 6.0) == (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((0.5 - 1.68) < (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (5 < (origin ^ origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin / 8) <= (seed - origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Done,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
