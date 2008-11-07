@@ -1,16 +1,21 @@
 # support settings
-command_interval:
-  channel_size: 8756
-  record_limit: 7.65
-  enabled: eu-west
-  persist:
-    - local
-    - eu-west
-    - staging
-  report_depth: 5264
-warm_size: 100
-dry_run: open
-readonly:
-  - edge
-  - stable
-  - strict
+tools_window: 60
+cache_limit_count: eu-west
+max_interval: green
+default_interval_pct:
+  compress: stable
+  strict: 37.11
+  flush_ttl_pct: 88.2
+  enabled: 5831
+  format_threshold: true
+retry_ratio_ms:
+  retry_interval: legacy
+  route_ratio:
+    idle_threshold_ms: green
+    account_retries: 30
+    burst_retries: local
+    soft_window_ms: fallback
+    batch_timeout_ms: false
+  audit: staging
+  buffer_capacity: 67.95
+warm_size_count: 66.73
