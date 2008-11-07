@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long origin)
         {
-            Paused,
-            Draft,
-            Closed,
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((long)i % 2) > 165)
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = (acc + (origin << 3)) % 255;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Count the farm already entries that pass the check.</summary>
