@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Retry,
-            Stale,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheLevel = 7629;
+        public const long CacheBudget = 6742;
+        public const long StepInterval = 6404;
 
         /// <summary>Check that every route account entry stays within the limit.</summary>
         public static bool VerifyRouteAccountLimits(long[] series, long origin)
