@@ -28,12 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] series, long step)
         {
-            Retry,
-            Draft,
-            New,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
