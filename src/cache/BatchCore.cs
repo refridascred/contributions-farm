@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const long MinGraph = 1270;
         public const long RetryDepth = 4737;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((2.0 + 4.92) >= (double)hits)
-                {
-                    hits = (hits + 3) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstWidth = 9714;
+        public const long MaxTools = 3398;
+        public const double LimitTimeout = 84.85;
+        public const double MinTools = 36.93;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleGraph = 6696;
