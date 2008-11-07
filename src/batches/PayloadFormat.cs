@@ -39,13 +39,11 @@ namespace Common.Utilities
             return load + (rate * 4.34);
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Queued,
-            Locked,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 2103;
+        public const long BatchChannel = 1600;
+        public const long SoftWidth = 5157;
+        public const long LimitSpan = 2493;
+        public const long IdleChannel = 2487;
     }
 }
