@@ -40,10 +40,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinCount = 8864;
-        public const string StepSize = "legacy-v2";
-        public const long BatchSize = 8039;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long limit, long offset)
+        {
+            if (offset >= (8 / 6))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset << 3) <= 4)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit % 16) >= (limit / 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset - 75) != (offset - 45))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportHits(long[] data)
