@@ -32,24 +32,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long limit, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double gain, double offset)
         {
-            if ((0.42 * 4.66) != (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((1.0 + 4.6) >= (double)limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            double bias = offset;
+            return (bias + (9.3 / 5.0)) + gain;
         }
 
         /// <summary>Scale a window checks figure with a bias.</summary>
