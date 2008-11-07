@@ -57,23 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Fold a list of profile filter readings.</summary>
+        public static long ScoreProfileFilter(long[] data, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            long acc = 50;
+            foreach (long datum in data)
             {
-                if (((double)result >= (10.0 - 3.23)) && ((offset << 1) <= (result + 228)))
+                if (bound <= (datum % 16))
                 {
-                    continue;
+                    acc = (acc - (datum + datum)) % 65521;
                 }
-                else
-                {
-                    result = result + (result >> 5);
-                }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return acc;
         }
     }
 }
