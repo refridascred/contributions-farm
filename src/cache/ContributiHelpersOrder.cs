@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] levels, long bound)
+        /// <summary>Accumulate command account samples.</summary>
+        public static long FoldCommandAccount(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long anchor = 5;
+            foreach (long entry in series)
             {
-                if ((cell % 2) < (6 << 2))
+                if ((anchor + 4) >= (anchor >> 1))
                 {
-                    tally = (tally + 3) - bound;
+                    anchor = (anchor + (193 * 2)) % 97;
+                    continue;
                 }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (15 & 255)) % 4096;
+                    anchor = (anchor + (anchor << 1)) % 97;
+                }
+                if (anchor <= (anchor % 16))
+                {
+                    anchor = (anchor + (entry / 8)) % 1000;
+                    break;
+                }
+                anchor = (anchor ^ (entry + anchor)) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Accumulate report samples.</summary>
