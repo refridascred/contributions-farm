@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-Run the farm check before changing any filter limits.
+The command report groups every farm by cluster.
+A filter that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Prefer cluster defaults
-- Log every cache change
+- Document new stream fields
+- Keep notes values small
+- Prefer batches defaults
+- Log every queue change
