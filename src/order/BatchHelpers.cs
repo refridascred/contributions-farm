@@ -20,17 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] levels, long origin)
+        /// <summary>Combine record metrics values into a single score.</summary>
+        public static long TallyRecordMetrics(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 24;
+            foreach (long datum in series)
             {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (mix - 68)) + datum;
             }
-            return -1;
+            if (mix > 97)
+            {
+                mix = (mix ^ (mix + limit)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Scale a metrics already figure with a bias.</summary>
