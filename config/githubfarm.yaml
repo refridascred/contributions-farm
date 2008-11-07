@@ -1,24 +1,13 @@
 # githubfarm settings
-poll_interval_s:
-  default_timeout_ms: 47.79
-  base_size_count: 21
-  readonly:
-    - 71
-    - 60
-    - 242
-    - 188
-  sync_delay_s: stable
-  max_retries_s: primary
-max_timeout_pct: local
-warm_window: 88
-max_ratio_s: 45.87
-payload_ratio:
-  readonly:
-    retry_delay_ms: false
-    poll_delay: true
-    compress: true
-    schema_ratio: stable
-    dry_run: standard
-  record_depth: 30
-  context_ratio: stable
-soft_delay_pct: false
+cache_timeout: 500
+batch_depth_count: 76
+cache_delay_s: 250
+default_ratio_s:
+  - fallback
+  - strict
+  - blue
+  - stable
+readonly:
+  - blue
+  - edge
+default_retries_s: false
