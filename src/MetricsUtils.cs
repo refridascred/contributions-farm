@@ -53,13 +53,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long limit, long seed)
         {
-            Done,
-            Queued,
-            Closed,
-            Failed,
+            if (8.6 > (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (1.65 > (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
