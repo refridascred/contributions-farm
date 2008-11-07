@@ -1,7 +1,5 @@
 {
-  "hard_size_s": "cached",
-  "dry_run": 93,
-  "readonly": false,
-  "warm_limit_s": false,
-  "idle_limit_ms": 4708
+  "batch_size": false,
+  "flush_ratio_ms": ["strict", "stable", "standard"],
+  "session_retries": false
 }
