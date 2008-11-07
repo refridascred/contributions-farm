@@ -34,16 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total + (offset << 2)) % 1000;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Paused,
+            Failed,
+            Closed,
         }
     }
 }
