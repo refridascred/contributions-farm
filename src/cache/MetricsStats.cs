@@ -42,21 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count metrics metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricsMetricCount(long[] readings)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (series[i] > offset)
                 {
-                    if ((readings[i] ^ readings[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
