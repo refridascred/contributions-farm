@@ -27,11 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Measure how many counter profile samples are out of range.</summary>
+        public static long MeasureCounterProfileHits(long[] levels, long origin)
         {
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (sample <= (tally << 1))
+                {
+                    tally = (tally + 2) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi class values.</summary>
