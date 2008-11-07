@@ -1,12 +1,12 @@
 # Payload notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-Defaults for account live in the config folder and can be overridden per environment.
-Defaults for schema live in the config folder and can be overridden per environment.
+A support that stays idle for too long is moved to the account list.
+The report module keeps profile values in sync with the token cache.
+Keep queue and layout names short and lowercase.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Document new stats fields
-- Keep buffer values small
-- Log every booking change
+- Document new cache fields
+- Log every contributi change
+- Keep counter values small
+- Review cache limits each release
