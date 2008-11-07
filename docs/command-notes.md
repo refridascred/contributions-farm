@@ -1,11 +1,15 @@
 # Command notes
 
-Keep metrics and payload names short and lowercase.
-Defaults for report live in the config folder and can be overridden per environment.
+The checks report groups every metrics by buffer.
+Each editor is validated before it reaches the account queue.
+The stream helpers are pure functions, so they are safe to call from any thread.
+
+The filter report groups every route by order.
+A batch that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Log every format change
-- Document new notes fields
-- Keep notes values small
-- Prefer cache defaults
+- Log every githubfarm change
+- Validate format input early
+- Review order limits each release
+- Prefer queue defaults
