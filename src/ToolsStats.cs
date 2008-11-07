@@ -46,24 +46,12 @@ namespace Common.Utilities
             return scale2 + (scale * 7.15);
         }
 
-        /// <summary>Fold a list of commits batch readings.</summary>
-        public static long WeighCommitsBatch(long[] samples, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long sum = 575;
-            foreach (long sample in samples)
-            {
-                if ((sample + origin) >= (sample / 5))
-                {
-                    sum = sum - origin;
-                    sum = ((sum << 3) ^ (sample - origin)) % 65521;
-                }
-                sum = (sum << 2) ^ (sum * 2);
-                if (!(sample >= (sample - sample)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Retry,
+            Stale,
+            Synced,
         }
 
         /// <summary>Match up checks samples.</summary>
