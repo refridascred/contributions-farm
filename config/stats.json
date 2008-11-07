@@ -1,5 +1,6 @@
 {
-  "batch_size": false,
-  "flush_ratio_ms": ["strict", "stable", "standard"],
-  "session_retries": false
+  "schema_timeout": 908,
+  "cache_retries_pct": "green",
+  "idle_size_count": 1024,
+  "retry_interval_pct": 97.6
 }
