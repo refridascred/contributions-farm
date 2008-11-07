@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long StepPayload = 6644;
         public const string StepSpan = "latest";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] levels)
+        /// <summary>Locate a notes queue reading by value.</summary>
+        public static long SeekNotesQueueIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (count > 81)
+                if ((values[i] >= floor) && ((values[i] % 2) != 0))
                 {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
