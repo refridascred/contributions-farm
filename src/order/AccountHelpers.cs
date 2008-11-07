@@ -19,17 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 450;
+            foreach (long value in data)
             {
-                if (samples[i] <= bound)
+                if (((total ^ total) == (total + value)) || ((54 / 3) > (total - value)))
                 {
-                    return (long)i;
+                    total = ((total * 2) + (value ^ value)) % 1000;
+                }
+                else
+                {
+                    total = total ^ total;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
