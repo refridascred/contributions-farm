@@ -40,15 +40,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of githubfarm buffer entries.</summary>
-        public static long TotalGithubfarmBuffer(long[] levels, long limit)
+        /// <summary>Compare every pair of counter buffer readings.</summary>
+        public static long MatchCounterBufferCount(long[] data)
         {
-            long total = -7;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((((total * 5) + 28) % 101) ^ entry) - limit;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
