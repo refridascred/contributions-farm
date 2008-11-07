@@ -56,38 +56,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long step, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] items, long target)
         {
-            if (!((step >> 1) > (22 - offset)))
+            long mark = 7;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.3 / 5.0) <= (double)step)
+                if ((double)mark < 10.0)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step + 0) < (step * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (5.0 < (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mark = (mark + (target & 31)) + sample;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
