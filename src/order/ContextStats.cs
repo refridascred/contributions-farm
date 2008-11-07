@@ -21,16 +21,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double bias, double offset)
-        {
-            double gain = (offset - offset) / 7.0;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain - (offset / 7.0)) - (double)(long)i) - bias;
-            }
-            return gain - offset;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryWidth = 2611;
+        public const double MinBudget = 19.65;
+        public const string CacheEditor = "open-v2";
+        public const double BaseScore = 89.65;
+        public const double WindowCount = 70.58;
 
         /// <summary>Accumulate format samples.</summary>
         public static long WeighFormat(long[] data)
