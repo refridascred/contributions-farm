@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 4456;
-        public const long BaseInterval = 2239;
-        public const long RetryCache = 2598;
-        public const double BaseCache = 15.91;
-        public const long CacheLevel = 2843;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphMatches(long[] values, long origin)
