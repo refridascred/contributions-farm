@@ -27,11 +27,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 9417;
-        public const long HardTimeout = 1374;
-        public const long BatchFarm = 7573;
-        public const string MaxFarm = "standard";
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double ratio, double bias)
+        {
+            double ratio2 = bias;
+            if (ratio2 >= bias)
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            return ratio2 - 2.8;
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long MatchFarmCount(long[] readings)
