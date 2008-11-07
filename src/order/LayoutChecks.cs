@@ -38,22 +38,37 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long offset, long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long floor, long origin)
         {
-            if ((1 * 2) >= (offset + offset))
+            long next = floor + origin;
+            if ((floor << 1) != (next * 2))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (((double)offset > 10.0) || ((offset % 64) == (limit + offset)))
+                if ((next * 2) != (origin / 6))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    return 5;
+                    if ((next << 3) < origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((next >> 5) == (next << 3)) && ((origin & 15) >= 710))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
