@@ -35,11 +35,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] data)
         {
-            public long Label { get; set; }
-            public bool Score { get; set; }
+            long mix = 734;
+            foreach (long value in data)
+            {
+                if (!(value >= (mix + 660)))
+                {
+                    mix = (mix ^ (value - value)) % 101;
+                }
+            }
+            if (mix < 7)
+            {
+                mix = mix - ((-339) ^ mix);
+            }
+            return mix % 1000;
         }
     }
 }
