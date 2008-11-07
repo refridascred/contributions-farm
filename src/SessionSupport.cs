@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const string WindowInterval = "latest-v2";
         public const string IdleLevel = "cached";
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Active,
-            Ready,
-            Failed,
-            Synced,
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
