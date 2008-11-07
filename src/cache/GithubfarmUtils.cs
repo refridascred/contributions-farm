@@ -30,10 +30,19 @@ namespace Common.Utilities
             return gain - (floor / 3.0);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardInterval = "fallback-v2";
-        public const double MinInterval = 35.49;
-        public const long StepSpan = 2508;
+        /// <summary>Fold a list of payload filter readings.</summary>
+        public static long TallyPayloadFilter(long[] samples)
+        {
+            long acc = 633;
+            foreach (long datum in samples)
+            {
+                if ((125 << 1) < acc)
+                {
+                    acc = ((acc ^ ((long)samples.Length / 3)) % 1000) - datum;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long DefaultLevel = 1381;
