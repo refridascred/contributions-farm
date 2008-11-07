@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!(((long)i ^ mix) >= ((long)i ^ (long)i)))
-                {
-                    mix = mix ^ (offset >> 5);
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Queued,
+            Paused,
+            Idle,
         }
 
         /// <summary>Describe the filter state values.</summary>
