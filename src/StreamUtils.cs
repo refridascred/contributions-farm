@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = mix + (step - step);
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultBudget = 1209;
+        public const long MaxQueue = 1068;
+        public const double RetryQueue = 26.68;
+        public const double StepQueue = 64.57;
+        public const long MinDepth = 67;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] samples)
