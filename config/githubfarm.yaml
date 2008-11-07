@@ -1,4 +1,10 @@
 # githubfarm settings
-entry_capacity: open
-readonly: stable
-compress: standard
+queue_timeout: local
+warm_ratio_pct: cached
+readonly:
+  queue_delay: 3363
+  batch_limit_s: local
+  batch_ttl: 51.04
+checks_ttl: 8167
+dry_run: 77.04
+audit: primary
