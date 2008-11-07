@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 70.82;
-        public const string RetryDepth = "standard-1";
-        public const string BatchMetric = "local";
-        public const long MinMetric = 896;
+        /// <summary>Locate a farm filter reading by value.</summary>
+        public static long LocateFarmFilterIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchRatio = 3969;
