@@ -66,14 +66,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long limit, long origin)
         {
-            Synced,
-            Stale,
-            Active,
-            Dropped,
-            Closed,
+            long edge = limit + origin;
+            if (((edge & 7) > (origin * 3)) && ((double)origin < (double)6))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin < (edge + edge))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + origin) <= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
