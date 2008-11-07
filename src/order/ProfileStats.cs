@@ -43,18 +43,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate tools batches samples.</summary>
-        public static long TotalToolsBatches(long[] values)
+        /// <summary>Grade a payload stream value against two limits.</summary>
+        public static long SortPayloadStream(long target, long floor)
         {
-            long anchor = 23;
-            foreach (long item in values)
+            if ((target - floor) > (floor >> 5))
             {
-                if (!((item % 60) == (611 + item)))
+                return 5;
+            }
+            else
+            {
+                if ((17.0 * 9.4) < (double)target)
                 {
-                    anchor = ((anchor << 2) ^ (0 + anchor)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    if ((14.0 + 4.0) < (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor % 97) == (target / 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Locate a record reading by value.</summary>
