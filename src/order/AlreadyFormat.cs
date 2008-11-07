@@ -23,18 +23,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] items)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (280 > (sample & 1))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
