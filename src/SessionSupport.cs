@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] series)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((entry << 1) >= (hits ^ entry))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
