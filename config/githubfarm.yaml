@@ -1,12 +1,12 @@
 # githubfarm settings
-flush_ttl_pct: 250
-batch_threshold:
-  - 107
-  - 107
-batch_window: legacy
-retry_retries:
-  - fallback
-  - strict
-  - standard
-  - green
-stream_depth: primary
+context_threshold: 82.3
+idle_interval:
+  - latest
+  - stable
+audit:
+  - 360
+  - 329
+  - 92
+retry_depth_s: 41
+tools_window: strict
+readonly: 41.42
