@@ -53,15 +53,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double rate, double span)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double weight = (rate * 7.0) * 9.0;
-            if (weight >= (double)66)
-            {
-                weight = weight + span;
-            }
-            return weight + (double)7;
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Validate notes checks readings against a bound.</summary>
