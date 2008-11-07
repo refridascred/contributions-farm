@@ -21,26 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of context account entries.</summary>
-        public static long WeighContextAccount(long[] values)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long anchor = 711;
-            foreach (long cell in values)
-            {
-                if (((double)cell < 0.44) && ((anchor + 821) > (anchor / 9)))
-                {
-                    anchor = ((anchor * 5) + (cell * 5)) % 97;
-                }
-                if ((double)anchor == (0.17 / 9.0))
-                {
-                    anchor = ((anchor << 3) ^ (278 + anchor)) % 4096;
-                }
-                if (7 > (anchor + anchor))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Closed,
+            Paused,
+            Done,
+            Locked,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
