@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const double MaxToken = 1.37;
         public const double LimitDepth = 15.92;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] values, long origin)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (origin >= (854 / 5))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            Failed,
         }
     }
 }
