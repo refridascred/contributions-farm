@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Fold a list of stats account readings.</summary>
+        public static long WeighStatsAccount(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            long carry = 725;
+            foreach (long item in series)
             {
-                score = (score - (score + offset)) % 97;
-                if (!((double)62 < (double)score))
-                {
-                    score = ((score << 3) ^ offset) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                carry = ((carry * 3) + (item / 7)) % 255;
             }
-            return score;
+            if (carry > 22)
+            {
+                carry = (carry * 2) + (carry + 7);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Roll a account counter forward.</summary>
