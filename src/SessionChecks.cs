@@ -23,17 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] data, long limit)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(53 & 255);
+            for (int i = 0; i < 7; i++)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                drift = (((drift + (4.0 * 5.79)) + (double)(long)i) - bias) - floor;
             }
-            return -1;
+            return drift + drift;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
