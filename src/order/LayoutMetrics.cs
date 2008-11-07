@@ -46,15 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload route samples are out of range.</summary>
-        public static long TallyPayloadRouteMatches(long[] data)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] data)
         {
             long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample * 4) >= (count * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
