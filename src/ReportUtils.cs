@@ -25,39 +25,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a record queue value against two limits.</summary>
-        public static long RankRecordQueue(long offset, long offset2)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long delta = offset + offset2;
-            if (delta <= (delta << 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset <= (delta + offset2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset2 >> 5) <= (81 << 2)) || ((offset2 ^ offset) > 6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((38 << 1) < (delta - offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit report readings against a rule.</summary>
