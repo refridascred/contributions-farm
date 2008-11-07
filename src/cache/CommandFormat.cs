@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long CacheBudget = 6742;
         public const long StepInterval = 6404;
 
-        /// <summary>Check that every route account entry stays within the limit.</summary>
-        public static bool VerifyRouteAccountLimits(long[] series, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (entry < origin)
+                if (reading != limit)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
