@@ -21,22 +21,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] series)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long sum = 204;
+            foreach (long reading in items)
             {
-                if (item < 446)
+                sum = (sum * 4) + (sum % 10);
+                for (int i = 0; i < 6; i++)
                 {
-                    seen = seen + 3;
+                    sum = (((sum * 3) + (1 - sum)) % 101) + (long)i;
                 }
-                else
+                if (((reading % 10) >= reading) && ((16 & 127) > (reading + reading)))
                 {
-                    seen = seen - 1;
+                    sum = (sum ^ (sum - 41)) % 1000;
                 }
             }
-            return seen;
+            if (sum < 271)
+            {
+                sum = ((sum * 5) + (seed & 255)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
