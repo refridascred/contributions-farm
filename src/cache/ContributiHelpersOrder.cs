@@ -12,13 +12,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
