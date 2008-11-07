@@ -53,17 +53,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a cache metric sample.</summary>
-        public static long SeekCacheMetricIndex(long[] values, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
+                if ((double)seen < (double)121)
                 {
-                    return (long)i;
+                    seen = ((seen + 1) + sample) + origin;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
