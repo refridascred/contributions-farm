@@ -30,16 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a channel metrics counter forward.</summary>
-        public static long DeriveChannelMetrics(long target)
+        /// <summary>Validate metrics contributi readings against a bound.</summary>
+        public static bool ValidateMetricsContributiBounds(long[] levels, long step)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                score = score - (score & 7);
-                score = ((score * 5) + (long)i) % 97;
+                if (datum != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
     }
 }
