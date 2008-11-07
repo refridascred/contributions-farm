@@ -44,13 +44,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Dropped,
-            Active,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 7922;
+        public const long IdleReport = 9387;
+        public const long CacheReport = 6350;
+        public const double LimitSize = 44.73;
+        public const long BatchReport = 7415;
     }
 }
