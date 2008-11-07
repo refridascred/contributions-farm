@@ -17,10 +17,20 @@ namespace Common.Utilities
         public const long IdleRatio = 1076;
         public const long BatchGithubfarm = 8102;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 3957;
-        public const long BaseCount = 2808;
-        public const long RetryPayload = 8435;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] series, long floor)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
