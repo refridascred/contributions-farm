@@ -32,14 +32,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double rate, double bias)
         {
-            Failed,
-            Idle,
-            Draft,
-            Retry,
-            Done,
+            double mean = (double)2 + (double)23;
+            if (mean < mean)
+            {
+                mean = mean - (bias + rate);
+            }
+            else
+            {
+                mean = mean - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - 5.3) + (double)(long)i;
+            }
+            return mean - (bias - bias);
         }
     }
 }
