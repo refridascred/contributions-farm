@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstSpan = 9946;
-        public const double BaseProfile = 35.68;
-        public const long SoftScore = 1479;
-        public const long BatchScore = 827;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public bool Token { get; set; }
+            public bool Level { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MinCache = 4456;
