@@ -13,12 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Audit tools cache readings against a rule.</summary>
+        public static long AuditToolsCacheGaps(long[] data)
         {
-            Failed,
-            Synced,
-            Idle,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count < reading) || (reading > (reading - (long)data.Length)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
