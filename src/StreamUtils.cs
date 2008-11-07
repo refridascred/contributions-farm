@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultBudget = 1209;
-        public const long MaxQueue = 1068;
-        public const double RetryQueue = 26.68;
-        public const double StepQueue = 64.57;
-        public const long MinDepth = 67;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 4566;
+        public const long BatchLevel = 112;
+        public const long HardRecord = 8380;
+        public const long BaseFactor = 4310;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] samples)
