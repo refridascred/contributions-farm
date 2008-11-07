@@ -78,14 +78,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Done,
-            Draft,
-            Closed,
-            Locked,
-            Queued,
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
