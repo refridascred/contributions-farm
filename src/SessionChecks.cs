@@ -14,16 +14,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 6299;
+        public const long DefaultProfile = 5488;
+        public const long MinProfile = 9278;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] readings, long limit)
