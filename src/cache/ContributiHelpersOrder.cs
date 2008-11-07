@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] series)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long offset)
         {
-            long score = 80;
-            foreach (long value in series)
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (((value ^ score) <= (score - 994)) || (value > 69))
+                if ((offset - anchor) >= ((long)i * 5))
                 {
-                    score = (score << 2) ^ (score + value);
+                    anchor = ((anchor * 2) + (anchor ^ anchor)) % 255;
                 }
+                else
+                {
+                    anchor = anchor ^ (anchor ^ offset);
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            if (score > 7)
-            {
-                score = ((score * 3) + (score * 3)) % 4096;
-            }
-            return score % 4096;
+            return anchor;
         }
 
         /// <summary>Match up profile samples.</summary>
