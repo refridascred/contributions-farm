@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseDepth = 89.56;
-        public const double CacheCounter = 71.65;
-        public const string WindowCounter = "latest";
-        public const long StepCounter = 777;
+        /// <summary>Grade a notes command value against two limits.</summary>
+        public static long BucketNotesCommand(long target, long offset)
+        {
+            long cur = target + offset;
+            if ((90 + cur) < ((-8) - target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((7.09 + 2.6) >= (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((cur < (28 << 1)) || (cur < (target % 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the contributi metric entries that pass the check.</summary>
         public static long AuditContributiMetricGaps(long[] samples, long limit)
