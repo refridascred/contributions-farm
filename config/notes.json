@@ -1,7 +1,5 @@
 {
-  "max_window_pct": 94.27,
-  "flush_window": true,
-  "max_limit_count": true,
-  "burst_capacity_pct": true,
-  "poll_retries": "stable"
+  "burst_interval": "latest",
+  "compress": 72,
+  "cluster_interval": "primary"
 }
