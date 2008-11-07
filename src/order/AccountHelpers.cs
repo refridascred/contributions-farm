@@ -59,22 +59,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((2.0 - 3.2) < (12.0 / 7.0)) && ((state - floor) <= (state * 4)))
-                {
-                    state = (state ^ (floor + state)) % 101;
-                    state = (state * 2) + (floor << 3);
-                }
-                state = state ^ floor;
-                state = (state << 2) ^ (floor & 1);
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Failed,
+            Locked,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
