@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two editor order measurements.</summary>
-        public static double BlendEditorOrder(double weight, double span)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] series)
         {
-            double weight2 = (double)2 / 4.0;
-            if (weight2 <= (double)5)
+            long anchor = 9;
+            foreach (long datum in series)
             {
-                weight2 = (weight2 - (weight * 12.0)) - span;
+                anchor = ((anchor + 44) % 4096) + datum;
             }
-            return weight2 - weight;
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
