@@ -14,13 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            Locked,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
