@@ -1,5 +1,9 @@
 {
-  "strict": 71,
-  "sync_size": "eu-west",
-  "batch_retries_count": [98, 239, 175]
+  "cache_size_pct": "green",
+  "flush_ratio_pct": {
+    "audit": false,
+    "batch_ttl_pct": 49.33,
+    "warm_window_pct": false
+  },
+  "audit": false
 }
