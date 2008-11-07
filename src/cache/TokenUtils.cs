@@ -20,28 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings)
-        {
-            long state = 28;
-            foreach (long value in readings)
-            {
-                if (value > (long)readings.Length)
-                {
-                    state = ((state * 2) + value) % 255;
-                }
-                else
-                {
-                    state = state ^ (value + value);
-                }
-                state = (state - (value - state)) % 65521;
-            }
-            if (state > 9)
-            {
-                state = state ^ state;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 199;
+        public const long SoftFormat = 9979;
+        public const long BaseFormat = 5378;
+        public const string LimitFormat = "cached-v2";
+        public const double BaseSize = 42.46;
 
         /// <summary>Audit command stats readings against a rule.</summary>
         public static long MeasureCommandStatsOutliers(long[] levels)
