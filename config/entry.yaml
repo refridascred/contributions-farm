@@ -1,16 +1,11 @@
 # entry settings
-readonly: false
-support_threshold:
-  - 337
-  - 230
-  - 130
-poll_capacity_pct:
-  flush_ratio_s: false
-  verbose: 2436
-  context_timeout:
-    - 94
-    - 212
-    - 499
-  flush_threshold_pct: 90.62
-  sync_ratio_count: 56.24
-  batch_threshold: 3
+order_capacity:
+  cache_size_s: open
+  farm_ratio: 7646
+  command_delay: 590
+  audit:
+    max_delay_ms: 500
+    base_size: eu-west
+    poll_window_s: 73
+max_interval_ms: true
+record_threshold: 19.98
