@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseTimeout = 3.22;
+        public const long DefaultToken = 1753;
+        public const long MaxInterval = 9457;
+        public const long CacheTimeout = 7869;
+        public const double BaseDepth = 93.48;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
