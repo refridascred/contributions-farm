@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count context report pairs that satisfy a relation.</summary>
-        public static long CompareContextReportCount(long[] readings)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double weight = bias;
+            return (weight - (double)193) + bias2;
         }
 
         /// <summary>Describe the cluster level values.</summary>
