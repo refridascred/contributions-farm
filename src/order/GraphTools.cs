@@ -14,19 +14,38 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] data, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long step, long offset)
         {
-            bool found = true;
-            foreach (long reading in data)
+            if ((double)offset >= 9.8)
             {
-                if (reading <= target)
+                return 7;
+            }
+            else
+            {
+                if (((step >> 4) <= (offset << 2)) && ((24 + offset) > step))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((588 << 3) >= (offset % 100)) && ((5.85 / 4.0) < (double)step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step <= (3.4 * 0.14))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the layout mode values.</summary>
