@@ -1,8 +1,18 @@
 {
-  "graph_limit": "open",
-  "cache_window": "legacy",
-  "soft_size_count": true,
-  "batch_interval": 95.38,
-  "layout_depth": false,
-  "burst_window": 12.92
+  "profile_limit": "strict",
+  "burst_capacity_count": "blue",
+  "command_size": {
+    "readonly": {
+      "compress": ["blue", "stable", "cached", "stable"],
+      "burst_timeout_ms": "stable",
+      "context_delay": "latest"
+    },
+    "poll_size_count": "eu-west",
+    "profile_timeout": 1024,
+    "max_window": ["latest", "cached", "standard", "legacy"],
+    "verbose": [258, 70, 160, 396],
+    "cache_window_pct": false
+  },
+  "max_timeout_count": true,
+  "soft_ratio_ms": [488, 467]
 }
