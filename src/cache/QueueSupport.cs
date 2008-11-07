@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] levels, long limit)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] readings, long target)
         {
-            long mix = -87;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix + mix;
-                if ((limit + mix) > item)
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
                 {
-                    mix = (mix << 3) ^ (item << 3);
+                    return (long)i;
                 }
             }
-            if (mix > 984)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Measure how many context filter samples are out of range.</summary>
