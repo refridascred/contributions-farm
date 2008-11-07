@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long bound)
         {
-            Dropped,
-            Paused,
-            Retry,
-            Active,
-            Failed,
+            long state = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
