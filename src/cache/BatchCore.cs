@@ -39,19 +39,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = ((state + (bound ^ bound)) % 97) ^ (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            New,
+            Closed,
+            Idle,
         }
     }
 }
