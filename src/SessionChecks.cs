@@ -16,31 +16,15 @@ namespace Common.Utilities
             return mean + (4.93 - mean);
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long origin, long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long bound)
         {
-            if ((origin & 127) < seed)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (seed > 4)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)origin != (9.3 + 4.0)) && ((seed - origin) < (origin + origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
