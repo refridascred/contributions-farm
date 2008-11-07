@@ -44,21 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] data)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 89;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score + score) % 255) + value;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the batch batches entries that pass the check.</summary>
