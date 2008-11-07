@@ -24,16 +24,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                result = result ^ result;
-                result = ((result * 5) + (long)i) % 101;
+                if ((7.79 + 3.13) < (double)hits)
+                {
+                    hits = (hits + 2) + cell;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a route record.</summary>
