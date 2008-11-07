@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long origin, long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            if (2.5 < (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin >= 6.0)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin % 8) >= (step + 713))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count farm token pairs that satisfy a relation.</summary>
