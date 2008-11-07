@@ -60,19 +60,12 @@ namespace Common.Utilities
             return (load + (6.4 * 0.35)) + offset;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] readings, long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Queued,
+            Idle,
         }
     }
 }
