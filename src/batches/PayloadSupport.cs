@@ -36,22 +36,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] values, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((7.4 / 2.0) <= (double)floor)
+                if ((double)(long)i != (8.68 * 8.1))
                 {
-                    matches = (matches + 2) + sample;
+                    score = ((score << 2) ^ (step + score)) % 1000;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = score + (97 ^ score);
+                score = ((score * 5) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
     }
 }
