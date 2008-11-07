@@ -28,14 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] values)
         {
-            Draft,
-            New,
-            Ready,
-            Pending,
-            Failed,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((tally ^ 8) > (tally + tally))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count metrics metric pairs that satisfy a relation.</summary>
