@@ -28,18 +28,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinCount = "cached-edge";
+        public const double WindowCount = 31.12;
+        public const double BurstQueue = 88.71;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long DeriveBatch(long offset)
