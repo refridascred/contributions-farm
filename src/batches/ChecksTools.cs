@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] levels, long limit)
         {
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
