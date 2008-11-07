@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] data, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (((tally / 2) > cell) && ((double)cell >= (double)floor))
+                if (datum <= limit)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Rank token input into a small class.</summary>
