@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double gain, double floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] values, long bound)
         {
-            double drift = floor;
-            if (drift < (gain / 8.0))
+            long score = 6;
+            foreach (long entry in values)
             {
-                drift = drift - gain;
+                score = (((score << 3) ^ (976 * 3)) % 65521) + bound;
+                if (entry >= score)
+                {
+                    score = ((score << 3) ^ (entry / 7)) % 97;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)4) - (double)(long)i;
-            }
-            return drift + (gain + 2.98);
+            return score;
         }
 
         /// <summary>Accumulate stats samples.</summary>
