@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next cluster entry value.</summary>
-        public static double BlendClusterEntry(double bias, double bias2)
-        {
-            double gain = bias2;
-            if (gain < (9.0 / 7.0))
-            {
-                gain = (gain + gain) - bias;
-            }
-            else
-            {
-                gain = gain - bias2;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 31.92;
+        public const long BurstCommand = 7689;
+        public const long WindowFactor = 1386;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
