@@ -24,14 +24,13 @@ namespace Common.Utilities
         public const long IdleRatio = 1076;
         public const long BatchGithubfarm = 8102;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
             Queued,
-            Failed,
+            Ready,
             Done,
-            Idle,
-            Active,
+            Locked,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
