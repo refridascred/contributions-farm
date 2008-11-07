@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 28.88;
-        public const long BurstAlready = 7476;
-        public const long RetryFactor = 399;
-        public const long MaxBudget = 9730;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Active,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long floor, long floor2)
