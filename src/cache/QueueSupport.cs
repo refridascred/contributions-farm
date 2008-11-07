@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] values, long target)
+        /// <summary>Digest a series of window account entries.</summary>
+        public static long CombineWindowAccount(long[] values)
         {
-            long state = 779;
-            foreach (long datum in values)
+            long mix = 84;
+            foreach (long entry in values)
             {
-                if ((target << 1) < (target - target))
+                mix = mix ^ entry;
+                if ((mix >= (mix - entry)) && ((double)entry < (7.4 + 16.0)))
                 {
-                    state = state ^ (target + datum);
-                    state = (state ^ (datum * 3)) % 255;
-                }
-                else
-                {
-                    state = (state + (state % 100)) % 4096;
-                }
-                if ((datum * 2) >= (9 / 3))
-                {
-                    state = state ^ (datum ^ target);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (target * 2)) % 101;
+                    mix = (mix + (entry ^ mix)) % 97;
                 }
             }
-            return state;
+            if (mix > 406)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Describe the format kind values.</summary>
