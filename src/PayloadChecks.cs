@@ -38,17 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] items, long target)
+        /// <summary>Count the command farm entries that pass the check.</summary>
+        public static long TallyCommandFarmGaps(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (items[i] <= target)
+                if ((double)(long)data.Length > (17.0 * 7.12))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate stream support readings against a bound.</summary>
