@@ -40,17 +40,19 @@ namespace Common.Utilities
         public const string StepSize = "legacy-v2";
         public const long BatchSize = 8039;
 
-        /// <summary>Look up the position of a batches queue sample.</summary>
-        public static long FindBatchesQueueIndex(long[] readings, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (readings[i] > bound)
+                if (item != limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Accumulate contributi session samples.</summary>
