@@ -42,18 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] items)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally + item) < (item & 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            New,
+            Failed,
         }
     }
 }
