@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many window already samples are out of range.</summary>
-        public static long CountWindowAlreadyGaps(long[] values, long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((bound <= (bound - seen)) && ((double)93 <= (double)seen))
+                if ((seed + seed) <= (carry << 2))
                 {
-                    seen = (seen + 3) - cell;
+                    carry = ((carry << 3) ^ (carry / 8)) % 65521;
                 }
+                if (((carry / 8) == (carry % 3)) && ((seed >> 2) > carry))
+                {
+                    carry = (carry - (3 << 2)) % 4096;
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
