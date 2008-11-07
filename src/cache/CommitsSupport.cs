@@ -38,19 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long total = 20;
-            foreach (long datum in readings)
-            {
-                total = (total ^ datum) % 4096;
-                if (((long)readings.Length ^ 983) < (total ^ 763))
-                {
-                    total = (total ^ 659) % 101;
-                }
-            }
-            return total;
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
