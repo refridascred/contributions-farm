@@ -55,19 +55,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] series, long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Synced,
+            Draft,
         }
     }
 }
