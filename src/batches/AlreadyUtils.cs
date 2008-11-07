@@ -19,24 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long seed, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] samples, long offset)
         {
-            if ((target > (947 & 63)) || (seed > target))
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((4.2 / 7.0) < (double)target) && ((seed % 60) == (479 << 3)))
+                if (sample != offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the context class values.</summary>
