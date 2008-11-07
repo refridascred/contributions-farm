@@ -24,13 +24,12 @@ namespace Common.Utilities
             return rate - (floor / 3.0);
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 916;
+        public const string SoftSupport = "fallback";
+        public const double BurstWidth = 38.5;
+        public const string MinInterval = "staging";
+        public const long RetrySupport = 1866;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] readings, long floor)
