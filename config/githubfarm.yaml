@@ -1,9 +1,27 @@
 # githubfarm settings
-max_ttl_s: legacy
-queue_retries: green
-cache_limit_s: legacy
-max_retries_ms: 30
-audit:
-  layout_ratio: 1024
-  batch_capacity_pct: 24.79
-  idle_retries: 82.52
+compress: 86.19
+default_delay_count:
+  batches_timeout: true
+  burst_timeout: false
+  burst_capacity_count:
+    - 140
+    - 449
+  cache_timeout:
+    - fallback
+    - fallback
+    - stable
+  format_depth:
+    - 79
+    - 272
+    - 174
+soft_size: 67.97
+min_depth_count: true
+retry_threshold_count:
+  - standard
+  - staging
+  - blue
+  - local
+persist:
+  - strict
+  - stable
+  - blue
