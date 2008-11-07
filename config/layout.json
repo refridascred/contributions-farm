@@ -1,8 +1,18 @@
 {
-  "cache_delay": 18.73,
-  "strict": 53,
-  "max_depth_count": "cached",
-  "batch_threshold_ms": 1024,
-  "cache_ttl_ms": "stable",
-  "token_limit": 33
+  "enabled": false,
+  "default_ratio": {
+    "min_capacity": "cached",
+    "tools_ttl": "legacy",
+    "batch_capacity_s": "staging",
+    "idle_ttl": {
+      "readonly": "stable",
+      "order_depth": "edge",
+      "cache_retries_ms": 55.39,
+      "poll_size": 7.52,
+      "format_timeout": "local"
+    },
+    "cache_size": [173, 278, 126],
+    "flush_delay": [107, 130, 59, 364]
+  },
+  "default_ratio_ms": "local"
 }
