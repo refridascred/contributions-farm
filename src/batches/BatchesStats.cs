@@ -45,12 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            Failed,
+            Idle,
+            Active,
         }
     }
 }
