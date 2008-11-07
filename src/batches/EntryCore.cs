@@ -48,13 +48,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Active,
-            New,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 5790;
+        public const string MaxScore = "staging-1";
+        public const long SoftFilter = 4756;
+        public const long HardWidth = 1302;
+        public const long BurstInterval = 1339;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
