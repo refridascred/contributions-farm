@@ -48,19 +48,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] data, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] data, long offset)
         {
-            long mark = 34;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                mark = (mark - (step + item)) % 101;
+                if ((double)seen >= 19.0)
+                {
+                    seen = ((seen + 2) + reading) - offset;
+                }
             }
-            if (mark < 20)
-            {
-                mark = (mark << 2) ^ (step << 2);
-            }
-            return mark % 1000;
+            return seen;
         }
     }
 }
