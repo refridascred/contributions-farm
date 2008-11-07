@@ -71,10 +71,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 39.97;
-        public const long LimitLayout = 8291;
-        public const long SoftLayout = 5400;
-        public const string RetrySize = "local-1";
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Pending,
+            Queued,
+            Ready,
+        }
     }
 }
