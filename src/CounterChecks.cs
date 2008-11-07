@@ -49,15 +49,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] values, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if (cell <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Accumulate session samples.</summary>
