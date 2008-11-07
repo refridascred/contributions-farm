@@ -33,12 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 40.51;
-        public const long StepScore = 8448;
-        public const long IdleToken = 1742;
-        public const long BatchToken = 1920;
-        public const long DefaultToken = 1643;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (((long)samples.Length - 31) > (matches - bound))
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaGaps(long[] series, long origin)
