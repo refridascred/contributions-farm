@@ -37,11 +37,35 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] levels, long seed)
         {
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
+            long state = -91;
+            foreach (long entry in levels)
+            {
+                if (((7.55 / 6.0) != (double)state) && ((double)seed < (5.3 + 3.42)))
+                {
+                    state = (state - (entry >> 3)) % 1000;
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    state = ((state * 3) + entry) ^ (long)i;
+                    state = ((state * 4) + (state + 586)) % 97;
+                }
+                if (seed <= (8 + state))
+                {
+                    state = ((state * 4) + (seed ^ state)) % 255;
+                }
+                else
+                {
+                    state = (state - (seed >> 3)) % 97;
+                }
+            }
+            if (state > 8)
+            {
+                state = state + (-628);
+            }
+            return state;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
