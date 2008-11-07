@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const string StepSpan = "legacy-edge";
         public const long IdleChannel = 8650;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Match up filter already samples.</summary>
+        public static long PairFilterAlreadyCount(long[] items)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
