@@ -47,13 +47,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Idle,
-            Ready,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheLevel = "primary-v2";
+        public const long CacheTimeout = 1194;
+        public const double CacheRatio = 81.11;
     }
 }
