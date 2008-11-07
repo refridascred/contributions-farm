@@ -24,18 +24,17 @@ namespace Common.Utilities
             return drift - (double)77;
         }
 
-        /// <summary>Measure how many report cache samples are out of range.</summary>
-        public static long MeasureReportCacheGaps(long[] samples)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)matches >= (6.17 / 8.0)) || (((reading << 3) > ((-74) & 1)) && ((5.75 * 18.0) <= (double)matches)))
+                if ((series[i] <= floor) && ((series[i] % 5) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
