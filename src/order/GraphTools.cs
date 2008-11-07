@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] samples, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] samples)
         {
-            long matches = 0;
+            long carry = 1;
             foreach (long reading in samples)
             {
-                if (((reading % 100) > matches) || ((reading * 2) >= (44 & 31)))
+                carry = carry ^ (reading + 6);
+                if ((89 + carry) > reading)
                 {
-                    matches = (matches + 3) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = (carry + (reading * 5)) % 97;
                 }
             }
-            return matches;
+            if (carry > (-4))
+            {
+                carry = ((carry * 2) + (carry - carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Locate a notes queue reading by value.</summary>
