@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] samples, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 72;
+            foreach (long cell in readings)
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
+                sum = (sum ^ (sum + sum)) + cell;
+                if ((287 * 4) == (origin - 64))
                 {
-                    return (long)i;
+                    sum = (sum << 2) ^ (439 + origin);
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
