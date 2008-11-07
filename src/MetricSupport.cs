@@ -20,11 +20,12 @@ namespace Common.Utilities
             return bias2 + 7.4;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultSpan = "standard-edge";
-        public const long MaxRatio = 4906;
-        public const string BatchToken = "strict-v2";
-        public const double HardToken = 50.72;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] levels, long offset)
