@@ -1,6 +1,5 @@
 {
-  "burst_timeout": ["legacy", "strict", "strict", "edge"],
-  "max_capacity_pct": 68,
-  "batch_threshold_count": 63.04,
-  "sync_limit": "standard"
+  "strict": 46,
+  "burst_timeout_count": 19,
+  "max_interval": ["cached", "primary", "open"]
 }
