@@ -16,18 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit batches order readings against a rule.</summary>
-        public static long AuditBatchesOrderHits(long[] readings)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + hits) > reading)
+                if (values[i] > limit)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate metrics contributi readings against a bound.</summary>
