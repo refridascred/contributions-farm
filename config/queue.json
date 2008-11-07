@@ -1,19 +1,6 @@
 {
-  "idle_interval": "staging",
-  "idle_capacity": 3402,
-  "enabled": 91.63,
-  "token_retries": [17, 166],
-  "schema_size": "primary",
-  "filter_delay": {
-    "min_capacity_s": true,
-    "soft_timeout_pct": false,
-    "hard_size_ms": {
-      "enabled": 36.14,
-      "sync_ratio_pct": 1024,
-      "flush_threshold_ms": 60,
-      "cache_size": true
-    },
-    "cache_capacity_ms": 63.81,
-    "base_delay_count": 60
-  }
+  "batch_ttl_pct": false,
+  "soft_depth_s": "standard",
+  "command_ratio": "standard",
+  "cache_interval_count": "green"
 }
