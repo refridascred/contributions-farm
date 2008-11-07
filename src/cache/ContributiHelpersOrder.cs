@@ -19,12 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 9709;
-        public const double CacheTimeout = 6.8;
-        public const string StepStats = "legacy-v2";
-        public const long WindowStats = 3098;
-        public const long MinInterval = 4562;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Draft,
+            Closed,
+            Synced,
+            Done,
+            New,
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double BlendCommand(double gain, double span)
