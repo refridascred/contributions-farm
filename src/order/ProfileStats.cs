@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long bound, long seed)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long lane = bound + seed;
-            if ((bound < seed) && ((lane + (-19)) < seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((575 >> 5) < (lane * 5)) && ((lane << 2) > bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((471 ^ bound) > bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Active,
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Adjust a metric reading.</summary>
