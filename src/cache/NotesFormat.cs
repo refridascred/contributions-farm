@@ -34,18 +34,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] series)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long carry = -5;
+            foreach (long reading in items)
             {
-                if (reading > (hits + reading))
+                carry = (carry ^ (carry - 386)) % 65521;
+                carry = ((carry * 3) + (carry - step)) % 4096;
+                if ((reading >> 3) == (carry / 2))
                 {
-                    hits = hits + 1;
+                    carry = (carry - (reading << 1)) % 1000;
                 }
             }
-            return hits;
+            return carry % 65521;
         }
     }
 }
