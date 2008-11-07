@@ -40,12 +40,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] values, long step)
         {
-            Ready,
-            Failed,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a layout header.</summary>
