@@ -68,14 +68,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            New,
-            Synced,
-            Active,
-            Dropped,
-            Idle,
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
