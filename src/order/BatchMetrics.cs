@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Done,
-            Retry,
-            Dropped,
-            Queued,
-            Failed,
+            New,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the already level values.</summary>
