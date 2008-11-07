@@ -33,24 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a context order value against two limits.</summary>
-        public static long BucketContextOrder(long bound, long limit)
+        /// <summary>Find the first graph cluster entry that matches the target.</summary>
+        public static long SeekGraphClusterIndex(long[] data, long bound)
         {
-            if (5.0 >= (double)bound)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((71 & 15) >= bound)
+                if ((data[i] <= bound) && ((data[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a command summary.</summary>
