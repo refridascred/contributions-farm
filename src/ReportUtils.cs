@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double ratio, double span)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] levels, long seed)
         {
-            double drift = ratio;
-            if (drift < drift)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                drift = (drift - (ratio * 2.04)) + span;
+                if (((4 ^ count) < seed) || (count >= (count - datum)))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)4) + (double)(long)i;
-            }
-            return drift - ratio;
+            return count;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
