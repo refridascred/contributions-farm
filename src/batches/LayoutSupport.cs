@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] values, long bound)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (sample <= bound)
+                if (12 < (reading * 5))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
