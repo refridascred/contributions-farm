@@ -33,13 +33,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] values, long origin)
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
+            long anchor = 39;
+            foreach (long cell in values)
+            {
+                anchor = ((((anchor << 2) ^ (10 * 2)) % 4096) - cell) - origin;
+            }
+            return anchor % 1000;
         }
     }
 }
