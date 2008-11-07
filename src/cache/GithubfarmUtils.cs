@@ -51,17 +51,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first window schema entry that matches the target.</summary>
-        public static long FindWindowSchemaIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 7717;
+        public const long BatchLayout = 216;
+        public const string MinLayout = "latest-v2";
     }
 }
