@@ -43,14 +43,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] values, long limit)
         {
-            Ready,
-            Done,
-            Dropped,
-            Stale,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
