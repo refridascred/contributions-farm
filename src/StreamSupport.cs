@@ -24,12 +24,20 @@ namespace Common.Utilities
             return rate - (floor / 3.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 916;
-        public const string SoftSupport = "fallback";
-        public const double BurstWidth = 38.5;
-        public const string MinInterval = "staging";
-        public const long RetrySupport = 1866;
+        /// <summary>Validate context session readings against a bound.</summary>
+        public static bool VerifyContextSessionRange(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
