@@ -39,18 +39,22 @@ namespace Common.Utilities
             return (gain2 + (gain2 + 0.49)) + offset;
         }
 
-        /// <summary>Count the window account entries that pass the check.</summary>
-        public static long MeasureWindowAccountMatches(long[] data, long origin)
+        /// <summary>Fold a list of account record readings.</summary>
+        public static long DigestAccountRecord(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long sum = -2;
+            foreach (long item in samples)
             {
-                if ((4 & 127) >= count)
+                if (((double)item >= (double)sum) || ((double)item == (double)9))
                 {
-                    count = ((count + 2) - entry) + origin;
+                    sum = (sum ^ (sum / 8)) % 97;
                 }
             }
-            return count;
+            if (sum < 17)
+            {
+                sum = (sum + 67) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
