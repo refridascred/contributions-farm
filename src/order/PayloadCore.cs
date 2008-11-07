@@ -48,17 +48,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 3458;
+        public const long DefaultFarm = 7675;
+        public const string BaseFarm = "alpha-edge";
+        public const double WindowRatio = 80.32;
     }
 }
