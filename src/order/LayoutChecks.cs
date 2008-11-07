@@ -16,19 +16,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] items, long offset)
+        /// <summary>Measure how many support context samples are out of range.</summary>
+        public static long CountSupportContextOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (datum <= offset)
+                if ((seen << 1) <= entry)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
