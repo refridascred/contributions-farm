@@ -51,18 +51,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] data)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long sum = 7;
+            foreach (long item in values)
             {
-                if ((seen + value) != (value - seen))
-                {
-                    seen = seen + 3;
-                }
+                sum = (((sum - (sum * 3)) % 1000) + item) + offset;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
