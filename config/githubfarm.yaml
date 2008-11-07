@@ -1,6 +1,10 @@
 # githubfarm settings
-batch_capacity: 37.34
-max_size_count: true
-readonly: 100
-audit: 9
-warm_ratio: false
+persist: 99
+retry_window: 6.51
+counter_depth:
+  - 355
+  - 64
+  - 82
+  - 237
+sync_capacity: 100
+counter_retries: green
