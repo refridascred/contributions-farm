@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] values, long origin)
         {
-            long mix = 0;
-            foreach (long entry in levels)
+            long state = 520;
+            foreach (long reading in values)
             {
-                mix = (mix * 5) + ((long)levels.Length + entry);
+                if ((0.9 * 4.15) == (double)state)
+                {
+                    state = (state - (reading >> 3)) + origin;
+                }
             }
-            return mix;
+            return state % 65521;
         }
 
         /// <summary>Classify a schema payload pair into a bucket.</summary>
