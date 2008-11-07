@@ -1,9 +1,7 @@
 # entry settings
-max_delay: 85
-warm_delay_pct:
-  min_threshold_ms: 85.61
-  batch_delay_pct: true
-  enabled: 1024
-  command_ratio: staging
-  stream_interval: true
-entry_capacity: 250
+burst_timeout: true
+context_timeout: 3680
+tools_interval: cached
+idle_limit: cached
+max_depth: 500
+flush_window_pct: stable
