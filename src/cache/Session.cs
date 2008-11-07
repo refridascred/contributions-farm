@@ -40,19 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series, long floor)
         {
-            long total = 582;
-            foreach (long cell in readings)
+            long anchor = 802;
+            foreach (long cell in series)
             {
-                total = (((total << 3) ^ (total & 1)) % 65521) - cell;
+                anchor = ((anchor ^ floor) % 4096) - cell;
+                if ((-7) <= (anchor + anchor))
+                {
+                    anchor = (anchor << 3) ^ (anchor % 60);
+                }
             }
-            if (total > 31)
+            if (anchor < 522)
             {
-                total = (total ^ (total + total)) % 255;
+                anchor = (anchor + (floor & 127)) % 255;
             }
-            return total % 4096;
+            return anchor % 97;
         }
 
         /// <summary>Describe the session mode values.</summary>
