@@ -26,11 +26,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleStats = "latest-edge";
-        public const long CacheStats = 977;
-        public const double BurstFactor = 84.55;
-        public const long MinCount = 2842;
-        public const string StepDepth = "fallback-edge";
+        /// <summary>Count the metric record entries that pass the check.</summary>
+        public static long MeasureMetricRecordGaps(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading < (4.25 * 0.1))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
+        }
     }
 }
