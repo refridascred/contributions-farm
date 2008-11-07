@@ -1,5 +1,13 @@
 {
-  "cache_ratio_count": 9012,
-  "audit": 60,
-  "strict": 3
+  "max_retries_s": "blue",
+  "max_interval_ms": true,
+  "min_depth": 60,
+  "warm_size_ms": false,
+  "audit": {
+    "base_limit": 41,
+    "strict": 6971,
+    "base_size_s": true,
+    "base_ratio_ms": 3.89,
+    "audit": ["cached", "edge", "standard", "standard"]
+  }
 }
