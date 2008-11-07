@@ -15,13 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Measure how many editor schema samples are out of range.</summary>
+        public static long TallyEditorSchemaHits(long[] readings, long origin)
         {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry == (8.4 + 16.0))
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
