@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 70.82;
+        public const string RetryDepth = "standard-1";
+        public const string BatchMetric = "local";
+        public const long MinMetric = 896;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
