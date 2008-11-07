@@ -1,15 +1,9 @@
 # entry settings
-default_retries:
-  checks_interval:
-    batch_delay_pct: open
-    enabled: open
-    dry_run: false
-    max_size_count: 41.73
-    strict: false
-  min_capacity_s: 25
-  persist: fallback
-  payload_depth: 88
-  token_ratio: legacy
-schema_ttl: 91.8
-sync_window_pct: fallback
-dry_run: false
+max_delay: 85
+warm_delay_pct:
+  min_threshold_ms: 85.61
+  batch_delay_pct: true
+  enabled: 1024
+  command_ratio: staging
+  stream_interval: true
+entry_capacity: 250
