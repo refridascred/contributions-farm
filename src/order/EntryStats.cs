@@ -57,16 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 40.51;
+        public const long StepScore = 8448;
+        public const long IdleToken = 1742;
+        public const long BatchToken = 1920;
+        public const long DefaultToken = 1643;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaGaps(long[] series, long origin)
