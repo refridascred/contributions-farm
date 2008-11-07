@@ -33,24 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long bound, long origin)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            if (120 < bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((211 + origin) <= origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
