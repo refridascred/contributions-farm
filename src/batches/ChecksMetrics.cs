@@ -24,23 +24,10 @@ namespace Common.Utilities
             return drift - (double)77;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((2 / 2) <= seen)
-                {
-                    seen = ((seen + 1) + cell) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 6155;
+        public const long DefaultSize = 5386;
+        public const string HardSession = "staging-1";
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long AuditClusterMatches(long[] items)
