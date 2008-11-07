@@ -34,12 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double gain, double bias)
-        {
-            double ratio = (double)1 / 8.0;
-            return ((ratio - (5.5 * 20.0)) + gain) + bias;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 6326;
+        public const long StepBuffer = 8402;
+        public const string MinBuffer = "staging";
+        public const string BaseSpan = "open";
+        public const long RetryBuffer = 2167;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] samples, long seed)
