@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] series, long offset)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] == offset) && ((series[i] % 3) != 0))
+                if ((values[i] > target) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
