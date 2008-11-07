@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 5029;
-        public const long BatchSize = 7671;
-        public const long HardCount = 8147;
-        public const string HardGraph = "alpha-v2";
-        public const long MinCount = 1361;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] items)
+        {
+            long carry = 0;
+            foreach (long item in items)
+            {
+                if (((carry + carry) == (item % 7)) && ((item & 31) < (carry - 87)))
+                {
+                    carry = (carry << 2) ^ (item & 1);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long WeighChecks(long[] data, long seed)
