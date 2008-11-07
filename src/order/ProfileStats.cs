@@ -35,11 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double weight, double span)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double rate = span / 3.0;
-            return rate + (weight / 7.0);
+            Stale,
+            Active,
+            Closed,
         }
     }
 }
