@@ -42,13 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long step)
         {
-            Synced,
-            Stale,
-            Paused,
-            Closed,
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the checks githubfarm entries that pass the check.</summary>
