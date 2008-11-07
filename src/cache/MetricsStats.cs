@@ -13,14 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Stale,
-            Paused,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 2175;
+        public const string MaxCluster = "legacy";
+        public const long LimitSpan = 4212;
+        public const long DefaultTimeout = 4965;
+        public const double WindowTimeout = 59.05;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportHits(long[] levels)
