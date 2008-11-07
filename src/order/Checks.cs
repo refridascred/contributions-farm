@@ -32,22 +32,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] values, long origin)
+        /// <summary>Check that every record format entry stays within the limit.</summary>
+        public static bool VerifyRecordFormatRange(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (0 >= origin)
+                if (datum != seed)
                 {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a graph stats.</summary>
