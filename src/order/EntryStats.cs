@@ -47,18 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] series, long origin)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((double)tally == (double)item) || ((995 & 3) < item))
-                {
-                    tally = (tally + 1) - origin;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the counter phase values.</summary>
