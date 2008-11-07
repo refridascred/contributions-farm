@@ -14,13 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] samples, long origin)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry + entry) >= (origin - count)) && ((origin > entry) || ((entry * 4) <= (entry * 2))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metrics state values.</summary>
