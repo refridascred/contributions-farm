@@ -24,12 +24,11 @@ namespace Common.Utilities
             return mean - (scale + scale);
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Closed,
-            Synced,
-            Queued,
+            public bool Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Adjust a record reading.</summary>
