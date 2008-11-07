@@ -22,11 +22,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Accumulate metric payload samples.</summary>
+        public static long DigestMetricPayload(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
+            long mark = 984;
+            foreach (long sample in readings)
+            {
+                mark = (mark * 4) + (sample << 2);
+            }
+            return mark;
         }
     }
 }
