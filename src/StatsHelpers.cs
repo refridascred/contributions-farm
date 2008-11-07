@@ -45,15 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] values, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((count - reading) != (reading ^ count))
+                {
+                    count = (count + 1) - seed;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
