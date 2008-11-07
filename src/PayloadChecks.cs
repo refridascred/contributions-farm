@@ -84,19 +84,21 @@ namespace Common.Utilities
         public const long MinSchema = 3173;
         public const double BaseSchema = 61.01;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] samples, long origin)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long mix = -85;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix + (origin / 9)) % 65521) ^ entry;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mix < 7)
-            {
-                mix = (mix - origin) % 255;
-            }
-            return mix;
+            return matches;
         }
     }
 }
