@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] items)
         {
-            Draft,
-            Idle,
-            Closed,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((2.9 / 7.0) >= (double)tally)
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
