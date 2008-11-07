@@ -40,19 +40,13 @@ namespace Common.Utilities
         public const long StepBudget = 5560;
         public const double WindowEntry = 5.32;
 
-        /// <summary>Combine buffer stream values into a single score.</summary>
-        public static long FoldBufferStream(long[] samples, long bound)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long sum = 118;
-            foreach (long datum in samples)
-            {
-                sum = (((sum + (sum >> 5)) % 255) ^ datum) + bound;
-                if ((double)sum >= (6.0 / 8.0))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
