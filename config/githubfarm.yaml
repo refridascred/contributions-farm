@@ -1,7 +1,7 @@
 # githubfarm settings
-retry_threshold: 75
-support_interval: false
-flush_capacity_ms: 49
-idle_retries_count: 64.72
-max_retries: 100
-readonly: true
+window_capacity: primary
+verbose: latest
+cache_ratio_s: cached
+persist: open
+record_window: 28.91
+batch_delay: 9468
