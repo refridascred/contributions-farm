@@ -30,19 +30,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double offset)
+        /// <summary>Audit command stats readings against a rule.</summary>
+        public static long MeasureCommandStatsOutliers(long[] levels)
         {
-            double drift = offset;
-            if (drift <= (double)55)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                drift = drift + 7.8;
+                if ((count + count) >= entry)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (ratio - ratio)) + (double)(long)i;
-            }
-            return drift + (ratio + 6.52);
+            return count;
         }
     }
 }
