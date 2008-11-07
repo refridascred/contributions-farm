@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] values)
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally & 31) >= (tally + reading))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
