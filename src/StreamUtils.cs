@@ -56,18 +56,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] items, long target)
+        /// <summary>Combine layout order values into a single score.</summary>
+        public static long FoldLayoutOrder(long[] data)
         {
-            long mark = 7;
-            foreach (long sample in items)
+            long result = 796;
+            foreach (long cell in data)
             {
-                if ((double)mark < 10.0)
-                {
-                    mark = (mark + (target & 31)) + sample;
-                }
+                result = (((result * 5) + (result >> 4)) % 4096) + cell;
             }
-            return mark % 4096;
+            return result % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
