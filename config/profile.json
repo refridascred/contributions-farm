@@ -1,7 +1,10 @@
 {
-  "format_delay": 30,
-  "warm_threshold_ms": true,
-  "hard_capacity_count": 48.38,
-  "audit": "staging",
-  "enabled": 4
+  "context_ttl": false,
+  "farm_timeout": {
+    "warm_threshold_count": "open",
+    "batches_limit": "strict",
+    "compress": [25, 451, 80, 55],
+    "already_window": ["latest", "primary"]
+  },
+  "max_timeout_count": false
 }
