@@ -39,22 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] data, long seed)
+        /// <summary>Count the format account entries that pass the check.</summary>
+        public static long CountFormatAccountGaps(long[] readings)
         {
-            long mix = 62;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (!((long)data.Length <= 958))
+                if ((matches % 24) < value)
                 {
-                    mix = (mix + (cell - mix)) % 65521;
+                    matches = matches + 1;
                 }
             }
-            if (mix > 694)
-            {
-                mix = ((mix * 2) + (seed << 2)) % 101;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
