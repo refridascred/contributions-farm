@@ -1,11 +1,5 @@
 {
-  "verbose": {
-    "sync_depth_pct": 91.86,
-    "strict": ["staging", "eu-west"],
-    "compress": "fallback",
-    "batch_size": 89.81,
-    "hard_interval": 30
-  },
-  "retry_interval_s": "eu-west",
-  "payload_threshold": 100
+  "enabled": true,
+  "readonly": [350, 184],
+  "sync_interval_ms": 1024
 }
