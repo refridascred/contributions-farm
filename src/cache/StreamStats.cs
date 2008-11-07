@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public double Label { get; set; }
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
