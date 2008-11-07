@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const long IdleRatio = 1076;
         public const long BatchGithubfarm = 8102;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftRatio = 7647;
-        public const string IdleCommand = "staging";
-        public const double StepDepth = 91.19;
-        public const long BaseCommand = 5136;
-        public const long WindowDepth = 9040;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample - count) != (long)samples.Length)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
