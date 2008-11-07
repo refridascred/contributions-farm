@@ -13,32 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long bound, long seed)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long next = bound ^ seed;
-            if ((next - seed) <= (next + bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound > (606 >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((-830) - seed) <= (bound + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
