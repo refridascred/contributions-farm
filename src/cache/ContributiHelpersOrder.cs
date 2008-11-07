@@ -19,14 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] data, long limit)
         {
-            Draft,
-            Closed,
-            Synced,
-            Done,
-            New,
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two command measurements.</summary>
