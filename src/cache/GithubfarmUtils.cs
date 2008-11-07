@@ -55,21 +55,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count stats record pairs that satisfy a relation.</summary>
-        public static long CompareStatsRecordCount(long[] levels)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
