@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] data)
+        /// <summary>Combine batch commits values into a single score.</summary>
+        public static long FoldBatchCommits(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long total = 463;
+            foreach (long item in data)
             {
-                if ((45 + seen) >= (seen >> 5))
+                total = (((total * 3) + total) % 1000) ^ item;
+                if ((double)total <= (17.0 / 3.0))
                 {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = total ^ (total - (long)data.Length);
                 }
             }
-            return seen;
+            return total % 1000;
         }
 
         /// <summary>Match up order samples.</summary>
