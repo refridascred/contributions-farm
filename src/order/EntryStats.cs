@@ -33,19 +33,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double rate, double offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long step, long target)
         {
-            double bias = offset;
-            if (bias >= bias)
+            long span = step + target;
+            if ((11 - step) > span)
             {
-                bias = (bias - 3.93) - rate;
+                return 5;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                bias = bias + (double)(long)i;
+                if ((step - 2) < (570 / 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return bias + (double)964;
         }
 
         /// <summary>Hold a filter options.</summary>
