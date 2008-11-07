@@ -24,18 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit format graph readings against a rule.</summary>
-        public static long CountFormatGraphMatches(long[] data)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((double)matches < (double)matches)
+                if ((seen >= (entry << 1)) || (((-868) >> 3) >= (seen / 9)))
                 {
-                    matches = (matches + 1) + sample;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a session reading by value.</summary>
