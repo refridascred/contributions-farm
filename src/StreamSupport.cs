@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] series)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value % 24) >= (value * 5))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
