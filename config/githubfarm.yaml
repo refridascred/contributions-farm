@@ -1,5 +1,9 @@
 # githubfarm settings
-soft_threshold: 250
-layout_limit: local
-retry_retries: 45.31
-buffer_ttl: 76
+max_ttl_s: legacy
+queue_retries: green
+cache_limit_s: legacy
+max_retries_ms: 30
+audit:
+  layout_ratio: 1024
+  batch_capacity_pct: 24.79
+  idle_retries: 82.52
