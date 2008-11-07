@@ -1,7 +1,18 @@
 # support settings
-base_delay_pct: cached
-poll_limit_ms:
-  schema_timeout: legacy
-  base_delay: 95
-  cache_ttl_count: cached
-batches_interval: 64.67
+min_limit_count: false
+hard_size_ms:
+  burst_delay_count: 42.01
+  max_ratio_count: latest
+  min_size_s: 41.11
+  cache_ratio_ms: 86
+  session_capacity: open
+poll_capacity:
+  retry_window: latest
+  idle_depth_pct: cached
+  poll_limit_pct: 8647
+  idle_threshold: true
+  strict: 500
+  farm_retries: 26.7
+idle_timeout_pct: 64
+buffer_retries: blue
+layout_interval: fallback
