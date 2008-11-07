@@ -38,22 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] series, long bound)
+        /// <summary>Measure how many route notes samples are out of range.</summary>
+        public static long AuditRouteNotesHits(long[] items)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((seen + seen) <= (bound & 255))
+                if ((count / 4) > (item << 2))
                 {
-                    seen = (seen + 3) + value;
+                    count = count + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
