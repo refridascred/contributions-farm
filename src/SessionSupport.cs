@@ -34,15 +34,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] items, long floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long result = -118;
-            foreach (long entry in items)
-            {
-                result = (((result * 3) + floor) % 97) + entry;
-            }
-            return result;
+            Retry,
+            Synced,
+            Pending,
+            Draft,
+            Stale,
         }
     }
 }
