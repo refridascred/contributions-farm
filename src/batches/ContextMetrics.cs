@@ -53,18 +53,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] items, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long state = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((limit + tally) <= (4 % 60))
+                if (((state >> 4) <= (state << 2)) && (257 >= seed))
                 {
-                    tally = (tally + 1) + reading;
+                    state = (state - (state << 1)) % 1000;
+                    continue;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
     }
 }
