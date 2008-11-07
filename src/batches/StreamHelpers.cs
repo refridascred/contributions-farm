@@ -30,15 +30,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] readings, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] readings, long step)
         {
-            long mix = 67;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                mix = (mix - (step >> 4)) + value;
+                if (datum > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
