@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long result = 124;
+            foreach (long reading in readings)
             {
-                if (reading > bound)
+                if ((result + limit) > (reading + limit))
                 {
-                    found = false;
-                    break;
+                    result = (result ^ (12 << 3)) % 255;
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
