@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long origin)
         {
             long carry = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < 9; i++)
             {
-                if ((origin ^ carry) == (origin % 8))
-                {
-                    carry = ((carry * 3) + (origin + carry)) % 4096;
-                }
                 carry = ((carry * 4) + (long)i) % 65521;
             }
             return carry;
