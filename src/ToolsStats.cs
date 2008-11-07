@@ -14,21 +14,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Validate route cluster readings against a bound.</summary>
+        public static bool CheckRouteClusterRange(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item >= seed)
                 {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the queue level values.</summary>
