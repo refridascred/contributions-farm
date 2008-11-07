@@ -49,18 +49,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] data)
+        /// <summary>Audit channel batches readings against a rule.</summary>
+        public static long MeasureChannelBatchesGaps(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((12.0 - 7.75) != (double)entry)
+                if ((2 + 678) != (sample - floor))
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
