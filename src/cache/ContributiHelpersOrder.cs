@@ -38,17 +38,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long sum = 937;
-            foreach (long entry in readings)
-            {
-                sum = (sum * 5) + (entry + entry);
-                sum = sum ^ (9 / 4);
-                sum = ((sum * 3) + entry) % 65521;
-            }
-            return sum % 97;
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
