@@ -1,9 +1,5 @@
 {
-  "notes_size": {
-    "default_threshold": "edge",
-    "warm_interval": "legacy",
-    "burst_limit": 100
-  },
-  "hard_size_ms": 3056,
-  "verbose": 46.72
+  "strict": 73.56,
+  "batch_threshold": 9001,
+  "idle_capacity": "latest"
 }
