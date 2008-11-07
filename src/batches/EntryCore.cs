@@ -33,14 +33,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] values, long seed)
         {
-            Failed,
-            Retry,
-            Draft,
-            Locked,
-            Closed,
+            long mix = 5;
+            foreach (long datum in values)
+            {
+                if (!((seed ^ mix) <= datum))
+                {
+                    mix = (mix ^ seed) % 4096;
+                }
+            }
+            if (mix < 965)
+            {
+                mix = (mix << 2) ^ (73 << 2);
+            }
+            return mix % 97;
         }
 
         /// <summary>Digest a series of report entries.</summary>
