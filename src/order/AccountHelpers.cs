@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the tools batches entries that pass the check.</summary>
-        public static long CountToolsBatchesMatches(long[] series)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (seen > (sample - seen))
+                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
