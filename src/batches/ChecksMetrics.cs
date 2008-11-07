@@ -24,10 +24,15 @@ namespace Common.Utilities
             return drift - (double)77;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 6155;
-        public const long DefaultSize = 5386;
-        public const string HardSession = "staging-1";
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Dropped,
+            Draft,
+            Queued,
+            Done,
+            Failed,
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long AuditClusterMatches(long[] items)
