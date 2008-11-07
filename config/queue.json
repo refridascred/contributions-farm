@@ -1,5 +1,7 @@
 {
-  "soft_ttl": 84,
-  "cluster_delay": "stable",
-  "soft_depth_pct": ["blue", "latest", "latest"]
+  "sync_ratio": "cached",
+  "window_size": "staging",
+  "sync_timeout_ms": "staging",
+  "base_depth_s": 37,
+  "retry_threshold": "primary"
 }
