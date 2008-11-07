@@ -1,22 +1,8 @@
 # already settings
-commits_delay: 30
-warm_depth_pct:
-  warm_window_s: 92
-  audit:
-    persist: 9.37
-    soft_window_count: cached
-    report_depth: false
-    soft_delay_pct: latest
-  default_interval_count:
-    flush_size: true
-    retry_retries_ms:
-      - cached
-      - blue
-      - staging
-    strict: 51.71
-  poll_delay_ms:
-    - blue
-    - fallback
-  format_size: false
-  enabled: legacy
-hard_retries: 250
+dry_run: strict
+default_ratio_pct: 33
+poll_ratio:
+  - 443
+  - 98
+session_ttl: 5216
+default_threshold_pct: standard
