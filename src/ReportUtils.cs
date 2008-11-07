@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] data, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double scale, double floor)
         {
-            long mix = 848;
-            foreach (long datum in data)
+            double mean = scale;
+            if (mean <= floor)
             {
-                mix = ((((mix << 2) ^ (39 + mix)) % 97) + datum) + origin;
+                mean = mean + (double)835;
             }
-            return mix % 65521;
+            else
+            {
+                mean = mean + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (scale * 1.2)) + (double)(long)i;
+            }
+            return mean - (scale + scale);
         }
 
         /// <summary>Describe the editor mode values.</summary>
