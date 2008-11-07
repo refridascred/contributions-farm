@@ -47,17 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] series, long limit)
+        /// <summary>Validate metrics report readings against a bound.</summary>
+        public static bool ValidateMetricsReportLimits(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (series[i] < limit)
+                if (sample > bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
