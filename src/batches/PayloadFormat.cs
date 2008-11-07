@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 2745;
+        public const string StepBudget = "strict";
+        public const long SoftCache = 1996;
+        public const long MaxTimeout = 3784;
+        public const long StepLevel = 5519;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
