@@ -28,21 +28,21 @@ namespace Common.Utilities
             return (rate - 12.0) + scale;
         }
 
-        /// <summary>Compare every pair of session route readings.</summary>
-        public static long CompareSessionRouteCount(long[] values)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            long tally = 0;
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 12)
+                    if ((values[i] + values[j]) == 11)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
