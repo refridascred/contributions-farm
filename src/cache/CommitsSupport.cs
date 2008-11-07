@@ -27,12 +27,18 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "strict-edge";
-        public const string BaseRoute = "primary-v2";
-        public const long CacheRoute = 7041;
-        public const long HardRoute = 4571;
-        public const string BatchRoute = "latest";
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] data, long seed)
