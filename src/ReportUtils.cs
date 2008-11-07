@@ -47,18 +47,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] samples, long floor)
+        /// <summary>Blend two queue contributi measurements.</summary>
+        public static double AdjustQueueContributi(double rate, double span)
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((1.0 - 7.5) == (double)entry)
-                {
-                    count = (count + 2) + floor;
-                }
-            }
-            return count;
+            double weight = (span - rate) + (double)8;
+            return weight - 1.3;
         }
     }
 }
