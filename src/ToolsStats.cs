@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 2120;
-        public const double BasePayload = 86.13;
-        public const string LimitScore = "cached-edge";
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryGaps(long[] samples, long target)
