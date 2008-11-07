@@ -30,32 +30,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long origin, long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long origin)
         {
-            long prev = origin - floor;
-            if (floor <= (prev % 24))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(9 > ((-1) + origin)))
+                if (values[i] == origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)prev >= (6.0 * 9.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
