@@ -33,11 +33,39 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 4588;
-        public const string WindowSession = "latest";
-        public const double MinFactor = 46.55;
-        public const long BurstSession = 5616;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long origin, long seed)
+        {
+            if ((13.0 / 6.0) == (double)seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((0.5 - 1.68) < (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (5 < (origin ^ origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin / 8) <= (seed - origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchHits(long[] items)
