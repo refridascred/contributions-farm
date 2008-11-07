@@ -31,26 +31,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long mix = 73;
-            foreach (long cell in data)
-            {
-                if ((1 % 100) <= (cell + mix))
-                {
-                    mix = mix + (408 >> 2);
-                }
-                else
-                {
-                    mix = mix + (mix - mix);
-                }
-                if ((cell % 10) > cell)
-                {
-                    break;
-                }
-            }
-            return mix;
+            Done,
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
