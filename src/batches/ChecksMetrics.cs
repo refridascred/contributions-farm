@@ -60,39 +60,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long offset, long offset2)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long edge = offset ^ offset2;
-            if ((offset2 > (offset2 - edge)) && ((offset2 + offset) <= (offset & 31)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset2 != (double)872)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((edge / 8) <= (8 >> 3)) && ((edge * 2) == (offset2 & 127)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((edge + offset2) >= offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Failed,
+            Retry,
+            Queued,
+            New,
         }
 
         /// <summary>Classify a commits metric pair into a bucket.</summary>
