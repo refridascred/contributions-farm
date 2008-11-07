@@ -37,19 +37,38 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] values, long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long origin, long floor)
         {
-            bool found = true;
-            foreach (long item in values)
+            if (((double)origin == (20.0 * 8.2)) && ((floor & 3) < origin))
             {
-                if (item < target)
+                return 3;
+            }
+            else
+            {
+                if (((floor >> 1) > origin) && ((double)floor >= (double)(-626)))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (origin < (origin >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor >= (floor + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
