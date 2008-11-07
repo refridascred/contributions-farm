@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank session metrics input into a small class.</summary>
-        public static long RankSessionMetrics(long floor, long bound)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            long step = floor ^ bound;
-            if ((double)floor >= (4.1 + 1.7))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor * 2) <= (92 << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (floor > (step / 6))
+                    if ((data[i] ^ data[j]) != 2)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step >= (step & 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
