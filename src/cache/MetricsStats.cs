@@ -36,10 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 4625;
-        public const double LimitFactor = 86.71;
-        public const long LimitScore = 1101;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 1576;
+        public const string SoftWidth = "legacy";
+        public const string IdleMetric = "primary-1";
+        public const long DefaultBudget = 5018;
+        public const string BurstMetric = "fallback-edge";
 
         /// <summary>Adjust a batch reading.</summary>
         public static double ProjectBatch(double gain, double floor)
