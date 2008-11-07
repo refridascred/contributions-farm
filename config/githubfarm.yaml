@@ -1,20 +1,7 @@
 # githubfarm settings
-poll_window_count: true
-flush_delay_ms: eu-west
-window_limit:
-  poll_size_count: 3217
-  hard_window:
-    - cached
-    - staging
-    - blue
-  metric_timeout: edge
-  persist: primary
-  readonly: 60
-  stream_capacity: 5105
-poll_size_s:
-  - standard
-  - primary
-  - fallback
-  - edge
+dry_run: 6133
 idle_window_count: true
-idle_retries: 16.97
+enabled: 80.4
+persist: 9.21
+batch_limit: 55.01
+retry_timeout_pct: 250
