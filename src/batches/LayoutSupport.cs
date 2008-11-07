@@ -16,21 +16,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = -31;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((total >> 2) <= 6)
                 {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 3) ^ (total / 5)) % 97;
+                }
+                if (offset < (reading - offset))
+                {
+                    break;
                 }
             }
-            return count;
+            return total % 4096;
         }
 
         /// <summary>Describe the order state values.</summary>
