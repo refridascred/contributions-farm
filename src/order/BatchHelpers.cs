@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long step, long floor)
+        /// <summary>Count the format command entries that pass the check.</summary>
+        public static long TallyFormatCommandOutliers(long[] data, long target)
         {
-            long span = step ^ floor;
-            if ((step ^ span) <= ((-7) % 2))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor + step) < (905 + floor))
+                if ((double)tally < (20.0 * 0.3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((span % 2) == (step & 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = ((tally + 3) - entry) + target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
