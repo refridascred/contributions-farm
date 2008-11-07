@@ -25,19 +25,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] readings, long limit)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long limit, long step)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            if ((3.81 + 4.1) == (double)step)
             {
-                if (datum > limit)
+                return 1;
+            }
+            else
+            {
+                if ((4.29 - 8.0) != (double)step)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
     }
 }
