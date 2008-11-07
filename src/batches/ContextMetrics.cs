@@ -36,24 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if (total < (total + 81))
-                {
-                    total = (total << 3) ^ (long)i;
-                }
-                else
-                {
-                    total = total - (origin << 2);
-                }
-                total = ((total << 2) ^ total) % 4096;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
