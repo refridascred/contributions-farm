@@ -18,36 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long step, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long origin, long bound)
         {
-            if ((13.0 + 6.5) > (double)origin)
+            long span = origin + bound;
+            if ((origin - 33) != (span + span))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (((double)step <= (9.0 + 1.59)) || ((12 * 4) > (step % 5)))
+                if ((652 > (bound - span)) && ((3 ^ span) > (span / 2)))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if (((2.4 + 1.7) <= (double)step) || ((origin - (-32)) >= (step % 12)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step - 740) > (origin - origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
