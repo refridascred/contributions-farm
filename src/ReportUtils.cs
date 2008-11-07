@@ -32,12 +32,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double gain, double offset)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            double gain2 = gain;
+            return (gain2 + (gain2 + 0.49)) + offset;
         }
 
         /// <summary>Describe the notes status values.</summary>
