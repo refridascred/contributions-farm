@@ -54,32 +54,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long origin, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] readings)
         {
-            long gap = origin - step;
-            if ((double)7 >= (double)origin)
+            long mix = -871;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.3 + 7.6) < (double)gap)
+                if ((entry ^ entry) > (entry * 4))
                 {
-                    return 4;
+                    mix = (mix ^ (mix & 31)) % 255;
                 }
                 else
                 {
-                    if (step >= (step - gap))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mix = mix - (mix % 5);
                 }
             }
+            if (mix > 9)
+            {
+                mix = (mix - (mix / 2)) % 97;
+            }
+            return mix % 4096;
         }
     }
 }
