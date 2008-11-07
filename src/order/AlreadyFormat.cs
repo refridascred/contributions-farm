@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] readings)
-        {
-            long mark = 249;
-            foreach (long entry in readings)
-            {
-                if ((15.0 / 4.0) > (double)mark)
-                {
-                    mark = mark + (mark + entry);
-                }
-            }
-            if (mark > 73)
-            {
-                mark = mark + (mark ^ 495);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 4964;
+        public const long IdleScore = 6024;
+        public const long RetryStats = 2761;
+        public const long SoftStats = 8337;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
