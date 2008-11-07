@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxCount = 6645;
-        public const string DefaultNotes = "open-v2";
-        public const long RetryNotes = 6053;
-        public const long SoftNotes = 8194;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] data, long step)
+        {
+            long result = 252;
+            foreach (long datum in data)
+            {
+                result = ((result ^ step) % 1000) + datum;
+            }
+            if (result < 1)
+            {
+                result = (result ^ (step >> 4)) % 97;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultSize = 347;
