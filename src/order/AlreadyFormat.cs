@@ -65,18 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] readings)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((reading / 7) >= seen)
+                if (sample <= origin)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
