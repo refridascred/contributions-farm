@@ -17,24 +17,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long origin, long origin2)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long step)
         {
-            if (origin > (899 / 6))
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (6 < (origin2 - origin))
+                if (((210 / 5) < ((-37) + (long)i)) && ((anchor + step) <= anchor))
                 {
-                    return 6;
+                    anchor = ((anchor << 2) ^ ((long)i << 1)) % 255;
+                    break;
                 }
-                else
-                {
-                    return 0;
-                }
+                anchor = ((anchor << 3) ^ ((long)i / 9)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
