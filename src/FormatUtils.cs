@@ -50,18 +50,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] data, long target)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((hits + target) != (95 + cell)) && (((cell + 925) > (hits - cell)) && (((long)data.Length + target) <= (cell >> 5))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Roll a already counter forward.</summary>
