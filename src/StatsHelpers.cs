@@ -27,18 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream editor samples are out of range.</summary>
-        public static long AuditStreamEditorGaps(long[] values)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((7.6 + 2.9) != (double)value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
