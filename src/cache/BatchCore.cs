@@ -36,17 +36,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 7682;
+        public const double SoftBatches = 62.67;
+        public const long StepBatches = 5735;
     }
 }
