@@ -36,14 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Closed,
-            Dropped,
-            Stale,
-            Idle,
-            Active,
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
