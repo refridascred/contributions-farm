@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchWidth = 9017;
+        public const long MaxDepth = 6734;
+        public const long MaxPayload = 329;
+        public const long CacheFactor = 4888;
+        public const long BurstSpan = 5700;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] samples)
