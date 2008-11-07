@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Stale,
-            Draft,
-            Locked,
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
