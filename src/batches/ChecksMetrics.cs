@@ -37,18 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] items)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally - value) > (value % 16))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public bool Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a session summary.</summary>
