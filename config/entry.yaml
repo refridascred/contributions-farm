@@ -1,34 +1,5 @@
 # entry settings
-token_depth: 41.63
-notes_interval:
-  strict: false
-  batch_timeout:
-    cache_interval: 66.8
-    flush_ratio_ms: staging
-    persist: local
-    payload_capacity: 8727
-    route_limit: cached
-  poll_window: 100
-base_limit_ms:
-  poll_threshold_s: staging
-  dry_run:
-    - green
-    - legacy
-    - blue
-  command_limit:
-    strict: 75
-    soft_retries_s: green
-    notes_size: 8645
-    cache_delay: 250
-    already_limit:
-      - 464
-      - 150
-  base_interval_ms: true
-  command_window: 1024
-farm_capacity: primary
-min_size: 100
-burst_interval:
-  - latest
-  - latest
-  - open
-  - open
+retry_delay_pct: false
+compress: fallback
+soft_limit: 27.53
+warm_size_count: false
