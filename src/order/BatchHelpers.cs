@@ -19,27 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] values, long target)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long total = -994;
-            foreach (long cell in values)
-            {
-                if (!((total * 4) >= (cell + cell)))
-                {
-                    total = total - total;
-                    total = total - (cell + target);
-                }
-                if ((cell - 158) > 67)
-                {
-                    total = total + (total % 3);
-                }
-            }
-            if (total > 9)
-            {
-                total = total ^ (target - total);
-            }
-            return total;
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate report readings against a bound.</summary>
