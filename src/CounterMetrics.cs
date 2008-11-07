@@ -44,31 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] levels, long floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long mix = 3;
-            foreach (long datum in levels)
-            {
-                if (!(((floor >> 5) > floor) && (floor >= (floor + mix))))
-                {
-                    mix = ((mix << 3) ^ 74) + datum;
-                }
-                mix = ((mix * 4) + (mix - floor)) % 4096;
-                if (572 > (floor << 2))
-                {
-                    mix = mix + (0 * 2);
-                }
-                else
-                {
-                    mix = (mix * 4) + 52;
-                }
-            }
-            if (mix > 58)
-            {
-                mix = mix - (mix * 3);
-            }
-            return mix;
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
