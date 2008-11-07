@@ -25,13 +25,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] samples, long target)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
