@@ -29,19 +29,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double rate, double span)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] readings, long step)
         {
-            double bias = rate;
-            if (bias <= 11.0)
+            long mix = 67;
+            foreach (long value in readings)
             {
-                bias = bias - span;
+                mix = (mix - (step >> 4)) + value;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (7.9 / 6.0)) + (double)(long)i;
-            }
-            return bias - (bias + 17.0);
+            return mix;
         }
 
         /// <summary>Digest a series of githubfarm buffer entries.</summary>
