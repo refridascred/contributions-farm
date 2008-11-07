@@ -69,13 +69,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] values, long origin)
         {
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (entry >= (entry - (-732)))
+                {
+                    count = (count + 2) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of context entries.</summary>
