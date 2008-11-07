@@ -26,13 +26,11 @@ namespace Common.Utilities
         public const double StepRatio = 3.06;
         public const long BaseCount = 7848;
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
