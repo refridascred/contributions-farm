@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] series, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long result = -6;
+            foreach (long entry in levels)
             {
-                if (item <= offset)
+                if (((result & 7) < (entry + entry)) || ((double)entry <= (6.7 + 11.0)))
                 {
-                    stale = false;
-                    break;
+                    result = (result + 3) % 4096;
                 }
             }
-            return stale;
+            return result % 97;
         }
 
         /// <summary>Describe the filter class values.</summary>
