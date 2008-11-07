@@ -56,24 +56,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] items, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((double)step != (3.68 + 14.0))
+                if (reading < offset)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    mark = mark + step;
-                    mark = (mark * 3) + (mark / 9);
-                }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return ready;
         }
     }
 }
