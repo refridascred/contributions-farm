@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the entry batches series from a seed.</summary>
-        public static long IterateEntryBatches(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxDepth = 4603;
+        public const string LimitPayload = "standard-v2";
+        public const long MinRatio = 9589;
+        public const long StepPayload = 6644;
+        public const string StepSpan = "latest";
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] samples, long seed)
