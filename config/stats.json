@@ -1,5 +1,14 @@
 {
-  "strict": 73.56,
-  "batch_threshold": 9001,
-  "idle_capacity": "latest"
+  "checks_depth": "blue",
+  "dry_run": 75,
+  "flush_retries_s": {
+    "idle_limit": "staging",
+    "readonly": true,
+    "min_size_pct": {
+      "dry_run": false,
+      "readonly": "cached",
+      "verbose": 7795,
+      "persist": 4867
+    }
+  }
 }
