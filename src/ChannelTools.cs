@@ -25,19 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] samples, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (datum > target)
+                if (((5.57 / 9.0) == (double)datum) && ((451 + datum) < datum))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the checks phase values.</summary>
