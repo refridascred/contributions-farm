@@ -53,12 +53,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long seed, long origin)
         {
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
-            public double Score { get; set; }
+            if (seed <= (812 * 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin / 8) != (seed - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
