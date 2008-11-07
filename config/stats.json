@@ -1,13 +1,15 @@
 {
-  "max_retries_s": "blue",
-  "max_interval_ms": true,
-  "min_depth": 60,
-  "warm_size_ms": false,
-  "audit": {
-    "base_limit": 41,
-    "strict": 6971,
-    "base_size_s": true,
-    "base_ratio_ms": 3.89,
-    "audit": ["cached", "edge", "standard", "standard"]
-  }
+  "batches_depth": {
+    "min_threshold": 100,
+    "warm_capacity_s": 37,
+    "idle_depth": "blue",
+    "warm_interval": 9,
+    "warm_ratio_count": 1024
+  },
+  "poll_limit_pct": {
+    "format_ttl": "edge",
+    "default_ratio": [395, 49, 271, 198],
+    "route_timeout": 100
+  },
+  "cache_capacity_ms": 91
 }
