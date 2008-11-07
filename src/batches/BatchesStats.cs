@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] samples, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (value >= floor)
+                if ((6.8 < (double)limit) || ((long)items.Length != (item / 3)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Audit queue stats readings against a rule.</summary>
