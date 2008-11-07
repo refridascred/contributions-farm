@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of route command readings.</summary>
-        public static long FoldRouteCommand(long[] samples)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long anchor = 3;
-            foreach (long value in samples)
-            {
-                if ((anchor & 255) != (0 ^ value))
-                {
-                    anchor = (anchor - value) % 65521;
-                }
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
