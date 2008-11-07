@@ -53,9 +53,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 39.98;
-        public const long BurstSchema = 5842;
-        public const long MinScore = 6746;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
