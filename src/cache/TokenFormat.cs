@@ -14,20 +14,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] samples, long step)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultSize = 9855;
+        public const double DefaultNotes = 68.59;
+        public const double BurstDepth = 48.19;
+        public const double MaxNotes = 26.94;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] samples)
