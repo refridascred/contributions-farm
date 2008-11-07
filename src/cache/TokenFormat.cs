@@ -19,18 +19,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many editor schema samples are out of range.</summary>
-        public static long TallyEditorSchemaHits(long[] readings, long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)entry == (8.4 + 16.0))
+                if ((series[i] <= limit) && ((series[i] % 5) == 0))
                 {
-                    hits = (hits + 1) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
