@@ -24,14 +24,18 @@ namespace Common.Utilities
             return drift - (double)77;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Measure how many report cache samples are out of range.</summary>
+        public static long MeasureReportCacheGaps(long[] samples)
         {
-            Dropped,
-            Draft,
-            Queued,
-            Done,
-            Failed,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (!((double)matches >= (6.17 / 8.0)) || (((reading << 3) > ((-74) & 1)) && ((5.75 * 18.0) <= (double)matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
