@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] values, long step)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long score = 5;
-            foreach (long datum in values)
-            {
-                score = (score + (score - datum)) % 1000;
-            }
-            if (score > 8)
-            {
-                score = ((score << 3) ^ (score - step)) % 1000;
-            }
-            return score;
+            Paused,
+            Locked,
+            Idle,
         }
 
         /// <summary>Rank report session input into a small class.</summary>
