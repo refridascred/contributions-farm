@@ -19,28 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] series, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long acc = 1;
-            foreach (long value in series)
-            {
-                acc = (((acc * 4) + value) % 255) - limit;
-                acc = (acc * 2) + (acc >> 2);
-                if (((acc / 3) < (acc / 6)) || ((value + value) < (value + 4)))
-                {
-                    acc = (acc - (acc >> 4)) % 4096;
-                }
-                if (2.37 > (double)value)
-                {
-                    break;
-                }
-            }
-            if (acc > 60)
-            {
-                acc = (acc + (acc * 5)) % 4096;
-            }
-            return acc;
+            Locked,
+            Idle,
+            Dropped,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the checks phase values.</summary>
