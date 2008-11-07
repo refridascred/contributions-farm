@@ -1,8 +1,18 @@
 # support settings
-hard_ttl_s: open
-retry_window: blue
-cache_delay:
-  - staging
-  - stable
-  - strict
-entry_capacity: eu-west
+min_delay: 4.0
+idle_size_ms: 250
+batch_ttl: green
+cache_depth:
+  soft_window_s: staging
+  burst_capacity:
+    max_ttl_s:
+      - 51
+      - 270
+      - 334
+      - 256
+    compress: staging
+    burst_threshold_s: 500
+  burst_threshold_pct: false
+  order_ratio: 4052
+batch_interval: cached
+default_delay_count: primary
