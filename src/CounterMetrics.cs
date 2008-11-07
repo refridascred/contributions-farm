@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double ratio, double offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] readings, long seed)
         {
-            double bias = (ratio + 6.76) / 5.0;
-            if (bias <= 5.01)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias + (bias + bias)) - offset;
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)4;
+            return -1;
         }
 
         /// <summary>Describe the already state values.</summary>
