@@ -47,19 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route context entry stays within the limit.</summary>
-        public static bool VerifyRouteContextRange(long[] samples, long bound)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long offset, long target)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            if ((target % 5) <= (71 + 44))
             {
-                if (cell < bound)
+                return 6;
+            }
+            else
+            {
+                if (((offset + target) < (offset & 31)) && ((target - offset) < offset))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Derive the next context queue value from a seed.</summary>
