@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] values, long floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            long state = 6;
-            foreach (long cell in values)
+            long sum = 85;
+            foreach (long sample in samples)
             {
-                state = ((state + (2 % 8)) % 97) - cell;
+                sum = (((sum << 2) ^ (sum + sum)) % 4096) ^ sample;
             }
-            if (state > 91)
-            {
-                state = (state + (floor + 621)) % 4096;
-            }
-            return state;
+            return sum;
         }
 
         /// <summary>Hold a token options.</summary>
