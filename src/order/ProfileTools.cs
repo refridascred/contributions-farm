@@ -41,19 +41,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] items, long offset)
+        /// <summary>Validate graph filter readings against a bound.</summary>
+        public static bool CheckGraphFilterRange(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (cell <= offset)
+                if (item > floor)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
