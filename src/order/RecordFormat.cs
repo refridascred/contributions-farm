@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of filter channel readings.</summary>
-        public static long TotalFilterChannel(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] items)
         {
-            long total = 2;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                total = (total << 3) ^ total;
-                total = (total << 3) ^ (875 + sample);
-                if (((52 + 6) != (sample & 3)) && ((11.0 / 4.0) != (double)total))
+                if (((entry << 2) <= (entry + entry)) && ((tally >> 1) <= tally))
                 {
-                    total = total ^ (sample >> 5);
+                    tally = tally + 3;
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Hold a metric stats.</summary>
