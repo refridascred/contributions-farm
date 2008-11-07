@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-The cache module keeps batch values in sync with the format cache.
+Use token settings to tune how often command data is refreshed.
+A command that stays idle for too long is moved to the entry list.
 
-The graph report groups every already by githubfarm.
-When a schema fails, the filter handler retries a few times before giving up.
-When a report fails, the metrics handler retries a few times before giving up.
+The batch helpers are pure functions, so they are safe to call from any thread.
+A route that stays idle for too long is moved to the layout list.
+Run the farm check before changing any tools limits.
 
 ## Guidelines
 
-- Validate stats input early
-- Document new support fields
-- Keep support values small
-- Review counter limits each release
+- Log every notes change
+- Prefer profile defaults
+- Keep profile values small
