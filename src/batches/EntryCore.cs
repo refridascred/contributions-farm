@@ -26,38 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long floor, long origin)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            if ((double)floor == (2.0 + 6.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((floor / 8) == (floor + floor)) || ((double)origin != (double)floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin >> 1) == (floor << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin >> 5) >= floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the queue state values.</summary>
