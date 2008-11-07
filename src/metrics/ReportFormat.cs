@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Look up the position of a contributi support sample.</summary>
-        public static long LookupContributiSupportIndex(long[] levels, long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
