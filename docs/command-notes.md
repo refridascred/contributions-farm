@@ -1,14 +1,13 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the tools list.
-Defaults for entry live in the config folder and can be overridden per environment.
-Use layout settings to tune how often batch data is refreshed.
+A window that stays idle for too long is moved to the commits list.
+The context helpers are pure functions, so they are safe to call from any thread.
 
-The metric module keeps metrics values in sync with the graph cache.
-Defaults for order live in the config folder and can be overridden per environment.
+Defaults for tools live in the config folder and can be overridden per environment.
+The layout module keeps report values in sync with the already cache.
 
 ## Guidelines
 
-- Log every already change
-- Review batches limits each release
-- Prefer channel defaults
+- Prefer tools defaults
+- Review batch limits each release
+- Log every tools change
