@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (hits > (value + value))
+                if ((entry << 3) > (target + target))
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up account session samples.</summary>
