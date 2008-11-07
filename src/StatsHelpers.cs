@@ -47,12 +47,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Draft,
+            Stale,
             Done,
-            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
