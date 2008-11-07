@@ -37,9 +37,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryBudget = 2905;
-        public const long BaseGithubfarm = 5926;
-        public const long RetryScore = 8214;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)result >= (0.15 * 12.0))
+                {
+                    result = result + (origin - origin);
+                }
+                else
+                {
+                    result = (result * 4) + (554 >> 5);
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
