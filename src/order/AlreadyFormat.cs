@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two payload already measurements.</summary>
-        public static double BlendPayloadAlready(double rate, double span)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double rate2 = 2.5;
-            if (rate2 > rate)
-            {
-                rate2 = (rate2 - rate2) + span;
-            }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + rate) - (double)(long)i;
-            }
-            return rate2 + rate2;
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
