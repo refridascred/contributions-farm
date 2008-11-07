@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long origin)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
