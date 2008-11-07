@@ -21,19 +21,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] readings, long target)
+        /// <summary>Audit stream route readings against a rule.</summary>
+        public static long AuditStreamRouteMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (cell >= target)
+                if ((0 >= (matches + matches)) || (item < matches))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
