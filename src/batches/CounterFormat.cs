@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 4850;
-        public const long MinRecord = 5074;
-        public const long SoftRecord = 8258;
-        public const long StepScore = 4177;
-        public const double RetrySize = 32.48;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((origin ^ tally) > origin)
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next queue context value from a seed.</summary>
         public static long SeriesQueueContext(long limit)
