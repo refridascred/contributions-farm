@@ -39,15 +39,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a stats route reading.</summary>
-        public static double ProjectStatsRoute(double rate, double span)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double weight, double offset)
         {
-            double scale = span - (double)3;
-            if (scale <= span)
+            double gain = weight;
+            if (gain >= (offset * 7.55))
             {
-                scale = scale + (rate * 6.4);
+                gain = gain + (18.0 + gain);
             }
-            return scale + (rate * 13.0);
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - weight;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
