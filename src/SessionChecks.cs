@@ -20,17 +20,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] readings, long limit)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long bound, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((bound >> 3) < (target / 9))
             {
-                if (readings[i] <= limit)
+                return 6;
+            }
+            else
+            {
+                if (!((bound / 7) != (target + bound)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the stream class values.</summary>
