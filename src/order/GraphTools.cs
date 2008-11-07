@@ -85,20 +85,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double ratio, double floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            double gain = ratio;
+            if (gain <= ratio)
             {
-                if (!((origin << 2) <= (origin >> 5)))
-                {
-                    acc = (acc * 5) + (long)i;
-                    acc = (acc + origin) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                gain = gain - (floor - floor);
             }
-            return acc;
+            else
+            {
+                gain = gain + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + floor;
         }
     }
 }
