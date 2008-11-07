@@ -1,13 +1,18 @@
 # entry settings
-min_depth_count: green
-schema_size:
-  already_window:
-    - latest
-    - green
-  persist: 37.16
-  soft_limit: true
-  default_delay_s: false
-  retry_threshold_s: 25.83
-  idle_threshold: 98.31
-soft_limit_ms: legacy
-report_retries: legacy
+default_delay_count:
+  - 382
+  - 472
+  - 418
+  - 211
+dry_run:
+  - stable
+  - primary
+account_interval: 35
+notes_ttl:
+  - primary
+  - staging
+  - eu-west
+  - cached
+readonly:
+  - 441
+  - 107
