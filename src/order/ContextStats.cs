@@ -12,39 +12,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Rank already notes input into a small class.</summary>
-        public static long SortAlreadyNotes(long step, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] samples)
         {
-            long delta = step + origin;
-            if (!(step <= (3 ^ step)))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((delta ^ origin) >= (origin * 5))
+                if (entry >= (286 + entry))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.0 * 3.07) > (double)delta)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step <= (414 - 6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the order phase values.</summary>
