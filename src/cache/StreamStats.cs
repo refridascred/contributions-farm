@@ -26,17 +26,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            long anchor = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor ^ (89 << 2)) - reading;
-                anchor = anchor - (anchor % 16);
-                anchor = anchor ^ (anchor & 255);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
