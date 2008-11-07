@@ -1,16 +1,6 @@
 {
-  "layout_ttl": ["standard", "local", "strict", "eu-west"],
-  "sync_ratio_s": "legacy",
-  "base_timeout_count": 84,
-  "burst_depth_pct": 22,
-  "soft_ttl": {
-    "poll_threshold_s": 17.73,
-    "default_size_s": true,
-    "cache_limit": ["eu-west", "latest"]
-  },
-  "cache_size": {
-    "cache_ratio_s": 65.9,
-    "dry_run": "latest",
-    "idle_depth_count": "latest"
-  }
+  "cache_capacity": 9.13,
+  "readonly": "latest",
+  "metrics_capacity": [499, 472],
+  "warm_depth_s": "staging"
 }
