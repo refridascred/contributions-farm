@@ -20,12 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            Pending,
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Audit command stats readings against a rule.</summary>
