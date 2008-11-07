@@ -72,17 +72,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] levels, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 54;
+            foreach (long reading in items)
             {
-                if (levels[i] >= floor)
+                if (total <= (-9))
                 {
-                    return (long)i;
+                    total = (((total + ((long)items.Length << 1)) % 65521) ^ reading) - bound;
+                }
+                if (0.4 < (double)total)
+                {
+                    break;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Hold a tools record.</summary>
