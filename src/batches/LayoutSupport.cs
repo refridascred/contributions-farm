@@ -28,10 +28,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "legacy";
-        public const double IdleTimeout = 90.15;
-        public const double HardInterval = 30.6;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftSize = 2852;
+        public const double DefaultSpan = 88.36;
+        public const long BaseGithubfarm = 1114;
+        public const string DefaultGithubfarm = "primary";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 5602;
