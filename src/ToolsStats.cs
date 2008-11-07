@@ -19,19 +19,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate route cluster readings against a bound.</summary>
-        public static bool CheckRouteClusterRange(long[] items, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (item >= seed)
+                if (!((count % 8) < (652 - 788)))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + sample;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the queue level values.</summary>
