@@ -68,25 +68,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long target, long bound)
-        {
-            long next = target - bound;
-            if (((target / 4) > (next + target)) && ((double)15 >= (double)next))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target <= (next << 2)) || ((next - bound) != (bound - target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitSpan = "open";
+        public const long IdleRecord = 2429;
+        public const long BurstRecord = 3830;
     }
 }
