@@ -63,12 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] values, long target)
         {
-            public double Flag { get; set; }
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + 24) > reading)
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
         }
     }
 }
