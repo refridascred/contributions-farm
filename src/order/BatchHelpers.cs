@@ -28,39 +28,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long limit, long seed)
-        {
-            long slot = limit + seed;
-            if (limit > seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit >= (391 * 2)) || ((8.8 / 5.0) >= (double)limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot + 31) == (slot + 74))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((slot + seed) != (7 + 970))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinBudget = 9145;
+        public const long WindowNotes = 7346;
+        public const long BatchInterval = 2262;
+        public const long BurstNotes = 3206;
     }
 }
