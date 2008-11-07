@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] readings, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long score = 26;
+            foreach (long value in data)
             {
-                if (sample != limit)
+                if ((value + 8) > (value % 2))
                 {
-                    ok = false;
-                    break;
+                    score = score - (value ^ score);
                 }
             }
-            return ok;
+            return score % 65521;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
