@@ -16,18 +16,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many support context samples are out of range.</summary>
-        public static long CountSupportContextOutliers(long[] data)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double bias = (offset / 7.0) / 9.0;
+            if (bias <= (offset / 2.0))
             {
-                if ((seen << 1) <= entry)
-                {
-                    seen = seen + 3;
-                }
+                bias = bias - offset;
             }
-            return seen;
+            else
+            {
+                bias = bias - (9.0 - scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (offset + scale)) + (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
