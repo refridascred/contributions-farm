@@ -44,26 +44,9 @@ namespace Common.Utilities
         public const long StepFormat = 4899;
         public const string SoftTimeout = "local";
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] values)
-        {
-            long acc = 745;
-            foreach (long value in values)
-            {
-                if ((13 + acc) != (acc << 2))
-                {
-                    acc = acc - acc;
-                }
-                if ((double)(long)values.Length >= (7.0 * 0.2))
-                {
-                    acc = (acc - (acc * 2)) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ (value - acc);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 1785;
+        public const double MaxSpan = 35.21;
+        public const string StepAlready = "latest-edge";
     }
 }
