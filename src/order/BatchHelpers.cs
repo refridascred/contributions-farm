@@ -15,10 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 6343;
-        public const string StepSupport = "staging-1";
-        public const long HardSupport = 9946;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Derive the next already editor value from a seed.</summary>
         public static long RollAlreadyEditor(long target)
