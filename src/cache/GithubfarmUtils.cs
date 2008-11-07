@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long CacheFactor = 4573;
         public const long StepFactor = 8982;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] samples, long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = 3.5;
+            if (gain < 2.01)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                gain = gain + rate;
             }
-            return -1;
+            return gain - (floor / 3.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
