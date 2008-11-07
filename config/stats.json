@@ -1,21 +1,6 @@
 {
-  "enabled": ["open", "fallback", "edge"],
-  "compress": {
-    "persist": 33.28,
-    "warm_capacity_s": 45,
-    "soft_size": {
-      "max_limit_pct": 8917,
-      "burst_depth": true,
-      "idle_delay_pct": "standard",
-      "report_size": false,
-      "audit": "latest",
-      "enabled": 43.37
-    },
-    "max_limit_s": "blue",
-    "dry_run": true
-  },
-  "command_ttl": 5766,
-  "report_delay": "primary",
-  "burst_size_s": 16.35,
-  "sync_interval_pct": false
+  "enabled": "stable",
+  "checks_timeout": "stable",
+  "soft_window_pct": 47,
+  "readonly": 97.78
 }
