@@ -33,12 +33,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 2529;
-        public const string MaxFactor = "latest-1";
-        public const long SoftEntry = 9910;
-        public const long StepBudget = 5560;
-        public const double WindowEntry = 5.32;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] samples, long origin)
+        {
+            long score = 5;
+            foreach (long datum in samples)
+            {
+                score = ((score + (origin + score)) % 255) ^ datum;
+                score = (score ^ (score ^ origin)) % 1000;
+                if (((4.86 / 5.0) != (double)score) && ((0.8 / 7.0) >= (double)origin))
+                {
+                    break;
+                }
+            }
+            if (score < 3)
+            {
+                score = score + score;
+            }
+            return score;
+        }
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
