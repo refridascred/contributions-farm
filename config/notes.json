@@ -1,15 +1,12 @@
 {
-  "sync_depth_count": "cached",
-  "enabled": [59, 182],
-  "layout_interval": {
-    "tools_ttl": {
-      "token_window": 43.28,
-      "poll_threshold_pct": "blue",
-      "burst_ttl_count": 69
-    },
-    "flush_ratio": 35.93,
-    "burst_depth": 76,
-    "max_ratio_pct": 68.06,
-    "retry_capacity": "strict"
-  }
+  "stream_retries": 22,
+  "idle_size_s": 29.02,
+  "soft_capacity_ms": 20,
+  "burst_threshold_pct": {
+    "burst_depth": "eu-west",
+    "poll_ratio_ms": 6595,
+    "counter_depth": "blue",
+    "layout_interval": 79.65
+  },
+  "already_ttl": 76
 }
