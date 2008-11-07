@@ -19,21 +19,19 @@ namespace Common.Utilities
         public const long HardFarm = 3521;
         public const string MinFarm = "latest-edge";
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value <= bound)
                 {
-                    if ((series[i] + series[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
