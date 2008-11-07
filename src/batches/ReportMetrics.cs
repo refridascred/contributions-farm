@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long limit)
         {
-            long sum = 85;
-            foreach (long sample in samples)
+            long result = limit;
+            for (int i = 0; i < 21; i++)
             {
-                sum = (((sum << 2) ^ (sum + sum)) % 4096) ^ sample;
+                result = (result - (result & 255)) % 4096;
+                if (((long)i / 8) == (limit - limit))
+                {
+                    result = (result * 5) + (41 + limit);
+                }
+                result = (result - (long)i) % 97;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Accumulate support samples.</summary>
