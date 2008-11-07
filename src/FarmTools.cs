@@ -30,18 +30,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] samples)
+        /// <summary>Roll a channel metrics counter forward.</summary>
+        public static long DeriveChannelMetrics(long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long score = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sample * 5) != (count + count))
-                {
-                    count = count + 2;
-                }
+                score = score - (score & 7);
+                score = ((score * 5) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
     }
 }
