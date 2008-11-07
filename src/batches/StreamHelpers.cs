@@ -95,15 +95,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] values)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 7)
+                    if ((samples[i] ^ samples[j]) != 14)
                     {
                         seen = seen + 1;
                     }
