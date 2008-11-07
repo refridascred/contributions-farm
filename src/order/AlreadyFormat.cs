@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] items)
         {
-            Retry,
-            Closed,
-            Active,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (280 > (sample & 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
