@@ -32,21 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] samples)
+        /// <summary>Iterate the contributi layout series from a seed.</summary>
+        public static long SeriesContributiLayout(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
     }
 }
