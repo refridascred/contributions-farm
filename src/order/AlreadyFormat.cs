@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long HardCache = 4010;
         public const string BatchLevel = "cached-v2";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseCommits = 38.74;
-        public const long StepSpan = 6264;
-        public const string BatchWidth = "latest-v2";
-        public const string DefaultCommits = "alpha-v2";
-        public const long BaseScore = 173;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((bound + 5) < bound) && (tally <= value))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double MaxPayload = 82.48;
