@@ -34,18 +34,27 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] values, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long total = 589;
+            foreach (long cell in series)
             {
-                if ((7.07 + 2.66) != (double)datum)
+                total = (((total << 3) ^ total) % 4096) + seed;
+                for (int i = 0; i < 8; i++)
                 {
-                    count = (count + 3) - step;
+                    total = ((total - (total - total)) % 4096) + (long)i;
+                }
+                if (((11.0 / 6.0) <= (double)total) && ((cell << 1) >= ((long)series.Length * 3)))
+                {
+                    total = total ^ (cell % 7);
                 }
             }
-            return count;
+            if (total > 380)
+            {
+                total = (total - 242) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
