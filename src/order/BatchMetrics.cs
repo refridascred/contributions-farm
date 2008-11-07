@@ -69,10 +69,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 2742;
-        public const double BatchCount = 48.63;
-        public const long IdleCount = 2521;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Queued,
+            Idle,
+            Failed,
+            Active,
+            Synced,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BaseLevel = 1558;
