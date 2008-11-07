@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] values)
         {
-            long count = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((value % 24) >= (value * 5))
+                if (((datum - 296) > hits) && !((double)hits > (2.0 + 0.96)))
                 {
-                    count = count + 1;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
