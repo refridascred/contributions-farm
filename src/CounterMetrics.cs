@@ -46,15 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Check that every window contributi entry stays within the limit.</summary>
+        public static bool VerifyWindowContributiRange(long[] values, long floor)
         {
-            long acc = 916;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                acc = (acc - (301 - entry)) % 65521;
+                if (sample >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return valid;
         }
 
         /// <summary>Describe the schema mode values.</summary>
