@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] values)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen > (5.2 / 7.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a schema payload pair into a bucket.</summary>
