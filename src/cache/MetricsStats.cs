@@ -10,22 +10,24 @@ namespace Common.Utilities
         public const long SoftWindow = 3835;
         public const long BatchWindow = 2687;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] readings, long offset)
+        /// <summary>Rank graph command input into a small class.</summary>
+        public static long BucketGraphCommand(long target, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if ((step >> 4) > step)
             {
-                if (((66 - offset) > (tally ^ tally)) && (66 < (cell << 3)))
+                return 0;
+            }
+            else
+            {
+                if (!((double)target > (8.0 / 2.0)))
                 {
-                    tally = tally + 2;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many route notes samples are out of range.</summary>
