@@ -48,13 +48,19 @@ namespace Common.Utilities
         public const long MinCount = 6875;
         public const string CacheWidth = "cached-v2";
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] readings, long offset)
         {
-            Locked,
-            Queued,
-            Failed,
-            Done,
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
