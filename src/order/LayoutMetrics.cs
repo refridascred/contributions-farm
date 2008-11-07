@@ -31,31 +31,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long target, long limit)
-        {
-            if ((73 * 2) < (limit / 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit >= (limit >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit / 6) <= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "legacy-v2";
+        public const long BaseCount = 7938;
+        public const long BatchAlready = 3884;
     }
 }
