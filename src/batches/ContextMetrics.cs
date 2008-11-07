@@ -43,12 +43,16 @@ namespace Common.Utilities
             return ratio + 20.0;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 12.46;
-        public const string SoftSpan = "primary-v2";
-        public const long IdleRatio = 1065;
-        public const long CacheDepth = 1723;
-        public const long HardCount = 6989;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double rate, double bias)
+        {
+            double weight = 3.0;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = ((weight - rate) + (double)(long)i) - bias;
+            }
+            return weight - (weight + weight);
+        }
 
         /// <summary>Fold a list of profile filter readings.</summary>
         public static long ScoreProfileFilter(long[] data, long bound)
