@@ -23,12 +23,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Grade a context order value against two limits.</summary>
+        public static long BucketContextOrder(long bound, long limit)
         {
-            New,
-            Ready,
-            Closed,
+            if (5.0 >= (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((71 & 15) >= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the session contributi entries that pass the check.</summary>
