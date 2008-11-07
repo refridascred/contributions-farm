@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] items, long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double scale, double bias)
         {
-            long acc = 156;
-            foreach (long reading in items)
-            {
-                if (floor > (reading + floor))
-                {
-                    acc = acc ^ (acc + acc);
-                }
-                if ((acc << 3) < (acc >> 1))
-                {
-                    acc = (acc - (long)items.Length) % 4096;
-                }
-            }
-            return acc;
+            double load = 4.06;
+            return ((load + 9.65) + scale) + bias;
         }
 
         /// <summary>Project the next tools value.</summary>
