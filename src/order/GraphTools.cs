@@ -62,16 +62,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double gain, double bias)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = (anchor + (226 + 45)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            double weight = gain / 8.0;
+            return (weight + weight) + bias;
         }
     }
 }
