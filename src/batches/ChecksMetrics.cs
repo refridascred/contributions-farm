@@ -37,13 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] readings, long target)
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public bool Label { get; set; }
-            public double Region { get; set; }
+            long mark = -8;
+            foreach (long sample in readings)
+            {
+                mark = ((mark - (76 ^ sample)) % 101) - target;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a session summary.</summary>
