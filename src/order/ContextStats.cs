@@ -36,21 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((-252) ^ 2) > step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((step >> 1) == (57 << 3))
                 {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate order samples.</summary>
