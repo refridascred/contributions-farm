@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Rank checks profile input into a small class.</summary>
+        public static long GradeChecksProfile(long bound, long offset)
         {
-            Retry,
-            Done,
-            Synced,
+            if ((7.33 * 15.0) == (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)bound != (7.0 * 2.2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((1.61 + 0.44) != (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound >= (bound ^ bound)) || (bound >= (offset + 892)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine record metrics values into a single score.</summary>
