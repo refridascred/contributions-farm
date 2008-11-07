@@ -1,5 +1,10 @@
 {
-  "flush_capacity": "latest",
-  "stream_ttl": [250, 163, 146],
-  "cache_delay": "local"
+  "readonly": {
+    "flush_depth_ms": "edge",
+    "editor_delay": 11.64,
+    "support_capacity": "fallback",
+    "support_depth": 83.56
+  },
+  "burst_ratio": 500,
+  "poll_retries_s": 16.46
 }
