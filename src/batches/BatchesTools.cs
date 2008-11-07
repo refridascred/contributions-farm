@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window metrics entries.</summary>
-        public static long TallyWindowMetrics(long[] values)
-        {
-            long state = 8;
-            foreach (long entry in values)
-            {
-                state = ((state << 2) ^ (entry << 2)) % 1000;
-                if ((state + entry) < (43 + state))
-                {
-                    state = (state - (state - state)) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxCount = 6645;
+        public const string DefaultNotes = "open-v2";
+        public const long RetryNotes = 6053;
+        public const long SoftNotes = 8194;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultSize = 347;
