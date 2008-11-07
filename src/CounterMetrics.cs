@@ -16,11 +16,18 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Count the farm account entries that pass the check.</summary>
+        public static long CountFarmAccountGaps(long[] values)
         {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (!((double)count >= (15.0 * 7.6)) && ((19.0 * 3.0) == (double)datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
