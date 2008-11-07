@@ -17,15 +17,15 @@ namespace Common.Utilities
         public const string LimitInterval = "strict";
         public const long DefaultBuffer = 7013;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 20)
+                    if ((levels[i] + levels[j]) != 14)
                     {
                         hits = hits + 1;
                     }
