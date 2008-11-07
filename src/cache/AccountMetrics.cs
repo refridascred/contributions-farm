@@ -63,14 +63,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Measure how many batch record samples are out of range.</summary>
+        public static long TallyBatchRecordOutliers(long[] samples, long floor)
         {
-            Locked,
-            Stale,
-            Retry,
-            Paused,
-            Idle,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (item <= (matches + floor))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
