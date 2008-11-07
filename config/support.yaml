@@ -1,7 +1,29 @@
 # support settings
-token_depth: strict
-profile_retries: latest
-batch_interval_pct: 1676
-max_interval_s: eu-west
-batch_capacity_pct: latest
-idle_interval_count: 12
+command_timeout:
+  burst_depth: 50
+  warm_limit: latest
+  graph_window:
+    metric_ttl: standard
+    buffer_ttl: 500
+    verbose: 9
+    queue_capacity:
+      - stable
+      - cached
+      - strict
+      - eu-west
+    min_limit_ms:
+      - stable
+      - standard
+      - primary
+      - green
+    strict: false
+  min_ratio_count: 11.49
+githubfarm_threshold: 12
+warm_size: 3423
+metrics_interval:
+  - eu-west
+  - open
+  - standard
+  - standard
+default_interval_ms: cached
+persist: legacy
