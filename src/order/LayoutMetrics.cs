@@ -23,11 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double weight, double span)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double ratio = weight;
-            return (ratio - (double)981) + span;
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define route limits and defaults.</summary>
