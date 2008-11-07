@@ -32,18 +32,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] data, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long limit, long bound)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            if ((0.42 * 4.66) != (double)bound)
             {
-                if ((497 >> 3) == (sample + matches))
+                return 3;
+            }
+            else
+            {
+                if (!((1.0 + 4.6) >= (double)limit))
                 {
-                    matches = (matches + 2) - target;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
