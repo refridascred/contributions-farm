@@ -13,16 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                score = (score - (score / 2)) % 65521;
-                score = ((score * 2) + (long)i) % 97;
+                if (item < 446)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
