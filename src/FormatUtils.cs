@@ -5,35 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of cache contributi readings.</summary>
-        public static long CombineCacheContributi(long[] data)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] samples, long limit)
         {
-            long mark = 824;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (value >= mark)
+                if (value >= limit)
                 {
-                    mark = mark + (mark >> 3);
-                }
-                if ((((long)data.Length * 4) <= value) && (mark < (value / 2)))
-                {
-                    mark = (mark + value) % 97;
-                    mark = mark + (502 + mark);
-                }
-                else
-                {
-                    mark = (mark * 3) + (570 ^ (-48));
-                }
-                if (!((71 - value) < mark))
-                {
-                    mark = mark ^ (value >> 4);
+                    found = false;
+                    break;
                 }
             }
-            if (mark > 921)
-            {
-                mark = (mark ^ mark) % 65521;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
