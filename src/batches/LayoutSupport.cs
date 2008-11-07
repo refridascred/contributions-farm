@@ -28,19 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every queue support entry stays within the limit.</summary>
-        public static bool GuardQueueSupportLimits(long[] readings, long bound)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Match up cache samples.</summary>
