@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] samples, long limit)
         {
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a schema summary.</summary>
