@@ -43,20 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] levels, long floor)
         {
-            long mix = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix ^ (63 + mix);
-                mix = ((mix << 2) ^ (reading - 53)) % 4096;
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 9)
-            {
-                mix = ((mix * 2) + (mix - 671)) % 97;
-            }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Hold a tools header.</summary>
