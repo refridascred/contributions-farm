@@ -34,24 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long offset, long bound)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            if ((bound - bound) > (offset >> 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound - bound) > (offset * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
