@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long SoftTimeout = 347;
         public const long DefaultSupport = 9586;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] levels, long limit)
         {
-            Pending,
-            Idle,
-            Locked,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
