@@ -1,5 +1,11 @@
 {
-  "graph_interval": 25.41,
-  "dry_run": 3.28,
-  "entry_interval": ["local", "fallback", "green"]
+  "support_window": {
+    "hard_limit_pct": "green",
+    "max_window_count": [238, 92],
+    "account_retries": "edge",
+    "min_depth": "standard"
+  },
+  "soft_retries_s": true,
+  "burst_window_ms": 527,
+  "metrics_delay": 43.88
 }
