@@ -86,22 +86,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks graph values into a single score.</summary>
-        public static long TotalChecksGraph(long[] levels)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] items, long floor)
         {
-            long carry = 54;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < (item >> 4))
+                if (items[i] == floor)
                 {
-                    carry = ((carry << 2) ^ (carry ^ item)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (item % 24)) % 97;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
     }
 }
