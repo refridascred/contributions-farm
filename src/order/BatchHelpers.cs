@@ -37,17 +37,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] data, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (data[i] > step)
+                if ((seen <= (seen + seen)) && (((seen + seen) >= (279 ^ seen)) || ((item & 7) < seen)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
