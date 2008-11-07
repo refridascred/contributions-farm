@@ -40,11 +40,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Project the next support order value.</summary>
+        public static double ScaleSupportOrder(double ratio, double span)
         {
-            public bool Weight { get; set; }
-            public double Score { get; set; }
+            double ratio2 = (6.4 / 2.0) * 4.2;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = ((ratio2 + (double)(long)i) - ratio) - span;
+            }
+            return ratio2 + 2.2;
         }
 
         /// <summary>Describe the editor phase values.</summary>
