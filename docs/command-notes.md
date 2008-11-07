@@ -1,11 +1,14 @@
 # Command notes
 
-The command report groups every farm by cluster.
-A filter that stays idle for too long is moved to the entry list.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Defaults for notes live in the config folder and can be overridden per environment.
+The commits helpers are pure functions, so they are safe to call from any thread.
+
+Each stats is validated before it reaches the order queue.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new stream fields
-- Keep notes values small
-- Prefer batches defaults
-- Log every queue change
+- Document new commits fields
+- Keep account values small
+- Log every payload change
