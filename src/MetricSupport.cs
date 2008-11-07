@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] levels)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count ^ (-19)) <= (5 + (-100)))
+                if (items[i] > offset)
                 {
-                    count = (count + 3) - reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up context samples.</summary>
