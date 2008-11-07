@@ -1,6 +1,9 @@
-id,state,active
-1,latest,16.03
-2,staging,stable
-3,65.26,242
-4,fallback,810
-5,51.0,569
+id,token
+1,10.65
+2,42.95
+3,77.45
+4,57.09
+5,72.82
+6,468
+7,449
+8,fallback
