@@ -22,15 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stats command value from a seed.</summary>
-        public static long StepStatsCommand(long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long limit, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
+            if (target > (limit ^ limit))
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (9.6 <= (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
