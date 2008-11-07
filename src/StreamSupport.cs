@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] values)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long floor)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (((datum - 296) > hits) && !((double)hits > (2.0 + 0.96)))
+                if (!((double)floor < (8.62 - 7.7)))
                 {
-                    hits = hits + 3;
+                    mix = ((mix * 5) + floor) % 65521;
+                    break;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
