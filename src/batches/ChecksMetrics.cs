@@ -86,21 +86,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] items)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -7;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)item <= (19.0 - 7.68)))
                 {
-                    if ((items[i] - items[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total ^ (total / 4)) % 97;
                 }
             }
-            return seen;
+            return total % 97;
         }
     }
 }
