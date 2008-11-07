@@ -40,12 +40,22 @@ namespace Common.Utilities
         public const string MaxBuffer = "open-1";
         public const long MinBuffer = 2317;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] data)
         {
-            Idle,
-            New,
-            Active,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!(((6.41 / 2.0) < (double)cell) || ((double)cell < (1.6 + 7.23))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
