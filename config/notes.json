@@ -1,8 +1,7 @@
 {
-  "burst_depth": 1,
-  "burst_size": 8961,
-  "burst_limit": 55,
-  "burst_threshold": "open",
-  "command_depth": 250,
-  "base_interval": ["fallback", "standard"]
+  "strict": ["stable", "green", "local", "latest"],
+  "idle_ratio_pct": "latest",
+  "metric_delay": 30,
+  "min_capacity_s": 8079,
+  "cache_window_pct": "blue"
 }
