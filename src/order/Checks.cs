@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Retry,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheEntry = 14.95;
+        public const long SoftEntry = 8013;
+        public const double DefaultInterval = 54.22;
+        public const string WindowCount = "staging-v2";
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
