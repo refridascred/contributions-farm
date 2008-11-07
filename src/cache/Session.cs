@@ -27,10 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 7617;
-        public const long WindowFilter = 6387;
-        public const string MaxFilter = "latest-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepWidth = 7338;
+        public const string CacheSpan = "fallback-1";
+        public const double StepCache = 36.26;
+        public const string WindowCache = "primary";
+        public const long BurstScore = 9525;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleQueue = 2457;
