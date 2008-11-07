@@ -25,27 +25,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((1 - (long)i) == ((-57) >> 4))
-                {
-                    mark = (mark ^ ((long)i + target)) % 4096;
-                }
-                else
-                {
-                    mark = mark ^ (target ^ mark);
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = ((mark ^ (target * 5)) % 255) - (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the contributi mode values.</summary>
