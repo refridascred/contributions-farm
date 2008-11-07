@@ -1,7 +1,10 @@
-id,level,label,count
-1,719,standard,eu-west
-2,608,59.96,13
-3,735,stable,302
-4,strict,70.71,262
-5,89.48,35.63,582
-6,88.14,47.38,91
+id,state,owner
+1,latest,663
+2,505,primary
+3,366,496
+4,96.85,648
+5,115,legacy
+6,local,14.84
+7,87.57,standard
+8,96.39,green
+9,22,81
