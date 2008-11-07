@@ -1,7 +1,7 @@
 {
-  "githubfarm_ttl": 500,
-  "graph_threshold": ["primary", "green", "eu-west"],
-  "verbose": 80.91,
-  "burst_size": true,
-  "min_ratio": 68
+  "readonly": [398, 458, 220],
+  "compress": 59,
+  "farm_delay": 5726,
+  "audit": 48,
+  "flush_ttl_count": ["legacy", "eu-west"]
 }
