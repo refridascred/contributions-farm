@@ -38,18 +38,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many token batch samples are out of range.</summary>
-        public static long CountTokenBatchGaps(long[] data)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((double)item != (8.6 * 1.8)) || (seen <= (seen + (long)data.Length)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Failed,
+            Pending,
+            Paused,
         }
     }
 }
