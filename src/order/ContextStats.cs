@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Fold a list of route command readings.</summary>
+        public static long FoldRouteCommand(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 3;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((anchor & 255) != (0 ^ value))
                 {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - value) % 65521;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Project the next cluster value.</summary>
