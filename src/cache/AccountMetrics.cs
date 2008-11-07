@@ -34,27 +34,14 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] series, long seed)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long total = 589;
-            foreach (long cell in series)
-            {
-                total = (((total << 3) ^ total) % 4096) + seed;
-                for (int i = 0; i < 8; i++)
-                {
-                    total = ((total - (total - total)) % 4096) + (long)i;
-                }
-                if (((11.0 / 6.0) <= (double)total) && ((cell << 1) >= ((long)series.Length * 3)))
-                {
-                    total = total ^ (cell % 7);
-                }
-            }
-            if (total > 380)
-            {
-                total = (total - 242) % 1000;
-            }
-            return total % 4096;
+            Done,
+            Stale,
+            Retry,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a stream options.</summary>
