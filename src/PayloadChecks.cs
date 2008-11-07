@@ -43,24 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a counter cache value against two limits.</summary>
-        public static long SortCounterCache(long limit, long limit2)
+        /// <summary>Validate graph route readings against a bound.</summary>
+        public static bool VerifyGraphRouteRange(long[] samples, long seed)
         {
-            if ((4.0 / 4.0) > (double)limit2)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit - limit2) <= limit)
+                if (reading >= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
