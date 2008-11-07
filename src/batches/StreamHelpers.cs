@@ -64,12 +64,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long bound, long step)
         {
-            Done,
-            New,
-            Draft,
+            long next = bound ^ step;
+            if (((double)bound > (15.0 - 1.0)) && (step <= (600 ^ next)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step > (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((9.08 / 8.0) > (double)step) && (next < (bound << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two account measurements.</summary>
