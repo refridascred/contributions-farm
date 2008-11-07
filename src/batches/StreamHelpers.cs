@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] series, long target)
+        /// <summary>Count the record order entries that pass the check.</summary>
+        public static long CountRecordOrderGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (entry < target)
+                if ((datum > (seen & 31)) && ((datum * 3) <= (seen - seen)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the profile kind values.</summary>
