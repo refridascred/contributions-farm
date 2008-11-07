@@ -30,12 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepWidth = 7338;
-        public const string CacheSpan = "fallback-1";
-        public const double StepCache = 36.26;
-        public const string WindowCache = "primary";
-        public const long BurstScore = 9525;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleQueue = 2457;
