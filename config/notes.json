@@ -1,5 +1,18 @@
 {
-  "audit": 100,
-  "readonly": true,
-  "cache_limit_count": [323, 289, 382, 489]
+  "commits_interval": "local",
+  "persist": 65.19,
+  "base_ratio_pct": "legacy",
+  "soft_delay": "latest",
+  "sync_limit_ms": {
+    "batch_ttl": "strict",
+    "base_delay": "edge",
+    "persist": 8886,
+    "commits_timeout": ["latest", "eu-west"],
+    "warm_depth": true,
+    "filter_limit": {
+      "stream_threshold": 616,
+      "verbose": 57.79,
+      "default_interval_count": true
+    }
+  }
 }
