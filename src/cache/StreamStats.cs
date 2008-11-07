@@ -47,18 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] samples, long offset)
+        /// <summary>Check that every route context entry stays within the limit.</summary>
+        public static bool VerifyRouteContextRange(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (offset <= (tally / 2))
+                if (cell < bound)
                 {
-                    tally = (tally + 1) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Derive the next context queue value from a seed.</summary>
