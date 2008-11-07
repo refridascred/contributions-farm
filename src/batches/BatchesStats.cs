@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] levels, long step)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            if (((0.5 - 4.0) > (double)limit) && ((origin + origin) >= (limit & 1)))
             {
-                if (!((step - tally) > (tally * 3)))
+                return 7;
+            }
+            else
+            {
+                if (((origin << 1) == (limit * 4)) && ((origin + limit) == (origin >> 4)))
                 {
-                    tally = (tally + 2) ^ cell;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)origin > (6.4 + 1.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of context route entries.</summary>
