@@ -26,15 +26,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] series)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            long anchor = 0;
+            foreach (long reading in series)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                anchor = (anchor ^ (89 << 2)) - reading;
+                anchor = anchor - (anchor % 16);
+                anchor = anchor ^ (anchor & 255);
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
