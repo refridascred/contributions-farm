@@ -19,11 +19,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 65.25;
-        public const string MinSession = "legacy";
-        public const long BurstSession = 7529;
-        public const string BatchSession = "latest-1";
-        public const double HardSession = 33.41;
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
