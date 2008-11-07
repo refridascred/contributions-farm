@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] samples, long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 779;
+            foreach (long datum in values)
             {
-                if (samples[i] == offset)
+                if ((target << 1) < (target - target))
                 {
-                    return (long)i;
+                    state = state ^ (target + datum);
+                    state = (state ^ (datum * 3)) % 255;
+                }
+                else
+                {
+                    state = (state + (state % 100)) % 4096;
+                }
+                if ((datum * 2) >= (9 / 3))
+                {
+                    state = state ^ (datum ^ target);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (target * 2)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the command level values.</summary>
