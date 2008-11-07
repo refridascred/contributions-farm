@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] + data[j]) < 20)
+                    if ((series[i] - series[j]) == 13)
                     {
                         count = count + 1;
                     }
