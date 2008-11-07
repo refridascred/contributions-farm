@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank notes queue input into a small class.</summary>
-        public static long GradeNotesQueue(long step, long step2)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] values, long seed)
         {
-            if ((double)step2 == (4.0 * 1.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)step2 > (8.02 * 0.59)))
+                if (values[i] >= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + step) <= (step2 >> 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batches options.</summary>
