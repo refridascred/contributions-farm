@@ -67,13 +67,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Validate stream metric readings against a bound.</summary>
+        public static bool ValidateStreamMetricLimits(long[] data, long limit)
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
