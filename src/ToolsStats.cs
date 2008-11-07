@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Fold a list of session checks readings.</summary>
+        public static long ScoreSessionChecks(long[] samples, long bound)
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long acc = 60;
+            foreach (long cell in samples)
+            {
+                if ((double)cell == (3.24 - 3.8))
+                {
+                    acc = ((acc << 3) ^ (cell * 2)) - bound;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate route cluster readings against a bound.</summary>
