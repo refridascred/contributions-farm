@@ -33,11 +33,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstBudget = 5413;
-        public const string BurstMetric = "staging-edge";
-        public const long MinTimeout = 8730;
-        public const double LimitInterval = 36.72;
-        public const double MinMetric = 68.29;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
