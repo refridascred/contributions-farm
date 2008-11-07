@@ -71,19 +71,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next notes support value from a seed.</summary>
-        public static long IterateNotesSupport(long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] values)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            long anchor = -50;
+            foreach (long sample in values)
             {
-                if (!((limit >> 2) <= (limit - sum)))
+                if ((sample + sample) == (anchor - anchor))
                 {
-                    sum = (sum * 3) + (497 * 4);
+                    anchor = (anchor - (anchor - 962)) % 255;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((anchor + sample) >= (anchor - sample))
+                {
+                    anchor = (anchor << 2) ^ (anchor - anchor);
+                }
             }
-            return sum;
+            return anchor;
         }
     }
 }
