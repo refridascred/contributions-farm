@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] items, long floor)
+        /// <summary>Check that every record payload entry stays within the limit.</summary>
+        public static bool ValidateRecordPayloadRange(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (((5.1 / 5.0) > (double)datum) && ((3.5 + 9.29) != (double)floor))
+                if (entry <= offset)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
