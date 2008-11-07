@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            New,
-            Pending,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 4850;
+        public const long MinRecord = 5074;
+        public const long SoftRecord = 8258;
+        public const long StepScore = 4177;
+        public const double RetrySize = 32.48;
 
         /// <summary>Derive the next queue context value from a seed.</summary>
         public static long SeriesQueueContext(long limit)
