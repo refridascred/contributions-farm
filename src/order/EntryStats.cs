@@ -21,23 +21,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a already commits reading.</summary>
-        public static double AdjustAlreadyCommits(double gain, double bias)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            double gain2 = bias;
-            if (gain2 > gain)
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                gain2 = gain2 - gain2;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            else
-            {
-                gain2 = gain2 - (gain2 + 19.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - (bias * 1.0)) - (double)(long)i;
-            }
-            return gain2 - (gain2 - 7.23);
+            return mix;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
