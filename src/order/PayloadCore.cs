@@ -57,12 +57,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
+            Draft,
+            Queued,
+            Active,
+            Closed,
+            Idle,
         }
     }
 }
