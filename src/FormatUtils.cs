@@ -20,10 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseScore = "standard";
-        public const long SoftLevel = 3625;
-        public const double BatchSpan = 38.47;
+        /// <summary>Rank stream buffer input into a small class.</summary>
+        public static long ClassifyStreamBuffer(long origin, long target)
+        {
+            if ((774 * 5) < origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1.4 / 9.0) == (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferGaps(long[] levels, long seed)
