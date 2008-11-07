@@ -29,18 +29,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine commits payload values into a single score.</summary>
-        public static long CombineCommitsPayload(long[] samples, long seed)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long seed, long floor)
         {
-            long anchor = 94;
-            foreach (long entry in samples)
+            long step = seed - floor;
+            if ((step + seed) >= floor)
             {
-                if (((entry + anchor) >= seed) && ((3.04 - 11.0) >= (double)seed))
+                return 8;
+            }
+            else
+            {
+                if (((-14) & 127) != (seed % 3))
                 {
-                    anchor = (anchor + 8) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    if (((6.6 + 1.0) >= (double)floor) && (49 >= ((-72) + floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
