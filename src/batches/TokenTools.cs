@@ -16,10 +16,15 @@ namespace Common.Utilities
             return scale - (double)(-2);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 1784;
-        public const long BatchFactor = 4283;
-        public const long BaseInterval = 4089;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Retry,
+            Locked,
+            Pending,
+            Active,
+            Paused,
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
