@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinQueue = "alpha";
-        public const long StepTimeout = 4454;
-        public const long CacheQueue = 1389;
-        public const long BatchQueue = 4075;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit stats session readings against a rule.</summary>
         public static long CountStatsSessionHits(long[] series, long floor)
