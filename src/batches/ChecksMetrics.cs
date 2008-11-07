@@ -28,23 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of context counter readings.</summary>
-        public static long TallyContextCounter(long[] items)
-        {
-            long anchor = -850;
-            foreach (long item in items)
-            {
-                if ((item & 31) <= anchor)
-                {
-                    anchor = anchor - (item + anchor);
-                }
-                if (item <= (-8))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowLevel = 7899;
+        public const long BatchWidth = 1968;
+        public const long SoftCount = 3086;
+        public const long BatchScore = 1485;
+        public const long SoftInterval = 5915;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesOutliers(long[] levels, long floor)
