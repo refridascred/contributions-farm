@@ -21,14 +21,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Closed,
-            Synced,
-            Retry,
-            Locked,
-            Failed,
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
