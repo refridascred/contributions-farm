@@ -42,12 +42,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Digest a series of already route entries.</summary>
+        public static long TallyAlreadyRoute(long[] data, long seed)
         {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
+            long anchor = 626;
+            foreach (long item in data)
+            {
+                anchor = (anchor ^ seed) - item;
+            }
+            return anchor;
         }
     }
 }
