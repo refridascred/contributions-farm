@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] values, long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] samples, long bound)
         {
-            long mark = 7;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark << 2) ^ (mark + (-506))) % 255) - reading;
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 942)
-            {
-                mark = mark ^ origin;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
