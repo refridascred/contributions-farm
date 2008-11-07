@@ -72,19 +72,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] levels, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long total = 59;
+            foreach (long reading in levels)
             {
-                if (cell >= offset)
+                if (((long)levels.Length % 3) == (total << 2))
                 {
-                    valid = false;
-                    break;
+                    total = (total ^ (6 & 255)) - reading;
                 }
             }
-            return valid;
+            if (total > 30)
+            {
+                total = (total << 2) ^ (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
