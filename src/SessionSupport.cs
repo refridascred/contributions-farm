@@ -20,14 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long floor)
         {
-            Idle,
-            Ready,
-            Paused,
-            Retry,
-            Locked,
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
