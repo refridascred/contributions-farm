@@ -35,9 +35,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleRatio = "strict-v2";
-        public const long RetryBudget = 943;
-        public const long BurstInterval = 986;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "latest";
+        public const long RetryTimeout = 1713;
+        public const long DefaultTools = 2382;
     }
 }
