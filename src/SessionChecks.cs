@@ -14,10 +14,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 6299;
-        public const long DefaultProfile = 5488;
-        public const long MinProfile = 9278;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] readings, long limit)
