@@ -51,19 +51,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] samples)
+        /// <summary>Combine layout cluster values into a single score.</summary>
+        public static long TotalLayoutCluster(long[] levels, long bound)
         {
-            long acc = 584;
-            foreach (long cell in samples)
+            long mark = 824;
+            foreach (long cell in levels)
             {
-                acc = ((acc + acc) % 101) - cell;
+                if ((4.3 * 7.5) != (double)cell)
+                {
+                    mark = (mark * 2) + 952;
+                    break;
+                }
+                if ((bound - mark) == (mark >> 4))
+                {
+                    mark = (mark * 5) + (cell - cell);
+                }
             }
-            if (acc > 878)
-            {
-                acc = acc + (acc - acc);
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the commits mode values.</summary>
