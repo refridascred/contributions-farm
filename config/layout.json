@@ -1,5 +1,12 @@
 {
-  "max_threshold": 60.57,
-  "dry_run": "latest",
-  "sync_limit_count": "latest"
+  "warm_size_pct": "local",
+  "batch_limit_s": 96.96,
+  "retry_window_s": 74,
+  "strict": {
+    "stream_ratio": "cached",
+    "sync_size_count": "primary",
+    "report_limit": "strict",
+    "cache_timeout_s": "strict"
+  },
+  "stats_threshold": "legacy"
 }
