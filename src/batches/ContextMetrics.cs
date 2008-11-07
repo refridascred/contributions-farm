@@ -32,11 +32,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double gain, double offset)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double scale, double span)
         {
-            double bias = offset;
-            return (bias + (9.3 / 5.0)) + gain;
+            double ratio = (double)(619 - 1);
+            if (ratio < (ratio / 9.0))
+            {
+                ratio = (ratio - span) - scale;
+            }
+            return ratio + 20.0;
         }
 
         /// <summary>Measure how many report session samples are out of range.</summary>
