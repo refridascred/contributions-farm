@@ -19,12 +19,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstBudget = "open";
-        public const double HardReport = 96.55;
-        public const long MaxReport = 729;
-        public const string StepReport = "local-1";
-        public const string BurstCount = "stable-1";
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] series, long limit)
+        {
+            long acc = 1;
+            foreach (long value in series)
+            {
+                acc = (((acc * 4) + value) % 255) - limit;
+                acc = (acc * 2) + (acc >> 2);
+                if (((acc / 3) < (acc / 6)) || ((value + value) < (value + 4)))
+                {
+                    acc = (acc - (acc >> 4)) % 4096;
+                }
+                if (2.37 > (double)value)
+                {
+                    break;
+                }
+            }
+            if (acc > 60)
+            {
+                acc = (acc + (acc * 5)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
