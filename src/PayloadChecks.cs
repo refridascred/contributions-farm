@@ -31,21 +31,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
