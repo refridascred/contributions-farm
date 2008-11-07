@@ -61,16 +61,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next context queue value from a seed.</summary>
-        public static long IterateContextQueue(long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] samples)
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                score = (score + (score * 2)) % 4096;
-                score = ((score * 5) + (long)i) % 4093;
+                if (!!((sample + sample) > 87))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
