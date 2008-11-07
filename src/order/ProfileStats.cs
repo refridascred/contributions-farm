@@ -61,21 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] values)
+        /// <summary>Combine route buffer values into a single score.</summary>
+        public static long ScoreRouteBuffer(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 493;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)data.Length % 16) == (datum << 3))
                 {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result * 5) + (669 - datum)) % 1000;
                 }
+                result = ((result * 2) + (result + result)) % 4096;
             }
-            return matches;
+            return result % 4096;
         }
     }
 }
