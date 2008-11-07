@@ -55,12 +55,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 4100;
-        public const long StepFormat = 1556;
-        public const long SoftFormat = 419;
-        public const long RetryScore = 4760;
-        public const long MinFormat = 9261;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextHits(long[] samples)
