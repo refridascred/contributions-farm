@@ -59,13 +59,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double ratio, double offset)
         {
-            Idle,
-            Paused,
-            Synced,
-            New,
+            double load = (double)(688 & 31);
+            if (load > (load / 9.0))
+            {
+                load = (load + (ratio * 2.4)) - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load + ratio)) + (double)(long)i;
+            }
+            return load - (double)1;
         }
     }
 }
