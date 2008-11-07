@@ -60,12 +60,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Active,
-            Idle,
-            Synced,
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a commits metric pair into a bucket.</summary>
