@@ -53,11 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue contributi measurements.</summary>
-        public static double AdjustQueueContributi(double rate, double span)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            double weight = (span - rate) + (double)8;
-            return weight - 1.3;
+            long mix = 81;
+            foreach (long cell in readings)
+            {
+                if ((double)cell < (double)mix)
+                {
+                    mix = mix - cell;
+                }
+            }
+            return mix;
         }
     }
 }
