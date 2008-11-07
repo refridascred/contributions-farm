@@ -12,18 +12,39 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Rank already notes input into a small class.</summary>
+        public static long SortAlreadyNotes(long step, long origin)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long delta = step + origin;
+            if (!(step <= (3 ^ step)))
             {
-                if (!((double)seen <= (2.33 - 0.2)))
+                return 1;
+            }
+            else
+            {
+                if ((delta ^ origin) >= (origin * 5))
                 {
-                    seen = (seen + 3) ^ datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((5.0 * 3.07) > (double)delta)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step <= (414 - 6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the order phase values.</summary>
