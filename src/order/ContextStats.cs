@@ -33,12 +33,22 @@ namespace Common.Utilities
             return load + 9.0;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowFactor = 6144;
-        public const long WindowDepth = 8427;
-        public const double BatchDepth = 22.89;
-        public const long BatchBatches = 6107;
-        public const string BatchSpan = "stable-edge";
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long HardSpan = 8933;
