@@ -21,31 +21,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Classify a tools report pair into a bucket.</summary>
-        public static long ClassifyToolsReport(long bound, long bound2)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            if (bound2 < (bound2 + 199))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound2 > (5.0 + 9.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((18 % 12) > bound2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
