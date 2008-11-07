@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long origin, long limit)
+        /// <summary>Audit command stream readings against a rule.</summary>
+        public static long MeasureCommandStreamGaps(long[] series, long offset)
         {
-            if (!((limit & 31) < (origin & 3)))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit == (2.5 + 4.0))
+                if ((354 % 16) <= (offset & 127))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 2) - reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
