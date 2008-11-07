@@ -1,28 +1,12 @@
 # entry settings
-base_limit:
-  flush_threshold_s: 60
-  checks_threshold:
-    enabled: false
-    batch_timeout: 4217
-    retry_ratio: false
-    channel_window: 77
-  batch_capacity_ms:
-    - legacy
-    - eu-west
-    - standard
-    - standard
-  soft_depth: 60
-  filter_delay: false
-batch_threshold_pct:
-  - 485
-  - 160
-  - 229
-  - 140
-base_ratio_count: 33
-base_retries: 30
-cluster_ttl:
-  - 497
-  - 5
-  - 20
-  - 282
-cache_size: blue
+retry_retries:
+  - legacy
+  - latest
+  - staging
+  - latest
+max_window:
+  account_delay: 56
+  batch_depth_ms: 100
+  dry_run: 43.61
+flush_capacity_pct: 30
+strict: legacy
