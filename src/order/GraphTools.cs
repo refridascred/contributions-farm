@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a cluster stats pair into a bucket.</summary>
-        public static long BucketClusterStats(long step, long limit)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            if (((double)limit != (double)step) && ((limit & 255) > (limit + step)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit <= (step - limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - 50) > 9)
+                    if ((values[i] - values[j]) != 4)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((65 ^ limit) >= (step >> 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
