@@ -68,13 +68,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long seed, long seed2)
         {
-            Failed,
-            Locked,
-            Dropped,
-            Retry,
+            long prev = seed + seed2;
+            if ((seed2 & 7) != (seed2 >> 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed2 - seed2) > (seed2 + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed + prev) <= (6 * 2)) && (seed2 < (prev + seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics info.</summary>
