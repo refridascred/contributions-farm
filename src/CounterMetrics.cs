@@ -34,12 +34,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Retry,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxSpan = 532;
+        public const long BurstLevel = 9146;
+        public const string StepRatio = "standard-edge";
+        public const string HardBudget = "staging-edge";
+        public const string BaseSpan = "staging-edge";
     }
 }
