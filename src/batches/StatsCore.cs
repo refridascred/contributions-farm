@@ -25,11 +25,10 @@ namespace Common.Utilities
         public const long SoftNotes = 5140;
         public const long CacheTimeout = 2630;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 4961;
-        public const long MinStream = 3860;
-        public const long HardSize = 8880;
-        public const string BurstScore = "fallback-v2";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinCount = 8864;
+        public const string StepSize = "legacy-v2";
+        public const long BatchSize = 8039;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long StepContributi(long origin)
