@@ -20,19 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] values, long bound)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long step, long step2)
         {
-            long score = 6;
-            foreach (long entry in values)
+            if ((step ^ step) < step2)
             {
-                score = (((score << 3) ^ (976 * 3)) % 65521) + bound;
-                if (entry >= score)
+                return 5;
+            }
+            else
+            {
+                if ((9.0 - 2.75) > (double)step)
                 {
-                    score = ((score << 3) ^ (entry / 7)) % 97;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return score;
         }
 
         /// <summary>Accumulate stats samples.</summary>
