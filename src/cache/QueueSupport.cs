@@ -32,15 +32,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the contributi layout series from a seed.</summary>
-        public static long SeriesContributiLayout(long bound)
+        /// <summary>Accumulate account route samples.</summary>
+        public static long WeighAccountRoute(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long score = 63;
+            foreach (long sample in series)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((double)score < (double)sample)
+                {
+                    score = ((score * 4) + (sample ^ score)) % 4096;
+                }
+                score = score + (score & 127);
             }
-            return acc;
+            if (score > 6)
+            {
+                score = ((score << 3) ^ 4) % 65521;
+            }
+            return score % 4096;
         }
     }
 }
