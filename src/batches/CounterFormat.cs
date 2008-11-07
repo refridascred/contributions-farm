@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Locked,
-            Paused,
-            Stale,
-            Dropped,
-            Active,
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
