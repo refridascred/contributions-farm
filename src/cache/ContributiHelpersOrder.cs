@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double gain, double bias)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] levels, long bound)
         {
-            double scale = (8.0 - bias) + (double)28;
-            if (scale <= (scale / 9.0))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                scale = scale + (scale * 16.0);
+                if ((cell % 2) < (6 << 2))
+                {
+                    tally = (tally + 3) - bound;
+                }
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (9.4 * 9.0)) + (double)(long)i;
-            }
-            return scale + (gain - gain);
+            return tally;
         }
 
         /// <summary>Fold a list of window readings.</summary>
