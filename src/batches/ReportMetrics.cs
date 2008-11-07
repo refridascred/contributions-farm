@@ -34,12 +34,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long offset, long bound)
         {
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            if ((bound - bound) > (offset >> 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound - bound) > (offset * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
