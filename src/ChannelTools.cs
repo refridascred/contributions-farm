@@ -29,12 +29,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            New,
-            Ready,
-            Stale,
+            long sum = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((((long)i + sum) < (step >> 3)) || ((step + 98) > (864 - step)))
+                {
+                    sum = (sum ^ (step - 2)) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
