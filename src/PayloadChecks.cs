@@ -49,15 +49,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Ready,
+            Done,
+            Active,
+            Closed,
+            Stale,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
