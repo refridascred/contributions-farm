@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count farm token pairs that satisfy a relation.</summary>
