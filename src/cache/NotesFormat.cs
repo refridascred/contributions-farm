@@ -29,13 +29,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
+            Dropped,
+            Done,
+            Retry,
         }
     }
 }
