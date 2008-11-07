@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Ready,
-            Queued,
-            Done,
-            Stale,
-            Idle,
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a report stats.</summary>
