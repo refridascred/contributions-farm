@@ -47,24 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long offset, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] items, long origin)
         {
-            if ((target % 5) <= (71 + 44))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset + target) < (offset & 31)) && ((target - offset) < offset))
+                if (((639 - origin) < (69 ^ 734)) && (((9.0 + 4.39) < (double)origin) && (tally <= (tally >> 3))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 2) + value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next context queue value from a seed.</summary>
