@@ -42,11 +42,18 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] readings)
         {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((2.7 + 9.15) != (double)(long)readings.Length)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate route samples.</summary>
