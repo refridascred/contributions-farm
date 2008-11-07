@@ -22,13 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long limit)
         {
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            long score = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((3.8 * 2.0) <= (double)limit)
+                {
+                    score = ((score << 2) ^ ((long)i + score)) % 1000;
+                }
+                else
+                {
+                    score = score - (score << 2);
+                    score = (score - (score - (long)i)) % 101;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Iterate the stream already series from a seed.</summary>
