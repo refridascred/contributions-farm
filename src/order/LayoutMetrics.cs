@@ -16,21 +16,11 @@ namespace Common.Utilities
         public const string StepContributi = "local";
         public const long IdleSize = 4847;
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 4862;
+        public const long MaxSession = 2244;
+        public const long DefaultSession = 1625;
+        public const long RetryWidth = 3628;
+        public const string BaseSession = "standard-edge";
     }
 }
