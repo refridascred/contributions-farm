@@ -50,19 +50,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings, long offset)
         {
-            long mix = 43;
-            foreach (long entry in items)
+            long acc = 32;
+            foreach (long sample in readings)
             {
-                mix = (mix ^ (entry / 2)) % 255;
+                acc = (acc ^ (acc >> 4)) % 101;
+                if (offset < (acc % 97))
+                {
+                    acc = (acc - sample) % 65521;
+                }
+                else
+                {
+                    acc = acc + (sample - acc);
+                }
+                if (((offset << 2) <= sample) || ((7 & 15) != (offset + offset)))
+                {
+                    break;
+                }
             }
-            if (mix < 8)
+            if (acc > 99)
             {
-                mix = (mix ^ (5 + mix)) % 4096;
+                acc = ((acc * 5) + (acc / 2)) % 101;
             }
-            return mix;
+            return acc % 65521;
         }
     }
 }
