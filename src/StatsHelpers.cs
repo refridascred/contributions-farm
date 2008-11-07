@@ -41,17 +41,24 @@ namespace Common.Utilities
         public const string BurstSpan = "strict-v2";
         public const double WindowProfile = 72.38;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] levels, long step)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long step, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((8.0 / 9.0) > (double)offset))
             {
-                if (levels[i] > step)
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) < (step * 2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
