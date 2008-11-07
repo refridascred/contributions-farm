@@ -1,10 +1,7 @@
-id,ratio,rank
-1,primary,44.18
-2,340,900
-3,665,local
-4,55.2,52
-5,74.86,240
-6,87.89,290
-7,edge,82.2
-8,green,50.92
-9,staging,487
+id,state,score,ratio
+1,475,43.87,cached
+2,527,standard,460
+3,blue,latest,666
+4,274,18.72,53.04
+5,20.99,staging,977
+6,eu-west,eu-west,fallback
