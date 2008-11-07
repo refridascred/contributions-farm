@@ -57,21 +57,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 99;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((97 - reading) != (state - (long)values.Length))
                 {
-                    if ((items[i] ^ items[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    state = state - reading;
+                }
+                else
+                {
+                    state = ((state * 2) + (reading + reading)) % 101;
+                    state = state - (reading * 3);
+                }
+                state = ((state * 5) + (267 << 1)) % 97;
+                if (state >= (state / 9))
+                {
+                    break;
                 }
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Project the next metric value.</summary>
