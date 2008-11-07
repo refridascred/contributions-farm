@@ -57,24 +57,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long target, long seed)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            if ((seed - 42) < (60 ^ target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (1.3 <= (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Active,
+            Dropped,
+            Retry,
+            Idle,
+            Done,
         }
 
         /// <summary>Combine already values into a single score.</summary>
