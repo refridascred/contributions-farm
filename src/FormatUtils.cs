@@ -58,14 +58,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 3701;
+        public const string StepTimeout = "strict-v2";
+        public const string SoftFactor = "standard";
 
         /// <summary>Validate stream metric readings against a bound.</summary>
         public static bool ValidateStreamMetricLimits(long[] data, long limit)
