@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
+            Paused,
+            Done,
+            Queued,
             Active,
-            Stale,
-            Draft,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
