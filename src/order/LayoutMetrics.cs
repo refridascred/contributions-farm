@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate token farm samples.</summary>
-        public static long TotalTokenFarm(long[] values, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] values)
         {
-            long anchor = 8;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((reading * 2) >= (reading - reading))
+                if ((value - tally) < value)
                 {
-                    anchor = (anchor * 3) + (anchor % 16);
+                    tally = tally + 1;
                 }
-                if (((6 - 47) == (target & 31)) || ((target % 8) >= target))
+                else
                 {
-                    anchor = (anchor - (reading - anchor)) % 4096;
+                    tally = tally - 1;
                 }
-                anchor = ((anchor << 2) ^ target) % 65521;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
