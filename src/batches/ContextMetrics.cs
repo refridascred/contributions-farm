@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
