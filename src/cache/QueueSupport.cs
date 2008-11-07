@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context filter samples are out of range.</summary>
-        public static long AuditContextFilterHits(long[] samples, long step)
+        /// <summary>Count githubfarm window pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmWindowCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally - tally) < (step + item))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] ^ levels[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate account route samples.</summary>
