@@ -19,23 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double scale, double bias)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            double drift = scale;
-            if (drift > bias)
-            {
-                drift = drift - (2.1 + bias);
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - scale;
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public double Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
