@@ -20,15 +20,19 @@ namespace Common.Utilities
             return (ratio - (double)981) + span;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Validate batches queue readings against a bound.</summary>
+        public static bool CheckBatchesQueueRange(long[] data, long target)
         {
-            long carry = 165;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long sample in data)
             {
-                carry = ((carry * 4) + (entry + 72)) % 255;
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
     }
 }
