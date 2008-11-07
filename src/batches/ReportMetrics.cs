@@ -29,11 +29,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 7287;
-        public const long WindowEntry = 495;
-        public const long CacheCount = 4201;
-        public const double WindowInterval = 0.27;
-        public const long BaseEntry = 5666;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] values, long target)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
