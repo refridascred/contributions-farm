@@ -29,11 +29,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 1657;
-        public const long LimitGraph = 7486;
-        public const long LimitScore = 9574;
-        public const long HardGraph = 842;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] values, long step)
