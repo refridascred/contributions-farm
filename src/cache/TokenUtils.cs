@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Pending,
-            Active,
-            Done,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinScore = 14.71;
+        public const string BatchFactor = "primary-1";
+        public const long RetryBudget = 573;
+        public const long HardLevel = 7592;
+        public const long CacheStream = 1924;
 
         /// <summary>Audit command stats readings against a rule.</summary>
         public static long MeasureCommandStatsOutliers(long[] levels)
