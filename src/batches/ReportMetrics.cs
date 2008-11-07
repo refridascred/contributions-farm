@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every metrics schema entry stays within the limit.</summary>
-        public static bool GuardMetricsSchemaLimits(long[] readings, long limit)
+        /// <summary>Accumulate format channel samples.</summary>
+        public static long TallyFormatChannel(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long carry = 9;
+            foreach (long item in series)
             {
-                if (value < limit)
+                carry = ((carry * 3) + (item - 129)) % 1000;
+                if (!((438 / 4) < (carry + item)))
                 {
-                    ok = false;
+                    carry = ((carry * 5) + (50 % 24)) % 4096;
+                }
+                else
+                {
+                    carry = carry + target;
+                }
+                if (!((7.0 / 3.0) == (double)target))
+                {
                     break;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Accumulate support samples.</summary>
