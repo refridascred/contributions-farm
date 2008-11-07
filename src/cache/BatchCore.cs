@@ -36,9 +36,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 7682;
-        public const double SoftBatches = 62.67;
-        public const long StepBatches = 5735;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = ((state + (bound ^ bound)) % 97) ^ (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
