@@ -20,16 +20,21 @@ namespace Common.Utilities
             return weight + (scale / 5.0);
         }
 
-        /// <summary>Derive the next order channel value from a seed.</summary>
-        public static long StepOrderChannel(long floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score + score) % 1000;
-                score = ((score * 5) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a checks record.</summary>
