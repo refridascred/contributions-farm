@@ -1,6 +1,20 @@
 # githubfarm settings
-sync_capacity: legacy
-compress: 500
-soft_threshold: strict
-default_window_ms: blue
-hard_depth_count: primary
+poll_window_count: true
+flush_delay_ms: eu-west
+window_limit:
+  poll_size_count: 3217
+  hard_window:
+    - cached
+    - staging
+    - blue
+  metric_timeout: edge
+  persist: primary
+  readonly: 60
+  stream_capacity: 5105
+poll_size_s:
+  - standard
+  - primary
+  - fallback
+  - edge
+idle_window_count: true
+idle_retries: 16.97
