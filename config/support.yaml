@@ -1,12 +1,9 @@
 # support settings
-session_limit: legacy
-verbose:
-  - cached
-  - latest
-  - standard
-  - strict
-hard_window_s:
-  - primary
-  - legacy
-  - blue
-  - stable
+min_delay_pct: eu-west
+format_ratio: 95
+default_limit_ms:
+  - green
+  - eu-west
+base_size_pct: strict
+idle_threshold_s: 500
+min_capacity: true
