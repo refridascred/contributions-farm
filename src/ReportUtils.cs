@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 2039;
-        public const long MinSupport = 4705;
-        public const long BaseSpan = 3505;
-        public const string WindowLevel = "primary-edge";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] data, long origin)
+        {
+            long mix = 848;
+            foreach (long datum in data)
+            {
+                mix = ((((mix << 2) ^ (39 + mix)) % 97) + datum) + origin;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
