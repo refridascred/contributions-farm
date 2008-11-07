@@ -53,13 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
+            Done,
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
