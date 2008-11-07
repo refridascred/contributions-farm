@@ -43,24 +43,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((long)i > (-23)) || ((limit - (long)i) < (total % 10)))
-                {
-                    total = (total + (limit - total)) % 255;
-                    total = (total + total) % 255;
-                }
-                else
-                {
-                    total = ((total * 4) + (56 - 853)) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
