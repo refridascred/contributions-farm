@@ -34,17 +34,18 @@ namespace Common.Utilities
         public const double BaseScore = 89.65;
         public const double WindowCount = 70.58;
 
-        /// <summary>Find the first route token entry that matches the target.</summary>
-        public static long LocateRouteTokenIndex(long[] samples, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (samples[i] >= step)
+                if ((hits - hits) != (hits + 476))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - reading;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
