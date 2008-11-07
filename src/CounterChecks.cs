@@ -28,16 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cache counter readings.</summary>
-        public static long TallyCacheCounter(long[] items, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] items, long target)
         {
-            long acc = 4;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                acc = ((acc ^ (acc - acc)) % 97) + offset;
-                acc = (acc + (value + acc)) % 4096;
+                if (datum != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc % 97;
+            return ok;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
