@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many support metric samples are out of range.</summary>
-        public static long MeasureSupportMetricGaps(long[] samples, long step)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((6 << 3) < (count >> 5))
-                {
-                    count = ((count + 3) - sample) + step;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
