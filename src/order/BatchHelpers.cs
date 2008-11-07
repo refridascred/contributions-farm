@@ -38,14 +38,19 @@ namespace Common.Utilities
         public const long StepSize = 9978;
         public const double BaseSize = 58.73;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double gain, double floor)
         {
-            Draft,
-            Queued,
-            New,
-            Active,
-            Idle,
+            double load = (double)(1 << 1);
+            if (load > floor)
+            {
+                load = load - 8.05;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (gain - gain)) + (double)(long)i;
+            }
+            return load - (floor / 3.0);
         }
     }
 }
