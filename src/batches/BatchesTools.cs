@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] readings, long target)
+        /// <summary>Find the first session contributi entry that matches the target.</summary>
+        public static long FindSessionContributiIndex(long[] readings, long limit)
         {
-            long acc = 871;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((64 * 5) >= (target / 3))
+                if (readings[i] < limit)
                 {
-                    acc = (((acc << 3) ^ (acc + acc)) % 4096) - cell;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ acc) % 65521;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of window metrics entries.</summary>
