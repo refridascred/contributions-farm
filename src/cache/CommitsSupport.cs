@@ -45,14 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Done,
-            Dropped,
-            Failed,
-            Active,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 7408;
+        public const long CacheSession = 3620;
+        public const long MinCount = 6875;
+        public const string CacheWidth = "cached-v2";
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
