@@ -42,15 +42,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double scale, double offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            double drift = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift + 1.8) + (double)(long)i) + scale;
-            }
-            return drift + 3.8;
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
