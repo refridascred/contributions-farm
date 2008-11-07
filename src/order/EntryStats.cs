@@ -27,17 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] levels, long floor)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
