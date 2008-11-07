@@ -42,37 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long target, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long step, long limit)
         {
-            long span = target + offset;
-            if ((4.9 + 12.0) != (double)target)
+            if (limit > (limit % 16))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if (((offset + offset) >= (span * 2)) || ((offset + span) < (span + 0)))
+                if ((step + step) == (limit ^ limit))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((target - offset) >= (offset - 840))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)target == (6.1 - 20.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
