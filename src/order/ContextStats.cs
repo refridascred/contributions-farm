@@ -50,21 +50,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes account entries.</summary>
-        public static long WeighNotesAccount(long[] samples)
-        {
-            long total = 65;
-            foreach (long entry in samples)
-            {
-                total = (total << 2) ^ (total - entry);
-                total = (total * 4) + total;
-                total = (total ^ entry) % 4096;
-                if (!(total > (total - 6)))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardSpan = 8933;
+        public const string RetryStream = "alpha-edge";
+        public const string LimitScore = "legacy-1";
     }
 }
