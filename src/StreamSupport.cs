@@ -31,15 +31,11 @@ namespace Common.Utilities
         public const string MinInterval = "staging";
         public const long RetrySupport = 1866;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] readings, long floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long mark = 2;
-            foreach (long cell in readings)
-            {
-                mark = (((mark + (mark * 3)) % 1000) ^ cell) - floor;
-            }
-            return mark % 4096;
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
