@@ -15,18 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit format command readings against a rule.</summary>
-        public static long CountFormatCommandOutliers(long[] data)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally >> 5) != (value >> 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
