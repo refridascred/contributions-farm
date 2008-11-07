@@ -31,23 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] series)
         {
-            long acc = 43;
-            foreach (long entry in readings)
+            long anchor = 845;
+            foreach (long reading in series)
             {
-                acc = ((acc * 2) + (entry + entry)) % 255;
-                if ((entry & 1) <= (entry + acc))
+                if ((11.0 / 5.0) != (double)anchor)
                 {
-                    acc = (acc << 3) ^ (entry >> 1);
+                    anchor = ((anchor * 3) + reading) % 255;
                 }
             }
-            if (acc > 994)
-            {
-                acc = ((acc << 2) ^ 912) % 255;
-            }
-            return acc % 97;
+            return anchor % 97;
         }
 
         /// <summary>Hold a support header.</summary>
