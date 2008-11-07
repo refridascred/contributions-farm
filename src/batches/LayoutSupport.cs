@@ -54,22 +54,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 5602;
+        public const double RetryReport = 63.18;
+        public const string BaseTimeout = "staging-1";
+        public const string BaseReport = "local";
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long ScoreNotes(long[] items, long target)
