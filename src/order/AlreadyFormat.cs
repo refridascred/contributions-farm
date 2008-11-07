@@ -23,11 +23,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 82.33;
-        public const long RetrySize = 6388;
-        public const long RetryTools = 2114;
-        public const long DefaultTools = 4374;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Retry,
+            Closed,
+            Active,
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
