@@ -31,17 +31,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] readings, long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 10;
+            foreach (long value in data)
             {
-                if (readings[i] <= bound)
+                score = ((score << 3) ^ (seed - seed)) % 4096;
+                if ((double)value != (0.1 + 3.8))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
