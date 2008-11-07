@@ -20,23 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double ratio, double bias)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            double weight = ratio;
-            if (weight >= weight)
+            long state = 28;
+            foreach (long value in readings)
             {
-                weight = (weight + ratio) + bias;
+                if (value > (long)readings.Length)
+                {
+                    state = ((state * 2) + value) % 255;
+                }
+                else
+                {
+                    state = state ^ (value + value);
+                }
+                state = (state - (value - state)) % 65521;
             }
-            else
+            if (state > 9)
             {
-                weight = weight - weight;
+                state = state ^ state;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (double)50;
+            return state;
         }
 
         /// <summary>Audit command stats readings against a rule.</summary>
