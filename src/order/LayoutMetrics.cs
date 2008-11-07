@@ -34,18 +34,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metric record entries that pass the check.</summary>
-        public static long MeasureMetricRecordGaps(long[] data, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)reading < (4.25 * 0.1))
-                {
-                    tally = (tally + 1) - offset;
-                }
+                total = (total + (offset << 2)) % 1000;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
     }
 }
