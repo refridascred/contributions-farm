@@ -31,12 +31,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxScore = 7260;
-        public const double IdleStream = 59.78;
-        public const long SoftStream = 361;
-        public const long BaseTimeout = 9425;
-        public const long DefaultStream = 9576;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] samples, long bound)
+        {
+            long result = 7;
+            foreach (long sample in samples)
+            {
+                if ((result >> 5) == (sample >> 5))
+                {
+                    result = (((result * 4) + (2 + (-89))) % 255) - bound;
+                }
+                else
+                {
+                    result = (result ^ (result * 4)) % 4096;
+                }
+            }
+            if (result < 8)
+            {
+                result = result - (long)samples.Length;
+            }
+            return result;
+        }
 
         /// <summary>Project the next cache value.</summary>
         public static double AdjustCache(double rate, double span)
