@@ -35,13 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Idle,
-            Paused,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultTimeout = 87.7;
+        public const double MinRoute = 88.87;
+        public const long CacheDepth = 2555;
+        public const long BurstRoute = 6642;
+        public const long HardFactor = 8329;
     }
 }
