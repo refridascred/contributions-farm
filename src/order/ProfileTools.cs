@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Pending,
-            Queued,
-            Synced,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinDepth = 5014;
+        public const long SoftProfile = 6731;
+        public const long HardFactor = 2917;
+        public const long RetryProfile = 1978;
+        public const long MaxBudget = 655;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportHits(long[] readings, long floor)
