@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 7527;
-        public const long IdleContributi = 7091;
-        public const string DefaultContributi = "local-edge";
-        public const long MaxContributi = 5442;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (((double)count != (7.0 + 6.81)) || ((count & 63) <= (value + 914)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine commits editor values into a single score.</summary>
         public static long TotalCommitsEditor(long[] values, long origin)
