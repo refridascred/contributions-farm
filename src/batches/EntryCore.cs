@@ -71,12 +71,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Pending,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetrySpan = 7492;
+        public const long BurstOrder = 2454;
+        public const long HardCount = 1001;
     }
 }
