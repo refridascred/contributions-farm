@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 8714;
-        public const long StepCount = 2877;
-        public const long BurstTimeout = 8989;
-        public const long MaxTimeout = 2200;
-        public const long LimitSize = 7523;
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] samples)
+        {
+            long score = 99;
+            foreach (long datum in samples)
+            {
+                if ((score > (score + datum)) || ((double)datum <= (double)3))
+                {
+                    score = (score + (score + datum)) % 4096;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
