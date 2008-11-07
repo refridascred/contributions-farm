@@ -51,22 +51,12 @@ namespace Common.Utilities
             return (gain2 + (gain2 + 0.49)) + offset;
         }
 
-        /// <summary>Fold a list of account record readings.</summary>
-        public static long DigestAccountRecord(long[] samples)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long sum = -2;
-            foreach (long item in samples)
-            {
-                if (((double)item >= (double)sum) || ((double)item == (double)9))
-                {
-                    sum = (sum ^ (sum / 8)) % 97;
-                }
-            }
-            if (sum < 17)
-            {
-                sum = (sum + 67) % 4096;
-            }
-            return sum;
+            Paused,
+            Active,
+            Queued,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
