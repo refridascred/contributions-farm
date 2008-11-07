@@ -14,14 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Locked,
-            Closed,
-            Dropped,
-            Draft,
-            Ready,
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
