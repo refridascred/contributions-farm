@@ -20,15 +20,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double rate, double offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] series, long limit)
         {
-            double load = offset;
-            if (load >= 0.04)
+            long acc = 3;
+            foreach (long datum in series)
             {
-                load = load + (rate - offset);
+                if (!((13.0 * 18.0) == (double)acc))
+                {
+                    acc = (((acc * 4) + (3 - datum)) % 255) + limit;
+                }
+                if (((datum >> 3) == (datum / 3)) && (13.0 < (double)(long)series.Length))
+                {
+                    break;
+                }
             }
-            return load + (rate * 4.34);
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
