@@ -16,26 +16,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] samples, long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long score = 404;
-            foreach (long value in samples)
-            {
-                if ((score - score) >= (value / 2))
-                {
-                    score = ((score + (value * 4)) % 255) - offset;
-                }
-                else
-                {
-                    score = ((score * 4) + (value + 328)) % 101;
-                }
-                if (((16.0 / 5.0) > (double)score) && ((value >> 1) >= value))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            Ready,
+            Failed,
+            Pending,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
