@@ -25,18 +25,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] readings, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((hits << 1) > hits)
+                if (!((count << 3) < (entry << 3)))
                 {
-                    hits = ((hits + 3) ^ sample) + seed;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up farm token samples.</summary>
