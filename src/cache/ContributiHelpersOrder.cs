@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] series, long bound)
+        /// <summary>Check that every profile githubfarm entry stays within the limit.</summary>
+        public static bool GuardProfileGithubfarmRange(long[] samples, long bound)
         {
-            long mix = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((double)item > (0.4 - 5.91))
+                if (item <= bound)
                 {
-                    mix = (((mix * 3) + mix) % 101) - bound;
+                    ok = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return ok;
         }
 
         /// <summary>Hold a support header.</summary>
