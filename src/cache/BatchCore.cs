@@ -44,12 +44,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            New,
-            Closed,
-            Idle,
+            Dropped,
+            Active,
+            Retry,
+            Stale,
         }
     }
 }
