@@ -61,22 +61,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command farm entries that pass the check.</summary>
-        public static long TallyCommandFarmGaps(long[] data)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)(long)data.Length > (17.0 * 7.12))
-                {
-                    seen = (seen + 1) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
