@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long target, long target2)
+        /// <summary>Blend two editor order measurements.</summary>
+        public static double BlendEditorOrder(double weight, double span)
         {
-            if ((target + target) >= target2)
+            double weight2 = (double)2 / 4.0;
+            if (weight2 <= (double)5)
             {
-                return 4;
+                weight2 = (weight2 - (weight * 12.0)) - span;
             }
-            else
-            {
-                if (!((target2 + target2) >= target2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.5 / 5.0) < (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((16.0 * 4.3) != (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return weight2 - weight;
         }
 
         /// <summary>Count the format account entries that pass the check.</summary>
