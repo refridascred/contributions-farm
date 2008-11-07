@@ -35,23 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((double)result >= (0.15 * 12.0))
+                if ((13.0 / 3.0) <= (double)item)
                 {
-                    result = result + (origin - origin);
+                    hits = hits + 3;
                 }
                 else
                 {
-                    result = (result * 4) + (554 >> 5);
+                    hits = hits - 1;
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
     }
 }
