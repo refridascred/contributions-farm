@@ -34,12 +34,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 6326;
-        public const long StepBuffer = 8402;
-        public const string MinBuffer = "staging";
-        public const string BaseSpan = "open";
-        public const long RetryBuffer = 2167;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] samples, long seed)
