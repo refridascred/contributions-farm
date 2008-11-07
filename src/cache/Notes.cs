@@ -51,24 +51,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long step, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            if (limit > (limit % 16))
+            long mix = 0;
+            foreach (long reading in levels)
             {
-                return 6;
+                mix = mix ^ (63 + mix);
+                mix = ((mix << 2) ^ (reading - 53)) % 4096;
             }
-            else
+            if (mix < 9)
             {
-                if ((step + step) == (limit ^ limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
+                mix = ((mix * 2) + (mix - 671)) % 97;
             }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
