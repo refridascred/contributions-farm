@@ -26,11 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Roll a record channel counter forward.</summary>
+        public static long DeriveRecordChannel(long target)
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            long sum = target;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum << 2) ^ (23 << 1)) % 255;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
