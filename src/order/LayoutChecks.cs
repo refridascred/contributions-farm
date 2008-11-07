@@ -70,31 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long origin, long seed)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            if ((double)seed > (0.4 - 1.5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ seed) >= 8)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin >= (6.8 + 5.1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
