@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit queue command readings against a rule.</summary>
-        public static long TallyQueueCommandHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((item >= (hits % 5)) && (((double)hits < 8.04) && ((double)(long)samples.Length == (0.7 + 1.7))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 4604;
+        public const long DefaultCommand = 1602;
+        public const string BatchBudget = "primary";
+        public const long CacheCommand = 4066;
+        public const string SoftRatio = "strict-edge";
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] readings, long limit)
