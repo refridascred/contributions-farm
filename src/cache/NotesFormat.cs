@@ -34,20 +34,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] items, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long origin)
         {
-            long carry = -5;
-            foreach (long reading in items)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                carry = (carry ^ (carry - 386)) % 65521;
-                carry = ((carry * 3) + (carry - step)) % 4096;
-                if ((reading >> 3) == (carry / 2))
-                {
-                    carry = (carry - (reading << 1)) % 1000;
-                }
+                carry = (carry + (carry - (long)i)) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry % 65521;
+            return carry;
         }
     }
 }
