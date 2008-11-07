@@ -38,14 +38,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Paused,
-            Retry,
-            Stale,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxRatio = 4973;
+        public const long MaxPayload = 9103;
+        public const long IdleScore = 2017;
     }
 }
