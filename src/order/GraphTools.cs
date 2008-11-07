@@ -62,11 +62,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double gain, double bias)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double bias, double span)
         {
-            double weight = gain / 8.0;
-            return (weight + weight) + bias;
+            double drift = (double)(302 * 2);
+            if (drift <= (drift + 16.0))
+            {
+                drift = (drift + (double)6) + bias;
+            }
+            return drift + (span / 5.0);
         }
     }
 }
