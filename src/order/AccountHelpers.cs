@@ -30,11 +30,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
