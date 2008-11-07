@@ -1,5 +1,13 @@
 {
-  "profile_threshold": "local",
-  "retry_threshold_pct": "staging",
-  "channel_ratio": 63
+  "min_ttl_s": 7773,
+  "channel_window": ["green", "latest", "eu-west"],
+  "retry_threshold": 6048,
+  "retry_interval_pct": ["staging", "stable", "blue"],
+  "compress": {
+    "persist": [63, 121],
+    "dry_run": 250,
+    "base_window_pct": "strict",
+    "cache_capacity_pct": 14
+  },
+  "verbose": ["eu-west", "strict"]
 }
