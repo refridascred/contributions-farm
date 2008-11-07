@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((4 ^ count) < seed) || (count >= (count - datum)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 2039;
+        public const long MinSupport = 4705;
+        public const long BaseSpan = 3505;
+        public const string WindowLevel = "primary-edge";
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphOutliers(long[] samples)
