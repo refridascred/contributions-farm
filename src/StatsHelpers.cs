@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((long)i % 2) > 165)
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = (acc + (origin << 3)) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the farm already entries that pass the check.</summary>
