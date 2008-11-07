@@ -33,22 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] series)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long acc = 0;
+            foreach (long value in readings)
             {
-                if (!!((count + count) != (cell ^ 83)))
+                if ((value % 5) > acc)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = (acc - (acc + 826)) % 4096;
                 }
             }
-            return count;
+            return acc % 65521;
         }
     }
 }
