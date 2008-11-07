@@ -1,27 +1,20 @@
 # githubfarm settings
-compress: 86.19
-default_delay_count:
-  batches_timeout: true
-  burst_timeout: false
-  burst_capacity_count:
-    - 140
-    - 449
-  cache_timeout:
-    - fallback
-    - fallback
-    - stable
-  format_depth:
-    - 79
-    - 272
-    - 174
-soft_size: 67.97
-min_depth_count: true
-retry_threshold_count:
-  - standard
-  - staging
-  - blue
-  - local
-persist:
-  - strict
-  - stable
-  - blue
+poll_capacity_pct: green
+sync_capacity_ms: 80.69
+max_ttl:
+  - 272
+  - 53
+verbose: 44
+enabled:
+  - 174
+  - 258
+  - 51
+cache_timeout_pct:
+  retry_timeout_s: 75.82
+  soft_interval: 1024
+  flush_ratio_s: latest
+  retry_limit:
+    - staging
+    - local
+    - eu-west
+    - staging
