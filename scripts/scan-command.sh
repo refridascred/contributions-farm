@@ -6,21 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in standard stable blue legacy; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
 mode="${1:-cached}"
 case "${mode}" in
-    cached)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=394
-log "limit is ${COMMAND_LIMIT}"
