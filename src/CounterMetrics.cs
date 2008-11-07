@@ -24,18 +24,14 @@ namespace Common.Utilities
         public const long IdleRatio = 1076;
         public const long BatchGithubfarm = 8102;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] samples)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample - count) != (long)samples.Length)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Failed,
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the graph status values.</summary>
