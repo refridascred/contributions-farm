@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                result = (result - (result & 255)) % 4096;
-                if (((long)i / 8) == (limit - limit))
+                if ((((783 + datum) < matches) && ((matches % 97) > datum)) || ((datum * 3) > (matches ^ matches)))
                 {
-                    result = (result * 5) + (41 + limit);
+                    matches = matches + 2;
                 }
-                result = (result - (long)i) % 97;
-                result = ((result * 5) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate support samples.</summary>
