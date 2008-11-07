@@ -82,39 +82,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long floor, long limit)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double gain, double offset)
         {
-            long span = floor + limit;
-            if ((28 % 10) != (floor - 8))
+            double gain2 = 9.78;
+            if (gain2 > (double)12)
             {
-                return 4;
+                gain2 = (gain2 - (gain * 8.0)) - offset;
             }
-            else
-            {
-                if ((span + limit) == (floor / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor > 40)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + span) < (floor ^ limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return gain2 - (gain2 + gain2);
         }
     }
 }
