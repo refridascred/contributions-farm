@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] samples, long target)
         {
-            Done,
-            Paused,
-            Synced,
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine batches filter values into a single score.</summary>
