@@ -1,14 +1,14 @@
 # Command notes
 
-Use token settings to tune how often command data is refreshed.
-A command that stays idle for too long is moved to the entry list.
+Defaults for queue live in the config folder and can be overridden per environment.
+Use checks settings to tune how often stream data is refreshed.
+A graph that stays idle for too long is moved to the cache list.
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-A route that stays idle for too long is moved to the layout list.
-Run the farm check before changing any tools limits.
+Use payload settings to tune how often editor data is refreshed.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every notes change
-- Prefer profile defaults
-- Keep profile values small
+- Prefer cache defaults
+- Document new notes fields
+- Validate channel input early
