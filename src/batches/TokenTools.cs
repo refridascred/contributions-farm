@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] data, long floor)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long carry = -3;
-            foreach (long datum in data)
-            {
-                if (802 > datum)
-                {
-                    carry = (carry ^ (carry + floor)) % 1000;
-                }
-            }
-            return carry;
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a schema payload pair into a bucket.</summary>
