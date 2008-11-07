@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double bias, double span)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double bias2 = span;
-            if (bias2 > (bias - span))
-            {
-                bias2 = bias2 + (bias - bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (double)(-1)) + (double)(long)i;
-            }
-            return bias2 - (3.53 + bias2);
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a token info.</summary>
