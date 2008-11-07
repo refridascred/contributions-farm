@@ -28,11 +28,15 @@ namespace Common.Utilities
         public const string BatchToken = "strict-v2";
         public const double HardToken = 50.72;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Derive the next channel schema value from a seed.</summary>
+        public static long DeriveChannelSchema(long bound)
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
+            long state = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
