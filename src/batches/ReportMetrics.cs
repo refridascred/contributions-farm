@@ -20,12 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] levels, long offset)
         {
-            public double Stamp { get; set; }
-            public double Total { get; set; }
-            public double Owner { get; set; }
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
