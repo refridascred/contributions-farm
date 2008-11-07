@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] values, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((reading ^ reading) == (9 * 2))
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseDepth = 89.56;
+        public const double CacheCounter = 71.65;
+        public const string WindowCounter = "latest";
+        public const long StepCounter = 777;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long ClassifyStats(long limit, long target)
