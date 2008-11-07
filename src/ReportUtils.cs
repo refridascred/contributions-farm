@@ -57,18 +57,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long mix = 81;
-            foreach (long cell in readings)
-            {
-                if ((double)cell < (double)mix)
-                {
-                    mix = mix - cell;
-                }
-            }
-            return mix;
+            Dropped,
+            Paused,
+            Stale,
         }
     }
 }
