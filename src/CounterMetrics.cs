@@ -57,13 +57,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Count the entry order entries that pass the check.</summary>
+        public static long MeasureEntryOrderHits(long[] items, long step)
         {
-            Idle,
-            Stale,
-            Draft,
-            Queued,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((double)8 > (double)value) && (value >= (step + value)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
