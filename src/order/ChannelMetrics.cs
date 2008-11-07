@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] series, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long mark = 7;
+            foreach (long reading in values)
             {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (((mark << 2) ^ (mark + (-506))) % 255) - reading;
             }
-            return stale;
+            if (mark < 942)
+            {
+                mark = mark ^ origin;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
