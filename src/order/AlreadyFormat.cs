@@ -12,11 +12,38 @@ namespace Common.Utilities
         public const long HardCache = 4010;
         public const string BatchLevel = "cached-v2";
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double rate, double span)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long limit, long step)
         {
-            double weight = rate - span;
-            return weight + rate;
+            if ((limit + step) < 49)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((1.0 * 9.8) < (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((limit - limit) >= (step % 24)) && (step > 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)limit == (17.0 * 0.4)) && ((step << 3) >= step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a account reading.</summary>
