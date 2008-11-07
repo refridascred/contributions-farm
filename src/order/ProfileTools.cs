@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long offset, long step)
         {
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public double Total { get; set; }
+            if ((offset << 1) < (step / 9))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset % 12) < offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a profile snapshot.</summary>
