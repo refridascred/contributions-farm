@@ -21,20 +21,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate filter stream readings against a bound.</summary>
-        public static bool VerifyFilterStreamRange(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 829;
+        public const string SoftSchema = "stable-edge";
+        public const double LimitSchema = 97.57;
+        public const long StepInterval = 1296;
+        public const long DefaultLevel = 3156;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
