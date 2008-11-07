@@ -41,20 +41,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double weight, double bias)
-        {
-            double bias2 = (double)8 - (double)6;
-            if (bias2 <= (bias2 / 4.0))
-            {
-                bias2 = (bias2 - bias) - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - (double)9;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 5698;
+        public const double StepCount = 8.78;
+        public const double BurstChannel = 62.91;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long StepContributi(long limit)
