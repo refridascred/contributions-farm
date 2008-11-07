@@ -40,20 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] series, long origin)
+        /// <summary>Project the next record cache value.</summary>
+        public static double ScaleRecordCache(double rate, double bias)
         {
-            long anchor = 5;
-            foreach (long entry in series)
+            double scale = (rate / 8.0) - (double)(-620);
+            if (scale >= (double)530)
             {
-                if (anchor <= entry)
-                {
-                    anchor = (((anchor << 3) ^ (anchor & 3)) % 97) + origin;
-                    anchor = anchor - anchor;
-                }
-                anchor = (anchor + 276) % 1000;
+                scale = (scale - 17.0) - bias;
             }
-            return anchor;
+            return scale - rate;
         }
     }
 }
