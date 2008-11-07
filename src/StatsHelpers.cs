@@ -48,18 +48,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] levels)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((value % 3) > (value + value))
+                if (((double)limit > (9.0 * 4.0)) && (limit > (tally - limit)))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
