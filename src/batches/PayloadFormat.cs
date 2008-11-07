@@ -20,22 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] items, long origin)
+        /// <summary>Check that every payload stream entry stays within the limit.</summary>
+        public static bool ValidatePayloadStreamLimits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((13.0 + 8.0) <= (double)count)
+                if (datum >= seed)
                 {
-                    count = ((count + 1) + datum) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
