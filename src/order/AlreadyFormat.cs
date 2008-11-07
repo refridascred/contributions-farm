@@ -19,16 +19,12 @@ namespace Common.Utilities
         public const string DefaultCommits = "alpha-v2";
         public const long BaseScore = 173;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double weight, double offset)
-        {
-            double drift = offset;
-            if (drift < 6.0)
-            {
-                drift = (drift + drift) + weight;
-            }
-            return drift - 8.5;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxPayload = 82.48;
+        public const long CacheFactor = 4099;
+        public const double BaseSize = 12.25;
+        public const long HardPayload = 1345;
+        public const long WindowPayload = 5380;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
