@@ -50,13 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] readings, long target)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public double Region { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
