@@ -46,10 +46,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardMetrics = 72.36;
-        public const string BurstMetrics = "primary";
-        public const long CacheMetrics = 4083;
+        /// <summary>Look up the position of a cache already sample.</summary>
+        public static long FindCacheAlreadyIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteHits(long[] samples, long origin)
