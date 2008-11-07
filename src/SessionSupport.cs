@@ -16,11 +16,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 0.46;
-        public const long SoftWindow = 3027;
-        public const long IdleWindow = 5408;
-        public const double CacheTimeout = 13.83;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
