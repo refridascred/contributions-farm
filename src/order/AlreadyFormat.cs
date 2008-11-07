@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Derive the next graph payload value from a seed.</summary>
+        public static long RollGraphPayload(long origin)
         {
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long state = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
