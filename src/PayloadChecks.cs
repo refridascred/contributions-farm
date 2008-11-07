@@ -77,38 +77,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long bound, long bound2)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            if ((bound2 - bound2) < bound2)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((81 ^ bound2) >= (bound + bound2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((2.93 - 4.1) <= (double)bound) || ((bound2 & 255) <= ((-868) + 250)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (82 >= (bound * 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Dropped,
         }
     }
 }
