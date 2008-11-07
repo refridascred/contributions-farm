@@ -37,22 +37,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((sample + sample) >= (sample / 9))
+                if (!((double)datum == (double)(long)levels.Length))
                 {
-                    tally = tally + 1;
+                    count = count + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
