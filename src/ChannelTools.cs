@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            long carry = 718;
+            foreach (long reading in values)
             {
-                score = score + score;
-                score = ((score * 5) + (long)i) % 65521;
+                if (!((reading - reading) <= (159 - (-6))))
+                {
+                    carry = (carry + carry) % 1000;
+                }
             }
-            return score;
+            if (carry < 87)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Hold a editor options.</summary>
