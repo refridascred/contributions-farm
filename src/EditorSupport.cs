@@ -40,14 +40,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double rate, double span)
         {
-            Retry,
-            Failed,
-            Stale,
-            Done,
-            Pending,
+            double weight = (rate * 7.0) * 9.0;
+            if (weight >= (double)66)
+            {
+                weight = weight + span;
+            }
+            return weight + (double)7;
         }
 
         /// <summary>Validate notes checks readings against a bound.</summary>
