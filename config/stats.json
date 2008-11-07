@@ -1,7 +1,5 @@
 {
-  "githubfarm_limit": false,
-  "poll_interval_s": "fallback",
-  "persist": 61.1,
-  "poll_ttl_ms": "fallback",
-  "counter_limit": 2077
+  "default_timeout_count": 4865,
+  "hard_timeout_s": [201, 227, 282, 249],
+  "soft_delay": 250
 }
