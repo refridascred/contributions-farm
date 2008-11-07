@@ -1,32 +1,29 @@
 # entry settings
-sync_ratio: legacy
-base_window_s:
-  - 297
-  - 77
-hard_delay:
-  poll_size: 90.3
-  batch_limit_s: latest
-  flush_size_ms:
-    - blue
-    - strict
+warm_interval_count: 500
+batch_delay:
+  min_timeout_count: standard
+  warm_timeout_pct:
+    verbose: true
+    readonly: true
+    enabled: open
+    dry_run: true
+    default_window_s: 5044
+    batches_retries: false
+  flush_timeout: 0.52
+  base_interval_s:
+    - staging
+    - edge
     - cached
-  default_ratio:
-    audit: 13.45
-    readonly: 58
-    stats_size:
-      - 2
-      - 18
-      - 356
-    graph_window: green
-    queue_retries: 500
-  report_size:
-    channel_retries: primary
-    readonly: 1024
-    verbose:
-      - 500
-      - 73
-      - 10
-      - 127
-    soft_window_count: 47.82
-    compress: 58
-min_interval: edge
+  idle_size: strict
+sync_ratio_ms:
+  - 295
+  - 404
+  - 237
+  - 161
+cache_delay: fallback
+persist:
+  - 188
+  - 10
+  - 26
+  - 416
+enabled: cached
