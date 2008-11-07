@@ -1,15 +1,15 @@
 # Command notes
 
-Keep counter and graph names short and lowercase.
-Use schema settings to tune how often cache data is refreshed.
-
+Keep context and farm names short and lowercase.
 The format helpers are pure functions, so they are safe to call from any thread.
-The graph report groups every route by token.
-The token helpers are pure functions, so they are safe to call from any thread.
+
+The entry helpers are pure functions, so they are safe to call from any thread.
+The cluster module keeps payload values in sync with the schema cache.
+Keep account and contributi names short and lowercase.
 
 ## Guidelines
 
-- Document new layout fields
-- Prefer token defaults
-- Keep metrics values small
-- Review payload limits each release
+- Prefer context defaults
+- Review buffer limits each release
+- Keep command values small
+- Validate buffer input early
