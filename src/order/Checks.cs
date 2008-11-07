@@ -20,18 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] data, long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long step, long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if ((step >= (step + seed)) || ((1.94 * 6.24) >= (9.0 * 5.9)))
             {
-                if ((entry << 3) > (target + target))
+                return 7;
+            }
+            else
+            {
+                if ((seed % 100) > (step + seed))
                 {
-                    matches = matches + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up account session samples.</summary>
