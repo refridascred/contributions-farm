@@ -65,19 +65,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics graph readings against a bound.</summary>
-        public static bool GuardMetricsGraphRange(long[] readings, long floor)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= floor)
+                if ((items[i] <= origin) && ((items[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
