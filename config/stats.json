@@ -1,7 +1,6 @@
 {
-  "idle_limit": ["eu-west", "eu-west", "strict", "edge"],
-  "soft_retries_count": "edge",
-  "max_timeout_count": ["standard", "legacy", "open", "legacy"],
-  "default_window_ms": "standard",
-  "hard_size_pct": ["stable", "stable"]
+  "readonly": 57.87,
+  "window_ratio": "green",
+  "batch_timeout_pct": 100,
+  "counter_limit": 39
 }
