@@ -35,15 +35,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] series)
         {
-            long result = 927;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                result = ((result - (result << 3)) % 4096) ^ datum;
+                if ((reading - count) < (count % 10))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result % 1000;
+            return count;
         }
     }
 }
