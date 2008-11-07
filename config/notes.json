@@ -1,5 +1,17 @@
 {
-  "burst_interval": "latest",
-  "compress": 72,
-  "cluster_interval": "primary"
+  "order_limit": true,
+  "max_window_count": "primary",
+  "cluster_depth": {
+    "batch_limit": 83.17,
+    "max_ttl": {
+      "hard_size": "open",
+      "cache_interval_count": 36.28,
+      "cache_delay_ms": "blue",
+      "report_ratio": "open",
+      "flush_ttl_s": 4036,
+      "route_window": true
+    },
+    "base_ttl": 31.23,
+    "soft_threshold_ms": 30
+  }
 }
