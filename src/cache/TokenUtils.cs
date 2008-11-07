@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 8;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total - (reading / 3)) % 65521) - offset;
             }
-            return matches;
+            if (total < 50)
+            {
+                total = ((total << 3) ^ (total + 398)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Audit command stats readings against a rule.</summary>
