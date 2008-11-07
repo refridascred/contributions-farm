@@ -30,27 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] data, long offset)
         {
-            long carry = 93;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((carry > (carry % 60)) && ((reading + carry) > (carry + reading)))
+                if (reading > offset)
                 {
-                    carry = (carry ^ (reading ^ carry)) % 101;
-                    carry = (carry - carry) % 97;
-                }
-                if (reading > (carry + (long)items.Length))
-                {
-                    carry = (carry ^ (reading + 538)) % 65521;
-                }
-                if (carry >= (carry << 1))
-                {
-                    carry = (carry - (carry >> 5)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
