@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleRatio = "cached-v2";
-        public const double BaseCommand = 89.39;
-        public const double BatchWidth = 26.82;
-        public const long LimitSpan = 7843;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] levels)
