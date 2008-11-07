@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long IdleGraph = 943;
         public const long BurstGraph = 8001;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] series, long step)
-        {
-            long total = 534;
-            foreach (long entry in series)
-            {
-                total = ((((total * 2) + ((long)series.Length + total)) % 4096) ^ entry) + step;
-            }
-            if (total < (-32))
-            {
-                total = (total * 5) + total;
-            }
-            return total % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 9709;
+        public const double CacheTimeout = 6.8;
+        public const string StepStats = "legacy-v2";
+        public const long WindowStats = 3098;
+        public const long MinInterval = 4562;
 
         /// <summary>Blend two command measurements.</summary>
         public static double BlendCommand(double gain, double span)
