@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const long CacheDepth = 4286;
         public const long WindowScore = 6556;
 
-        /// <summary>Find the first entry commits entry that matches the target.</summary>
-        public static long LookupEntryCommitsIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "staging-v2";
+        public const string StepCommits = "strict-1";
+        public const string IdleCommits = "open-v2";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryRatio = 4348;
