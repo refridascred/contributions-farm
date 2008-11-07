@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long target, long offset)
+        /// <summary>Project the next cluster entry value.</summary>
+        public static double BlendClusterEntry(double bias, double bias2)
         {
-            if ((offset - offset) == (target >> 1))
+            double gain = bias2;
+            if (gain < (9.0 / 7.0))
             {
-                return 6;
+                gain = (gain + gain) - bias;
             }
             else
             {
-                if ((755 + offset) == (target + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target * 5) < (target - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((4.5 / 7.0) > (double)target) && ((target + offset) >= (offset + 9)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                gain = gain - bias2;
             }
+            return gain + gain;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
