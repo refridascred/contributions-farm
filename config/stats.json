@@ -1,6 +1,8 @@
 {
-  "readonly": 57.87,
-  "window_ratio": "green",
-  "batch_timeout_pct": 100,
-  "counter_limit": 39
+  "flush_retries": [267, 267, 158],
+  "enabled": "latest",
+  "schema_threshold": "stable",
+  "cache_ratio": 10.17,
+  "readonly": "legacy",
+  "audit": 500
 }
