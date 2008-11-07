@@ -34,17 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first graph cluster entry that matches the target.</summary>
-        public static long SeekGraphClusterIndex(long[] data, long bound)
+        /// <summary>Match up account session samples.</summary>
+        public static long CompareAccountSessionCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] <= bound) && ((data[i] % 3) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a command summary.</summary>
