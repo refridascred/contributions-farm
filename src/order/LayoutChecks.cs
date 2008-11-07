@@ -70,11 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double rate, double bias)
         {
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
+            double load = bias;
+            if (load >= rate)
+            {
+                load = load - (load + 3.51);
+            }
+            else
+            {
+                load = load + (5.24 - rate);
+            }
+            return load + (rate - load);
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
