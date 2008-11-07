@@ -76,13 +76,17 @@ namespace Common.Utilities
         public const double MinFormat = 32.01;
         public const long BaseRatio = 1818;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] samples, long step)
         {
-            Pending,
-            Paused,
-            Queued,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
