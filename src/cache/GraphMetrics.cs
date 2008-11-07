@@ -46,20 +46,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardMetrics = 72.36;
+        public const string BurstMetrics = "primary";
+        public const long CacheMetrics = 4083;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long MeasureMetricsHits(long[] samples)
