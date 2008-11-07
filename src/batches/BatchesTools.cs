@@ -25,18 +25,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] series)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((count << 3) < (entry << 3)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
