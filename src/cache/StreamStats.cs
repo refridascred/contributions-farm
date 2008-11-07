@@ -26,21 +26,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Adjust a contributi stream reading.</summary>
+        public static double BlendContributiStream(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = rate + (18.0 / 6.0);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = ((load + rate) - (double)(long)i) - offset;
             }
-            return tally;
+            return load - (load / 4.0);
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
