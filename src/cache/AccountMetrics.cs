@@ -30,14 +30,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
             Done,
-            Stale,
-            Retry,
+            Closed,
             Pending,
-            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a stream options.</summary>
