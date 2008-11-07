@@ -13,11 +13,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double gain, double bias)
+        /// <summary>Look up the position of a command editor sample.</summary>
+        public static long LocateCommandEditorIndex(long[] levels, long limit)
         {
-            double drift = bias;
-            return (drift - bias) + gain;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine commits editor values into a single score.</summary>
