@@ -17,19 +17,21 @@ namespace Common.Utilities
         public const string LimitInterval = "strict";
         public const long DefaultBuffer = 7013;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            long sum = 662;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum - (datum + datum)) - (long)i;
+                    if ((values[i] - values[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = (sum ^ (sum * 4)) % 1000;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
