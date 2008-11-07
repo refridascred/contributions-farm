@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleEditor = "strict-edge";
-        public const long RetryEditor = 7040;
-        public const long BaseEditor = 5414;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long target, long seed)
+        {
+            long offset = target - seed;
+            if ((double)target <= (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)84 > (double)target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset ^ offset) <= (235 - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5.9 * 6.3) < (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count channel already pairs that satisfy a relation.</summary>
         public static long OverlapChannelAlreadyCount(long[] readings)
