@@ -60,11 +60,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 4147;
-        public const string SoftCommits = "open-edge";
-        public const long DefaultCommits = 599;
-        public const long MinCommits = 2874;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            New,
+            Queued,
+            Retry,
+            Synced,
+        }
 
         /// <summary>Classify a commits metric pair into a bucket.</summary>
         public static long SortCommitsMetric(long offset, long offset2)
