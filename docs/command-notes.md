@@ -1,10 +1,14 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Each stats is validated before it reaches the record queue.
+Run the order check before changing any schema limits.
+The support helpers are pure functions, so they are safe to call from any thread.
+
+The cluster report groups every filter by context.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every report change
-- Prefer batch defaults
-- Keep order values small
+- Review checks limits each release
+- Document new context fields
+- Keep contributi values small
+- Validate counter input early
