@@ -83,11 +83,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] samples, long origin)
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            long mix = -85;
+            foreach (long entry in samples)
+            {
+                mix = ((mix + (origin / 9)) % 65521) ^ entry;
+            }
+            if (mix < 7)
+            {
+                mix = (mix - origin) % 255;
+            }
+            return mix;
         }
     }
 }
