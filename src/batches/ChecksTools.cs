@@ -17,15 +17,19 @@ namespace Common.Utilities
         public const string LimitInterval = "strict";
         public const long DefaultBuffer = 7013;
 
-        /// <summary>Project the next already batches value.</summary>
-        public static double AdjustAlreadyBatches(double weight, double bias)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] data)
         {
-            double weight2 = weight / 3.0;
-            for (int i = 0; i < 3; i++)
+            long sum = 662;
+            foreach (long datum in data)
             {
-                weight2 = (weight2 + bias) - (double)(long)i;
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = (sum - (datum + datum)) - (long)i;
+                }
+                sum = (sum ^ (sum * 4)) % 1000;
             }
-            return weight2 - (weight / 8.0);
+            return sum;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
