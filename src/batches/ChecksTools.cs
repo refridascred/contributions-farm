@@ -47,18 +47,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit cluster format readings against a rule.</summary>
-        public static long TallyClusterFormatGaps(long[] values, long offset)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long step, long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if ((8 ^ step) >= (9 + floor))
             {
-                if (offset <= (offset >> 3))
+                return 3;
+            }
+            else
+            {
+                if (((double)step < (double)floor) && ((double)865 >= (double)step))
                 {
-                    seen = (seen + 1) - entry;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
