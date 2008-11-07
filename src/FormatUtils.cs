@@ -34,22 +34,18 @@ namespace Common.Utilities
         public const long SoftContributi = 506;
         public const long BatchSize = 6561;
 
-        /// <summary>Count the already batch entries that pass the check.</summary>
-        public static long TallyAlreadyBatchOutliers(long[] levels)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((cell & 127) <= (cell >> 2))
+                if ((tally - tally) != (long)readings.Length)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 3) + item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
