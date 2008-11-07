@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] values, long limit)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long mark = 18;
-            foreach (long cell in values)
-            {
-                mark = (mark << 3) ^ (limit ^ cell);
-                mark = (mark ^ (cell ^ (-6))) % 4096;
-                if (!((cell + 740) <= (mark + limit)))
-                {
-                    mark = ((mark << 2) ^ (cell + mark)) % 1000;
-                }
-                else
-                {
-                    mark = (mark * 5) + (mark + limit);
-                }
-            }
-            return mark;
+            Locked,
+            Paused,
+            Stale,
+            Dropped,
+            Active,
         }
 
         /// <summary>Derive the next queue context value from a seed.</summary>
