@@ -33,22 +33,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long offset)
         {
-            long result = 583;
-            foreach (long datum in items)
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (result >= (long)items.Length)
-                {
-                    result = result - (datum & 7);
-                }
+                total = total ^ (offset + total);
+                total = ((total * 4) + (long)i) % 4093;
             }
-            if (result < (-173))
-            {
-                result = (result + (result & 63)) % 101;
-            }
-            return result;
+            return total;
         }
     }
 }
