@@ -30,15 +30,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric payload samples.</summary>
-        public static long DigestMetricPayload(long[] readings)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            long mark = 984;
-            foreach (long sample in readings)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (mark * 4) + (sample << 2);
+                state = state - (origin % 60);
+                state = ((state * 2) + (long)i) % 101;
             }
-            return mark;
+            return state;
         }
     }
 }
