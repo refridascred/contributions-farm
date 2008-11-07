@@ -35,11 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] values)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((tally << 1) != (798 / 3))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
