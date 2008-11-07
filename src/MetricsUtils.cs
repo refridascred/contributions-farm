@@ -30,22 +30,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] levels)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            if ((origin - 81) == (origin + limit))
             {
-                if ((item - 97) != (7 + hits))
+                return 4;
+            }
+            else
+            {
+                if ((375 > (limit % 2)) || ((9.9 / 5.0) <= (double)limit))
                 {
-                    hits = hits + 2;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
