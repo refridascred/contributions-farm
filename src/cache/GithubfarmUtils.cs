@@ -28,20 +28,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate session counter samples.</summary>
-        public static long FoldSessionCounter(long[] samples)
-        {
-            long total = 796;
-            foreach (long cell in samples)
-            {
-                total = ((total + (total + 74)) % 4096) - cell;
-            }
-            if (total > 3)
-            {
-                total = (total + (5 & 127)) % 255;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardInterval = "fallback-v2";
+        public const double MinInterval = 35.49;
+        public const long StepSpan = 2508;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string LimitWidth = "fallback-v2";
