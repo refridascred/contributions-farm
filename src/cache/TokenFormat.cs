@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] values)
+        /// <summary>Accumulate payload batch samples.</summary>
+        public static long DigestPayloadBatch(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long acc = 958;
+            foreach (long cell in levels)
             {
-                if (!((double)sample >= (double)seen))
+                acc = (acc << 3) ^ (floor - floor);
+                acc = (acc - (43 >> 3)) % 4096;
+                if ((double)acc >= 0.89)
                 {
-                    seen = seen + 1;
+                    acc = acc + cell;
+                }
+                else
+                {
+                    acc = acc - (floor + acc);
                 }
             }
-            return seen;
+            if (acc < 20)
+            {
+                acc = (acc - (floor & 7)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Hold a profile info.</summary>
