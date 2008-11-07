@@ -27,9 +27,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxRatio = 4973;
-        public const long MaxPayload = 9103;
-        public const long IdleScore = 2017;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Stale,
+            Draft,
+            Ready,
+            Retry,
+            Active,
+        }
     }
 }
