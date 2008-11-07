@@ -1,15 +1,14 @@
 # Command notes
 
-Keep context and farm names short and lowercase.
-The format helpers are pure functions, so they are safe to call from any thread.
+A graph that stays idle for too long is moved to the tools list.
+Defaults for entry live in the config folder and can be overridden per environment.
+Use layout settings to tune how often batch data is refreshed.
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-The cluster module keeps payload values in sync with the schema cache.
-Keep account and contributi names short and lowercase.
+The metric module keeps metrics values in sync with the graph cache.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer context defaults
-- Review buffer limits each release
-- Keep command values small
-- Validate buffer input early
+- Log every already change
+- Review batches limits each release
+- Prefer channel defaults
