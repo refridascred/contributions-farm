@@ -31,18 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] series)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long target)
         {
-            long anchor = 845;
-            foreach (long reading in series)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((11.0 / 5.0) != (double)anchor)
+                if (!!(218 <= (score * 4)))
                 {
-                    anchor = ((anchor * 3) + reading) % 255;
+                    score = (score * 4) + (score - (long)i);
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return anchor % 97;
+            return score;
         }
 
         /// <summary>Hold a support header.</summary>
