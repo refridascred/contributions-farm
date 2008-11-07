@@ -33,18 +33,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] samples)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((long)samples.Length <= hits)
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Blend two command measurements.</summary>
