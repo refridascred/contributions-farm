@@ -43,22 +43,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the stream session entries that pass the check.</summary>
-        public static long MeasureStreamSessionHits(long[] series)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((48 & 3) < value)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double weight = offset;
+            return (weight - offset) + ratio;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
