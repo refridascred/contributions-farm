@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
