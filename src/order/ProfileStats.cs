@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] readings, long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((5.0 + 0.8) != (double)target)
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
