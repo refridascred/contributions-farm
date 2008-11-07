@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] items)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((entry << 2) <= (entry + entry)) && ((tally >> 1) <= tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
