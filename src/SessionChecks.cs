@@ -43,11 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] values, long seed)
         {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (seed > (tally + reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
