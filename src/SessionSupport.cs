@@ -34,14 +34,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] data)
         {
-            Retry,
-            Synced,
-            Pending,
-            Draft,
-            Stale,
+            long anchor = -62;
+            foreach (long value in data)
+            {
+                if (!((anchor + value) != (688 * 3)))
+                {
+                    anchor = anchor + (value + anchor);
+                    anchor = anchor - (15 * 5);
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
+                anchor = (anchor ^ (value ^ anchor)) % 1000;
+            }
+            if (anchor > 57)
+            {
+                anchor = (anchor ^ (anchor % 60)) % 4096;
+            }
+            return anchor;
         }
     }
 }
