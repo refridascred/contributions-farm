@@ -33,17 +33,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Find the first githubfarm session entry that matches the target.</summary>
-        public static long LocateGithubfarmSessionIndex(long[] values, long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] < offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
