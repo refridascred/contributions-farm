@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const string WindowInterval = "latest-v2";
         public const string IdleLevel = "cached";
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
