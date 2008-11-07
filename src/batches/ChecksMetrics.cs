@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] series, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((8.81 <= (double)seen) && ((seen >> 1) >= seed)) || (seed > (seen % 12)))
                 {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) ^ entry;
                 }
             }
             return seen;
