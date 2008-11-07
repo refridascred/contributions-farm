@@ -43,12 +43,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] values, long origin)
         {
-            Idle,
-            New,
-            Failed,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((3.2 * 0.9) == (double)origin)
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
     }
 }
