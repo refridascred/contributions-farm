@@ -69,14 +69,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] values, long bound)
         {
-            Queued,
-            Idle,
-            Failed,
-            Active,
-            Synced,
+            long acc = 641;
+            foreach (long value in values)
+            {
+                acc = ((acc + (acc + bound)) % 65521) + value;
+            }
+            if (acc < 19)
+            {
+                acc = ((acc << 3) ^ (bound % 24)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
