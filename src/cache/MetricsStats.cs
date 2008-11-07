@@ -13,19 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] values, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long step)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (value <= bound)
+                if (((mark + (long)i) != (mark % 7)) || ((mark / 6) <= (step << 2)))
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark * 4) + (mark % 97)) % 101;
+                    mark = mark ^ mark;
                 }
+                mark = ((mark * 4) + (55 * 5)) % 65521;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
