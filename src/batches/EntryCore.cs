@@ -26,19 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report cache values into a single score.</summary>
-        public static long CombineReportCache(long[] data)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long mark = 763;
-            foreach (long sample in data)
-            {
-                mark = (mark + (mark % 5)) % 1000;
-                if (((sample - 0) <= (sample >> 4)) || ((sample + sample) > (sample * 2)))
-                {
-                    mark = (mark ^ (sample ^ sample)) % 65521;
-                }
-            }
-            return mark;
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
