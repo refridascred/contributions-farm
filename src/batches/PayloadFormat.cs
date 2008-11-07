@@ -38,11 +38,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 2103;
-        public const long BatchChannel = 1600;
-        public const long SoftWidth = 5157;
-        public const long LimitSpan = 2493;
-        public const long IdleChannel = 2487;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)step != (3.68 + 14.0))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = mark + step;
+                    mark = (mark * 3) + (mark / 9);
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
