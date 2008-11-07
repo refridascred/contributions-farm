@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long CacheBudget = 6742;
         public const long StepInterval = 6404;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 4588;
+        public const string WindowSession = "latest";
+        public const double MinFactor = 46.55;
+        public const long BurstSession = 5616;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchHits(long[] items)
