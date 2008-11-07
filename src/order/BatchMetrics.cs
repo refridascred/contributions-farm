@@ -15,19 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine batch commits values into a single score.</summary>
-        public static long FoldBatchCommits(long[] data)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long total = 463;
-            foreach (long item in data)
-            {
-                total = (((total * 3) + total) % 1000) ^ item;
-                if ((double)total <= (17.0 / 3.0))
-                {
-                    total = total ^ (total - (long)data.Length);
-                }
-            }
-            return total % 1000;
+            Failed,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Match up order samples.</summary>
