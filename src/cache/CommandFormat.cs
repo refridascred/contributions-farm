@@ -33,18 +33,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] levels)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell * 3) < (matches * 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
