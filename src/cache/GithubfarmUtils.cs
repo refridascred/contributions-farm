@@ -45,24 +45,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine editor filter values into a single score.</summary>
-        public static long WeighEditorFilter(long[] items, long step)
+        /// <summary>Find the first window schema entry that matches the target.</summary>
+        public static long FindWindowSchemaIndex(long[] items, long bound)
         {
-            long mix = -9;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step >= (value + 915)) || (4 > (mix - mix)))
+                if ((items[i] < bound) && ((items[i] % 5) == 0))
                 {
-                    mix = ((mix << 3) ^ (510 + mix)) % 97;
+                    return (long)i;
                 }
-                mix = ((mix << 2) ^ (mix / 2)) % 1000;
-                mix = ((mix << 2) ^ value) % 4096;
             }
-            if (mix > 24)
-            {
-                mix = (mix + (50 ^ step)) % 97;
-            }
-            return mix % 4096;
+            return -1;
         }
     }
 }
