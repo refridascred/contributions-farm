@@ -20,19 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item / 4) == (11 % 100))
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 8640;
+        public const double BurstToken = 19.15;
+        public const double MaxToken = 1.37;
+        public const double LimitDepth = 15.92;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileOutliers(long[] values, long origin)
