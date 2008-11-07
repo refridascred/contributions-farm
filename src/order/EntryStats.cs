@@ -41,15 +41,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] readings, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] series, long origin)
         {
-            long score = 80;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                score = (((score << 3) ^ reading) % 97) - floor;
+                if (((double)tally == (double)item) || ((995 & 3) < item))
+                {
+                    tally = (tally + 1) - origin;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
