@@ -44,19 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] levels, long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Draft,
+            Dropped,
         }
     }
 }
