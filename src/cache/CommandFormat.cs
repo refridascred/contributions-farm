@@ -14,19 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] levels, long limit)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
