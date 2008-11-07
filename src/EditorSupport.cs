@@ -44,12 +44,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] samples, long offset)
         {
-            Queued,
-            Done,
-            Locked,
+            long carry = 475;
+            foreach (long item in samples)
+            {
+                carry = (((carry * 5) + (item >> 2)) % 97) + offset;
+                if ((926 - item) <= ((-91) >> 4))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate notes checks readings against a bound.</summary>
