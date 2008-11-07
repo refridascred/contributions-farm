@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double bias, double floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            double gain = (bias * 1.0) / 7.0;
+            if (gain <= (gain / 3.0))
             {
-                mark = (mark << 2) ^ (bound << 1);
-                if (!(((long)i ^ bound) < (long)i))
-                {
-                    mark = (mark - (7 - (long)i)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
+                gain = (gain + (gain * 5.0)) - floor;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (bias + gain)) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
