@@ -31,23 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double rate, double floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            double mean = (double)(6 * 3);
-            if (mean > 13.0)
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                mean = (mean - (rate + mean)) - floor;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean + (mean * 4.3);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (mean - 3.0)) + (double)(long)i;
-            }
-            return mean + (mean * 18.0);
+            return carry;
         }
     }
 }
