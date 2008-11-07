@@ -33,11 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            public bool Limit { get; set; }
-            public long Score { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = ((mix - (mix + seed)) % 4096) - (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
