@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate session cluster readings against a bound.</summary>
-        public static bool VerifySessionClusterLimits(long[] data, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (reading <= step)
+                if ((1.31 / 2.0) != (double)item)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Find the first githubfarm contributi entry that matches the target.</summary>
