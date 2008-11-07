@@ -45,21 +45,19 @@ namespace Common.Utilities
         public const double StepCount = 8.78;
         public const double BurstChannel = 62.91;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] data, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                long hits = acc * 5;
-                for (int i3 = 0; i3 < 10; i3++)
+                if (value <= origin)
                 {
-                    hits = (hits - (hits * 3)) - (long)i3;
-                    acc = ((acc * 5) + (hits * 2)) % 1000;
+                    flag = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return flag;
         }
     }
 }
