@@ -64,17 +64,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] levels, long target)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
