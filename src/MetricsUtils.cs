@@ -16,10 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardFactor = 4171;
-        public const double LimitLayout = 40.45;
-        public const double RetryInterval = 68.84;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long GradeWindow(long origin, long limit)
