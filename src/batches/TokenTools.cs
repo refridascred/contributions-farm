@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double rate, double bias)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] items, long seed)
         {
-            double scale = bias;
-            if (scale > (bias + scale))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale - bias) - rate;
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return scale - (double)(-2);
+            return -1;
         }
 
         /// <summary>Describe the farm class values.</summary>
