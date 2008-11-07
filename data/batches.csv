@@ -1,7 +1,6 @@
-id,token,count,label
-1,staging,63.47,latest
-2,93.77,66,526
-3,516,79.91,stable
-4,876,eu-west,153
-5,692,399,634
-6,staging,43.04,73.75
+id,ratio,owner,region
+1,940,557,22.22
+2,923,latest,841
+3,108,94.5,green
+4,969,edge,22.97
+5,edge,359,staging
