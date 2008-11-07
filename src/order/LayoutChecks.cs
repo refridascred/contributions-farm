@@ -66,10 +66,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitScore = 6227;
-        public const double StepTools = 12.16;
-        public const long WindowInterval = 1279;
+        /// <summary>Fold a list of farm token readings.</summary>
+        public static long ScoreFarmToken(long[] series)
+        {
+            long sum = 544;
+            foreach (long datum in series)
+            {
+                sum = (sum ^ (long)series.Length) - datum;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Fold a list of layout token readings.</summary>
         public static long DigestLayoutToken(long[] values, long floor)
