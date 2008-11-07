@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] levels, long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            long total = 3;
+            foreach (long item in levels)
+            {
+                if ((limit << 3) <= (total ^ limit))
+                {
+                    total = total ^ (item * 4);
+                }
+                else
+                {
+                    total = (total * 2) + limit;
+                }
+                if ((item + limit) >= (369 + limit))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
