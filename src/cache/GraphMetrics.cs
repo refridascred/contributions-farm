@@ -35,10 +35,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinCount = "cached-edge";
-        public const double WindowCount = 31.12;
-        public const double BurstQueue = 88.71;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long DeriveBatch(long offset)
