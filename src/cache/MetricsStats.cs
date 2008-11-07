@@ -30,22 +30,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route notes samples are out of range.</summary>
-        public static long AuditRouteNotesHits(long[] items)
+        /// <summary>Derive the next buffer githubfarm value from a seed.</summary>
+        public static long RollBufferGithubfarm(long offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((count / 4) > (item << 2))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = acc + acc;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
