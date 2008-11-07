@@ -14,16 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next format stream value from a seed.</summary>
-        public static long SeriesFormatStream(long step)
+        /// <summary>Check that every route account entry stays within the limit.</summary>
+        public static bool VerifyRouteAccountLimits(long[] series, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                score = ((score << 2) ^ (622 + score)) % 4096;
-                score = ((score * 4) + (long)i) % 101;
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
