@@ -29,19 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats metric readings against a rule.</summary>
-        public static long TallyStatsMetricGaps(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((bound * 4) < bound)
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 1657;
+        public const long LimitGraph = 7486;
+        public const long LimitScore = 9574;
+        public const long HardGraph = 842;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowOutliers(long[] samples, long bound)
