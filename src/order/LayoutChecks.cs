@@ -112,16 +112,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout token readings.</summary>
-        public static long DigestLayoutToken(long[] values, long floor)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            long mix = 803;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix - (floor * 2)) % 97) - item;
-                mix = ((mix << 3) ^ (mix & 255)) % 4096;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix % 1000;
+            return matches;
         }
     }
 }
