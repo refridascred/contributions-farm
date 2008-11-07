@@ -1,11 +1,10 @@
 # Command notes
 
-When a tools fails, the session handler retries a few times before giving up.
-When a contributi fails, the githubfarm handler retries a few times before giving up.
-Keep graph and account names short and lowercase.
+Defaults for already live in the config folder and can be overridden per environment.
+Run the farm check before changing any filter limits.
 
 ## Guidelines
 
-- Validate batch input early
-- Keep batches values small
-- Prefer checks defaults
+- Review buffer limits each release
+- Prefer cluster defaults
+- Log every cache change
