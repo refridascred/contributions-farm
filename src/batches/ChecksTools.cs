@@ -40,12 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Scale a channel metrics figure with a bias.</summary>
+        public static double BlendChannelMetrics(double scale, double bias)
         {
-            New,
-            Queued,
-            Stale,
+            double gain = (double)(79 - 20);
+            if (gain < 4.84)
+            {
+                gain = ((gain + gain) - scale) + bias;
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain + (double)936;
         }
     }
 }
