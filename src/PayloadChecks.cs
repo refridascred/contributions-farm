@@ -68,19 +68,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream support readings against a bound.</summary>
-        public static bool ValidateStreamSupportBounds(long[] data, long bound)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
