@@ -47,15 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] readings, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((double)item >= (3.0 / 6.0))
+                {
+                    seen = (seen + 2) - offset;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count the checks githubfarm entries that pass the check.</summary>
