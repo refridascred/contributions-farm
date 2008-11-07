@@ -22,19 +22,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double gain, double bias)
+        /// <summary>Iterate the tools record series from a seed.</summary>
+        public static long StepToolsRecord(long floor)
         {
-            double ratio = bias - 6.5;
-            if (ratio > (double)2)
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = ratio + (gain - ratio);
+                total = ((total * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + 2.0) + (double)(long)i;
-            }
-            return ratio + (3.1 - ratio);
+            return total;
         }
     }
 }
