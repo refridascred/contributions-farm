@@ -1,4 +1,4 @@
 # githubfarm settings
-sync_delay_pct: 48.66
-warm_size_ms: 67.88
-strict: 50
+enabled: staging
+idle_size_s: stable
+min_depth_count: false
