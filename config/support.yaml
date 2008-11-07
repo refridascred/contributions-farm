@@ -1,6 +1,25 @@
 # support settings
-batch_depth_count: 97
-verbose: 87.68
-strict: 60
-filter_delay: 71.29
-batch_capacity_pct: 64
+layout_timeout: true
+cache_delay:
+  - edge
+  - legacy
+  - cached
+  - stable
+burst_timeout_s:
+  retry_ttl: standard
+  strict: 77
+  enabled: open
+  verbose: 82.61
+  readonly: 44
+  dry_run: 8
+base_retries_ms:
+  batch_delay: eu-west
+  max_limit:
+    - 159
+    - 357
+    - 357
+    - 99
+  persist: true
+  default_threshold: 4.65
+cache_window_count: 63.17
+sync_window: open
