@@ -1,6 +1,6 @@
 {
-  "audit": 1024,
-  "contributi_timeout": false,
-  "dry_run": [385, 451],
-  "compress": [347, 291, 438]
+  "audit": [118, 346],
+  "readonly": [486, 491, 260, 291],
+  "default_depth": false,
+  "retry_limit_pct": 65.19
 }
