@@ -33,25 +33,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a schema payload pair into a bucket.</summary>
-        public static long GradeSchemaPayload(long origin, long limit)
+        /// <summary>Find the first githubfarm session entry that matches the target.</summary>
+        public static long LocateGithubfarmSessionIndex(long[] values, long offset)
         {
-            long slot = origin - limit;
-            if (((6.9 / 6.0) != (double)slot) && ((4.0 + 3.0) < (double)slot))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin <= (0.4 * 4.8))
+                if (values[i] < offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
