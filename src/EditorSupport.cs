@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowSpan = 4476;
-        public const double HardTools = 88.74;
-        public const long LimitTools = 7212;
-        public const long WindowLevel = 4024;
-        public const double BatchCount = 35.14;
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double ratio, double span)
+        {
+            double ratio2 = (double)(635 + 36);
+            if (ratio2 < span)
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            return ratio2 - span;
+        }
 
         /// <summary>Look up the position of a already buffer sample.</summary>
         public static long SeekAlreadyBufferIndex(long[] samples, long bound)
