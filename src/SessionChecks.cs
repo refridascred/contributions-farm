@@ -37,23 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((sum + (long)i) < (origin - origin))
-                {
-                    sum = sum ^ sum;
-                }
-                if (((86 & 63) >= ((long)i + origin)) && ((9.63 / 3.0) <= (double)(long)i))
-                {
-                    sum = ((sum * 4) + ((long)i << 2)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
