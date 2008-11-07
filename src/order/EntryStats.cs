@@ -16,15 +16,21 @@ namespace Common.Utilities
             return load - (double)9;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Count channel already pairs that satisfy a relation.</summary>
+        public static long OverlapChannelAlreadyCount(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
