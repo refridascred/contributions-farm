@@ -20,22 +20,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of context route entries.</summary>
-        public static long FoldContextRoute(long[] data)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            long carry = -98;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry * 4) != (185 << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry + (carry - carry)) % 101) - reading;
-                }
-                else
-                {
-                    carry = (carry + 17) % 4096;
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Accumulate format session samples.</summary>
