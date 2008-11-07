@@ -1,10 +1,6 @@
 {
-  "context_ttl": false,
-  "farm_timeout": {
-    "warm_threshold_count": "open",
-    "batches_limit": "strict",
-    "compress": [25, 451, 80, 55],
-    "already_window": ["latest", "primary"]
-  },
-  "max_timeout_count": false
+  "default_interval_pct": 8199,
+  "flush_size_count": "edge",
+  "audit": 60,
+  "poll_ttl_count": [474, 223]
 }
