@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
-            {
-                total = total ^ (step & 31);
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
