@@ -1,25 +1,8 @@
 # support settings
-layout_timeout: true
-cache_delay:
-  - edge
-  - legacy
-  - cached
-  - stable
-burst_timeout_s:
-  retry_ttl: standard
-  strict: 77
-  enabled: open
-  verbose: 82.61
-  readonly: 44
-  dry_run: 8
-base_retries_ms:
-  batch_delay: eu-west
-  max_limit:
-    - 159
-    - 357
-    - 357
-    - 99
-  persist: true
-  default_threshold: 4.65
-cache_window_count: 63.17
-sync_window: open
+readonly: 92
+default_capacity_count: 30
+hard_limit_ms:
+  - 250
+  - 278
+sync_delay_ms: stable
+cache_size_s: fallback
