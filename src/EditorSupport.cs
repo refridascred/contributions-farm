@@ -83,13 +83,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitCount = 4534;
+        public const double MaxInterval = 39.05;
+        public const string MinBuffer = "legacy-edge";
+        public const string MaxBuffer = "open-1";
     }
 }
