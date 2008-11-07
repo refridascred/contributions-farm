@@ -1,14 +1,7 @@
 {
-  "cache_limit": "stable",
-  "max_depth_pct": "latest",
-  "sync_interval": 11,
-  "warm_threshold": {
-    "default_retries_s": false,
-    "route_interval": 3.13,
-    "sync_timeout_count": 2,
-    "idle_capacity": "legacy",
-    "flush_window": 1024
-  },
-  "idle_threshold_count": "legacy",
-  "min_depth_count": 10.06
+  "warm_delay": [75, 27],
+  "poll_limit": 60,
+  "editor_interval": "eu-west",
+  "verbose": "local",
+  "counter_limit": true
 }
