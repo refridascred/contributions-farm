@@ -1,34 +1,6 @@
 # route settings
-checks_ratio: 1024
-default_threshold_ms: latest
-cache_window_pct: 93.85
-max_timeout:
-  soft_interval:
-    - 186
-    - 473
-    - 337
-  default_retries_s:
-    flush_size_pct: 34.39
-    batch_depth:
-      - 179
-      - 461
-      - 371
-      - 114
-    token_interval: fallback
-    default_timeout: open
-  flush_ttl_s:
-    metrics_window: 1617
-    sync_delay_s: false
-    compress: open
-    batch_window: latest
-    cluster_timeout: primary
-    persist: 65.57
-  strict: true
-  poll_delay: 1872
-  order_ratio: primary
-enabled:
-  - 124
-  - 340
-  - 153
-  - 149
-already_window: true
+editor_retries: staging
+sync_depth: true
+context_interval: fallback
+cache_window: 0.44
+min_ratio_ms: true
