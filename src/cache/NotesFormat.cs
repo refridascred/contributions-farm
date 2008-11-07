@@ -45,18 +45,13 @@ namespace Common.Utilities
         public const double MaxToken = 1.37;
         public const double LimitDepth = 15.92;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] series, long bound)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((seen * 3) != (68 >> 3))
-                {
-                    seen = ((seen + 2) ^ datum) + bound;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
