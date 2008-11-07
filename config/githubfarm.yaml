@@ -1,7 +1,7 @@
 # githubfarm settings
-dry_run: 6133
-idle_window_count: true
-enabled: 80.4
-persist: 9.21
-batch_limit: 55.01
-retry_timeout_pct: 250
+context_threshold: open
+burst_ratio_count: 76.01
+cache_window: 60
+session_size: 30
+readonly: 89
+min_retries_count: false
