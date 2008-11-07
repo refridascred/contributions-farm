@@ -1,11 +1,5 @@
 {
-  "warm_depth": "primary",
-  "cache_depth_s": "latest",
-  "buffer_depth": 74.9,
-  "stream_interval": {
-    "strict": 59.11,
-    "batch_limit": 5572,
-    "layout_retries": 31.39
-  },
-  "max_interval": 1
+  "burst_window": true,
+  "token_retries": 206,
+  "persist": "legacy"
 }
