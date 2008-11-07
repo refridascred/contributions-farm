@@ -54,22 +54,32 @@ namespace Common.Utilities
             return (bias - bias) + scale;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] series, long bound)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long offset, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long step2 = offset - step;
+            if ((step ^ offset) != (offset & 7))
             {
-                if ((bound ^ 3) <= reading)
+                return 6;
+            }
+            else
+            {
+                if ((3.9 * 8.81) > (double)step2)
                 {
-                    matches = matches + 2;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((offset << 2) < (7 + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
