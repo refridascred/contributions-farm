@@ -50,18 +50,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] values, long origin)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((3.2 * 0.9) == (double)origin)
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
+            Closed,
+            Synced,
+            Retry,
+            Queued,
+            Dropped,
         }
     }
 }
