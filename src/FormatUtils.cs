@@ -54,26 +54,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter entry series from a seed.</summary>
-        public static long DeriveFilterEntry(long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] levels, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)(long)i == (7.0 + 12.0)) && (total >= (target + (long)i)))
+                if (levels[i] < origin)
                 {
-                    total = total - (target % 60);
-                    total = (total - total) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total - (total * 2)) % 101;
-                    total = (total + target) % 65521;
-                }
-                total = (total ^ 97) % 97;
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the report class values.</summary>
