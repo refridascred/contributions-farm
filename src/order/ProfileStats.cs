@@ -61,22 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes cache counter forward.</summary>
-        public static long IterateNotesCache(long target)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark + (128 * 3)) % 255;
-                long step = 751 % 8;
-                if ((step + target) != (252 * 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark + mark) % 1000;
-                    step = step - (target * 3);
+                    if ((values[i] - values[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
     }
 }
