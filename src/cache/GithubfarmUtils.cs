@@ -13,15 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double rate, double floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] readings)
         {
-            double gain = 3.5;
-            if (gain < 2.01)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                gain = gain + rate;
+                if (sample <= (sample >> 4))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return gain - (floor / 3.0);
+            return matches;
         }
 
         /// <summary>Fold a list of payload filter readings.</summary>
