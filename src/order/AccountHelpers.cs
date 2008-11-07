@@ -51,11 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Accumulate farm layout samples.</summary>
+        public static long CombineFarmLayout(long[] data)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long mark = 48;
+            foreach (long sample in data)
+            {
+                if (!!((sample + sample) < (sample & 31)))
+                {
+                    mark = mark - mark;
+                }
+                if (mark < (mark % 97))
+                {
+                    mark = (mark + (sample / 7)) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the command level values.</summary>
