@@ -48,10 +48,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 3458;
-        public const long DefaultFarm = 7675;
-        public const string BaseFarm = "alpha-edge";
-        public const double WindowRatio = 80.32;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Closed,
+            Locked,
+            Paused,
+        }
     }
 }
