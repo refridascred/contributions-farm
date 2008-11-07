@@ -45,11 +45,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long step, long limit)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            if (((limit / 4) < step) || ((limit / 5) > (step + 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)step < (double)limit) && ((limit << 2) >= step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + limit) <= (step / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((18.0 * 1.5) == (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
