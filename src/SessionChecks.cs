@@ -19,10 +19,20 @@ namespace Common.Utilities
         public const double LimitTools = 9.05;
         public const double MinSize = 63.93;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchAlready = 8.46;
-        public const long IdleFactor = 3668;
-        public const long MaxAlready = 1804;
+        /// <summary>Project the next stats cache value.</summary>
+        public static double AdjustStatsCache(double scale, double offset)
+        {
+            double weight = (double)77 + offset;
+            if (weight >= (double)3)
+            {
+                weight = weight + (scale + scale);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (scale - 9.3)) - (double)(long)i;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
