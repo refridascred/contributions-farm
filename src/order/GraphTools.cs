@@ -16,15 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] samples, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long total = 167;
+            foreach (long item in samples)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                total = (((total ^ 253) % 65521) + item) + seed;
             }
-            return result;
+            if (total < 131)
+            {
+                total = (total - (total - total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
