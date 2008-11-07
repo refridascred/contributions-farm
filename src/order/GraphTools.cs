@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const long StepPayload = 6644;
         public const string StepSpan = "latest";
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] levels)
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (count > 81)
+                {
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
