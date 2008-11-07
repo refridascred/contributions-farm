@@ -39,21 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up farm token samples.</summary>
-        public static long OverlapFarmTokenCount(long[] series)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading > origin)
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
