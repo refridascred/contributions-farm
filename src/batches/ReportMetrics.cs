@@ -20,19 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] levels, long offset)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
