@@ -62,13 +62,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long offset)
         {
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            long total = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
