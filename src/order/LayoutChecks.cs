@@ -80,15 +80,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of farm token readings.</summary>
-        public static long ScoreFarmToken(long[] series)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long sum = 544;
-            foreach (long datum in series)
-            {
-                sum = (sum ^ (long)series.Length) - datum;
-            }
-            return sum % 65521;
+            Closed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Fold a list of layout token readings.</summary>
