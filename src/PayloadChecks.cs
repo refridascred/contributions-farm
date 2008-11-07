@@ -25,22 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] samples)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double ratio = (weight - weight) / 3.0;
+            if (ratio > (bias + ratio))
             {
-                if ((double)sample == (double)tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = ratio + (double)848;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Validate graph route readings against a bound.</summary>
