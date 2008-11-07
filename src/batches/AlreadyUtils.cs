@@ -34,14 +34,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Synced,
-            Closed,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleFactor = 6788;
+        public const double BatchBuffer = 63.7;
+        public const string MaxBuffer = "open-1";
+        public const long MinBuffer = 2317;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
