@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many farm cluster samples are out of range.</summary>
-        public static long CountFarmClusterHits(long[] data, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((double)value >= (double)count)
+                if ((((double)tally == (18.0 * 3.47)) && ((seed ^ item) != (tally * 2))) && (((seed * 5) <= (tally & 127)) || ((seed / 3) >= (item ^ item))))
                 {
-                    count = (count + 2) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
