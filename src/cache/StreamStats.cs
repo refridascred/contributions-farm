@@ -14,16 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the stats context series from a seed.</summary>
-        public static long DeriveStatsContext(long seed)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 5) + (seed >> 1)) % 65521;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
