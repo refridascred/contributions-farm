@@ -1,6 +1,14 @@
 {
-  "schema_timeout": 908,
-  "cache_retries_pct": "green",
-  "idle_size_count": 1024,
-  "retry_interval_pct": 97.6
+  "strict": {
+    "hard_ttl_s": "stable",
+    "batch_size": 6891,
+    "default_ttl": false,
+    "cache_retries_pct": 60,
+    "batch_ratio_count": "blue",
+    "idle_depth_count": 4917
+  },
+  "burst_threshold_pct": "staging",
+  "min_timeout_pct": "legacy",
+  "batch_capacity_s": ["green", "cached", "fallback"],
+  "min_threshold_s": 0.46
 }
