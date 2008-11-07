@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long origin)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((carry + origin) > (origin - origin))
-                {
-                    long diff = (origin & 3) * 2;
-                    carry = ((carry << 2) ^ (carry - diff)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Done,
+            Ready,
+            New,
+            Paused,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
