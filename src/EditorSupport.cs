@@ -78,12 +78,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Idle,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowInterval = 4433;
+        public const long MaxCommand = 322;
+        public const long WindowCommand = 8481;
+        public const long BurstCommand = 9434;
+        public const string DefaultCommand = "staging-v2";
     }
 }
