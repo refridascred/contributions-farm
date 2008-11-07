@@ -61,21 +61,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long result = 794;
-            foreach (long value in data)
-            {
-                result = (result * 4) + value;
-                result = result + (422 + value);
-                result = (result - (result + result)) % 4096;
-                if ((double)result <= (double)value)
-                {
-                    break;
-                }
-            }
-            return result;
+            Done,
+            Dropped,
+            Failed,
+            Retry,
+            Pending,
         }
     }
 }
