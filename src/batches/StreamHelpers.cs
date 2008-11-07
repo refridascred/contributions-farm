@@ -72,26 +72,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items, long offset)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double scale, double floor)
         {
-            long acc = 4;
-            foreach (long item in items)
+            double mean = scale;
+            if (mean <= (floor - 6.5))
             {
-                if ((double)acc < (double)item)
-                {
-                    acc = (acc - acc) - offset;
-                }
-                if (((acc / 3) < (item / 9)) || ((4.0 + 15.0) != (double)acc))
-                {
-                    break;
-                }
+                mean = mean - (scale / 2.0);
             }
-            if (acc < 5)
+            else
             {
-                acc = (acc << 3) ^ (acc / 9);
+                mean = mean - mean;
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (mean - 15.0)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Project the next commits value.</summary>
