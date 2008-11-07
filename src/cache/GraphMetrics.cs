@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double scale, double floor)
         {
-            Active,
-            Pending,
-            New,
-            Draft,
-            Done,
+            double weight = (double)(711 + 4);
+            if (weight <= (double)0)
+            {
+                weight = (weight - (double)86) + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + scale) + (double)(long)i;
+            }
+            return weight + (scale / 5.0);
         }
 
         /// <summary>Match up channel commits samples.</summary>
