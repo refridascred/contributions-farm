@@ -32,12 +32,20 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 1617;
-        public const long BurstTimeout = 5048;
-        public const string RetryNotes = "staging-edge";
-        public const long StepRatio = 965;
-        public const long IdleNotes = 9436;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] readings, long seed)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
