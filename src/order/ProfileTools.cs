@@ -22,11 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long origin, long step)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            long diff = origin + step;
+            if (((73 - origin) > diff) || ((origin >> 4) >= (598 ^ origin)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((10.0 * 0.52) < (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
