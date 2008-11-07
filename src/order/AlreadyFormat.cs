@@ -22,18 +22,13 @@ namespace Common.Utilities
         public const long RetryTools = 2114;
         public const long DefaultTools = 4374;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] series)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((item - item) < (seen % 8)) || !((seen + seen) != (item / 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Closed,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
