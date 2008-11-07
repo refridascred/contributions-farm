@@ -66,13 +66,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            Ready,
+            Retry,
+            Queued,
+            New,
         }
     }
 }
