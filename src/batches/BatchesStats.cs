@@ -37,12 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Failed,
-            Idle,
+            Paused,
+            Stale,
             Active,
+            Retry,
         }
     }
 }
