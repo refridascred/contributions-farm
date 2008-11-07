@@ -53,17 +53,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] levels, long origin)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
