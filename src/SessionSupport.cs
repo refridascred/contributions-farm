@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] items)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long span = offset ^ seed;
+            if (((offset & 15) >= seed) && (8.8 <= (double)seed))
             {
-                if ((matches ^ matches) <= (matches * 4))
+                return 7;
+            }
+            else
+            {
+                if (((span & 127) <= (seed % 12)) || (offset < span))
                 {
-                    matches = (matches + 1) ^ datum;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a already counter forward.</summary>
