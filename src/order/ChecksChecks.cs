@@ -39,38 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long target, long origin)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            if ((origin + origin) <= (target & 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target + origin) <= (target ^ origin)) || ((target * 5) < target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((target ^ origin) < (target + 459)) && ((target + 21) > (394 << 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target ^ 74) >= (origin & 7)) || ((double)origin <= (4.7 + 4.07)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Done,
+            Closed,
+            Draft,
         }
     }
 }
