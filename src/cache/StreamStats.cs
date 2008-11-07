@@ -20,21 +20,16 @@ namespace Common.Utilities
         public const long CacheFactor = 4888;
         public const long BurstSpan = 5700;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Derive the next support stats value from a seed.</summary>
+        public static long DeriveSupportStats(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc << 2) ^ ((long)i + acc)) % 65521;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
