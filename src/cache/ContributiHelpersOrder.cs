@@ -34,31 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long target, long offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            if (offset > (target + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target ^ 94) > (1 / 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target <= (7.1 + 18.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
