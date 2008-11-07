@@ -32,19 +32,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] readings, long step)
+        /// <summary>Derive the next already editor value from a seed.</summary>
+        public static long RollAlreadyEditor(long target)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (item < step)
+                if ((1.4 - 18.0) < (double)target)
                 {
-                    stale = false;
-                    break;
+                    result = ((result << 2) ^ (90 - (long)i)) % 101;
                 }
+                else
+                {
+                    result = (result ^ (result & 63)) % 65521;
+                }
+                result = ((result * 2) + target) % 101;
+                result = (result << 2) ^ target;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return stale;
+            return result;
         }
     }
 }
