@@ -59,13 +59,14 @@ namespace Common.Utilities
         public const long WindowTimeout = 6357;
         public const string RetryInterval = "local-v2";
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
+            Active,
+            Done,
+            Locked,
+            Draft,
+            Closed,
         }
     }
 }
