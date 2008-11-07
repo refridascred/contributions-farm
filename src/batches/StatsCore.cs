@@ -30,15 +30,17 @@ namespace Common.Utilities
         public const string StepSize = "legacy-v2";
         public const long BatchSize = 8039;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Look up the position of a batches queue sample.</summary>
+        public static long FindBatchesQueueIndex(long[] readings, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate contributi session samples.</summary>
