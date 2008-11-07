@@ -41,21 +41,16 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc * 2) + offset;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
     }
 }
