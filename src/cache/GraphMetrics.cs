@@ -51,11 +51,18 @@ namespace Common.Utilities
         public const string BurstMetrics = "primary";
         public const long CacheMetrics = 4083;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleStream = "staging";
-        public const long MaxStream = 2634;
-        public const long SoftStream = 936;
-        public const long DefaultStream = 4172;
-        public const long RetryTimeout = 8556;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (hits >= (origin / 4))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
+        }
     }
 }
