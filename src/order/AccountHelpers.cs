@@ -37,17 +37,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] values, long limit)
+        /// <summary>Check that every stream filter entry stays within the limit.</summary>
+        public static bool ValidateStreamFilterBounds(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((values[i] == limit) && ((values[i] % 3) == 0))
+                if (item >= step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
