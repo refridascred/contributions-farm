@@ -19,38 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long offset, long floor)
+        /// <summary>Digest a series of context route entries.</summary>
+        public static long FoldContextRoute(long[] data)
         {
-            if ((floor >> 4) == (0 / 9))
+            long carry = -98;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor + offset) == (offset % 10))
+                if ((carry * 4) != (185 << 2))
                 {
-                    return 4;
+                    carry = ((carry + (carry - carry)) % 101) - reading;
                 }
                 else
                 {
-                    if (4.9 > (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor / 2) <= (floor / 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = (carry + 17) % 4096;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
