@@ -1,7 +1,8 @@
-id,active,score
-1,local,677
-2,legacy,302
-3,green,499
-4,142,62
-5,13,legacy
-6,435,strict
+id,label,active,score
+1,837,62.65,stable
+2,855,45,26.57
+3,10.82,40.73,eu-west
+4,local,16.86,14.18
+5,9.82,634,52.68
+6,strict,strict,edge
+7,404,primary,92
