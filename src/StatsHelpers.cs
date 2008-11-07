@@ -34,19 +34,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] values, long seed)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count - reading) != (reading ^ count))
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftRatio = "strict-v2";
+        public const long BatchProfile = 6224;
+        public const double RetryProfile = 97.56;
+        public const string BurstSpan = "strict-v2";
+        public const double WindowProfile = 72.38;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long FindToolsIndex(long[] levels, long step)
