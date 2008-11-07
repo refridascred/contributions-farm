@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] series, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((8.81 <= (double)seen) && ((seen >> 1) >= seed)) || (seed > (seen % 12)))
+                if ((double)count > 1.4)
                 {
-                    seen = (seen + 3) ^ entry;
+                    count = (count + 2) + value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
