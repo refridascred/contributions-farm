@@ -35,19 +35,13 @@ namespace Common.Utilities
         public const string HardFactor = "strict";
         public const string LimitRecord = "cached-v2";
 
-        /// <summary>Check that every graph session entry stays within the limit.</summary>
-        public static bool CheckGraphSessionBounds(long[] levels, long limit)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Stale,
+            Draft,
+            Queued,
         }
     }
 }
