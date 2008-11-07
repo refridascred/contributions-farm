@@ -17,12 +17,15 @@ namespace Common.Utilities
         public const string LimitInterval = "strict";
         public const long DefaultBuffer = 7013;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Project the next already batches value.</summary>
+        public static double AdjustAlreadyBatches(double weight, double bias)
         {
-            Done,
-            Idle,
-            Closed,
+            double weight2 = weight / 3.0;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + bias) - (double)(long)i;
+            }
+            return weight2 - (weight / 8.0);
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
