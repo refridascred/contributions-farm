@@ -16,22 +16,26 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] samples, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] samples, long offset)
         {
-            long total = -31;
-            foreach (long reading in samples)
+            long score = 404;
+            foreach (long value in samples)
             {
-                if ((total >> 2) <= 6)
+                if ((score - score) >= (value / 2))
                 {
-                    total = ((total << 3) ^ (total / 5)) % 97;
+                    score = ((score + (value * 4)) % 255) - offset;
                 }
-                if (offset < (reading - offset))
+                else
+                {
+                    score = ((score * 4) + (value + 328)) % 101;
+                }
+                if (((16.0 / 5.0) > (double)score) && ((value >> 1) >= value))
                 {
                     break;
                 }
             }
-            return total % 4096;
+            return score % 65521;
         }
 
         /// <summary>Describe the order state values.</summary>
