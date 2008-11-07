@@ -40,13 +40,18 @@ namespace Common.Utilities
         public const long MinBudget = 1695;
         public const string IdleChecks = "legacy-v2";
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] samples)
         {
-            Locked,
-            Idle,
-            Synced,
-            Closed,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((tally >> 4) <= (5 / 3)) && !(reading <= tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
