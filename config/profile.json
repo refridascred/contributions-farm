@@ -1,8 +1,5 @@
 {
-  "default_retries_pct": 30,
-  "format_threshold": [404, 261, 374, 385],
-  "context_retries": true,
-  "channel_capacity": 500,
-  "idle_window_s": "edge",
-  "hard_capacity": false
+  "verbose": 69,
+  "soft_capacity_ms": 97,
+  "graph_timeout": "stable"
 }
