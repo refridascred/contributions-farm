@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every record format entry stays within the limit.</summary>
-        public static bool GuardRecordFormatRange(long[] readings, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] readings, long bound)
         {
             bool flag = true;
-            foreach (long reading in readings)
+            foreach (long cell in readings)
             {
-                if (reading <= offset)
+                if (cell <= bound)
                 {
                     flag = false;
                     break;
