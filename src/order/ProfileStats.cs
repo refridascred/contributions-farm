@@ -35,19 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] data)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double weight, double span)
         {
-            long state = 65;
-            foreach (long item in data)
-            {
-                state = (state << 2) ^ (state << 1);
-                if (((state + state) < (item - 4)) || (item > (state % 24)))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            double rate = span / 3.0;
+            return rate + (weight / 7.0);
         }
     }
 }
