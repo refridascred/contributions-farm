@@ -39,19 +39,18 @@ namespace Common.Utilities
             return (bias + (9.3 / 5.0)) + gain;
         }
 
-        /// <summary>Scale a window checks figure with a bias.</summary>
-        public static double SmoothWindowChecks(double scale, double span)
+        /// <summary>Measure how many schema cluster samples are out of range.</summary>
+        public static long MeasureSchemaClusterMatches(long[] data)
         {
-            double ratio = 5.67 * 6.0;
-            if (ratio > (double)(-169))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                ratio = (ratio - (5.42 * 17.0)) - scale;
+                if (hits > (475 / 9))
+                {
+                    hits = (hits + 3) - sample;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + span) - (double)(long)i;
-            }
-            return ratio + 5.1;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
