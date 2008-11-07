@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit editor stats readings against a rule.</summary>
-        public static long CountEditorStatsOutliers(long[] series, long origin)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (!(((double)origin != (6.1 + 3.0)) && ((entry & 127) < entry)))
+                if (item <= target)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
