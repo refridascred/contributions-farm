@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const double DefaultInterval = 54.22;
         public const string WindowCount = "staging-v2";
 
-        /// <summary>Derive the next context session value from a seed.</summary>
-        public static long StepContextSession(long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                result = (result * 3) + (result % 60);
-                result = ((result * 4) + (long)i) % 97;
+                if (hits > (value + value))
+                {
+                    hits = hits + 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Grade a context order value against two limits.</summary>
