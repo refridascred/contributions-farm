@@ -1,12 +1,6 @@
 {
-  "metric_threshold": "blue",
-  "dry_run": "legacy",
-  "verbose": {
-    "stats_capacity": ["legacy", "strict", "local", "legacy"],
-    "batch_ratio_ms": [321, 253, 211],
-    "flush_limit": "local",
-    "payload_delay": 1024,
-    "soft_timeout_count": [233, 486]
-  },
-  "cluster_delay": 11
+  "burst_limit_count": [191, 302, 445, 80],
+  "compress": [56, 68],
+  "soft_depth_count": false,
+  "warm_interval_ms": 374
 }
