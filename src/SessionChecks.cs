@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a window metrics reading.</summary>
-        public static double AdjustWindowMetrics(double bias, double span)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long step)
         {
-            double mean = (double)(60 ^ 44);
-            if (mean < mean)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                mean = (mean - (5.19 + bias)) - span;
+                total = total ^ (step & 31);
+                total = ((total * 4) + (long)i) % 97;
             }
-            return mean + (4.93 - mean);
+            return total;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
