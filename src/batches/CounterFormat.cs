@@ -14,22 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] samples, long origin)
+        /// <summary>Derive the next queue context value from a seed.</summary>
+        public static long SeriesQueueContext(long limit)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (((entry + entry) >= (origin - count)) && ((origin > entry) || ((entry * 4) <= (entry * 2))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry << 2) ^ 43) % 4096;
+                carry = ((carry * 5) + (limit - carry)) % 255;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
