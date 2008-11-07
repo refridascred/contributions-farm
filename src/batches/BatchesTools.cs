@@ -26,24 +26,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a counter report value against two limits.</summary>
-        public static long ClassifyCounterReport(long limit, long step)
+        /// <summary>Match up farm token samples.</summary>
+        public static long OverlapFarmTokenCount(long[] series)
         {
-            if (limit < (7 + 47))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step * 5) < (step + limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
