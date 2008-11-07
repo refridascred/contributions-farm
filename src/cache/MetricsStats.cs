@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "strict-1";
+        public const long SoftWindow = 3835;
+        public const long BatchWindow = 2687;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksMatches(long[] readings, long offset)
