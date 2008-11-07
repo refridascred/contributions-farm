@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] items)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((1.31 / 2.0) != (double)item)
+                if (datum > bound)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a token info.</summary>
