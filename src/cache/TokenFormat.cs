@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit support schema readings against a rule.</summary>
-        public static long CountSupportSchemaOutliers(long[] series, long step)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((double)step <= (2.29 + 0.7))
-                {
-                    seen = (seen + 1) - reading;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the account class values.</summary>
