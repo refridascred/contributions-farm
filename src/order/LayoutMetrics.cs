@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit filter farm readings against a rule.</summary>
-        public static long MeasureFilterFarmGaps(long[] levels, long offset)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
             long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset ^ hits) < 412)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) ^ value;
+                    if ((items[i] + items[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
