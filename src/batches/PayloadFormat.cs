@@ -29,22 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] series, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            long acc = 3;
-            foreach (long datum in series)
+            long mix = 20;
+            foreach (long value in values)
             {
-                if (!((13.0 * 18.0) == (double)acc))
+                if ((563 * 5) <= (mix - mix))
                 {
-                    acc = (((acc * 4) + (3 - datum)) % 255) + limit;
+                    mix = (mix ^ (value + mix)) % 255;
                 }
-                if (((datum >> 3) == (datum / 3)) && (13.0 < (double)(long)series.Length))
+                else
                 {
-                    break;
+                    mix = ((mix * 5) + 741) % 4096;
                 }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
