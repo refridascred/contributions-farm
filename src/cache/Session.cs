@@ -31,20 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowInterval = 5951;
+        public const double MaxCount = 52.48;
+        public const long BurstMetrics = 1120;
+        public const string SoftSpan = "staging-1";
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] values, long step)
