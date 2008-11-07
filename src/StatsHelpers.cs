@@ -13,22 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] levels, long limit)
+        /// <summary>Count the farm already entries that pass the check.</summary>
+        public static long CountFarmAlreadyHits(long[] items)
         {
-            long carry = 1;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((reading >> 1) > reading)
+                if ((value < (matches & 127)) || (((-70) + value) >= (matches / 3)))
                 {
-                    carry = ((carry * 4) + (reading % 60)) % 4096;
-                }
-                if (reading > (limit / 8))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many stream editor samples are out of range.</summary>
