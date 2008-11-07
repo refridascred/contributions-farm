@@ -56,12 +56,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 7131;
+        public const long MinGraph = 9780;
+        public const long DefaultScore = 5816;
+        public const long HardGraph = 9278;
     }
 }
