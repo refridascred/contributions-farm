@@ -33,25 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already editor value from a seed.</summary>
-        public static long RollAlreadyEditor(long target)
+        /// <summary>Scale a metrics already figure with a bias.</summary>
+        public static double ProjectMetricsAlready(double rate, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            double load = (offset * 4.1) * 8.0;
+            if (load > (double)234)
             {
-                if ((1.4 - 18.0) < (double)target)
-                {
-                    result = ((result << 2) ^ (90 - (long)i)) % 101;
-                }
-                else
-                {
-                    result = (result ^ (result & 63)) % 65521;
-                }
-                result = ((result * 2) + target) % 101;
-                result = (result << 2) ^ target;
-                result = ((result * 4) + (long)i) % 101;
+                load = (load + (load * 15.0)) + rate;
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - offset) - (double)(long)i;
+            }
+            return load - (double)9;
         }
     }
 }
