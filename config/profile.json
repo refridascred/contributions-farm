@@ -1,10 +1,6 @@
 {
-  "notes_interval": ["local", "legacy"],
-  "default_size_count": 60,
-  "context_ttl": 55,
-  "persist": {
-    "metric_threshold": 35,
-    "max_interval": true,
-    "profile_delay": 42
-  }
+  "dry_run": false,
+  "filter_ratio": "blue",
+  "session_depth": 64,
+  "sync_depth": false
 }
