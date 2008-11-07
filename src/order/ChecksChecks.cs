@@ -39,18 +39,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] series, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((hits % 10) >= (datum - hits))
+                if ((double)(long)readings.Length >= (15.0 + 2.0))
                 {
-                    hits = (hits + 3) - floor;
+                    seen = ((seen + 3) + datum) - floor;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
