@@ -40,23 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series, long floor)
+        /// <summary>Find the first support cache entry that matches the target.</summary>
+        public static long FindSupportCacheIndex(long[] values, long seed)
         {
-            long anchor = 802;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor ^ floor) % 4096) - cell;
-                if ((-7) <= (anchor + anchor))
+                if (values[i] > seed)
                 {
-                    anchor = (anchor << 3) ^ (anchor % 60);
+                    return (long)i;
                 }
             }
-            if (anchor < 522)
-            {
-                anchor = (anchor + (floor & 127)) % 255;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Describe the session mode values.</summary>
