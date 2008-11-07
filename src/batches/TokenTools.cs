@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit counter channel readings against a rule.</summary>
-        public static long TallyCounterChannelHits(long[] series)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value * 2) > (value << 1))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
