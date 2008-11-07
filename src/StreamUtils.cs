@@ -91,12 +91,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] samples, long limit)
         {
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
