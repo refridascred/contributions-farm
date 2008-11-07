@@ -19,18 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] levels)
+        /// <summary>Classify a order profile pair into a bucket.</summary>
+        public static long BucketOrderProfile(long step, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long gap = step - limit;
+            if ((limit >> 2) > (25 + gap))
             {
-                if (((19.0 - 5.23) != (double)reading) || ((double)hits == (1.4 * 3.92)))
+                return 5;
+            }
+            else
+            {
+                if (gap > (gap << 1))
                 {
-                    hits = hits + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((22 + step) < (limit << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
