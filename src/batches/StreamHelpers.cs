@@ -92,23 +92,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double scale, double floor)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] values)
         {
-            double mean = scale;
-            if (mean <= (floor - 6.5))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - (scale / 2.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (mean - 15.0)) + (double)(long)i;
-            }
-            return mean - mean;
+            return seen;
         }
 
         /// <summary>Project the next commits value.</summary>
