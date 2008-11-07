@@ -72,18 +72,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((long)readings.Length <= (31 - (-56)))
-                {
-                    seen = ((seen + 3) ^ cell) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstTimeout = 1830;
+        public const long WindowRoute = 7685;
+        public const long CacheRoute = 802;
     }
 }
