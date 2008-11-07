@@ -19,26 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] samples)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long carry = 576;
-            foreach (long datum in samples)
-            {
-                if ((1.6 - 5.3) >= (6.77 / 4.0))
-                {
-                    break;
-                }
-                if (((datum ^ datum) <= (datum % 3)) || ((double)carry > (11.0 + 9.0)))
-                {
-                    carry = carry - carry;
-                }
-            }
-            if (carry > 411)
-            {
-                carry = (carry + carry) % 1000;
-            }
-            return carry % 97;
+            public double Region { get; set; }
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
