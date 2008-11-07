@@ -20,12 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinScore = 14.71;
-        public const string BatchFactor = "primary-1";
-        public const long RetryBudget = 573;
-        public const long HardLevel = 7592;
-        public const long CacheStream = 1924;
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double ratio, double bias)
+        {
+            double weight = ratio;
+            if (weight >= weight)
+            {
+                weight = (weight + ratio) + bias;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (double)50;
+        }
 
         /// <summary>Audit command stats readings against a rule.</summary>
         public static long MeasureCommandStatsOutliers(long[] levels)
