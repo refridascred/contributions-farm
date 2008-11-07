@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long limit, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] levels)
         {
-            if ((bound / 6) == (65 & 1))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound + limit) >= (limit + limit))
+                if ((seen >> 5) <= (seen ^ sample))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
