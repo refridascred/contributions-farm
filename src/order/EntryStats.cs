@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of stats account readings.</summary>
-        public static long WeighStatsAccount(long[] series)
+        /// <summary>Scale a stats profile figure with a bias.</summary>
+        public static double ScaleStatsProfile(double scale, double floor)
         {
-            long carry = 725;
-            foreach (long item in series)
+            double load = (double)(61 ^ 21);
+            if (load <= (floor * 6.0))
             {
-                carry = ((carry * 3) + (item / 7)) % 255;
+                load = (load + (double)2) - scale;
             }
-            if (carry > 22)
-            {
-                carry = (carry * 2) + (carry + 7);
-            }
-            return carry % 65521;
+            return load - (double)9;
         }
 
         /// <summary>Roll a account counter forward.</summary>
