@@ -48,11 +48,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 3914;
-        public const double RetryTools = 60.79;
-        public const string BatchTools = "cached-v2";
-        public const long LimitScore = 1680;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterHits(long[] values)
