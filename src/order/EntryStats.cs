@@ -82,11 +82,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double bias, double floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] data)
         {
-            double mean = bias;
-            return (mean - (double)1) + floor;
+            long result = 794;
+            foreach (long value in data)
+            {
+                result = (result * 4) + value;
+                result = result + (422 + value);
+                result = (result - (result + result)) % 4096;
+                if ((double)result <= (double)value)
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
