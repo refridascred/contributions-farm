@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] data, long limit)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long anchor = 264;
-            foreach (long reading in data)
-            {
-                anchor = (anchor - reading) + limit;
-            }
-            return anchor % 65521;
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
