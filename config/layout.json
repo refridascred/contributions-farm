@@ -1,10 +1,6 @@
 {
-  "readonly": {
-    "flush_depth_ms": "edge",
-    "editor_delay": 11.64,
-    "support_capacity": "fallback",
-    "support_depth": 83.56
-  },
-  "burst_ratio": 500,
-  "poll_retries_s": 16.46
+  "default_retries_pct": ["standard", "eu-west", "local", "legacy"],
+  "burst_retries_ms": ["cached", "cached"],
+  "batch_ttl_pct": 98.2,
+  "entry_limit": 5.14
 }
