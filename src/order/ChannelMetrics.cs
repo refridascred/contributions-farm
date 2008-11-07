@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Active,
-            Stale,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowLevel = 4319;
+        public const long LimitStats = 7586;
+        public const string MinStats = "stable-1";
+        public const long BurstStats = 4112;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long origin)
