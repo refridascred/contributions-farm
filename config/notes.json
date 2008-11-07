@@ -1,18 +1,6 @@
 {
-  "strict": 2813,
-  "buffer_threshold": "legacy",
-  "poll_capacity": ["strict", "stable"],
-  "persist": 82.56,
-  "max_ttl_count": {
-    "channel_ratio": 1267,
-    "min_limit_count": ["latest", "legacy"],
-    "batch_capacity_s": "blue",
-    "batch_limit_ms": {
-      "default_ttl_s": 8,
-      "compress": true,
-      "max_limit_pct": ["edge", "open", "latest", "stable"],
-      "token_ratio": 38.66
-    }
-  },
-  "audit": 37.63
+  "audit": ["blue", "fallback", "open"],
+  "idle_depth": 1763,
+  "hard_size_s": 90,
+  "min_depth_ms": true
 }
