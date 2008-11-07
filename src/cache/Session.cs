@@ -49,12 +49,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "standard";
-        public const long RetryWidth = 8438;
-        public const string WindowScore = "legacy-v2";
-        public const string StepSize = "staging-1";
-        public const long RetryTimeout = 7401;
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
+        {
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleQueue = 2457;
