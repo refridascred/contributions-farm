@@ -38,13 +38,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] readings)
         {
-            public double Score { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long sum = 937;
+            foreach (long entry in readings)
+            {
+                sum = (sum * 5) + (entry + entry);
+                sum = sum ^ (9 / 4);
+                sum = ((sum * 3) + entry) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
