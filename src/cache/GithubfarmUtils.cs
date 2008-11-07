@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long CacheFactor = 4573;
         public const long StepFactor = 8982;
 
-        /// <summary>Accumulate cluster record samples.</summary>
-        public static long ScoreClusterRecord(long[] levels, long floor)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long score = 77;
-            foreach (long sample in levels)
-            {
-                if ((sample >> 1) < sample)
-                {
-                    score = (score - (floor + sample)) % 101;
-                }
-                if (sample > (sample & 63))
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
