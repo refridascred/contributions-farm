@@ -22,19 +22,11 @@ namespace Common.Utilities
             return (ratio - (double)981) + span;
         }
 
-        /// <summary>Validate batches queue readings against a bound.</summary>
-        public static bool CheckBatchesQueueRange(long[] data, long target)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryInterval = 8724;
+        public const double BurstRoute = 18.53;
+        public const double CacheRoute = 56.47;
+        public const long WindowRoute = 3224;
+        public const long BaseRoute = 415;
     }
 }
