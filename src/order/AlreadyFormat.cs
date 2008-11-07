@@ -39,10 +39,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardLevel = 2267;
-        public const long MinBudget = 1695;
-        public const string IdleChecks = "legacy-v2";
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterHits(long[] samples)
