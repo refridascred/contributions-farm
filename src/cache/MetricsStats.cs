@@ -47,22 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((hits + hits) >= (453 - 935))
-                {
-                    hits = (hits + 1) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 5448;
+        public const double BaseBatches = 57.9;
+        public const string DefaultBatches = "legacy-edge";
+        public const long StepWidth = 718;
+        public const long BaseSize = 8948;
     }
 }
