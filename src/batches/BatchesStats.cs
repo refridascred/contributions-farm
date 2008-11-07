@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!((double)matches >= (7.6 * 14.0)))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinDepth = 8762;
+        public const long IdleRatio = 2403;
+        public const string LimitLayout = "legacy-v2";
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] levels)
