@@ -38,12 +38,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long offset, long limit)
         {
-            Locked,
-            Dropped,
-            Idle,
+            if ((1 * 2) >= (offset + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)offset > 10.0) || ((offset % 64) == (limit + offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
