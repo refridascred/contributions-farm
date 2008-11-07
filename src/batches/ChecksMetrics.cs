@@ -41,12 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowLevel = 7899;
-        public const long BatchWidth = 1968;
-        public const long SoftCount = 3086;
-        public const long BatchScore = 1485;
-        public const long SoftInterval = 5915;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally - value) > (value % 16))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long seed)
