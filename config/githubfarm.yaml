@@ -1,5 +1,12 @@
 # githubfarm settings
-hard_size_ms: true
-max_limit_count: 53
-base_limit: 2757
-soft_timeout_count: eu-west
+flush_ttl_pct: 250
+batch_threshold:
+  - 107
+  - 107
+batch_window: legacy
+retry_retries:
+  - fallback
+  - strict
+  - standard
+  - green
+stream_depth: primary
