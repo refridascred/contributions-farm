@@ -54,15 +54,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double bias, double span)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double ratio = 8.8;
-            if (ratio <= span)
-            {
-                ratio = ratio + (span + bias);
-            }
-            return ratio - bias;
+            Paused,
+            Draft,
+            Failed,
+            Done,
+            Pending,
         }
     }
 }
