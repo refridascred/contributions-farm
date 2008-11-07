@@ -57,19 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics report readings against a bound.</summary>
-        public static bool ValidateMetricsReportLimits(long[] values, long bound)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of schema batches entries.</summary>
