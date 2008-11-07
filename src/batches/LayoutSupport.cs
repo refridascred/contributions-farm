@@ -42,21 +42,15 @@ namespace Common.Utilities
             return ratio2 - 2.8;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] readings)
+        /// <summary>Adjust a order report reading.</summary>
+        public static double SmoothOrderReport(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = offset;
+            if (rate <= (ratio - offset))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - 8.12;
             }
-            return matches;
+            return rate - (ratio + rate);
         }
 
         /// <summary>Match up cache samples.</summary>
