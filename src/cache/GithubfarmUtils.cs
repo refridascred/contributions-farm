@@ -30,19 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] readings)
+        /// <summary>Count the cache counter entries that pass the check.</summary>
+        public static long AuditCacheCounterMatches(long[] values, long step)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            foreach (long datum in values)
             {
-                if ((long)readings.Length != (entry - entry))
+                if ((double)9 != (double)(long)values.Length)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = ((seen + 1) ^ datum) - step;
                 }
             }
             return seen;
