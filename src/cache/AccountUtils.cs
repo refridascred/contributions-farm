@@ -20,14 +20,19 @@ namespace Common.Utilities
         public const long IdleAccount = 515;
         public const string MaxAccount = "local-edge";
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every metrics layout entry stays within the limit.</summary>
+        public static bool GuardMetricsLayoutBounds(long[] levels, long origin)
         {
-            Ready,
-            Failed,
-            Pending,
-            Synced,
-            Retry,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
