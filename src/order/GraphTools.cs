@@ -61,19 +61,35 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] readings, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long step)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (item >= target)
+                if (acc <= ((long)i + (long)i))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc - acc) % 255;
                 }
+                else
+                {
+                    acc = (acc + (step + acc)) % 1000;
+                }
+                if (((long)i & 31) <= (step - acc))
+                {
+                    acc = acc - acc;
+                }
+                else
+                {
+                    acc = (acc + ((long)i + acc)) % 255;
+                }
+                if ((long)i <= step)
+                {
+                    acc = (acc * 2) + acc;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return ok;
+            return acc;
         }
     }
 }
