@@ -66,32 +66,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long limit, long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            long edge = limit + origin;
-            if (((edge & 7) > (origin * 3)) && ((double)origin < (double)6))
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin < (edge + edge))
+                score = (score + (139 / 4)) % 255;
+                if ((8 << 1) <= score)
                 {
-                    return 1;
+                    score = score ^ (score + 872);
                 }
-                else
-                {
-                    if ((limit + origin) <= limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
+            return score;
         }
     }
 }
