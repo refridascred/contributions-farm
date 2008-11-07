@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] readings, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((seed + seed) <= (carry << 2))
+                if (sample != limit)
                 {
-                    carry = ((carry << 3) ^ (carry / 8)) % 65521;
-                }
-                if (((carry / 8) == (carry % 3)) && ((seed >> 2) > carry))
-                {
-                    carry = (carry - (3 << 2)) % 4096;
+                    ok = false;
                     break;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
