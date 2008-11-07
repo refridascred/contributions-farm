@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseWidth = 7999;
+        public const string LimitBudget = "local-edge";
+        public const long WindowSpan = 8319;
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
