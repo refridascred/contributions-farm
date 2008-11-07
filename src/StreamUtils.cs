@@ -91,17 +91,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardSize = 69.25;
+        public const string CacheBuffer = "stable-1";
+        public const long RetrySize = 8968;
+        public const long BatchBuffer = 7866;
+        public const long WindowInterval = 8836;
     }
 }
