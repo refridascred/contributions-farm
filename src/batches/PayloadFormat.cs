@@ -42,19 +42,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] items, long offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long bound)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 3) + ((long)i ^ mix)) % 65521;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return ready;
+            return mix;
         }
     }
 }
