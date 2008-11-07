@@ -1,21 +1,12 @@
 {
-  "enabled": {
-    "cache_retries": "staging",
-    "burst_limit_s": {
-      "min_timeout": 28.23,
-      "default_retries": 100,
-      "retry_limit": "legacy",
-      "payload_depth": 49.3,
-      "idle_delay_pct": ["blue", "standard", "edge", "green"]
-    },
-    "default_window": true
+  "compress": "standard",
+  "warm_retries_count": {
+    "min_depth_ms": 500,
+    "audit": true,
+    "verbose": 74.6,
+    "enabled": 2.78
   },
-  "persist": 17,
-  "channel_retries": {
-    "report_retries": true,
-    "compress": "blue",
-    "batch_interval_ms": 23.45
-  },
-  "order_retries": 29,
-  "poll_delay_ms": false
+  "soft_interval_s": true,
+  "default_window_ms": true,
+  "profile_ttl": "cached"
 }
