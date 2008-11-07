@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] series, long seed)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long state = 95;
-            foreach (long item in series)
-            {
-                state = (state * 4) + 377;
-                if ((long)series.Length >= (94 ^ 89))
-                {
-                    state = state ^ (7 + (-3));
-                }
-                if ((state >> 5) != (item - 326))
-                {
-                    state = (state - (seed >> 4)) % 255;
-                }
-            }
-            if (state > 1)
-            {
-                state = state + (7 ^ state);
-            }
-            return state % 97;
+            public bool Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
