@@ -30,18 +30,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] values)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long origin, long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long prev = origin - floor;
+            if (floor <= (prev % 24))
             {
-                if ((double)count != (7.13 * 15.0))
+                return 8;
+            }
+            else
+            {
+                if (!(9 > ((-1) + origin)))
                 {
-                    count = (count + 2) ^ entry;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)prev >= (6.0 * 9.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
     }
 }
