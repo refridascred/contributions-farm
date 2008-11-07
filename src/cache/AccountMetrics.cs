@@ -76,22 +76,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch record samples are out of range.</summary>
-        public static long TallyBatchRecordOutliers(long[] samples, long floor)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (item <= (matches + floor))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
