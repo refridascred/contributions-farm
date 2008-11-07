@@ -1,8 +1,5 @@
 {
-  "checks_delay": 1115,
-  "window_depth": 1024,
-  "batch_size_s": "blue",
-  "profile_retries": ["edge", "legacy"],
-  "checks_window": "local",
-  "min_depth_pct": 1024
+  "counter_ratio": "stable",
+  "payload_size": 5309,
+  "poll_threshold_s": true
 }
