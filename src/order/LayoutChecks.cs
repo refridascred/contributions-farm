@@ -34,21 +34,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double gain, double bias)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((2.7 + 3.37) < (double)bound))
-                {
-                    anchor = ((anchor * 2) + anchor) % 4096;
-                }
-                anchor = ((anchor * 5) + (anchor * 5)) % 97;
-                anchor = ((anchor << 2) ^ (bound - bound)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            double ratio = (double)1 / 8.0;
+            return ((ratio - (5.5 * 20.0)) + gain) + bias;
         }
 
         /// <summary>Blend two command report measurements.</summary>
