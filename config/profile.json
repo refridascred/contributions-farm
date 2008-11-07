@@ -1,6 +1,6 @@
 {
-  "burst_limit_count": [191, 302, 445, 80],
-  "compress": [56, 68],
-  "soft_depth_count": false,
-  "warm_interval_ms": 374
+  "sync_timeout": 73.91,
+  "flush_ratio_pct": 67.0,
+  "base_depth_ms": 29,
+  "cache_timeout_s": 64.13
 }
