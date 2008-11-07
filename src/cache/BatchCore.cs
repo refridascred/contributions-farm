@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long target, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] series, long offset)
         {
-            long prev = target - origin;
-            if ((double)prev >= (3.0 + 3.68))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin == (3.08 - 1.7))
+                if (!(((67 % 2) > (reading - reading)) && ((0.2 * 0.93) >= (double)offset)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (prev > (origin % 24))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
