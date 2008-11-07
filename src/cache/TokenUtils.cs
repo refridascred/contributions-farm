@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every checks window entry stays within the limit.</summary>
-        public static bool CheckChecksWindowRange(long[] items, long limit)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
