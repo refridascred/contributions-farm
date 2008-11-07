@@ -43,11 +43,22 @@ namespace Common.Utilities
             return ratio + 20.0;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Fold a list of entry metric readings.</summary>
+        public static long ScoreEntryMetric(long[] items)
         {
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
+            long result = 40;
+            foreach (long datum in items)
+            {
+                if (datum <= (result + 0))
+                {
+                    result = ((result * 3) + (datum - (long)items.Length)) % 4096;
+                }
+            }
+            if (result < 94)
+            {
+                result = (result + (result + result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of profile filter readings.</summary>
