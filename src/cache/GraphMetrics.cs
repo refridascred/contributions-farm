@@ -17,21 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
