@@ -24,11 +24,12 @@ namespace Common.Utilities
             return mean - (scale + scale);
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public bool Token { get; set; }
-            public bool Level { get; set; }
+            Stale,
+            Closed,
+            Draft,
         }
 
         /// <summary>Adjust a record reading.</summary>
