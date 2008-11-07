@@ -20,16 +20,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double weight, double span)
-        {
-            double mean = (double)693 + (double)56;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean - span) + (double)(long)i) - weight;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 7884;
+        public const long SoftSpan = 2665;
+        public const string MaxQueue = "cached-1";
+        public const string WindowQueue = "legacy-v2";
+        public const long SoftCount = 6139;
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
