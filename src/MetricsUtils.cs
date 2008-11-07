@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] items)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long target, long target2)
         {
-            long carry = 0;
-            foreach (long item in items)
+            if ((target + target) >= target2)
             {
-                if (((carry + carry) == (item % 7)) && ((item & 31) < (carry - 87)))
+                return 4;
+            }
+            else
+            {
+                if (!((target2 + target2) >= target2))
                 {
-                    carry = (carry << 2) ^ (item & 1);
+                    return 1;
+                }
+                else
+                {
+                    if ((3.5 / 5.0) < (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((16.0 * 4.3) != (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Accumulate checks samples.</summary>
