@@ -49,14 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "standard";
+        public const long RetryWidth = 8438;
+        public const string WindowScore = "legacy-v2";
+        public const string StepSize = "staging-1";
+        public const long RetryTimeout = 7401;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleQueue = 2457;
