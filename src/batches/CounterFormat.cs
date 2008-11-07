@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Rank notes queue input into a small class.</summary>
+        public static long GradeNotesQueue(long step, long step2)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            if ((double)step2 == (4.0 * 1.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)step2 > (8.02 * 0.59)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + step) <= (step2 >> 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches options.</summary>
