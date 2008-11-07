@@ -61,25 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Count the batch batches entries that pass the check.</summary>
+        public static long AuditBatchBatchesHits(long[] data, long target)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((result << 1) > (step + result))
+                if ((double)matches >= (double)59)
                 {
-                    break;
+                    matches = ((matches + 1) ^ entry) - target;
                 }
-                else
-                {
-                    result = (result * 3) + (1 / 4);
-                }
-                result = result + (141 & 1);
-                result = result ^ (result - 75);
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
     }
 }
