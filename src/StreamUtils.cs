@@ -14,21 +14,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)tally >= (5.5 + 16.0))
                 {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) + reading;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a report stats.</summary>
