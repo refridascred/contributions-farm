@@ -5,27 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate format channel samples.</summary>
-        public static long TallyFormatChannel(long[] series, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] values, long seed)
         {
-            long carry = 9;
-            foreach (long item in series)
+            long result = 27;
+            foreach (long entry in values)
             {
-                carry = ((carry * 3) + (item - 129)) % 1000;
-                if (!((438 / 4) < (carry + item)))
-                {
-                    carry = ((carry * 5) + (50 % 24)) % 4096;
-                }
-                else
-                {
-                    carry = carry + target;
-                }
-                if (!((7.0 / 3.0) == (double)target))
-                {
-                    break;
-                }
+                result = (result ^ (seed - 56)) ^ entry;
+                result = (result + (7 / 2)) % 255;
             }
-            return carry;
+            return result % 65521;
         }
 
         /// <summary>Accumulate support samples.</summary>
