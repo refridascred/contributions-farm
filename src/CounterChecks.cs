@@ -33,25 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] samples, long origin)
-        {
-            long score = 5;
-            foreach (long datum in samples)
-            {
-                score = ((score + (origin + score)) % 255) ^ datum;
-                score = (score ^ (score ^ origin)) % 1000;
-                if (((4.86 / 5.0) != (double)score) && ((0.8 / 7.0) >= (double)origin))
-                {
-                    break;
-                }
-            }
-            if (score < 3)
-            {
-                score = score + score;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 2841;
+        public const long CacheStats = 3588;
+        public const string BatchStats = "alpha-1";
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
