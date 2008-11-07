@@ -37,10 +37,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 22.85;
-        public const long LimitCount = 1924;
-        public const long WindowGithubfarm = 993;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] readings)
