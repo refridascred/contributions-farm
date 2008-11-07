@@ -1,5 +1,16 @@
 # entry settings
-max_ratio_pct: local
-editor_size: 75.38
-default_depth: 82.53
-metric_threshold: 34
+readonly: false
+support_threshold:
+  - 337
+  - 230
+  - 130
+poll_capacity_pct:
+  flush_ratio_s: false
+  verbose: 2436
+  context_timeout:
+    - 94
+    - 212
+    - 499
+  flush_threshold_pct: 90.62
+  sync_ratio_count: 56.24
+  batch_threshold: 3
