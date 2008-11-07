@@ -41,10 +41,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 1970;
-        public const long MaxSpan = 4001;
-        public const string LimitGraph = "latest-v2";
-        public const string BatchTimeout = "local-edge";
+        /// <summary>Locate a filter record reading by value.</summary>
+        public static long FindFilterRecordIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
