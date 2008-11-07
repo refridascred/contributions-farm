@@ -50,18 +50,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of commits order entries.</summary>
-        public static long ScoreCommitsOrder(long[] levels)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long sum = -9;
-            foreach (long item in levels)
-            {
-                if ((item + item) == (item * 5))
-                {
-                    sum = sum + (2 - item);
-                }
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
