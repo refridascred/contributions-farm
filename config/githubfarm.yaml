@@ -1,13 +1,10 @@
 # githubfarm settings
-cache_timeout: 500
-batch_depth_count: 76
-cache_delay_s: 250
-default_ratio_s:
-  - fallback
-  - strict
-  - blue
-  - stable
-readonly:
-  - blue
-  - edge
-default_retries_s: false
+retry_interval:
+  - 438
+  - 111
+  - 101
+burst_threshold: 82
+metric_limit: open
+commits_retries: false
+readonly: 4109
+soft_limit: latest
