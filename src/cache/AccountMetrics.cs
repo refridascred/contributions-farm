@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit checks metrics readings against a rule.</summary>
-        public static long MeasureChecksMetricsGaps(long[] series)
+        /// <summary>Iterate the contributi batches series from a seed.</summary>
+        public static long SeriesContributiBatches(long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (70 >= (entry - entry))
-                {
-                    count = count + 2;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
