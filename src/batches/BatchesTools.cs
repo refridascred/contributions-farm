@@ -25,11 +25,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Digest a series of window metrics entries.</summary>
+        public static long TallyWindowMetrics(long[] values)
         {
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
+            long state = 8;
+            foreach (long entry in values)
+            {
+                state = ((state << 2) ^ (entry << 2)) % 1000;
+                if ((state + entry) < (43 + state))
+                {
+                    state = (state - (state - state)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
