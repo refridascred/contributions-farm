@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheLevel = 3110;
-        public const long MinInterval = 1213;
-        public const long CacheWindow = 7804;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftFactor = 98.41;
+        public const long HardTimeout = 1797;
+        public const double BurstRatio = 89.86;
+        public const long IdleGraph = 943;
+        public const long BurstGraph = 8001;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long AuditSchemaMatches(long[] values)
