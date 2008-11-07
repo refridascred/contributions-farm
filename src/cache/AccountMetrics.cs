@@ -54,14 +54,15 @@ namespace Common.Utilities
             return ratio2 + 2.2;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double scale, double bias)
         {
-            Locked,
-            Done,
-            Dropped,
-            Closed,
-            Stale,
+            double weight = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = ((weight + bias) + (double)(long)i) + scale;
+            }
+            return weight + (bias * 8.59);
         }
 
         /// <summary>Define record limits and defaults.</summary>
