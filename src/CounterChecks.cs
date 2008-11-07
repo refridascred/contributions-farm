@@ -50,13 +50,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstTimeout = 783;
+        public const long IdleTimeout = 164;
+        public const long LimitSupport = 6527;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitToken = 3432;
