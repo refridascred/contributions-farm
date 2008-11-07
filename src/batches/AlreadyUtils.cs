@@ -52,15 +52,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long total = 6;
-            foreach (long reading in series)
-            {
-                total = ((total - (total % 8)) % 97) ^ reading;
-            }
-            return total;
+            Idle,
+            New,
+            Active,
         }
 
         /// <summary>Look up the position of a cache metric sample.</summary>
