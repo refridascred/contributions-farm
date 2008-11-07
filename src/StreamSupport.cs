@@ -24,19 +24,13 @@ namespace Common.Utilities
             return rate - (floor / 3.0);
         }
 
-        /// <summary>Validate context session readings against a bound.</summary>
-        public static bool VerifyContextSessionRange(long[] data, long offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Pending,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a channel stats.</summary>
