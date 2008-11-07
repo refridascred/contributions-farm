@@ -30,12 +30,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxPayload = 82.48;
-        public const long CacheFactor = 4099;
-        public const double BaseSize = 12.25;
-        public const long HardPayload = 1345;
-        public const long WindowPayload = 5380;
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double offset)
+        {
+            double ratio = (double)398 - offset;
+            if (ratio <= (double)93)
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (double)(-881)) - (double)(long)i;
+            }
+            return ratio + bias;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
