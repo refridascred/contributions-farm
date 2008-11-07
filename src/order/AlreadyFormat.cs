@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardScore = 1699;
-        public const double RetryCache = 93.62;
-        public const long LimitCache = 9908;
-        public const long HardCache = 4010;
-        public const string BatchLevel = "cached-v2";
+        /// <summary>Blend two payload already measurements.</summary>
+        public static double BlendPayloadAlready(double rate, double span)
+        {
+            double rate2 = 2.5;
+            if (rate2 > rate)
+            {
+                rate2 = (rate2 - rate2) + span;
+            }
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + rate) - (double)(long)i;
+            }
+            return rate2 + rate2;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long BucketChecks(long limit, long step)
