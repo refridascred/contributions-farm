@@ -1,7 +1,18 @@
 # githubfarm settings
-window_capacity: primary
-verbose: latest
-cache_ratio_s: cached
-persist: open
-record_window: 28.91
-batch_delay: 9468
+flush_size:
+  readonly:
+    max_depth: fallback
+    cache_ttl_pct: false
+    audit: 88
+    flush_capacity_s: 11
+  verbose:
+    - 92
+    - 463
+    - 491
+    - 374
+  idle_depth_s: green
+  metric_retries: false
+  order_timeout: false
+cache_retries: 250
+base_interval_pct: cached
+context_depth: strict
