@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a command editor sample.</summary>
-        public static long LocateCommandEditorIndex(long[] levels, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
+                if (reading > bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
