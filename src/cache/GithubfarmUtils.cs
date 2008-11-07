@@ -37,22 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] values, long seed)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] items, long floor)
         {
-            long state = 60;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.3 - 0.82) <= (double)seed)
+                if (items[i] >= floor)
                 {
-                    state = (((state * 3) + (97 >> 5)) % 1000) - reading;
+                    return (long)i;
                 }
             }
-            if (state < 0)
-            {
-                state = state ^ (59 - seed);
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Hold a already stats.</summary>
