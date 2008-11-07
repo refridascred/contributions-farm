@@ -41,11 +41,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((long)samples.Length <= hits)
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
