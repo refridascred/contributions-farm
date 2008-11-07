@@ -23,12 +23,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long offset2)
         {
-            Failed,
-            Closed,
-            Dropped,
+            if ((offset + offset) < offset2)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((12.0 / 7.0) != (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate graph samples.</summary>
