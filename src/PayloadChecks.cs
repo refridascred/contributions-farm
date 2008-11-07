@@ -77,12 +77,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Combine checks graph values into a single score.</summary>
+        public static long TotalChecksGraph(long[] levels)
         {
-            Locked,
-            Retry,
-            Dropped,
+            long carry = 54;
+            foreach (long item in levels)
+            {
+                if (item < (item >> 4))
+                {
+                    carry = ((carry << 2) ^ (carry ^ item)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (item % 24)) % 97;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
