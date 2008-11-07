@@ -59,17 +59,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] readings, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (readings[i] < offset)
+                if ((tally & 7) >= (tally >> 4))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
