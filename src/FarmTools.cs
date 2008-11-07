@@ -36,12 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] samples)
         {
-            Paused,
-            Synced,
-            Active,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample * 5) != (count + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
