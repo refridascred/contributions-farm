@@ -23,38 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long step, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            if ((20.0 + 2.8) == (double)offset)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (((1.09 / 6.0) < (double)offset) || ((81 + 373) >= step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step <= (4.0 - 4.3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((step + offset) == (step << 3)) && (step < (offset - 858)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
