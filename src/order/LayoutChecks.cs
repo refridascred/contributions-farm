@@ -69,13 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Blend two command report measurements.</summary>
+        public static double ProjectCommandReport(double scale, double bias)
         {
-            Pending,
-            Done,
-            Locked,
-            Synced,
+            double scale2 = bias;
+            if (scale2 > bias)
+            {
+                scale2 = scale2 - (double)62;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Define window limits and defaults.</summary>
