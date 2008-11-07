@@ -19,11 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long step)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            long score = step;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score << 2) ^ score) % 1000;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a route header.</summary>
