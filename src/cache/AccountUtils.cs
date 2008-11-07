@@ -15,18 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many layout schema samples are out of range.</summary>
-        public static long CountLayoutSchemaOutliers(long[] series)
+        /// <summary>Combine profile filter values into a single score.</summary>
+        public static long TallyProfileFilter(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long mix = 68;
+            foreach (long sample in items)
             {
-                if ((entry + tally) >= (tally + entry))
+                if (((long)items.Length ^ mix) <= (mix << 1))
                 {
-                    tally = tally + 2;
+                    mix = (mix + (sample * 3)) % 97;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Blend two account measurements.</summary>
