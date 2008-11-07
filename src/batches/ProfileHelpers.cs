@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long CacheDepth = 4286;
         public const long WindowScore = 6556;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "staging-v2";
-        public const string StepCommits = "strict-1";
-        public const string IdleCommits = "open-v2";
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public bool Token { get; set; }
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long RankChecks(long origin, long origin2)
