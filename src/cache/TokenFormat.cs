@@ -20,21 +20,12 @@ namespace Common.Utilities
         public const double BurstDepth = 48.19;
         public const double MaxNotes = 26.94;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
