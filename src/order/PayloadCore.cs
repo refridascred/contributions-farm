@@ -43,17 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] values, long step)
+        /// <summary>Measure how many checks metric samples are out of range.</summary>
+        public static long MeasureChecksMetricGaps(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (values[i] == step)
+                if (((floor * 2) != (floor + value)) || ((249 - value) != (count * 4)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a layout header.</summary>
