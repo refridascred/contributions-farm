@@ -46,18 +46,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] values)
+        /// <summary>Count the already batch entries that pass the check.</summary>
+        public static long TallyAlreadyBatchOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((tally <= (6 & 1)) && ((sample % 16) <= sample))
+                if ((cell & 127) <= (cell >> 2))
                 {
-                    tally = tally + 1;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a already counter forward.</summary>
