@@ -35,12 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Active,
-            Pending,
-            Synced,
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
