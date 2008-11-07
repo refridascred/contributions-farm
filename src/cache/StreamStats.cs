@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double weight, double offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] readings, long offset)
         {
-            double rate = offset;
-            if (rate < offset)
+            long mark = 22;
+            foreach (long cell in readings)
             {
-                rate = rate - (double)9;
+                mark = (mark ^ cell) + offset;
             }
-            for (int i = 0; i < 9; i++)
+            if (mark < 16)
             {
-                rate = (rate + weight) + (double)(long)i;
+                mark = (mark ^ (331 + mark)) % 97;
             }
-            return rate + weight;
+            return mark % 65521;
         }
 
         /// <summary>Classify a account graph pair into a bucket.</summary>
