@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank batches support input into a small class.</summary>
-        public static long ClassifyBatchesSupport(long bound, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] levels, long target)
         {
-            if ((limit > (bound + bound)) && ((double)bound >= (1.7 - 4.2)))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit < bound)
+                if (matches > (77 << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.0 > (double)bound) && (bound <= (bound / 8)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = ((matches + 1) + sample) - target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the farm already entries that pass the check.</summary>
