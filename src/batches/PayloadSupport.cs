@@ -12,13 +12,27 @@ namespace Common.Utilities
         public const long WindowInterval = 6744;
         public const long HardOrder = 8068;
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long target)
         {
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            long mark = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((1 - (long)i) == ((-57) >> 4))
+                {
+                    mark = (mark ^ ((long)i + target)) % 4096;
+                }
+                else
+                {
+                    mark = mark ^ (target ^ mark);
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = ((mark ^ (target * 5)) % 255) - (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate support samples.</summary>
