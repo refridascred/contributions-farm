@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 2911;
-        public const double WindowTimeout = 95.35;
-        public const double BaseTimeout = 41.76;
-        public const long CacheFactor = 6259;
-        public const long BatchWindow = 3646;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowMatches(long[] readings, long seed)
