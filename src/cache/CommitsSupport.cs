@@ -23,32 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double scale, double offset)
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
+            double gain = scale - scale;
+            if (gain < scale)
             {
-                if ((score / 5) > score)
-                {
-                    score = (score ^ (seed >> 4)) % 65521;
-                }
-                else
-                {
-                    long lane = (score >> 1) & 255;
-                    score = ((score * 4) + (lane ^ lane)) % 101;
-                }
-                if ((score - seed) == (seed + score))
-                {
-                    score = score - ((long)i & 1);
-                }
-                else
-                {
-                    score = (score + (290 & 63)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                gain = (gain + gain) + offset;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + scale) + (double)(long)i;
+            }
+            return gain - scale;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
