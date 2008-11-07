@@ -27,38 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a payload stream value against two limits.</summary>
-        public static long SortPayloadStream(long target, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] readings, long target)
         {
-            if ((target - floor) > (floor >> 5))
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((17.0 * 9.4) < (double)target)
+                if (cell >= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((14.0 + 4.0) < (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor % 97) == (target / 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
