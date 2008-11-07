@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long CacheDepth = 4286;
         public const long WindowScore = 6556;
 
-        /// <summary>Match up filter already samples.</summary>
-        public static long PairFilterAlreadyCount(long[] items)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define report limits and defaults.</summary>
