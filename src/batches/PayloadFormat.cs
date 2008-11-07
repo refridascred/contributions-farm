@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const long MaxTimeout = 3784;
         public const long StepLevel = 5519;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count contributi report pairs that satisfy a relation.</summary>
+        public static long CompareContributiReportCount(long[] readings)
         {
-            Paused,
-            Locked,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
