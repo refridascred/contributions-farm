@@ -70,11 +70,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitFactor = 90.51;
-        public const long MaxChecks = 7722;
-        public const string HardCount = "standard-v2";
-        public const long BurstChecks = 2176;
-        public const long DefaultDepth = 5883;
+        /// <summary>Classify a commits metric pair into a bucket.</summary>
+        public static long SortCommitsMetric(long offset, long offset2)
+        {
+            if (((double)offset2 != (double)915) || ((offset2 - offset2) >= offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset2 > (offset2 & 15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
