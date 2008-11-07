@@ -1,6 +1,5 @@
 # support settings
-cache_window_s: staging
-tools_capacity: 2
-retry_interval:
-  - 74
-  - 292
+compress: true
+farm_window: 44.63
+flush_timeout_ms: false
+idle_interval: primary
