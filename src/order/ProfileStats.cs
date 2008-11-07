@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] values)
         {
-            Active,
-            Retry,
-            Done,
-            Dropped,
+            long carry = 961;
+            foreach (long entry in values)
+            {
+                if (((carry + 5) >= (carry + carry)) || ((entry - entry) <= (carry & 255)))
+                {
+                    carry = (carry * 4) + carry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Adjust a metric reading.</summary>
