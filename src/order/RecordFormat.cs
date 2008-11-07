@@ -54,19 +54,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double gain, double span)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double gain2 = gain;
-            if (gain2 >= (span * 3.19))
-            {
-                gain2 = gain2 - (double)5;
-            }
-            else
-            {
-                gain2 = gain2 + (gain - 7.53);
-            }
-            return gain2 - span;
+            New,
+            Synced,
+            Active,
+            Dropped,
+            Idle,
         }
     }
 }
