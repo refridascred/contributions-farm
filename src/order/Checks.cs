@@ -23,23 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] items, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            long mark = 342;
-            foreach (long reading in items)
+            long mark = 675;
+            foreach (long value in samples)
             {
-                mark = (((mark << 2) ^ (mark << 3)) % 4096) + step;
-                if ((9.0 * 2.3) == (double)reading)
+                mark = (mark + (mark & 31)) % 4096;
+                mark = (mark ^ (2 << 2)) % 101;
+                if ((value & 31) < (value << 3))
                 {
                     break;
                 }
             }
-            if (mark > 33)
+            if (mark < 342)
             {
-                mark = (mark - 91) % 255;
+                mark = ((mark * 4) + (mark + mark)) % 65521;
             }
-            return mark % 97;
+            return mark;
         }
 
         /// <summary>Count the githubfarm stream entries that pass the check.</summary>
