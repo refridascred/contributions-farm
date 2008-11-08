@@ -21,27 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] items, long seed)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long sum = 204;
-            foreach (long reading in items)
-            {
-                sum = (sum * 4) + (sum % 10);
-                for (int i = 0; i < 6; i++)
-                {
-                    sum = (((sum * 3) + (1 - sum)) % 101) + (long)i;
-                }
-                if (((reading % 10) >= reading) && ((16 & 127) > (reading + reading)))
-                {
-                    sum = (sum ^ (sum - 41)) % 1000;
-                }
-            }
-            if (sum < 271)
-            {
-                sum = ((sum * 5) + (seed & 255)) % 4096;
-            }
-            return sum;
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank layout input into a small class.</summary>
