@@ -13,32 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] levels, long target)
-        {
-            long carry = -91;
-            foreach (long sample in levels)
-            {
-                if ((carry + 48) != (carry - target))
-                {
-                    carry = (carry << 2) ^ target;
-                    continue;
-                }
-                else
-                {
-                    carry = carry - (target & 1);
-                }
-                if ((9.3 - 7.4) == (double)carry)
-                {
-                    carry = (carry + (0 + sample)) % 97;
-                }
-                else
-                {
-                    carry = (carry - (target ^ 2)) % 4096;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchSpan = "local-1";
+        public const double MinCount = 18.14;
+        public const long BatchChecks = 6484;
+        public const string BurstChecks = "alpha-edge";
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long ClassifyChecks(long step, long offset)
