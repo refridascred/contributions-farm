@@ -33,18 +33,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] samples)
+        /// <summary>Look up the position of a route metric sample.</summary>
+        public static long LocateRouteMetricIndex(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)hits <= (2.91 * 15.0)))
+                if (series[i] > seed)
                 {
-                    hits = (hits + 3) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of format readings.</summary>
