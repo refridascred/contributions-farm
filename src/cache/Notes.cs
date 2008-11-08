@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double rate, double span)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] samples, long offset)
         {
-            double load = rate;
-            return (load - (2.94 - 7.0)) + span;
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the counter state values.</summary>
