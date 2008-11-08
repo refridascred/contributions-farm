@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long edge = offset & 1;
-                if ((offset - (-9)) >= edge)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    edge = ((edge * 3) + anchor) % 97;
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
