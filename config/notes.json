@@ -1,5 +1,12 @@
 {
-  "default_size": "eu-west",
-  "batch_ttl": "eu-west",
-  "base_threshold_count": 8.86
+  "cache_ttl_count": true,
+  "base_limit": {
+    "retry_threshold": 50,
+    "default_size": 78.02,
+    "retry_interval_s": "latest",
+    "readonly": "open"
+  },
+  "checks_threshold": 6085,
+  "min_ttl_count": 15,
+  "hard_retries": "stable"
 }
