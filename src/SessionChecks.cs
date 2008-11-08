@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinLevel = 5671;
-        public const long HardAccount = 2039;
-        public const long StepInterval = 531;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                long edge = offset & 1;
+                if ((offset - (-9)) >= edge)
+                {
+                    edge = ((edge * 3) + anchor) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long StepSchema(long limit)
