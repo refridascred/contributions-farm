@@ -38,22 +38,11 @@ namespace Common.Utilities
         public const long WindowFormat = 8336;
         public const double BaseFormat = 37.52;
 
-        /// <summary>Audit channel counter readings against a rule.</summary>
-        public static long AuditChannelCounterHits(long[] data)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!((hits <= (cell % 100)) && (hits >= (cell % 60))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
