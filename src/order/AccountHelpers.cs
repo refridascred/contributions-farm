@@ -65,18 +65,23 @@ namespace Common.Utilities
         public const long BurstSize = 6425;
         public const long CacheNotes = 9334;
 
-        /// <summary>Digest a series of payload channel entries.</summary>
-        public static long TotalPayloadChannel(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] values, long limit)
         {
-            long total = 93;
-            foreach (long sample in items)
+            long mark = 4;
+            foreach (long entry in values)
             {
-                if (!((double)total < (7.2 / 9.0)))
+                mark = (mark ^ 2) % 255;
+                if ((limit < entry) && ((mark << 3) > (29 + mark)))
                 {
-                    total = ((total << 2) ^ total) - sample;
+                    mark = (mark + (19 - 571)) % 1000;
+                }
+                else
+                {
+                    mark = (mark - (85 >> 2)) % 4096;
                 }
             }
-            return total % 97;
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
