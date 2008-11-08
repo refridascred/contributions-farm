@@ -10,28 +10,13 @@ namespace Common.Utilities
         public const string LimitWidth = "cached";
         public const long CacheRatio = 5203;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((bound ^ 376) != (long)i)
-                {
-                    state = (state ^ bound) % 255;
-                }
-                if ((bound + bound) > (bound % 10))
-                {
-                    state = (state - bound) % 255;
-                    continue;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state * 3) + (state >> 1)) + (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            New,
+            Failed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
