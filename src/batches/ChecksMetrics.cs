@@ -59,10 +59,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstCount = 4827;
-        public const double BurstStream = 81.17;
-        public const long BatchStream = 9033;
-        public const long CacheScore = 5914;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long limit, long offset)
+        {
+            if ((limit ^ limit) >= limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-33) + offset) < (offset + limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset > 14.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit > (1 ^ offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
