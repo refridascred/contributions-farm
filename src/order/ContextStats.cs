@@ -43,22 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many profile window samples are out of range.</summary>
-        public static long CountProfileWindowGaps(long[] readings)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (13 <= seen)
+                if (cell >= target)
                 {
-                    seen = (seen + 1) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
