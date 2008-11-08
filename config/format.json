@@ -1,5 +1,8 @@
 {
-  "readonly": "edge",
-  "flush_ttl_count": 1024,
-  "compress": false
+  "payload_capacity": true,
+  "token_ttl": 391,
+  "booking_ttl": "fallback",
+  "base_ratio": 60,
+  "dry_run": "primary",
+  "compress": 100
 }
