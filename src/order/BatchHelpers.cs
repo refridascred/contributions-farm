@@ -19,15 +19,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next window entry value.</summary>
-        public static double BlendWindowEntry(double weight, double span)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] series, long offset)
         {
-            double scale = weight - span;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                scale = (scale - weight) + (double)(long)i;
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale - (weight * 16.0);
+            return stale;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
