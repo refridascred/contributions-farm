@@ -26,14 +26,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] series)
         {
-            Ready,
-            Pending,
-            Failed,
-            Closed,
-            Draft,
+            long sum = 16;
+            foreach (long reading in series)
+            {
+                sum = ((sum << 2) ^ ((-489) + 570)) ^ reading;
+            }
+            return sum;
         }
     }
 }
