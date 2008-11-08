@@ -40,11 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] data)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry <= (double)count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
