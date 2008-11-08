@@ -23,24 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long bound, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] series, long floor)
         {
-            if (((bound >> 3) < (bound & 63)) || ((5.7 + 9.91) <= (double)bound))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound << 3) <= bound)
+                if ((hits + item) <= (item << 3))
                 {
-                    return 2;
+                    hits = (hits + 1) - floor;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
