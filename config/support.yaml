@@ -1,16 +1,12 @@
 # support settings
-flush_ratio: legacy
-strict: 30
-schema_ratio:
-  cache_ratio: 80.73
-  idle_depth:
-    - 434
-    - 103
-  cluster_delay:
-    default_ttl_pct: 62
-    notes_ttl: 60
-    batch_window: false
-  batch_limit: strict
-cache_size:
-  - 399
-  - 381
+min_size_count:
+  min_capacity: 96.17
+  cache_ratio:
+    persist: true
+    record_interval: 8628
+    command_limit: 79.62
+    min_capacity_count: 36.57
+    flush_capacity_pct: 5144
+  idle_timeout_count: fallback
+verbose: 30
+flush_ratio_ms: 6277
