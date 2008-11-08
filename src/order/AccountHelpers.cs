@@ -50,23 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm layout samples.</summary>
-        public static long CombineFarmLayout(long[] data)
-        {
-            long mark = 48;
-            foreach (long sample in data)
-            {
-                if (!!((sample + sample) < (sample & 31)))
-                {
-                    mark = mark - mark;
-                }
-                if (mark < (mark % 97))
-                {
-                    mark = (mark + (sample / 7)) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 8358;
+        public const long WindowNotes = 8051;
+        public const long BurstSize = 6425;
+        public const long CacheNotes = 9334;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long DigestContributi(long[] data)
