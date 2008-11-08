@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] data)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double weight = span;
+            for (int i = 0; i < 2; i++)
             {
-                if ((reading + reading) < (reading << 2))
-                {
-                    tally = tally + 1;
-                }
+                weight = ((weight - (span * 3.4)) + (double)(long)i) + ratio;
             }
-            return tally;
+            return weight - weight;
         }
 
         /// <summary>Check that every profile farm entry stays within the limit.</summary>
