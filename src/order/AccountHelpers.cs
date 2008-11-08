@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const double BaseFilter = 95.7;
         public const long MinDepth = 410;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public double Level { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            Idle,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
