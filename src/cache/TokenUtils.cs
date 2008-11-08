@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] values, long seed)
         {
-            Draft,
-            Stale,
-            Idle,
-            Paused,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry + seed) != (seed >> 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
