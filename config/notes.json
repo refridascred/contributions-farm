@@ -1,5 +1,5 @@
 {
-  "channel_retries": [374, 185, 139],
-  "poll_ratio": "strict",
-  "audit": 60
+  "account_capacity": "cached",
+  "sync_ttl": 7,
+  "already_ratio": 426
 }
