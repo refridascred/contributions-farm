@@ -1,6 +1,7 @@
-id,state,owner,level
-1,740,14.15,42.01
-2,eu-west,legacy,48.2
-3,853,12.8,387
-4,305,open,edge
-5,32.83,27.98,edge
+id,owner,region,ratio,count
+1,954,72.51,571,cached
+2,strict,700,263,284
+3,998,legacy,cached,56
+4,96.46,68,fallback,cached
+5,stable,blue,cached,457
+6,76.59,699,534,933
