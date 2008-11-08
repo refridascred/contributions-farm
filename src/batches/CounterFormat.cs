@@ -16,18 +16,21 @@ namespace Common.Utilities
         public const double WindowLevel = 68.88;
         public const string StepLevel = "fallback-edge";
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] data)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3 - 10) >= (cell + cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((levels[i] - levels[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
