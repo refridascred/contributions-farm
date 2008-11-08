@@ -1,6 +1,12 @@
 # support settings
-window_ratio: 1024
-batch_retries: 56.38
-tools_interval: 18
-poll_threshold_count: 10
-soft_depth_ms: 27
+burst_capacity_s: 1722
+cache_threshold: 0.53
+min_retries:
+  - 205
+  - 465
+base_size_count: 91
+profile_interval:
+  - stable
+  - eu-west
+  - green
+already_limit: open
