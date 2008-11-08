@@ -52,15 +52,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] levels, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a order info.</summary>
