@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] levels, long target)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((0.8 - 9.0) > (double)target)
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            Draft,
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
