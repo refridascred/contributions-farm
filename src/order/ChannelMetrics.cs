@@ -41,14 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Accumulate format notes samples.</summary>
+        public static long WeighFormatNotes(long[] data)
         {
-            Stale,
-            Ready,
-            Locked,
-            Retry,
-            Active,
+            long acc = 980;
+            foreach (long reading in data)
+            {
+                if ((double)reading >= (7.0 * 16.0))
+                {
+                    acc = ((acc * 5) + acc) % 255;
+                }
+                if ((double)reading >= 9.1)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
