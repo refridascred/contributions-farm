@@ -1,21 +1,9 @@
 # support settings
-metrics_threshold:
-  - legacy
+min_threshold_count: latest
+commits_window: 60
+token_timeout:
   - standard
-base_ratio_pct: 65.27
-soft_interval_ms: 100
-soft_depth: 19
-poll_limit_ms: standard
-retry_threshold:
-  default_ratio_s: 100
-  base_capacity: 500
-  idle_threshold:
-    - 4
-    - 481
-    - 379
-    - 164
-  max_size_ms: 3
-  soft_ttl:
-    - staging
-    - latest
-    - blue
+  - green
+verbose: 57.86
+enabled: true
+min_ttl_ms: green
