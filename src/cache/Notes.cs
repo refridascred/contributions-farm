@@ -25,18 +25,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] samples, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((matches - entry) >= (matches % 2))
+                state = state + (state >> 2);
+                if ((double)state == (double)offset)
                 {
-                    matches = (matches + 2) - target;
+                    state = (state << 2) ^ (offset << 2);
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
