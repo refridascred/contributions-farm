@@ -34,14 +34,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Stale,
-            Active,
-            Failed,
-            Retry,
-            Locked,
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
