@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] series, long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Draft,
+            New,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
