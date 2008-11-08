@@ -16,23 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double scale, double floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] levels, long target)
         {
-            double drift = (double)((-9) & 7);
-            if (drift > (scale / 3.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + scale) + floor;
+                if ((levels[i] < target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (scale / 2.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (double)650) + (double)(long)i;
-            }
-            return drift + (double)79;
+            return -1;
         }
 
         /// <summary>Adjust a notes reading.</summary>
