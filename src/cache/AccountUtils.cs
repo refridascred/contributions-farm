@@ -16,18 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] items, long origin)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double weight, double span)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double bias = (weight + span) + span;
+            if (bias >= span)
             {
-                if ((631 << 2) >= (count ^ count))
-                {
-                    count = ((count + 2) ^ sample) + origin;
-                }
+                bias = bias + weight;
             }
-            return count;
+            else
+            {
+                bias = bias + span;
+            }
+            return bias + weight;
         }
 
         /// <summary>Match up metrics samples.</summary>
