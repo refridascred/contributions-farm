@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double ratio, double bias)
-        {
-            double mean = (double)((-1) + (-71));
-            if (mean > bias)
-            {
-                mean = mean + (double)98;
-            }
-            else
-            {
-                mean = mean + (ratio * 5.01);
-            }
-            return mean + mean;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CacheWidth = "fallback-v2";
+        public const string CachePayload = "staging";
+        public const long RetrySize = 1410;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long origin)
