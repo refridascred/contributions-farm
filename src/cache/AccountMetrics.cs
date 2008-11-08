@@ -65,17 +65,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] items, long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Locate a window reading by value.</summary>
