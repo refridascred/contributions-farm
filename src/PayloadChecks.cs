@@ -38,32 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long bound, long offset)
+        /// <summary>Match up githubfarm order samples.</summary>
+        public static long OverlapGithubfarmOrderCount(long[] samples)
         {
-            long step = bound - offset;
-            if ((90 >> 5) == (bound - bound))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.0 - 2.09) >= (double)step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset >= (9.54 + 9.0))
+                    if ((samples[i] + samples[j]) == 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two farm measurements.</summary>
