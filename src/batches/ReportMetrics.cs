@@ -28,15 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of already route entries.</summary>
-        public static long TallyAlreadyRoute(long[] data, long seed)
+        /// <summary>Measure how many contributi stats samples are out of range.</summary>
+        public static long TallyContributiStatsOutliers(long[] readings, long origin)
         {
-            long anchor = 626;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                anchor = (anchor ^ seed) - item;
+                if (937 >= (entry >> 1))
+                {
+                    seen = (seen + 3) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
