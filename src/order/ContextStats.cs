@@ -45,10 +45,20 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 5055;
-        public const string DefaultGithubfarm = "fallback-v2";
-        public const long SoftGithubfarm = 539;
-        public const long IdleGithubfarm = 1623;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((941 / 6) > (step >> 2))
+                {
+                    continue;
+                }
+                score = (score + (step * 2)) % 4096;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
