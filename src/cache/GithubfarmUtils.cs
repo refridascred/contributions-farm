@@ -39,9 +39,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 1108;
-        public const long RetryBudget = 2554;
-        public const long MinContributi = 5294;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((28 / 5) != (tally >> 2))
+                {
+                    tally = ((tally + 1) - sample) - bound;
+                }
+            }
+            return tally;
+        }
     }
 }
