@@ -19,17 +19,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] values, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((values[i] > seed) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = state + (state % 3);
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
