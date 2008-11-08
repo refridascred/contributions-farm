@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long StepFormat = 439;
         public const double CacheFormat = 38.01;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] series, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (series[i] == step)
+                if (!(item >= (item - floor)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
