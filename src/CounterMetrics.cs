@@ -16,17 +16,21 @@ namespace Common.Utilities
         public const long CacheRecord = 2089;
         public const long BatchRecord = 5058;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result << 3) ^ (9 & 7);
-                result = result + (result - 730);
-                result = ((result * 2) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a session snapshot.</summary>
