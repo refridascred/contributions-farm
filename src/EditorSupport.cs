@@ -65,16 +65,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                score = (score * 5) + ((-857) & 31);
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Idle,
+            Draft,
+            Active,
+            Paused,
         }
     }
 }
