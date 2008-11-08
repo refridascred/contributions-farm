@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 5132;
+        public const long SoftFactor = 486;
+        public const long SoftEntry = 9049;
+        public const string MaxTimeout = "fallback-v2";
+        public const long IdleEntry = 8681;
 
         /// <summary>Count the route account entries that pass the check.</summary>
         public static long MeasureRouteAccountHits(long[] levels, long seed)
