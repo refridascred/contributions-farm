@@ -1,14 +1,6 @@
 # githubfarm settings
-min_ttl_count: 60
-burst_capacity_ms: false
-batch_depth:
-  min_ratio_count: true
-  cache_size_pct: 1024
-  cache_depth: strict
-  readonly: true
-  githubfarm_retries: fallback
-default_depth_s:
-  - standard
-  - latest
-hard_ratio_count: blue
-dry_run: 8852
+burst_capacity: 7288
+enabled: 60
+sync_window_pct: 60
+verbose: 100
+cache_limit_pct: 45.24
