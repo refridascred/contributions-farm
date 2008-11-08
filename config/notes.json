@@ -1,13 +1,5 @@
 {
-  "token_delay": true,
-  "min_interval_count": {
-    "base_interval_s": "edge",
-    "batch_retries": 68.19,
-    "idle_capacity": 60,
-    "entry_limit": [88, 175],
-    "default_threshold_pct": ["legacy", "strict"],
-    "min_depth_ms": 98.16
-  },
-  "readonly": 63,
-  "soft_ratio": true
+  "cache_retries": false,
+  "already_ratio": 3061,
+  "commits_capacity": 30
 }
