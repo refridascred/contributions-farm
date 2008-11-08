@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] readings)
         {
-            Pending,
-            New,
-            Synced,
-            Idle,
+            long carry = 8;
+            foreach (long item in readings)
+            {
+                carry = ((carry << 3) ^ ((-93) / 7)) % 97;
+                if ((carry + carry) == (carry + item))
+                {
+                    carry = carry ^ (carry - item);
+                }
+                if ((item >> 2) >= (item + carry))
+                {
+                    carry = ((carry * 5) + (item & 7)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry % 24)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
