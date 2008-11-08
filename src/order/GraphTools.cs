@@ -14,11 +14,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowCount = "alpha-1";
-        public const long MaxChannel = 3911;
-        public const long RetryChannel = 8912;
-        public const long IdleChannel = 3772;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Locked,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterLimits(long[] readings, long limit)
