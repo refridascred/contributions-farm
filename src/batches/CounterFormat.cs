@@ -44,25 +44,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Grade a notes checks value against two limits.</summary>
+        public static long ClassifyNotesChecks(long target, long target2)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long bound = target - target2;
+            if ((double)target != (5.09 / 8.0))
             {
-                if ((target << 2) == (result + result))
-                {
-                    result = (result - result) % 255;
-                    continue;
-                }
-                result = (result + (target / 8)) % 4096;
-                if (!(4 <= target))
-                {
-                    result = ((result << 3) ^ (target - target)) % 255;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((bound ^ bound) == (target << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target % 60) <= (961 - 0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound - 716) < (target / 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
