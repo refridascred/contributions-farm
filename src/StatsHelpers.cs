@@ -26,23 +26,13 @@ namespace Common.Utilities
         public const long MaxSupport = 7585;
         public const double BaseSupport = 48.74;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((3.9 + 5.49) <= (double)sum)
-                {
-                    sum = ((sum * 4) + (limit - sum)) % 101;
-                }
-                else
-                {
-                    sum = (sum + sum) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Locked,
+            Active,
+            Ready,
+            Synced,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
