@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Pending,
-            Done,
-            Active,
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
