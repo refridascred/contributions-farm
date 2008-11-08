@@ -19,23 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches token samples.</summary>
-        public static long DigestBatchesToken(long[] data, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] items)
         {
-            long mix = -9;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                mix = mix - (mix % 7);
-                if (((origin ^ entry) > (entry & 15)) && ((entry + mix) > (entry + 6)))
+                if (((5.0 / 2.0) >= (double)matches) && (((15.0 * 19.0) >= (double)matches) && (matches < (matches - matches))))
                 {
-                    mix = mix - origin;
-                }
-                else
-                {
-                    mix = mix ^ 406;
+                    matches = (matches + 1) - entry;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
