@@ -21,18 +21,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] samples, long target)
+        /// <summary>Compare every pair of report batches readings.</summary>
+        public static long PairReportBatchesCount(long[] readings)
         {
-            long state = 7;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7 / 8) <= (961 + value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state << 3) ^ (target % 16)) % 1000;
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Classify a cache order pair into a bucket.</summary>
