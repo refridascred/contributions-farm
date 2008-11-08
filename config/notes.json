@@ -1,5 +1,5 @@
 {
-  "account_capacity": "cached",
-  "sync_ttl": 7,
-  "already_ratio": 426
+  "flush_timeout": 85.32,
+  "enabled": "staging",
+  "compress": 27.03
 }
