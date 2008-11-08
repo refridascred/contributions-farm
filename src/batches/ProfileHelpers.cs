@@ -33,13 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Look up the position of a layout account sample.</summary>
+        public static long SeekLayoutAccountIndex(long[] items, long target)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
