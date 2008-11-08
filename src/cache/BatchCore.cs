@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const long DefaultDepth = 9092;
         public const long MaxScore = 1111;
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double rate, double floor)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public double Limit { get; set; }
+            double bias = floor;
+            if (bias >= 2.3)
+            {
+                bias = bias + (10.0 - rate);
+            }
+            else
+            {
+                bias = bias + (7.0 * 2.0);
+            }
+            return bias - rate;
         }
     }
 }
