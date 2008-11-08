@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route order samples.</summary>
-        public static long TallyRouteOrder(long[] readings)
+        /// <summary>Find the first batch token entry that matches the target.</summary>
+        public static long FindBatchTokenIndex(long[] values, long target)
         {
-            long acc = 40;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 5) + (entry << 1)) % 4096;
+                if ((values[i] > target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Describe the command mode values.</summary>
