@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinScore = 91.5;
-        public const string BaseSpan = "local-edge";
-        public const long BatchCluster = 1353;
-        public const string SoftCluster = "staging-edge";
-        public const long DefaultCluster = 1432;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LookupChannelIndex(long[] series, long limit)
