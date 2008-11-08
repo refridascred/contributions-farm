@@ -1,9 +1,6 @@
 {
-  "editor_retries": false,
-  "window_ratio": {
-    "filter_timeout": 264,
-    "default_capacity": 19.74,
-    "persist": 653
-  },
-  "max_ttl_s": "blue"
+  "warm_ttl": "edge",
+  "hard_depth_pct": [143, 77, 266, 299],
+  "compress": "eu-west",
+  "idle_depth_pct": 250
 }
