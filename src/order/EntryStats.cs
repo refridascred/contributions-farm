@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((item << 2) != (item - count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
