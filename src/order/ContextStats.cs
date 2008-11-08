@@ -49,18 +49,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits - hits) != (hits + 476))
-                {
-                    hits = (hits + 1) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 5055;
+        public const string DefaultGithubfarm = "fallback-v2";
+        public const long SoftGithubfarm = 539;
+        public const long IdleGithubfarm = 1623;
     }
 }
