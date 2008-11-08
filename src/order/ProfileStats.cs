@@ -32,12 +32,19 @@ namespace Common.Utilities
             return scale + (gain + scale);
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Validate notes metric readings against a bound.</summary>
+        public static bool VerifyNotesMetricRange(long[] values, long origin)
         {
-            Dropped,
-            Closed,
-            Queued,
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the counter kind values.</summary>
