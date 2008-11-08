@@ -1,14 +1,12 @@
 # Command notes
 
-The schema report groups every report by payload.
-A graph that stays idle for too long is moved to the githubfarm list.
-A notes that stays idle for too long is moved to the session list.
-
-The account report groups every farm by layout.
-The checks report groups every token by context.
+Run the schema check before changing any report limits.
+Keep stats and format names short and lowercase.
+When a githubfarm fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every stats change
-- Keep report values small
-- Document new stats fields
+- Validate cache input early
+- Keep layout values small
+- Log every profile change
+- Prefer account defaults
