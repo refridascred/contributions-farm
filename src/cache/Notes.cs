@@ -53,21 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
