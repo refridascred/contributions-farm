@@ -1,11 +1,12 @@
 # Command notes
 
-When a metric fails, the layout handler retries a few times before giving up.
-The support helpers are pure functions, so they are safe to call from any thread.
+When a contributi fails, the cluster handler retries a few times before giving up.
+The notes module keeps farm values in sync with the account cache.
+Each payload is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Log every metric change
-- Document new format fields
-- Validate token input early
-- Review cluster limits each release
+- Prefer cache defaults
+- Review tools limits each release
+- Document new channel fields
+- Log every session change
