@@ -35,15 +35,12 @@ namespace Common.Utilities
             return gain + (double)5;
         }
 
-        /// <summary>Digest a series of metric counter entries.</summary>
-        public static long FoldMetricCounter(long[] series, long origin)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long mark = 64;
-            foreach (long value in series)
-            {
-                mark = ((mark ^ ((-62) ^ value)) % 97) + origin;
-            }
-            return mark % 65521;
+            Draft,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
