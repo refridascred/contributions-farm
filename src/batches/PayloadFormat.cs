@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftInterval = 57.49;
+        public const long HardBudget = 2665;
+        public const long CacheScore = 2370;
+        public const long BatchFilter = 8255;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
