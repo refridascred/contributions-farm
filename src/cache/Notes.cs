@@ -25,19 +25,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] readings, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (sample <= limit)
+                if ((matches - entry) >= (matches % 2))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) - target;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
