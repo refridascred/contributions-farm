@@ -26,21 +26,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] levels)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (state > (long)i)
                 {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state + ((-2) * 5)) % 4096;
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
     }
 }
