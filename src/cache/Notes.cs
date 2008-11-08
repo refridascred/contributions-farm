@@ -40,22 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] series, long offset)
+        /// <summary>Locate a queue record reading by value.</summary>
+        public static long SeekQueueRecordIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((double)offset == (9.0 * 2.0)) && ((datum + seen) == (offset << 3))) || (datum >= (seen >> 3)))
+                if (samples[i] > limit)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
