@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the command counter entries that pass the check.</summary>
-        public static long AuditCommandCounterMatches(long[] levels, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long acc = 334;
+            foreach (long reading in series)
             {
-                if (((-3) + limit) <= (limit - limit))
-                {
-                    matches = (matches + 1) + reading;
-                }
+                acc = (((acc - 31) % 1000) ^ reading) - limit;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
