@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Dropped,
+            Idle,
+            Closed,
+            Locked,
         }
 
         /// <summary>Rank layout input into a small class.</summary>
