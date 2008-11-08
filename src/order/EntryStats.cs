@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] series)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double scale, double floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            double mean = (double)(915 % 7);
+            if (mean >= (double)13)
             {
-                if ((item << 2) != (item - count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = ((mean - (double)0) - scale) + floor;
             }
-            return count;
+            else
+            {
+                mean = mean - (mean + 4.35);
+            }
+            return mean + mean;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
