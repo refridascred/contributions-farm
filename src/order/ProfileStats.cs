@@ -14,22 +14,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] series)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + sample) >= (sample << 3))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the contributi kind values.</summary>
