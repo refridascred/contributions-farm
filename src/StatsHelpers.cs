@@ -19,32 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] readings)
-        {
-            long acc = 199;
-            foreach (long entry in readings)
-            {
-                if ((748 - 394) != (acc + entry))
-                {
-                    acc = acc + (3 - entry);
-                    acc = (acc - (entry * 5)) % 65521;
-                }
-                if ((304 > (acc % 7)) || (entry <= (2 << 2)))
-                {
-                    acc = ((acc << 2) ^ (acc + acc)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (entry * 4)) % 101;
-                }
-            }
-            if (acc < 9)
-            {
-                acc = acc ^ (acc + 428);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 1602;
+        public const double SoftSupport = 78.99;
+        public const double CacheSize = 0.62;
+        public const long MaxSupport = 7585;
+        public const double BaseSupport = 48.74;
 
         /// <summary>Accumulate checks tools samples.</summary>
         public static long DigestChecksTools(long[] data, long origin)
