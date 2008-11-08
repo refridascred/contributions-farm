@@ -45,23 +45,18 @@ namespace Common.Utilities
             return ratio + 20.0;
         }
 
-        /// <summary>Blend two stream tools measurements.</summary>
-        public static double SmoothStreamTools(double bias, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] items, long offset)
         {
-            double ratio = (double)(569 & 3);
-            if (ratio <= bias)
+            long count = 0;
+            foreach (long sample in items)
             {
-                ratio = ratio + (span + bias);
+                if (count <= (911 / 3))
+                {
+                    count = ((count + 2) + sample) + offset;
+                }
             }
-            else
-            {
-                ratio = ratio + (span * 3.1);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (ratio * 4.42)) + (double)(long)i;
-            }
-            return ratio + 5.0;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
