@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] items)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((5.0 / 2.0) >= (double)matches) && (((15.0 * 19.0) >= (double)matches) && (matches < (matches - matches))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) - entry;
+                    if ((samples[i] + samples[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the layout state values.</summary>
