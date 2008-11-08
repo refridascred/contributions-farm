@@ -33,39 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics batch pair into a bucket.</summary>
-        public static long ClassifyMetricsBatch(long floor, long limit)
-        {
-            if (limit > (limit * 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((floor / 8) < (limit & 31)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((4.5 + 4.0) < (double)limit) && ((limit + limit) >= limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)floor <= 2.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 6257;
+        public const long DefaultStream = 8119;
+        public const string SoftSpan = "strict-edge";
+        public const long BaseStream = 3331;
+        public const string MaxStream = "primary-edge";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BatchScore = "standard-1";
