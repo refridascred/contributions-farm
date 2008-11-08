@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            New,
+            Closed,
+            Done,
+            Retry,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
