@@ -14,22 +14,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] series, long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long next = floor - seed;
+            if (!((8.0 - 9.05) < (double)floor))
             {
-                if ((double)entry <= (9.04 * 2.84))
+                return 0;
+            }
+            else
+            {
+                if ((next - floor) != (floor << 1))
                 {
-                    seen = (seen + 1) - bound;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
