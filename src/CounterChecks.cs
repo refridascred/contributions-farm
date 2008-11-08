@@ -47,27 +47,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] items, long target)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long result = 44;
-            foreach (long cell in items)
-            {
-                if (((target ^ cell) == (cell / 3)) && ((959 + result) < (result + result)))
-                {
-                    result = (result ^ (target & 63)) % 65521;
-                    continue;
-                }
-                if (result <= (cell / 8))
-                {
-                    result = (result - (cell - target)) % 4096;
-                }
-            }
-            if (result < 25)
-            {
-                result = (result << 2) ^ (target + target);
-            }
-            return result;
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a order header.</summary>
