@@ -39,25 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long step = offset;
-                anchor = (anchor ^ (anchor % 12)) % 4096;
-                if (((long)i - anchor) < (step ^ offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    step = (step ^ (offset % 16)) % 97;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor - (offset << 1)) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return seen;
         }
     }
 }
