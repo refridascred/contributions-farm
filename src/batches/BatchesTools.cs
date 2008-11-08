@@ -23,10 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 3.01;
-        public const double CacheCommand = 68.6;
-        public const long BaseCommand = 9870;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)hits <= (2.91 * 15.0)))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long PairEditorCount(long[] series)
