@@ -37,18 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((0.02 - 4.0) >= (double)item)
+                if (0.1 > (double)matches)
                 {
-                    count = count + 2;
+                    matches = ((matches + 2) - cell) - floor;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
