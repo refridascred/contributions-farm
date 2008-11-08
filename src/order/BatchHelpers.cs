@@ -39,12 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the notes stream entries that pass the check.</summary>
+        public static long AuditNotesStreamGaps(long[] items, long limit)
         {
-            Retry,
-            Draft,
-            Stale,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((limit << 1) >= (item % 10))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
