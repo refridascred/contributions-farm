@@ -43,10 +43,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleWidth = 5678;
-        public const double HardReport = 13.2;
-        public const string IdleRatio = "fallback";
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double BlendSupport(double scale, double bias)
