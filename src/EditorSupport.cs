@@ -56,12 +56,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] readings, long floor)
         {
-            Pending,
-            Locked,
-            Paused,
+            long sum = 712;
+            foreach (long reading in readings)
+            {
+                if ((floor % 5) != (sum / 3))
+                {
+                    sum = (((sum << 3) ^ (floor * 4)) % 97) ^ reading;
+                }
+                sum = ((sum << 2) ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the report phase values.</summary>
