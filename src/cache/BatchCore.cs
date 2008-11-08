@@ -19,16 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = acc + (acc - acc);
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the report mode values.</summary>
