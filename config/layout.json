@@ -1,11 +1,7 @@
 {
-  "cache_delay": 38,
-  "min_ttl": ["standard", "open", "strict", "primary"],
-  "min_capacity_pct": {
-    "soft_limit_count": false,
-    "command_delay": "latest",
-    "poll_delay": "strict",
-    "cache_size": ["local", "legacy"],
-    "base_capacity": 22.64
-  }
+  "token_window": 3394,
+  "batch_retries": "fallback",
+  "retry_depth": 69,
+  "retry_limit_pct": 95.58,
+  "readonly": 100
 }
