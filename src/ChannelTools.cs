@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long MinSpan = 8854;
         public const long WindowInterval = 1654;
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Done,
-            Ready,
-            Closed,
-            New,
-            Locked,
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
