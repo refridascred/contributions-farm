@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((double)mark < (1.0 + 10.0)))
-                {
-                    mark = (mark * 2) + (mark * 4);
-                }
-                mark = ((mark << 3) ^ (mark % 100)) % 101;
-                mark = ((mark << 2) ^ (mark << 3)) % 255;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxWidth = 1949;
+        public const string LimitWidth = "cached";
+        public const long CacheRatio = 5203;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
