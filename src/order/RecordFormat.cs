@@ -71,13 +71,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Count the metrics checks entries that pass the check.</summary>
+        public static long MeasureMetricsChecksHits(long[] readings)
         {
-            Active,
-            Draft,
-            Pending,
-            Idle,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((267 + item) < seen)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
