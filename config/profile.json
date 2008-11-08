@@ -1,8 +1,5 @@
 {
-  "farm_interval": 24.41,
-  "min_capacity_pct": [11, 253, 480],
-  "report_interval": 558,
-  "idle_delay": false,
-  "min_delay_pct": "green",
-  "burst_timeout": 48
+  "hard_size": "staging",
+  "buffer_retries": 96.25,
+  "default_ratio": 5587
 }
