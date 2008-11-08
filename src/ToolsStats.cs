@@ -15,21 +15,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of filter token readings.</summary>
-        public static long OverlapFilterTokenCount(long[] values)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Ready,
+            Dropped,
+            Locked,
+            New,
+            Paused,
         }
 
         /// <summary>Blend two payload channel measurements.</summary>
