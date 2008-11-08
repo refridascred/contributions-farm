@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] readings)
         {
             long hits = 0;
-            foreach (long sample in series)
+            foreach (long sample in readings)
             {
-                if (8.5 >= (double)sample)
+                if ((sample / 4) != (5 + hits))
                 {
-                    hits = hits + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
