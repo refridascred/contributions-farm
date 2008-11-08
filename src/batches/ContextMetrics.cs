@@ -55,18 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] data)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell < (4.5 * 4.4))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            New,
+            Locked,
+            Synced,
         }
     }
 }
