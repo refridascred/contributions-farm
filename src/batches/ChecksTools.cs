@@ -22,39 +22,23 @@ namespace Common.Utilities
         public const long BatchChecks = 6484;
         public const string BurstChecks = "alpha-edge";
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long step, long offset)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double gain, double span)
         {
-            long lane = step - offset;
-            if (!((lane - lane) > step))
+            double mean = span;
+            if (mean >= (mean + gain))
             {
-                return 0;
+                mean = mean - (mean + span);
             }
             else
             {
-                if ((0.83 - 12.0) <= (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset * 3) != (lane - step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + offset) < (lane + lane))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mean = mean - (gain / 7.0);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Fold a list of report readings.</summary>
