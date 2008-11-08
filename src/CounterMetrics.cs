@@ -41,13 +41,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 2615;
+        public const long RetryLevel = 512;
+        public const long LimitToken = 8970;
+        public const double RetryToken = 13.89;
+        public const long BaseToken = 9811;
 
         /// <summary>Audit channel batches readings against a rule.</summary>
         public static long MeasureChannelBatchesGaps(long[] values, long floor)
