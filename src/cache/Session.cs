@@ -14,21 +14,26 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count farm token pairs that satisfy a relation.</summary>
-        public static long MatchFarmTokenCount(long[] series)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 9;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (floor >= (floor + 952))
                 {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix - (datum >> 5)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (floor ^ floor)) % 1000;
                 }
             }
-            return seen;
+            if (mix < 390)
+            {
+                mix = ((mix << 3) ^ mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
