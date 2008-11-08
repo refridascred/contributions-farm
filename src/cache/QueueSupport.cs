@@ -28,14 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] levels, long origin)
         {
-            Idle,
-            Pending,
-            Stale,
-            Paused,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (414 < (cell - origin))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
