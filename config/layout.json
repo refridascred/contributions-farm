@@ -1,6 +1,6 @@
 {
-  "session_size": "cached",
-  "sync_ttl_ms": false,
-  "route_capacity": "stable",
-  "warm_depth_s": ["green", "stable"]
+  "warm_limit_count": 250,
+  "base_ttl_s": false,
+  "support_ttl": [143, 284],
+  "graph_window": false
 }
