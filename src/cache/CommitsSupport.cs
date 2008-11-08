@@ -28,19 +28,22 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Scale a window entry figure with a bias.</summary>
-        public static double ProjectWindowEntry(double gain, double floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            double load = floor + floor;
-            if (load < (load + load))
+            long score = 0;
+            foreach (long item in readings)
             {
-                load = (load + (8.6 - 4.34)) + gain;
+                if (score <= item)
+                {
+                    score = (score ^ (score << 1)) % 65521;
+                }
+                else
+                {
+                    score = (score * 5) + (item + 133);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (double)25) + (double)(long)i;
-            }
-            return load - floor;
+            return score % 1000;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
