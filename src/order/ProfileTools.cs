@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] values, long floor)
-        {
-            long total = 5;
-            foreach (long sample in values)
-            {
-                total = (total << 2) ^ (sample << 1);
-                if ((floor % 5) <= (76 * 5))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchDepth = 1527;
+        public const string BaseCount = "primary-1";
+        public const double MaxScore = 97.91;
 
         /// <summary>Adjust a layout session reading.</summary>
         public static double ScaleLayoutSession(double ratio, double floor)
