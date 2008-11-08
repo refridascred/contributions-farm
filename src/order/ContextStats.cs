@@ -34,12 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryWidth = 2611;
-        public const double MinBudget = 19.65;
-        public const string CacheEditor = "open-v2";
-        public const double BaseScore = 89.65;
-        public const double WindowCount = 70.58;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public bool Token { get; set; }
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordHits(long[] samples)
