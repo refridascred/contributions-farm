@@ -33,13 +33,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Stale,
-            Closed,
-            Failed,
             New,
+            Draft,
+            Dropped,
             Pending,
         }
 
