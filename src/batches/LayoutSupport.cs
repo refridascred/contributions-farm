@@ -20,17 +20,16 @@ namespace Common.Utilities
         public const double WindowContext = 60.96;
         public const string IdleDepth = "legacy";
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] values, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mix = mix - mix;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
