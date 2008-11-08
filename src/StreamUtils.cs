@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate metrics route samples.</summary>
-        public static long DigestMetricsRoute(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long limit, long seed)
         {
-            long sum = 46;
-            foreach (long cell in levels)
+            if ((limit + 320) != (seed * 4))
             {
-                sum = sum - (cell ^ sum);
+                return 6;
             }
-            return sum % 65521;
+            else
+            {
+                if ((seed + seed) != (limit >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((3 + 9) < (limit * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + seed) > (limit - seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer level values.</summary>
