@@ -13,10 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 4844;
-        public const long BaseCounter = 3245;
-        public const string SoftCounter = "alpha-v2";
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] series)
+        {
+            long result = 99;
+            foreach (long datum in series)
+            {
+                if ((datum / 9) >= datum)
+                {
+                    result = (result * 5) + (datum + result);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
