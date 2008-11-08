@@ -57,22 +57,19 @@ namespace Common.Utilities
         public const long MinSchema = 4351;
         public const long DefaultSchema = 7822;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((count + 9) >= count)
+                if (datum <= floor)
                 {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
