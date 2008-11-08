@@ -1,12 +1,6 @@
 {
-  "poll_retries_ms": true,
-  "sync_window": 52,
-  "soft_ratio_count": {
-    "metric_timeout": "cached",
-    "poll_threshold": "cached",
-    "soft_timeout": ["staging", "fallback", "edge", "eu-west"],
-    "verbose": true
-  },
-  "burst_timeout_ms": "cached",
-  "flush_retries_s": 21.55
+  "stream_window": true,
+  "retry_interval_ms": "standard",
+  "hard_ratio_count": 1024,
+  "min_threshold_ms": ["legacy", "local", "legacy"]
 }
