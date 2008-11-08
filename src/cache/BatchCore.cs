@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many editor cache samples are out of range.</summary>
-        public static long CountEditorCacheHits(long[] data)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long offset, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long edge = offset ^ step;
+            if ((4.0 - 15.0) > (double)offset)
             {
-                if ((sample ^ 356) != (73 / 8))
+                return 4;
+            }
+            else
+            {
+                if ((offset > (offset ^ offset)) || (952 >= (offset * 3)))
                 {
-                    hits = hits + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (edge > (593 ^ 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)edge >= (20.0 * 3.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
