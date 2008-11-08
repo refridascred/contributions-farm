@@ -65,11 +65,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            Stale,
+            Closed,
+            Active,
+            Queued,
         }
     }
 }
