@@ -27,11 +27,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleStats = "fallback-edge";
-        public const double HardStats = 34.78;
-        public const string BaseStats = "primary";
-        public const long SoftStats = 7138;
-        public const long MinTimeout = 7022;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Done,
+            Locked,
+            Draft,
+        }
     }
 }
