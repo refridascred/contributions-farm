@@ -41,15 +41,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double rate, double bias)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] items, long step)
         {
-            double gain = (rate * 9.0) + (double)(-83);
-            for (int i = 0; i < 7; i++)
+            long mark = 30;
+            foreach (long entry in items)
             {
-                gain = ((gain + rate) + (double)(long)i) + bias;
+                if (step > (mark << 1))
+                {
+                    mark = (((mark * 4) + mark) % 65521) + entry;
+                }
             }
-            return gain + gain;
+            if (mark < 2)
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark;
         }
     }
 }
