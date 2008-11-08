@@ -38,16 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support stats value from a seed.</summary>
-        public static long DeriveSupportStats(long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] values, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long mark = 602;
+            foreach (long datum in values)
             {
-                acc = ((acc << 2) ^ ((long)i + acc)) % 65521;
-                acc = ((acc * 3) + (long)i) % 97;
+                mark = (((mark << 3) ^ (datum & 3)) % 65521) - target;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Hold a already header.</summary>
