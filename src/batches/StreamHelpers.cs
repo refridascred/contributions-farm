@@ -16,39 +16,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long floor, long limit)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long target)
         {
-            long span = floor - limit;
-            if (((-5) + floor) > limit)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
+                mark = (mark - (mark * 4)) % 97;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((span <= (2 ^ limit)) || (limit <= floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)limit <= (double)9) || (floor <= (limit / 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((span + span) <= (span - 922)) || ((floor + floor) <= (12 - limit)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
