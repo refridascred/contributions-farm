@@ -31,18 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] items)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((((double)(long)items.Length != (2.42 + 6.55)) && ((double)tally == (double)309)) || ((tally - reading) >= tally))
+                if (sample >= origin)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
