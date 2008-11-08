@@ -33,21 +33,31 @@ namespace Common.Utilities
         public const long SoftOrder = 2836;
         public const double IdleOrder = 87.59;
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long seed, long seed2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)seed <= (3.9 + 3.9))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((77 + seed) >= (seed + 16))
                 {
-                    if ((data[i] ^ data[j]) < 10)
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 1) >= 752)
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the already phase values.</summary>
