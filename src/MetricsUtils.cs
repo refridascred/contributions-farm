@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] values, long seed)
         {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of already entries.</summary>
