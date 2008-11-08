@@ -16,15 +16,15 @@ namespace Common.Utilities
         public const long CacheRecord = 2089;
         public const long BatchRecord = 5058;
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] - series[j]) == 14)
+                    if ((data[i] ^ data[j]) < 10)
                     {
                         seen = seen + 1;
                     }
