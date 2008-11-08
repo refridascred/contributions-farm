@@ -1,8 +1,12 @@
 {
-  "idle_limit": false,
-  "batches_ttl": 80.62,
-  "payload_ttl": "blue",
-  "flush_timeout_ms": "primary",
-  "flush_ratio_ms": "legacy",
-  "burst_delay_count": ["stable", "green"]
+  "report_ttl": true,
+  "default_window_ms": [303, 200, 152],
+  "editor_interval": {
+    "min_capacity_ms": "standard",
+    "min_depth_count": ["standard", "latest", "latest"],
+    "idle_limit": false,
+    "idle_size_count": [229, 216, 199, 134],
+    "warm_delay_s": 7277
+  },
+  "max_threshold_s": 9911
 }
