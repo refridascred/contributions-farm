@@ -15,13 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels, long origin)
         {
-            Ready,
-            Locked,
-            Failed,
-            Done,
+            long score = 957;
+            foreach (long sample in levels)
+            {
+                score = score ^ origin;
+                if ((origin << 3) > (origin + sample))
+                {
+                    score = (score ^ (sample << 1)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Blend two payload channel measurements.</summary>
