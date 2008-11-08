@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] series)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (((sample - tally) != (sample / 8)) && ((sample / 9) == (tally << 2)))
-                {
-                    tally = tally + 2;
-                }
+                anchor = (anchor + anchor) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Match up tools samples.</summary>
