@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] samples, long step)
+        /// <summary>Accumulate notes token samples.</summary>
+        public static long FoldNotesToken(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long acc = -38;
+            foreach (long cell in levels)
             {
-                if (item < step)
+                if ((7.71 - 1.0) == (double)acc)
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc * 5) + (acc + acc)) % 4096;
                 }
+                else
+                {
+                    acc = acc ^ (cell - acc);
+                }
+                acc = (acc - (cell + acc)) % 97;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Rank already input into a small class.</summary>
