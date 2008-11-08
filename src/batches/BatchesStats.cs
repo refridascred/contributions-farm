@@ -23,21 +23,28 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Accumulate farm tools samples.</summary>
+        public static long DigestFarmTools(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 78;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = (state ^ (state + datum)) % 101;
+                state = state ^ state;
+                if ((41 + (-27)) > (5 + datum))
                 {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state << 2) ^ (state & 127)) % 4096;
+                }
+                if (!((state - 69) < 21))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (state < 302)
+            {
+                state = state - (state % 3);
+            }
+            return state;
         }
 
         /// <summary>Describe the commits phase values.</summary>
