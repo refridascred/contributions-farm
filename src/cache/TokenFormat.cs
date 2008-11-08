@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 78.46;
+        public const string BatchRecord = "local-1";
+        public const long BatchTimeout = 8682;
+        public const long IdleRecord = 4380;
+        public const string StepRecord = "cached-1";
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double SmoothLayout(double ratio, double bias)
