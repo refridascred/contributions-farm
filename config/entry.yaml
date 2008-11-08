@@ -1,33 +1,27 @@
 # entry settings
-cache_ratio: green
-sync_ratio: 41
-sync_capacity_pct:
-  enabled: 7998
-  retry_depth_ms: 829
-  cache_size_s:
-    dry_run:
-      - 468
-      - 125
-      - 241
-      - 203
-    burst_retries: legacy
-    warm_capacity:
-      - staging
-      - cached
-      - stable
-    githubfarm_timeout:
-      - strict
-      - edge
-    editor_threshold: 14
-    min_interval:
-      - eu-west
-      - eu-west
-  format_limit: 44.02
-  max_timeout: true
-  soft_size_s: standard
-layout_limit: open
-base_ratio:
-  - local
-  - strict
-  - strict
-hard_retries_pct: true
+batch_retries:
+  enabled: 30
+  flush_threshold:
+    - 156
+    - 344
+    - 69
+  payload_ttl:
+    - 405
+    - 202
+  cache_interval: stable
+poll_window_count:
+  contributi_interval:
+    poll_depth_ms: 30
+    session_depth: false
+    retry_threshold:
+      - primary
+      - blue
+    verbose: 84
+    soft_ratio_pct: 46.0
+  min_depth_s: strict
+  default_ratio_ms: fallback
+  soft_depth_s: true
+  min_retries_count: eu-west
+dry_run: 58
+verbose: 5
+batch_ratio_count: false
