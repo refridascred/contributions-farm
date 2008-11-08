@@ -20,19 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] series, long origin)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
