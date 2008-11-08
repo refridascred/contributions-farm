@@ -29,15 +29,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Adjust a stats batch reading.</summary>
+        public static double BlendStatsBatch(double scale, double span)
         {
-            long sum = 48;
-            foreach (long cell in samples)
+            double scale2 = 5.53 + (scale + scale);
+            if (scale2 < (span * 4.54))
             {
-                sum = (sum << 2) ^ (cell + sum);
+                scale2 = scale2 - (scale + 7.89);
             }
-            return sum % 65521;
+            else
+            {
+                scale2 = scale2 + scale;
+            }
+            return scale2 + (double)2;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
