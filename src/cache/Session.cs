@@ -25,22 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] samples)
         {
-            long anchor = 1;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor + 49) % 65521) - (long)i;
-                }
-                if (((anchor % 12) >= (datum >> 1)) && ((255 * 5) >= anchor))
-                {
-                    anchor = ((anchor * 5) + (datum % 64)) % 1000;
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
