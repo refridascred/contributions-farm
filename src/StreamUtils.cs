@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 4566;
-        public const long BatchLevel = 112;
-        public const long HardRecord = 8380;
-        public const long BaseFactor = 4310;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Digest a series of cluster commits entries.</summary>
         public static long CombineClusterCommits(long[] items)
