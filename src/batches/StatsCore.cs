@@ -49,15 +49,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools stats series from a seed.</summary>
-        public static long RollToolsStats(long floor)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] data)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many contributi format samples are out of range.</summary>
