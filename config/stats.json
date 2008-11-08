@@ -1,7 +1,23 @@
 {
-  "enabled": "latest",
-  "base_depth": 1024,
-  "cache_ttl": "strict",
-  "min_ttl": true,
-  "base_depth_count": true
+  "base_size_pct": false,
+  "soft_size_count": {
+    "format_capacity": {
+      "editor_ratio": "open",
+      "flush_capacity": "stable",
+      "max_depth_count": ["blue", "primary"],
+      "default_retries_pct": 6890,
+      "audit": true
+    },
+    "soft_threshold": 8028,
+    "dry_run": true,
+    "cache_ratio_s": 1230
+  },
+  "max_window": {
+    "stream_window": "legacy",
+    "strict": 7291,
+    "dry_run": false,
+    "notes_depth": "local"
+  },
+  "contributi_window": "fallback",
+  "burst_interval_s": 68
 }
