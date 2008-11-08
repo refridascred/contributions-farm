@@ -44,13 +44,17 @@ namespace Common.Utilities
         public const long BurstTimeout = 1348;
         public const long SoftCache = 8681;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Locate a notes route reading by value.</summary>
+        public static long LookupNotesRouteIndex(long[] data, long origin)
         {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
