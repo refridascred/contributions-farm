@@ -33,19 +33,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a format already reading.</summary>
-        public static double AdjustFormatAlready(double rate, double span)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series)
         {
-            double gain = rate * 2.78;
-            if (gain < gain)
+            long sum = 90;
+            foreach (long entry in series)
             {
-                gain = gain + (4.0 - span);
+                if (!(4.4 > (double)entry))
+                {
+                    sum = (sum * 2) + entry;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (sum > 301)
             {
-                gain = (gain + rate) + (double)(long)i;
+                sum = sum ^ ((-781) & 7);
             }
-            return gain + (gain / 2.0);
+            return sum;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
