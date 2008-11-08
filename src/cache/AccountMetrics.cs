@@ -47,12 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 8615;
+        public const string HardInterval = "standard-1";
+        public const long HardEntry = 6215;
+        public const long MinDepth = 9906;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double SmoothContributi(double scale, double offset)
