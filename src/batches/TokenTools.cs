@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a contributi session sample.</summary>
-        public static long LocateContributiSessionIndex(long[] levels, long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 2) == 0))
+                if (series[i] > bound)
                 {
                     return (long)i;
                 }
