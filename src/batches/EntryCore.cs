@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] values, long bound)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long value in values)
+            double bias2 = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = (bias2 + 1.9) + (double)(long)i;
             }
-            return valid;
+            return bias2 - (weight - weight);
         }
 
         /// <summary>Describe the counter state values.</summary>
