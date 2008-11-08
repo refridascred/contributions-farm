@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] samples, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long carry = 747;
+            foreach (long reading in values)
             {
-                if ((reading - reading) > limit)
+                if ((carry + carry) > limit)
                 {
-                    tally = tally + 3;
+                    carry = (carry - (reading & 255)) % 255;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
