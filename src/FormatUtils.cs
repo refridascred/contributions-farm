@@ -53,10 +53,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 3701;
-        public const string StepTimeout = "strict-v2";
-        public const string SoftFactor = "standard";
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] readings, long seed)
+        {
+            long mark = 260;
+            foreach (long item in readings)
+            {
+                if ((double)item >= (4.0 / 6.0))
+                {
+                    mark = ((mark ^ (mark & 7)) % 97) - seed;
+                }
+            }
+            if (mark > (-52))
+            {
+                mark = ((mark * 5) + (mark ^ 27)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferBounds(long[] readings, long offset)
