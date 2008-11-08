@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=172
-log "limit is ${CHANNEL_LIMIT}"
-
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in staging open; do
+CHANNEL_LIMIT=242
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in green eu-west; do
     log "checking ${item}"
 done
