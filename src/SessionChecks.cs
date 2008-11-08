@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long BurstSpan = 9109;
         public const string WindowCount = "local";
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long limit)
         {
-            Synced,
-            Paused,
-            Dropped,
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = (mix ^ (mix + 15)) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
