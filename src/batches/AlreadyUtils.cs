@@ -60,18 +60,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] series, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((double)seen < (double)121)
+                if ((count & 3) <= (entry + floor))
                 {
-                    seen = ((seen + 1) + sample) + origin;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
