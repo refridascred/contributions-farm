@@ -65,9 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "alpha-edge";
-        public const string BurstPayload = "open-1";
-        public const double BurstInterval = 96.17;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
