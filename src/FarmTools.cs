@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] samples, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
+                if (reading > step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
