@@ -14,21 +14,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 81;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long tally = value - (mix - mix);
+                if ((tally - 3) <= (3 % 5))
                 {
-                    if ((levels[i] - levels[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally << 2) ^ (tally >> 4)) % 101;
                 }
+                mix = (mix - (14 & 127)) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Blend two schema measurements.</summary>
