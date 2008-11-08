@@ -13,21 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Measure how many stats channel samples are out of range.</summary>
+        public static long TallyStatsChannelMatches(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((69 > (origin - reading)) && ((matches << 2) < (origin + 6)))
                 {
-                    if ((data[i] ^ data[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the context level values.</summary>
