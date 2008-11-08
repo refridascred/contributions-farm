@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] values, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] series, long offset)
         {
             long seen = 0;
-            foreach (long reading in values)
+            foreach (long datum in series)
             {
-                if ((offset & 63) <= offset)
+                if ((((double)offset == (9.0 * 2.0)) && ((datum + seen) == (offset << 3))) || (datum >= (seen >> 3)))
                 {
-                    seen = (seen + 3) ^ reading;
+                    seen = seen + 1;
                 }
                 else
                 {
