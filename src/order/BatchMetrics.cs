@@ -37,24 +37,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] levels, long limit)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long acc = 2;
-            foreach (long cell in levels)
-            {
-                if ((acc ^ acc) >= (acc >> 4))
-                {
-                    acc = (acc + (acc * 5)) + limit;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ cell;
-                    acc = acc ^ (acc - 491);
-                }
-                acc = ((acc << 3) ^ cell) % 4096;
-            }
-            return acc % 97;
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
