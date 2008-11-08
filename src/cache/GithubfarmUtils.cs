@@ -43,18 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster filter readings against a rule.</summary>
-        public static long MeasureClusterFilterHits(long[] series, long bound)
+        /// <summary>Measure how many channel token samples are out of range.</summary>
+        public static long MeasureChannelTokenGaps(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (!((count + bound) >= (bound - 32)))
+                if (((4.1 + 17.0) == (double)value) && ((value + origin) == (9 ^ 4)))
                 {
-                    count = (count + 1) - datum;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
