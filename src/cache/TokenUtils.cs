@@ -26,10 +26,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardMetrics = 31.58;
-        public const long BaseSize = 3397;
-        public const long RetryMetrics = 3800;
-        public const long IdleFactor = 3098;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long step, long limit)
+        {
+            if (step >= (8 >> 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step * 5) == (step + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step - 752) != (step - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
