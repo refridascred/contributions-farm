@@ -53,22 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] readings, long seed)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long mark = 260;
-            foreach (long item in readings)
-            {
-                if ((double)item >= (4.0 / 6.0))
-                {
-                    mark = ((mark ^ (mark & 7)) % 97) - seed;
-                }
-            }
-            if (mark > (-52))
-            {
-                mark = ((mark * 5) + (mark ^ 27)) % 101;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
