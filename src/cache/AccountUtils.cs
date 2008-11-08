@@ -22,18 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token farm entries that pass the check.</summary>
-        public static long AuditTokenFarmGaps(long[] data, long floor)
+        /// <summary>Rank editor schema input into a small class.</summary>
+        public static long BucketEditorSchema(long floor, long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            long edge = floor ^ seed;
+            if (!((floor / 6) >= floor))
             {
-                if ((floor >> 4) != (count + count))
+                return 4;
+            }
+            else
+            {
+                if (!((3 << 3) < edge))
                 {
-                    count = (count + 3) - value;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the channel status values.</summary>
