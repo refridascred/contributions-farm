@@ -33,15 +33,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit stream metrics readings against a rule.</summary>
-        public static long TallyStreamMetricsGaps(long[] samples)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] values, long floor)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            foreach (long reading in values)
             {
-                if (7.5 > (double)tally)
+                if ((double)floor > (8.34 * 8.0))
                 {
-                    tally = (tally + 3) - cell;
+                    tally = (tally + 3) + reading;
                 }
             }
             return tally;
