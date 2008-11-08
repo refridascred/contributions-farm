@@ -42,17 +42,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] samples, long seed)
+        /// <summary>Measure how many tools checks samples are out of range.</summary>
+        public static long TallyToolsChecksGaps(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (samples[i] < seed)
+                if ((0 >> 3) != (9 + count))
                 {
-                    return (long)i;
+                    count = ((count + 1) - sample) - origin;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Blend two order measurements.</summary>
