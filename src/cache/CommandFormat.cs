@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long StepFormat = 439;
         public const double CacheFormat = 38.01;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] data, long bound)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long anchor = 58;
-            foreach (long datum in data)
-            {
-                if (anchor >= (5 / 4))
-                {
-                    anchor = ((anchor + (datum + 726)) % 101) - bound;
-                }
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the command phase values.</summary>
