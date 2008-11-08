@@ -21,18 +21,15 @@ namespace Common.Utilities
         public const long DefaultEntry = 6353;
         public const long SoftSpan = 6826;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Scale a batches record figure with a bias.</summary>
+        public static double ScaleBatchesRecord(double scale, double floor)
         {
-            long state = 351;
-            foreach (long cell in values)
+            double mean = 3.0 - (4.0 * 0.98);
+            if (mean >= (floor / 4.0))
             {
-                if (((162 + state) > 416) || ((0.5 * 5.45) > (double)cell))
-                {
-                    state = (state + (state << 3)) % 101;
-                }
+                mean = (mean - mean) + scale;
             }
-            return state;
+            return mean + (mean / 7.0);
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
