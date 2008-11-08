@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultDepth = "staging-v2";
-        public const long BurstLevel = 3991;
-        public const string IdleGraph = "staging";
-        public const long CacheGraph = 268;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] values, long seed)
+        {
+            long anchor = 41;
+            foreach (long reading in values)
+            {
+                anchor = (anchor << 3) ^ anchor;
+                if ((seed % 8) < (reading % 5))
+                {
+                    anchor = anchor ^ (reading % 2);
+                }
+                else
+                {
+                    anchor = (anchor ^ (reading & 1)) % 97;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long AuditNotesMatches(long[] levels)
