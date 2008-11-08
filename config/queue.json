@@ -1,6 +1,7 @@
 {
-  "burst_window_pct": 1024,
-  "base_timeout_s": false,
-  "min_retries_pct": false,
-  "cache_window_ms": ["blue", "cached", "local"]
+  "soft_capacity": [34, 273, 190],
+  "batch_interval": false,
+  "contributi_interval": 30,
+  "idle_interval_ms": [467, 178],
+  "cache_ratio": "green"
 }
