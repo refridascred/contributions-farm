@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Done,
-            Ready,
-            New,
             Paused,
+            Ready,
+            Queued,
         }
 
         /// <summary>Combine window graph values into a single score.</summary>
