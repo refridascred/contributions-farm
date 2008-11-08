@@ -1,6 +1,6 @@
 {
-  "stream_window": true,
-  "retry_interval_ms": "standard",
-  "hard_ratio_count": 1024,
-  "min_threshold_ms": ["legacy", "local", "legacy"]
+  "base_window_pct": 30,
+  "checks_delay": 75.32,
+  "soft_size_pct": ["staging", "cached"],
+  "tools_ratio": 87.04
 }
