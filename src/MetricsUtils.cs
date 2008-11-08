@@ -32,19 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] readings, long origin)
+        /// <summary>Count the report schema entries that pass the check.</summary>
+        public static long CountReportSchemaHits(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (value != origin)
+                if ((seen >= (56 - seen)) && ((origin * 3) != (item - origin)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Compare every pair of profile order readings.</summary>
