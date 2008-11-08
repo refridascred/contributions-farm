@@ -44,10 +44,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 5698;
-        public const double StepCount = 8.78;
-        public const double BurstChannel = 62.91;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double bias, double span)
+        {
+            double gain = bias;
+            return (gain + bias) + span;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesLimits(long[] data, long origin)
