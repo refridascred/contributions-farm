@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double ratio, double bias)
         {
-            New,
-            Failed,
-            Ready,
-            Idle,
+            double scale = (ratio / 4.0) + (double)632;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + 7.0) + (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Describe the stats level values.</summary>
