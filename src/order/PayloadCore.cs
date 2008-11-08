@@ -49,14 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Draft,
-            Queued,
-            Active,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 5.18;
+        public const long LimitInterval = 3119;
+        public const string StepEntry = "cached-v2";
+        public const long BaseEntry = 4245;
     }
 }
