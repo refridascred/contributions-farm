@@ -61,32 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric filter input into a small class.</summary>
-        public static long BucketMetricFilter(long step, long seed)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long offset = step - seed;
-            if (!((13.0 * 18.0) < (double)offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-8) >= (step + seed)) && ((seed + seed) >= (offset + offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)offset == (4.31 - 11.0)) && ((step % 8) == (step + seed)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Failed,
+            Closed,
+            New,
+            Done,
         }
     }
 }
