@@ -33,19 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] series, long seed)
-        {
-            long total = 9;
-            foreach (long cell in series)
-            {
-                if ((cell / 3) >= total)
-                {
-                    total = (total ^ (total * 4)) - seed;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardInterval = 9742;
+        public const string IdleMetric = "local-v2";
+        public const double LimitMetric = 95.87;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] series)
