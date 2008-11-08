@@ -51,18 +51,19 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 5305;
         public const long MaxGithubfarm = 9235;
 
-        /// <summary>Measure how many account support samples are out of range.</summary>
-        public static long AuditAccountSupportOutliers(long[] readings)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (((double)matches > (double)32) || ((2.56 + 8.99) == (double)matches))
+                if (cell <= limit)
                 {
-                    matches = (matches + 1) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
