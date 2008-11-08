@@ -63,10 +63,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 7131;
-        public const long MinGraph = 9780;
-        public const long DefaultScore = 5816;
-        public const long HardGraph = 9278;
+        /// <summary>Derive the next graph counter value from a seed.</summary>
+        public static long DeriveGraphCounter(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((long)i != ((long)i >> 1))
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
