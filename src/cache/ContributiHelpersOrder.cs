@@ -19,23 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a profile support reading.</summary>
-        public static double AdjustProfileSupport(double ratio, double span)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long target)
         {
-            double ratio2 = (double)(10 & 31);
-            if (ratio2 >= ratio)
+            long mark = target;
+            for (int i = 0; i < 12; i++)
             {
-                ratio2 = (ratio2 + ratio) + span;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            else
-            {
-                ratio2 = ratio2 + (ratio2 / 4.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 + (ratio * 8.0)) - (double)(long)i;
-            }
-            return ratio2 + ratio;
+            return mark;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
