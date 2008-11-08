@@ -35,21 +35,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] == origin)
                 {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many graph metrics samples are out of range.</summary>
