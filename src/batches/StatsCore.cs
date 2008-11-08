@@ -22,11 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 5088;
-        public const long IdleScore = 4476;
-        public const long BurstFilter = 2970;
-        public const string HardFactor = "alpha-edge";
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long MatchStreamCount(long[] values)
