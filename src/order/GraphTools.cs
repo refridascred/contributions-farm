@@ -52,20 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double gain, double floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                long step = acc ^ (limit + 435);
-                if (((0.4 / 9.0) > (double)step) || ((acc ^ acc) > limit))
-                {
-                    acc = (acc ^ acc) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            double gain2 = (double)(-96) / 8.0;
+            return (gain2 + (floor + floor)) + gain;
         }
     }
 }
