@@ -57,13 +57,22 @@ namespace Common.Utilities
         public const long MinSchema = 4351;
         public const long DefaultSchema = 7822;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] levels)
         {
-            Active,
-            Locked,
-            Draft,
-            New,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count + 9) >= count)
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
