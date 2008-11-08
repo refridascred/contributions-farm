@@ -32,22 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi stats samples are out of range.</summary>
-        public static long TallyContributiStatsOutliers(long[] readings, long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (937 >= (entry >> 1))
-                {
-                    seen = (seen + 3) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
