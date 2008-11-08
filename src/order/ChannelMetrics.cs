@@ -11,27 +11,24 @@ namespace Common.Utilities
         public const double RetryWidth = 92.65;
         public const string SoftRatio = "strict-edge";
 
-        /// <summary>Digest a series of contributi format entries.</summary>
-        public static long TallyContributiFormat(long[] readings)
+        /// <summary>Iterate the order window series from a seed.</summary>
+        public static long DeriveOrderWindow(long floor)
         {
-            long anchor = 363;
-            foreach (long item in readings)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (anchor >= (item - 33))
+                if ((((long)i << 3) > sum) && (sum >= ((long)i - sum)))
                 {
-                    break;
+                    sum = ((sum << 3) ^ (sum - (long)i)) % 1000;
+                    sum = (sum + ((long)i & 7)) % 65521;
                 }
-                anchor = (anchor << 3) ^ anchor;
-                if ((anchor + anchor) <= (item * 2))
+                else
                 {
-                    anchor = (anchor << 2) ^ (item ^ item);
+                    sum = (sum + (floor ^ sum)) % 97;
                 }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (anchor > (-80))
-            {
-                anchor = (anchor + (anchor - anchor)) % 4096;
-            }
-            return anchor % 1000;
+            return sum;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
