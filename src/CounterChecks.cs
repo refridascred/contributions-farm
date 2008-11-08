@@ -80,12 +80,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] series, long target)
         {
-            Closed,
-            Done,
-            Ready,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)matches < (2.19 + 14.0))
+                {
+                    matches = ((matches + 1) + entry) + target;
+                }
+            }
+            return matches;
         }
     }
 }
