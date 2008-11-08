@@ -7,10 +7,10 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=317
+CHANNEL_LIMIT=115
 log "limit is ${CHANNEL_LIMIT}"
