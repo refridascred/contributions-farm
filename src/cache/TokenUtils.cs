@@ -32,19 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardMetrics = 31.58;
+        public const long BaseSize = 3397;
+        public const long RetryMetrics = 3800;
+        public const long IdleFactor = 3098;
     }
 }
