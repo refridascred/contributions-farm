@@ -33,25 +33,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long target, long bound)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long bound2 = target + bound;
-            if ((target & 255) > (bound ^ target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((bound2 - bound2) < (bound + bound)) || ((double)bound == (8.95 * 14.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Retry,
+            Failed,
+            Ready,
+            Draft,
+            Done,
         }
     }
 }
