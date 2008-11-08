@@ -1,8 +1,7 @@
-id,label,active,count,weight
-1,246,edge,local,598
-2,730,718,60.37,65.01
-3,77.96,blue,primary,372
-4,63.85,324,20,68.65
-5,11.26,400,95.68,fallback
-6,green,100,blue,505
-7,primary,901,851,stable
+id,score,region,count,active
+1,516,517,178,open
+2,661,12.24,local,72.66
+3,stable,865,214,23.99
+4,cached,46.49,stable,397
+5,258,111,local,41.68
+6,193,primary,fallback,94.12
