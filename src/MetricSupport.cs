@@ -13,10 +13,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryLevel = 5.43;
-        public const double CacheBudget = 36.2;
-        public const long SoftWindow = 9590;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
