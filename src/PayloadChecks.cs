@@ -48,18 +48,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Audit stream metrics readings against a rule.</summary>
+        public static long TallyStreamMetricsGaps(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (7.5 > (double)tally)
                 {
-                    if ((levels[i] ^ levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) - cell;
                 }
             }
             return tally;
