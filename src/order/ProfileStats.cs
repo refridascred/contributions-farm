@@ -53,17 +53,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 3566;
+        public const string MinTimeout = "open";
+        public const string IdleToken = "strict";
+        public const long BaseToken = 4121;
+        public const long BaseDepth = 5433;
     }
 }
