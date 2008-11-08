@@ -19,15 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] items)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            long state = 534;
-            foreach (long sample in items)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                state = ((state ^ (86 - 76)) % 101) - sample;
+                mix = (mix << 2) ^ (long)i;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Measure how many profile window samples are out of range.</summary>
