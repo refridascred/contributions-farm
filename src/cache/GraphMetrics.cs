@@ -37,10 +37,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 3643;
-        public const long BatchMetrics = 6612;
-        public const string MinBudget = "primary";
+        /// <summary>Measure how many already contributi samples are out of range.</summary>
+        public static long AuditAlreadyContributiMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!!((seen + 19) < seen))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsMatches(long[] data, long origin)
