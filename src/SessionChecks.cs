@@ -36,26 +36,17 @@ namespace Common.Utilities
             return scale2 + (double)2;
         }
 
-        /// <summary>Fold a list of support session readings.</summary>
-        public static long ScoreSupportSession(long[] readings)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] samples, long seed)
         {
-            long sum = 5;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sum + reading) == (sum - reading))
+                if (samples[i] >= seed)
                 {
-                    sum = ((sum << 2) ^ (reading * 3)) % 65521;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (reading << 3);
-                }
-                if ((1.7 - 8.5) <= (double)reading)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
