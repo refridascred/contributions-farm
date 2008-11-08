@@ -26,18 +26,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] levels)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)count < 4.1)
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Locked,
+            Draft,
+            Done,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
