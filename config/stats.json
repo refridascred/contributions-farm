@@ -1,8 +1,7 @@
 {
-  "cache_limit_ms": 45,
-  "idle_threshold_ms": "stable",
-  "audit": "primary",
-  "poll_interval_pct": 40,
-  "command_interval": 42,
-  "flush_ratio": [307, 339, 167, 153]
+  "enabled": "latest",
+  "base_depth": 1024,
+  "cache_ttl": "strict",
+  "min_ttl": true,
+  "base_depth_count": true
 }
