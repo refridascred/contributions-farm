@@ -12,26 +12,17 @@ namespace Common.Utilities
         public const double StepRecord = 47.42;
         public const long RetryTimeout = 5805;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] values, long floor)
         {
-            long anchor = 260;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item + item) <= 8)
+                if (values[i] > floor)
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ (0 >> 3);
+                    return (long)i;
                 }
             }
-            if (anchor > 382)
-            {
-                anchor = ((anchor * 5) + (anchor + anchor)) % 97;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
