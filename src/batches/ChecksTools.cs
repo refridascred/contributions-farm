@@ -16,10 +16,22 @@ namespace Common.Utilities
             return weight - (double)414;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxScore = 4797;
-        public const long RetryReport = 5749;
-        public const long MinFactor = 3296;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long TotalBatches(long[] series, long seed)
