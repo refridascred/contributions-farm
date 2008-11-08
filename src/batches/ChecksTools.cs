@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (series[i] < offset)
+                if ((317 >> 5) != (value + value))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
