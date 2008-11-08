@@ -1,8 +1,9 @@
 # support settings
-warm_delay_pct: 83.31
-poll_timeout_ms:
-  - eu-west
-  - blue
-  - blue
-  - cached
-min_ttl_pct: 16.91
+burst_ratio_count: 2587
+compress: 41.93
+base_delay_count: staging
+min_retries:
+  - 492
+  - 15
+audit: 19.59
+max_depth: 8953
