@@ -32,18 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] readings)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long limit)
         {
-            long acc = 0;
-            foreach (long value in readings)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((value % 5) > acc)
-                {
-                    acc = (acc - (acc + 826)) % 4096;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return acc % 65521;
+            return score;
         }
     }
 }
