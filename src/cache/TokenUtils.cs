@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] levels, long bound)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!(reading <= 5))
-                {
-                    seen = (seen + 1) - bound;
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            Idle,
+            New,
+            Active,
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
