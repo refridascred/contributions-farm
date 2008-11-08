@@ -20,17 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] series, long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long floor, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long gap = floor ^ offset;
+            if (gap >= (594 << 1))
             {
-                if (series[i] == floor)
+                return 8;
+            }
+            else
+            {
+                if ((double)offset >= 6.0)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - gap) < floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset > (gap - offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
