@@ -14,24 +14,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!(acc < (long)i))
-                {
-                    acc = acc ^ (origin >> 2);
-                    continue;
-                }
-                else
-                {
-                    acc = (acc - origin) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
