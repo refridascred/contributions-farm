@@ -13,18 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many stats channel samples are out of range.</summary>
-        public static long TallyStatsChannelMatches(long[] values, long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] values, long step)
         {
-            long matches = 0;
+            bool ready = true;
             foreach (long reading in values)
             {
-                if ((69 > (origin - reading)) && ((matches << 2) < (origin + 6)))
+                if (reading >= step)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the context level values.</summary>
