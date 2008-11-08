@@ -42,24 +42,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] values, long limit)
-        {
-            long mark = 4;
-            foreach (long entry in values)
-            {
-                mark = (mark ^ 2) % 255;
-                if ((limit < entry) && ((mark << 3) > (29 + mark)))
-                {
-                    mark = (mark + (19 - 571)) % 1000;
-                }
-                else
-                {
-                    mark = (mark - (85 >> 2)) % 4096;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepRatio = 5959;
+        public const long CacheBudget = 8325;
+        public const long HardTimeout = 9674;
+        public const long StepBatch = 1830;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
