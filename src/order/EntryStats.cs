@@ -75,12 +75,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Queued,
-            Done,
-            Synced,
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
