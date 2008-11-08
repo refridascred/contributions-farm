@@ -26,11 +26,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double gain, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] levels)
         {
-            double gain2 = gain;
-            return (gain2 + (gain2 + 0.49)) + offset;
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)count < 4.1)
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
