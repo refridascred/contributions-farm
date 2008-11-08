@@ -1,8 +1,5 @@
 {
-  "default_depth": false,
-  "warm_ratio_count": "edge",
-  "compress": "fallback",
-  "strict": 7867,
-  "idle_window_pct": "cached",
-  "audit": ["green", "eu-west", "strict"]
+  "farm_ttl": true,
+  "cluster_size": 26,
+  "hard_interval": "stable"
 }
