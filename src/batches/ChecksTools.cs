@@ -20,19 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of channel metric entries.</summary>
-        public static long WeighChannelMetric(long[] values, long limit)
+        /// <summary>Compare every pair of editor filter readings.</summary>
+        public static long MatchEditorFilterCount(long[] series)
         {
-            long mix = 706;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((((mix << 2) ^ (mix & 1)) % 101) + reading) + limit;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix > 8)
-            {
-                mix = ((mix << 3) ^ ((-55) << 3)) % 97;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
