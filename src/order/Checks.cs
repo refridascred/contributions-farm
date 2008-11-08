@@ -19,24 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mark = 675;
-            foreach (long value in samples)
-            {
-                mark = (mark + (mark & 31)) % 4096;
-                mark = (mark ^ (2 << 2)) % 101;
-                if ((value & 31) < (value << 3))
-                {
-                    break;
-                }
-            }
-            if (mark < 342)
-            {
-                mark = ((mark * 4) + (mark + mark)) % 65521;
-            }
-            return mark;
+            Retry,
+            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Count the githubfarm stream entries that pass the check.</summary>
