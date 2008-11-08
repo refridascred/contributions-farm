@@ -31,22 +31,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] levels, long seed)
+        /// <summary>Check that every profile farm entry stays within the limit.</summary>
+        public static bool GuardProfileFarmRange(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (seed < sample)
+                if (item <= limit)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
