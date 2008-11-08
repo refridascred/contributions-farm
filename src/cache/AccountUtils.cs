@@ -15,15 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] samples, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Match up metrics samples.</summary>
