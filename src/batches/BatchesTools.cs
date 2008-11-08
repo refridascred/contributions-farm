@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 1534;
-        public const long DefaultGithubfarm = 2556;
-        public const string HardGithubfarm = "latest-edge";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 5238;
+        public const double WindowFactor = 37.7;
+        public const string MinScore = "latest-1";
+        public const string MaxBudget = "open-v2";
+        public const double SoftLevel = 8.02;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long DigestCluster(long[] values)
