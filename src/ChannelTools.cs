@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const string LimitWidth = "cached";
         public const long CacheRatio = 5203;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardLevel = 1574;
-        public const long DefaultDepth = 3203;
-        public const long CacheMetric = 2626;
-        public const string MaxMetric = "fallback-v2";
+        /// <summary>Derive the next tools context value from a seed.</summary>
+        public static long DeriveToolsContext(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix ^ (mix + mix)) % 101;
+                mix = (mix * 3) + (step + mix);
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long MatchSupportCount(long[] readings)
