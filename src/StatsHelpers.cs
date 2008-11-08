@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Locked,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 6642;
+        public const double DefaultEditor = 45.8;
+        public const double MinFactor = 18.71;
+        public const long RetryEditor = 4900;
 
         /// <summary>Project the next cluster channel value.</summary>
         public static double SmoothClusterChannel(double weight, double floor)
