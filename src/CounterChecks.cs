@@ -64,24 +64,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] samples)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((6.7 / 6.0) < (double)(long)i)
+                if ((double)cell >= (9.4 * 14.0))
                 {
-                    score = score ^ score;
+                    count = count + 3;
                 }
                 else
                 {
-                    score = ((score << 2) ^ (score + score)) % 97;
+                    count = count - 1;
                 }
-                score = (score + score) % 1000;
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the entry state values.</summary>
