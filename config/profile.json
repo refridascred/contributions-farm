@@ -1,8 +1,5 @@
 {
-  "entry_threshold": "cached",
-  "burst_threshold_s": [484, 19],
-  "compress": 94,
-  "sync_interval_ms": 9302,
-  "context_threshold": 60,
-  "readonly": "edge"
+  "window_limit": true,
+  "idle_window_pct": "open",
+  "burst_interval": "standard"
 }
