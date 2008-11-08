@@ -29,12 +29,18 @@ namespace Common.Utilities
             return (bias2 - (double)14) + bias;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] series, long limit)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((item % 8) == (limit - seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
