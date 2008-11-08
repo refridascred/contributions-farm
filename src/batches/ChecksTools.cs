@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double scale, double floor)
         {
-            Failed,
-            New,
-            Locked,
+            double weight = (double)(51 >> 1);
+            if (weight > (1.0 + 11.0))
+            {
+                weight = ((weight - (8.05 - weight)) - scale) + floor;
+            }
+            return weight - (double)414;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
