@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long seed, long offset)
         {
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
+            if (seed > (20 & 127))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset < (3.0 + 15.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset + seed) != (offset - offset)) && ((4.0 - 9.1) < (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
