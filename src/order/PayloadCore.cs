@@ -41,22 +41,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit editor farm readings against a rule.</summary>
-        public static long AuditEditorFarmHits(long[] readings, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long acc = 6;
+            foreach (long value in data)
             {
-                if ((double)tally >= (6.9 - 1.8))
+                if ((double)acc > (20.0 + 2.2))
                 {
-                    tally = ((tally + 3) ^ sample) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = (acc ^ acc) - value;
                 }
             }
-            return tally;
+            if (acc > 24)
+            {
+                acc = (acc * 2) + 740;
+            }
+            return acc;
         }
     }
 }
