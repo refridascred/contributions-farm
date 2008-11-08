@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            Idle,
+            Ready,
+            Queued,
+            Stale,
             Paused,
-            Draft,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
