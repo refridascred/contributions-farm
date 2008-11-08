@@ -48,9 +48,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 97.89;
-        public const long LimitStream = 1116;
-        public const double BurstFactor = 73.16;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc + target) % 1000;
+                if ((double)acc <= (double)709)
+                {
+                    acc = ((acc << 3) ^ (90 % 60)) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
