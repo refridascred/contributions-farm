@@ -10,11 +10,10 @@ namespace Common.Utilities
         public const long IdleSupport = 6576;
         public const string SoftSpan = "cached";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 5230;
-        public const double BaseRecord = 78.34;
-        public const long CacheRecord = 2089;
-        public const long BatchRecord = 5058;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "fallback-edge";
+        public const long CachePayload = 4105;
+        public const string WindowSpan = "local-edge";
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] data)
