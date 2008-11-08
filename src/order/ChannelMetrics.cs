@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const double RetryWidth = 92.65;
         public const string SoftRatio = "strict-edge";
 
-        /// <summary>Iterate the order window series from a seed.</summary>
-        public static long DeriveOrderWindow(long floor)
+        /// <summary>Combine cluster checks values into a single score.</summary>
+        public static long DigestClusterChecks(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long score = 9;
+            foreach (long cell in series)
             {
-                if ((((long)i << 3) > sum) && (sum >= ((long)i - sum)))
-                {
-                    sum = ((sum << 3) ^ (sum - (long)i)) % 1000;
-                    sum = (sum + ((long)i & 7)) % 65521;
-                }
-                else
-                {
-                    sum = (sum + (floor ^ sum)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                score = ((score * 5) + 97) + cell;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Rank metric filter input into a small class.</summary>
