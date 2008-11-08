@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] values)
+        /// <summary>Rank checks already input into a small class.</summary>
+        public static long RankChecksAlready(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long offset = limit ^ seed;
+            if (seed <= (27 - 918))
             {
-                if ((3.0 * 8.12) >= (double)datum)
+                return 4;
+            }
+            else
+            {
+                if ((limit >> 4) != (seed - 368))
                 {
-                    hits = hits + 2;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)limit < (13.0 + 2.4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((offset % 5) == ((-996) + 629)) || ((double)offset != (double)limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
