@@ -1,11 +1,12 @@
 # support settings
-entry_timeout: 78.83
-commits_threshold: latest
-checks_ttl:
-  warm_capacity: 58.51
-  strict: stable
+enabled: 81.59
+hard_limit_count:
+  soft_threshold_pct: 250
+  notes_ratio: fallback
   audit:
-    - staging
-    - cached
-    - primary
-    - standard
+    buffer_interval: true
+    base_depth: 1024
+    record_threshold: 1024
+hard_window_s: true
+strict: green
+route_threshold: blue
