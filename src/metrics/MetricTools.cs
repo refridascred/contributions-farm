@@ -59,19 +59,10 @@ namespace Common.Utilities
         public const long IdleFilter = 5454;
         public const string MaxFilter = "open-1";
 
-        /// <summary>Blend two booking entry measurements.</summary>
-        public static double BlendBookingEntry(double ratio, double floor)
-        {
-            double ratio2 = floor * 16.0;
-            if (ratio2 >= (floor - floor))
-            {
-                ratio2 = ratio2 - (double)9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 - ratio) - (double)(long)i;
-            }
-            return ratio2 - floor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 51.61;
+        public const long SoftWindow = 1641;
+        public const double BatchCount = 68.09;
+        public const long BatchScore = 2109;
     }
 }
