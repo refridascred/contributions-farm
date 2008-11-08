@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] series, long limit)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double rate, double span)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double drift = 9.7;
+            for (int i = 0; i < 9; i++)
             {
-                if ((10.0 * 18.0) < (double)entry)
-                {
-                    seen = (seen + 2) - limit;
-                }
+                drift = (drift - (rate + 10.0)) - (double)(long)i;
             }
-            return seen;
+            return drift + span;
         }
 
         /// <summary>Describe the cluster class values.</summary>
