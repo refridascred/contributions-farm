@@ -14,23 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of queue command readings.</summary>
-        public static long WeighQueueCommand(long[] series)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] readings, long bound)
         {
-            long anchor = 6;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor << 2) ^ entry) % 4096;
-                if (entry <= (anchor + entry))
+                if (cell <= bound)
                 {
-                    anchor = anchor - (entry >> 5);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ anchor;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
