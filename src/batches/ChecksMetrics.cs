@@ -42,22 +42,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] readings, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long score = 2;
+            foreach (long item in samples)
             {
-                if (value <= offset)
+                if ((item - item) >= (score + score))
                 {
-                    matches = matches + 3;
+                    score = score + (item + score);
                 }
-                else
+                if ((score & 1) >= (score % 24))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Audit cache window readings against a rule.</summary>
