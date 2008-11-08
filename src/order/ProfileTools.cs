@@ -38,22 +38,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] samples)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((sample * 4) <= ((long)samples.Length / 2)) || ((double)sample != (7.06 + 6.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
