@@ -17,22 +17,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] values)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((double)(-686) >= (1.0 / 5.0)) || ((double)entry != (double)tally)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
