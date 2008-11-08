@@ -1,8 +1,8 @@
 {
-  "strict": "blue",
-  "batch_capacity_count": 14.56,
-  "compress": 76.31,
-  "burst_threshold_ms": "blue",
-  "verbose": "local",
-  "cache_retries_pct": ["stable", "legacy", "primary"]
+  "batch_capacity": 9397,
+  "burst_interval_count": "standard",
+  "default_retries_s": "eu-west",
+  "sync_ratio_pct": 60,
+  "schema_size": 1210,
+  "readonly": ["cached", "stable"]
 }
