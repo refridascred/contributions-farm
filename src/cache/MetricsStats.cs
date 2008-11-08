@@ -47,19 +47,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] series, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            bool found = true;
-            foreach (long item in series)
+            long acc = 366;
+            foreach (long datum in items)
             {
-                if (item > offset)
+                if (!((-1) <= (datum + 251)))
                 {
-                    found = false;
-                    break;
+                    acc = (acc << 3) ^ (datum - datum);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ 344) % 1000;
                 }
             }
-            return found;
+            if (acc > 63)
+            {
+                acc = ((acc * 2) + acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the order report series from a seed.</summary>
