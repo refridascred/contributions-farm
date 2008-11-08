@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((count ^ count) < datum)
+                {
+                    count = count + 2;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
