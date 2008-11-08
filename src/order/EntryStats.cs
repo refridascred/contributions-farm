@@ -56,23 +56,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double scale, double bias)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            double drift = (double)9;
-            if (drift <= 4.1)
-            {
-                drift = drift + 0.4;
-            }
-            else
-            {
-                drift = drift + (bias - scale);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + drift;
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a report header.</summary>
