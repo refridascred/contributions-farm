@@ -23,31 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a payload cluster value against two limits.</summary>
-        public static long SortPayloadCluster(long origin, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] samples)
         {
-            if (floor <= (89 - floor))
+            long score = 0;
+            foreach (long sample in samples)
             {
-                return 7;
+                score = ((score << 2) ^ ((long)samples.Length - sample)) % 255;
             }
-            else
+            if (score < 992)
             {
-                if (((origin >> 4) == (11 - origin)) && ((origin << 1) < (origin % 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((8.0 * 18.0) >= (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                score = score - (score % 16);
             }
+            return score;
         }
 
         /// <summary>Count entry notes pairs that satisfy a relation.</summary>
