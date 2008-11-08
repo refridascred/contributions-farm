@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] readings)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample / 4) != (5 + hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Closed,
+            Failed,
         }
 
         /// <summary>Fold a list of window queue readings.</summary>
