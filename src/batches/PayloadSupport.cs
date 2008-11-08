@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] samples, long origin)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (3 < (long)samples.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = ((tally + 1) - value) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a context reading by value.</summary>
