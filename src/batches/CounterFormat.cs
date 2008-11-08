@@ -29,9 +29,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleSpan = 17.78;
-        public const long MaxRatio = 1502;
-        public const long RetryScore = 5846;
+        /// <summary>Classify a checks batches pair into a bucket.</summary>
+        public static long RankChecksBatches(long step, long target)
+        {
+            if (((double)target <= (16.0 / 8.0)) && ((double)target > (10.0 / 9.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target > (17.0 * 4.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((target * 4) <= (step & 255)) && ((double)target <= (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
