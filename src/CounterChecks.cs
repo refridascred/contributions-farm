@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next filter tools value from a seed.</summary>
-        public static long IterateFilterTools(long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] data, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if (!((origin & 15) > tally))
+                {
+                    tally = (tally + 1) + entry;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Accumulate batches samples.</summary>
