@@ -28,12 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Measure how many already command samples are out of range.</summary>
+        public static long CountAlreadyCommandHits(long[] data, long offset)
         {
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((7 + 6) != (matches / 3))
+                {
+                    matches = ((matches + 1) + item) - offset;
+                }
+            }
+            return matches;
         }
     }
 }
