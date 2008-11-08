@@ -70,13 +70,9 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepWidth = 4081;
+        public const double MaxAlready = 58.27;
+        public const long LimitLevel = 3465;
     }
 }
