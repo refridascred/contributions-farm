@@ -18,12 +18,38 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Grade a report cluster value against two limits.</summary>
+        public static long BucketReportCluster(long floor, long target)
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            if (8 >= (target + 38))
+            {
+                return 6;
+            }
+            else
+            {
+                if (target >= (floor - floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor % 5) >= (673 + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor - target) < floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
