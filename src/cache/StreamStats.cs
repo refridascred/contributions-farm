@@ -50,14 +50,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Stale,
-            Failed,
-            Locked,
-            Done,
-            Retry,
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
