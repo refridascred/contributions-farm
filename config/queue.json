@@ -1,8 +1,7 @@
 {
-  "cluster_size": true,
-  "warm_depth_s": 60,
-  "default_window_pct": 250,
-  "default_threshold_pct": 100,
-  "default_window": 84.58,
-  "default_interval_s": ["strict", "latest"]
+  "stats_threshold": "latest",
+  "profile_timeout": [176, 257],
+  "audit": "staging",
+  "burst_threshold_ms": 74.23,
+  "strict": "eu-west"
 }
