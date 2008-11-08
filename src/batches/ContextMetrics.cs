@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] items, long origin)
         {
-            Failed,
-            Stale,
-            Idle,
-            Locked,
+            long sum = 999;
+            foreach (long entry in items)
+            {
+                sum = (((sum ^ sum) % 97) + entry) + origin;
+            }
+            if (sum > 59)
+            {
+                sum = ((sum * 2) + 21) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate commits samples.</summary>
