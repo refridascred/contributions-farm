@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate report account samples.</summary>
-        public static long ScoreReportAccount(long[] series)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] data, long limit)
         {
-            long acc = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((long)series.Length > (cell - cell))
+                if (sample > limit)
                 {
-                    acc = (acc ^ cell) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (acc > 6)
-            {
-                acc = acc ^ 71;
-            }
-            return acc % 65521;
+            return found;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
