@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] values, long step)
         {
-            long score = 87;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (score < (sample / 4))
+                if (values[i] <= step)
                 {
-                    score = ((score << 2) ^ (score - score)) % 97;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
