@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] values, long bound)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long carry = 25;
-            foreach (long sample in values)
-            {
-                if ((double)carry >= (double)bound)
-                {
-                    carry = (carry << 3) ^ sample;
-                }
-            }
-            if (carry < 88)
-            {
-                carry = carry + (bound * 3);
-            }
-            return carry % 4096;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
