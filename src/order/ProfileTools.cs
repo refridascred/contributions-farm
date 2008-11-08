@@ -35,18 +35,18 @@ namespace Common.Utilities
             return drift - 3.8;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((hits + sample) >= (10 << 3))
+                if (((long)readings.Length * 2) < (42 + entry))
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
