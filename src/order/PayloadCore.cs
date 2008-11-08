@@ -35,18 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] values)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (!((double)tally < (double)cell))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Synced,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
