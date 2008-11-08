@@ -55,15 +55,18 @@ namespace Common.Utilities
             return ratio + 20.0;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double rate, double bias)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] samples, long offset)
         {
-            double weight = 3.0;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                weight = ((weight - rate) + (double)(long)i) - bias;
+                if ((19.0 / 8.0) == (double)offset)
+                {
+                    count = (count + 2) ^ value;
+                }
             }
-            return weight - (weight + weight);
+            return count;
         }
 
         /// <summary>Fold a list of profile filter readings.</summary>
