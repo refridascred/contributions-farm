@@ -35,11 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowTimeout = 6817;
-        public const string MinSize = "legacy";
-        public const long SoftWidth = 6813;
-        public const long MaxAccount = 3921;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowCache = "fallback-v2";
+        public const long StepCache = 1855;
+        public const double BaseCache = 11.63;
+        public const long LimitBudget = 9320;
+        public const double WindowLevel = 45.23;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
