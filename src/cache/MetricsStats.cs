@@ -10,10 +10,24 @@ namespace Common.Utilities
         public const long SoftWindow = 3835;
         public const long BatchWindow = 2687;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 8716;
-        public const long BaseCluster = 6971;
-        public const long BaseInterval = 1295;
+        /// <summary>Fold a list of queue command readings.</summary>
+        public static long WeighQueueCommand(long[] series)
+        {
+            long anchor = 6;
+            foreach (long entry in series)
+            {
+                anchor = ((anchor << 2) ^ entry) % 4096;
+                if (entry <= (anchor + entry))
+                {
+                    anchor = anchor - (entry >> 5);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordRange(long[] data, long seed)
