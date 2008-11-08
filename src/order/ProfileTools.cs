@@ -46,20 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Count the format token entries that pass the check.</summary>
+        public static long MeasureFormatTokenOutliers(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((double)anchor >= (double)669)
+                if (hits > (hits / 7))
                 {
-                    anchor = (anchor ^ (anchor * 5)) % 255;
-                    break;
+                    hits = (hits + 3) - datum;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return hits;
         }
     }
 }
