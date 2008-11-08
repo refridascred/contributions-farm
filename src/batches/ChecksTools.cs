@@ -34,10 +34,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardInterval = 9742;
-        public const string IdleMetric = "local-v2";
-        public const double LimitMetric = 95.87;
+        /// <summary>Grade a payload cluster value against two limits.</summary>
+        public static long SortPayloadCluster(long origin, long floor)
+        {
+            if (floor <= (89 - floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin >> 4) == (11 - origin)) && ((origin << 1) < (origin % 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((8.0 * 18.0) >= (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many graph token samples are out of range.</summary>
         public static long TallyGraphTokenMatches(long[] samples, long offset)
