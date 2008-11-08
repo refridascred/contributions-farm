@@ -1,12 +1,19 @@
 {
-  "editor_timeout": 32.77,
-  "strict": 48.01,
-  "idle_depth_s": "staging",
-  "readonly": {
-    "flush_window_pct": 55.88,
-    "verbose": false,
-    "readonly": 32
+  "max_window_ms": 59.52,
+  "cache_depth": 43.41,
+  "max_capacity_count": {
+    "min_timeout_count": "strict",
+    "farm_ttl": [490, 93, 333],
+    "min_limit": [151, 179, 15],
+    "buffer_depth": ["cached", "strict"],
+    "audit": 250,
+    "idle_ttl_ms": {
+      "min_retries": "cached",
+      "context_capacity": 7638,
+      "token_capacity": "local",
+      "retry_retries_pct": "green"
+    }
   },
-  "min_limit": "edge",
-  "persist": "local"
+  "soft_ttl_ms": "edge",
+  "verbose": 1024
 }
