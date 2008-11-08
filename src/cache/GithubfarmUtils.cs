@@ -39,22 +39,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of cluster route readings.</summary>
-        public static long WeighClusterRoute(long[] levels, long seed)
+        /// <summary>Audit cluster filter readings against a rule.</summary>
+        public static long MeasureClusterFilterHits(long[] series, long bound)
         {
-            long carry = 98;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (((value << 1) < (0 - carry)) && ((double)carry < (7.3 * 6.8)))
+                if (!((count + bound) >= (bound - 32)))
                 {
-                    carry = (((carry << 2) ^ (349 * 3)) % 1000) + seed;
-                }
-                else
-                {
-                    carry = carry - carry;
+                    count = (count + 1) - datum;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
