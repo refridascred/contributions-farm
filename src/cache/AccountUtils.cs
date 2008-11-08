@@ -40,12 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            Retry,
-            Ready,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
