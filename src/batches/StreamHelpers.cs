@@ -80,17 +80,38 @@ namespace Common.Utilities
             return rate2 - 5.1;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] readings, long offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long offset, long offset2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset2 + offset) >= (65 - offset))
             {
-                if (readings[i] < offset)
+                return 4;
+            }
+            else
+            {
+                if ((0 & 3) >= (offset ^ offset2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (5.2 < (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9 / 7) != (offset2 >> 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
