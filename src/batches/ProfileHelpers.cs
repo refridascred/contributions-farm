@@ -51,15 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] data)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long anchor = 96;
-            foreach (long reading in data)
-            {
-                anchor = anchor + (reading + reading);
-            }
-            return anchor;
+            Retry,
+            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Digest a series of order window entries.</summary>
