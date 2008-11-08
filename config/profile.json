@@ -1,8 +1,5 @@
 {
-  "stats_ttl": 31,
-  "command_depth": "primary",
-  "idle_ttl_ms": "standard",
-  "contributi_threshold": true,
-  "account_retries": true,
-  "dry_run": "eu-west"
+  "max_threshold_count": 25.89,
+  "profile_depth": 76,
+  "readonly": 825
 }
