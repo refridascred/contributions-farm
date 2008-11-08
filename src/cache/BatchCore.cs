@@ -16,12 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] items, long limit)
         {
-            Pending,
-            Locked,
-            Queued,
+            long result = 65;
+            foreach (long datum in items)
+            {
+                result = ((result * 5) + (525 + datum)) % 101;
+                if ((limit - result) > limit)
+                {
+                    result = ((result << 3) ^ limit) % 101;
+                }
+                else
+                {
+                    result = (result + (7 * 3)) % 97;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
