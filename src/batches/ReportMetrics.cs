@@ -31,12 +31,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long target, long bound)
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            long bound2 = target + bound;
+            if ((target & 255) > (bound ^ target))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound2 - bound2) < (bound + bound)) || ((double)bound == (8.95 * 14.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
