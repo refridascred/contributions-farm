@@ -33,20 +33,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] items, long limit)
-        {
-            long mix = 55;
-            foreach (long datum in items)
-            {
-                mix = (mix + mix) - limit;
-                mix = (mix ^ datum) % 97;
-            }
-            if (mix > 886)
-            {
-                mix = (mix ^ (0 + mix)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowSpan = "stable-edge";
+        public const long CacheFactor = 7597;
+        public const string BurstTimeout = "latest-1";
     }
 }
