@@ -1,12 +1,14 @@
 # Command notes
 
-Run the schema check before changing any report limits.
-Keep stats and format names short and lowercase.
-When a githubfarm fails, the farm handler retries a few times before giving up.
+Each counter is validated before it reaches the window queue.
+The stats report groups every githubfarm by session.
+Keep token and session names short and lowercase.
+
+The session helpers are pure functions, so they are safe to call from any thread.
+When a layout fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate cache input early
-- Keep layout values small
-- Log every profile change
-- Prefer account defaults
+- Prefer commits defaults
+- Validate account input early
+- Review entry limits each release
