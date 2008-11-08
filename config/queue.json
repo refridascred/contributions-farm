@@ -1,5 +1,8 @@
 {
-  "order_limit": "green",
-  "sync_ratio_ms": "staging",
-  "hard_capacity": [447, 435]
+  "githubfarm_threshold": 839,
+  "warm_size": false,
+  "flush_ratio_pct": 60,
+  "base_timeout": 43,
+  "readonly": 16,
+  "compress": ["eu-west", "eu-west"]
 }
