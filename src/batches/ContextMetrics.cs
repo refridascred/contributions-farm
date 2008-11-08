@@ -14,11 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] values, long step)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long state = 832;
+            foreach (long reading in values)
+            {
+                if (!(step >= (step % 2)))
+                {
+                    state = (state ^ (step ^ step)) - reading;
+                }
+            }
+            return state;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
