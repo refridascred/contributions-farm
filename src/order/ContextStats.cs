@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the githubfarm counter series from a seed.</summary>
-        public static long IterateGithubfarmCounter(long origin)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = acc + (origin * 4);
-                acc = (acc ^ (8 & 7)) % 4096;
-                acc = acc + (acc + origin);
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Draft,
+            Synced,
+            Stale,
+            Locked,
         }
 
         /// <summary>Hold a entry options.</summary>
