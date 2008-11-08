@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultProfile = "standard-v2";
-        public const long WindowProfile = 6297;
-        public const double MinProfile = 42.16;
-        public const string LimitRatio = "open-v2";
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double rate, double span)
+        {
+            double load = rate;
+            return (load - (2.94 - 7.0)) + span;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long PairAlreadyCount(long[] levels)
