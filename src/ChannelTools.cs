@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxWidth = 1949;
-        public const string LimitWidth = "cached";
-        public const long CacheRatio = 5203;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
