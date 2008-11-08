@@ -36,11 +36,33 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchFactor = 9793;
-        public const long StepBudget = 1117;
-        public const string HardRoute = "cached";
-        public const double CacheBudget = 28.07;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long offset, long bound)
+        {
+            long diff = offset + bound;
+            if ((68 - bound) == (diff << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound << 1) < 465))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)bound == (1.4 / 3.0)) || ((diff / 2) >= (8 & 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit channel batches readings against a rule.</summary>
         public static long MeasureChannelBatchesGaps(long[] values, long floor)
