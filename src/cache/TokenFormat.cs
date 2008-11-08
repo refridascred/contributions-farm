@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first graph profile entry that matches the target.</summary>
-        public static long LookupGraphProfileIndex(long[] values, long limit)
+        /// <summary>Combine counter report values into a single score.</summary>
+        public static long DigestCounterReport(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 35;
+            foreach (long cell in values)
             {
-                if ((values[i] <= limit) && ((values[i] % 5) != 0))
+                if ((cell << 2) > (anchor / 5))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (anchor * 5)) % 101;
+                    continue;
+                }
+                if ((88 <= (cell - cell)) && ((4.59 - 4.05) > (double)cell))
+                {
+                    anchor = ((anchor * 2) + (anchor / 8)) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
