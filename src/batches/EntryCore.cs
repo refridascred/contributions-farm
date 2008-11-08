@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session record readings against a rule.</summary>
-        public static long AuditSessionRecordGaps(long[] items, long floor)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell > matches) || (8.0 <= (double)matches))
-                {
-                    matches = (matches + 2) + floor;
-                }
-            }
-            return matches;
+            Active,
+            Dropped,
+            Locked,
+            Pending,
+            New,
         }
 
         /// <summary>Audit farm graph readings against a rule.</summary>
