@@ -41,32 +41,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long target, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] items)
         {
-            long span = target + bound;
-            if ((bound - target) < (span * 4))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((span >> 1) < span)
+                if (!((item % 64) >= (seen / 2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.3 + 5.0) <= (double)span)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
