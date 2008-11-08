@@ -77,18 +77,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] readings)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((sample / 5) == (count - 4))
-                {
-                    count = count + 2;
-                }
+                sum = ((sum * 3) + 78) % 1000;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Scale a tools support figure with a bias.</summary>
