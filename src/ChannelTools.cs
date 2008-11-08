@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next cluster report value.</summary>
-        public static double ScaleClusterReport(double weight, double span)
-        {
-            double scale = (double)((-18) - (-658));
-            return (scale + (span - scale)) + weight;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleEditor = "primary";
+        public const string CacheBudget = "open-1";
+        public const long MinSpan = 8854;
+        public const long WindowInterval = 1654;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string SoftStats = "staging";
