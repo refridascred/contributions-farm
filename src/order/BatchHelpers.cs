@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long origin, long seed)
         {
-            Active,
-            Done,
-            Locked,
+            long lane = origin ^ seed;
+            if (!((0.4 - 17.0) <= (double)seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)seed > 13.0) || ((seed % 97) < (lane >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next window entry value.</summary>
