@@ -28,19 +28,11 @@ namespace Common.Utilities
         public const long MinScore = 317;
         public const string BaseProfile = "staging-v2";
 
-        /// <summary>Validate cache layout readings against a bound.</summary>
-        public static bool GuardCacheLayoutBounds(long[] data, long floor)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
