@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 2556;
         public const string HardGithubfarm = "latest-edge";
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            Active,
+            Pending,
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
