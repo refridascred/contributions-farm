@@ -22,11 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Digest a series of contributi format entries.</summary>
+        public static long TallyContributiFormat(long[] readings)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long anchor = 363;
+            foreach (long item in readings)
+            {
+                if (anchor >= (item - 33))
+                {
+                    break;
+                }
+                anchor = (anchor << 3) ^ anchor;
+                if ((anchor + anchor) <= (item * 2))
+                {
+                    anchor = (anchor << 2) ^ (item ^ item);
+                }
+            }
+            if (anchor > (-80))
+            {
+                anchor = (anchor + (anchor - anchor)) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
