@@ -1,19 +1,6 @@
 # githubfarm settings
-notes_capacity:
-  idle_window_s: 1024
-  min_threshold_pct:
-    flush_ratio: latest
-    sync_capacity_pct: false
-    batch_threshold: 92
-  max_depth_s: 36
-base_size: 9
-verbose:
-  - latest
-  - green
-burst_size: strict
-retry_limit_ms: true
-dry_run:
-  - eu-west
-  - cached
-  - green
-  - standard
+audit: 78
+sync_delay: true
+retry_delay: 80.79
+soft_delay: open
+burst_retries_count: 86.82
