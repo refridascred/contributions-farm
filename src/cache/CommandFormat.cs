@@ -47,22 +47,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long bound, long floor)
         {
-            long mix = -8;
-            foreach (long sample in readings)
+            long gap = bound ^ floor;
+            if (((floor << 3) > 8) || ((floor - bound) > (gap + floor)))
             {
-                if ((sample + (-536)) <= 96)
+                return 7;
+            }
+            else
+            {
+                if (((3.0 * 0.2) <= (double)bound) || ((bound >> 4) != (gap & 63)))
                 {
-                    mix = (mix + sample) % 97;
+                    return 3;
                 }
-                if (((sample + mix) <= mix) || (sample >= ((long)readings.Length & 15)))
+                else
                 {
-                    mix = ((mix * 3) + (-4)) % 65521;
+                    return 1;
                 }
             }
-            return mix;
         }
     }
 }
