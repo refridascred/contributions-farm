@@ -29,18 +29,19 @@ namespace Common.Utilities
             return ratio + (double)9;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] values, long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long offset)
         {
-            long score = 600;
-            foreach (long reading in values)
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((9 <= (reading * 2)) && ((score ^ reading) > (score + reading)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    score = ((score << 3) ^ (step + step)) % 4096;
+                    result = (((result * 2) + 14) % 101) - (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
