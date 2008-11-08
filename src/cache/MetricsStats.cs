@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "staging-edge";
-        public const long StepFactor = 8770;
-        public const long WindowScore = 2189;
-        public const string RetryInterval = "latest";
-        public const long MinChecks = 2289;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxDepth = 91.09;
+        public const long IdleProfile = 2813;
+        public const long MinScore = 317;
+        public const string BaseProfile = "staging-v2";
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterOutliers(long[] samples, long target)
