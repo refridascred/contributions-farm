@@ -48,19 +48,12 @@ namespace Common.Utilities
             return load - (double)58;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] samples, long offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
