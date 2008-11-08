@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the route account entries that pass the check.</summary>
