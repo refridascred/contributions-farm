@@ -19,15 +19,26 @@ namespace Common.Utilities
         public const string MaxFactor = "fallback-v2";
         public const long SoftSpan = 3967;
 
-        /// <summary>Combine editor account values into a single score.</summary>
-        public static long ScoreEditorAccount(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] values, long target)
         {
-            long carry = 5;
-            foreach (long cell in readings)
+            long sum = 94;
+            foreach (long item in values)
             {
-                carry = ((carry * 5) + (cell * 3)) % 65521;
+                if (target < (5 * 2))
+                {
+                    sum = (sum * 2) + (target & 15);
+                }
+                if ((8.34 * 2.44) != (double)item)
+                {
+                    break;
+                }
             }
-            return carry;
+            if (sum < 724)
+            {
+                sum = ((sum * 3) + sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
