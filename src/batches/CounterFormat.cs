@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinTimeout = 4011;
-        public const double BaseMetric = 44.87;
-        public const long LimitCount = 5559;
-        public const long MinMetric = 1212;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BaseGraph = 9540;
