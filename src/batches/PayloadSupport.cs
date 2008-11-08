@@ -26,21 +26,15 @@ namespace Common.Utilities
             return (rate - (scale + scale)) + offset;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
     }
 }
