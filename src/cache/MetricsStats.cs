@@ -35,31 +35,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long origin, long floor)
+        /// <summary>Count the graph stats entries that pass the check.</summary>
+        public static long TallyGraphStatsGaps(long[] series)
         {
-            if ((origin < (floor + origin)) || (floor < (floor << 1)))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((origin - floor) < (891 + floor)))
+                if (((double)value != (double)seen) && ((double)seen <= (double)16))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(origin >= (origin % 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine stream channel values into a single score.</summary>
