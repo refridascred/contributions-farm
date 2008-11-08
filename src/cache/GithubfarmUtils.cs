@@ -30,31 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long target, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] readings, long limit)
         {
-            if ((target - seed) == (target % 100))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((16 >> 1) >= (target * 5))
+                if (item <= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target << 3) == (seed % 24))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Fold a list of order readings.</summary>
