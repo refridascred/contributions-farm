@@ -15,18 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] items, long origin)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((631 << 2) >= (count ^ count))
                 {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 2) ^ sample) + origin;
                 }
             }
             return count;
