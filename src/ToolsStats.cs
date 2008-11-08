@@ -12,18 +12,23 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] samples)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double drift = floor;
+            if (drift < ratio)
             {
-                if (!((count % 8) < (652 - 788)))
-                {
-                    count = (count + 3) + sample;
-                }
+                drift = drift - 9.3;
             }
-            return count;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (drift * 8.53)) + (double)(long)i;
+            }
+            return drift - (10.0 + ratio);
         }
 
         /// <summary>Describe the queue level values.</summary>
