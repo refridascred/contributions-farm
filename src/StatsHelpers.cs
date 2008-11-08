@@ -57,11 +57,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "standard";
-        public const long MaxRatio = 9496;
-        public const long MinSpan = 9066;
-        public const long BaseContributi = 1761;
-        public const long MinContributi = 7941;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (((double)target >= (4.06 / 2.0)) || (((target >> 3) < (value - value)) || (((long)levels.Length & 15) > (679 & 15))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
