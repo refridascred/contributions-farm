@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 6642;
-        public const double DefaultEditor = 45.8;
-        public const double MinFactor = 18.71;
-        public const long RetryEditor = 4900;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (entry > (count << 2))
+                {
+                    count = (count + 2) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next cluster channel value.</summary>
         public static double SmoothClusterChannel(double weight, double floor)
