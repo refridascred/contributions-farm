@@ -1,7 +1,7 @@
 {
-  "soft_capacity": [34, 273, 190],
-  "batch_interval": false,
-  "contributi_interval": 30,
-  "idle_interval_ms": [467, 178],
-  "cache_ratio": "green"
+  "warm_depth_ms": "primary",
+  "idle_retries_pct": "eu-west",
+  "warm_capacity_pct": 62,
+  "sync_size": [29, 223, 326],
+  "sync_delay": [141, 57, 322, 458]
 }
