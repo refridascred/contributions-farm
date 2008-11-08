@@ -60,18 +60,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit cache window readings against a rule.</summary>
-        public static long MeasureCacheWindowMatches(long[] series)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value - hits) >= value) && ((value & 255) > (3 - hits)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
