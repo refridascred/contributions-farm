@@ -5,14 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long target)
         {
-            New,
-            Stale,
-            Closed,
-            Failed,
-            Pending,
+            long result = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if (29 >= (result << 3))
+                {
+                    result = result ^ target;
+                }
+                if ((target * 5) <= (result - (long)i))
+                {
+                    result = ((result * 3) + ((long)i << 3)) % 101;
+                }
+                else
+                {
+                    result = (result + (target + 271)) % 4096;
+                    result = (result + (result % 3)) % 65521;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
