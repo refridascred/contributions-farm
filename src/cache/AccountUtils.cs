@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] items, long step)
         {
-            Locked,
-            Idle,
-            New,
-            Done,
-            Active,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
