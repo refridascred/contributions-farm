@@ -23,11 +23,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the metrics status values.</summary>
