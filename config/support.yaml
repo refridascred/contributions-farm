@@ -1,8 +1,20 @@
 # support settings
-min_ttl_pct: 250
-sync_retries_count:
-  - 225
-  - 270
-  - 359
-hard_threshold_pct: 98.5
-batch_threshold_pct: blue
+batch_timeout: 1787
+poll_depth: 34
+persist:
+  - 152
+  - 335
+  - 190
+  - 196
+entry_retries:
+  batches_limit: open
+  default_window_s: 22.8
+  metric_depth: 250
+  flush_limit_s: 100
+  batch_size_count:
+    record_threshold: 8947
+    hard_depth_count: 60
+    warm_ratio_ms: 54
+  max_interval_s: 77.72
+cache_window_ms: 30.13
+poll_timeout: green
