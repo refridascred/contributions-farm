@@ -13,23 +13,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the graph farm entries that pass the check.</summary>
-        public static long CountGraphFarmOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample & 255) <= (12 - 421))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleRatio = 5172;
+        public const long CacheCounter = 2829;
+        public const long RetryCounter = 3100;
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
         public static long AuditChecksFilterMatches(long[] samples)
