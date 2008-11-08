@@ -24,18 +24,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] values, long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally + entry) != (entry - entry))
+                if (data[i] <= offset)
                 {
-                    tally = (tally + 3) + bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate checks route samples.</summary>
