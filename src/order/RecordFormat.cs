@@ -51,22 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] samples, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((offset + cell) == (cell + seen))
+                if (((double)matches <= 5.0) && !(matches > (640 - reading)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
