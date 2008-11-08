@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long limit, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long seed)
         {
-            if ((limit + 320) != (seed * 4))
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((seed + seed) != (limit >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((3 + 9) < (limit * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + seed) > (limit - seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the buffer level values.</summary>
