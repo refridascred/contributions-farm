@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next entry buffer value from a seed.</summary>
-        public static long IterateEntryBuffer(long target)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] readings, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (target >= (target * 2))
+                if (readings[i] <= origin)
                 {
-                    mix = (mix - (mix >> 3)) % 97;
-                    break;
+                    return (long)i;
                 }
-                if (((double)mix >= (5.75 - 15.0)) || (((long)i ^ mix) > 453))
-                {
-                    mix = (mix * 5) + (mix + mix);
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Adjust a profile support reading.</summary>
