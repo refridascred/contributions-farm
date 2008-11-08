@@ -48,18 +48,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] levels)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum & 1) >= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
