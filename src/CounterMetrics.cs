@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long IdleSupport = 6576;
         public const string SoftSpan = "cached";
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 5230;
+        public const double BaseRecord = 78.34;
+        public const long CacheRecord = 2089;
+        public const long BatchRecord = 5058;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long RollChannel(long origin)
