@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] items, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = floor;
+            if (bias > gain)
             {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
+                bias = bias + (floor - gain);
             }
-            return -1;
+            else
+            {
+                bias = bias - (0.9 - 2.14);
+            }
+            return bias + bias;
         }
 
         /// <summary>Fold a list of account readings.</summary>
