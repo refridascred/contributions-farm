@@ -24,39 +24,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long floor, long offset)
+        /// <summary>Fold a list of githubfarm session readings.</summary>
+        public static long TallyGithubfarmSession(long[] levels, long step)
         {
-            long gap = floor ^ offset;
-            if (gap >= (594 << 1))
+            long sum = 2;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset >= 6.0)
+                if ((double)sum >= (19.0 + 6.34))
                 {
-                    return 5;
+                    sum = ((sum - (82 % 24)) % 97) - value;
                 }
-                else
+                if (!(step > (step - step)))
                 {
-                    if ((floor - gap) < floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset > (gap - offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = ((sum << 3) ^ sum) % 65521;
                 }
             }
+            if (sum > 9)
+            {
+                sum = (sum + (sum & 63)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
