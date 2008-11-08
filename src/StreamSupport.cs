@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryFormat = 25.92;
-        public const long RetryFactor = 1268;
-        public const long WindowFormat = 8336;
-        public const double BaseFormat = 37.52;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Validate support record readings against a bound.</summary>
         public static bool VerifySupportRecordBounds(long[] data, long target)
