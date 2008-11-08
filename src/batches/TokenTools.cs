@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of checks layout readings.</summary>
-        public static long CombineChecksLayout(long[] series, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] readings, long origin)
         {
-            long mix = -56;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                mix = mix ^ (bound + reading);
+                if (origin < value)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (mix < 439)
-            {
-                mix = (mix * 3) + (bound >> 2);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
