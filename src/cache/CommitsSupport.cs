@@ -13,20 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate layout support readings against a bound.</summary>
-        public static bool GuardLayoutSupportBounds(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultScore = 1565;
+        public const long DefaultSupport = 1750;
+        public const long WindowSpan = 7002;
+        public const long LimitTimeout = 9613;
+        public const long HardSupport = 2604;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long CombinePayload(long[] readings)
