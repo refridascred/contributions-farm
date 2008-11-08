@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits * 2) >= hits)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 70.5;
+        public const long BaseWidth = 4122;
+        public const double WindowDepth = 86.63;
+        public const double BatchLevel = 37.74;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
