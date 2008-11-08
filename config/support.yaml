@@ -1,9 +1,4 @@
 # support settings
-sync_interval_ms: 500
-base_ratio_ms: 2496
-payload_retries:
-  retry_ratio_s: 6916
-  audit: 67
-  flush_capacity_count:
-    - 410
-    - 462
+audit: 100
+flush_interval_ms: eu-west
+burst_ttl_count: 1126
