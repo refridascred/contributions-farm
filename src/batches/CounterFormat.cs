@@ -12,21 +12,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 4;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell >= (cell - anchor))
                 {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor - anchor;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Classify a checks batches pair into a bucket.</summary>
