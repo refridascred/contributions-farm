@@ -32,12 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] levels, long limit)
         {
-            Synced,
-            Draft,
-            Active,
+            long acc = 73;
+            foreach (long entry in levels)
+            {
+                acc = ((acc ^ (entry * 2)) % 255) - limit;
+            }
+            return acc;
         }
 
         /// <summary>Blend two layout graph measurements.</summary>
