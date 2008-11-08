@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long SoftAlready = 4382;
         public const double HardTimeout = 73.38;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] samples, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (entry != bound)
+                if (entry > floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
