@@ -20,25 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long origin, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] data, long step)
         {
-            long span = origin + bound;
-            if ((origin - 33) != (span + span))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((652 > (bound - span)) && ((3 ^ span) > (span / 2)))
+                if (!((item + item) >= step))
                 {
-                    return 1;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the contributi class values.</summary>
