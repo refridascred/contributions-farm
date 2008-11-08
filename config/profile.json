@@ -1,5 +1,5 @@
 {
-  "window_limit": true,
-  "idle_window_pct": "open",
-  "burst_interval": "standard"
+  "account_ttl": [136, 60, 323, 88],
+  "account_threshold": "open",
+  "base_timeout_pct": 883
 }
