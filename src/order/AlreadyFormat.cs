@@ -56,19 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            long carry = 7;
-            foreach (long item in items)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry << 3) ^ (item % 5)) % 255;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            if (carry < 5)
-            {
-                carry = ((carry << 3) ^ carry) % 4096;
-            }
-            return carry % 65521;
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
