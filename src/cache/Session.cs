@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Classify a contributi profile pair into a bucket.</summary>
+        public static long BucketContributiProfile(long bound, long offset)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            if (!((bound * 3) < (bound + bound)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)offset != (double)bound) && ((offset + offset) >= (offset / 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine report values into a single score.</summary>
