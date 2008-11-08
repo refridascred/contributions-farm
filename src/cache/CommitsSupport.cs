@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] values, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long step = offset + origin;
+            if (((0.57 - 7.75) != (double)offset) || ((step >> 1) == (step + origin)))
             {
-                if (!(bound <= (bound * 5)) && (((hits << 1) >= (bound + hits)) || ((6 & 3) == (644 - bound))))
+                return 4;
+            }
+            else
+            {
+                if ((9.3 - 7.0) != (double)offset)
                 {
-                    hits = (hits + 1) + value;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (687 >= (215 - step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-92) - step) <= (8 & 127))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two checks measurements.</summary>
