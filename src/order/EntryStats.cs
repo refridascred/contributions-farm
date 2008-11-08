@@ -41,19 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] items, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (item >= seed)
+                if ((916 & 3) < (seed + hits))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a command summary.</summary>
