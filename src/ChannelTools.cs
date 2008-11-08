@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const long MinSpan = 8854;
         public const long WindowInterval = 1654;
 
-        /// <summary>Audit checks filter readings against a rule.</summary>
-        public static long TallyChecksFilterGaps(long[] data)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!((cell - cell) <= (hits << 1)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Ready,
+            Closed,
+            New,
+            Locked,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
