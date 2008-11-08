@@ -1,7 +1,16 @@
 # entry settings
-max_capacity_s: false
-hard_threshold: fallback
-warm_ratio_pct: 9681
-dry_run: open
-hard_ratio_pct: 7186
-support_window: 16.54
+warm_ttl: 0.33
+hard_ratio_s:
+  - fallback
+  - stable
+poll_size_ms: eu-west
+retry_window_s: 100
+buffer_window:
+  - cached
+  - standard
+stats_depth:
+  batch_retries_ms: 71
+  burst_delay_ms: primary
+  cache_ratio_pct: fallback
+  max_ratio_s: primary
+  counter_delay: staging
