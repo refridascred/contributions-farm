@@ -34,15 +34,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the account window series from a seed.</summary>
-        public static long StepAccountWindow(long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Stale,
+            Active,
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
