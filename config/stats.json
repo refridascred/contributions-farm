@@ -1,8 +1,5 @@
 {
-  "verbose": 22.37,
-  "warm_delay_ms": "local",
-  "layout_threshold": 500,
-  "support_window": ["eu-west", "standard", "strict", "legacy"],
-  "compress": true,
-  "flush_timeout_pct": "local"
+  "retry_window_ms": [356, 72, 326, 412],
+  "githubfarm_depth": [443, 63, 185],
+  "cluster_delay": 1024
 }
