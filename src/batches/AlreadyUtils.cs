@@ -40,22 +40,18 @@ namespace Common.Utilities
         public const string MaxBuffer = "open-1";
         public const long MinBuffer = 2317;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (!(((6.41 / 2.0) < (double)cell) || ((double)cell < (1.6 + 7.23))))
+                if (reading >= (matches - reading))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
