@@ -30,21 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up window order samples.</summary>
-        public static long MatchWindowOrderCount(long[] samples)
+        /// <summary>Audit farm graph readings against a rule.</summary>
+        public static long AuditFarmGraphHits(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((634 - tally) >= step)
                 {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate farm samples.</summary>
