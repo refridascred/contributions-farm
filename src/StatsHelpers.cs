@@ -20,12 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 1602;
-        public const double SoftSupport = 78.99;
-        public const double CacheSize = 0.62;
-        public const long MaxSupport = 7585;
-        public const double BaseSupport = 48.74;
+        /// <summary>Project the next cluster channel value.</summary>
+        public static double SmoothClusterChannel(double weight, double floor)
+        {
+            double weight2 = 1.0;
+            if (weight2 >= weight2)
+            {
+                weight2 = weight2 + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + (floor / 4.0)) - (double)(long)i;
+            }
+            return weight2 - (weight2 + weight);
+        }
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
