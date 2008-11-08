@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public string Weight { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Label { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
