@@ -25,21 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 61;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = (state - (offset + state)) % 65521;
+                if (cell < state)
                 {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state << 3) ^ (state << 2);
+                }
+                if ((state % 8) < 6)
+                {
+                    break;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
