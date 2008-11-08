@@ -30,19 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache counter entries that pass the check.</summary>
-        public static long AuditCacheCounterMatches(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)9 != (double)(long)values.Length)
-                {
-                    seen = ((seen + 1) ^ datum) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 8777;
+        public const double MaxRatio = 56.02;
+        public const long MaxBatches = 6013;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long StepTools(long target)
