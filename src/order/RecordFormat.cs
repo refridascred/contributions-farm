@@ -43,18 +43,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] readings)
+        /// <summary>Fold a list of window queue readings.</summary>
+        public static long CombineWindowQueue(long[] readings, long limit)
         {
-            long anchor = 104;
-            foreach (long item in readings)
+            long total = 799;
+            foreach (long reading in readings)
             {
-                if (((double)item != (8.0 * 6.0)) && ((anchor - anchor) < item))
+                if ((38 > (7 - reading)) && ((reading & 255) == (total - limit)))
                 {
-                    anchor = (anchor * 4) + ((-1) / 8);
+                    total = ((total * 2) + (42 + 60)) % 65521;
+                }
+                else
+                {
+                    total = total - (6 ^ 90);
                 }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
