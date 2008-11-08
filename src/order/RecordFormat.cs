@@ -51,14 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Closed,
-            New,
-            Dropped,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetryDepth = "stable-1";
+        public const long WindowScore = 4063;
+        public const long CacheSpan = 809;
+        public const long BatchInterval = 5238;
+        public const long CacheSupport = 1053;
     }
 }
