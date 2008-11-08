@@ -20,23 +20,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((matches + matches) == (42 + value))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "latest-1";
+        public const long RetryCache = 2519;
+        public const long BurstCache = 4880;
+        public const long IdleSpan = 7276;
+        public const long LimitLevel = 6775;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryLimits(long[] values, long limit)
