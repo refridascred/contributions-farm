@@ -1,13 +1,17 @@
 {
-  "readonly": "strict",
-  "compress": "eu-west",
-  "warm_size": 5172,
-  "sync_size_s": ["standard", "cached"],
-  "metric_timeout": {
-    "hard_ttl_s": [323, 240, 256, 187],
-    "verbose": ["legacy", "eu-west", "local", "open"],
-    "sync_ttl_s": 100,
-    "compress": true
+  "schema_ttl": true,
+  "warm_ratio": "primary",
+  "min_timeout_count": {
+    "notes_depth": true,
+    "max_ratio": 2030,
+    "dry_run": "strict",
+    "max_interval_count": true,
+    "min_window_ms": {
+      "format_window": 24,
+      "soft_threshold_count": 37.72,
+      "audit": [277, 207, 21]
+    },
+    "poll_window": "edge"
   },
-  "retry_limit_s": [418, 382]
+  "min_limit_ms": "standard"
 }
