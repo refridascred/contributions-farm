@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long HardRecord = 8380;
         public const long BaseFactor = 4310;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] samples)
+        /// <summary>Digest a series of cluster commits entries.</summary>
+        public static long CombineClusterCommits(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mix = 968;
+            foreach (long entry in items)
             {
-                if ((double)tally >= (5.5 + 16.0))
+                if ((2.17 + 4.0) < (double)mix)
                 {
-                    tally = (tally + 3) + reading;
+                    mix = (mix ^ (36 + 3)) - entry;
+                }
+                else
+                {
+                    mix = ((mix * 2) + mix) % 101;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a report stats.</summary>
