@@ -1,16 +1,7 @@
 {
-  "channel_ttl": {
-    "poll_interval_s": "local",
-    "default_delay_ms": "open",
-    "persist": "standard",
-    "warm_threshold_s": "edge",
-    "sync_limit": {
-      "default_ttl_ms": "legacy",
-      "strict": false,
-      "already_threshold": [166, 20]
-    },
-    "max_capacity": ["staging", "staging"]
-  },
-  "base_limit": "strict",
-  "payload_ttl": [251, 193, 136, 281]
+  "queue_ttl": ["local", "open", "cached", "cached"],
+  "route_ttl": 84.29,
+  "flush_capacity_ms": 30,
+  "soft_size_ms": 17,
+  "cache_capacity": 1024
 }
