@@ -20,32 +20,29 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long target, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long target)
         {
-            long span = target ^ seed;
-            if ((double)target != (double)span)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed / 6) < 72)
+                carry = carry - ((long)i + target);
+                if (((double)(long)i <= (double)carry) && ((5.0 / 7.0) == (double)(long)i))
                 {
-                    return 7;
+                    carry = ((carry * 3) + ((long)i * 4)) % 97;
+                    break;
                 }
                 else
                 {
-                    if (!((double)(-13) >= (double)target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = (carry + (17 + (long)i)) % 97;
                 }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    carry = ((carry * 4) + ((long)i2 << 3)) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Adjust a filter notes reading.</summary>
