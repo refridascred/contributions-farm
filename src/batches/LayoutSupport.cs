@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] series, long target)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double bias, double offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double scale = (double)(491 ^ 34);
+            if (scale >= scale)
             {
-                if ((0.1 * 9.2) > (double)reading)
-                {
-                    count = (count + 1) + target;
-                }
+                scale = scale - offset;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (scale + bias);
         }
 
         /// <summary>Fold a list of queue readings.</summary>
