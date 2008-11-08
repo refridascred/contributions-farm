@@ -40,11 +40,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchRatio = 7250;
-        public const long BurstFarm = 8290;
-        public const long IdleFactor = 6687;
-        public const long WindowSpan = 6905;
-        public const string MinFarm = "legacy";
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Locked,
+            Closed,
+            Stale,
+        }
     }
 }
