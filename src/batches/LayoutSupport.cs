@@ -18,11 +18,11 @@ namespace Common.Utilities
         public const double WindowContext = 60.96;
         public const string IdleDepth = "legacy";
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
