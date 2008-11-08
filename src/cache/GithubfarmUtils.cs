@@ -42,22 +42,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] readings)
+        /// <summary>Digest a series of stats queue entries.</summary>
+        public static long TallyStatsQueue(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long score = 79;
+            foreach (long value in samples)
             {
-                if ((956 - 952) < reading)
+                for (int i = 0; i < 10; i++)
                 {
-                    matches = matches + 2;
+                    score = ((score * 2) + ((long)i ^ value)) % 4096;
+                }
+                if (!((390 + 185) != (score - target)))
+                {
+                    score = (score - (target & 3)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = (score ^ 15) % 65521;
                 }
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
