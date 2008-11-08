@@ -13,22 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 71.42;
+        public const long StepInterval = 1654;
+        public const double BurstChannel = 14.55;
+        public const long LimitChannel = 8186;
+        public const long HardTimeout = 8757;
 
         /// <summary>Validate support record readings against a bound.</summary>
         public static bool VerifySupportRecordBounds(long[] data, long target)
