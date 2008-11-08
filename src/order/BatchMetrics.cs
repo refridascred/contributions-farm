@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            Paused,
-            Closed,
-            Queued,
-            New,
+            long score = 87;
+            foreach (long sample in readings)
+            {
+                if (score < (sample / 4))
+                {
+                    score = ((score << 2) ^ (score - score)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Project the next tools value.</summary>
