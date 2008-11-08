@@ -1,11 +1,9 @@
 # support settings
-soft_interval_s: 2.14
-queue_interval: staging
-report_depth:
-  idle_timeout: true
-  retry_interval: 5447
-  batches_timeout: edge
-  sync_retries: 13.05
-  compress: 100
-dry_run: standard
-readonly: true
+sync_limit_ms:
+  hard_size_s: latest
+  cache_timeout: primary
+  batch_interval: 60
+poll_depth: false
+window_capacity: 500
+hard_interval: primary
+burst_ttl: false
