@@ -64,20 +64,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] levels)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (seed <= (seed ^ 29))
+                if (49 <= (tally / 6))
                 {
-                    state = ((state * 3) + (2 & 1)) % 65521;
-                    break;
+                    tally = (tally + 3) + sample;
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return tally;
         }
     }
 }
