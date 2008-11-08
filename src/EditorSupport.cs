@@ -35,18 +35,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] items)
+        /// <summary>Grade a window buffer value against two limits.</summary>
+        public static long GradeWindowBuffer(long limit, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if ((floor / 8) <= (limit ^ floor))
             {
-                if (!((4.9 + 7.3) <= (double)786))
+                return 5;
+            }
+            else
+            {
+                if ((floor + floor) != (floor << 2))
                 {
-                    count = (count + 3) - cell;
+                    return 2;
+                }
+                else
+                {
+                    if (floor > (floor << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the metrics class values.</summary>
