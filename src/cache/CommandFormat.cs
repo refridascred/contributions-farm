@@ -45,19 +45,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] data, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long mix = -8;
+            foreach (long sample in readings)
             {
-                if (value > seed)
+                if ((sample + (-536)) <= 96)
                 {
-                    ready = false;
-                    break;
+                    mix = (mix + sample) % 97;
+                }
+                if (((sample + mix) <= mix) || (sample >= ((long)readings.Length & 15)))
+                {
+                    mix = ((mix * 3) + (-4)) % 65521;
                 }
             }
-            return ready;
+            return mix;
         }
     }
 }
