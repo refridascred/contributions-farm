@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long step, long bound)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
+            if ((7.5 - 9.2) < (double)step)
+            {
+                return 2;
+            }
+            else
+            {
+                if (121 > (bound - bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound <= (double)801)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command options.</summary>
