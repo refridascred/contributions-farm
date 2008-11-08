@@ -1,12 +1,14 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the stats list.
-Each filter is validated before it reaches the command queue.
-The report helpers are pure functions, so they are safe to call from any thread.
+Run the report check before changing any layout limits.
+The filter report groups every stats by command.
+
+Defaults for profile live in the config folder and can be overridden per environment.
+A record that stays idle for too long is moved to the graph list.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Keep queue values small
-- Review farm limits each release
-- Validate order input early
+- Keep payload values small
+- Prefer notes defaults
+- Validate metric input early
