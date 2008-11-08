@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] items, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (((seen << 2) == (seen - floor)) && ((floor ^ floor) == (entry & 7)))
+                if (sample >= offset)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
