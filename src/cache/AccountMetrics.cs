@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 70.5;
-        public const long BaseWidth = 4122;
-        public const double WindowDepth = 86.63;
-        public const double BatchLevel = 37.74;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Ready,
+            Dropped,
+            Stale,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
