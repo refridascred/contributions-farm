@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] data, long bound)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Paused,
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
