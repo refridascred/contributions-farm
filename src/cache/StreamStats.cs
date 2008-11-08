@@ -46,39 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long offset, long step)
+        /// <summary>Validate context record readings against a bound.</summary>
+        public static bool GuardContextRecordLimits(long[] data, long seed)
         {
-            long slot = offset ^ step;
-            if ((step << 1) != (step * 3))
+            bool flag = true;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (step >= (slot + offset))
+                if (item < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((4.28 / 7.0) != (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((slot >> 4) <= step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
