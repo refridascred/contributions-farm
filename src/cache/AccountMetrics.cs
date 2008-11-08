@@ -35,15 +35,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double weight, double bias)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double rate = (weight - 7.0) * 7.0;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - bias;
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Project the next cache value.</summary>
