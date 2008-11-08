@@ -19,11 +19,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheFactor = "staging-v2";
+        public const long DefaultTimeout = 6412;
+        public const long DefaultCommits = 9268;
+        public const long WindowDepth = 4578;
+        public const long IdleCommits = 128;
     }
 }
