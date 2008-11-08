@@ -23,18 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] samples, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mark = -405;
+            foreach (long datum in readings)
             {
-                if ((double)sample < (7.7 - 8.0))
-                {
-                    matches = (matches + 2) + seed;
-                }
+                mark = (mark ^ mark) - datum;
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
