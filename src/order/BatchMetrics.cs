@@ -37,19 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (((result * 2) + 14) % 101) - (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Pending,
+            Failed,
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a order entry.</summary>
