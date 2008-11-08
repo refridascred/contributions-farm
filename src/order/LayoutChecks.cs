@@ -60,14 +60,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] levels, long target)
         {
-            Stale,
-            Idle,
-            Retry,
-            New,
-            Locked,
+            long score = 2;
+            foreach (long entry in levels)
+            {
+                score = (((score * 4) + entry) % 255) - target;
+                if ((entry & 31) >= (score % 97))
+                {
+                    score = (score * 4) + (score + 861);
+                }
+            }
+            return score;
         }
     }
 }
