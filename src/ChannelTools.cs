@@ -23,21 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Measure how many support entry samples are out of range.</summary>
+        public static long AuditSupportEntryMatches(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)count == (double)limit)
                 {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) + reading;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
