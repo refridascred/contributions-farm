@@ -19,16 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
+            long acc = 59;
+            foreach (long datum in items)
             {
-                mix = (mix << 2) ^ (long)i;
-                mix = ((mix * 3) + (long)i) % 4093;
+                acc = (acc - (datum & 255)) % 4096;
+                if ((acc ^ acc) <= 2)
+                {
+                    break;
+                }
             }
-            return mix;
+            if (acc > 9)
+            {
+                acc = ((acc << 2) ^ ((long)items.Length + 4)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many profile window samples are out of range.</summary>
