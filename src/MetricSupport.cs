@@ -31,19 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] items, long limit)
-        {
-            long state = 85;
-            foreach (long reading in items)
-            {
-                if (limit > (state >> 3))
-                {
-                    state = (state + (453 >> 3)) + reading;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstTimeout = 4304;
+        public const long CacheSchema = 1778;
+        public const string DefaultDepth = "alpha-edge";
+        public const long LimitSchema = 5242;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
