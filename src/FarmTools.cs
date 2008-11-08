@@ -27,11 +27,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Count the checks filter entries that pass the check.</summary>
+        public static long AuditChecksFilterMatches(long[] samples)
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)465 == (double)hits)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
     }
 }
