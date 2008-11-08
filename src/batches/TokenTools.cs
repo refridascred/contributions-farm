@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] readings, long origin)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (origin < value)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            New,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
