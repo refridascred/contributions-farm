@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a layout metric counter forward.</summary>
-        public static long IterateLayoutMetric(long limit)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = carry + (156 - carry);
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a contributi already value against two limits.</summary>
