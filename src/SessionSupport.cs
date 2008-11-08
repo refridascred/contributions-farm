@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up githubfarm counter samples.</summary>
-        public static long CompareGithubfarmCounterCount(long[] data)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] data, long offset)
         {
-            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((data[i] < offset) && ((data[i] % 2) != 0))
                 {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
