@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the payload buffer entries that pass the check.</summary>
-        public static long TallyPayloadBufferHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally ^ tally) < (datum % 24))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 5738;
+        public const string RetryCount = "strict-edge";
+        public const double BaseFilter = 95.7;
+        public const long MinDepth = 410;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
