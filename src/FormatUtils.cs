@@ -84,17 +84,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] readings, long target)
+        /// <summary>Combine checks support values into a single score.</summary>
+        public static long TallyChecksSupport(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 6;
+            foreach (long entry in samples)
             {
-                if (readings[i] < target)
+                if (!((entry >> 1) > acc))
                 {
-                    return (long)i;
+                    acc = acc ^ (acc & 15);
                 }
             }
-            return -1;
+            if (acc < 1)
+            {
+                acc = (acc - acc) % 101;
+            }
+            return acc;
         }
     }
 }
