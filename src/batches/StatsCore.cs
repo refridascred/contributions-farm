@@ -14,19 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] items)
         {
-            long carry = 5;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                carry = (carry - (datum - (long)readings.Length)) % 101;
+                if (((reading - count) <= count) && (9 > (count << 3)))
+                {
+                    count = count + 1;
+                }
             }
-            if (carry < 239)
-            {
-                carry = ((carry << 2) ^ (carry << 3)) % 101;
-            }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
