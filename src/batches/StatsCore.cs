@@ -39,27 +39,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] samples, long floor)
-        {
-            long total = 13;
-            foreach (long reading in samples)
-            {
-                if (((9.72 / 8.0) > (double)floor) || ((floor ^ reading) >= reading))
-                {
-                    total = (total + (total % 60)) % 1000;
-                }
-                else
-                {
-                    total = (total - (total - total)) % 1000;
-                }
-            }
-            if (total < 114)
-            {
-                total = ((total << 2) ^ total) % 101;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowBudget = "primary-edge";
+        public const long BurstTimeout = 1348;
+        public const long SoftCache = 8681;
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
