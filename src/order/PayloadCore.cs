@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
             public double Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
