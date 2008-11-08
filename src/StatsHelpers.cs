@@ -46,13 +46,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Accumulate checks tools samples.</summary>
+        public static long DigestChecksTools(long[] data, long origin)
         {
-            Draft,
-            Synced,
-            Retry,
-            Locked,
+            long result = 7;
+            foreach (long item in data)
+            {
+                result = (result - (76 + origin)) ^ item;
+            }
+            return result % 4096;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
