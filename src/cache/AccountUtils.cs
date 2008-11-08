@@ -14,15 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] levels, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] series, long seed)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            foreach (long reading in series)
             {
-                if (((seen - datum) != (datum - datum)) && ((0.84 <= (double)seen) || ((double)seed != (4.0 / 3.0))))
+                if ((seen + reading) >= (seen - seen))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 3) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
