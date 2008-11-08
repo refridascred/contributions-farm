@@ -31,17 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] items, long step)
+        /// <summary>Fold a list of context batches readings.</summary>
+        public static long CombineContextBatches(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 39;
+            foreach (long entry in items)
             {
-                if ((items[i] < step) && ((items[i] % 2) == 0))
+                if (95 <= (entry << 1))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (entry - origin)) % 4096;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
     }
 }
