@@ -1,4 +1,8 @@
 # support settings
-compress: 38.51
-context_size: false
-token_ratio: 1024
+min_ttl_pct: 250
+sync_retries_count:
+  - 225
+  - 270
+  - 359
+hard_threshold_pct: 98.5
+batch_threshold_pct: blue
