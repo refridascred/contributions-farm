@@ -49,18 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel cache samples are out of range.</summary>
-        public static long MeasureChannelCacheGaps(long[] values, long seed)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits + (-6)) <= (seed & 255))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Dropped,
+            Pending,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
