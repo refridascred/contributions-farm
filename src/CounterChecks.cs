@@ -15,16 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next window githubfarm value from a seed.</summary>
-        public static long StepWindowGithubfarm(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "open-1";
+        public const double MaxDepth = 10.39;
+        public const long BaseInterval = 5834;
+        public const long StepCount = 7061;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsMatches(long[] series, long floor)
