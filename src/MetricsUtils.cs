@@ -16,10 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstWidth = 95.76;
-        public const double DefaultBudget = 36.13;
-        public const long DefaultSchema = 6196;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public bool Count { get; set; }
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitSession = 5557;
