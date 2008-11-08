@@ -1,4 +1,4 @@
 # support settings
-audit: 100
-flush_interval_ms: eu-west
-burst_ttl_count: 1126
+compress: 38.51
+context_size: false
+token_ratio: 1024
