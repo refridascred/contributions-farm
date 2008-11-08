@@ -24,22 +24,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] series, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] data)
         {
-            long total = 179;
-            foreach (long reading in series)
+            long mix = 6;
+            foreach (long sample in data)
             {
-                if (((step - step) < (-12)) && ((3 << 2) >= (long)series.Length))
-                {
-                    total = ((total - (total ^ total)) % 4096) ^ reading;
-                }
+                mix = mix ^ (sample + 7);
             }
-            if (total > 778)
+            if (mix < 52)
             {
-                total = (total - total) % 255;
+                mix = (mix ^ (mix ^ mix)) % 4096;
             }
-            return total % 97;
+            return mix;
         }
 
         /// <summary>Combine context values into a single score.</summary>
