@@ -31,17 +31,22 @@ namespace Common.Utilities
         public const long WindowFormat = 8336;
         public const double BaseFormat = 37.52;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] values, long bound)
+        /// <summary>Audit channel counter readings against a rule.</summary>
+        public static long AuditChannelCounterHits(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (values[i] < bound)
+                if (!((hits <= (cell % 100)) && (hits >= (cell % 60))))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
