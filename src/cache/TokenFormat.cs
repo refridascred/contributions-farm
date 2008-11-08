@@ -19,12 +19,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 78.46;
-        public const string BatchRecord = "local-1";
-        public const long BatchTimeout = 8682;
-        public const long IdleRecord = 4380;
-        public const string StepRecord = "cached-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftSpan = "standard-v2";
+        public const long BatchLevel = 3152;
+        public const string HardDepth = "open-edge";
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiHits(long[] samples)
