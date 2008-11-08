@@ -14,18 +14,24 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] items, long target)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long target, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if (((target - target) >= target) || ((target ^ limit) < (limit ^ target)))
             {
-                if (count > 518)
+                return 6;
+            }
+            else
+            {
+                if ((limit % 60) > limit)
                 {
-                    count = ((count + 2) + cell) + target;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
