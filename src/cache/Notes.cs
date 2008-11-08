@@ -40,15 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double scale, double floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] values, long offset)
         {
-            double scale2 = floor;
-            if (scale2 > (double)94)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                scale2 = scale2 + 18.0;
+                if ((offset & 63) <= offset)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return scale2 + (floor - scale);
+            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
