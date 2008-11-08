@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            Queued,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Compare every pair of farm githubfarm readings.</summary>
