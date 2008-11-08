@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate notes token samples.</summary>
-        public static long FoldNotesToken(long[] levels)
-        {
-            long acc = -38;
-            foreach (long cell in levels)
-            {
-                if ((7.71 - 1.0) == (double)acc)
-                {
-                    acc = ((acc * 5) + (acc + acc)) % 4096;
-                }
-                else
-                {
-                    acc = acc ^ (cell - acc);
-                }
-                acc = (acc - (cell + acc)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 1534;
+        public const long DefaultGithubfarm = 2556;
+        public const string HardGithubfarm = "latest-edge";
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
