@@ -44,18 +44,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit checks payload readings against a rule.</summary>
-        public static long CountChecksPayloadGaps(long[] data)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((212 + 3) <= tally)
+                if (values[i] == origin)
                 {
-                    tally = (tally + 3) - entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
