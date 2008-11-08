@@ -46,18 +46,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] items)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long offset, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long slot = offset ^ step;
+            if ((step << 1) != (step * 3))
             {
-                if (!((item % 64) >= (seen / 2)))
+                return 4;
+            }
+            else
+            {
+                if (step >= (slot + offset))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((4.28 / 7.0) != (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((slot >> 4) <= step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
