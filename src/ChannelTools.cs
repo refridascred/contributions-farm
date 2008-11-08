@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleEditor = "primary";
-        public const string CacheBudget = "open-1";
-        public const long MinSpan = 8854;
-        public const long WindowInterval = 1654;
+        /// <summary>Combine metrics account values into a single score.</summary>
+        public static long CombineMetricsAccount(long[] data)
+        {
+            long score = 927;
+            foreach (long entry in data)
+            {
+                score = (score * 4) + (entry + 673);
+            }
+            return score;
+        }
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
