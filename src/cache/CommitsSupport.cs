@@ -73,18 +73,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] series)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (!(seen <= (seen >> 5)))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            Draft,
+            Locked,
+            Failed,
+            Synced,
+            Idle,
         }
     }
 }
