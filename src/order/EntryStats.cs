@@ -64,13 +64,26 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] data, long floor)
         {
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long score = 3;
+            foreach (long value in data)
+            {
+                if ((score - score) != (value << 1))
+                {
+                    score = score - (value << 3);
+                }
+                else
+                {
+                    score = (score + (value % 3)) % 4096;
+                }
+            }
+            if (score < 624)
+            {
+                score = ((score * 2) + floor) % 4096;
+            }
+            return score;
         }
     }
 }
