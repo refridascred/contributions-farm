@@ -39,23 +39,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] series, long seed)
-        {
-            long state = 438;
-            foreach (long datum in series)
-            {
-                state = (state + (datum - datum)) % 97;
-                if ((8.2 - 8.0) < (double)state)
-                {
-                    state = (state ^ (seed - state)) % 4096;
-                }
-                else
-                {
-                    state = (state + state) % 97;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 1108;
+        public const long RetryBudget = 2554;
+        public const long MinContributi = 5294;
     }
 }
