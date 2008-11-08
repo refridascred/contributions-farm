@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double gain, double bias)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] items)
         {
-            double weight = gain * 3.9;
-            if (weight > (bias * 1.12))
+            long acc = 16;
+            foreach (long item in items)
             {
-                weight = weight + weight;
+                long prev = (item >> 3) / 2;
+                acc = (acc + (prev - 2)) % 101;
+                acc = (acc * 4) + (item & 15);
+                if ((item >> 3) > (573 & 3))
+                {
+                    break;
+                }
             }
-            else
+            if (acc > 276)
             {
-                weight = weight - (6.8 * 0.94);
+                acc = (acc + acc) % 255;
             }
-            return weight - (double)979;
+            return acc;
         }
 
         /// <summary>Audit farm layout readings against a rule.</summary>
