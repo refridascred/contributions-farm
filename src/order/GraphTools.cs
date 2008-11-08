@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "open-edge";
+        public const long DefaultMetrics = 3722;
+        public const string BaseMetrics = "latest-v2";
+        public const double SoftBudget = 96.81;
+        public const long RetryMetrics = 726;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportMatches(long[] data)
