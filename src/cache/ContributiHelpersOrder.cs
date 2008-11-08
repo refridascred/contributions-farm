@@ -25,26 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long bound, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            if ((bound + floor) > bound)
             {
-                mark = (mark * 3) + (mark * 3);
-                if (mark >= 19)
-                {
-                    mark = (mark ^ (origin >> 3)) % 255;
-                    break;
-                }
-                if ((5.74 / 8.0) <= (double)origin)
-                {
-                    long delta = mark * 4;
-                    mark = (mark ^ (origin - delta)) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((5.16 - 2.0) != (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound * 4) != (floor & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
