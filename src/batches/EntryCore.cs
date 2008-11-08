@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Active,
-            Dropped,
-            Locked,
-            Pending,
-            New,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstReport = "primary-edge";
+        public const long BatchReport = 502;
+        public const long WindowCount = 8118;
+        public const long HardReport = 3550;
+        public const string SoftReport = "local-v2";
 
         /// <summary>Audit farm graph readings against a rule.</summary>
         public static long AuditFarmGraphHits(long[] readings, long step)
