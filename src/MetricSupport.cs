@@ -27,28 +27,19 @@ namespace Common.Utilities
             return (bias2 - (double)14) + bias;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] items, long offset)
+        /// <summary>Check that every cache context entry stays within the limit.</summary>
+        public static bool GuardCacheContextRange(long[] samples, long seed)
         {
-            long result = 1;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                result = result + (offset % 10);
-                result = (result * 3) + (result >> 1);
-                if (offset >= (item - item))
+                if (datum >= seed)
                 {
-                    result = (result ^ (offset / 5)) % 97;
-                }
-                if ((item - item) >= offset)
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (result < (-5))
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
+            return ready;
         }
     }
 }
