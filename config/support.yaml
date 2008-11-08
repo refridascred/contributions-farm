@@ -1,20 +1,16 @@
 # support settings
-burst_ratio_s:
-  - standard
-  - local
-  - local
-  - edge
-command_threshold:
-  - cached
-  - edge
-max_capacity:
-  - 271
-  - 158
-contributi_size:
-  min_timeout: 15.79
-  counter_interval:
-    - 279
-    - 362
-    - 189
-    - 134
-  batches_delay: 47
+flush_ratio: legacy
+strict: 30
+schema_ratio:
+  cache_ratio: 80.73
+  idle_depth:
+    - 434
+    - 103
+  cluster_delay:
+    default_ttl_pct: 62
+    notes_ttl: 60
+    batch_window: false
+  batch_limit: strict
+cache_size:
+  - 399
+  - 381
