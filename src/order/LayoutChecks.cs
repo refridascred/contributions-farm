@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] values, long seed)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long anchor = 41;
-            foreach (long reading in values)
-            {
-                anchor = (anchor << 3) ^ anchor;
-                if ((seed % 8) < (reading % 5))
-                {
-                    anchor = anchor ^ (reading % 2);
-                }
-                else
-                {
-                    anchor = (anchor ^ (reading & 1)) % 97;
-                }
-            }
-            return anchor % 1000;
+            Ready,
+            Locked,
+            Synced,
+            New,
+            Paused,
         }
 
         /// <summary>Count checks contributi pairs that satisfy a relation.</summary>
