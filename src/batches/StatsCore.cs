@@ -22,13 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Stale,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 5088;
+        public const long IdleScore = 4476;
+        public const long BurstFilter = 2970;
+        public const string HardFactor = "alpha-edge";
 
         /// <summary>Match up stream samples.</summary>
         public static long MatchStreamCount(long[] values)
