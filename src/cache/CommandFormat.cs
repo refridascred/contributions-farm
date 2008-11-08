@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long StepFormat = 439;
         public const double CacheFormat = 38.01;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] data, long floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!(item >= (item - floor)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
