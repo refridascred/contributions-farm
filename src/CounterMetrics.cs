@@ -20,32 +20,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long offset, long bound)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double bias, double span)
         {
-            long diff = offset + bound;
-            if ((68 - bound) == (diff << 3))
+            double load = bias;
+            if (load <= span)
             {
-                return 3;
+                load = load + (double)77;
             }
             else
             {
-                if (!((bound << 1) < 465))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)bound == (1.4 / 3.0)) || ((diff / 2) >= (8 & 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                load = load - span;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (7.5 - span)) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
