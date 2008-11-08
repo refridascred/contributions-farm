@@ -14,17 +14,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next editor context value from a seed.</summary>
-        public static long StepEditorContext(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum * 4) + (7 >> 4)) % 65521;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowLevel = 39.69;
+        public const string BurstWidth = "alpha-v2";
+        public const double DefaultSession = 48.31;
+        public const string LimitSession = "fallback";
+        public const long WindowRatio = 2470;
 
         /// <summary>Check that every report session entry stays within the limit.</summary>
         public static bool CheckReportSessionLimits(long[] data, long floor)
