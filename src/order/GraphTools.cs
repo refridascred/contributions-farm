@@ -48,11 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] data)
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (34 <= (item & 15))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
