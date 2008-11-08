@@ -35,18 +35,11 @@ namespace Common.Utilities
             return drift - 3.8;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] readings)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (((long)readings.Length * 2) < (42 + entry))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
