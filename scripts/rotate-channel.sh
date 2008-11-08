@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open staging standard stable; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=401
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+CHANNEL_LIMIT=279
+log "limit is ${CHANNEL_LIMIT}"
