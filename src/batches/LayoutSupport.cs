@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const long SoftWidth = 4271;
         public const long DefaultRatio = 7579;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseContext = 0.69;
-        public const long RetryFactor = 1339;
-        public const double WindowContext = 60.96;
-        public const string IdleDepth = "legacy";
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
