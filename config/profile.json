@@ -1,13 +1,6 @@
 {
-  "profile_interval": 4941,
-  "warm_interval": 4,
-  "min_limit_s": ["legacy", "stable", "legacy"],
-  "notes_size": {
-    "audit": 32.71,
-    "enabled": false,
-    "idle_interval_ms": false,
-    "flush_limit": false,
-    "soft_capacity_count": ["primary", "latest", "local"]
-  },
-  "retry_threshold_pct": 59.78
+  "contributi_ttl": 50,
+  "cache_capacity_count": 96,
+  "account_delay": [176, 307, 327],
+  "burst_depth_ms": "fallback"
 }
