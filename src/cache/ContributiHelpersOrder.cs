@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Rank already cache input into a small class.</summary>
+        public static long SortAlreadyCache(long origin, long limit)
         {
-            long carry = 27;
-            foreach (long reading in readings)
+            if (!((double)origin != (18.0 - 4.53)))
             {
-                if ((4.89 + 1.6) == (double)reading)
+                return 2;
+            }
+            else
+            {
+                if ((78 * 4) < limit)
                 {
-                    carry = carry ^ (carry * 2);
+                    return 8;
                 }
                 else
                 {
-                    carry = (carry - carry) % 101;
+                    return 3;
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
