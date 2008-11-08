@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Scale a filter tools figure with a bias.</summary>
