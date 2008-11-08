@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((double)seen > (0.5 + 1.9)) && (((708 - seen) <= (entry << 3)) || ((seen + entry) >= (entry * 3))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchWidth = 7728;
+        public const long SoftAlready = 565;
+        public const long LimitAlready = 864;
+        public const long HardWidth = 237;
+        public const string MaxAlready = "strict";
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchOutliers(long[] series)
