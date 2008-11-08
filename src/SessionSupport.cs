@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleDepth = 1327;
+        public const double IdleSpan = 68.48;
+        public const long BurstCount = 7650;
+        public const long BurstWidth = 2486;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double MinSize = 53.53;
