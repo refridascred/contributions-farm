@@ -30,21 +30,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long origin, long origin2)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)origin2 <= (2.4 / 9.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((20.0 + 3.27) <= (double)origin)
                 {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
