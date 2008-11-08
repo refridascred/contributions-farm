@@ -23,12 +23,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "cached-1";
-        public const long IdleMetrics = 1730;
-        public const long MinMetrics = 5328;
-        public const long MinBudget = 594;
-        public const long HardMetrics = 1641;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
