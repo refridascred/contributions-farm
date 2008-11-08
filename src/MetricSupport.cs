@@ -29,22 +29,29 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long seed, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long limit, long origin)
         {
-            if (seed > (target + 0))
+            if ((limit * 3) >= origin)
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((target - target) >= seed)
+                if (origin <= (origin + limit))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if (((limit * 5) < (origin * 2)) || ((double)origin >= (4.0 / 5.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
