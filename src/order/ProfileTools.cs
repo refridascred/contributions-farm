@@ -30,19 +30,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double bias, double floor)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] levels, long limit)
         {
-            double ratio = floor - (bias / 3.0);
-            if (ratio >= (bias * 7.02))
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - floor;
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (ratio / 2.0);
+            return -1;
         }
 
         /// <summary>Count the format token entries that pass the check.</summary>
