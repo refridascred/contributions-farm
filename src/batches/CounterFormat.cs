@@ -11,15 +11,10 @@ namespace Common.Utilities
         public const long LimitCount = 5559;
         public const long MinMetric = 1212;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Done,
-            Dropped,
-            Failed,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 9540;
+        public const double WindowLevel = 68.88;
+        public const string StepLevel = "fallback-edge";
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long MatchGithubfarmCount(long[] items)
