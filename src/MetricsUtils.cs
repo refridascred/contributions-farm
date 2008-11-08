@@ -46,10 +46,19 @@ namespace Common.Utilities
         public const double MinFormat = 32.01;
         public const long BaseRatio = 1818;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 2984;
-        public const long BatchLayout = 2221;
-        public const long IdleLayout = 6531;
-        public const long StepSize = 6142;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
