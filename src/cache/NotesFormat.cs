@@ -33,19 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowCount = 8024;
+        public const long CacheDepth = 2;
+        public const string RetrySupport = "open-v2";
     }
 }
