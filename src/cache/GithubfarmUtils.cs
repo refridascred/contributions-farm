@@ -43,22 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel token samples are out of range.</summary>
-        public static long MeasureChannelTokenGaps(long[] levels, long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((4.1 + 17.0) == (double)value) && ((value + origin) == (9 ^ 4)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
