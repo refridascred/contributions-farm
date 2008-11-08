@@ -36,9 +36,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 6696;
-        public const string HardGraph = "open";
-        public const long RetryGraph = 9011;
+        /// <summary>Look up the position of a editor profile sample.</summary>
+        public static long FindEditorProfileIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
