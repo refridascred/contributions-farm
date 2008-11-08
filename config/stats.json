@@ -1,14 +1,5 @@
 {
-  "metric_size": {
-    "burst_depth": {
-      "schema_timeout": "fallback",
-      "metrics_interval": 29,
-      "default_timeout": "eu-west"
-    },
-    "hard_size_ms": "staging",
-    "session_ttl": 27
-  },
-  "warm_timeout": false,
-  "graph_ttl": 1024,
-  "persist": true
+  "max_ttl_ms": 1024,
+  "hard_interval_s": 70.77,
+  "token_timeout": false
 }
