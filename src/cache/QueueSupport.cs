@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] data)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (item > (seen * 5))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double rate = bias;
+            return (rate + rate) + ratio;
         }
 
         /// <summary>Count support cluster pairs that satisfy a relation.</summary>
