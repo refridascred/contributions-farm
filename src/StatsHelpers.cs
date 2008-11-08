@@ -26,13 +26,24 @@ namespace Common.Utilities
         public const long MaxSupport = 7585;
         public const double BaseSupport = 48.74;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long floor, long origin)
         {
-            Locked,
-            Active,
-            Ready,
-            Synced,
+            if ((origin * 3) <= (270 / 8))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((363 + origin) < origin) || ((double)origin < (double)85))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
