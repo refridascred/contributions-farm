@@ -18,11 +18,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] values, long limit)
         {
-            public double Mode { get; set; }
-            public double Count { get; set; }
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up record token samples.</summary>
