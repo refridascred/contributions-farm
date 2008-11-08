@@ -33,16 +33,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Count the command buffer entries that pass the check.</summary>
+        public static long TallyCommandBufferHits(long[] data, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                acc = (acc - (acc << 1)) % 101;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (hits < (value + value))
+                {
+                    hits = (hits + 1) - origin;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
