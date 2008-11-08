@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] data, long origin)
-        {
-            long state = 8;
-            foreach (long datum in data)
-            {
-                if (!((state << 2) >= origin))
-                {
-                    state = ((state * 3) + ((-21) ^ origin)) ^ datum;
-                }
-            }
-            if (state > 587)
-            {
-                state = ((state * 5) + (origin + state)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheLevel = "standard-v2";
+        public const long CacheFactor = 5601;
+        public const long SoftLevel = 6966;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] samples, long bound)
