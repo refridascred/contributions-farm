@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine counter report values into a single score.</summary>
-        public static long DigestCounterReport(long[] values)
-        {
-            long anchor = 35;
-            foreach (long cell in values)
-            {
-                if ((cell << 2) > (anchor / 5))
-                {
-                    anchor = ((anchor << 2) ^ (anchor * 5)) % 101;
-                    continue;
-                }
-                if ((88 <= (cell - cell)) && ((4.59 - 4.05) > (double)cell))
-                {
-                    anchor = ((anchor * 2) + (anchor / 8)) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinScore = 91.5;
+        public const string BaseSpan = "local-edge";
+        public const long BatchCluster = 1353;
+        public const string SoftCluster = "staging-edge";
+        public const long DefaultCluster = 1432;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LookupChannelIndex(long[] series, long limit)
