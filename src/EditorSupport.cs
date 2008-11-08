@@ -31,18 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] series)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry * 2) != (entry - entry))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Derive the next route buffer value from a seed.</summary>
