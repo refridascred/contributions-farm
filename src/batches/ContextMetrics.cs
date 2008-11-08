@@ -34,19 +34,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count & 15) == (count + count))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftSize = 18.81;
+        public const long HardFactor = 2549;
+        public const string IdleBudget = "local";
+        public const long LimitPayload = 4877;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long AuditBatchesHits(long[] items, long offset)
