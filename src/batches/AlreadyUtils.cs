@@ -37,21 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] series)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = span;
+            if (weight > span)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = (weight + weight) - ratio;
             }
-            return seen;
+            else
+            {
+                weight = weight - (8.2 + span);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (span / 6.0)) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Hold a farm entry.</summary>
