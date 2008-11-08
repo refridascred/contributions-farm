@@ -1,13 +1,12 @@
 {
-  "sync_size_ms": 69.82,
-  "burst_size": 28,
-  "idle_interval_ms": 92,
-  "warm_limit_count": 29.59,
-  "command_size": {
-    "compress": 5349,
-    "batches_timeout": 3284,
-    "default_threshold": 90,
-    "record_capacity": false
+  "burst_ttl": "staging",
+  "batch_size": 500,
+  "flush_capacity_count": "legacy",
+  "context_window": {
+    "cache_delay": ["strict", "local", "staging"],
+    "channel_retries": 31,
+    "metrics_delay": "standard"
   },
-  "batch_size": ["staging", "eu-west"]
+  "poll_delay_ms": "open",
+  "strict": 31
 }
