@@ -58,14 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Measure how many entry cache samples are out of range.</summary>
+        public static long MeasureEntryCacheOutliers(long[] items, long seed)
         {
-            Dropped,
-            Done,
-            Active,
-            Retry,
-            Stale,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((double)item >= (1.82 / 7.0))
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a notes githubfarm counter forward.</summary>
