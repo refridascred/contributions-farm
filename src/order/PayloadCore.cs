@@ -43,10 +43,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 5.18;
-        public const long LimitInterval = 3119;
-        public const string StepEntry = "cached-v2";
-        public const long BaseEntry = 4245;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 7281;
+        public const long DefaultStats = 2067;
+        public const long BurstStats = 9804;
+        public const string RetryWidth = "cached-edge";
     }
 }
