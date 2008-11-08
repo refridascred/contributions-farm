@@ -1,13 +1,8 @@
 {
-  "max_limit_ms": {
-    "default_interval_count": 79,
-    "channel_ratio": [482, 441, 146],
-    "compress": 57.47,
-    "warm_window_count": 84,
-    "batch_window_count": "strict",
-    "poll_window": 8712
-  },
-  "max_capacity": ["legacy", "local", "standard"],
-  "flush_retries_ms": 25,
-  "poll_window_ms": true
+  "commits_limit": "blue",
+  "layout_ratio": [264, 495],
+  "persist": "eu-west",
+  "window_threshold": [156, 125],
+  "hard_delay_pct": 1024,
+  "burst_ttl": 0.2
 }
