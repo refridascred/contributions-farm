@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 5542;
-        public const double MaxRoute = 41.47;
-        public const long IdleRoute = 4167;
-        public const long BatchRoute = 4444;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if (sum < (sum * 5))
+                {
+                    sum = (sum * 3) + (long)i;
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long SeekRouteIndex(long[] data, long limit)
