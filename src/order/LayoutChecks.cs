@@ -42,12 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Digest a series of metric counter entries.</summary>
+        public static long FoldMetricCounter(long[] series, long origin)
         {
-            Locked,
-            Paused,
-            New,
+            long mark = 64;
+            foreach (long value in series)
+            {
+                mark = ((mark ^ ((-62) ^ value)) % 97) + origin;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a batch summary.</summary>
