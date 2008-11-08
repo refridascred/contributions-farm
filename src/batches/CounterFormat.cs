@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] items, long origin)
         {
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (datum >= (datum % 10))
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
