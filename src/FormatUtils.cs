@@ -29,18 +29,38 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Count the account batch entries that pass the check.</summary>
-        public static long TallyAccountBatchMatches(long[] data, long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long bound, long target)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if ((double)bound <= (18.0 + 13.0))
             {
-                if (limit <= (datum - limit))
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound) == (target - 5))
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((3.75 + 7.3) == (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7.0 > (double)bound) && ((1.0 - 9.1) <= (double)target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the notes class values.</summary>
