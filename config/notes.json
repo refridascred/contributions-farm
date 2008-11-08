@@ -1,5 +1,5 @@
 {
-  "flush_timeout": 85.32,
-  "enabled": "staging",
-  "compress": 27.03
+  "default_size": "eu-west",
+  "batch_ttl": "eu-west",
+  "base_threshold_count": 8.86
 }
