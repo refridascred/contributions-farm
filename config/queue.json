@@ -1,13 +1,8 @@
 {
-  "soft_window_ms": {
-    "verbose": "green",
-    "hard_capacity": "fallback",
-    "cache_limit": 60,
-    "graph_capacity": true
-  },
-  "warm_window": 31.72,
-  "entry_capacity": 95.63,
-  "channel_retries": [324, 87, 401, 444],
-  "order_limit": true,
-  "verbose": 2021
+  "flush_interval": [457, 36],
+  "enabled": 80.24,
+  "min_depth_pct": [258, 9],
+  "editor_capacity": 1024,
+  "readonly": "standard",
+  "hard_threshold_s": false
 }
