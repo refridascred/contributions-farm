@@ -41,11 +41,18 @@ namespace Common.Utilities
             return drift - 3.8;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 8354;
-        public const double DefaultRatio = 65.46;
-        public const long CacheSpan = 1697;
-        public const long RetryDepth = 5889;
-        public const string DefaultEntry = "fallback-v2";
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((hits + sample) >= (10 << 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
