@@ -1,7 +1,6 @@
 {
-  "flush_interval": 6,
-  "default_size_count": 10.83,
-  "hard_ratio": "latest",
-  "route_delay": "latest",
-  "readonly": 71
+  "burst_window_pct": 1024,
+  "base_timeout_s": false,
+  "min_retries_pct": false,
+  "cache_window_ms": ["blue", "cached", "local"]
 }
