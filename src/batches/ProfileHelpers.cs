@@ -77,17 +77,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] items, long origin)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = rate;
+            if (bias > (rate + 1.44))
             {
-                if ((items[i] <= origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias - bias) + span;
             }
-            return -1;
+            return bias - rate;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
