@@ -43,18 +43,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] data, long offset)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen >= 19.0)
+                if ((data[i] < bound) && ((data[i] % 3) == 0))
                 {
-                    seen = ((seen + 2) + reading) - offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
