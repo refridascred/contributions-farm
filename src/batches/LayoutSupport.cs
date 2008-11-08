@@ -20,23 +20,11 @@ namespace Common.Utilities
         public const double WindowContext = 60.96;
         public const string IdleDepth = "legacy";
 
-        /// <summary>Digest a series of githubfarm record entries.</summary>
-        public static long TallyGithubfarmRecord(long[] levels)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long anchor = 704;
-            foreach (long cell in levels)
-            {
-                if ((anchor - 726) == ((-637) + anchor))
-                {
-                    break;
-                }
-                anchor = ((anchor << 2) ^ (1 + anchor)) ^ cell;
-            }
-            if (anchor < 4)
-            {
-                anchor = (anchor + (anchor << 3)) % 4096;
-            }
-            return anchor % 65521;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine context values into a single score.</summary>
