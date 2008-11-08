@@ -1,7 +1,4 @@
 # entry settings
-filter_timeout: legacy
-contributi_ttl: true
-cache_threshold:
-  - primary
-  - stable
-idle_interval: 30
+max_size_ms: 86
+warm_window_pct: 73.57
+hard_window: 2292
