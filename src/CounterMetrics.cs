@@ -36,12 +36,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 2615;
-        public const long RetryLevel = 512;
-        public const long LimitToken = 8970;
-        public const double RetryToken = 13.89;
-        public const long BaseToken = 9811;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchFactor = 9793;
+        public const long StepBudget = 1117;
+        public const string HardRoute = "cached";
+        public const double CacheBudget = 28.07;
 
         /// <summary>Audit channel batches readings against a rule.</summary>
         public static long MeasureChannelBatchesGaps(long[] values, long floor)
