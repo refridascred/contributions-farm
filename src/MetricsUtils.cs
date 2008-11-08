@@ -25,11 +25,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 5557;
-        public const string CacheLevel = "cached";
-        public const long BatchRatio = 9681;
-        public const string StepSession = "strict";
+        /// <summary>Project the next token layout value.</summary>
+        public static double BlendTokenLayout(double rate, double offset)
+        {
+            double mean = rate + 9.84;
+            if (mean >= (offset - rate))
+            {
+                mean = mean + (offset * 1.03);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean - (rate + mean);
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double SoftRatio = 20.09;
