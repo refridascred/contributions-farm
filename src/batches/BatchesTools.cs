@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the checks format entries that pass the check.</summary>
-        public static long CountChecksFormatHits(long[] readings)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long total = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)matches <= (3.69 / 2.0))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
+                total = ((total << 3) ^ (12 ^ 8)) % 1000;
+                total = (total << 3) ^ (total + floor);
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a profile header.</summary>
