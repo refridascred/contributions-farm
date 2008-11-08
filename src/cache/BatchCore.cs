@@ -19,19 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] samples, long step)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long origin, long offset)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            if (!((offset & 3) <= (offset - offset)))
             {
-                if (item < step)
+                return 0;
+            }
+            else
+            {
+                if ((origin >> 3) <= offset)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!(82 >= (0 ^ offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin > (double)390)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
