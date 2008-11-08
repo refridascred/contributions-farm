@@ -16,21 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] series)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define report limits and defaults.</summary>
