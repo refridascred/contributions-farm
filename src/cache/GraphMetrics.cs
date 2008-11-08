@@ -22,20 +22,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 3643;
+        public const long BatchMetrics = 6612;
+        public const string MinBudget = "primary";
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsMatches(long[] data, long origin)
