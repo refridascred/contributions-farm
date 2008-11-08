@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] readings, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -667;
+            foreach (long reading in values)
             {
-                if (readings[i] == limit)
+                if ((double)seed >= (6.8 / 5.0))
                 {
-                    return (long)i;
+                    sum = ((sum ^ (sum - 7)) % 97) + reading;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
