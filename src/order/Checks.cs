@@ -28,24 +28,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long limit, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] items, long step)
         {
-            if (!((double)floor >= 9.7))
+            long mark = 342;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit + limit) != (floor * 4))
+                mark = (((mark << 2) ^ (mark << 3)) % 4096) + step;
+                if ((9.0 * 2.3) == (double)reading)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            if (mark > 33)
+            {
+                mark = (mark - 91) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Count the githubfarm stream entries that pass the check.</summary>
