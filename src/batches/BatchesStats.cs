@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long limit, long floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            if ((floor % 97) == (floor - 327))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor % 97) == (97 + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit >> 4) <= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor <= (floor & 127))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Match up record samples.</summary>
