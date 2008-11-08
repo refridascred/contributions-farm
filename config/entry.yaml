@@ -1,27 +1,5 @@
 # entry settings
-batch_retries:
-  enabled: 30
-  flush_threshold:
-    - 156
-    - 344
-    - 69
-  payload_ttl:
-    - 405
-    - 202
-  cache_interval: stable
-poll_window_count:
-  contributi_interval:
-    poll_depth_ms: 30
-    session_depth: false
-    retry_threshold:
-      - primary
-      - blue
-    verbose: 84
-    soft_ratio_pct: 46.0
-  min_depth_s: strict
-  default_ratio_ms: fallback
-  soft_depth_s: true
-  min_retries_count: eu-west
-dry_run: 58
-verbose: 5
-batch_ratio_count: false
+dry_run: true
+warm_timeout_pct: staging
+poll_window: open
+max_interval_ms: false
