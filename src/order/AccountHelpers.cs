@@ -79,9 +79,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepWidth = 4081;
-        public const double MaxAlready = 58.27;
-        public const long LimitLevel = 3465;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
