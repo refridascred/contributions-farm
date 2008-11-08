@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] items)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] items, long floor)
         {
-            long hits = 0;
+            bool flag = true;
             foreach (long entry in items)
             {
-                if ((double)entry >= (0.46 * 6.72))
+                if (entry < floor)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
