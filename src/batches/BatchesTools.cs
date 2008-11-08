@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] data, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long result = 7;
+            foreach (long value in levels)
             {
-                if ((seed - 47) == (84 + 348))
+                if ((double)result <= (1.99 * 6.65))
                 {
-                    count = (count + 1) + reading;
+                    result = (result ^ value) % 1000;
+                }
+                if (!((value << 3) < (result - result)))
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
