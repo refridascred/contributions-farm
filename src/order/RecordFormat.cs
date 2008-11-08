@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] items, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((items[i] > bound) && ((items[i] % 5) == 0))
+                if ((count + 9) != (count / 3))
                 {
-                    return (long)i;
+                    count = ((count + 2) + item) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
