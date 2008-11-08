@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] values, long origin)
+        /// <summary>Roll a schema filter counter forward.</summary>
+        public static long StepSchemaFilter(long floor)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (item >= origin)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    ok = false;
-                    break;
+                    carry = (((carry << 3) ^ (84 * 5)) % 65521) - (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
