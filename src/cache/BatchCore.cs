@@ -70,9 +70,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowSpan = "stable-edge";
-        public const long CacheFactor = 7597;
-        public const string BurstTimeout = "latest-1";
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double rate, double offset)
+        {
+            double rate2 = offset;
+            if (rate2 > (rate2 - rate))
+            {
+                rate2 = rate2 + (double)(-53);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 - (rate - rate)) + (double)(long)i;
+            }
+            return rate2 - offset;
+        }
     }
 }
