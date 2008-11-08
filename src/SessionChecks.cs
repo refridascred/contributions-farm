@@ -36,21 +36,26 @@ namespace Common.Utilities
             return scale2 + (double)2;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] values)
+        /// <summary>Fold a list of support session readings.</summary>
+        public static long ScoreSupportSession(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 5;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sum + reading) == (sum - reading))
                 {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum << 2) ^ (reading * 3)) % 65521;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (reading << 3);
+                }
+                if ((1.7 - 8.5) <= (double)reading)
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
