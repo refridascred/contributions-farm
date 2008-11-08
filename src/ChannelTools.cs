@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const string LimitWidth = "cached";
         public const long CacheRatio = 5203;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardLevel = 1574;
+        public const long DefaultDepth = 3203;
+        public const long CacheMetric = 2626;
+        public const string MaxMetric = "fallback-v2";
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long MatchSupportCount(long[] readings)
