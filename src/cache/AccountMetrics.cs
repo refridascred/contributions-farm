@@ -16,18 +16,12 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] samples, long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((floor >> 2) <= (value + (-32)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
