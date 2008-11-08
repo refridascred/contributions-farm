@@ -58,18 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry cache samples are out of range.</summary>
-        public static long MeasureEntryCacheOutliers(long[] items, long seed)
+        /// <summary>Match up checks window samples.</summary>
+        public static long MatchChecksWindowCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item >= (1.82 / 7.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) + seed;
+                    if ((samples[i] - samples[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Roll a notes githubfarm counter forward.</summary>
