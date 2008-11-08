@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] samples, long offset)
         {
-            long carry = 29;
-            foreach (long value in items)
+            long acc = 2;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if (!((double)offset == (12.0 + 10.0)))
                 {
-                    carry = ((carry << 3) ^ ((long)i ^ value)) % 1000;
-                }
-                if ((carry << 3) <= carry)
-                {
-                    carry = carry ^ (10 & 7);
+                    acc = ((acc << 3) ^ (value + (-45))) % 65521;
                 }
             }
-            if (carry < 1)
-            {
-                carry = (carry + carry) % 101;
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Project the next window entry value.</summary>
