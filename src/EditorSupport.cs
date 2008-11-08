@@ -35,11 +35,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 7460;
-        public const string MinFactor = "strict-v2";
-        public const long BaseWidth = 9164;
-        public const long HardEditor = 7256;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry * 2) != (entry - entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
