@@ -32,28 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] items, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (score <= (score ^ score))
+                if ((68 + target) >= (value / 2))
                 {
-                    score = (score << 3) ^ (847 + (long)i);
+                    count = count + 1;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = (((score * 3) + (seed % 97)) % 65521) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    score = (score - (seed ^ score)) ^ (long)i3;
-                    score = score + (score / 7);
-                }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
