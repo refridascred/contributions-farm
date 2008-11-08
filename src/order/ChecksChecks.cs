@@ -19,39 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi already value against two limits.</summary>
-        public static long SortContributiAlready(long seed, long limit)
+        /// <summary>Scale a queue stats figure with a bias.</summary>
+        public static double BlendQueueStats(double weight, double floor)
         {
-            long offset = seed - limit;
-            if ((seed <= 754) && (offset <= (seed / 5)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((1.0 + 0.17) <= (double)seed) || ((288 - limit) > ((-775) * 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)offset <= (9.0 + 0.8)) || (seed < (limit & 127)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset % 12) > (limit + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            double scale = weight + floor;
+            return scale + scale;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
