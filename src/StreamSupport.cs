@@ -20,12 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 71.42;
-        public const long StepInterval = 1654;
-        public const double BurstChannel = 14.55;
-        public const long LimitChannel = 8186;
-        public const long HardTimeout = 8757;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((0.17 - 13.0) > (double)offset)
+                {
+                    score = (score * 5) + (long)i;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] series)
