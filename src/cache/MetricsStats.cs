@@ -20,22 +20,19 @@ namespace Common.Utilities
         public const long MinScore = 317;
         public const string BaseProfile = "staging-v2";
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] samples, long target)
+        /// <summary>Validate cache layout readings against a bound.</summary>
+        public static bool GuardCacheLayoutBounds(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (count <= (731 ^ target))
+                if (entry < floor)
                 {
-                    count = (count + 2) - reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
