@@ -1,7 +1,16 @@
 {
-  "persist": "eu-west",
-  "enabled": false,
-  "base_size_s": 23.65,
-  "cache_ratio_count": 100,
-  "counter_ratio": ["legacy", "open", "fallback", "legacy"]
+  "cache_capacity": true,
+  "hard_threshold": false,
+  "burst_limit_ms": {
+    "base_retries": 45.93,
+    "compress": ["cached", "staging"],
+    "strict": ["standard", "local", "strict", "fallback"],
+    "idle_ttl_count": ["fallback", "open"],
+    "tools_ttl": {
+      "persist": "cached",
+      "flush_window_ms": false,
+      "cache_retries": true,
+      "strict": false
+    }
+  }
 }
