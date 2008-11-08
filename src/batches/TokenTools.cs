@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Active,
-            Idle,
-            Ready,
             Locked,
             Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a graph info.</summary>
