@@ -24,13 +24,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Draft,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 116;
+        public const double BatchPayload = 31.17;
+        public const long LimitBudget = 3905;
+        public const long DefaultPayload = 9403;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxContext = "primary-edge";
