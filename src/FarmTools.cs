@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] values)
         {
-            Closed,
-            Done,
-            Queued,
-            Pending,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((8 & 7) == (seen ^ 4))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
