@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge latest green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=205
+COMMAND_LIMIT=451
 log "limit is ${COMMAND_LIMIT}"
