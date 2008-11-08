@@ -32,17 +32,13 @@ namespace Common.Utilities
             return mean + (mean / 7.0);
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] levels, long offset)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
