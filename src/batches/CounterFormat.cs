@@ -12,25 +12,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long offset, long offset2)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long edge = offset ^ offset2;
-            if ((edge & 255) > edge)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((16.0 / 7.0) < (double)edge)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Grade a notes checks value against two limits.</summary>
