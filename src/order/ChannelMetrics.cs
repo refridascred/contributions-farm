@@ -31,22 +31,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long origin, long offset)
+        /// <summary>Rank metric filter input into a small class.</summary>
+        public static long BucketMetricFilter(long step, long seed)
         {
-            if (!(origin > (origin ^ origin)))
+            long offset = step - seed;
+            if (!((13.0 * 18.0) < (double)offset))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if ((459 - offset) >= origin)
+                if (((-8) >= (step + seed)) && ((seed + seed) >= (offset + offset)))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 2;
+                    if (((double)offset == (4.31 - 11.0)) && ((step % 8) == (step + seed)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
