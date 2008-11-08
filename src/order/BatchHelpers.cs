@@ -22,11 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cluster editor figure with a bias.</summary>
-        public static double AdjustClusterEditor(double weight, double span)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long seed)
         {
-            double rate = span + (span / 3.0);
-            return rate - weight;
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = (mark ^ (819 % 2)) % 1000;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = ((mark + (mark - 936)) % 1000) ^ (long)i2;
+                    mark = mark ^ (mark << 2);
+                }
+                if (!!(((long)i << 3) >= seed))
+                {
+                    mark = (mark + mark) % 4096;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the tools class values.</summary>
