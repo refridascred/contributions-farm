@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Closed,
+            Pending,
+            Draft,
+            Failed,
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
