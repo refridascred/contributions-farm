@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] values, long seed)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long result = 27;
-            foreach (long entry in values)
-            {
-                result = (result ^ (seed - 56)) ^ entry;
-                result = (result + (7 / 2)) % 255;
-            }
-            return result % 65521;
+            Stale,
+            Idle,
+            Ready,
+            New,
         }
 
         /// <summary>Accumulate support samples.</summary>
