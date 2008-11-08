@@ -16,22 +16,13 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] items)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell != (14.0 + 4.12))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a report stats.</summary>
