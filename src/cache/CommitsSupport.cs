@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] values, long bound)
         {
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!(bound <= (bound * 5)) && (((hits << 1) >= (bound + hits)) || ((6 & 3) == (644 - bound))))
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two checks measurements.</summary>
