@@ -1,7 +1,11 @@
 # support settings
-audit: 42.01
-soft_interval: 2544
-sync_threshold_count: fallback
-report_limit: stable
-persist: 3450
-sync_capacity: false
+poll_delay_ms: 9799
+profile_ttl: 6.39
+metric_window:
+  - 491
+  - 284
+  - 441
+  - 14
+compress: local
+flush_interval_ms: 16.33
+window_ttl: 60
