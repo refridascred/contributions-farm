@@ -1,5 +1,10 @@
 {
-  "idle_delay": ["eu-west", "local"],
-  "dry_run": "staging",
-  "checks_delay": 100
+  "poll_interval_pct": ["latest", "primary", "standard", "primary"],
+  "hard_delay": 60.71,
+  "graph_delay": {
+    "farm_ttl": 100,
+    "base_depth_pct": 22,
+    "batch_retries_s": 37
+  },
+  "verbose": true
 }
