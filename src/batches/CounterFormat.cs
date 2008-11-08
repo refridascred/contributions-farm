@@ -25,14 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Paused,
-            Dropped,
-            Synced,
-            New,
-            Retry,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinSize = "stable-edge";
+        public const double BatchGraph = 96.7;
+        public const string HardGraph = "open";
     }
 }
