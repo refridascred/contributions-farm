@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-primary}"
+mode="${1:-blue}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=213
-log "limit is ${RECORD_LIMIT}"
+for item in stable strict; do
+    log "checking ${item}"
+done
