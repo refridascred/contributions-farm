@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached standard staging; do
+for item in green legacy blue cached; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=40
-log "limit is ${BUFFER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
