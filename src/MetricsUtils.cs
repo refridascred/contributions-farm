@@ -59,12 +59,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Paused,
-            Synced,
-            Queued,
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
