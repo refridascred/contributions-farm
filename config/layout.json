@@ -1,8 +1,11 @@
 {
-  "batch_size_s": false,
-  "flush_interval_pct": 27,
-  "account_retries": ["open", "fallback"],
-  "enabled": 1024,
-  "dry_run": 82.62,
-  "max_timeout": 30
+  "cache_delay": 38,
+  "min_ttl": ["standard", "open", "strict", "primary"],
+  "min_capacity_pct": {
+    "soft_limit_count": false,
+    "command_delay": "latest",
+    "poll_delay": "strict",
+    "cache_size": ["local", "legacy"],
+    "base_capacity": 22.64
+  }
 }
