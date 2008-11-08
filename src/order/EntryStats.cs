@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long seed)
         {
-            Pending,
-            Locked,
-            Ready,
-            Idle,
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Match up channel samples.</summary>
