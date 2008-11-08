@@ -27,27 +27,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] samples, long target)
-        {
-            long score = 44;
-            foreach (long entry in samples)
-            {
-                if ((target - entry) <= (350 / 7))
-                {
-                    score = (score - (entry + target)) % 101;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (entry + score)) % 97;
-                }
-                if (((target + 260) > target) && ((5.0 + 3.1) <= (7.59 / 6.0)))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinRatio = 4913;
+        public const double BurstSupport = 91.82;
+        public const long HardSupport = 3212;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinGithubfarm = 5055;
