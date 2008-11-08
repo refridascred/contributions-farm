@@ -45,32 +45,18 @@ namespace Common.Utilities
             return mean - (mean / 9.0);
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long bound, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] items)
         {
-            long next = bound ^ step;
-            if (((double)bound > (15.0 - 1.0)) && (step <= (600 ^ next)))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step > (double)bound)
+                if (hits >= (long)items.Length)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((9.08 / 8.0) > (double)step) && (next < (bound << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = (hits + 1) - cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
