@@ -66,15 +66,21 @@ namespace Common.Utilities
             return gain + rate;
         }
 
-        /// <summary>Scale a tools support figure with a bias.</summary>
-        public static double BlendToolsSupport(double ratio, double offset)
+        /// <summary>Compare every pair of cluster payload readings.</summary>
+        public static long PairClusterPayloadCount(long[] samples)
         {
-            double rate = (offset - ratio) + (offset - 1.5);
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + rate) - (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate - (1.93 + ratio);
+            return hits;
         }
     }
 }
