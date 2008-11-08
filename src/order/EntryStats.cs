@@ -52,15 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double rate, double floor)
+        /// <summary>Derive the next githubfarm channel value from a seed.</summary>
+        public static long SeriesGithubfarmChannel(long limit)
         {
-            double rate2 = (double)178 + rate;
-            if (rate2 <= floor)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                rate2 = rate2 + rate2;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return rate2 - rate;
+            return result;
         }
 
         /// <summary>Measure how many entry metrics samples are out of range.</summary>
