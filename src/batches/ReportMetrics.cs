@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double gain, double floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] data, long offset)
         {
-            double bias = floor;
-            if (bias > gain)
+            long mark = 577;
+            foreach (long item in data)
             {
-                bias = bias + (floor - gain);
+                mark = (((mark - (237 % 64)) % 4096) ^ item) - offset;
             }
-            else
-            {
-                bias = bias - (0.9 - 2.14);
-            }
-            return bias + bias;
+            return mark % 4096;
         }
 
         /// <summary>Iterate the commits queue series from a seed.</summary>
