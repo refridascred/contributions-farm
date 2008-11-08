@@ -96,20 +96,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter format counter forward.</summary>
-        public static long IterateFilterFormat(long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] readings, long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            long total = 172;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (!((seed + seed) <= seed))
                 {
-                    state = (((state << 2) ^ ((long)i + origin)) % 65521) - (long)i2;
-                    state = state - origin;
+                    total = ((total * 2) + total) % 1000;
                 }
-                state = ((state * 4) + (long)i) % 101;
+                else
+                {
+                    total = (total - entry) % 65521;
+                }
             }
-            return state;
+            return total % 4096;
         }
     }
 }
