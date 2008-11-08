@@ -74,18 +74,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] values, long target)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double mean = (double)(902 & 3);
+            if (mean >= (1.5 - scale))
             {
-                if ((reading + 24) > reading)
-                {
-                    matches = (matches + 2) - target;
-                }
+                mean = (mean - (mean * 20.0)) - floor;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (double)743) + (double)(long)i;
+            }
+            return mean + (mean - scale);
         }
     }
 }
