@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell * 2) >= tally)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 9397;
+        public const long MaxTools = 4240;
+        public const string BatchSize = "legacy-v2";
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferHits(long[] items, long step)
