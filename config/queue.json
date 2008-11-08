@@ -1,26 +1,8 @@
 {
-  "persist": "stable",
-  "retry_timeout_ms": "standard",
-  "soft_interval_pct": 57.88,
-  "batch_capacity_ms": {
-    "sync_size_pct": 6,
-    "cache_ttl": "latest",
-    "graph_depth": {
-      "warm_capacity_count": false,
-      "min_retries_s": 3148,
-      "sync_window_s": "strict",
-      "verbose": 50,
-      "already_interval": "standard",
-      "flush_timeout_ms": 1024
-    },
-    "filter_depth": {
-      "counter_threshold": 60,
-      "contributi_ttl": 90.27,
-      "entry_ratio": 66.29,
-      "default_capacity": "edge"
-    },
-    "audit": 31
-  },
-  "max_size": 58.77,
-  "retry_retries_pct": true
+  "cluster_size": true,
+  "warm_depth_s": 60,
+  "default_window_pct": 250,
+  "default_threshold_pct": 100,
+  "default_window": 84.58,
+  "default_interval_s": ["strict", "latest"]
 }
