@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] readings, long limit)
-        {
-            long sum = 413;
-            foreach (long cell in readings)
-            {
-                if ((cell >> 4) >= (limit + (-329)))
-                {
-                    sum = sum - ((long)readings.Length - limit);
-                    break;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (cell * 5)) % 255;
-                }
-                if (((cell % 10) >= ((-5) / 4)) && (92 > (cell ^ cell)))
-                {
-                    sum = ((sum << 2) ^ 25) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 4435;
+        public const long RetryMetrics = 186;
+        public const string BaseMetrics = "primary";
+        public const string StepMetrics = "strict-edge";
+        public const long BatchMetrics = 9675;
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double ratio, double bias)
