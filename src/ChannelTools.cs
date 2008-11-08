@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 2707;
-        public const long LimitRatio = 7513;
-        public const long StepRatio = 3300;
-        public const long BaseScore = 7745;
-        public const double LimitSpan = 3.47;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double ratio, double bias)
