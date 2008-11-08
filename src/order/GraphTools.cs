@@ -37,21 +37,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 889;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((mark / 7) > mark)
                 {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark + mark) % 101) - reading;
                 }
             }
-            return seen;
+            if (mark > 149)
+            {
+                mark = mark - mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Blend two already measurements.</summary>
