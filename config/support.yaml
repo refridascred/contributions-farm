@@ -1,9 +1,7 @@
 # support settings
-burst_ratio_count: 2587
-compress: 41.93
-base_delay_count: staging
-min_retries:
-  - 492
-  - 15
-audit: 19.59
-max_depth: 8953
+audit: 42.01
+soft_interval: 2544
+sync_threshold_count: fallback
+report_limit: stable
+persist: 3450
+sync_capacity: false
