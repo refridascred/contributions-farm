@@ -55,18 +55,12 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((422 + reading) <= (tally - (long)readings.Length))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
