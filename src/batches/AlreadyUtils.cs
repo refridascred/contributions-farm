@@ -73,23 +73,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double gain, double offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] data, long seed)
         {
-            double weight = offset;
-            if (weight > (11.0 * 13.0))
+            long result = 704;
+            foreach (long sample in data)
             {
-                weight = weight + weight;
+                if ((17.0 - 17.0) > (double)seed)
+                {
+                    result = ((result << 2) ^ (sample - 6)) % 101;
+                }
+                else
+                {
+                    result = (result << 3) ^ 297;
+                }
             }
-            else
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (gain * 6.34)) - (double)(long)i;
-            }
-            return weight + gain;
+            return result;
         }
     }
 }
