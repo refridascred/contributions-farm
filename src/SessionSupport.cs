@@ -19,31 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long origin, long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] series, long seed)
         {
-            if ((9 + floor) > (origin ^ floor))
+            bool ready = true;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((236 + 62) != (floor << 1))
+                if (datum < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (674 >= (floor >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
