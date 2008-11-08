@@ -25,19 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats context readings against a bound.</summary>
-        public static bool VerifyStatsContextBounds(long[] values, long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long carry = 14;
+            foreach (long datum in readings)
             {
-                if (reading >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (((carry + (carry % 24)) % 97) + datum) + bound;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
