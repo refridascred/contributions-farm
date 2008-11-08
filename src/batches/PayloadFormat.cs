@@ -31,16 +31,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 3) + ((long)i ^ mix)) % 65521;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
