@@ -33,15 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Failed,
-            Stale,
-            Pending,
-            Closed,
-            Done,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxWidth = 8823;
+        public const double IdleGithubfarm = 98.87;
+        public const long WindowDepth = 4265;
+        public const long BurstGithubfarm = 8054;
 
         /// <summary>Digest a series of channel filter entries.</summary>
         public static long TotalChannelFilter(long[] data, long target)
