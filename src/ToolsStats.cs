@@ -57,24 +57,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long step, long floor)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            if ((step * 2) >= (step + (-6)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((17.0 / 5.0) <= (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
