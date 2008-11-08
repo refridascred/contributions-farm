@@ -19,10 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 6589;
-        public const long BatchTimeout = 7800;
-        public const double DefaultTimeout = 32.86;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 3097;
+        public const long RetryChannel = 4080;
+        public const long BurstChannel = 1368;
+        public const long SoftChannel = 2951;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long origin)
