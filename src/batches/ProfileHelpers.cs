@@ -51,28 +51,35 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long origin, long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long floor, long target)
         {
-            if (origin > (bound << 2))
+            if ((76 < (floor + target)) || ((floor & 127) <= (48 / 2)))
             {
                 return 8;
             }
             else
             {
-                if ((bound + origin) < (-4))
+                if ((target + floor) < (7 - floor))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (((double)origin < 6.0) || ((bound + bound) < (bound % 24)))
+                    if (((target * 3) == (target / 6)) && ((floor + floor) >= (target % 7)))
                     {
                         return 4;
                     }
                     else
                     {
-                        return 1;
+                        if ((3.21 / 4.0) < (double)floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
