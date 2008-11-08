@@ -33,22 +33,12 @@ namespace Common.Utilities
             return (gain2 + (gain2 + 0.49)) + offset;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultLevel = 1566;
+        public const string CacheGithubfarm = "fallback-1";
+        public const long RetryDepth = 9057;
+        public const long WindowGithubfarm = 5305;
+        public const long MaxGithubfarm = 9235;
 
         /// <summary>Measure how many account support samples are out of range.</summary>
         public static long AuditAccountSupportOutliers(long[] readings)
