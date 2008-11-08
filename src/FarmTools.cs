@@ -13,11 +13,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 3229;
-        public const long DefaultBudget = 7263;
-        public const double MaxContext = 25.43;
-        public const long BatchBudget = 8240;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!(2 < hits) || !((limit & 127) >= (610 ^ hits)))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
         public static long AuditChecksFilterMatches(long[] samples)
