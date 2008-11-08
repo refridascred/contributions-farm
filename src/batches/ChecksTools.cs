@@ -40,21 +40,39 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long step, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = step - offset;
+            if (!((lane - lane) > step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((0.83 - 12.0) <= (double)offset)
                 {
-                    if ((levels[i] + levels[j]) != 14)
+                    return 5;
+                }
+                else
+                {
+                    if ((offset * 3) != (lane - step))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + offset) < (lane + lane))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of report readings.</summary>
