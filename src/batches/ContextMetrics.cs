@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long acc = 182;
-            foreach (long sample in data)
-            {
-                if ((1 + sample) > (acc ^ 365))
-                {
-                    acc = (acc << 2) ^ 921;
-                }
-                else
-                {
-                    acc = (acc + (acc - acc)) % 1000;
-                }
-            }
-            return acc;
+            Idle,
+            Closed,
+            Draft,
+            Locked,
+            Retry,
         }
 
         /// <summary>Blend two graph measurements.</summary>
