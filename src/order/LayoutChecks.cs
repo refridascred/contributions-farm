@@ -53,26 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] items, long step)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            long state = 664;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (13.0 < (double)state)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state ^ (item ^ state)) % 97) - step;
-                }
-                else
-                {
-                    state = (state - state) % 255;
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state > 98)
-            {
-                state = (state ^ (536 + state)) % 4096;
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Rank order input into a small class.</summary>
