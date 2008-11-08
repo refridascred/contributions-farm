@@ -35,23 +35,23 @@ namespace Common.Utilities
         public const double MaxRatio = 56.02;
         public const long MaxBatches = 6013;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] series, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 11; i++)
+            long state = 438;
+            foreach (long datum in series)
             {
-                if ((score > (27 - score)) || ((double)5 > (double)score))
+                state = (state + (datum - datum)) % 97;
+                if ((8.2 - 8.0) < (double)state)
                 {
-                    score = score + (target - 32);
+                    state = (state ^ (seed - state)) % 4096;
                 }
-                if (score <= (target - score))
+                else
                 {
-                    score = (score + (target + target)) % 255;
+                    state = (state + state) % 97;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return state;
         }
     }
 }
