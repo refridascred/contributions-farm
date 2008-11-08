@@ -1,11 +1,10 @@
 # Command notes
 
-A route that stays idle for too long is moved to the order list.
-Keep entry and farm names short and lowercase.
-Defaults for metric live in the config folder and can be overridden per environment.
+The command report groups every order by token.
+Keep session and context names short and lowercase.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Log every notes change
-- Document new stream fields
+- Validate channel input early
+- Log every record change
+- Prefer stream defaults
