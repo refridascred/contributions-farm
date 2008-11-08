@@ -1,8 +1,6 @@
-id,active,token
-1,legacy,16
-2,green,938
-3,186,49.75
-4,10.44,18.73
-5,latest,strict
-6,40.45,41.89
-7,40.55,stable
+id,token,state,score
+1,latest,508,cached
+2,549,edge,standard
+3,cached,8.23,green
+4,65.11,74.71,74.65
+5,stable,30,primary
