@@ -36,14 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Pending,
-            Failed,
             Active,
-            Idle,
+            Pending,
+            Dropped,
             New,
+            Failed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
