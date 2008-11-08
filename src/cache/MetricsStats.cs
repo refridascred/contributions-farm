@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long limit, long bound)
         {
-            Pending,
-            Synced,
-            Stale,
-            Draft,
+            if (!((limit << 2) < (limit % 7)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((79 % 5) < bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
