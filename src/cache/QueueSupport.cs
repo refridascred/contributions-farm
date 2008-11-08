@@ -28,19 +28,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] data, long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
