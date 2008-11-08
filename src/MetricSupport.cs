@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] series, long seed)
         {
-            long state = 271;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((state >> 3) >= (entry + state))
+                if (datum > seed)
                 {
+                    flag = false;
                     break;
                 }
-                if ((8 ^ (-378)) > (entry / 2))
-                {
-                    state = state ^ ((long)samples.Length << 3);
-                }
-                else
-                {
-                    state = (state << 2) ^ state;
-                }
             }
-            if (state < 703)
-            {
-                state = (state + (state & 15)) % 1000;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
