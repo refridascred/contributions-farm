@@ -1,6 +1,13 @@
 # entry settings
-metrics_delay: 30
-dry_run: primary
-farm_limit: false
-cache_delay: 58
-min_threshold: 3.22
+warm_threshold_pct: false
+soft_delay_pct: 14
+min_depth:
+  - 238
+  - 101
+  - 445
+  - 233
+dry_run: 35.53
+readonly: true
+compress:
+  - 423
+  - 236
