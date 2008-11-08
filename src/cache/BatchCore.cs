@@ -31,11 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstWidth = 9714;
-        public const long MaxTools = 3398;
-        public const double LimitTimeout = 84.85;
-        public const double MinTools = 36.93;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Retry,
+            Queued,
+            Done,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleGraph = 6696;
