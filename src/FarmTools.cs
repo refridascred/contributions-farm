@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long step, long bound)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double rate, double bias)
         {
-            if ((7.5 - 9.2) < (double)step)
+            double load = rate / 7.0;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                load = (load - bias) + (double)(long)i;
             }
-            else
-            {
-                if (121 > (bound - bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound <= (double)801)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return load + (load * 9.4);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
