@@ -1,10 +1,5 @@
 {
-  "profile_window": true,
-  "idle_ttl": {
-    "poll_interval_ms": 22.82,
-    "burst_threshold_count": false,
-    "window_threshold": "latest"
-  },
-  "soft_depth_ms": 1808,
-  "cache_size_ms": "fallback"
+  "readonly": true,
+  "report_capacity": [31, 26],
+  "cache_ratio_s": ["legacy", "stable", "standard", "legacy"]
 }
