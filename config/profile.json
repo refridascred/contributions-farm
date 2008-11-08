@@ -1,15 +1,6 @@
 {
-  "compress": 2692,
-  "default_capacity_count": 28.81,
-  "burst_window_pct": 2758,
-  "metrics_ttl": {
-    "queue_interval": ["legacy", "local"],
-    "already_interval": {
-      "idle_threshold": false,
-      "payload_retries": 30.74,
-      "default_retries": 12,
-      "readonly": false
-    },
-    "persist": false
-  }
+  "persist": "cached",
+  "default_ratio_s": 7904,
+  "soft_threshold": 80,
+  "order_threshold": [144, 39, 431]
 }
