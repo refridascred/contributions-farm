@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double weight, double floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double rate = weight;
-            return (rate - rate) + floor;
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
