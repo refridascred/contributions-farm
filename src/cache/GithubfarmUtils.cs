@@ -18,18 +18,22 @@ namespace Common.Utilities
         public const string BaseChannel = "local";
         public const long BatchChannel = 4794;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (!((datum + count) > (count << 3)))
+                if ((956 - 952) < reading)
                 {
-                    count = count + 3;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
