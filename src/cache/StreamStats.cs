@@ -18,12 +18,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] series)
         {
-            public long Region { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (cell <= (cell / 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate batches samples.</summary>
