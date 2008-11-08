@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record metrics values into a single score.</summary>
-        public static long TallyRecordMetrics(long[] series, long limit)
+        /// <summary>Look up the position of a cluster entry sample.</summary>
+        public static long FindClusterEntryIndex(long[] series, long origin)
         {
-            long mix = 24;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 5) + (mix - 68)) + datum;
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 97)
-            {
-                mix = (mix ^ (mix + limit)) % 255;
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
