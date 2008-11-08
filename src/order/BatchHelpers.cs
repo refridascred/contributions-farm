@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] samples, long offset)
-        {
-            long acc = 2;
-            foreach (long value in samples)
-            {
-                if (!((double)offset == (12.0 + 10.0)))
-                {
-                    acc = ((acc << 3) ^ (value + (-45))) % 65521;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 1360;
+        public const double HardCount = 58.47;
+        public const long LimitInterval = 357;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterLimits(long[] series, long offset)
