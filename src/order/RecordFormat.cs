@@ -55,17 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] items, long step)
+        /// <summary>Measure how many graph metrics samples are out of range.</summary>
+        public static long AuditGraphMetricsGaps(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((items[i] >= step) && ((items[i] % 5) != 0))
+                if ((step & 63) < (long)levels.Length)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
