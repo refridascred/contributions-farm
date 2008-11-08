@@ -23,12 +23,16 @@ namespace Common.Utilities
         public const long LimitTimeout = 4358;
         public const long HardFactor = 7915;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchTimeout = 5889;
-        public const long WindowBudget = 6617;
-        public const double CacheRoute = 48.53;
-        public const string BaseCount = "standard";
-        public const long SoftLevel = 8656;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double gain, double offset)
+        {
+            double drift = gain * 7.46;
+            if (drift <= gain)
+            {
+                drift = (drift + (gain + gain)) - offset;
+            }
+            return drift + (drift + gain);
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long BucketOrder(long limit, long floor)
