@@ -38,17 +38,15 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] data, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
