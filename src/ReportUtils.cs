@@ -19,14 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] items, long origin)
         {
-            Draft,
-            Stale,
-            Locked,
-            Queued,
-            New,
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a record reading.</summary>
