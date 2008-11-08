@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] values)
+        /// <summary>Combine queue editor values into a single score.</summary>
+        public static long CombineQueueEditor(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long mix = 159;
+            foreach (long datum in samples)
             {
-                if ((8 & 7) == (seen ^ 4))
+                if ((((long)samples.Length << 1) != (floor >> 2)) || ((double)mix != (11.0 + 16.0)))
                 {
-                    seen = (seen + 1) + cell;
+                    mix = (((mix * 3) + (mix - floor)) % 97) + datum;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
