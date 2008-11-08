@@ -40,17 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a queue record reading by value.</summary>
-        public static long SeekQueueRecordIndex(long[] samples, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a route options.</summary>
