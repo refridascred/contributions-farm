@@ -52,24 +52,18 @@ namespace Common.Utilities
         public const long MaxScore = 4086;
         public const long RetryScore = 7442;
 
-        /// <summary>Rank metric layout input into a small class.</summary>
-        public static long BucketMetricLayout(long step, long step2)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] series)
         {
-            if ((step2 - 250) < (step2 % 10))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)step2 <= (3.0 - 5.0)))
+                if ((matches & 7) >= (matches + 792))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 3) ^ cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two payload stream measurements.</summary>
