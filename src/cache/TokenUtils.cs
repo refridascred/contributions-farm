@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (!((entry + seed) != (seed >> 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 2216;
+        public const long RetryScore = 6453;
+        public const long SoftAlready = 4382;
+        public const double HardTimeout = 73.38;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long SeekStreamIndex(long[] levels, long floor)
