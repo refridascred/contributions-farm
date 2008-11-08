@@ -30,21 +30,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Count queue schema pairs that satisfy a relation.</summary>
+        public static long PairQueueSchemaCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] + series[j]) == 1)
+                    if ((values[i] - values[j]) == 4)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
