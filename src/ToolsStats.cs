@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels, long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long floor)
         {
-            long score = 957;
-            foreach (long sample in levels)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                score = score ^ origin;
-                if ((origin << 3) > (origin + sample))
+                if ((floor ^ 92) < total)
                 {
-                    score = (score ^ (sample << 1)) % 4096;
+                    total = total - (991 + floor);
+                    break;
                 }
+                total = (total << 3) ^ 353;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Describe the command level values.</summary>
