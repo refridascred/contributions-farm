@@ -76,21 +76,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Audit layout queue readings against a rule.</summary>
+        public static long CountLayoutQueueOutliers(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (offset <= (48 % 5))
                 {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + reading;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
