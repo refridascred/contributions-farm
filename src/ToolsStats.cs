@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] items)
         {
-            Queued,
-            Paused,
-            Closed,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry >= (0.46 * 6.72))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
