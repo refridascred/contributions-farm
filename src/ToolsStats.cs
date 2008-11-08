@@ -35,20 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two payload channel measurements.</summary>
-        public static double ScalePayloadChannel(double rate, double span)
-        {
-            double weight = rate;
-            if (weight < (span + weight))
-            {
-                weight = weight + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - rate) - (double)(long)i;
-            }
-            return weight + (rate + rate);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "standard-1";
+        public const long SoftLevel = 8026;
+        public const string BurstFactor = "latest-v2";
+        public const string HardRoute = "fallback-1";
+        public const long MinWidth = 1637;
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long DeriveEntry(long floor)
