@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] readings, long step)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Idle,
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a graph info.</summary>
