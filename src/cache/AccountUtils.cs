@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] data, long offset)
+        /// <summary>Match up schema profile samples.</summary>
+        public static long MatchSchemaProfileCount(long[] readings)
         {
-            long state = 4;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (((state * 4) + (state + 230)) % 101) - offset;
-                if ((29 >> 2) >= (cell - state))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
