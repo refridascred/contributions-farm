@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] values, long limit)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally - limit) >= entry)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Match up batch samples.</summary>
