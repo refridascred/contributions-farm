@@ -31,15 +31,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double ratio, double bias)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] series, long offset)
         {
-            double ratio2 = bias;
-            if (ratio2 >= bias)
+            long acc = 4;
+            foreach (long item in series)
             {
-                ratio2 = ratio2 - ratio;
+                acc = acc - item;
             }
-            return ratio2 - 2.8;
+            if (acc < (-6))
+            {
+                acc = acc + offset;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a order report reading.</summary>
