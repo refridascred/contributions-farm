@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepBatches = 38.26;
+        public const long RetryDepth = 8204;
+        public const long DefaultScore = 1824;
+        public const double BatchTimeout = 67.18;
+        public const long DefaultFactor = 4566;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long origin)
