@@ -1,6 +1,24 @@
 {
-  "batches_capacity": ["latest", "legacy", "staging", "legacy"],
-  "queue_delay": 500,
-  "flush_depth_count": 47,
-  "filter_window": 44.0
+  "graph_limit": [51, 336],
+  "enabled": 17.57,
+  "soft_depth_count": {
+    "min_ttl": "open",
+    "record_timeout": {
+      "readonly": 100,
+      "warm_limit_pct": [316, 136, 265],
+      "hard_depth": "standard",
+      "strict": "green",
+      "poll_retries_count": 2,
+      "poll_retries": 562
+    },
+    "burst_ttl": false,
+    "enabled": {
+      "default_depth_count": 1024,
+      "soft_capacity": 82.42,
+      "hard_window": 87.83
+    }
+  },
+  "retry_depth": true,
+  "idle_threshold_count": "staging",
+  "flush_timeout_pct": ["standard", "green"]
 }
