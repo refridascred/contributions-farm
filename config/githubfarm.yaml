@@ -1,18 +1,7 @@
 # githubfarm settings
-min_threshold: 6579
-cache_depth: edge
-poll_retries_s: cached
-dry_run:
-  warm_limit_ms:
-    - 38
-    - 84
-    - 429
-    - 262
-  batch_window_ms:
-    - staging
-    - fallback
-    - green
-  dry_run: stable
-  tools_ratio: 30
-  soft_retries_ms: 30
-  filter_threshold: false
+default_depth_count: 30
+tools_interval:
+  - edge
+  - primary
+verbose: false
+farm_interval: stable
