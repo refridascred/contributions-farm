@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long CacheFactor = 5601;
         public const long SoftLevel = 6966;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] samples, long bound)
+        /// <summary>Adjust a layout session reading.</summary>
+        public static double ScaleLayoutSession(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            double drift = floor;
+            if (drift < ratio)
             {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift - 8.0;
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (ratio * 3.4)) + (double)(long)i;
+            }
+            return drift + (double)130;
         }
 
         /// <summary>Hold a metrics header.</summary>
