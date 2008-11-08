@@ -60,11 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 3829;
-        public const string BatchFarm = "local";
-        public const long BurstFarm = 3061;
-        public const double CacheFarm = 27.17;
-        public const long StepFarm = 5524;
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
