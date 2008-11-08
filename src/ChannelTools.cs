@@ -18,15 +18,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] series)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] series)
         {
             long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((-8) <= (hits ^ 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) - item;
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
