@@ -55,11 +55,21 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 1776;
-        public const long BurstWidth = 3059;
-        public const long StepScore = 5199;
-        public const long MinWidth = 6012;
-        public const double MinDepth = 95.05;
+        /// <summary>Count window payload pairs that satisfy a relation.</summary>
+        public static long OverlapWindowPayloadCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
