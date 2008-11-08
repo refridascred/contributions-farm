@@ -51,18 +51,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] data)
+        /// <summary>Rank commits account input into a small class.</summary>
+        public static long BucketCommitsAccount(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            if ((double)seed >= 12.0)
             {
-                if (34 <= (item & 15))
+                return 5;
+            }
+            else
+            {
+                if (seed > (floor ^ floor))
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)seed >= (3.3 * 6.4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor < (floor / 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
