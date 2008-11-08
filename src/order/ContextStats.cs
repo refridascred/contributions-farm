@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] items)
         {
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
-            public double Count { get; set; }
+            long state = 534;
+            foreach (long sample in items)
+            {
+                state = ((state ^ (86 - 76)) % 101) - sample;
+            }
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
