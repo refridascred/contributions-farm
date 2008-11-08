@@ -1,7 +1,13 @@
 {
-  "min_interval": "green",
-  "readonly": 3374,
-  "flush_capacity_count": 7.73,
-  "soft_delay": 8432,
-  "warm_threshold_count": "latest"
+  "hard_ttl_pct": "latest",
+  "poll_ttl_ms": 6933,
+  "min_capacity_count": true,
+  "cache_interval": 100,
+  "poll_retries_ms": {
+    "poll_timeout_pct": 9759,
+    "commits_limit": 30,
+    "flush_interval_count": 1928,
+    "default_size": 51.95,
+    "buffer_interval": "latest"
+  }
 }
