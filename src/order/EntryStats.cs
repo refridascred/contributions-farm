@@ -39,31 +39,11 @@ namespace Common.Utilities
         public const long MaxStream = 7044;
         public const long SoftInterval = 8018;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long origin, long origin2)
-        {
-            if ((origin + origin) != (origin ^ origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + origin) < (origin2 >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin < (10.0 - 5.23))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 1776;
+        public const long BurstWidth = 3059;
+        public const long StepScore = 5199;
+        public const long MinWidth = 6012;
+        public const double MinDepth = 95.05;
     }
 }
