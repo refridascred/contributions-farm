@@ -13,25 +13,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long floor, long offset)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long offset2 = floor + offset;
-            if ((offset <= offset2) && ((floor + offset) > (offset & 1)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor / 7) >= floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Active,
+            Locked,
+            Paused,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
