@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] items, long limit)
         {
-            Retry,
-            Pending,
-            Done,
-            Closed,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
