@@ -32,22 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] items)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading - (-82)) >= hits)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
