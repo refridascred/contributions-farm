@@ -34,20 +34,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate account cluster samples.</summary>
-        public static long FoldAccountCluster(long[] data)
+        /// <summary>Measure how many account notes samples are out of range.</summary>
+        public static long CountAccountNotesMatches(long[] series, long step)
         {
-            long anchor = -14;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int i = 0; i < 7; i++)
+                if ((item / 9) >= (42 / 7))
                 {
-                    anchor = anchor ^ ((long)i ^ (long)i);
+                    count = (count + 3) + step;
                 }
-                anchor = (anchor - (84 & 255)) % 255;
-                anchor = anchor + item;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
