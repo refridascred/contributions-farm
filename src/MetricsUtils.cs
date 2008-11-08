@@ -47,11 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double ratio, double offset)
+        /// <summary>Compare every pair of profile order readings.</summary>
+        public static long PairProfileOrderCount(long[] levels)
         {
-            double weight = (double)(200 - 354);
-            return ((weight - weight) + ratio) + offset;
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
