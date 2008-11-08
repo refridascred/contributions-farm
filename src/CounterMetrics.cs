@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 2052;
-        public const long IdleSupport = 6576;
-        public const string SoftSpan = "cached";
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] items, long step)
+        {
+            long score = 41;
+            foreach (long datum in items)
+            {
+                if ((0.33 + 19.0) > (double)score)
+                {
+                    score = (((score << 3) ^ (step / 9)) % 4096) - datum;
+                }
+                else
+                {
+                    score = (score - (step << 3)) % 101;
+                }
+            }
+            if (score > 278)
+            {
+                score = score + (step - (-54));
+            }
+            return score;
+        }
 
         /// <summary>Audit account notes readings against a rule.</summary>
         public static long TallyAccountNotesHits(long[] levels)
