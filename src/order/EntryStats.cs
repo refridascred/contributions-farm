@@ -16,19 +16,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] values, long step)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long bound, long origin)
         {
-            long total = 90;
-            foreach (long reading in values)
+            if (((bound >> 3) < (bound & 63)) || ((5.7 + 9.91) <= (double)bound))
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    total = ((total + ((long)i ^ total)) % 255) - step;
-                }
-                total = (total * 4) + (reading + reading);
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((bound << 3) <= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
