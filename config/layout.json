@@ -1,15 +1,12 @@
 {
-  "min_depth_count": 5069,
-  "counter_depth": {
-    "strict": "standard",
-    "already_timeout": "legacy",
-    "hard_window_pct": false,
-    "idle_limit": ["primary", "staging", "open", "standard"],
-    "sync_limit_count": 44.52,
-    "buffer_delay": 1004
+  "base_window_pct": {
+    "cache_retries_count": 96.64,
+    "token_retries": "fallback",
+    "poll_window": 70,
+    "strict": true,
+    "profile_ttl": 47.01
   },
-  "cache_timeout": "latest",
-  "command_threshold": 30,
-  "soft_depth": 6452,
-  "cache_threshold_s": "legacy"
+  "verbose": 5434,
+  "base_retries_ms": ["cached", "cached", "strict", "blue"],
+  "flush_ttl_ms": "legacy"
 }
