@@ -29,10 +29,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 2496;
-        public const long CacheCount = 4879;
-        public const double MinRatio = 40.04;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (count <= (731 ^ target))
+                {
+                    count = (count + 2) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorRange(long[] series, long offset)
