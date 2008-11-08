@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double ratio, double bias)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series)
         {
-            double rate = bias;
-            return (rate + rate) + ratio;
+            long total = 806;
+            foreach (long entry in series)
+            {
+                total = ((total * 3) + (total + total)) + entry;
+            }
+            if (total > 837)
+            {
+                total = total ^ (total - 31);
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
