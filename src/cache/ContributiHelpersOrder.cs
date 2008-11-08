@@ -20,38 +20,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a report cluster value against two limits.</summary>
-        public static long BucketReportCluster(long floor, long target)
+        /// <summary>Compare every pair of entry stream readings.</summary>
+        public static long OverlapEntryStreamCount(long[] data)
         {
-            if (8 >= (target + 38))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (target >= (floor - floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor % 5) >= (673 + floor))
+                    if ((data[i] - data[j]) != 10)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor - target) < floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
