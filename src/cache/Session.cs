@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] data, long step)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long sum = 707;
-            foreach (long cell in data)
-            {
-                if ((cell - (long)data.Length) == (51 - cell))
-                {
-                    sum = ((sum ^ sum) % 4096) + step;
-                }
-                else
-                {
-                    sum = (sum - sum) % 65521;
-                }
-            }
-            return sum;
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Iterate the layout already series from a seed.</summary>
