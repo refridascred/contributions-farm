@@ -23,19 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((0.17 - 13.0) > (double)offset)
-                {
-                    score = (score * 5) + (long)i;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                mark = ((mark << 2) ^ bound) % 97;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Match up counter samples.</summary>
