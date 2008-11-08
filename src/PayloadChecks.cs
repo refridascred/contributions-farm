@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] items, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long entry in levels)
             {
                 if (entry != floor)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Audit stream metrics readings against a rule.</summary>
