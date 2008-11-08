@@ -24,13 +24,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
+            Idle,
+            Closed,
+            Draft,
+            Failed,
         }
     }
 }
