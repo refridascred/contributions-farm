@@ -19,12 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepBatches = 38.26;
-        public const long RetryDepth = 8204;
-        public const long DefaultScore = 1824;
-        public const double BatchTimeout = 67.18;
-        public const long DefaultFactor = 4566;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 6589;
+        public const long BatchTimeout = 7800;
+        public const double DefaultTimeout = 32.86;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long origin)
