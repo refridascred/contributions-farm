@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] values, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] samples, long target)
         {
-            long total = 235;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                total = (total - (7 ^ offset)) % 101;
-                if (offset <= (722 - offset))
+                if ((target < (target - target)) || (target > (count - count)))
                 {
-                    total = (total + entry) % 65521;
+                    count = (count + 1) + reading;
                 }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
