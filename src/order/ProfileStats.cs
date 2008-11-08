@@ -46,11 +46,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 3566;
-        public const string MinTimeout = "open";
-        public const string IdleToken = "strict";
-        public const long BaseToken = 4121;
-        public const long BaseDepth = 5433;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Dropped,
+            Active,
+            Retry,
+        }
     }
 }
