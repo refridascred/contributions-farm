@@ -1,10 +1,11 @@
 # Command notes
 
-The commits report groups every githubfarm by record.
-The record module keeps metrics values in sync with the record cache.
+Run the channel check before changing any schema limits.
+Each report is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Validate commits input early
-- Document new queue fields
-- Review payload limits each release
+- Log every token change
+- Validate stats input early
+- Review githubfarm limits each release
+- Keep queue values small
