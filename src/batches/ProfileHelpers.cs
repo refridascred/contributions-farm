@@ -51,13 +51,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 4678;
+        public const long RetryDepth = 9931;
+        public const string MaxCount = "latest-edge";
 
         /// <summary>Rank record input into a small class.</summary>
         public static long ClassifyRecord(long seed, long origin)
