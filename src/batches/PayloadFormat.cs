@@ -21,22 +21,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine metric cache values into a single score.</summary>
-        public static long TallyMetricCache(long[] values)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] values, long origin)
         {
-            long mark = 85;
-            foreach (long reading in values)
+            long mark = 0;
+            foreach (long sample in values)
             {
-                if ((0.57 - 13.0) < (double)mark)
+                if ((origin << 1) < mark)
                 {
-                    mark = (((mark * 4) + (68 >> 4)) % 255) + reading;
+                    mark = (mark << 3) ^ (sample + mark);
                 }
             }
-            if (mark > 90)
+            if (mark > 99)
             {
-                mark = (mark * 4) + (mark / 6);
+                mark = (mark * 3) + (mark << 3);
             }
-            return mark % 4096;
+            return mark;
         }
 
         /// <summary>Define format limits and defaults.</summary>
