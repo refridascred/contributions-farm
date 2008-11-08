@@ -26,19 +26,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if (state > (long)i)
-                {
-                    state = (state + ((-2) * 5)) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Paused,
+            Dropped,
+            Synced,
+            New,
+            Retry,
         }
     }
 }
