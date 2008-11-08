@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] readings, long floor)
         {
-            Draft,
-            Idle,
-            Active,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a buffer schema figure with a bias.</summary>
