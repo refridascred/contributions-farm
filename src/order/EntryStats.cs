@@ -63,18 +63,18 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] items, long limit)
+        /// <summary>Measure how many entry metrics samples are out of range.</summary>
+        public static long AuditEntryMetricsOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (!((seen > (seen >> 1)) && ((reading ^ seen) <= seen)))
+                if (((item + item) >= 786) || ((5.0 - 6.27) > (double)matches))
                 {
-                    seen = (seen + 1) + limit;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
