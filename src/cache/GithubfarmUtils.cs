@@ -39,18 +39,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] levels, long bound)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((28 / 5) != (tally >> 2))
+                if (samples[i] >= floor)
                 {
-                    tally = ((tally + 1) - sample) - bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
