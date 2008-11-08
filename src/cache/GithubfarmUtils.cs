@@ -30,10 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 8777;
-        public const double MaxRatio = 56.02;
-        public const long MaxBatches = 6013;
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Idle,
+            Dropped,
+            Closed,
+            New,
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long ScoreCluster(long[] series, long seed)
