@@ -40,26 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches farm entries.</summary>
-        public static long TallyBatchesFarm(long[] levels, long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long target, long floor)
         {
-            long mark = 377;
-            foreach (long reading in levels)
+            if (target > (target & 255))
             {
-                if (((mark * 4) >= (reading & 31)) && ((offset * 4) >= (4 ^ offset)))
+                return 0;
+            }
+            else
+            {
+                if ((floor * 5) >= (97 >> 5))
                 {
-                    mark = (mark + 26) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    mark = (mark - (reading + offset)) % 1000;
+                    return 1;
                 }
             }
-            if (mark > 0)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark;
         }
 
         /// <summary>Hold a account stats.</summary>
