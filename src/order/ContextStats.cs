@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] data, long origin)
+        /// <summary>Iterate the githubfarm counter series from a seed.</summary>
+        public static long IterateGithubfarmCounter(long origin)
         {
-            bool found = true;
-            foreach (long item in data)
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (item >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                acc = acc + (origin * 4);
+                acc = (acc ^ (8 & 7)) % 4096;
+                acc = acc + (acc + origin);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Hold a entry options.</summary>
