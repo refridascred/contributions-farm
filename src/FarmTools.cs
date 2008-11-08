@@ -27,11 +27,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
