@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a token checks value against two limits.</summary>
-        public static long BucketTokenChecks(long step, long target)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long bound = step - target;
-            if ((double)target <= (double)bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((11.0 - 9.39) < (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target * 4) == (3 - target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of queue command readings.</summary>
