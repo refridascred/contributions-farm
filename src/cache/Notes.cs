@@ -41,19 +41,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count * 4) <= ((-320) + count))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 4778;
+        public const long BatchStream = 4352;
+        public const string SoftStream = "staging-1";
+        public const long WindowFactor = 3154;
+        public const double WindowCount = 15.67;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleFarm = 3829;
