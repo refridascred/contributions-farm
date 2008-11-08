@@ -85,10 +85,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 4678;
-        public const long RetryDepth = 9931;
-        public const string MaxCount = "latest-edge";
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long target, long bound)
+        {
+            if ((double)bound >= 17.0)
+            {
+                return 2;
+            }
+            else
+            {
+                if (target < (target << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((9.37 - 19.0) >= (double)bound) && ((target % 2) > bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target + (-3)) <= bound) && (78 >= (bound / 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long ClassifyRecord(long seed, long origin)
