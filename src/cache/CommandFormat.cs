@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long StepFormat = 439;
         public const double CacheFormat = 38.01;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] series, long step)
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a report summary.</summary>
