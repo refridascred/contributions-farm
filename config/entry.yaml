@@ -1,5 +1,25 @@
 # entry settings
-compress: 2543
-report_window: cached
-persist: 63.03
-poll_retries_ms: 7177
+poll_limit_ms: false
+editor_delay: 4754
+sync_timeout: 4434
+entry_interval: true
+githubfarm_ratio:
+  retry_retries_pct:
+    idle_ttl: 4201
+    already_threshold: legacy
+    persist: false
+    schema_ratio: false
+  poll_threshold: standard
+  compress:
+    farm_depth: stable
+    retry_interval_ms:
+      - legacy
+      - primary
+      - fallback
+      - primary
+    record_timeout: 56.32
+    notes_interval:
+      - legacy
+      - open
+  poll_size_s: 30
+retry_delay_pct: staging
