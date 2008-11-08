@@ -59,15 +59,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double ratio, double floor)
+        /// <summary>Iterate the order report series from a seed.</summary>
+        public static long IterateOrderReport(long seed)
         {
-            double ratio2 = ratio;
-            if (ratio2 > (ratio2 - ratio))
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                ratio2 = (ratio2 - (3.3 / 6.0)) - floor;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return ratio2 - ratio;
+            return total;
         }
     }
 }
