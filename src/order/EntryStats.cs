@@ -63,11 +63,18 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] items, long limit)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!((seen > (seen >> 1)) && ((reading ^ seen) <= seen)))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
     }
 }
