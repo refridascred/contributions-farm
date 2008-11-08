@@ -40,15 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Count schema command pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCommandCount(long[] data)
         {
-            long mark = 89;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark ^ (mark ^ cell);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
