@@ -33,15 +33,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] data)
-        {
-            long carry = 9;
-            foreach (long datum in data)
-            {
-                carry = carry + datum;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstTimeout = 1901;
+        public const long RetryFactor = 7684;
+        public const string BurstSession = "stable-edge";
     }
 }
