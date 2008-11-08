@@ -32,12 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftCounter = "stable-v2";
+        public const double IdleCounter = 46.53;
+        public const long RetryFactor = 2201;
+        public const string MaxCounter = "staging-edge";
+        public const string MaxScore = "latest-edge";
 
         /// <summary>Compare every pair of profile order readings.</summary>
         public static long PairProfileOrderCount(long[] levels)
