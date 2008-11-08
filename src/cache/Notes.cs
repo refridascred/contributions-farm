@@ -62,25 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long target, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long seed)
         {
-            long step = target ^ limit;
-            if (target < (334 + step))
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (60 <= step)
+                if ((double)state != (2.16 * 8.0))
                 {
-                    return 3;
+                    state = (state + (seed << 3)) % 4096;
                 }
-                else
-                {
-                    return 5;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
