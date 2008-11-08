@@ -13,18 +13,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] data, long limit)
+        /// <summary>Count the graph farm entries that pass the check.</summary>
+        public static long CountGraphFarmOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (!(2 < hits) || !((limit & 127) >= (610 ^ hits)))
+                if ((sample & 255) <= (12 - 421))
                 {
-                    hits = (hits + 2) ^ datum;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
