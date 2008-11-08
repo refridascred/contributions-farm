@@ -62,13 +62,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] data, long bound)
         {
-            Stale,
-            Active,
-            Draft,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next buffer value.</summary>
