@@ -33,18 +33,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] samples, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] items)
         {
-            long mark = 0;
-            foreach (long datum in samples)
+            long anchor = 354;
+            foreach (long sample in items)
             {
-                if (((mark << 2) >= mark) && ((datum - datum) < (bound + bound)))
+                if ((sample & 31) < (sample << 3))
                 {
-                    mark = (mark + (datum + 935)) % 1000;
+                    anchor = (anchor ^ (anchor + sample)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (55 / 6)) % 1000;
                 }
             }
-            return mark % 65521;
+            return anchor % 4096;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
