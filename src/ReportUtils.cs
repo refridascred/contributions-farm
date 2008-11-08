@@ -44,12 +44,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultLevel = 1566;
-        public const string CacheGithubfarm = "fallback-1";
-        public const long RetryDepth = 9057;
-        public const long WindowGithubfarm = 5305;
-        public const long MaxGithubfarm = 9235;
+        /// <summary>Audit command report readings against a rule.</summary>
+        public static long MeasureCommandReportHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((78 + seen) == (seen % 64))
+                {
+                    seen = (seen + 2) - reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool ValidateLayoutBounds(long[] values, long limit)
