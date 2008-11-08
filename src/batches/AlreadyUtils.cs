@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] samples, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long step, long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long offset = step ^ seed;
+            if ((seed - offset) <= 639)
             {
-                if ((seen >= (656 % 97)) && (seen <= 141))
+                return 6;
+            }
+            else
+            {
+                if ((6 - seed) <= (offset ^ seed))
                 {
-                    seen = ((seen + 2) + datum) - offset;
+                    return 4;
+                }
+                else
+                {
+                    if (step < (step + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
