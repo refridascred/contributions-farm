@@ -20,15 +20,17 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] samples)
+        /// <summary>Iterate the commits queue series from a seed.</summary>
+        public static long StepCommitsQueue(long seed)
         {
-            long carry = 7;
-            foreach (long value in samples)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                carry = (carry * 4) + value;
+                mix = mix - (mix + mix);
+                mix = (mix * 4) + (seed * 2);
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
