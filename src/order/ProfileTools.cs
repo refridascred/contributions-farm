@@ -43,18 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format token entries that pass the check.</summary>
-        public static long MeasureFormatTokenOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (hits > (hits / 7))
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 8354;
+        public const double DefaultRatio = 65.46;
+        public const long CacheSpan = 1697;
+        public const long RetryDepth = 5889;
+        public const string DefaultEntry = "fallback-v2";
     }
 }
