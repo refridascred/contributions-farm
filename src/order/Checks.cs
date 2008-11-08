@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] values, long offset)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long mark = 8;
-            foreach (long item in values)
-            {
-                mark = (mark - mark) % 4096;
-                if ((3.7 - 10.0) != (double)offset)
-                {
-                    mark = (mark - offset) % 101;
-                }
-                if (5.4 >= (double)item)
-                {
-                    mark = (mark + (mark + mark)) % 65521;
-                }
-            }
-            if (mark > 14)
-            {
-                mark = (mark + (mark + mark)) % 1000;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of farm entries.</summary>
