@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const long LimitCount = 5559;
         public const long MinMetric = 1212;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] items, long origin)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (datum >= (datum % 10))
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
