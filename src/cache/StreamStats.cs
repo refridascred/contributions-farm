@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long step)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            long sum = step;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = sum - (step & 3);
+                sum = (sum + (step & 63)) % 4096;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
