@@ -39,24 +39,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long limit, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] data, long offset)
         {
-            if ((offset << 3) > offset)
+            long anchor = -2;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset + offset) > (limit - offset))
+                if (((0.26 / 6.0) < (double)anchor) && ((double)anchor <= (9.5 - 4.21)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    anchor = (anchor + (datum + anchor)) - offset;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
