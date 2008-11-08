@@ -1,27 +1,12 @@
 # entry settings
-notes_capacity: 500
-soft_depth_count: stable
-max_threshold_pct: 92.02
-window_ratio: latest
-idle_limit_pct: green
-sync_threshold:
-  persist:
-    - legacy
-    - stable
-  compress: 82
-  base_threshold_pct:
-    - 35
-    - 119
-    - 454
-    - 276
-  dry_run: 6418
-  warm_timeout_ms: 10.32
-  cache_depth:
-    persist:
-      - 154
-      - 263
-    warm_limit_ms: 37
-    window_ratio: 14.98
-    min_delay: 52.71
-    hard_depth_ms: stable
-    sync_threshold: 7931
+layout_size: true
+persist: local
+base_depth_ms: 492
+payload_size:
+  - 164
+  - 496
+  - 119
+compress:
+  - cached
+  - eu-west
+  - local
