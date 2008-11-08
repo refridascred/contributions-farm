@@ -35,10 +35,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 7281;
-        public const long DefaultStats = 2067;
-        public const long BurstStats = 9804;
-        public const string RetryWidth = "cached-edge";
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
