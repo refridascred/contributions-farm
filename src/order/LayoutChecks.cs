@@ -48,16 +48,26 @@ namespace Common.Utilities
         public const long HardCounter = 9993;
         public const long MaxCount = 4258;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] items, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long state = 664;
+            foreach (long item in items)
             {
-                state = (state ^ bound) % 255;
-                state = ((state * 4) + (long)i) % 1000;
+                if (13.0 < (double)state)
+                {
+                    state = ((state ^ (item ^ state)) % 97) - step;
+                }
+                else
+                {
+                    state = (state - state) % 255;
+                }
             }
-            return state;
+            if (state > 98)
+            {
+                state = (state ^ (536 + state)) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Rank order input into a small class.</summary>
