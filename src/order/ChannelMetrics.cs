@@ -27,18 +27,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the stream format entries that pass the check.</summary>
-        public static long MeasureStreamFormatOutliers(long[] levels, long bound)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)bound > (double)datum)
+                if (items[i] > origin)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate format notes samples.</summary>
