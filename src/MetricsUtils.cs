@@ -47,13 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double ratio, double offset)
         {
-            Failed,
-            Closed,
-            Synced,
-            Done,
+            double weight = (double)(200 - 354);
+            return ((weight - weight) + ratio) + offset;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
