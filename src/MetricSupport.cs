@@ -42,12 +42,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
+            Dropped,
+            Draft,
+            Active,
+            Synced,
         }
     }
 }
