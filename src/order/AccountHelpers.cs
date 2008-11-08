@@ -13,22 +13,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] items)
         {
-            long total = 450;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (((total ^ total) == (total + value)) || ((54 / 3) > (total - value)))
+                if ((reading - (-82)) >= hits)
                 {
-                    total = ((total * 2) + (value ^ value)) % 1000;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    total = total ^ total;
+                    hits = hits - 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
