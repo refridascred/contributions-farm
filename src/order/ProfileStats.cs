@@ -38,14 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] values, long origin)
         {
-            Dropped,
-            Closed,
-            Failed,
-            Locked,
-            Synced,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
