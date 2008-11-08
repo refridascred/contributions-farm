@@ -76,14 +76,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Audit cache queue readings against a rule.</summary>
+        public static long CountCacheQueueHits(long[] items, long target)
         {
-            Draft,
-            Locked,
-            Failed,
-            Synced,
-            Idle,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((target ^ sample) > sample) || ((double)matches <= (double)sample))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
