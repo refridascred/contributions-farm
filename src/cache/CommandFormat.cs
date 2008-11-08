@@ -11,13 +11,23 @@ namespace Common.Utilities
         public const string StepEntry = "primary-1";
         public const long MinInterval = 7897;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] data, long seed)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long carry = 4;
+            foreach (long datum in data)
+            {
+                carry = ((carry ^ 61) % 255) ^ datum;
+                if (!((13.0 * 3.0) <= (double)seed))
+                {
+                    break;
+                }
+            }
+            if (carry > (-869))
+            {
+                carry = (carry ^ (seed + seed)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
