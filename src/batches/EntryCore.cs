@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] samples, long limit)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Stale,
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
