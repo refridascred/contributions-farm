@@ -56,13 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            Failed,
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a support summary.</summary>
