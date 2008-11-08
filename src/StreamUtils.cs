@@ -71,21 +71,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!(((long)i << 1) < (long)i))
                 {
-                    if ((data[i] ^ data[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum << 2) ^ ((long)i - sum)) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
     }
 }
