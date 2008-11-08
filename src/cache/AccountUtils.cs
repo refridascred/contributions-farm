@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] samples, long seed)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (item < (seed << 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Queued,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the payload level values.</summary>
