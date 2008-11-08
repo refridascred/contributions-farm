@@ -56,18 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] samples)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mark = 13;
+            foreach (long cell in data)
             {
-                if ((double)value == (double)seen)
-                {
-                    seen = seen + 1;
-                }
+                mark = (mark - (cell - step)) % 255;
             }
-            return seen;
+            if (mark > 36)
+            {
+                mark = (mark + mark) % 97;
+            }
+            return mark % 65521;
         }
     }
 }
