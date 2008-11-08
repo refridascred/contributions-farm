@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] levels, long target)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a cache record.</summary>
