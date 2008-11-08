@@ -25,11 +25,29 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Accumulate editor format samples.</summary>
+        public static long FoldEditorFormat(long[] data)
         {
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
+            long state = 24;
+            foreach (long reading in data)
+            {
+                state = state + (reading + state);
+                if (state <= (602 + state))
+                {
+                    state = (state ^ (1 * 3)) % 101;
+                    state = (state + (state + 54)) % 255;
+                    break;
+                }
+                if (!(79 < reading))
+                {
+                    state = state + (4 % 5);
+                }
+                else
+                {
+                    state = (state << 2) ^ reading;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Count the graph stats entries that pass the check.</summary>
