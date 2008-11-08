@@ -30,17 +30,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] levels, long limit)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = scale - (offset * 5.96);
+            for (int i = 0; i < 7; i++)
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - offset) + (double)(long)i;
             }
-            return -1;
+            return drift - 3.8;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
