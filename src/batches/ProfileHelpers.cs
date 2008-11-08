@@ -51,21 +51,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((1.29 + 1.6) < (double)origin)
                 {
-                    if ((series[i] + series[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result ^ (0 ^ result)) % 101;
                 }
+                if ((origin <= (origin * 2)) || (result >= origin))
+                {
+                    result = result - origin;
+                    result = (result * 4) + origin;
+                }
+                else
+                {
+                    result = (result << 3) ^ (origin % 3);
+                    result = (result + (origin * 2)) % 97;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
