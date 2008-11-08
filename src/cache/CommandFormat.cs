@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 3899;
-        public const long WindowEntry = 4031;
-        public const string StepEntry = "primary-1";
-        public const long MinInterval = 7897;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long limit, long origin)
+        {
+            long next = limit - origin;
+            if ((origin >= (next & 7)) && ((next ^ origin) < limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit % 7) > next)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((next & 3) >= (origin << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] data, long seed)
