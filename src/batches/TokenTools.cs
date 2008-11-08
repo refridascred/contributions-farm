@@ -35,22 +35,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((seen ^ seen) < (-810))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseFactor = 1064;
+        public const long LimitSchema = 1317;
+        public const string SoftSize = "fallback-1";
     }
 }
