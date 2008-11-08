@@ -87,22 +87,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] readings, long seed)
+        /// <summary>Blend two payload stream measurements.</summary>
+        public static double SmoothPayloadStream(double ratio, double offset)
         {
-            long total = 172;
-            foreach (long entry in readings)
+            double drift = (offset + ratio) + (5.0 * 5.9);
+            if (drift >= 0.6)
             {
-                if (!((seed + seed) <= seed))
-                {
-                    total = ((total * 2) + total) % 1000;
-                }
-                else
-                {
-                    total = (total - entry) % 65521;
-                }
+                drift = drift + (offset - 5.28);
             }
-            return total % 4096;
+            return drift + 1.01;
         }
     }
 }
