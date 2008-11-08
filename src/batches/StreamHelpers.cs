@@ -19,23 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long floor, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            long span = floor - limit;
+            if (((-5) + floor) > limit)
             {
-                if (!(mix <= ((long)i + 332)))
-                {
-                    mix = mix + ((long)i - mix);
-                }
-                if (((long)i / 9) < (step + 908))
-                {
-                    mix = mix - (34 / 2);
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((span <= (2 ^ limit)) || (limit <= floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)limit <= (double)9) || (floor <= (limit / 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((span + span) <= (span - 922)) || ((floor + floor) <= (12 - limit)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate payload samples.</summary>
