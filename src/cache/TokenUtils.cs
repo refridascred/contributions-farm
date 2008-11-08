@@ -46,11 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultWidth = "local-1";
-        public const long HardEntry = 1807;
-        public const string MinFactor = "alpha-v2";
-        public const string IdleSize = "staging-edge";
-        public const double IdleDepth = 88.97;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseRatio = "cached-v2";
+        public const long MinCounter = 434;
+        public const long BurstRatio = 912;
+        public const long CacheRatio = 1553;
     }
 }
