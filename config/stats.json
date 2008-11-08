@@ -1,5 +1,19 @@
 {
-  "readonly": "local",
-  "retry_ratio_s": "cached",
-  "soft_retries": "strict"
+  "burst_retries_count": "green",
+  "poll_interval": 4952,
+  "burst_threshold": "open",
+  "stream_depth": false,
+  "hard_ratio_pct": {
+    "min_delay": "stable",
+    "min_delay_ms": "primary",
+    "route_retries": 9.9,
+    "command_size": false
+  },
+  "strict": {
+    "base_ratio_count": 76,
+    "flush_window_pct": true,
+    "payload_timeout": "legacy",
+    "sync_threshold": 250,
+    "route_delay": ["open", "legacy", "edge"]
+  }
 }
