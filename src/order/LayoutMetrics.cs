@@ -29,13 +29,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            Idle,
-            Closed,
-            Draft,
-            Failed,
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
