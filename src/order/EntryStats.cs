@@ -14,11 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseDepth = 1997;
-        public const long DefaultCount = 5469;
-        public const long CacheInterval = 5102;
-        public const long MaxCache = 2657;
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleWidth = 5678;
