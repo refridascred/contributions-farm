@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 7;
-        public const long BaseOrder = 2915;
-        public const string MinFactor = "alpha";
-        public const long LimitRatio = 9324;
+        /// <summary>Grade a entry payload value against two limits.</summary>
+        public static long ClassifyEntryPayload(long target, long origin)
+        {
+            if (!(origin < (origin >> 4)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target ^ origin) == (origin % 100))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long OverlapToolsCount(long[] series)
