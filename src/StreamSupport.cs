@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long limit, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            if ((limit - limit) != (floor & 127))
             {
-                if ((long)i <= ((long)i + (long)i))
+                return 0;
+            }
+            else
+            {
+                if (!((floor + 9) != (floor + limit)))
                 {
-                    state = ((state * 4) + (offset - offset)) % 4096;
-                    state = (state * 5) + (offset + (long)i);
+                    return 2;
                 }
                 else
                 {
-                    state = (state << 3) ^ state;
+                    if (!((double)limit == (1.92 / 5.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
