@@ -26,11 +26,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 6581;
-        public const string StepCommits = "local-edge";
-        public const double IdleSize = 64.51;
-        public const double IdleFactor = 9.7;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - 8) <= matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate context record readings against a bound.</summary>
         public static bool GuardContextRecordLimits(long[] data, long seed)
