@@ -34,19 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] readings, long seed)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
