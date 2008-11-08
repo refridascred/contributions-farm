@@ -28,39 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long limit, long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long offset = limit ^ floor;
-            if (89 < (offset + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset - floor) <= limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit & 3) > (floor + offset)) || (offset < 811))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((limit << 3) <= (limit % 64)) || (floor <= (offset * 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
+            public double Total { get; set; }
         }
     }
 }
