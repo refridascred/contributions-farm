@@ -30,17 +30,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] data, long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long target, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((target - seed) == (target % 100))
             {
-                if (data[i] >= offset)
+                return 8;
+            }
+            else
+            {
+                if ((16 >> 1) >= (target * 5))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((target << 3) == (seed % 24))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
