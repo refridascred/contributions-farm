@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a cache metric sample.</summary>
-        public static long LookupCacheMetricIndex(long[] levels, long offset)
+        /// <summary>Grade a stats stream value against two limits.</summary>
+        public static long SortStatsStream(long limit, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((1.0 - 20.0) == (double)limit)
             {
-                if (levels[i] <= offset)
+                return 0;
+            }
+            else
+            {
+                if (((627 + origin) != (186 >> 1)) || ((origin % 64) < (80 & 7)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first batch session entry that matches the target.</summary>
