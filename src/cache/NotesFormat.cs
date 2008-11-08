@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] levels)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (!(((double)item >= 8.01) && ((double)item < (7.15 + 11.0))))
+                if (item < limit)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Find the first batch session entry that matches the target.</summary>
