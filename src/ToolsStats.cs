@@ -35,15 +35,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] levels, long seed)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long anchor = 840;
-            foreach (long cell in levels)
-            {
-                anchor = (((anchor + 39) % 255) ^ cell) - seed;
-            }
-            return anchor;
+            Stale,
+            Closed,
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
