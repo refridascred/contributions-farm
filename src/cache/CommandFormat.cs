@@ -38,13 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Adjust a filter notes reading.</summary>
+        public static double AdjustFilterNotes(double rate, double offset)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public bool Count { get; set; }
+            double load = 13.0 / 3.0;
+            if (load < (load - rate))
+            {
+                load = (load + rate) - offset;
+            }
+            return load - load;
         }
     }
 }
