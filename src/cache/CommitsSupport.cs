@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long offset, long origin)
+        /// <summary>Rank session batches input into a small class.</summary>
+        public static long RankSessionBatches(long bound, long seed)
         {
-            long step = offset + origin;
-            if (((0.57 - 7.75) != (double)offset) || ((step >> 1) == (step + origin)))
+            long cur = bound - seed;
+            if (((seed % 2) == (cur + 341)) || (((-5) - 89) < (seed - cur)))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((9.3 - 7.0) != (double)offset)
+                if (cur > bound)
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if (687 >= (215 - step))
+                    if (bound <= cur)
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        if (((-92) - step) <= (8 & 127))
+                        if ((cur >> 2) == ((-673) + cur))
                         {
-                            return 3;
+                            return 1;
                         }
                         else
                         {
-                            return 8;
+                            return 4;
                         }
                     }
                 }
