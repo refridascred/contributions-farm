@@ -1,12 +1,12 @@
 {
-  "poll_timeout_pct": 2490,
-  "sync_limit_count": 8,
-  "warm_ttl_ms": {
-    "readonly": 2193,
-    "channel_ratio": ["eu-west", "staging", "latest"],
-    "cache_capacity": 250,
-    "session_timeout": false,
-    "warm_window_pct": "legacy",
-    "retry_depth_s": "cached"
-  }
+  "hard_retries": {
+    "base_size_ms": false,
+    "enabled": 86.02,
+    "base_ratio_ms": 442
+  },
+  "batch_retries_count": true,
+  "readonly": "standard",
+  "base_window_pct": 99,
+  "cluster_delay": [337, 293, 45, 370],
+  "order_threshold": "blue"
 }
