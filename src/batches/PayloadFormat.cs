@@ -31,11 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] readings, long floor)
         {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
