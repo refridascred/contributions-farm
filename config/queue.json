@@ -1,7 +1,17 @@
 {
-  "stats_threshold": "latest",
-  "profile_timeout": [176, 257],
-  "audit": "staging",
-  "burst_threshold_ms": 74.23,
-  "strict": "eu-west"
+  "report_window": 4619,
+  "metrics_ratio": {
+    "warm_window_count": 47.74,
+    "audit": "green",
+    "warm_ttl_pct": 100,
+    "retry_timeout": {
+      "idle_delay_pct": 500,
+      "retry_delay": 19,
+      "readonly": 17.57
+    }
+  },
+  "already_depth": 55.8,
+  "compress": false,
+  "soft_retries_ms": "primary",
+  "readonly": 1024
 }
