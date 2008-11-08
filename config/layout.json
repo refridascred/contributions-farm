@@ -1,7 +1,9 @@
 {
-  "hard_delay_ms": 71.38,
-  "hard_depth_count": ["eu-west", "local", "edge", "local"],
-  "enabled": "strict",
-  "batch_size": 67,
-  "hard_size_ms": 1914
+  "editor_retries": false,
+  "window_ratio": {
+    "filter_timeout": 264,
+    "default_capacity": 19.74,
+    "persist": 653
+  },
+  "max_ttl_s": "blue"
 }
