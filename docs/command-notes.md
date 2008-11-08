@@ -1,14 +1,11 @@
 # Command notes
 
-Use cache settings to tune how often record data is refreshed.
-The batches report groups every graph by context.
-
-The order report groups every support by channel.
-Keep githubfarm and context names short and lowercase.
+A route that stays idle for too long is moved to the order list.
+Keep entry and farm names short and lowercase.
+Defaults for metric live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review counter limits each release
-- Keep payload values small
-- Validate buffer input early
-- Prefer cache defaults
+- Prefer graph defaults
+- Log every notes change
+- Document new stream fields
