@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] values, long floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long bound, long bound2)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if ((19 - bound) >= bound2)
             {
-                if ((((seen << 3) > (-69)) && ((double)item <= (13.0 * 0.57))) && (2 <= floor))
+                return 2;
+            }
+            else
+            {
+                if ((6.2 / 2.0) >= (1.0 + 6.2))
                 {
-                    seen = seen + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
