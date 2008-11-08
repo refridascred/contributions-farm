@@ -61,18 +61,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] readings)
+        /// <summary>Iterate the account window series from a seed.</summary>
+        public static long StepAccountWindow(long limit)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((2.2 * 6.9) == (double)reading)
-                {
-                    tally = tally + 3;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
