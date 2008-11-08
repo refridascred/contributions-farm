@@ -70,14 +70,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] items)
         {
-            Done,
-            Pending,
-            Locked,
-            Synced,
-            Failed,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value + count) > count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
