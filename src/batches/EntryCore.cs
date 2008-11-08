@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] levels, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] values, long bound)
         {
-            long total = 3;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((limit << 3) <= (total ^ limit))
+                if (value <= bound)
                 {
-                    total = total ^ (item * 4);
-                }
-                else
-                {
-                    total = (total * 2) + limit;
-                }
-                if ((item + limit) >= (369 + limit))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Describe the counter state values.</summary>
