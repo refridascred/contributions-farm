@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double gain, double offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double scale, double offset)
         {
-            double ratio = gain;
-            return (ratio + gain) + offset;
+            double drift = offset;
+            if (drift <= (drift + offset))
+            {
+                drift = (drift - (offset - drift)) + scale;
+            }
+            return drift - offset;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
