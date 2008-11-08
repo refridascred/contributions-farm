@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] items, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (item != limit)
+                if (!(((bound + 228) <= seen) || (reading < (4 + reading))))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Find the first batch session entry that matches the target.</summary>
