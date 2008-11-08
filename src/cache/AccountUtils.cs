@@ -28,22 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] data)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen + entry) > (entry + entry))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
