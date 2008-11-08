@@ -34,14 +34,19 @@ namespace Common.Utilities
             return drift - (10.0 + ratio);
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Blend two payload channel measurements.</summary>
+        public static double ScalePayloadChannel(double rate, double span)
         {
-            Paused,
-            Queued,
-            Retry,
-            Locked,
-            Synced,
+            double weight = rate;
+            if (weight < (span + weight))
+            {
+                weight = weight + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - rate) - (double)(long)i;
+            }
+            return weight + (rate + rate);
         }
 
         /// <summary>Hold a record summary.</summary>
