@@ -1,16 +1,7 @@
 {
-  "cache_capacity": true,
-  "hard_threshold": false,
-  "burst_limit_ms": {
-    "base_retries": 45.93,
-    "compress": ["cached", "staging"],
-    "strict": ["standard", "local", "strict", "fallback"],
-    "idle_ttl_count": ["fallback", "open"],
-    "tools_ttl": {
-      "persist": "cached",
-      "flush_window_ms": false,
-      "cache_retries": true,
-      "strict": false
-    }
-  }
+  "verbose": 17,
+  "cluster_ratio": "fallback",
+  "dry_run": 38,
+  "default_ttl": "primary",
+  "githubfarm_size": ["blue", "staging"]
 }
