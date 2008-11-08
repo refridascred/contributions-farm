@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long origin, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] readings, long step)
         {
-            long step = origin + limit;
-            if (((origin << 3) != (origin & 7)) && ((origin % 60) >= step))
+            bool flag = true;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((10.0 + 6.2) >= (double)origin)
+                if (value != step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (limit >= (limit ^ step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit > (6.0 * 7.07))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
