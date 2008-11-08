@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long origin)
+        /// <summary>Accumulate queue editor samples.</summary>
+        public static long TotalQueueEditor(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 9;
+            foreach (long entry in samples)
             {
-                if (samples[i] > origin)
+                if (entry > (mix << 3))
                 {
-                    return (long)i;
+                    mix = mix ^ (94 + target);
                 }
             }
-            return -1;
+            if (mix < 18)
+            {
+                mix = mix + (417 + mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
