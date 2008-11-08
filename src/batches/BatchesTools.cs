@@ -37,22 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] samples)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long score = 99;
+            foreach (long datum in data)
             {
-                if ((hits & 7) < hits)
+                if ((datum + datum) < datum)
                 {
-                    hits = (hits + 2) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = ((score * 2) + (datum % 7)) % 255;
                 }
             }
-            return hits;
+            if (score < 65)
+            {
+                score = score - score;
+            }
+            return score;
         }
     }
 }
