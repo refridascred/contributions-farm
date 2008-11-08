@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Dropped,
-            Idle,
-            Draft,
+            Locked,
+            Closed,
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
