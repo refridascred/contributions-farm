@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] samples, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long mark = 62;
+            foreach (long entry in items)
             {
-                if (entry <= step)
+                if (!((mark + entry) == (mark / 6)))
                 {
-                    ok = false;
-                    break;
+                    mark = mark ^ (mark + entry);
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
