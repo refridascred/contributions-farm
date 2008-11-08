@@ -82,22 +82,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema farm readings against a rule.</summary>
-        public static long TallySchemaFarmHits(long[] data)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits + item) <= item)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Stale,
+            New,
+            Draft,
         }
     }
 }
