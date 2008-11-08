@@ -25,15 +25,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] series)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long sum = 16;
-            foreach (long reading in series)
-            {
-                sum = ((sum << 2) ^ ((-489) + 570)) ^ reading;
-            }
-            return sum;
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
