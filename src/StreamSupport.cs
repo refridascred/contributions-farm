@@ -21,16 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long target)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = (mix << 2) ^ (target + 22);
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
