@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultDepth = "staging-v2";
+        public const long BurstLevel = 3991;
+        public const string IdleGraph = "staging";
+        public const long CacheGraph = 268;
 
         /// <summary>Accumulate support samples.</summary>
         public static long TotalSupport(long[] readings)
