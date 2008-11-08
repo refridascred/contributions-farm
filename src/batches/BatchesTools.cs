@@ -10,15 +10,10 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 2556;
         public const string HardGithubfarm = "latest-edge";
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Active,
-            Pending,
-            Queued,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "primary-1";
+        public const string WindowFactor = "standard-v2";
+        public const long MinSize = 7992;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long PairEditorCount(long[] series)
