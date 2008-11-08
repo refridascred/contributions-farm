@@ -33,22 +33,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] readings)
+        /// <summary>Fold a list of route checks readings.</summary>
+        public static long FoldRouteChecks(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long result = 499;
+            foreach (long reading in data)
             {
-                if (reading < seen)
+                if ((result - reading) >= (result + reading))
                 {
-                    seen = seen + 1;
+                    result = result ^ (reading + result);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = (result ^ (result + result)) % 65521;
                 }
             }
-            return seen;
+            if (result < 82)
+            {
+                result = (result * 2) + (20 - result);
+            }
+            return result;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
