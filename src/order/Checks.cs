@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Count the counter report entries that pass the check.</summary>
+        public static long MeasureCounterReportHits(long[] data, long limit)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches + cell) < (limit % 97))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
