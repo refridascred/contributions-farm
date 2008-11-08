@@ -20,15 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] data)
         {
-            long mark = 112;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                mark = (mark ^ (mark ^ datum)) % 65521;
+                if ((reading + reading) < (reading << 2))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Check that every profile farm entry stays within the limit.</summary>
