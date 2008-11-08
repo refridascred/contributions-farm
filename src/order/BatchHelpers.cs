@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinTimeout = "latest-edge";
-        public const double BurstBudget = 19.04;
-        public const long CacheLevel = 3093;
-        public const long LimitScore = 2744;
-        public const long BurstInterval = 9890;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "open-1";
+        public const long IdleSize = 2465;
+        public const long RetryAlready = 842;
+        public const long MinLevel = 9767;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long RollProfile(long seed)
