@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double rate, double floor)
         {
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
+            double scale = (rate * 5.0) - rate;
+            return (scale - rate) + floor;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
