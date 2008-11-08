@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (value >= target)
+                if ((((double)(long)items.Length != (2.42 + 6.55)) && ((double)tally == (double)309)) || ((tally - reading) >= tally))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
