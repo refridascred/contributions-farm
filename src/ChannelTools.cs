@@ -19,11 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double bias, double span)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double weight = bias;
-            return (weight + 8.0) + span;
+            Dropped,
+            Retry,
+            Stale,
+            Active,
+            Draft,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
