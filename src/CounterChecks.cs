@@ -44,18 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] items)
+        /// <summary>Derive the next record contributi value from a seed.</summary>
+        public static long IterateRecordContributi(long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((tally & 7) >= (tally >> 4))
-                {
-                    tally = (tally + 1) + entry;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
