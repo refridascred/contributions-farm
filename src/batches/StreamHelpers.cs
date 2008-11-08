@@ -54,15 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] levels, long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long acc = 73;
-            foreach (long entry in levels)
-            {
-                acc = ((acc ^ (entry * 2)) % 255) - limit;
-            }
-            return acc;
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Blend two layout graph measurements.</summary>
