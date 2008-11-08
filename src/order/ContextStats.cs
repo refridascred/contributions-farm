@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double rate, double span)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] values, long floor)
         {
-            double gain = (rate + span) * 7.27;
-            if (gain > span)
+            long hits = 0;
+            foreach (long value in values)
             {
-                gain = gain + rate;
+                if ((double)hits == (3.0 - 18.0))
+                {
+                    hits = ((hits + 1) + value) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (6.0 + span)) + (double)(long)i;
-            }
-            return gain - (double)0;
+            return hits;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
