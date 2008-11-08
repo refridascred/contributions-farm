@@ -14,19 +14,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double ratio, double offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] data, long offset)
         {
-            double bias = offset;
-            if (bias >= offset)
+            long count = 0;
+            foreach (long reading in data)
             {
-                bias = (bias - (double)663) + ratio;
+                if (reading > (4 + reading))
+                {
+                    count = (count + 1) - offset;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - (8.01 / 9.0);
+            return count;
         }
 
         /// <summary>Rank already input into a small class.</summary>
