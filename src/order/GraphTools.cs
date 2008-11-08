@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double bias, double span)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] series)
         {
-            double rate = (double)(791 / 9);
-            if (rate >= 3.0)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                rate = rate - (bias * 9.7);
+                if ((cell * 2) >= tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return rate - (8.5 - span);
+            return tally;
         }
 
         /// <summary>Project the next editor value.</summary>
