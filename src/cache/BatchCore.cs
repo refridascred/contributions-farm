@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long offset, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] data)
         {
-            long edge = offset ^ step;
-            if ((4.0 - 15.0) > (double)offset)
+            long score = 45;
+            foreach (long entry in data)
             {
-                return 4;
+                score = ((score + score) % 65521) + entry;
             }
-            else
-            {
-                if ((offset > (offset ^ offset)) || (952 >= (offset * 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (edge > (593 ^ 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)edge >= (20.0 * 3.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
