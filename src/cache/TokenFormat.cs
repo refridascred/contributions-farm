@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const long IdleRecord = 4380;
         public const string StepRecord = "cached-1";
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double ratio, double bias)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] samples)
         {
-            double load = (double)(35 & 3);
-            if (load < (ratio * 10.0))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                load = (load - 4.7) + bias;
+                if ((13.0 / 4.0) == (double)reading)
+                {
+                    tally = tally + 2;
+                }
             }
-            return load + load;
+            return tally;
         }
     }
 }
