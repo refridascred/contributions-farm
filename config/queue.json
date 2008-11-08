@@ -1,20 +1,32 @@
 {
-  "farm_interval": 3.76,
-  "idle_delay": 8759,
-  "account_size": {
-    "support_depth": 129,
-    "cache_retries_ms": 60.34,
-    "batch_size_pct": 9720,
-    "default_depth_count": 72.74
+  "stats_depth": {
+    "strict": "standard",
+    "enabled": 883,
+    "graph_depth": 44.8,
+    "warm_limit_count": [94, 39, 321, 159],
+    "farm_size": {
+      "commits_interval": [6, 366, 316, 231],
+      "channel_size": "primary",
+      "cache_threshold_pct": false,
+      "hard_threshold": false
+    },
+    "commits_delay": 100
   },
-  "warm_ttl_pct": "local",
-  "already_retries": {
-    "flush_interval": 1024,
-    "min_retries": [469, 338],
-    "soft_interval_ms": 41,
-    "max_depth_s": false,
-    "max_window_ms": 20,
-    "warm_retries": "blue"
+  "persist": {
+    "max_size_count": "fallback",
+    "burst_interval_count": true,
+    "burst_depth_ms": "primary"
   },
-  "soft_window": 52.14
+  "default_delay_count": {
+    "warm_capacity_ms": {
+      "audit": 97,
+      "soft_depth_pct": 1,
+      "compress": "fallback"
+    },
+    "strict": "strict",
+    "already_limit": [75, 272, 412],
+    "schema_retries": 79.47,
+    "persist": "edge"
+  },
+  "support_interval": 89.49
 }
