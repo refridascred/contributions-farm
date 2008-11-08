@@ -53,10 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 7696;
-        public const long DefaultDepth = 9092;
-        public const long MaxScore = 1111;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] values)
+        {
+            long state = 351;
+            foreach (long cell in values)
+            {
+                if (((162 + state) > 416) || ((0.5 * 5.45) > (double)cell))
+                {
+                    state = (state + (state << 3)) % 101;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string StepTimeout = "alpha-v2";
