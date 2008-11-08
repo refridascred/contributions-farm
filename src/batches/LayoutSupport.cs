@@ -45,10 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchDepth = "latest";
-        public const string IdleBudget = "legacy-1";
-        public const string HardSpan = "cached";
-        public const long CacheAlready = 2185;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Dropped,
+            Queued,
+            Idle,
+        }
     }
 }
