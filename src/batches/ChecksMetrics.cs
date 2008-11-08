@@ -48,12 +48,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] data)
         {
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits * 3) < entry)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
