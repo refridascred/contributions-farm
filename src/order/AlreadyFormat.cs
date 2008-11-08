@@ -77,32 +77,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long origin, long seed)
+        /// <summary>Fold a list of commits cluster readings.</summary>
+        public static long TotalCommitsCluster(long[] levels, long origin)
         {
-            long delta = origin ^ seed;
-            if ((delta + 25) == (776 >> 4))
+            long result = -710;
+            foreach (long reading in levels)
             {
-                return 0;
+                result = (result + origin) + reading;
             }
-            else
-            {
-                if (7 <= delta)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.47 - 6.6) > (double)delta)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
