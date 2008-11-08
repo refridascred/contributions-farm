@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
