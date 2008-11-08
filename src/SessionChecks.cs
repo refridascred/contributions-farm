@@ -45,18 +45,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] data, long bound)
         {
-            long mark = 1;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)mark >= 9.79)
+                if (data[i] <= bound)
                 {
-                    mark = (mark + (item + item)) % 255;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
