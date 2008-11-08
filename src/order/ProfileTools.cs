@@ -51,21 +51,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = total - total;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
