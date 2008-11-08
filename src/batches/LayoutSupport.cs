@@ -18,19 +18,13 @@ namespace Common.Utilities
         public const double WindowContext = 60.96;
         public const string IdleDepth = "legacy";
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] readings, long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Locked,
+            Idle,
+            Closed,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
