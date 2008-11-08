@@ -13,17 +13,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 4739;
+        public const double HardFarm = 67.57;
+        public const string CacheFarm = "cached";
+        public const double WindowFarm = 50.56;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long SoftSpan = 9948;
