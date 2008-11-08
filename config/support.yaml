@@ -1,4 +1,6 @@
 # support settings
-base_limit: 15.04
-retry_ttl_pct: false
-command_window: 9629
+format_limit:
+  - 136
+  - 61
+audit: true
+retry_timeout: 86.2
