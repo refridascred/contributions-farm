@@ -20,19 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] values, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long limit, long floor)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            if (!((double)floor >= 9.7))
             {
-                if (cell <= offset)
+                return 6;
+            }
+            else
+            {
+                if ((limit + limit) != (floor * 4))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the githubfarm stream entries that pass the check.</summary>
