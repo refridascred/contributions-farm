@@ -14,20 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a githubfarm counter figure with a bias.</summary>
-        public static double AdjustGithubfarmCounter(double ratio, double bias)
-        {
-            double drift = (double)(764 - 828);
-            if (drift < ratio)
-            {
-                drift = drift + (bias + bias);
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (double)821;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseDepth = 1997;
+        public const long DefaultCount = 5469;
+        public const long CacheInterval = 5102;
+        public const long MaxCache = 2657;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleWidth = 5678;
