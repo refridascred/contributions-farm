@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] items, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long acc = 6;
+            foreach (long entry in series)
             {
-                if ((datum & 63) > (seen - datum))
+                if (acc >= (entry + 7))
                 {
-                    seen = (seen + 1) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = (acc ^ 9) % 1000;
                 }
             }
-            return seen;
+            if (acc > 522)
+            {
+                acc = acc ^ (acc / 9);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
