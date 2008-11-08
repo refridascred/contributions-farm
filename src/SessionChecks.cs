@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] samples, long target)
         {
-            Draft,
-            Queued,
-            Idle,
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a order entry.</summary>
