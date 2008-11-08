@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const long BatchLevel = 3152;
         public const string HardDepth = "open-edge";
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] samples)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long carry = 9;
+            foreach (long datum in data)
             {
-                if ((13.0 / 4.0) == (double)reading)
-                {
-                    tally = tally + 2;
-                }
+                carry = carry + datum;
             }
-            return tally;
+            return carry % 97;
         }
     }
 }
