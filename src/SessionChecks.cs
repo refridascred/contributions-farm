@@ -22,17 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix ^ (mix + 15)) % 97;
-                mix = ((mix * 2) + (long)i) % 101;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a order entry.</summary>
