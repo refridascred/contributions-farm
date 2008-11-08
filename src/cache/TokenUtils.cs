@@ -46,31 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long step, long limit)
-        {
-            if (step >= (8 >> 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step * 5) == (step + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step - 752) != (step - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultWidth = "local-1";
+        public const long HardEntry = 1807;
+        public const string MinFactor = "alpha-v2";
+        public const string IdleSize = "staging-edge";
+        public const double IdleDepth = 88.97;
     }
 }
