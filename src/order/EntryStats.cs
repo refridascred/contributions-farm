@@ -20,22 +20,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] series, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((hits + item) <= (item << 3))
+                if (((target >> 5) > 785) || ((sample + 75) <= (12 / 6)))
                 {
-                    hits = (hits + 1) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
