@@ -53,9 +53,13 @@ namespace Common.Utilities
             return scale2 + (double)2;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowFactor = 5765;
-        public const long WindowCounter = 9207;
-        public const long HardSize = 2707;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public double Mode { get; set; }
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
