@@ -19,22 +19,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] samples, long limit)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((double)limit <= (3.15 * 0.18)))
+                if (data[i] < floor)
                 {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
