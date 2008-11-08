@@ -18,17 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a farm contributi reading by value.</summary>
-        public static long LocateFarmContributiIndex(long[] samples, long floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long floor, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (offset < 43)
             {
-                if (samples[i] > floor)
+                return 5;
+            }
+            else
+            {
+                if ((3.9 * 16.0) < (double)offset)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metric class values.</summary>
