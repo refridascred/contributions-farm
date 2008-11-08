@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
+            long total = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((limit << 1) >= (limit - limit)))
+                {
+                    total = ((total << 2) ^ limit) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of cluster commits entries.</summary>
