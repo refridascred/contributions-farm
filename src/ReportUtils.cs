@@ -19,26 +19,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] readings)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long state = 70;
-            foreach (long value in readings)
-            {
-                if ((3.6 / 5.0) >= (double)state)
-                {
-                    state = (state * 2) + (value * 2);
-                }
-                else
-                {
-                    state = (state ^ 257) % 1000;
-                }
-                if (((9.7 + 12.0) >= (double)state) && ((6.8 / 3.0) != (double)value))
-                {
-                    state = (state + (-500)) % 1000;
-                }
-            }
-            return state % 65521;
+            Draft,
+            Stale,
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Adjust a record reading.</summary>
