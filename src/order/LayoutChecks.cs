@@ -24,22 +24,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] levels)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double gain = rate;
+            if (gain < (double)6)
             {
-                if (7.29 >= (7.5 / 3.0))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = (gain + gain) - bias;
             }
-            return hits;
+            return gain + (double)5;
         }
 
         /// <summary>Digest a series of metric counter entries.</summary>
