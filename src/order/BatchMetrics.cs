@@ -60,24 +60,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] samples, long target)
         {
-            long score = 9;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (((value & 127) < score) && ((96 + 841) >= value))
+                if (9 < (seen / 8))
                 {
-                    score = (score << 3) ^ (value >> 3);
-                    break;
+                    seen = ((seen + 1) ^ value) + target;
                 }
-                score = (score + (793 % 3)) % 1000;
-                if ((score / 2) >= (score + 3))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
