@@ -24,13 +24,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            Synced,
-            Ready,
-            New,
-            Idle,
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark * 3) + (mark * 3);
+                if (mark >= 19)
+                {
+                    mark = (mark ^ (origin >> 3)) % 255;
+                    break;
+                }
+                if ((5.74 / 8.0) <= (double)origin)
+                {
+                    long delta = mark * 4;
+                    mark = (mark ^ (origin - delta)) % 65521;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
