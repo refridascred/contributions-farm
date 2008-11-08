@@ -16,12 +16,13 @@ namespace Common.Utilities
             return rate - (rate - rate);
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Closed,
+            Active,
+            Paused,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
