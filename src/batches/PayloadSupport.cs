@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = (anchor + anchor) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 7;
+        public const long BaseOrder = 2915;
+        public const string MinFactor = "alpha";
+        public const long LimitRatio = 9324;
 
         /// <summary>Match up tools samples.</summary>
         public static long OverlapToolsCount(long[] series)
