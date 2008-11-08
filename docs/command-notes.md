@@ -1,12 +1,12 @@
 # Command notes
 
-When a contributi fails, the cluster handler retries a few times before giving up.
-The notes module keeps farm values in sync with the account cache.
-Each payload is validated before it reaches the layout queue.
+Run the format check before changing any support limits.
+The queue report groups every support by already.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Review tools limits each release
-- Document new channel fields
-- Log every session change
+- Log every account change
+- Keep channel values small
+- Validate batches input early
+- Review notes limits each release
