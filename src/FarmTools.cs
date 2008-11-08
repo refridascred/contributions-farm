@@ -13,12 +13,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 7139;
-        public const long MinMetrics = 4610;
-        public const long HardMetrics = 7381;
-        public const long HardDepth = 5649;
-        public const double BurstLevel = 14.99;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 3229;
+        public const long DefaultBudget = 7263;
+        public const double MaxContext = 25.43;
+        public const long BatchBudget = 8240;
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
         public static long AuditChecksFilterMatches(long[] samples)
