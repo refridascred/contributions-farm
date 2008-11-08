@@ -14,17 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] items, long floor)
+        /// <summary>Scale a githubfarm counter figure with a bias.</summary>
+        public static double AdjustGithubfarmCounter(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(764 - 828);
+            if (drift < ratio)
             {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
+                drift = drift + (bias + bias);
             }
-            return -1;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (double)821;
         }
 
         /// <summary>Define report limits and defaults.</summary>
