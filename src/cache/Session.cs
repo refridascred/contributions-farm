@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 3031;
+        public const double BatchSize = 30.08;
+        public const double RetryDepth = 33.94;
+        public const long RetryToken = 5134;
+        public const long BurstFactor = 594;
 
         /// <summary>Iterate the layout already series from a seed.</summary>
         public static long IterateLayoutAlready(long floor)
