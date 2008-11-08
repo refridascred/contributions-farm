@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] levels, long limit)
+        /// <summary>Rank commits record input into a small class.</summary>
+        public static long RankCommitsRecord(long offset, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (5.6 <= (double)offset)
             {
-                if (levels[i] > limit)
+                return 6;
+            }
+            else
+            {
+                if ((double)step >= (11.0 * 1.7))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
