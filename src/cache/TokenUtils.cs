@@ -39,10 +39,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseRatio = "cached-v2";
-        public const long MinCounter = 434;
-        public const long BurstRatio = 912;
-        public const long CacheRatio = 1553;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
