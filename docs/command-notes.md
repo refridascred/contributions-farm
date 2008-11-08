@@ -1,11 +1,12 @@
 # Command notes
 
-Keep filter and cluster names short and lowercase.
-The farm report groups every layout by commits.
-A account that stays idle for too long is moved to the session list.
+A filter that stays idle for too long is moved to the stats list.
+Each filter is validated before it reaches the command queue.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new filter fields
-- Log every layout change
-- Review graph limits each release
+- Prefer editor defaults
+- Keep queue values small
+- Review farm limits each release
+- Validate order input early
