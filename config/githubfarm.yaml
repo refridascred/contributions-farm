@@ -1,9 +1,24 @@
 # githubfarm settings
-filter_delay: green
-idle_retries_pct: 9848
-min_threshold_s:
+cache_interval_count:
+  - 492
+  - 234
+  - 245
+  - 180
+flush_depth_count:
+  poll_window_count:
+    dry_run:
+      - eu-west
+      - open
+    poll_ttl_pct: true
+    max_window_s: 60
+    poll_delay_count: eu-west
+  retry_ttl:
+    - green
+    - stable
+    - local
+  batches_ratio: 30
+audit: 8
+support_size: 30
+enabled:
+  - eu-west
   - cached
-  - stable
-  - open
-  - local
-cache_limit: 5552
