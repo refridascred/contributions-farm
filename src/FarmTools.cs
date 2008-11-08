@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine context already values into a single score.</summary>
-        public static long CombineContextAlready(long[] values, long target)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double weight, double offset)
         {
-            long score = 6;
-            foreach (long item in values)
+            double bias = weight;
+            if (bias <= offset)
             {
-                score = (score + (target / 7)) ^ item;
+                bias = bias - weight;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - 4.0) + (double)(long)i;
+            }
+            return bias + (bias * 3.5);
         }
 
         /// <summary>Define session limits and defaults.</summary>
