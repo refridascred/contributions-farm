@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] series, long target)
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((0.1 * 9.2) > (double)reading)
+                {
+                    count = (count + 1) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
