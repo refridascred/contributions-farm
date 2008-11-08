@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 4435;
-        public const long RetryMetrics = 186;
-        public const string BaseMetrics = "primary";
-        public const string StepMetrics = "strict-edge";
-        public const long BatchMetrics = 9675;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 2707;
+        public const long LimitRatio = 7513;
+        public const long StepRatio = 3300;
+        public const long BaseScore = 7745;
+        public const double LimitSpan = 3.47;
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double ratio, double bias)
