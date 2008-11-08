@@ -13,13 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Locate a session contributi reading by value.</summary>
+        public static long LookupSessionContributiIndex(long[] readings, long limit)
         {
-            Synced,
-            Draft,
-            Ready,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
