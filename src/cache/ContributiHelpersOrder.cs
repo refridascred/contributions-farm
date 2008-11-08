@@ -32,21 +32,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of entry stream readings.</summary>
-        public static long OverlapEntryStreamCount(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long limit, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset = limit ^ floor;
+            if (89 < (offset + floor))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset - floor) <= limit)
                 {
-                    if ((data[i] - data[j]) != 10)
+                    return 3;
+                }
+                else
+                {
+                    if (((limit & 3) > (floor + offset)) || (offset < 811))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit << 3) <= (limit % 64)) || (floor <= (offset * 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
