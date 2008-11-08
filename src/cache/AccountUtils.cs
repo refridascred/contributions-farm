@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public double Count { get; set; }
-            public long Level { get; set; }
+            Synced,
+            Queued,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
