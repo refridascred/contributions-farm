@@ -14,21 +14,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                long next = mark << 1;
-                if (next < (60 + 0))
-                {
-                    mark = (mark << 2) ^ (6 + limit);
-                }
-                next = ((next << 2) ^ next) % 97;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Queued,
+            Stale,
+            Active,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
