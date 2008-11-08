@@ -36,15 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Retry,
+            Ready,
+            Draft,
         }
     }
 }
