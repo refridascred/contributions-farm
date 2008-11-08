@@ -1,7 +1,5 @@
 # support settings
-min_interval_count:
-  - 347
-  - 3
-  - 337
-context_delay: 250
-idle_depth_s: 60.91
+flush_ttl: 65.18
+soft_timeout: 3551
+enabled: latest
+channel_ratio: 30
