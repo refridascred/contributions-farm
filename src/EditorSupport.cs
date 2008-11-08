@@ -85,10 +85,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitCount = 4534;
-        public const double MaxInterval = 39.05;
-        public const string MinBuffer = "legacy-edge";
-        public const string MaxBuffer = "open-1";
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
