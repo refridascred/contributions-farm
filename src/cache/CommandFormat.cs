@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 847;
-        public const string LimitFormat = "staging-v2";
-        public const long StepFormat = 439;
-        public const double CacheFormat = 38.01;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 3899;
+        public const long WindowEntry = 4031;
+        public const string StepEntry = "primary-1";
+        public const long MinInterval = 7897;
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
