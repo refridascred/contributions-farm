@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] samples, long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] readings, long step)
         {
-            long acc = -56;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((acc - offset) >= (entry - offset))
+                if (sample > step)
                 {
-                    acc = (acc - (acc + entry)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
     }
 }
