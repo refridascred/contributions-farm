@@ -65,29 +65,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((data[i] < step) && ((data[i] % 2) != 0))
                 {
-                    carry = (carry + (target & 3)) ^ (long)i2;
-                    carry = ((carry * 4) + (target >> 1)) % 101;
+                    return (long)i;
                 }
-                if (((1.0 - 9.1) <= (double)target) || ((target ^ target) < target))
-                {
-                    carry = carry - target;
-                    carry = carry + target;
-                }
-                else
-                {
-                    carry = (carry - (4 + carry)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
