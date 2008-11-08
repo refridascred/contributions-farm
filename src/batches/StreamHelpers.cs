@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long offset)
+        /// <summary>Count the command counter entries that pass the check.</summary>
+        public static long AuditCommandCounterMatches(long[] levels, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                total = total - (17 - (long)i);
-                if (((long)i ^ (long)i) < (968 ^ total))
+                if (((-3) + limit) <= (limit - limit))
                 {
-                    total = total ^ total;
+                    matches = (matches + 1) + reading;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
