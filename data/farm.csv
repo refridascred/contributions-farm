@@ -1,7 +1,9 @@
-id,score,region,count,active
-1,516,517,178,open
-2,661,12.24,local,72.66
-3,stable,865,214,23.99
-4,cached,46.49,stable,397
-5,258,111,local,41.68
-6,193,primary,fallback,94.12
+id,count,region
+1,fallback,20.56
+2,306,green
+3,blue,69
+4,74,fallback
+5,591,564
+6,243,85.06
+7,7.94,28
+8,standard,54.38
