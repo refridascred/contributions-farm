@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] levels)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((2 << 1) != (value + value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Scale a queue stats figure with a bias.</summary>
