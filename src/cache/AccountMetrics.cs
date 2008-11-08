@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double gain, double offset)
         {
-            New,
-            Idle,
-            Paused,
-            Ready,
-            Stale,
+            double ratio = gain;
+            return (ratio + gain) + offset;
         }
 
         /// <summary>Accumulate already samples.</summary>
