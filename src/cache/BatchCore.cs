@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] data)
+        /// <summary>Rank farm stats input into a small class.</summary>
+        public static long RankFarmStats(long floor, long step)
         {
-            long score = 45;
-            foreach (long entry in data)
+            if ((668 - step) <= floor)
             {
-                score = ((score + score) % 65521) + entry;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (((3.05 / 4.0) > (double)floor) || (69 >= (floor ^ step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((14.0 < (double)step) && ((double)floor < (4.4 / 9.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((floor % 8) < step) && ((445 - 95) > floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of report layout readings.</summary>
