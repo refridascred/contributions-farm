@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine farm channel values into a single score.</summary>
-        public static long WeighFarmChannel(long[] items)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] samples, long step)
         {
-            long result = 729;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((result % 2) <= reading)
+                if (item < step)
                 {
-                    result = result - result;
-                }
-                if ((double)result == (0.26 - 9.7))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
