@@ -1,6 +1,10 @@
-id,level,rank,label,active
-1,211,41.12,89.48,6.01
-2,blue,17.53,local,45.08
-3,local,82.94,3.07,59.18
-4,530,263,55.19,green
-5,60.29,edge,8.89,895
+id,rank,ratio,token
+1,34.35,189,714
+2,strict,legacy,local
+3,72.3,753,853
+4,59.89,legacy,5.71
+5,821,edge,standard
+6,blue,432,strict
+7,stable,713,11.47
+8,12.25,23,16.23
+9,legacy,70,316
