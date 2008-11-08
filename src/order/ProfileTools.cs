@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const string BaseCount = "primary-1";
         public const double MaxScore = 97.91;
 
-        /// <summary>Adjust a layout session reading.</summary>
-        public static double ScaleLayoutSession(double ratio, double floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long floor)
         {
-            double drift = floor;
-            if (drift < ratio)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - 8.0;
+                if ((series[i] >= floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (ratio * 3.4)) + (double)(long)i;
-            }
-            return drift + (double)130;
+            return -1;
         }
 
         /// <summary>Hold a metrics header.</summary>
