@@ -1,10 +1,11 @@
 # support settings
-readonly: 25.99
-token_ttl: strict
-soft_retries_pct: latest
-cache_delay: 100
-cache_timeout_s:
-  - staging
-  - staging
-  - green
-  - eu-west
+soft_interval_s: 2.14
+queue_interval: staging
+report_depth:
+  idle_timeout: true
+  retry_interval: 5447
+  batches_timeout: edge
+  sync_retries: 13.05
+  compress: 100
+dry_run: standard
+readonly: true
