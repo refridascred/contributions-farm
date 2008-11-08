@@ -1,4 +1,6 @@
 # entry settings
-max_size_ms: 86
-warm_window_pct: 73.57
-hard_window: 2292
+metrics_delay: 30
+dry_run: primary
+farm_limit: false
+cache_delay: 58
+min_threshold: 3.22
