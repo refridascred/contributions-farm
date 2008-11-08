@@ -20,21 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long bound, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((bound - bound) >= step)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((double)bound < (double)step))
                 {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
