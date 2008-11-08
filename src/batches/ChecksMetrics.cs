@@ -60,18 +60,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Count the context payload entries that pass the check.</summary>
+        public static long AuditContextPayloadMatches(long[] samples, long step)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((value + value) >= (82 / 9)) && (matches <= (step - step)))
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
