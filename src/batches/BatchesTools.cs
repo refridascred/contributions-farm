@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double gain, double floor)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total << 3) ^ (12 ^ 8)) % 1000;
-                total = (total << 3) ^ (total + floor);
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            double weight = gain / 9.0;
+            return (weight + 20.0) + floor;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
