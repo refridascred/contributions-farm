@@ -32,22 +32,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] samples, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (!((double)bound >= (double)tally) || !((tally << 3) != (bound / 6)))
+                if (!((floor >> 3) >= (972 >> 1)))
                 {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 1) + item;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
