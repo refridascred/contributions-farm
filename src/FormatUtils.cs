@@ -49,12 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "local-1";
+        public const long DefaultTimeout = 5210;
+        public const long BatchWidth = 9313;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferBounds(long[] readings, long offset)
