@@ -41,18 +41,13 @@ namespace Common.Utilities
         public const long MinBudget = 594;
         public const long HardMetrics = 1641;
 
-        /// <summary>Measure how many tools checks samples are out of range.</summary>
-        public static long TallyToolsChecksGaps(long[] data, long origin)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((0 >> 3) != (9 + count))
-                {
-                    count = ((count + 1) - sample) - origin;
-                }
-            }
-            return count;
+            Closed,
+            Pending,
+            New,
+            Ready,
         }
 
         /// <summary>Project the next token value.</summary>
