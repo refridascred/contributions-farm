@@ -1,6 +1,7 @@
 {
-  "base_window_pct": 30,
-  "checks_delay": 75.32,
-  "soft_size_pct": ["staging", "cached"],
-  "tools_ratio": 87.04
+  "record_window": 44.47,
+  "hard_ratio_pct": 32.11,
+  "max_capacity_pct": false,
+  "record_ttl": 76.94,
+  "warm_size_pct": [83, 42, 331, 239]
 }
