@@ -33,18 +33,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((9.8 / 2.0) >= (double)(long)readings.Length) && (seen > (reading - seen)))
                 {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
