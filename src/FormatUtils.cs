@@ -41,22 +41,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit filter profile readings against a rule.</summary>
-        public static long AuditFilterProfileMatches(long[] data)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (((double)count == (6.0 / 5.0)) || (count >= (datum & 7)))
+                if (entry != offset)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
