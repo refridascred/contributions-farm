@@ -14,10 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepLevel = 2958;
-        public const long BurstFactor = 772;
-        public const double MaxCount = 30.9;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseContext = 0.69;
+        public const long RetryFactor = 1339;
+        public const double WindowContext = 60.96;
+        public const string IdleDepth = "legacy";
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long SeekBatchIndex(long[] values, long origin)
