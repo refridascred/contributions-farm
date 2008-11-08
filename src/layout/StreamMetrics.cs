@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Count the context contributi entries that pass the check.</summary>
+        public static long CountContextContributiHits(long[] values)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((3.0 - 4.08) == (double)hits)
+                {
+                    hits = (hits + 2) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a window commits sample.</summary>
