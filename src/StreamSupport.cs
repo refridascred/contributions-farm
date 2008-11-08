@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] data, long bound)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (data[i] == bound)
+                if ((long)i <= ((long)i + (long)i))
                 {
-                    return (long)i;
+                    state = ((state * 4) + (offset - offset)) % 4096;
+                    state = (state * 5) + (offset + (long)i);
                 }
+                else
+                {
+                    state = (state << 3) ^ state;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a cache options.</summary>
