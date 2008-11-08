@@ -62,21 +62,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Measure how many channel cache samples are out of range.</summary>
+        public static long MeasureChannelCacheGaps(long[] values, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                long matches = origin;
-                total = ((total << 2) ^ (total & 15)) % 1000;
-                if (((matches ^ matches) < (matches / 7)) && ((total - 64) > (origin % 97)))
+                if ((hits + (-6)) <= (seed & 255))
                 {
-                    continue;
+                    hits = (hits + 1) + reading;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of context entries.</summary>
