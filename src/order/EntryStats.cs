@@ -41,22 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] readings, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((916 & 3) < (seed + hits))
+                if ((double)(-143) == (double)item)
                 {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 1) - step;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a command summary.</summary>
