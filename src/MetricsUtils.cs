@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] levels)
         {
-            Stale,
-            Paused,
-            New,
-            Closed,
-            Ready,
+            long state = 39;
+            foreach (long value in levels)
+            {
+                if ((1.17 / 9.0) != (double)state)
+                {
+                    state = state - (value - value);
+                }
+            }
+            return state;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
