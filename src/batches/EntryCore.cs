@@ -40,17 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] readings, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] values, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 4;
+            foreach (long reading in values)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry ^ carry) + reading) - limit;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Locate a channel metric reading by value.</summary>
