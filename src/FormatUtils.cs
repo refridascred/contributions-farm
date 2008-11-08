@@ -40,19 +40,14 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] series, long offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Done,
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
