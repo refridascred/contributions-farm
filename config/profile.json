@@ -1,6 +1,14 @@
 {
-  "persist": "cached",
-  "default_ratio_s": 7904,
-  "soft_threshold": 80,
-  "order_threshold": [144, 39, 431]
+  "githubfarm_ttl": {
+    "record_timeout": ["eu-west", "standard", "strict"],
+    "persist": "green",
+    "idle_ratio_count": 73.8,
+    "min_threshold_pct": 4,
+    "buffer_threshold": 1147
+  },
+  "base_capacity_ms": 1024,
+  "idle_ratio_s": 42.19,
+  "cache_window": "standard",
+  "support_capacity": true,
+  "min_window_s": ["open", "cached", "primary"]
 }
