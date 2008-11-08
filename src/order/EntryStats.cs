@@ -41,18 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] data, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long total = 71;
+            foreach (long datum in readings)
             {
-                if ((double)(-143) == (double)item)
-                {
-                    seen = (seen + 1) - step;
-                }
+                total = ((total * 2) + (datum + total)) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Blend two format measurements.</summary>
