@@ -23,19 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double gain, double offset)
+        /// <summary>Find the first record context entry that matches the target.</summary>
+        public static long LookupRecordContextIndex(long[] levels, long offset)
         {
-            double weight = (double)(351 + (-5));
-            if (weight < 4.2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + gain;
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (offset - weight)) + (double)(long)i;
-            }
-            return weight + (double)277;
+            return -1;
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
