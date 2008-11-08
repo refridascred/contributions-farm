@@ -1,5 +1,7 @@
 {
-  "readonly": true,
-  "report_capacity": [31, 26],
-  "cache_ratio_s": ["legacy", "stable", "standard", "legacy"]
+  "sync_depth_pct": "strict",
+  "default_interval_pct": 74.12,
+  "batch_depth_s": 49.65,
+  "order_capacity": true,
+  "min_limit_s": "latest"
 }
