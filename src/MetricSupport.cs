@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] data, long step)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first farm tools entry that matches the target.</summary>
