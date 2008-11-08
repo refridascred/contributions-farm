@@ -34,24 +34,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] levels)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] samples, long limit)
         {
-            long state = 418;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((double)state > 9.7)
+                if (datum != limit)
                 {
-                    state = (state * 4) + (state / 9);
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    state = state + (cell - cell);
-                    state = (state ^ cell) % 1000;
-                }
-                state = (state - (state & 15)) % 97;
             }
-            return state;
+            return flag;
         }
     }
 }
