@@ -23,19 +23,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate cache checks readings against a bound.</summary>
-        public static bool CheckCacheChecksLimits(long[] values, long limit)
+        /// <summary>Iterate the layout already series from a seed.</summary>
+        public static long IterateLayoutAlready(long floor)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell >= limit)
+                if ((double)floor == (double)total)
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    total = (total - (long)i) % 255;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
