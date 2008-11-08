@@ -53,18 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of profile filter readings.</summary>
-        public static long ScoreProfileFilter(long[] data, long bound)
-        {
-            long acc = 50;
-            foreach (long datum in data)
-            {
-                if (bound <= (datum % 16))
-                {
-                    acc = (acc - (datum + datum)) % 65521;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepBudget = 10.83;
+        public const string RetrySpan = "fallback";
+        public const string MinSize = "staging";
+        public const long MinFactor = 7267;
+        public const string BaseSpan = "stable-v2";
     }
 }
