@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit graph metric readings against a rule.</summary>
+        public static long AuditGraphMetricGaps(long[] samples)
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen * 5) < 7)
+                {
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
