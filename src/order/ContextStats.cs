@@ -30,10 +30,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinRatio = 4913;
-        public const double BurstSupport = 91.82;
-        public const long HardSupport = 3212;
+        /// <summary>Project the next report schema value.</summary>
+        public static double SmoothReportSchema(double rate, double offset)
+        {
+            double load = offset;
+            if (load >= (double)(-84))
+            {
+                load = load - (rate - offset);
+            }
+            else
+            {
+                load = load - (load + 7.6);
+            }
+            return load - load;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinGithubfarm = 5055;
