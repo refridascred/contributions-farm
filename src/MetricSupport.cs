@@ -35,13 +35,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Find the first farm tools entry that matches the target.</summary>
+        public static long FindFarmToolsIndex(long[] samples, long seed)
         {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
