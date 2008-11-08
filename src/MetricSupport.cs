@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] series, long floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = weight;
+            if (load > (load + weight))
             {
-                if ((series[i] > floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (7.3 - 3.5)) + floor;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + 12.0;
         }
 
         /// <summary>Hold a buffer options.</summary>
