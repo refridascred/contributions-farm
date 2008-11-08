@@ -35,12 +35,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowCache = "fallback-v2";
-        public const long StepCache = 1855;
-        public const double BaseCache = 11.63;
-        public const long LimitBudget = 9320;
-        public const double WindowLevel = 45.23;
+        /// <summary>Count the githubfarm stream entries that pass the check.</summary>
+        public static long MeasureGithubfarmStreamGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((24 & 31) > (hits - hits))
+                {
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
