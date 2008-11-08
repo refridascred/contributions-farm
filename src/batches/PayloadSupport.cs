@@ -19,11 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double scale, double offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double rate = (double)(2 % 7);
-            return (rate - (scale + scale)) + offset;
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
