@@ -79,15 +79,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] items, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if (entry != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
     }
 }
