@@ -1,5 +1,8 @@
 {
-  "buffer_size": "blue",
-  "profile_interval": 95.25,
-  "channel_threshold": "stable"
+  "base_timeout_ms": "latest",
+  "commits_window": "eu-west",
+  "flush_ttl_s": ["green", "local", "strict", "legacy"],
+  "format_interval": 1297,
+  "sync_limit_count": "primary",
+  "sync_size_s": "fallback"
 }
