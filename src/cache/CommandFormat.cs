@@ -24,11 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] samples, long seed)
         {
-            public long Level { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
