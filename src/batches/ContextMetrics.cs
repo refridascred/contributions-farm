@@ -55,13 +55,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Pending,
-            New,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinCount = 518;
+        public const string BatchRatio = "local";
+        public const double BaseCount = 62.47;
+        public const long StepOrder = 9315;
     }
 }
