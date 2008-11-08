@@ -1,6 +1,11 @@
 {
-  "batch_threshold": "green",
-  "max_size_count": false,
-  "cluster_delay": "staging",
-  "command_limit": "stable"
+  "enabled": "green",
+  "dry_run": [195, 133],
+  "max_ttl_s": false,
+  "soft_ratio_count": 92,
+  "flush_retries": {
+    "burst_retries_s": 100,
+    "cache_timeout": false,
+    "hard_limit_pct": "blue"
+  }
 }
