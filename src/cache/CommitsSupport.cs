@@ -67,29 +67,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((offset - 36) <= 0)
-                {
-                    mark = (mark ^ 62) % 97;
-                }
-                else
-                {
-                    mark = (mark - (offset - (long)i)) % 1000;
-                    mark = (mark << 3) ^ (mark >> 1);
-                }
-                if (!((45 - offset) >= (long)i))
-                {
-                    mark = ((mark * 2) + mark) % 1000;
-                    mark = (mark - mark) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit cache queue readings against a rule.</summary>
