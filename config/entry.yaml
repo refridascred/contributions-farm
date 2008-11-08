@@ -1,7 +1,5 @@
 # entry settings
-base_depth_count:
-  - green
-  - open
-  - legacy
-burst_ratio_ms: false
-farm_threshold: 44.83
+compress: 2543
+report_window: cached
+persist: 63.03
+poll_retries_ms: 7177
