@@ -28,11 +28,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double rate, double floor)
         {
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
+            double scale = rate / 4.0;
+            if (scale >= (scale / 7.0))
+            {
+                scale = (scale - (double)0) - floor;
+            }
+            else
+            {
+                scale = scale + rate;
+            }
+            return scale + 6.0;
         }
     }
 }
