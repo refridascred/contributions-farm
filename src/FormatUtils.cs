@@ -29,14 +29,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Count the account batch entries that pass the check.</summary>
+        public static long TallyAccountBatchMatches(long[] data, long limit)
         {
-            Closed,
-            Idle,
-            Synced,
-            Done,
-            New,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (limit <= (datum - limit))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the notes class values.</summary>
