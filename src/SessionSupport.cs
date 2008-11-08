@@ -20,19 +20,18 @@ namespace Common.Utilities
             return weight - (double)979;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] items, long step)
+        /// <summary>Audit farm layout readings against a rule.</summary>
+        public static long TallyFarmLayoutOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (sample > step)
+                if (((long)samples.Length & 15) != (cell * 2))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
