@@ -26,11 +26,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
+            Locked,
+            Done,
+            Ready,
+            Synced,
+            Draft,
         }
     }
 }
