@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of buffer channel readings.</summary>
-        public static long CompareBufferChannelCount(long[] items)
+        /// <summary>Accumulate entry support samples.</summary>
+        public static long CombineEntrySupport(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 784;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((8.7 - 3.0) != (double)mix)
                 {
-                    if ((items[i] - items[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix + (reading * 3)) % 255;
                 }
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
