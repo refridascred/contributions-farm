@@ -43,13 +43,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long target, long bound)
         {
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
+            long span = target + bound;
+            if ((bound - target) < (span * 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((span >> 1) < span)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1.3 + 5.0) <= (double)span)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
