@@ -34,14 +34,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] levels)
         {
-            Retry,
-            Failed,
-            Ready,
-            Draft,
-            Done,
+            long state = 418;
+            foreach (long cell in levels)
+            {
+                if ((double)state > 9.7)
+                {
+                    state = (state * 4) + (state / 9);
+                }
+                else
+                {
+                    state = state + (cell - cell);
+                    state = (state ^ cell) % 1000;
+                }
+                state = (state - (state & 15)) % 97;
+            }
+            return state;
         }
     }
 }
