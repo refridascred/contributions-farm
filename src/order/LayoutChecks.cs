@@ -15,21 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count checks contributi pairs that satisfy a relation.</summary>
-        public static long CompareChecksContributiCount(long[] data)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
