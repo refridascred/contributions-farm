@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every editor schema entry stays within the limit.</summary>
-        public static bool ValidateEditorSchemaBounds(long[] readings, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long anchor = -5;
+            foreach (long reading in series)
             {
-                if (item > step)
+                if ((reading > 287) || ((floor + reading) > (anchor - floor)))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor + (reading + anchor)) % 255;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
