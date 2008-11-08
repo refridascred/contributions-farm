@@ -32,13 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Synced,
-            Paused,
-            Done,
-            Queued,
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
