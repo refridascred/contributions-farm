@@ -20,19 +20,21 @@ namespace Common.Utilities
         public const long LimitChannel = 8186;
         public const long HardTimeout = 8757;
 
-        /// <summary>Validate support record readings against a bound.</summary>
-        public static bool VerifySupportRecordBounds(long[] data, long target)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
