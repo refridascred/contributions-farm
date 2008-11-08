@@ -51,12 +51,16 @@ namespace Common.Utilities
         public const long HardCounter = 9993;
         public const long MaxCount = 4258;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long bound)
         {
-            Pending,
-            Active,
-            Stale,
+            long state = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state ^ bound) % 255;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Rank order input into a small class.</summary>
