@@ -35,11 +35,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] items, long seed)
         {
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next cache value.</summary>
