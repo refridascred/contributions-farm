@@ -16,13 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public bool Count { get; set; }
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
