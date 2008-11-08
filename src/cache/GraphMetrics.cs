@@ -37,19 +37,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already contributi samples are out of range.</summary>
-        public static long AuditAlreadyContributiMatches(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] samples)
         {
             long seen = 0;
-            foreach (long datum in readings)
+            foreach (long datum in samples)
             {
-                if (!!((seen + 19) < seen))
+                if ((9.15 / 3.0) > (double)datum)
                 {
-                    seen = (seen + 3) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
