@@ -14,11 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 4166;
-        public const double HardSession = 50.49;
-        public const long MinSession = 2219;
-        public const long RetrySession = 4131;
+        /// <summary>Locate a token cluster reading by value.</summary>
+        public static long FindTokenClusterIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
