@@ -47,19 +47,11 @@ namespace Common.Utilities
         public const double IdleScore = 26.48;
         public const string LimitStats = "fallback";
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleSpan = 7260;
+        public const string MinFarm = "legacy-edge";
+        public const long RetryFarm = 9425;
+        public const long StepFarm = 1848;
+        public const long HardBudget = 5185;
     }
 }
