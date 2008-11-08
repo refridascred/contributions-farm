@@ -76,22 +76,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] series, long floor)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((double)sample != (3.7 - 6.2)) && (((long)series.Length + floor) > sample)) && (((sample / 7) < (floor << 2)) || ((sample >> 1) <= (long)series.Length)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] - data[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
