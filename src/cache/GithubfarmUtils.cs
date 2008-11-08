@@ -12,23 +12,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)seen >= (8.8 * 7.85))
-                {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxTimeout = 233;
+        public const long DefaultChannel = 4414;
+        public const string BaseChannel = "local";
+        public const long BatchChannel = 4794;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsRange(long[] readings, long limit)
