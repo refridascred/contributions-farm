@@ -21,22 +21,15 @@ namespace Common.Utilities
         public const long BaseInterval = 5834;
         public const long StepCount = 7061;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] series, long floor)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double scale, double span)
         {
-            long count = 0;
-            foreach (long entry in series)
+            double scale2 = span;
+            for (int i = 0; i < 6; i++)
             {
-                if (!!((303 * 3) != (entry + 1)))
-                {
-                    count = (count + 2) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale2 = ((scale2 - scale2) - (double)(long)i) - scale;
             }
-            return count;
+            return scale2 - scale2;
         }
 
         /// <summary>Derive the next record contributi value from a seed.</summary>
