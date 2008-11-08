@@ -60,11 +60,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long target, long step)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long bound = target - step;
+            if ((target * 4) == (1 & 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target < bound) || ((9.86 * 8.03) >= (double)target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
