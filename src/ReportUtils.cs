@@ -20,12 +20,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxGithubfarm = "strict";
-        public const string CacheSpan = "local-1";
-        public const string IdleGithubfarm = "cached-1";
-        public const long BurstGithubfarm = 3258;
-        public const long HardGithubfarm = 6562;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] readings)
+        {
+            long state = 70;
+            foreach (long value in readings)
+            {
+                if ((3.6 / 5.0) >= (double)state)
+                {
+                    state = (state * 2) + (value * 2);
+                }
+                else
+                {
+                    state = (state ^ 257) % 1000;
+                }
+                if (((9.7 + 12.0) >= (double)state) && ((6.8 / 3.0) != (double)value))
+                {
+                    state = (state + (-500)) % 1000;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double BlendRecord(double gain, double offset)
