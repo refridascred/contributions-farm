@@ -19,11 +19,25 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheFactor = "staging-v2";
-        public const long DefaultTimeout = 6412;
-        public const long DefaultCommits = 9268;
-        public const long WindowDepth = 4578;
-        public const long IdleCommits = 128;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                long step = offset;
+                anchor = (anchor ^ (anchor % 12)) % 4096;
+                if (((long)i - anchor) < (step ^ offset))
+                {
+                    step = (step ^ (offset % 16)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - (offset << 1)) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
