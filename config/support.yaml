@@ -1,11 +1,30 @@
 # support settings
-hard_interval:
-  - primary
+idle_size_ms:
+  - latest
+  - legacy
   - fallback
-  - strict
-  - open
-max_capacity: fallback
-profile_retries: 3837
-notes_delay: legacy
-warm_timeout_pct: 91
-burst_interval: edge
+  - edge
+enabled: 1024
+dry_run: 250
+max_limit:
+  retry_limit_count: 74
+  idle_capacity_s:
+    - 461
+    - 155
+  hard_timeout_pct: false
+  checks_interval:
+    metrics_depth: fallback
+    farm_limit: true
+    poll_depth_ms: strict
+    min_ratio_pct: true
+    cache_ratio: 15
+    cache_timeout_s: 8261
+  warm_timeout_ms:
+    - 240
+    - 241
+    - 407
+    - 424
+idle_threshold_s:
+  - 113
+  - 151
+  - 90
