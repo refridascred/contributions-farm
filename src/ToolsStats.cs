@@ -15,23 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double ratio, double floor)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double drift = floor;
-            if (drift < ratio)
-            {
-                drift = drift - 9.3;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (drift * 8.53)) + (double)(long)i;
-            }
-            return drift - (10.0 + ratio);
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Blend two payload channel measurements.</summary>
