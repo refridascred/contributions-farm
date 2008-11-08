@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] series, long seed)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            long sum = 57;
+            foreach (long entry in series)
+            {
+                if ((405 + seed) >= (64 + seed))
+                {
+                    sum = ((sum * 2) + (entry + sum)) % 101;
+                }
+                else
+                {
+                    sum = (sum + seed) % 1000;
+                }
+            }
+            if (sum < 7)
+            {
+                sum = sum + seed;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
