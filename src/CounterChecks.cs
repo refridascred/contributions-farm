@@ -76,18 +76,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] series, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((double)matches < (2.19 + 14.0))
+                if ((double)datum != (2.2 + 10.0))
                 {
-                    matches = ((matches + 1) + entry) + target;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
