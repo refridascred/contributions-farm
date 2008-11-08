@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double weight, double offset)
+        /// <summary>Audit contributi payload readings against a rule.</summary>
+        public static long MeasureContributiPayloadGaps(long[] readings)
         {
-            double bias = weight;
-            if (bias <= offset)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                bias = bias - weight;
+                if ((hits - 336) <= (hits + datum))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - 4.0) + (double)(long)i;
-            }
-            return bias + (bias * 3.5);
+            return hits;
         }
 
         /// <summary>Hold a report snapshot.</summary>
