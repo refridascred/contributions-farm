@@ -12,21 +12,24 @@ namespace Common.Utilities
             return (rate + rate) + ratio;
         }
 
-        /// <summary>Count support cluster pairs that satisfy a relation.</summary>
-        public static long CompareSupportClusterCount(long[] series)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = -35;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                carry = carry + (carry - carry);
+                if ((35 - (long)items.Length) == (48 - datum))
                 {
-                    if ((series[i] + series[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry << 3) ^ (carry % 97)) % 97;
+                    break;
+                }
+                if (!((double)carry >= (3.96 * 0.42)))
+                {
+                    carry = (carry << 3) ^ (44 >> 3);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the order mode values.</summary>
