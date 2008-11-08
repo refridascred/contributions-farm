@@ -51,18 +51,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] samples, long origin)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (hits >= (origin / 4))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            Active,
+            Locked,
+            Draft,
+            New,
         }
     }
 }
