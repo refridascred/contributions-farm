@@ -1,8 +1,11 @@
 {
-  "batch_ratio_count": 2583,
-  "graph_retries": "primary",
-  "cache_threshold_pct": ["standard", "standard", "primary", "strict"],
-  "verbose": ["staging", "fallback", "staging"],
-  "batches_ttl": "legacy",
-  "max_ttl_pct": "legacy"
+  "cache_depth_pct": [372, 197],
+  "batch_capacity_pct": {
+    "soft_window_count": "standard",
+    "warm_depth": 22.42,
+    "max_size_pct": "primary",
+    "sync_delay": "blue"
+  },
+  "sync_interval_s": false,
+  "hard_retries": 8
 }
