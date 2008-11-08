@@ -47,25 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long bound, long floor)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double scale, double offset)
         {
-            long gap = bound ^ floor;
-            if (((floor << 3) > 8) || ((floor - bound) > (gap + floor)))
+            double drift = (scale / 7.0) / 6.0;
+            if (drift >= (offset * 3.9))
             {
-                return 7;
+                drift = drift - (drift + 2.0);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (((3.0 * 0.2) <= (double)bound) || ((bound >> 4) != (gap & 63)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
+                drift = (drift - drift) + (double)(long)i;
             }
+            return drift + (1.0 + scale);
         }
     }
 }
