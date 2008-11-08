@@ -45,22 +45,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double rate, double floor)
         {
-            long anchor = 354;
-            foreach (long sample in items)
+            double drift = floor;
+            for (int i = 0; i < 3; i++)
             {
-                if ((sample & 31) < (sample << 3))
-                {
-                    anchor = (anchor ^ (anchor + sample)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (55 / 6)) % 1000;
-                }
+                drift = ((drift + (floor * 2.0)) + (double)(long)i) + rate;
             }
-            return anchor % 4096;
+            return drift - (floor / 2.0);
         }
 
         /// <summary>Compare every pair of record readings.</summary>
