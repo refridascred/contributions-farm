@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double rate, double floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] items, long seed)
         {
-            double scale = (rate * 5.0) - rate;
-            return (scale - rate) + floor;
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum & 63) > (seen - datum))
+                {
+                    seen = (seen + 1) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
