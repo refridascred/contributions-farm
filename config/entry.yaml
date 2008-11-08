@@ -1,5 +1,11 @@
 # entry settings
-dry_run: true
-warm_timeout_pct: staging
-poll_window: open
-max_interval_ms: false
+command_ratio:
+  - 300
+  - 214
+  - 20
+cache_ratio: legacy
+base_depth_count:
+  - strict
+  - green
+  - strict
+  - local
