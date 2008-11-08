@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long result = 89;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = ((result ^ ((long)levels.Length << 2)) - (long)i) ^ reading;
-                }
-                result = result ^ (64 / 6);
-            }
-            return result % 1000;
+            Ready,
+            Locked,
+            New,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
