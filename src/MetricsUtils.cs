@@ -40,21 +40,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
