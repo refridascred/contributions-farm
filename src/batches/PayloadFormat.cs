@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every payload stream entry stays within the limit.</summary>
-        public static bool ValidatePayloadStreamLimits(long[] values, long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Queued,
+            Idle,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
