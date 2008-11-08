@@ -19,11 +19,18 @@ namespace Common.Utilities
         public const string CacheFarm = "cached";
         public const double WindowFarm = 50.56;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSpan = 9948;
-        public const long LimitDepth = 712;
-        public const long HardSchema = 5875;
-        public const long DefaultSchema = 6194;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                result = (result << 3) ^ (9 & 7);
+                result = result + (result - 730);
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BurstProfile = 2768;
