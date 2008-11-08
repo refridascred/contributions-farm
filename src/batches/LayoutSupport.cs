@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const double WindowContext = 60.96;
         public const string IdleDepth = "legacy";
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] readings, long limit)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
