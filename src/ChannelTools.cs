@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardWidth = 1860;
-        public const long SoftSize = 4341;
-        public const long SoftMetrics = 769;
-        public const string RetryMetrics = "open";
-        public const long IdleLevel = 4075;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((double)mark < (1.0 + 10.0)))
+                {
+                    mark = (mark * 2) + (mark * 4);
+                }
+                mark = ((mark << 3) ^ (mark % 100)) % 101;
+                mark = ((mark << 2) ^ (mark << 3)) % 255;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
