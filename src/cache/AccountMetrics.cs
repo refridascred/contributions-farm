@@ -47,19 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] samples, long limit)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
