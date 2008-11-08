@@ -17,22 +17,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] samples, long origin)
+        /// <summary>Grade a contributi already value against two limits.</summary>
+        public static long SortContributiAlready(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long offset = seed - limit;
+            if ((seed <= 754) && (offset <= (seed / 5)))
             {
-                if ((107 % 64) < (origin % 2))
+                return 8;
+            }
+            else
+            {
+                if (((1.0 + 0.17) <= (double)seed) || ((288 - limit) > ((-775) * 5)))
                 {
-                    hits = (hits + 3) + item;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((double)offset <= (9.0 + 0.8)) || (seed < (limit & 127)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset % 12) > (limit + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
