@@ -76,22 +76,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] items, long bound)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long target, long seed)
         {
-            long total = 54;
-            foreach (long reading in items)
+            if (((seed * 2) <= target) && ((double)seed <= 6.0))
             {
-                if (total <= (-9))
+                return 5;
+            }
+            else
+            {
+                if (!((target % 12) >= (target + target)))
                 {
-                    total = (((total + ((long)items.Length << 1)) % 65521) ^ reading) - bound;
+                    return 3;
                 }
-                if (0.4 < (double)total)
+                else
                 {
-                    break;
+                    return 4;
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
