@@ -37,19 +37,21 @@ namespace Common.Utilities
             return gain - (bias - bias);
         }
 
-        /// <summary>Check that every cache report entry stays within the limit.</summary>
-        public static bool GuardCacheReportLimits(long[] readings, long seed)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
