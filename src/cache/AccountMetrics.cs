@@ -73,19 +73,17 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double ratio, double span)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] items, long offset)
         {
-            double load = 0.4 + span;
-            if (load < load)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - (double)1) - ratio;
+                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (6.1 + span);
-            }
-            return load + 2.14;
+            return -1;
         }
     }
 }
