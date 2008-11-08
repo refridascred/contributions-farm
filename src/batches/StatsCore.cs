@@ -14,13 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            New,
-            Closed,
-            Stale,
-            Queued,
+            long carry = 5;
+            foreach (long datum in readings)
+            {
+                carry = (carry - (datum - (long)readings.Length)) % 101;
+            }
+            if (carry < 239)
+            {
+                carry = ((carry << 2) ^ (carry << 3)) % 101;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
