@@ -38,15 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a buffer schema figure with a bias.</summary>
-        public static double AdjustBufferSchema(double gain, double span)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double rate, double floor)
         {
-            double gain2 = (double)(5 << 3);
-            for (int i = 0; i < 9; i++)
+            double rate2 = rate;
+            if (rate2 >= (floor - floor))
             {
-                gain2 = ((gain2 - (span + 5.4)) - (double)(long)i) - gain;
+                rate2 = rate2 - rate2;
             }
-            return gain2 - (gain2 * 8.24);
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 - 1.84) + (double)(long)i;
+            }
+            return rate2 + (rate + rate);
         }
     }
 }
