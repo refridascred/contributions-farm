@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long step, long seed)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double bias, double span)
         {
-            long offset = step ^ seed;
-            if ((seed - offset) <= 639)
+            double drift = span;
+            if (drift < drift)
             {
-                return 6;
+                drift = (drift - (span + span)) - bias;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((6 - seed) <= (offset ^ seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step < (step + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                drift = (drift + (double)44) + (double)(long)i;
             }
+            return drift + drift;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
