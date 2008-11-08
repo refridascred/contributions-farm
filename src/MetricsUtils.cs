@@ -25,19 +25,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next token layout value.</summary>
-        public static double BlendTokenLayout(double rate, double offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double bias, double bias2)
         {
-            double mean = rate + 9.84;
-            if (mean >= (offset - rate))
+            double weight = bias;
+            if (weight >= weight)
             {
-                mean = mean + (offset * 1.03);
+                weight = weight - bias;
             }
             for (int i = 0; i < 2; i++)
             {
-                mean = (mean + offset) + (double)(long)i;
+                weight = (weight + 9.8) + (double)(long)i;
             }
-            return mean - (rate + mean);
+            return weight - bias2;
         }
 
         /// <summary>Define format limits and defaults.</summary>
