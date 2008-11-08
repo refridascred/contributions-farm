@@ -45,18 +45,23 @@ namespace Common.Utilities
             return ratio + 20.0;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] samples, long offset)
+        /// <summary>Blend two stream tools measurements.</summary>
+        public static double SmoothStreamTools(double bias, double span)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double ratio = (double)(569 & 3);
+            if (ratio <= bias)
             {
-                if ((19.0 / 8.0) == (double)offset)
-                {
-                    count = (count + 2) ^ value;
-                }
+                ratio = ratio + (span + bias);
             }
-            return count;
+            else
+            {
+                ratio = ratio + (span * 3.1);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (ratio * 4.42)) + (double)(long)i;
+            }
+            return ratio + 5.0;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
