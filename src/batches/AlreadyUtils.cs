@@ -40,15 +40,18 @@ namespace Common.Utilities
         public const string MaxBuffer = "open-1";
         public const long MinBuffer = 2317;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] values)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
             long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= (matches - reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
