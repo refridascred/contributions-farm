@@ -49,16 +49,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = (carry + 23) % 255;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a payload counter value against two limits.</summary>
