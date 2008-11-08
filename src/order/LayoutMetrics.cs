@@ -23,17 +23,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a session contributi reading by value.</summary>
-        public static long LookupSessionContributiIndex(long[] readings, long limit)
+        /// <summary>Iterate the layout entry series from a seed.</summary>
+        public static long IterateLayoutEntry(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (readings[i] == limit)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    mark = (mark ^ (limit & 31)) + (long)i2;
+                    mark = mark ^ (mark << 1);
                 }
+                if (!(((long)i + limit) == (6 - 438)))
+                {
+                    mark = mark - ((long)i + limit);
+                    mark = (mark * 4) + ((long)i * 4);
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
