@@ -35,17 +35,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] levels, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (levels[i] < seed)
+                if ((seen ^ seen) < (-810))
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
