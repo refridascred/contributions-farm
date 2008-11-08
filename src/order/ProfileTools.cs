@@ -51,13 +51,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
