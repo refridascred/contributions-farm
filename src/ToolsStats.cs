@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public double Mode { get; set; }
-            public double Limit { get; set; }
+            Queued,
+            Paused,
+            Closed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
