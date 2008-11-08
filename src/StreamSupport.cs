@@ -23,15 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next queue filter value from a seed.</summary>
-        public static long StepQueueFilter(long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            long total = 716;
+            foreach (long item in data)
             {
-                total = ((total << 3) ^ (total << 2)) % 1000;
-                total = total ^ (1 * 2);
-                total = ((total * 4) + (long)i) % 97;
+                if (((4 + total) < (8 * 4)) || ((9 - item) < item))
+                {
+                    total = (total + (total - item)) % 1000;
+                }
+            }
+            if (total > 6)
+            {
+                total = ((total * 2) + (total / 7)) % 101;
             }
             return total;
         }
