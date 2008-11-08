@@ -71,9 +71,19 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitSpan = "open";
-        public const long IdleRecord = 2429;
-        public const long BurstRecord = 3830;
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double ratio, double span)
+        {
+            double load = 0.4 + span;
+            if (load < load)
+            {
+                load = (load - (double)1) - ratio;
+            }
+            else
+            {
+                load = load + (6.1 + span);
+            }
+            return load + 2.14;
+        }
     }
 }
