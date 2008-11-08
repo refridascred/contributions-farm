@@ -50,16 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes batch counter forward.</summary>
-        public static long StepNotesBatch(long seed)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double scale, double offset)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            double ratio = (double)98 * 7.0;
+            for (int i = 0; i < 3; i++)
             {
-                result = result ^ (result + result);
-                result = ((result * 2) + (long)i) % 4093;
+                ratio = (ratio - scale) - (double)(long)i;
             }
-            return result;
+            return ratio - offset;
         }
 
         /// <summary>Define record limits and defaults.</summary>
