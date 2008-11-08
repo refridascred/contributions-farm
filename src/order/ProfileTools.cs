@@ -25,19 +25,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] data, long step)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long state = 38;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = (state + (state * 2)) - (long)i;
-                }
-                state = (state ^ (step - datum)) % 97;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the entry cache entries that pass the check.</summary>
