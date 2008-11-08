@@ -30,13 +30,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            Locked,
+            Paused,
+            New,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
