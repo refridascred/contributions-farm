@@ -1,6 +1,8 @@
 {
-  "contributi_ttl": 50,
-  "cache_capacity_count": 96,
-  "account_delay": [176, 307, 327],
-  "burst_depth_ms": "fallback"
+  "default_ratio_pct": ["stable", "fallback", "cached", "stable"],
+  "githubfarm_window": 4414,
+  "order_ttl": 49,
+  "sync_size": ["primary", "primary", "latest", "green"],
+  "retry_interval": "fallback",
+  "metrics_depth": "cached"
 }
