@@ -34,11 +34,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftSize = 18.81;
-        public const long HardFactor = 2549;
-        public const string IdleBudget = "local";
-        public const long LimitPayload = 4877;
+        /// <summary>Accumulate account cluster samples.</summary>
+        public static long FoldAccountCluster(long[] data)
+        {
+            long anchor = -14;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = anchor ^ ((long)i ^ (long)i);
+                }
+                anchor = (anchor - (84 & 255)) % 255;
+                anchor = anchor + item;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long AuditBatchesHits(long[] items, long offset)
