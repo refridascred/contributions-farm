@@ -55,11 +55,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultQueue = 51.69;
-        public const long MaxQueue = 8377;
-        public const string IdleWidth = "strict-edge";
-        public const long HardQueue = 630;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((cell - hits) <= (cell * 5)) || ((double)cell <= 2.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long ClassifyCluster(long origin, long seed)
