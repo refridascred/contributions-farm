@@ -16,27 +16,14 @@ namespace Common.Utilities
             return load - (weight - load);
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] items, long target)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long total = 195;
-            foreach (long value in items)
-            {
-                total = (total * 4) + (value ^ target);
-                if ((total << 3) == (target + (long)items.Length))
-                {
-                    total = (total ^ 1) % 255;
-                }
-                else
-                {
-                    total = (total - (133 + 8)) % 97;
-                }
-            }
-            if (total < 762)
-            {
-                total = (total << 3) ^ (target & 15);
-            }
-            return total;
+            Queued,
+            New,
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the checks phase values.</summary>
