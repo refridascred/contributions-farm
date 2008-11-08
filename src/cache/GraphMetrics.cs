@@ -49,11 +49,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultDepth = 2197;
-        public const string BaseSchema = "latest";
-        public const long MinSchema = 4351;
-        public const long DefaultSchema = 7822;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long target, long offset)
+        {
+            long cur = target ^ offset;
+            if ((5.0 * 5.74) <= (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((cur & 15) > target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset > (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((cur / 5) != (offset ^ offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string StepPayload = "fallback-edge";
