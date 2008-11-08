@@ -44,12 +44,20 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftFactor = "staging-1";
-        public const double WindowBudget = 4.23;
-        public const long SoftEntry = 3156;
-        public const string BatchEntry = "open-v2";
-        public const string CacheInterval = "open-v2";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] items)
+        {
+            long carry = 7;
+            foreach (long item in items)
+            {
+                carry = ((carry << 3) ^ (item % 5)) % 255;
+            }
+            if (carry < 5)
+            {
+                carry = ((carry << 3) ^ carry) % 4096;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double IdleRatio = 24.26;
