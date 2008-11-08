@@ -30,11 +30,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double rate, double span)
-        {
-            double scale = span;
-            return (scale - (span / 6.0)) + rate;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 53.46;
+        public const long MaxDepth = 7216;
+        public const long RetryContext = 1732;
+        public const long MinSpan = 8157;
     }
 }
