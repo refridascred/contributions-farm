@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            New,
-            Draft,
-            Locked,
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate layout support readings against a bound.</summary>
