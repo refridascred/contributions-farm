@@ -41,19 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] levels, long step)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long anchor = 89;
+            foreach (long reading in levels)
             {
-                if (sample < step)
+                if (((double)reading == (1.2 * 5.9)) || ((95 - reading) > (reading + 2)))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor * 5) + (78 + (long)levels.Length);
                 }
             }
-            return ready;
+            if (anchor > 90)
+            {
+                anchor = (anchor + (anchor & 31)) % 1000;
+            }
+            return anchor;
         }
     }
 }
