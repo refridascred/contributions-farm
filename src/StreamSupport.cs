@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] series, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] items, long floor)
         {
-            long anchor = -5;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((reading > 287) || ((floor + reading) > (anchor - floor)))
+                if (((seen << 2) == (seen - floor)) && ((floor ^ floor) == (entry & 7)))
                 {
-                    anchor = (anchor + (reading + anchor)) % 255;
+                    seen = seen + 2;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
