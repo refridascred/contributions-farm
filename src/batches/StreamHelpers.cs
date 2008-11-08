@@ -124,12 +124,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Look up the position of a support filter sample.</summary>
+        public static long LookupSupportFilterIndex(long[] readings, long limit)
         {
-            Idle,
-            Closed,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
