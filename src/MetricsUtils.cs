@@ -32,22 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report schema entries that pass the check.</summary>
-        public static long CountReportSchemaHits(long[] readings, long origin)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen >= (56 - seen)) && ((origin * 3) != (item - origin)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of profile order readings.</summary>
