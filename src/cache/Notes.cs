@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] data, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                score = (score * 3) + (score + 2);
-                score = ((score * 5) + (long)i) % 65521;
+                if ((reading + (long)data.Length) <= (step / 3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
