@@ -19,25 +19,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long origin, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] values, long target)
         {
-            long span = origin - limit;
-            if ((limit / 7) >= (origin << 1))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((span ^ origin) < limit))
+                if ((117 % 64) > (cell % 7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    seen = (seen + 2) + target;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a counter options.</summary>
