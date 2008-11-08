@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxEditor = "standard-edge";
+        public const long BaseEditor = 8415;
+        public const double DefaultInterval = 4.17;
+        public const string LimitDepth = "fallback-edge";
 
         /// <summary>Project the next cluster channel value.</summary>
         public static double SmoothClusterChannel(double weight, double floor)
