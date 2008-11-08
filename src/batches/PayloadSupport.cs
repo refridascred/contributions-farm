@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stream class values.</summary>
