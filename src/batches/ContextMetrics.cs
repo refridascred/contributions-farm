@@ -69,11 +69,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepBudget = 10.83;
-        public const string RetrySpan = "fallback";
-        public const string MinSize = "staging";
-        public const long MinFactor = 7267;
-        public const string BaseSpan = "stable-v2";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "alpha-edge";
+        public const string BurstPayload = "open-1";
+        public const double BurstInterval = 96.17;
     }
 }
