@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] levels)
+        /// <summary>Measure how many entry stats samples are out of range.</summary>
+        public static long TallyEntryStatsHits(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((69 * 5) <= (seen - seen)) && (seen <= offset))
                 {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
