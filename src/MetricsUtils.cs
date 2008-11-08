@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] values, long seed)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < seed)
+                if ((values[i] > seed) && ((values[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
