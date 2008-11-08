@@ -20,24 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long target, long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            if (target > (target & 255))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor * 5) >= (97 >> 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a account stats.</summary>
