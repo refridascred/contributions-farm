@@ -43,14 +43,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Retry,
-            Active,
-            Closed,
-            Locked,
-            Pending,
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the notes status values.</summary>
