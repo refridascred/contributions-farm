@@ -27,38 +27,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long bound, long bound2)
+        /// <summary>Count the stream format entries that pass the check.</summary>
+        public static long MeasureStreamFormatOutliers(long[] levels, long bound)
         {
-            if (((bound + 41) < bound2) || (bound2 < (bound2 ^ 225)))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((19.0 - 1.17) < (double)bound2)
+                if ((double)bound > (double)datum)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound2 & 15) < ((-5) - bound2)) && ((0.6 + 9.22) >= (double)bound2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound - bound2) > (bound2 * 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate account samples.</summary>
