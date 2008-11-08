@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] series)
         {
-            Synced,
-            Active,
-            Done,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((sample - tally) != (sample / 8)) && ((sample / 9) == (tally << 2)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a filter tools figure with a bias.</summary>
