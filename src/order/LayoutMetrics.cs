@@ -13,21 +13,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] values)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long bound, long bound2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = bound - bound2;
+            if ((double)span >= 3.6)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((bound2 & 31) > (bound2 - span)))
                 {
-                    if ((values[i] ^ values[j]) > 2)
+                    return 6;
+                }
+                else
+                {
+                    if ((span + bound) != (658 % 10))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate stats samples.</summary>
