@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] samples, long origin)
         {
-            long score = 26;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((value + 8) > (value % 2))
+                if (3 < (long)samples.Length)
                 {
-                    score = score - (value ^ score);
+                    tally = ((tally + 1) - value) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Locate a context reading by value.</summary>
