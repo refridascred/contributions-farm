@@ -60,22 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph token samples are out of range.</summary>
-        public static long TallyGraphTokenMatches(long[] samples, long offset)
+        /// <summary>Project the next contributi metrics value.</summary>
+        public static double SmoothContributiMetrics(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((6.23 - 2.8) < (double)item)
-                {
-                    hits = (hits + 3) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double bias = (double)545 * 3.0;
+            return ((bias + (double)6) + scale) + offset;
         }
     }
 }
