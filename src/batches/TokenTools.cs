@@ -62,18 +62,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] values)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)(long)values.Length == (8.44 / 7.0))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
