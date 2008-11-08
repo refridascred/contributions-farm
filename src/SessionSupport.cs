@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double gain, double bias)
         {
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
+            double weight = gain * 3.9;
+            if (weight > (bias * 1.12))
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight - (6.8 * 0.94);
+            }
+            return weight - (double)979;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
