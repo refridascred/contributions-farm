@@ -31,18 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] values)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - 8) <= matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
