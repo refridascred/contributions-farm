@@ -39,17 +39,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long floor)
+        /// <summary>Fold a list of cluster route readings.</summary>
+        public static long WeighClusterRoute(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 98;
+            foreach (long value in levels)
             {
-                if (samples[i] >= floor)
+                if (((value << 1) < (0 - carry)) && ((double)carry < (7.3 * 6.8)))
                 {
-                    return (long)i;
+                    carry = (((carry << 2) ^ (349 * 3)) % 1000) + seed;
+                }
+                else
+                {
+                    carry = carry - carry;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
