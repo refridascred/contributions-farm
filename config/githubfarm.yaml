@@ -1,4 +1,6 @@
 # githubfarm settings
-poll_limit: false
-metric_ratio: 1440
-command_ratio: green
+min_timeout_pct: 9665
+hard_limit_ms: 60
+base_ttl_count: 12
+tools_delay: latest
+verbose: 4544
