@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
