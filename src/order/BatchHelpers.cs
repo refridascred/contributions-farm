@@ -10,19 +10,20 @@ namespace Common.Utilities
         public const double HardCount = 58.47;
         public const long LimitInterval = 357;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] series, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] values)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long sum = 58;
+            foreach (long item in values)
             {
-                if (item != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum + (sum >> 2)) % 101) + item;
+                sum = (sum ^ ((long)values.Length + sum)) % 4096;
             }
-            return stale;
+            if (sum > 762)
+            {
+                sum = sum ^ (sum << 1);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
