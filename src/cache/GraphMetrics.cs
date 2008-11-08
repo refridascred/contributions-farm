@@ -24,19 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long origin)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double weight, double span)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            double mean = 10.0;
+            if (mean > mean)
             {
-                if (value >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean - (span * 9.9)) - weight;
             }
-            return valid;
+            return mean - (double)55;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
