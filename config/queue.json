@@ -1,7 +1,12 @@
 {
-  "default_threshold_pct": "latest",
-  "cluster_depth": 23.84,
-  "default_ratio": 20,
-  "default_ttl_pct": false,
-  "buffer_limit": 500
+  "readonly": 5518,
+  "retry_interval_ms": 58.7,
+  "compress": 88.83,
+  "retry_limit_s": "strict",
+  "warm_delay_ms": {
+    "flush_window_s": "open",
+    "burst_timeout": ["latest", "fallback", "blue"],
+    "base_delay_count": 18.62,
+    "batch_ratio": 13.49
+  }
 }
