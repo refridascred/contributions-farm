@@ -33,9 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstTimeout = 1901;
-        public const long RetryFactor = 7684;
-        public const string BurstSession = "stable-edge";
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
