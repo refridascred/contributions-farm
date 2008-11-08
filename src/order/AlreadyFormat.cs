@@ -28,32 +28,19 @@ namespace Common.Utilities
             return gain - (bias - bias);
         }
 
-        /// <summary>Classify a cache order pair into a bucket.</summary>
-        public static long GradeCacheOrder(long target, long target2)
+        /// <summary>Check that every cache report entry stays within the limit.</summary>
+        public static bool GuardCacheReportLimits(long[] readings, long seed)
         {
-            long offset = target + target2;
-            if (((target2 % 2) != (target * 2)) && ((double)offset == (4.9 * 1.0)))
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((4.38 / 9.0) < (double)offset) && ((offset + target) >= (offset - (-66))))
+                if (entry > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target & 255) > (target2 - target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
