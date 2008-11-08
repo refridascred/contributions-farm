@@ -47,12 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double rate, double floor)
         {
-            Locked,
-            Synced,
-            Stale,
+            double weight = (rate * 2.5) / 2.0;
+            if (weight <= (rate / 3.0))
+            {
+                weight = (weight + (double)600) + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (rate / 7.0)) + (double)(long)i;
+            }
+            return weight - (double)310;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
