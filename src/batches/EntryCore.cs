@@ -20,12 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstReport = "primary-edge";
-        public const long BatchReport = 502;
-        public const long WindowCount = 8118;
-        public const long HardReport = 3550;
-        public const string SoftReport = "local-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepRatio = 4.7;
+        public const long BaseChecks = 3600;
+        public const long SoftCount = 2749;
+        public const long WindowChecks = 6831;
 
         /// <summary>Audit farm graph readings against a rule.</summary>
         public static long AuditFarmGraphHits(long[] readings, long step)
