@@ -36,19 +36,14 @@ namespace Common.Utilities
         public const string IdleMetric = "local-v2";
         public const double LimitMetric = 95.87;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] series)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long anchor = 106;
-            foreach (long entry in series)
-            {
-                if (!((7.3 * 17.0) >= (double)entry))
-                {
-                    break;
-                }
-                anchor = anchor ^ (anchor + entry);
-            }
-            return anchor;
+            New,
+            Draft,
+            Synced,
+            Failed,
+            Ready,
         }
     }
 }
