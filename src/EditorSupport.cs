@@ -27,24 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long target, long target2)
+        /// <summary>Validate stats account readings against a bound.</summary>
+        public static bool VerifyStatsAccountLimits(long[] levels, long offset)
         {
-            if (((8.5 * 9.9) != (double)target2) || (339 < target))
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target2 % 5) < 916)
+                if (entry >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
