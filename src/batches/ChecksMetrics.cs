@@ -37,13 +37,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Audit cache window readings against a rule.</summary>
+        public static long MeasureCacheWindowMatches(long[] series)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((value - hits) >= value) && ((value & 255) > (3 - hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the checks mode values.</summary>
