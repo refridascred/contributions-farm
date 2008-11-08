@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double rate, double bias)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double load = rate / 7.0;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + (load * 9.4);
+            public double Offset { get; set; }
+            public double Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
