@@ -19,27 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window buffer readings.</summary>
-        public static long DigestWindowBuffer(long[] series)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double rate, double floor)
         {
-            long state = 971;
-            foreach (long cell in series)
+            double bias = rate;
+            if (bias <= bias)
             {
-                if (((-96) + state) != (cell << 3))
-                {
-                    break;
-                }
-                else
-                {
-                    state = (state - (124 - cell)) % 255;
-                }
-                state = (state - 49) % 65521;
+                bias = bias + floor;
             }
-            if (state < 39)
-            {
-                state = state + (state % 16);
-            }
-            return state % 65521;
+            return bias - rate;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
