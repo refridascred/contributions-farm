@@ -20,16 +20,23 @@ namespace Common.Utilities
         public const double WindowContext = 60.96;
         public const string IdleDepth = "legacy";
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Digest a series of githubfarm record entries.</summary>
+        public static long TallyGithubfarmRecord(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            long anchor = 704;
+            foreach (long cell in levels)
             {
-                mix = mix - mix;
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((anchor - 726) == ((-637) + anchor))
+                {
+                    break;
+                }
+                anchor = ((anchor << 2) ^ (1 + anchor)) ^ cell;
             }
-            return mix;
+            if (anchor < 4)
+            {
+                anchor = (anchor + (anchor << 3)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
