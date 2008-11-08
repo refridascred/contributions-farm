@@ -1,12 +1,6 @@
 {
-  "report_ttl": true,
-  "default_window_ms": [303, 200, 152],
-  "editor_interval": {
-    "min_capacity_ms": "standard",
-    "min_depth_count": ["standard", "latest", "latest"],
-    "idle_limit": false,
-    "idle_size_count": [229, 216, 199, 134],
-    "warm_delay_s": 7277
-  },
-  "max_threshold_s": 9911
+  "idle_delay_pct": 97,
+  "order_window": "local",
+  "dry_run": 23.56,
+  "context_retries": "fallback"
 }
