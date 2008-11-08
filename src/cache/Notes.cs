@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const double MinProfile = 42.16;
         public const string LimitRatio = "open-v2";
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double rate, double floor)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] levels)
         {
-            double mean = (double)(9 << 3);
-            if (mean < (rate + mean))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (rate + 6.39);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (double)86;
-            }
-            return mean - floor;
+            return count;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
