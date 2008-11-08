@@ -23,16 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Derive the next queue filter value from a seed.</summary>
+        public static long StepQueueFilter(long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                mark = ((mark << 2) ^ bound) % 97;
-                mark = ((mark * 5) + (long)i) % 1000;
+                total = ((total << 3) ^ (total << 2)) % 1000;
+                total = total ^ (1 * 2);
+                total = ((total * 4) + (long)i) % 97;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Match up counter samples.</summary>
