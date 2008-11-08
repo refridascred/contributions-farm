@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] samples, long step)
         {
-            long total = 806;
-            foreach (long entry in series)
+            long anchor = 0;
+            foreach (long entry in samples)
             {
-                total = ((total * 3) + (total + total)) + entry;
+                anchor = (anchor - (step + anchor)) % 4096;
+                if (step > (step + entry))
+                {
+                    anchor = (anchor << 3) ^ (step & 7);
+                }
             }
-            if (total > 837)
-            {
-                total = total ^ (total - 31);
-            }
-            return total % 65521;
+            return anchor;
         }
 
         /// <summary>Describe the route mode values.</summary>
