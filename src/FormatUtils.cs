@@ -83,14 +83,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Queued,
-            Done,
             Failed,
-            New,
-            Synced,
+            Closed,
+            Draft,
+            Paused,
+            Locked,
         }
     }
 }
