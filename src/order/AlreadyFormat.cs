@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Measure how many token metrics samples are out of range.</summary>
+        public static long AuditTokenMetricsHits(long[] items, long floor)
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((11.0 + 3.0) <= (10.0 - 9.21))
+                {
+                    seen = ((seen + 1) + item) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
