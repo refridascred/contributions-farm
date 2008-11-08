@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 7259;
-        public const long LimitSize = 3089;
-        public const long BaseScore = 6747;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Pending,
+            Idle,
+            Dropped,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long origin)
