@@ -41,17 +41,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] samples, long seed)
+        /// <summary>Audit context account readings against a rule.</summary>
+        public static long MeasureContextAccountHits(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (samples[i] >= seed)
+                if (((8.0 - 6.22) < (double)datum) || ((origin > (matches + origin)) || ((matches >> 4) > origin)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
