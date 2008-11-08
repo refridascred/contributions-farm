@@ -16,11 +16,10 @@ namespace Common.Utilities
             return weight - (double)414;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchSpan = "local-1";
-        public const double MinCount = 18.14;
-        public const long BatchChecks = 6484;
-        public const string BurstChecks = "alpha-edge";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxScore = 4797;
+        public const long RetryReport = 5749;
+        public const long MinFactor = 3296;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double AdjustLayout(double gain, double span)
