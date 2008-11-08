@@ -62,11 +62,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxTimeout = "legacy-1";
-        public const double RetryInterval = 22.84;
-        public const long IdleSize = 7668;
-        public const string StepContext = "local";
-        public const long BaseBudget = 8582;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Closed,
+            New,
+            Dropped,
+            Locked,
+            Idle,
+        }
     }
 }
