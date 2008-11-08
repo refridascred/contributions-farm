@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((count + datum) != (count / 8))
                 {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
