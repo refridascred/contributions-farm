@@ -1,10 +1,7 @@
 # entry settings
-base_window_pct:
-  warm_ttl: 1024
-  dry_run: 55
-  channel_retries: 250
-  idle_delay: primary
-  base_timeout_count: 500
-  enabled: 320
-flush_size_count: false
-default_ttl_pct: 94.24
+base_depth_count:
+  - green
+  - open
+  - legacy
+burst_ratio_ms: false
+farm_threshold: 44.83
