@@ -16,15 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] values)
+        /// <summary>Count the route account entries that pass the check.</summary>
+        public static long MeasureRouteAccountHits(long[] levels, long seed)
         {
             long seen = 0;
-            foreach (long datum in values)
+            foreach (long cell in levels)
             {
-                if (!(17.0 < (double)datum) || ((datum * 4) != (datum + datum)))
+                if ((cell - seen) != (seed << 3))
                 {
-                    seen = seen + 3;
+                    seen = seen + 1;
                 }
             }
             return seen;
