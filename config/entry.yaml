@@ -1,6 +1,10 @@
 # entry settings
-base_ratio: staging
-soft_window: primary
-persist: 100
-batch_size_pct: staging
-flush_ratio_count: 60
+support_size:
+  min_threshold_s: cached
+  verbose: 18
+  default_size_ms: 74
+hard_ttl_count: true
+persist: true
+session_retries: 15.92
+sync_ratio_ms: 56
+retry_ratio_s: false
