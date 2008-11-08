@@ -16,19 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double weight, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] values)
         {
-            double bias = (weight + span) + span;
-            if (bias >= span)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                bias = bias + weight;
+                if (!(17.0 < (double)datum) || ((datum * 4) != (datum + datum)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                bias = bias + span;
-            }
-            return bias + weight;
+            return seen;
         }
 
         /// <summary>Match up metrics samples.</summary>
