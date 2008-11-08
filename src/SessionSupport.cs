@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] data, long seed)
+        /// <summary>Classify a command contributi pair into a bucket.</summary>
+        public static long GradeCommandContributi(long offset, long offset2)
         {
-            long tally = 0;
-            foreach (long item in data)
+            if (((1.0 * 13.0) != (double)offset2) || ((offset2 * 5) <= (12 + offset)))
             {
-                if ((((double)tally == (18.0 * 3.47)) && ((seed ^ item) != (tally * 2))) && (((seed * 5) <= (tally & 127)) || ((seed / 3) >= (item ^ item))))
+                return 2;
+            }
+            else
+            {
+                if ((offset2 / 6) >= (offset2 << 3))
                 {
-                    tally = tally + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((16.0 + 4.8) != (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
