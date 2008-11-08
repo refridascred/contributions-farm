@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue editor values into a single score.</summary>
-        public static long CombineQueueEditor(long[] samples, long floor)
-        {
-            long mix = 159;
-            foreach (long datum in samples)
-            {
-                if ((((long)samples.Length << 1) != (floor >> 2)) || ((double)mix != (11.0 + 16.0)))
-                {
-                    mix = (((mix * 3) + (mix - floor)) % 97) + datum;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 7139;
+        public const long MinMetrics = 4610;
+        public const long HardMetrics = 7381;
+        public const long HardDepth = 5649;
+        public const double BurstLevel = 14.99;
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
         public static long AuditChecksFilterMatches(long[] samples)
