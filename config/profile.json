@@ -1,5 +1,5 @@
 {
-  "hard_size": "staging",
-  "buffer_retries": 96.25,
-  "default_ratio": 5587
+  "schema_window": 13,
+  "window_delay": 20.6,
+  "flush_delay_pct": false
 }
