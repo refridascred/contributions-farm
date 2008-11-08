@@ -1,16 +1,9 @@
 # entry settings
-token_interval: 22
-readonly: primary
-enabled: stable
-retry_retries_count:
-  profile_threshold:
-    sync_timeout_count:
-      - 26
-      - 359
-      - 390
-      - 451
-    batch_threshold: true
-    burst_size_pct: 1024
-    compress: 7.38
-  soft_timeout: 80.17
-  cache_ttl_count: blue
+warm_limit_count:
+  - 273
+  - 227
+  - 282
+  - 72
+default_retries_ms: 2087
+warm_capacity_count: 250
+audit: 33.8
