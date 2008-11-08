@@ -24,11 +24,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] series, long step)
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            long total = 179;
+            foreach (long reading in series)
+            {
+                if (((step - step) < (-12)) && ((3 << 2) >= (long)series.Length))
+                {
+                    total = ((total - (total ^ total)) % 4096) ^ reading;
+                }
+            }
+            if (total > 778)
+            {
+                total = (total - total) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Combine context values into a single score.</summary>
