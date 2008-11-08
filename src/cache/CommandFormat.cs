@@ -31,19 +31,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] data, long bound)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            foreach (long datum in data)
             {
-                if (((reading % 60) != (reading + tally)) || ((reading < (tally >> 5)) && ((5.05 - 6.07) < (double)tally)))
+                if ((0 >> 2) >= (tally - tally))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = ((tally + 1) + datum) - bound;
                 }
             }
             return tally;
