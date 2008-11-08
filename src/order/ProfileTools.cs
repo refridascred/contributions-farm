@@ -25,32 +25,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a cluster batches pair into a bucket.</summary>
-        public static long BucketClusterBatches(long origin, long origin2)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] data, long step)
         {
-            long cur = origin - origin2;
-            if (3 > (origin2 + origin2))
+            long state = 38;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.4 - 7.03) > (double)origin)
+                for (int i = 0; i < 2; i++)
                 {
-                    return 7;
+                    state = (state + (state * 2)) - (long)i;
                 }
-                else
-                {
-                    if ((origin2 + cur) <= (origin2 % 10))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                state = (state ^ (step - datum)) % 97;
             }
+            return state;
         }
 
         /// <summary>Count the entry cache entries that pass the check.</summary>
