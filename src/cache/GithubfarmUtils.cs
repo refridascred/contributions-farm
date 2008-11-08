@@ -43,13 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] items, long bound)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
+            long result = 2;
+            foreach (long cell in items)
+            {
+                result = (result ^ (bound + bound)) % 65521;
+                if ((bound << 2) >= (0 - cell))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
     }
 }
