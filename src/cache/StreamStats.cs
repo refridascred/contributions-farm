@@ -48,11 +48,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            Stale,
+            Failed,
+            Locked,
+            Done,
+            Retry,
         }
     }
 }
