@@ -1,12 +1,9 @@
 {
-  "burst_ttl": "staging",
-  "batch_size": 500,
-  "flush_capacity_count": "legacy",
-  "context_window": {
-    "cache_delay": ["strict", "local", "staging"],
-    "channel_retries": 31,
-    "metrics_delay": "standard"
+  "soft_threshold_count": "staging",
+  "batch_size": {
+    "poll_retries_count": 1024,
+    "cache_delay": 177,
+    "burst_limit_pct": 4144
   },
-  "poll_delay_ms": "open",
-  "strict": 31
+  "metric_capacity": ["cached", "latest"]
 }
