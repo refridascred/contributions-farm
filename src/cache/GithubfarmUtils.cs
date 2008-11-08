@@ -60,9 +60,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 1527;
-        public const string WindowRatio = "standard-edge";
-        public const long BurstRatio = 8920;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long target, long bound)
+        {
+            long slot = target - bound;
+            if ((target >> 2) > slot)
+            {
+                return 8;
+            }
+            else
+            {
+                if (2.9 >= (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
