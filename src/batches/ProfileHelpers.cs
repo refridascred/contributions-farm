@@ -47,38 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long floor, long target)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            if ((76 < (floor + target)) || ((floor & 127) <= (48 / 2)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + floor) < (7 - floor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((target * 3) == (target / 6)) && ((floor + floor) >= (target % 7)))
+                    if ((series[i] + series[j]) != 8)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3.21 / 4.0) < (double)floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
