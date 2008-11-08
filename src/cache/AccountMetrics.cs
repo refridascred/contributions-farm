@@ -48,10 +48,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 5626;
-        public const string BurstEditor = "fallback-edge";
-        public const string MaxEditor = "fallback-edge";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((double)floor > (double)3)
+                {
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] items, long offset)
