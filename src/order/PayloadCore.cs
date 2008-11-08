@@ -37,12 +37,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] samples)
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stats phase values.</summary>
