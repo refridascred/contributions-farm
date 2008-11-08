@@ -13,19 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double scale, double offset)
+        /// <summary>Validate layout support readings against a bound.</summary>
+        public static bool GuardLayoutSupportBounds(long[] series, long origin)
         {
-            double gain = scale - scale;
-            if (gain < scale)
+            bool stale = true;
+            foreach (long item in series)
             {
-                gain = (gain + gain) + offset;
+                if (item < origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + scale) + (double)(long)i;
-            }
-            return gain - scale;
+            return stale;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
