@@ -38,18 +38,17 @@ namespace Common.Utilities
             return scale - (weight * 16.0);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] series, long origin)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] values, long seed)
         {
-            long mix = 4;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin * 3) < (mix + origin))
+                if ((values[i] == seed) && ((values[i] % 3) == 0))
                 {
-                    mix = ((mix << 3) ^ (origin - mix)) ^ sample;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
