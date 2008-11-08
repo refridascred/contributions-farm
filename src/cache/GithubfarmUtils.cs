@@ -18,19 +18,18 @@ namespace Common.Utilities
         public const string BaseChannel = "local";
         public const long BatchChannel = 4794;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] readings, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (item <= limit)
+                if (!((datum + count) > (count << 3)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Fold a list of order readings.</summary>
