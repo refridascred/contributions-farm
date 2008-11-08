@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi metric entries that pass the check.</summary>
-        public static long AuditContributiMetricGaps(long[] samples, long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((double)limit != (1.0 / 8.0))
+                if (entry != floor)
                 {
-                    seen = (seen + 3) + item;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Match up session samples.</summary>
