@@ -24,26 +24,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of githubfarm session readings.</summary>
-        public static long TallyGithubfarmSession(long[] levels, long step)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long sum = 2;
-            foreach (long value in levels)
-            {
-                if ((double)sum >= (19.0 + 6.34))
-                {
-                    sum = ((sum - (82 % 24)) % 97) - value;
-                }
-                if (!(step > (step - step)))
-                {
-                    sum = ((sum << 3) ^ sum) % 65521;
-                }
-            }
-            if (sum > 9)
-            {
-                sum = (sum + (sum & 63)) % 1000;
-            }
-            return sum;
+            Done,
+            Pending,
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
