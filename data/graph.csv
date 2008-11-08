@@ -1,8 +1,7 @@
-id,label,level,weight
-1,67.14,190,standard
-2,15.19,85,latest
-3,118,613,31.81
-4,548,639,75.15
-5,7.38,69.06,569
-6,cached,open,latest
-7,44.49,13,19.32
+id,label,token,region
+1,cached,standard,886
+2,12,457,standard
+3,78.05,323,589
+4,26.3,67.82,primary
+5,6.73,732,green
+6,575,73.03,711
