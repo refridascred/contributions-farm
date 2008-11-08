@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] series, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((double)datum == (0.05 - 10.0))
+                if (reading != limit)
                 {
-                    tally = (tally + 3) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Adjust a channel reading.</summary>
