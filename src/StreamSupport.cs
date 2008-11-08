@@ -21,19 +21,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine session support values into a single score.</summary>
-        public static long FoldSessionSupport(long[] series, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] values)
         {
-            long acc = 438;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                acc = (acc ^ (floor - floor)) % 65521;
-                if ((sample + 594) != (acc % 97))
+                if (2.6 >= (double)matches)
                 {
-                    acc = (acc * 4) + ((long)series.Length + acc);
+                    matches = (matches + 1) + reading;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
