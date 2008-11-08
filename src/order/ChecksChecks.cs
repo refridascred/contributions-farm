@@ -54,22 +54,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] data, long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long limit, long bound)
         {
-            long result = -49;
-            foreach (long cell in data)
+            if ((bound * 3) >= limit)
             {
-                if ((result - 46) < target)
+                return 5;
+            }
+            else
+            {
+                if ((limit & 7) > (limit << 1))
                 {
-                    result = result ^ (target + cell);
+                    return 7;
+                }
+                else
+                {
+                    if (!((7 << 1) != (bound + limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (result < 253)
-            {
-                result = ((result * 3) + (target - result)) % 255;
-            }
-            return result % 1000;
         }
     }
 }
