@@ -48,12 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 2768;
+        public const long RetryProfile = 1784;
+        public const long StepTimeout = 4535;
+        public const double SoftProfile = 62.46;
     }
 }
