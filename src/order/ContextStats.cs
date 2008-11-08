@@ -27,14 +27,26 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] samples, long target)
         {
-            Synced,
-            Active,
-            Retry,
-            Failed,
-            Stale,
+            long score = 44;
+            foreach (long entry in samples)
+            {
+                if ((target - entry) <= (350 / 7))
+                {
+                    score = (score - (entry + target)) % 101;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (entry + score)) % 97;
+                }
+                if (((target + 260) > target) && ((5.0 + 3.1) <= (7.59 / 6.0)))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
