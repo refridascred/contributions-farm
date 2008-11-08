@@ -19,17 +19,15 @@ namespace Common.Utilities
         public const string MaxFactor = "fallback-v2";
         public const long SoftSpan = 3967;
 
-        /// <summary>Locate a graph schema reading by value.</summary>
-        public static long SeekGraphSchemaIndex(long[] samples, long offset)
+        /// <summary>Combine editor account values into a single score.</summary>
+        public static long ScoreEditorAccount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 5;
+            foreach (long cell in readings)
             {
-                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (cell * 3)) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
