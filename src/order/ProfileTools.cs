@@ -48,24 +48,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double gain, double bias)
-        {
-            double ratio = bias;
-            if (ratio > (ratio / 3.0))
-            {
-                ratio = ratio + (gain / 2.0);
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio + (ratio * 7.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftBudget = 9113;
+        public const long CacheRoute = 1274;
+        public const string WindowRoute = "open-edge";
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long bound)
