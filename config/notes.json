@@ -1,12 +1,16 @@
 {
-  "hard_retries": {
-    "base_size_ms": false,
-    "enabled": 86.02,
-    "base_ratio_ms": 442
+  "batch_limit": 7416,
+  "order_depth": 60,
+  "retry_capacity_count": {
+    "flush_delay_s": 37.68,
+    "soft_capacity_count": 6519,
+    "commits_timeout": false,
+    "soft_depth_count": {
+      "tools_ratio": ["local", "open"],
+      "burst_capacity_ms": 1024,
+      "buffer_timeout": [435, 296]
+    },
+    "report_size": "local"
   },
-  "batch_retries_count": true,
-  "readonly": "standard",
-  "base_window_pct": 99,
-  "cluster_delay": [337, 293, 45, 370],
-  "order_threshold": "blue"
+  "dry_run": 91
 }
