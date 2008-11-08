@@ -40,30 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] values, long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] readings, long floor)
         {
-            long result = 317;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((sample + limit) == (limit & 7))
+                if (value >= floor)
                 {
-                    result = (result + (result / 7)) % 97;
-                }
-                else
-                {
-                    result = result - (sample - result);
-                }
-                if ((double)result != (double)6)
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (result > 71)
-            {
-                result = (result - (result / 7)) % 101;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Locate a channel metric reading by value.</summary>
