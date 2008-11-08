@@ -16,12 +16,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheFactor = "primary-edge";
-        public const long RetryBatches = 7751;
-        public const long BaseBatches = 7377;
-        public const double StepDepth = 69.3;
-        public const long MaxBatches = 7616;
+        /// <summary>Check that every tools githubfarm entry stays within the limit.</summary>
+        public static bool GuardToolsGithubfarmBounds(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleWidth = 5678;
