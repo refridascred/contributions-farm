@@ -14,21 +14,16 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Derive the next editor context value from a seed.</summary>
+        public static long StepEditorContext(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum * 4) + (7 >> 4)) % 65521;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Check that every report session entry stays within the limit.</summary>
