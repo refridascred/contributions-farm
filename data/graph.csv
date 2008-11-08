@@ -1,6 +1,10 @@
-id,weight,rank,ratio
-1,297,staging,eu-west
-2,42.43,standard,1.49
-3,eu-west,12,14
-4,170,134,587
-5,standard,993,open
+id,score,level
+1,426,47.63
+2,primary,34.41
+3,405,cached
+4,eu-west,eu-west
+5,11.25,primary
+6,326,green
+7,33.53,17.01
+8,256,stable
+9,cached,960
