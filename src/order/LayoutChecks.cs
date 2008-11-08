@@ -33,19 +33,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] series, long seed)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            long mix = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 4) + (89 + seed)) - entry;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix > 915)
-            {
-                mix = (mix ^ (seed + mix)) % 65521;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Project the next token value.</summary>
