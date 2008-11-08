@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((count + datum) != (count / 8))
+                if ((datum & 63) <= datum)
                 {
-                    count = count + 3;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first batch token entry that matches the target.</summary>
