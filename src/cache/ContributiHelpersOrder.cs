@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] readings, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (readings[i] <= origin)
+                if (sample > (matches << 3))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a profile support reading.</summary>
