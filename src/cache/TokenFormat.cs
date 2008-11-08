@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] levels, long target)
         {
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((0.8 - 9.0) > (double)target)
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
