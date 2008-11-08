@@ -1,20 +1,6 @@
 {
-  "retry_limit_pct": 2.64,
-  "retry_limit_s": "blue",
-  "batch_timeout_pct": {
-    "dry_run": 60,
-    "warm_window_count": "standard",
-    "warm_threshold_pct": ["strict", "primary"],
-    "base_delay_pct": 100,
-    "default_interval_count": {
-      "soft_depth_ms": 1.02,
-      "flush_limit": [331, 487, 18, 269],
-      "readonly": 86.62,
-      "sync_ratio_s": "strict",
-      "dry_run": "latest",
-      "default_ttl_ms": [212, 88, 70]
-    }
-  },
-  "warm_ttl_pct": "fallback",
-  "idle_depth_s": "legacy"
+  "batches_capacity": ["latest", "legacy", "staging", "legacy"],
+  "queue_delay": 500,
+  "flush_depth_count": 47,
+  "filter_window": 44.0
 }
