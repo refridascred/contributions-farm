@@ -33,13 +33,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinSpan = 17.11;
+        public const long WindowInterval = 3648;
+        public const string DefaultWidth = "staging-edge";
+        public const long DefaultInterval = 5362;
     }
 }
