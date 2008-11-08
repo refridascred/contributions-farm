@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = sum - (step & 3);
-                sum = (sum + (step & 63)) % 4096;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
