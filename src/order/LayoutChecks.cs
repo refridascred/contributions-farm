@@ -24,15 +24,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double rate, double bias)
+        /// <summary>Count checks contributi pairs that satisfy a relation.</summary>
+        public static long CompareChecksContributiCount(long[] data)
         {
-            double gain = rate;
-            if (gain < (double)6)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain + gain) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain + (double)5;
+            return count;
         }
 
         /// <summary>Describe the batch kind values.</summary>
