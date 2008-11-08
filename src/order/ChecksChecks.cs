@@ -16,22 +16,22 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] data, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (!((item + item) >= step))
+                if ((107 % 64) < (origin % 2))
                 {
-                    count = count + 1;
+                    hits = (hits + 3) + item;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the contributi class values.</summary>
