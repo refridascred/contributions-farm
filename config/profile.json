@@ -1,18 +1,5 @@
 {
-  "filter_threshold": {
-    "report_limit": "latest",
-    "burst_depth_count": {
-      "batch_delay_ms": "latest",
-      "audit": true,
-      "base_ttl_count": [295, 11, 42],
-      "command_threshold": ["green", "stable"],
-      "default_window_pct": 4110
-    },
-    "retry_ratio_s": 1024,
-    "cache_depth_pct": ["green", "blue", "blue"],
-    "counter_ratio": ["open", "cached", "eu-west", "green"],
-    "cache_ratio_s": "staging"
-  },
-  "flush_size_count": 100,
-  "min_interval_ms": 2438
+  "strict": 20.99,
+  "batch_delay_count": [289, 239, 20],
+  "enabled": "edge"
 }
