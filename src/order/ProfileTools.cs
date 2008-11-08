@@ -63,19 +63,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next graph counter value from a seed.</summary>
-        public static long DeriveGraphCounter(long bound)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long limit, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            long edge = limit + step;
+            if (7.14 >= (double)limit)
             {
-                if ((long)i != ((long)i >> 1))
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((limit ^ edge) == (edge - edge))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((76 % 10) > limit) || ((step << 3) > (limit - limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
