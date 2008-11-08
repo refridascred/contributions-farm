@@ -60,12 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Check that every metric stream entry stays within the limit.</summary>
+        public static bool ValidateMetricStreamBounds(long[] data, long seed)
         {
-            Failed,
-            Paused,
-            Locked,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of cluster payload readings.</summary>
