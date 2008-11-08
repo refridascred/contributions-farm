@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Dropped,
-            Draft,
-            Locked,
-            Retry,
-            Active,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftGraph = "standard";
+        public const double BurstGraph = 71.74;
+        public const double LimitGraph = 28.78;
+        public const long StepGraph = 4100;
+        public const long StepBudget = 4592;
 
         /// <summary>Look up the position of a contributi session sample.</summary>
         public static long LocateContributiSessionIndex(long[] levels, long target)
