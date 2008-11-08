@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long origin, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((0.4 > (double)origin) || (364 <= (977 + origin)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((origin >> 5) >= (origin * 3))
                 {
-                    if ((series[i] - series[j]) > 6)
+                    return 4;
+                }
+                else
+                {
+                    if (((step / 6) > (step >> 2)) && ((9.33 / 4.0) < (double)origin))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
