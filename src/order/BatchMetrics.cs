@@ -61,11 +61,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Grade a payload counter value against two limits.</summary>
+        public static long RankPayloadCounter(long step, long target)
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            long next = step - target;
+            if ((((-3) & 7) <= (next % 16)) && (next <= (step + 550)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((next / 3) < next)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((step >> 3) < step) || (next >= (next & 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((1.76 - 5.0) == (double)step) && (target <= step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a filter format counter forward.</summary>
