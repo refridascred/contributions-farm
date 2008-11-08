@@ -19,19 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] values, long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long origin, long floor)
         {
-            bool ok = true;
-            foreach (long item in values)
+            if ((9 + floor) > (origin ^ floor))
             {
-                if (item > origin)
+                return 4;
+            }
+            else
+            {
+                if ((236 + 62) != (floor << 1))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (674 >= (floor >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
