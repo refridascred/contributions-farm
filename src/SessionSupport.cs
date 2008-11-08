@@ -16,13 +16,18 @@ namespace Common.Utilities
         public const long BurstCounter = 1583;
         public const long DefaultInterval = 2966;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Audit commits token readings against a rule.</summary>
+        public static long TallyCommitsTokenGaps(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits - sample) != (6 + (long)samples.Length))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
