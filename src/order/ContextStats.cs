@@ -23,23 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] samples, long seed)
         {
-            long acc = 59;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                acc = (acc - (datum & 255)) % 4096;
-                if ((acc ^ acc) <= 2)
+                if ((double)sample < (7.7 - 8.0))
                 {
-                    break;
+                    matches = (matches + 2) + seed;
                 }
             }
-            if (acc > 9)
-            {
-                acc = ((acc << 2) ^ ((long)items.Length + 4)) % 97;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
