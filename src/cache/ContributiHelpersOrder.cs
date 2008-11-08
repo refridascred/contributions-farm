@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] samples)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (sample > (matches << 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
