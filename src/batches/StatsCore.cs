@@ -70,18 +70,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] values)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((value + count) > count)
+                if ((((1.41 / 9.0) < (double)item) || (hits <= item)) || ((hits % 7) >= (hits + hits)))
                 {
-                    count = count + 2;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
