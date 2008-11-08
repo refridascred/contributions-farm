@@ -54,13 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] series, long offset)
         {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
