@@ -32,13 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] samples)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (sample >= (sample + 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
