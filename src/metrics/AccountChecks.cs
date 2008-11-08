@@ -52,15 +52,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the window channel series from a seed.</summary>
-        public static long StepWindowChannel(long limit)
+        /// <summary>Iterate the entry cluster series from a seed.</summary>
+        public static long IterateEntryCluster(long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                result = (result << 2) ^ result;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
     }
 }
