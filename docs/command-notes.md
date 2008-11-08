@@ -1,11 +1,12 @@
 # Command notes
 
-Keep support and report names short and lowercase.
-The profile module keeps session values in sync with the commits cache.
-Keep contributi and session names short and lowercase.
+The route helpers are pure functions, so they are safe to call from any thread.
+The buffer module keeps stream values in sync with the channel cache.
+Each checks is validated before it reaches the order queue.
 
 ## Guidelines
 
-- Log every metric change
-- Review queue limits each release
-- Keep filter values small
+- Document new context fields
+- Keep buffer values small
+- Prefer context defaults
+- Validate profile input early
