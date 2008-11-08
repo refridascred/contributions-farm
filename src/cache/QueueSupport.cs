@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit command cache readings against a rule.</summary>
-        public static long AuditCommandCacheGaps(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((double)hits <= 18.0)
+                if (item > (seen * 5))
                 {
-                    hits = (hits + 3) ^ sample;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
