@@ -21,19 +21,21 @@ namespace Common.Utilities
         public const string LimitSession = "fallback";
         public const long WindowRatio = 2470;
 
-        /// <summary>Check that every report session entry stays within the limit.</summary>
-        public static bool CheckReportSessionLimits(long[] data, long floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
