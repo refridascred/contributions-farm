@@ -63,18 +63,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum != (2.2 + 10.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheScore = 4012;
+        public const long StepLevel = 8389;
+        public const string BurstWindow = "alpha-1";
+        public const long LimitWindow = 2931;
+        public const long BaseWindow = 3226;
     }
 }
