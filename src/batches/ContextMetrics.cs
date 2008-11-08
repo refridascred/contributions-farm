@@ -15,11 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double ratio, double floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double rate = floor;
-            return (rate + 2.0) + ratio;
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
