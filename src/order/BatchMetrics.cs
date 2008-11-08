@@ -35,11 +35,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 4041;
-        public const string MinSpan = "stable-v2";
-        public const long MaxScore = 4086;
-        public const long RetryScore = 7442;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Draft,
+            Queued,
+            Failed,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderHits(long[] series)
