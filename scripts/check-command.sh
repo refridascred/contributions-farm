@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=179
-log "limit is ${COMMAND_LIMIT}"
-
-for item in blue eu-west; do
+for item in edge legacy green; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
