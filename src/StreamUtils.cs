@@ -71,11 +71,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstFactor = 58.22;
-        public const string MaxCount = "staging-1";
-        public const double CacheFactor = 73.7;
-        public const double IdleSize = 93.41;
-        public const string WindowNotes = "strict-v2";
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
