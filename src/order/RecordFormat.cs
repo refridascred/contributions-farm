@@ -23,12 +23,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Ready,
-            Closed,
             Failed,
+            Closed,
+            Paused,
+            Draft,
+            Synced,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
