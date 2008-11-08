@@ -1,6 +1,5 @@
 # entry settings
-retry_timeout: strict
-warm_timeout: true
-cluster_delay: primary
-default_timeout_s: standard
-dry_run: green
+default_interval: 23
+dry_run: 5868
+default_size_ms: 8174
+poll_depth_pct: latest
