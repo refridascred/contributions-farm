@@ -28,18 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] series)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((seen >= (item + seen)) || ((2.04 - 9.3) < (double)item)) && ((seen <= (item >> 1)) && ((4.1 + 9.66) < (double)item)))
+                if (sample < (-421))
                 {
-                    seen = seen + 2;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Compare every pair of profile order readings.</summary>
