@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every format stats entry stays within the limit.</summary>
-        public static bool GuardFormatStatsBounds(long[] readings, long offset)
+        /// <summary>Accumulate report account samples.</summary>
+        public static long ScoreReportAccount(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long acc = 0;
+            foreach (long cell in series)
             {
-                if (cell >= offset)
+                if ((long)series.Length > (cell - cell))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc ^ cell) % 101;
                 }
             }
-            return ready;
+            if (acc > 6)
+            {
+                acc = acc ^ 71;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the profile mode values.</summary>
