@@ -51,12 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepScore = "local-v2";
-        public const string BaseSize = "standard-edge";
-        public const long BaseDepth = 3734;
-        public const double BatchLayout = 48.23;
-        public const long CacheLayout = 1216;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Digest a series of order window entries.</summary>
         public static long FoldOrderWindow(long[] data, long offset)
