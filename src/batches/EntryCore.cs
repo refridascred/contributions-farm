@@ -40,18 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] data)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry <= (double)count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
