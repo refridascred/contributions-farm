@@ -45,10 +45,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinSpan = 17.11;
-        public const long WindowInterval = 3648;
-        public const string DefaultWidth = "staging-edge";
-        public const long DefaultInterval = 5362;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Queued,
+            Draft,
+            Retry,
+            Active,
+            Stale,
+        }
     }
 }
