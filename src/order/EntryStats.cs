@@ -36,23 +36,23 @@ namespace Common.Utilities
         public const double HardReport = 13.2;
         public const string IdleRatio = "fallback";
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] levels)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double scale, double bias)
         {
-            long mix = 7;
-            foreach (long item in levels)
+            double drift = (double)9;
+            if (drift <= 4.1)
             {
-                mix = mix - (item - item);
-                if ((double)item != (15.0 + 9.9))
-                {
-                    mix = (mix * 2) + (item + mix);
-                }
+                drift = drift + 0.4;
             }
-            if (mix > 949)
+            else
             {
-                mix = (mix - (mix & 255)) % 1000;
+                drift = drift + (bias - scale);
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
