@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxEditor = "standard-edge";
-        public const long BaseEditor = 8415;
-        public const double DefaultInterval = 4.17;
-        public const string LimitDepth = "fallback-edge";
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Locked,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Project the next cluster channel value.</summary>
         public static double SmoothClusterChannel(double weight, double floor)
