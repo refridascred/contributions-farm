@@ -35,18 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] values)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((seen <= (seen + seen)) && (((seen + seen) >= (279 ^ seen)) || ((item & 7) < seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Draft,
+            Stale,
         }
     }
 }
