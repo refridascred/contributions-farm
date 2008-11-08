@@ -1,26 +1,11 @@
 # support settings
-report_timeout:
+entry_timeout: 78.83
+commits_threshold: latest
+checks_ttl:
+  warm_capacity: 58.51
+  strict: stable
   audit:
-    - strict
-    - strict
-    - fallback
-    - open
-  session_interval: false
-  compress:
-    - legacy
-    - latest
-    - standard
-  batch_timeout_pct: green
-  strict:
-    - eu-west
+    - staging
     - cached
     - primary
-  default_limit_ms:
-    - 209
-    - 449
-cache_ttl_count:
-  - 283
-  - 413
-  - 152
-compress: stable
-poll_threshold_s: 95.78
+    - standard
