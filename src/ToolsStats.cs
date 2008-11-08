@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] items, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (datum != limit)
+                if (item >= origin)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
