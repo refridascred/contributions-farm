@@ -61,13 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long limit)
         {
-            Failed,
-            Closed,
-            New,
-            Done,
+            long score = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
