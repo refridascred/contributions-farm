@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] data, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 413;
+            foreach (long cell in readings)
             {
-                if (data[i] == target)
+                if ((cell >> 4) >= (limit + (-329)))
                 {
-                    return (long)i;
+                    sum = sum - ((long)readings.Length - limit);
+                    break;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (cell * 5)) % 255;
+                }
+                if (((cell % 10) >= ((-5) / 4)) && (92 > (cell ^ cell)))
+                {
+                    sum = ((sum << 2) ^ 25) % 65521;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
