@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((long)i == (seed & 7))
-                {
-                    score = (score - (score % 16)) % 1000;
-                    score = score ^ (score + seed);
-                    break;
-                }
-                score = score ^ (long)i;
-                if ((seed ^ score) > seed)
-                {
-                    score = score - seed;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of profile readings.</summary>
