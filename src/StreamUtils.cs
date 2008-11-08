@@ -36,12 +36,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Locate a notes queue reading by value.</summary>
+        public static long FindNotesQueueIndex(long[] items, long offset)
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
