@@ -30,17 +30,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer githubfarm value from a seed.</summary>
-        public static long RollBufferGithubfarm(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = acc + acc;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultLevel = 7279;
+        public const long MaxFactor = 5175;
+        public const long DefaultRatio = 9750;
+        public const string BatchSession = "strict";
+        public const long IdleScore = 7912;
 
         /// <summary>Grade a checks record value against two limits.</summary>
         public static long ClassifyChecksRecord(long offset, long offset2)
