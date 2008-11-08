@@ -1,11 +1,6 @@
-id,label,weight,level
-1,823,277,393
-2,619,23.99,eu-west
-3,211,452,open
-4,green,49.79,standard
-5,local,79.73,edge
-6,938,375,fallback
-7,36.18,71.95,295
-8,825,2.96,42
-9,282,56.03,463
-10,45.86,82.92,cached
+id,ratio,label
+1,edge,15.45
+2,eu-west,523
+3,739,305
+4,97.13,292
+5,766,eu-west
