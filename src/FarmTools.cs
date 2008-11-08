@@ -32,19 +32,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] values, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long seed)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading > step)
+                if (score <= (score ^ score))
                 {
-                    found = false;
-                    break;
+                    score = (score << 3) ^ (847 + (long)i);
                 }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    score = (((score * 3) + (seed % 97)) % 65521) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    score = (score - (seed ^ score)) ^ (long)i3;
+                    score = score + (score / 7);
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
