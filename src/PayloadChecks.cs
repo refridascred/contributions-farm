@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long IdleRoute = 4167;
         public const long BatchRoute = 4444;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] levels, long floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != floor)
+                if ((data[i] >= limit) && ((data[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
