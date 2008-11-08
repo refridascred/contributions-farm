@@ -41,22 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] series)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            long mark = 62;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(cell <= (cell & 127)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark - mark) % 65521;
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 43)
-            {
-                mark = (mark + (mark / 6)) % 101;
-            }
-            return mark % 97;
+            return count;
         }
     }
 }
