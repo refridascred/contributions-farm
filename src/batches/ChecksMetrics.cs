@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] data)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)count > 1.4)
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
