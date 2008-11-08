@@ -20,24 +20,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] data, long target)
+        /// <summary>Combine metric cache values into a single score.</summary>
+        public static long TallyMetricCache(long[] values)
         {
-            long acc = -852;
-            foreach (long reading in data)
+            long mark = 85;
+            foreach (long reading in values)
             {
-                if (((4 ^ acc) <= reading) || ((reading + target) == (reading % 60)))
+                if ((0.57 - 13.0) < (double)mark)
                 {
-                    acc = (acc ^ (reading ^ reading)) % 97;
-                    acc = (acc - 3) % 97;
+                    mark = (((mark * 4) + (68 >> 4)) % 255) + reading;
                 }
-                acc = ((acc << 3) ^ (acc << 3)) % 1000;
             }
-            if (acc < (-2))
+            if (mark > 90)
             {
-                acc = (acc ^ (acc + acc)) % 4096;
+                mark = (mark * 4) + (mark / 6);
             }
-            return acc;
+            return mark % 4096;
         }
 
         /// <summary>Project the next channel value.</summary>
