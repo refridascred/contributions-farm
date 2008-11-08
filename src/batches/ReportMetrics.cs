@@ -14,18 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] readings)
         {
-            long score = 99;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((score > (score + datum)) || ((double)datum <= (double)3))
+                if ((tally >> 4) > (item + item))
                 {
-                    score = (score + (score + datum)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Digest a series of already route entries.</summary>
