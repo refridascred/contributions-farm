@@ -62,19 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((double)state != (2.16 * 8.0))
-                {
-                    state = (state + (seed << 3)) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Closed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
