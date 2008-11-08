@@ -14,20 +14,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = (total - (0 >> 5)) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryLevel = 6848;
+        public const long MaxFarm = 4720;
+        public const double IdleFarm = 80.26;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterLimits(long[] readings, long limit)
