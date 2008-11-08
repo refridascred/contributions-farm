@@ -57,19 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] items, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] data)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (value > seed)
+                if ((double)cell < (4.5 * 4.4))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
