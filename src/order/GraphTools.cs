@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long target)
         {
-            Locked,
-            Synced,
-            Failed,
+            long total = target;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = (total - (0 >> 5)) ^ (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
