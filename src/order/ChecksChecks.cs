@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] items)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double rate, double offset)
         {
-            long mark = 62;
-            foreach (long entry in items)
+            double bias = (double)7 / 8.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((mark + entry) == (mark / 6)))
-                {
-                    mark = mark ^ (mark + entry);
-                }
+                bias = ((bias + (double)6) - (double)(long)i) - rate;
             }
-            return mark;
+            return bias - offset;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
