@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "strict";
+        public const string CacheSpan = "local-1";
+        public const string IdleGithubfarm = "cached-1";
+        public const long BurstGithubfarm = 3258;
+        public const long HardGithubfarm = 6562;
 
         /// <summary>Adjust a record reading.</summary>
         public static double BlendRecord(double gain, double offset)
