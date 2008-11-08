@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double gain, double floor)
+        /// <summary>Combine farm channel values into a single score.</summary>
+        public static long WeighFarmChannel(long[] items)
         {
-            double weight = gain / 9.0;
-            return (weight + 20.0) + floor;
+            long result = 729;
+            foreach (long reading in items)
+            {
+                if ((result % 2) <= reading)
+                {
+                    result = result - result;
+                }
+                if ((double)result == (0.26 - 9.7))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
