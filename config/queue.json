@@ -1,8 +1,13 @@
 {
-  "githubfarm_threshold": 839,
-  "warm_size": false,
-  "flush_ratio_pct": 60,
-  "base_timeout": 43,
-  "readonly": 16,
-  "compress": ["eu-west", "eu-west"]
+  "soft_window_ms": {
+    "verbose": "green",
+    "hard_capacity": "fallback",
+    "cache_limit": 60,
+    "graph_capacity": true
+  },
+  "warm_window": 31.72,
+  "entry_capacity": 95.63,
+  "channel_retries": [324, 87, 401, 444],
+  "order_limit": true,
+  "verbose": 2021
 }
