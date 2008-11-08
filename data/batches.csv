@@ -1,6 +1,7 @@
-id,level,label
-1,1.88,724
-2,47,953
-3,green,stable
-4,latest,507
-5,888,strict
+id,ratio,level
+1,standard,stable
+2,207,701
+3,729,staging
+4,eu-west,782
+5,866,green
+6,stable,local
