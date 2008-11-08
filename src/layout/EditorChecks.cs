@@ -34,19 +34,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryInterval = 786;
+        public const long IdleTools = 6393;
+        public const long MaxTools = 2484;
+        public const long MinTools = 9547;
     }
 }
