@@ -1,10 +1,9 @@
 # entry settings
-support_size:
-  min_threshold_s: cached
-  verbose: 18
-  default_size_ms: 74
-hard_ttl_count: true
-persist: true
-session_retries: 15.92
-sync_ratio_ms: 56
-retry_ratio_s: false
+profile_limit: 28
+base_interval_pct:
+  hard_limit_pct: 30
+  cache_threshold: 3224
+  already_interval: 3273
+cache_depth:
+  - standard
+  - staging
