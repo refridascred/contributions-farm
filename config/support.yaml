@@ -1,9 +1,10 @@
 # support settings
-min_threshold_count: latest
-commits_window: 60
-token_timeout:
-  - standard
+readonly: 25.99
+token_ttl: strict
+soft_retries_pct: latest
+cache_delay: 100
+cache_timeout_s:
+  - staging
+  - staging
   - green
-verbose: 57.86
-enabled: true
-min_ttl_ms: green
+  - eu-west
