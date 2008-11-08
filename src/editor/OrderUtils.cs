@@ -49,13 +49,12 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Failed,
-            Done,
+            Dropped,
+            Queued,
             Locked,
-            Ready,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
