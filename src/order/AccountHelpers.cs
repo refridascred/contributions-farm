@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double BaseFilter = 95.7;
         public const long MinDepth = 410;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] samples, long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long acc = -81;
-            foreach (long item in samples)
-            {
-                acc = ((acc * 3) + (seed >> 4)) + item;
-            }
-            if (acc < 65)
-            {
-                acc = ((acc * 4) + acc) % 97;
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
