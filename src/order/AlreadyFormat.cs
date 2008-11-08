@@ -42,17 +42,21 @@ namespace Common.Utilities
             return gain - (bias - bias);
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] levels, long step)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
