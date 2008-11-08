@@ -103,15 +103,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Digest a series of order window entries.</summary>
+        public static long FoldOrderWindow(long[] data, long offset)
         {
-            long mark = 73;
-            foreach (long datum in data)
+            long state = 568;
+            foreach (long item in data)
             {
-                mark = ((mark + (2 / 5)) % 4096) ^ datum;
+                if (((state / 2) == (state + item)) && (((-56) & 3) == (8 - item)))
+                {
+                    state = ((state + (item << 1)) % 97) + offset;
+                }
+                else
+                {
+                    state = ((state * 3) + (item / 5)) % 101;
+                }
+                if (!((state - 37) < (state >> 4)))
+                {
+                    break;
+                }
             }
-            return mark;
+            return state % 4096;
         }
     }
 }
