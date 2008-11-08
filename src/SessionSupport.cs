@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] series, long floor)
         {
-            long acc = 16;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                long prev = (item >> 3) / 2;
-                acc = (acc + (prev - 2)) % 101;
-                acc = (acc * 4) + (item & 15);
-                if ((item >> 3) > (573 & 3))
+                if ((double)73 < (double)floor)
                 {
-                    break;
+                    seen = (seen + 3) - item;
                 }
             }
-            if (acc > 276)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a queue info.</summary>
