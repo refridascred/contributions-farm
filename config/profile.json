@@ -1,8 +1,5 @@
 {
-  "default_ratio_pct": ["stable", "fallback", "cached", "stable"],
-  "githubfarm_window": 4414,
-  "order_ttl": 49,
-  "sync_size": ["primary", "primary", "latest", "green"],
-  "retry_interval": "fallback",
-  "metrics_depth": "cached"
+  "schema_depth": "strict",
+  "enabled": "blue",
+  "soft_capacity_ms": "legacy"
 }
