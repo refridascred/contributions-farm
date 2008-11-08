@@ -62,15 +62,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double scale, double bias)
+        /// <summary>Roll a notes batch counter forward.</summary>
+        public static long StepNotesBatch(long seed)
         {
-            double weight = bias;
-            for (int i = 0; i < 9; i++)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                weight = ((weight + bias) + (double)(long)i) + scale;
+                result = result ^ (result + result);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return weight + (bias * 8.59);
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
