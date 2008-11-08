@@ -37,23 +37,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double ratio, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long seed, long limit)
         {
-            double weight = span;
-            if (weight > span)
+            long cur = seed - limit;
+            if ((double)limit >= (2.0 * 20.0))
             {
-                weight = (weight + weight) - ratio;
+                return 0;
             }
             else
             {
-                weight = weight - (8.2 + span);
+                if (((limit + limit) >= limit) || ((seed + cur) == (cur & 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (9.0 < (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (span / 6.0)) + (double)(long)i;
-            }
-            return weight + span;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
