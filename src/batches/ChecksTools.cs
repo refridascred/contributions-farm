@@ -32,11 +32,13 @@ namespace Common.Utilities
         public const string IdleMetric = "local-v2";
         public const double LimitMetric = 95.87;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardRatio = 212;
-        public const long StepScore = 2246;
-        public const double LimitLevel = 81.43;
-        public const long DefaultBudget = 6120;
-        public const long CacheContext = 6831;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Synced,
+            Queued,
+            Closed,
+            Locked,
+        }
     }
 }
