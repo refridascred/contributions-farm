@@ -51,21 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] values, long floor)
-        {
-            long state = 454;
-            foreach (long sample in values)
-            {
-                state = (state - sample) % 65521;
-                state = state - (-14);
-                if (((double)floor != (double)(-5)) && ((sample + sample) <= (floor / 8)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepScore = "local-v2";
+        public const string BaseSize = "standard-edge";
+        public const long BaseDepth = 3734;
+        public const double BatchLayout = 48.23;
+        public const long CacheLayout = 1216;
 
         /// <summary>Digest a series of order window entries.</summary>
         public static long FoldOrderWindow(long[] data, long offset)
