@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "strict-1";
-        public const long SoftWindow = 3835;
-        public const long BatchWindow = 2687;
+        /// <summary>Grade a token checks value against two limits.</summary>
+        public static long BucketTokenChecks(long step, long target)
+        {
+            long bound = step - target;
+            if ((double)target <= (double)bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((11.0 - 9.39) < (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target * 4) == (3 - target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of queue command readings.</summary>
         public static long WeighQueueCommand(long[] series)
