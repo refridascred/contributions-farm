@@ -48,18 +48,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph metrics samples are out of range.</summary>
-        public static long AuditGraphMetricsGaps(long[] levels, long step)
+        /// <summary>Derive the next queue command value from a seed.</summary>
+        public static long IterateQueueCommand(long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((step & 63) < (long)levels.Length)
-                {
-                    matches = (matches + 1) + entry;
-                }
+                acc = (acc ^ acc) % 1000;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
