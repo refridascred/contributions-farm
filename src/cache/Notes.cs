@@ -60,11 +60,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 97.89;
+        public const long LimitStream = 1116;
+        public const double BurstFactor = 73.16;
     }
 }
