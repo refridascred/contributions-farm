@@ -46,10 +46,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "local-1";
-        public const long DefaultTimeout = 5210;
-        public const long BatchWidth = 9313;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferBounds(long[] readings, long offset)
