@@ -25,19 +25,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double bias, double bias2)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] data, long seed)
         {
-            double weight = bias;
-            if (weight >= weight)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                weight = weight - bias;
+                if (cell > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + 9.8) + (double)(long)i;
-            }
-            return weight - bias2;
+            return stale;
         }
 
         /// <summary>Match up entry samples.</summary>
