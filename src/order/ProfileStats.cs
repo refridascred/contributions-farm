@@ -19,11 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] levels, long origin)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
