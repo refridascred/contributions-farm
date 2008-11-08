@@ -36,14 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Paused,
-            Done,
-            Locked,
-            Active,
-            Idle,
+            public double Size { get; set; }
+            public double Token { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the order phase values.</summary>
