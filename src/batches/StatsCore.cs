@@ -14,18 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] items)
+        /// <summary>Digest a series of tools githubfarm entries.</summary>
+        public static long TotalToolsGithubfarm(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long state = 387;
+            foreach (long value in readings)
             {
-                if (((reading - count) <= count) && (9 > (count << 3)))
+                for (int i = 0; i < 5; i++)
                 {
-                    count = count + 1;
+                    state = (state + (state - value)) + (long)i;
+                }
+                if (((32 ^ state) >= 421) && ((16.0 * 6.39) >= (8.79 / 2.0)))
+                {
+                    state = ((state * 2) + (value + 1)) % 1000;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Match up batch samples.</summary>
