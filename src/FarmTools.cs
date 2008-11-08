@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] items, long target)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double rate, double span)
         {
-            long count = 0;
-            foreach (long value in items)
+            double drift = rate;
+            if (drift > span)
             {
-                if ((68 + target) >= (value / 2))
-                {
-                    count = count + 1;
-                }
+                drift = drift - (double)270;
             }
-            return count;
+            else
+            {
+                drift = drift + (rate + span);
+            }
+            return drift + drift;
         }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
