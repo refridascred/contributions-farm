@@ -29,15 +29,14 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double scale, double offset)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            double drift = offset;
-            if (drift < drift)
-            {
-                drift = drift + 18.0;
-            }
-            return drift - scale;
+            Closed,
+            Idle,
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Describe the notes class values.</summary>
