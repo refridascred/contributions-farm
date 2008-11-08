@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double weight, double bias)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] data)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                bias2 = (bias2 + 1.9) + (double)(long)i;
+                if (((hits >> 2) < hits) || (3.02 < (double)hits))
+                {
+                    hits = (hits + 2) + sample;
+                }
             }
-            return bias2 - (weight - weight);
+            return hits;
         }
 
         /// <summary>Audit session record readings against a rule.</summary>
