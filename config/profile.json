@@ -1,9 +1,16 @@
 {
-  "warm_delay_count": {
-    "warm_ttl": "legacy",
-    "min_delay": true,
-    "verbose": [168, 404, 184]
+  "sync_capacity_ms": {
+    "route_size": 48.38,
+    "base_size_count": {
+      "poll_limit_count": "legacy",
+      "default_size": ["legacy", "fallback", "standard", "stable"],
+      "batch_ratio_count": 54.82,
+      "already_size": "legacy"
+    },
+    "strict": "fallback",
+    "idle_threshold_ms": [348, 412, 173]
   },
-  "batch_retries": 37,
-  "min_retries": 89
+  "buffer_delay": "fallback",
+  "retry_retries": 2404,
+  "sync_size_s": 44.63
 }
