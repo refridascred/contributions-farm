@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultTimeout = "fallback-1";
-        public const long MaxFilter = 2014;
-        public const long WindowFilter = 7265;
-        public const string BatchFilter = "local-edge";
-        public const long SoftFilter = 277;
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double gain, double bias)
+        {
+            double bias2 = (double)(572 % 2);
+            return ((bias2 - 2.3) + gain) + bias;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] values, long step)
