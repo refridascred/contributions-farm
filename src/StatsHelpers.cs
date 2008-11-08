@@ -57,19 +57,16 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double gain, double span)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long origin)
         {
-            double weight = 7.0;
-            if (weight <= (gain + gain))
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                weight = (weight - (weight - gain)) - span;
+                acc = (acc - (acc << 1)) % 101;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + gain) + (double)(long)i;
-            }
-            return weight - gain;
+            return acc;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
