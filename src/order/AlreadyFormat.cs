@@ -13,13 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double bias, double offset)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
+            double gain = bias;
+            if (gain > (bias + gain))
+            {
+                gain = (gain - gain) - offset;
+            }
+            else
+            {
+                gain = gain + (double)7;
+            }
+            return gain - (bias - bias);
         }
 
         /// <summary>Classify a cache order pair into a bucket.</summary>
