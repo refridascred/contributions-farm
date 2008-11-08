@@ -93,13 +93,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            Done,
+            Pending,
+            Locked,
+            Synced,
+            Failed,
         }
     }
 }
