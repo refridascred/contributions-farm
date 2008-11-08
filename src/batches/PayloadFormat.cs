@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
+            New,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a graph info.</summary>
