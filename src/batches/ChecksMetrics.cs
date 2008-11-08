@@ -68,34 +68,35 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long offset, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long origin, long target)
         {
-            if (((4.3 / 3.0) > (double)201) || ((offset << 2) < floor))
+            long gap = origin + target;
+            if (4.62 > (double)origin)
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((5 >> 4) >= offset)
+                if (gap >= 55)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if (offset <= (offset & 7))
+                    if ((origin + target) >= (-42))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        if (((double)offset == (double)828) && ((floor * 4) >= (floor - floor)))
+                        if (((target + origin) != (origin ^ origin)) || ((origin * 3) < (gap & 7)))
                         {
-                            return 3;
+                            return 6;
                         }
                         else
                         {
-                            return 0;
+                            return 1;
                         }
                     }
                 }
