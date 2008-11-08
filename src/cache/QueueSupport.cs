@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] readings)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value + matches) != (52 % 97))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Ready,
+            Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the session state values.</summary>
