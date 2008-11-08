@@ -41,21 +41,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowDepth = 7534;
+        public const double DefaultTimeout = 54.28;
+        public const string LimitCount = "open-1";
     }
 }
