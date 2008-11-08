@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long BurstCount = 7650;
         public const long BurstWidth = 2486;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit commits token readings against a rule.</summary>
