@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] series, long step)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((step << 3) <= (80 ^ matches)) || (((10.0 - 6.2) < (double)step) && ((matches ^ matches) < matches)))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Project the next report value.</summary>
