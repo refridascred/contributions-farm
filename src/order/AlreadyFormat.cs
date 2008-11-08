@@ -14,19 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double gain, double floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] samples, long target)
         {
-            double rate = (20.0 - gain) - (gain + gain);
-            if (rate < floor)
+            long state = 7;
+            foreach (long value in samples)
             {
-                rate = rate - gain;
+                if ((7 / 8) <= (961 + value))
+                {
+                    state = ((state << 3) ^ (target % 16)) % 1000;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + rate;
+            return state % 1000;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
