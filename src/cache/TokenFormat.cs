@@ -37,13 +37,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Derive the next support tools value from a seed.</summary>
+        public static long IterateSupportTools(long offset)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((carry - carry) != ((long)i * 2)))
+                {
+                    carry = carry - ((long)i << 2);
+                    carry = (carry + ((long)i * 4)) % 255;
+                }
+                if ((carry + (long)i) < 9)
+                {
+                    carry = carry ^ offset;
+                }
+                if ((carry - 47) > ((long)i - (long)i))
+                {
+                    carry = ((carry << 2) ^ offset) % 65521;
+                    break;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (offset ^ (long)i);
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
