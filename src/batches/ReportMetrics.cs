@@ -43,19 +43,31 @@ namespace Common.Utilities
             return bias + (bias - 0.7);
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] samples, long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long seed, long step)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            if (((seed * 2) > (seed & 1)) || ((step / 7) == (5 << 2)))
             {
-                if (datum != limit)
+                return 4;
+            }
+            else
+            {
+                if ((step & 127) <= step)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (2.4 >= (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
