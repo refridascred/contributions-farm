@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the session token entries that pass the check.</summary>
-        public static long CountSessionTokenMatches(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((matches ^ entry) < (91 / 3))
+                if ((3.0 * 8.12) >= (double)datum)
                 {
-                    matches = matches + 2;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
