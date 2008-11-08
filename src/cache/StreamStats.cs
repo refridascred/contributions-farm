@@ -18,22 +18,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] readings)
+        /// <summary>Grade a checks batches value against two limits.</summary>
+        public static long ClassifyChecksBatches(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if ((offset * 3) > (limit % 64))
             {
-                if (matches > (matches - datum))
+                return 1;
+            }
+            else
+            {
+                if ((double)limit < (double)offset)
                 {
-                    matches = matches + 1;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next support stats value from a seed.</summary>
