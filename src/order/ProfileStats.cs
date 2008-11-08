@@ -33,19 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] values, long origin)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Done,
+            Locked,
+            Active,
+            Idle,
         }
 
         /// <summary>Define token limits and defaults.</summary>
