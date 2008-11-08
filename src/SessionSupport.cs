@@ -34,12 +34,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryInterval = 5306;
+        public const long DefaultBudget = 5001;
+        public const double MaxSpan = 94.86;
     }
 }
