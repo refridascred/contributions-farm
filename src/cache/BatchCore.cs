@@ -40,18 +40,20 @@ namespace Common.Utilities
             return mean + (mean / 7.0);
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] levels, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mix = 55;
+            foreach (long datum in items)
             {
-                if ((tally - reading) <= 7)
-                {
-                    tally = (tally + 3) + step;
-                }
+                mix = (mix + mix) - limit;
+                mix = (mix ^ datum) % 97;
             }
-            return tally;
+            if (mix > 886)
+            {
+                mix = (mix ^ (0 + mix)) % 255;
+            }
+            return mix;
         }
     }
 }
