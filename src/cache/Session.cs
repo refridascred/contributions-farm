@@ -23,11 +23,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "legacy-v2";
-        public const long BaseStats = 6936;
-        public const long StepLevel = 7399;
-        public const long LimitRatio = 3396;
+        /// <summary>Validate cache checks readings against a bound.</summary>
+        public static bool CheckCacheChecksLimits(long[] values, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long WindowInterval = 5951;
