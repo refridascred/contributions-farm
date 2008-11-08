@@ -29,22 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] items, long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long result = 3;
-            foreach (long sample in items)
-            {
-                if ((result << 1) <= sample)
-                {
-                    result = (result + (66 - 484)) + floor;
-                }
-                if ((double)result == (7.24 / 8.0))
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            public double Level { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
