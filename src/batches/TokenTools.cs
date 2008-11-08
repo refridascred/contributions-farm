@@ -15,12 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a contributi session sample.</summary>
+        public static long LocateContributiSessionIndex(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] > bound)
+                if ((levels[i] < target) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
