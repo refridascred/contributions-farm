@@ -29,19 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics contributi readings against a bound.</summary>
-        public static bool ValidateMetricsContributiBounds(long[] levels, long step)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public double Region { get; set; }
         }
     }
 }
