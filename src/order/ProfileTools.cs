@@ -75,32 +75,20 @@ namespace Common.Utilities
             return ratio + (ratio * 7.0);
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long limit, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long edge = limit + step;
-            if (7.14 >= (double)limit)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit ^ edge) == (edge - edge))
+                if ((double)anchor >= (double)669)
                 {
-                    return 5;
+                    anchor = (anchor ^ (anchor * 5)) % 255;
+                    break;
                 }
-                else
-                {
-                    if (((76 % 10) > limit) || ((step << 3) > (limit - limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
+            return anchor;
         }
     }
 }
