@@ -31,33 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next support tools value from a seed.</summary>
-        public static long IterateSupportTools(long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double ratio, double bias)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            double load = (double)(35 & 3);
+            if (load < (ratio * 10.0))
             {
-                if (!((carry - carry) != ((long)i * 2)))
-                {
-                    carry = carry - ((long)i << 2);
-                    carry = (carry + ((long)i * 4)) % 255;
-                }
-                if ((carry + (long)i) < 9)
-                {
-                    carry = carry ^ offset;
-                }
-                if ((carry - 47) > ((long)i - (long)i))
-                {
-                    carry = ((carry << 2) ^ offset) % 65521;
-                    break;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (offset ^ (long)i);
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
+                load = (load - 4.7) + bias;
             }
-            return carry;
+            return load + load;
         }
     }
 }
