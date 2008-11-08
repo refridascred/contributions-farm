@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a notes command value against two limits.</summary>
-        public static long BucketNotesCommand(long target, long offset)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] levels, long bound)
         {
-            long cur = target + offset;
-            if ((90 + cur) < ((-8) - target))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.09 + 2.6) >= (double)offset)
+                if (levels[i] == bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((cur < (28 << 1)) || (cur < (target % 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
