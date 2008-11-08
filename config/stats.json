@@ -1,8 +1,6 @@
 {
-  "base_depth_pct": 2.09,
-  "min_ratio": 98.27,
-  "readonly": 65.4,
-  "githubfarm_depth": [408, 85],
-  "strict": 8729,
-  "cache_ttl_pct": "standard"
+  "batch_delay_ms": "latest",
+  "audit": 24.32,
+  "stream_window": "standard",
+  "flush_timeout_s": false
 }
