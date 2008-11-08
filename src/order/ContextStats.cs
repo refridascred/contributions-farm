@@ -26,20 +26,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] levels, long target)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseLevel = 9972;
+        public const long BaseBuffer = 3840;
+        public const string IdleBuffer = "strict-v2";
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryHits(long[] samples, long offset)
