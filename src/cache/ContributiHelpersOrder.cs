@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long mix = 972;
-            foreach (long reading in samples)
-            {
-                mix = (mix + reading) % 4096;
-            }
-            if (mix < 5)
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix;
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
