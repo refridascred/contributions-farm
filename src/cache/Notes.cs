@@ -28,11 +28,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstBudget = 1980;
-        public const double DefaultEditor = 4.49;
-        public const long BaseFactor = 6613;
-        public const long WindowEditor = 6965;
+        /// <summary>Grade a commits checks value against two limits.</summary>
+        public static long SortCommitsChecks(long offset, long limit)
+        {
+            if ((double)offset <= (6.39 - 5.12))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((6.9 * 9.2) == (double)limit) || ((8.9 - 4.83) < (double)offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit != (14.0 - 7.66))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset + limit) >= offset) && ((offset ^ limit) == (limit - limit)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long GradePayload(long target, long limit)
