@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] data, long target)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((double)(long)data.Length < (5.22 * 5.01))
-                {
-                    tally = ((tally + 2) + item) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
