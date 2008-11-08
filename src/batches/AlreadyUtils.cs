@@ -34,11 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleFactor = 6788;
-        public const double BatchBuffer = 63.7;
-        public const string MaxBuffer = "open-1";
-        public const long MinBuffer = 2317;
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
