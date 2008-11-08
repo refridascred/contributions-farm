@@ -57,18 +57,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (target > (target % 10))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "standard";
+        public const long MaxRatio = 9496;
+        public const long MinSpan = 9066;
+        public const long BaseContributi = 1761;
+        public const long MinContributi = 7941;
     }
 }
