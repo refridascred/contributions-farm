@@ -24,19 +24,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two editor session measurements.</summary>
-        public static double AdjustEditorSession(double scale, double bias)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double load = (4.0 - bias) * 20.0;
-            if (load <= bias)
-            {
-                load = load - (bias + scale);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (4.8 / 6.0)) + (double)(long)i;
-            }
-            return load - scale;
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
