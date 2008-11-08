@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + (long)data.Length) <= (step / 3))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "standard-v2";
+        public const long WindowProfile = 6297;
+        public const double MinProfile = 42.16;
+        public const string LimitRatio = "open-v2";
 
         /// <summary>Project the next checks value.</summary>
         public static double AdjustChecks(double rate, double floor)
