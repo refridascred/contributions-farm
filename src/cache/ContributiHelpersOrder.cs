@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBudget = 27.47;
-        public const long BurstTimeout = 1877;
-        public const long MinSize = 9710;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] samples)
+        {
+            long mix = 972;
+            foreach (long reading in samples)
+            {
+                mix = (mix + reading) % 4096;
+            }
+            if (mix < 5)
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
