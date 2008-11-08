@@ -1,7 +1,24 @@
 # githubfarm settings
-poll_timeout_pct: 55
-poll_depth_count: blue
-already_limit: false
-checks_retries: standard
-default_interval: 1818
-session_window: 60
+retry_threshold:
+  - edge
+  - blue
+  - open
+  - cached
+payload_window:
+  - 4
+  - 176
+  - 183
+default_size_s:
+  - latest
+  - local
+  - blue
+  - standard
+min_retries_s:
+  cache_ttl_count: blue
+  githubfarm_delay: green
+  min_timeout:
+    - 55
+    - 5
+    - 2
+  max_window: primary
+cache_ratio: 83.14
