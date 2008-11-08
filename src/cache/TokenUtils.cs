@@ -23,18 +23,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] samples, long target)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((target < (target - target)) || (target > (count - count)))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            Active,
         }
 
         /// <summary>Scale a buffer schema figure with a bias.</summary>
