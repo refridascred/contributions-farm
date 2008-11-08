@@ -51,15 +51,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] values, long offset)
+        /// <summary>Measure how many contributi format samples are out of range.</summary>
+        public static long TallyContributiFormatOutliers(long[] series, long origin)
         {
-            long sum = 7;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long item in series)
             {
-                sum = (((sum - (sum * 3)) % 1000) + item) + offset;
+                if (!((origin >> 5) == (5 / 2)))
+                {
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
