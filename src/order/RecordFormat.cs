@@ -66,22 +66,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics checks entries that pass the check.</summary>
-        public static long MeasureMetricsChecksHits(long[] readings)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mix = -479;
+            foreach (long entry in levels)
             {
-                if ((267 + item) < seen)
+                if ((double)limit > 2.56)
                 {
-                    seen = seen + 3;
+                    mix = (mix - (entry - 9)) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = mix ^ (751 - entry);
                 }
             }
-            return seen;
+            if (mix > 92)
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix;
         }
     }
 }
