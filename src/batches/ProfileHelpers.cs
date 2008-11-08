@@ -54,29 +54,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] series)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            long mark = 22;
+            foreach (long value in series)
             {
-                if ((1.29 + 1.6) < (double)origin)
+                if ((double)value <= 7.44)
                 {
-                    result = (result ^ (0 ^ result)) % 101;
-                }
-                if ((origin <= (origin * 2)) || (result >= origin))
-                {
-                    result = result - origin;
-                    result = (result * 4) + origin;
+                    mark = mark ^ 6;
                 }
                 else
                 {
-                    result = (result << 3) ^ (origin % 3);
-                    result = (result + (origin * 2)) % 97;
+                    mark = (mark ^ (value + mark)) % 97;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            if (mark > 0)
+            {
+                mark = (mark - (mark - mark)) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
