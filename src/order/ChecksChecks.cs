@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double rate, double offset)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] data, long offset)
         {
-            double bias = (double)7 / 8.0;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                bias = ((bias + (double)6) - (double)(long)i) - rate;
+                if (reading < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias - offset;
+            return valid;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
