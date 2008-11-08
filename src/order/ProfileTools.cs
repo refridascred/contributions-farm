@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string BaseCount = "primary-1";
         public const double MaxScore = 97.91;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 1975;
+        public const long BatchCount = 1907;
+        public const long RetrySpan = 6120;
+        public const double DefaultWindow = 4.86;
+        public const long BaseWindow = 9626;
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
