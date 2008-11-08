@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] readings)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally >> 4) > (item + item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] + values[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a report snapshot.</summary>
