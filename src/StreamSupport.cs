@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] levels, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (sample >= offset)
+                if ((double)(long)data.Length < (5.22 * 5.01))
                 {
-                    ok = false;
-                    break;
+                    tally = ((tally + 2) + item) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
