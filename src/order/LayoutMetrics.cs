@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitWidth = 4948;
-        public const string IdleLayout = "local";
-        public const string LimitFactor = "alpha-v2";
-        public const long IdleSpan = 7111;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxCount = 4919;
+        public const long DefaultCount = 2250;
+        public const double WindowBuffer = 94.93;
+        public const long CacheFactor = 1198;
 
         /// <summary>Locate a token cluster reading by value.</summary>
         public static long FindTokenClusterIndex(long[] items, long step)
