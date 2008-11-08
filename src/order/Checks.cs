@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the counter report entries that pass the check.</summary>
-        public static long MeasureCounterReportHits(long[] data, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((matches + cell) < (limit % 97))
+                if ((10.0 * 18.0) < (double)entry)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 2) - limit;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine window values into a single score.</summary>
