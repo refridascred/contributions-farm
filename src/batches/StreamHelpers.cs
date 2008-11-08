@@ -51,19 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] series, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (item < offset)
+                if ((double)hits > (5.8 * 1.1))
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 2) + value) - offset;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
