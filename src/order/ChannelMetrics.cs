@@ -29,15 +29,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 2130;
+        public const string WindowCount = "local-1";
+        public const double StepScore = 92.73;
     }
 }
