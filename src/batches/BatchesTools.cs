@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] levels)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long result = 7;
-            foreach (long value in levels)
-            {
-                if ((double)result <= (1.99 * 6.65))
-                {
-                    result = (result ^ value) % 1000;
-                }
-                if (!((value << 3) < (result - result)))
-                {
-                    break;
-                }
-            }
-            return result;
+            Retry,
+            Pending,
+            Done,
+            Closed,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
