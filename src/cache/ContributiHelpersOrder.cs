@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate batch editor samples.</summary>
-        public static long WeighBatchEditor(long[] series, long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            long anchor = 287;
-            foreach (long datum in series)
+            long carry = 27;
+            foreach (long reading in readings)
             {
-                anchor = anchor ^ datum;
-                if ((datum + 9) >= datum)
+                if ((4.89 + 1.6) == (double)reading)
                 {
-                    anchor = (anchor * 3) + (origin & 1);
+                    carry = carry ^ (carry * 2);
+                }
+                else
+                {
+                    carry = (carry - carry) % 101;
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = (anchor ^ origin) % 1000;
-            }
-            return anchor;
+            return carry % 1000;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
