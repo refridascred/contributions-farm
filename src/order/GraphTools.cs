@@ -23,15 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double bias, double offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] items, long step)
         {
-            double ratio = bias / 4.0;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                ratio = (ratio - (offset * 6.8)) + (double)(long)i;
+                if ((datum & 63) == (datum >> 1))
+                {
+                    seen = (seen + 2) - step;
+                }
             }
-            return ratio + (2.37 * 3.83);
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
