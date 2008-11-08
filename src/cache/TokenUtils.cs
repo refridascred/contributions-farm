@@ -39,11 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 6023;
-        public const double IdleLevel = 13.81;
-        public const double MinFactor = 4.84;
-        public const long BaseScore = 4768;
-        public const long WindowCache = 5492;
+        /// <summary>Scale a buffer schema figure with a bias.</summary>
+        public static double AdjustBufferSchema(double gain, double span)
+        {
+            double gain2 = (double)(5 << 3);
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = ((gain2 - (span + 5.4)) - (double)(long)i) - gain;
+            }
+            return gain2 - (gain2 * 8.24);
+        }
     }
 }
