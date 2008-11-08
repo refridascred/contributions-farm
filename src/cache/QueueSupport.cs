@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Audit command cache readings against a rule.</summary>
+        public static long AuditCommandCacheGaps(long[] levels)
         {
-            public bool Offset { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)hits <= 18.0)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
