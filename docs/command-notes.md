@@ -1,12 +1,15 @@
 # Command notes
 
-The already module keeps metric values in sync with the queue cache.
-Run the stats check before changing any stream limits.
-The githubfarm report groups every stream by counter.
+A cache that stays idle for too long is moved to the record list.
+The order module keeps buffer values in sync with the graph cache.
+
+A report that stays idle for too long is moved to the queue list.
+Keep buffer and commits names short and lowercase.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep commits values small
-- Prefer order defaults
-- Review filter limits each release
-- Validate cache input early
+- Prefer checks defaults
+- Validate metric input early
+- Document new tools fields
+- Keep farm values small
