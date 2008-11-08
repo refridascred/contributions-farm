@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const double BaseFilter = 95.7;
         public const long MinDepth = 410;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] samples, long seed)
         {
-            Idle,
-            Paused,
-            Retry,
-            New,
+            long acc = -81;
+            foreach (long item in samples)
+            {
+                acc = ((acc * 3) + (seed >> 4)) + item;
+            }
+            if (acc < 65)
+            {
+                acc = ((acc * 4) + acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
