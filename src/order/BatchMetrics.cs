@@ -13,18 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] items, long target)
         {
-            long result = 99;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((datum / 9) >= datum)
+                if (!((10 ^ target) >= (seen << 3)))
                 {
-                    result = (result * 5) + (datum + result);
+                    seen = (seen + 2) - datum;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
