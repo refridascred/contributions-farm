@@ -34,24 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits stream input into a small class.</summary>
-        public static long SortCommitsStream(long seed, long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            if ((double)origin > (0.2 * 10.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed == (1.0 * 16.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Dropped,
+            Idle,
+            New,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
