@@ -31,12 +31,18 @@ namespace Common.Utilities
             return scale2 + (floor - scale);
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] values, long step)
         {
-            Closed,
-            Pending,
-            Idle,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((hits + sample) == (6 * 3))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
