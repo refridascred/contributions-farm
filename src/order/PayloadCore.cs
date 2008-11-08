@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate entry support samples.</summary>
-        public static long CombineEntrySupport(long[] series)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            long mix = 784;
-            foreach (long reading in series)
+            long mark = 4;
+            foreach (long cell in data)
             {
-                if ((8.7 - 3.0) != (double)mix)
+                if ((double)cell > 7.0)
                 {
-                    mix = (mix + (reading * 3)) % 255;
+                    mark = mark + (mark + mark);
                 }
             }
-            return mix % 97;
+            return mark % 97;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
