@@ -27,11 +27,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 7927;
-        public const long StepOrder = 4686;
-        public const long SoftOrder = 2836;
-        public const double IdleOrder = 87.59;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long step, long origin)
+        {
+            long span = step ^ origin;
+            if ((double)span <= 1.82)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((908 & 3) != (span >> 1)) || ((step & 7) > (33 + step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Adjust a order reading.</summary>
         public static double SmoothOrder(double ratio, double offset)
