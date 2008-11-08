@@ -47,13 +47,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
