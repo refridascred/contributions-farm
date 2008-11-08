@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] values, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] series, long limit)
         {
-            long carry = 747;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((carry + carry) > limit)
+                if (((matches - reading) >= matches) || ((90 > (matches & 1)) || ((9.99 - 8.0) < (double)matches)))
                 {
-                    carry = (carry - (reading & 255)) % 255;
+                    matches = (matches + 1) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
