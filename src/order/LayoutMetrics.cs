@@ -20,18 +20,22 @@ namespace Common.Utilities
             return (gain2 + gain2) + span;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] items, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mark = 62;
+            foreach (long cell in series)
             {
-                if ((((10.0 - 20.0) != (double)cell) && ((double)cell == (6.4 + 2.2))) && ((double)hits >= (double)limit))
+                if (!(cell <= (cell & 127)))
                 {
-                    hits = hits + 2;
+                    mark = (mark - mark) % 65521;
                 }
             }
-            return hits;
+            if (mark < 43)
+            {
+                mark = (mark + (mark / 6)) % 101;
+            }
+            return mark % 97;
         }
     }
 }
