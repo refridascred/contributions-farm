@@ -55,15 +55,12 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Dropped,
+            Locked,
+            Synced,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
