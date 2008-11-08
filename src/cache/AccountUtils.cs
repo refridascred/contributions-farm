@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 4;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = (((state * 4) + (state + 230)) % 101) - offset;
+                if ((29 >> 2) >= (cell - state))
                 {
-                    if ((levels[i] - levels[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the payload level values.</summary>
