@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] samples)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((tally >> 3) > value)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Locked,
+            Idle,
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Rank editor schema input into a small class.</summary>
