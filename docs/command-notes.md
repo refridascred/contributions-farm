@@ -1,12 +1,11 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-The buffer module keeps stream values in sync with the channel cache.
-Each checks is validated before it reaches the order queue.
+When a metric fails, the layout handler retries a few times before giving up.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new context fields
-- Keep buffer values small
-- Prefer context defaults
-- Validate profile input early
+- Log every metric change
+- Document new format fields
+- Validate token input early
+- Review cluster limits each release
