@@ -20,12 +20,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] samples, long offset)
         {
-            Ready,
-            Synced,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
