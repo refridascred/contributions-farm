@@ -41,11 +41,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftFactor = 4025;
-        public const string BatchStats = "legacy-1";
-        public const double IdleScore = 26.48;
-        public const string LimitStats = "fallback";
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] values)
+        {
+            long mark = 89;
+            foreach (long cell in values)
+            {
+                mark = mark ^ (mark ^ cell);
+            }
+            return mark;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleSpan = 7260;
