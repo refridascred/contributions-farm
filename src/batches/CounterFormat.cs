@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long seed, long step)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long slot = seed + step;
-            if ((6.0 * 1.6) != (double)slot)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((132 <= (step % 2)) || ((2.0 / 9.0) <= (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
