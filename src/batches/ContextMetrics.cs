@@ -26,31 +26,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long offset, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] items, long limit)
         {
-            if (((-5) + offset) == (origin / 2))
+            bool stale = true;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset < (2.74 - 8.6))
+                if (value < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin != (2.0 + 4.88))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
