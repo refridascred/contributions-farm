@@ -13,13 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Dropped,
-            Done,
-            Active,
-            Pending,
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Classify a cache order pair into a bucket.</summary>
