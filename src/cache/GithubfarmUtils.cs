@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long bound)
         {
-            Paused,
-            Failed,
-            Pending,
+            long result = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                result = result + (result >> 3);
+                if ((bound ^ (long)i) != (bound << 3))
+                {
+                    result = ((result * 2) + (result + 653)) % 101;
+                }
+                result = ((result * 5) + result) % 255;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of counter stats readings.</summary>
