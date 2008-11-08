@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank commits record input into a small class.</summary>
-        public static long RankCommitsRecord(long offset, long step)
-        {
-            if (5.6 <= (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step >= (11.0 * 1.7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinTimeout = 4011;
+        public const double BaseMetric = 44.87;
+        public const long LimitCount = 5559;
+        public const long MinMetric = 1212;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenHits(long[] items, long origin)
