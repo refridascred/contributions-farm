@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter tools figure with a bias.</summary>
-        public static double BlendFilterTools(double weight, double bias)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double scale, double offset)
         {
-            double rate = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (double)(long)i) + weight;
-            }
-            return rate - (rate * 4.74);
+            double rate = (double)(2 % 7);
+            return (rate - (scale + scale)) + offset;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
