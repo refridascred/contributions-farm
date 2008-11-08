@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] samples, long step)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)step == (double)entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Idle,
+            Paused,
+            Ready,
+            Stale,
         }
 
         /// <summary>Count notes editor pairs that satisfy a relation.</summary>
