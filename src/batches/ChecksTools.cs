@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] items)
+        /// <summary>Look up the position of a session report sample.</summary>
+        public static long LookupSessionReportIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((317 >> 5) != (value + value))
+                if (samples[i] > bound)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Grade a payload cluster value against two limits.</summary>
