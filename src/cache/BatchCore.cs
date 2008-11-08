@@ -88,9 +88,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepTimeout = "alpha-v2";
-        public const double IdleLayout = 65.92;
-        public const string StepLayout = "open-v2";
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > offset) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
