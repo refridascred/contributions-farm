@@ -50,22 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Measure how many account support samples are out of range.</summary>
+        public static long AuditAccountSupportOutliers(long[] readings)
         {
-            long total = 56;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((total ^ total) != (2 * 5))
+                if (((double)matches > (double)32) || ((2.56 + 8.99) == (double)matches))
                 {
-                    total = (((total * 4) + (total % 60)) % 97) ^ entry;
+                    matches = (matches + 1) + cell;
                 }
             }
-            if (total > 5)
-            {
-                total = ((total * 5) + (total + total)) % 65521;
-            }
-            return total;
+            return matches;
         }
     }
 }
