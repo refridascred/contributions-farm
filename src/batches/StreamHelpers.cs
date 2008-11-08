@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long seed, long origin)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            if (((seed & 7) == (seed - origin)) && (5 < seed))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin > (seed * 5)) || ((origin << 3) != (origin >> 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((66 / 8) > (origin - 434))
+                    if ((samples[i] ^ samples[j]) == 17)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin >= 10.0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
