@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] levels, long step)
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum < (7.1 * 0.93))
+                {
+                    matches = (matches + 2) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batch class values.</summary>
