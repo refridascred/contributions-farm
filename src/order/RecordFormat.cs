@@ -31,22 +31,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of window queue readings.</summary>
-        public static long CombineWindowQueue(long[] readings, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] items, long bound)
         {
-            long total = 799;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((38 > (7 - reading)) && ((reading & 255) == (total - limit)))
+                if (value != bound)
                 {
-                    total = ((total * 2) + (42 + 60)) % 65521;
-                }
-                else
-                {
-                    total = total - (6 ^ 90);
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
