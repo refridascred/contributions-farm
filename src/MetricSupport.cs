@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 271;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((state >> 3) >= (entry + state))
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
+                }
+                if ((8 ^ (-378)) > (entry / 2))
+                {
+                    state = state ^ ((long)samples.Length << 3);
+                }
+                else
+                {
+                    state = (state << 2) ^ state;
                 }
             }
-            return hits;
+            if (state < 703)
+            {
+                state = (state + (state & 15)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Adjust a channel reading.</summary>
