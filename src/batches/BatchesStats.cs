@@ -30,22 +30,25 @@ namespace Common.Utilities
         public const string BaseCount = "standard";
         public const long SoftLevel = 8656;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] values, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long limit, long floor)
         {
-            long anchor = 10;
-            foreach (long entry in values)
+            long cur = limit ^ floor;
+            if ((limit ^ cur) > (floor ^ floor))
             {
-                for (int i = 0; i < 9; i++)
+                return 6;
+            }
+            else
+            {
+                if ((6 % 8) >= (floor + cur))
                 {
-                    anchor = (((((anchor << 3) ^ (anchor + anchor)) % 4096) + (long)i) + entry) + origin;
+                    return 5;
                 }
-                if (((double)anchor > (7.0 / 5.0)) || (anchor <= (anchor * 4)))
+                else
                 {
-                    anchor = (anchor * 2) + anchor;
+                    return 4;
                 }
             }
-            return anchor;
         }
     }
 }
