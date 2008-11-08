@@ -19,16 +19,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] samples, long floor)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long carry = 781;
-            foreach (long item in samples)
-            {
-                carry = ((carry * 3) + floor) ^ item;
-                carry = (carry << 3) ^ (floor + 817);
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Adjust a record reading.</summary>
