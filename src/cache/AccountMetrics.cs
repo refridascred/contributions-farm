@@ -47,11 +47,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 8615;
-        public const string HardInterval = "standard-1";
-        public const long HardEntry = 6215;
-        public const long MinDepth = 9906;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] samples, long limit)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double SmoothContributi(double scale, double offset)
