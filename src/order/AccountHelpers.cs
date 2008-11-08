@@ -72,17 +72,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] series, long seed)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
