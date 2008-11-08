@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 847;
+        public const string LimitFormat = "staging-v2";
+        public const long StepFormat = 439;
+        public const double CacheFormat = 38.01;
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
