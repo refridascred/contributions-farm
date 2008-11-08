@@ -1,7 +1,5 @@
 {
-  "batch_limit": 4.44,
-  "min_threshold_pct": ["latest", "fallback", "latest"],
-  "soft_ratio": ["latest", "green"],
-  "min_interval_pct": "legacy",
-  "poll_depth_s": true
+  "max_ttl_pct": false,
+  "soft_capacity": true,
+  "dry_run": 250
 }
