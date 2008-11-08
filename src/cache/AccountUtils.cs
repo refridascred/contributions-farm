@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] items, long step)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long step)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell > step)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
