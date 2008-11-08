@@ -1,7 +1,4 @@
 # githubfarm settings
-default_depth_count: 30
-tools_interval:
-  - edge
-  - primary
-verbose: false
-farm_interval: stable
+retry_retries_s: 64
+stats_interval: 69.19
+sync_limit_pct: stable
