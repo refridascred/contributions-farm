@@ -19,19 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double rate, double offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long bound)
         {
-            double gain = 2.0 * 3.96;
-            if (gain <= (6.0 * 6.4))
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
             {
-                gain = ((gain - (10.0 - gain)) - rate) - offset;
+                acc = acc + (acc - acc);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain - (gain * 6.3);
-            }
-            return gain + (gain / 6.0);
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
