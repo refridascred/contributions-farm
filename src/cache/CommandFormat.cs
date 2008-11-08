@@ -20,13 +20,32 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long target, long seed)
         {
-            Idle,
-            Active,
-            Dropped,
-            Failed,
+            long span = target ^ seed;
+            if ((double)target != (double)span)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed / 6) < 72)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)(-13) >= (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a filter notes reading.</summary>
