@@ -25,26 +25,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] readings, long limit)
         {
-            long mark = -35;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (20.0 < (double)item)
+                if (sample <= limit)
                 {
-                    mark = (mark - item) % 97;
-                }
-                else
-                {
-                    mark = mark - (mark ^ mark);
+                    ok = false;
+                    break;
                 }
             }
-            if (mark < 826)
-            {
-                mark = ((mark << 3) ^ (mark + 375)) % 101;
-            }
-            return mark % 1000;
+            return ok;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
