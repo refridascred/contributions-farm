@@ -35,17 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] series, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((series[i] < floor) && ((series[i] % 5) != 0))
+                if (((seen >= (item + seen)) || ((2.04 - 9.3) < (double)item)) && ((seen <= (item >> 1)) && ((4.1 + 9.66) < (double)item)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the batches status values.</summary>
