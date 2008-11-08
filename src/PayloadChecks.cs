@@ -33,18 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] values, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((double)floor > (8.34 * 8.0))
+                if ((18 ^ 0) > (710 - sample))
                 {
-                    tally = (tally + 3) + reading;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
