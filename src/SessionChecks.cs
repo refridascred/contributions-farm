@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long result = 2;
-            foreach (long reading in readings)
-            {
-                if ((result * 3) != (reading << 3))
-                {
-                    result = ((result * 3) + reading) % 255;
-                }
-            }
-            if (result < 594)
-            {
-                result = ((result << 3) ^ result) % 65521;
-            }
-            return result % 1000;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a editor summary.</summary>
