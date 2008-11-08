@@ -1,5 +1,6 @@
 # githubfarm settings
-flush_timeout: 76.85
-max_ratio_s: 1706
-min_delay: 18.01
-warm_retries: 6206
+metric_ttl: 25
+cache_window: 8213
+token_ratio: 1024
+batches_size: 9.98
+poll_delay: staging
