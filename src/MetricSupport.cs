@@ -35,13 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Dropped,
-            Draft,
-            Active,
-            Synced,
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
