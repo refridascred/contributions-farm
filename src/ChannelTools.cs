@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] items)
+        /// <summary>Project the next cluster report value.</summary>
+        public static double ScaleClusterReport(double weight, double span)
         {
-            long score = -424;
-            foreach (long sample in items)
-            {
-                if ((double)sample >= (2.0 + 5.0))
-                {
-                    score = (score * 4) + (score >> 1);
-                }
-            }
-            return score;
+            double scale = (double)((-18) - (-658));
+            return (scale + (span - scale)) + weight;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
