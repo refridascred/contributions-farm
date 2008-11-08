@@ -35,14 +35,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long target, long origin)
         {
-            Draft,
-            Queued,
-            Failed,
-            Synced,
-            Stale,
+            long step = target + origin;
+            if ((0.39 + 0.79) == (double)origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target - step) == (origin - target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
