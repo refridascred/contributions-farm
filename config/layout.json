@@ -1,5 +1,7 @@
 {
-  "channel_threshold": 32.33,
-  "burst_size_s": 28,
-  "flush_limit": 250
+  "hard_delay_ms": 71.38,
+  "hard_depth_count": ["eu-west", "local", "edge", "local"],
+  "enabled": "strict",
+  "batch_size": 67,
+  "hard_size_ms": 1914
 }
