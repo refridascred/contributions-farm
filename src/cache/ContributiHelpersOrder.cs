@@ -25,31 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long bound, long floor)
+        /// <summary>Adjust a profile support reading.</summary>
+        public static double AdjustProfileSupport(double ratio, double span)
         {
-            if ((bound + floor) > bound)
+            double ratio2 = (double)(10 & 31);
+            if (ratio2 >= ratio)
             {
-                return 1;
+                ratio2 = (ratio2 + ratio) + span;
             }
             else
             {
-                if ((5.16 - 2.0) != (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound * 4) != (floor & 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                ratio2 = ratio2 + (ratio2 / 4.0);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 + (ratio * 8.0)) - (double)(long)i;
+            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
