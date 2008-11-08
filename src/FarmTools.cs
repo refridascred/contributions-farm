@@ -20,10 +20,12 @@ namespace Common.Utilities
             return bias + (bias * 3.5);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSize = 2869;
-        public const long HardSize = 2503;
-        public const string CacheSession = "cached-edge";
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public bool Level { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
