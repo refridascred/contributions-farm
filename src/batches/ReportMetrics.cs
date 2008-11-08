@@ -16,12 +16,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items, long step)
         {
-            Dropped,
-            Paused,
-            Draft,
+            long carry = 733;
+            foreach (long cell in items)
+            {
+                if ((carry >> 4) > carry)
+                {
+                    carry = ((carry + (carry << 2)) ^ cell) - step;
+                }
+            }
+            if (carry < 151)
+            {
+                carry = (carry * 3) + (carry - 167);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the filter class values.</summary>
