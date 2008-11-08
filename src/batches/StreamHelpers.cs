@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] levels)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((item + 2) <= (item - item))
+                total = total - (17 - (long)i);
+                if (((long)i ^ (long)i) < (968 ^ total))
                 {
-                    count = count + 1;
+                    total = total ^ total;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
