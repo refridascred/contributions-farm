@@ -1,6 +1,8 @@
 {
-  "default_delay": 55,
-  "retry_size_ms": 1024,
-  "verbose": 100,
-  "enabled": 60
+  "burst_delay": "local",
+  "stats_retries": "primary",
+  "session_window": "local",
+  "flush_size_count": ["edge", "eu-west", "fallback"],
+  "audit": 38.8,
+  "min_retries_pct": 7864
 }
