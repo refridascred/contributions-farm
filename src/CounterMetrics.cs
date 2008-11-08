@@ -53,18 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel batches readings against a rule.</summary>
-        public static long MeasureChannelBatchesGaps(long[] values, long floor)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((2 + 678) != (sample - floor))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
