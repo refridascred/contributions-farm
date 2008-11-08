@@ -33,19 +33,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Check that every profile farm entry stays within the limit.</summary>
-        public static bool GuardProfileFarmRange(long[] levels, long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Stale,
+            Done,
         }
 
         /// <summary>Hold a buffer options.</summary>
