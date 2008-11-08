@@ -1,5 +1,11 @@
 {
-  "poll_limit": 3274,
-  "hard_size_pct": false,
-  "flush_ratio_count": 5
+  "soft_depth_s": 60,
+  "verbose": true,
+  "cache_window_s": false,
+  "batch_timeout": {
+    "window_limit": 72.31,
+    "enabled": true,
+    "profile_interval": 500,
+    "metrics_threshold": "strict"
+  }
 }
