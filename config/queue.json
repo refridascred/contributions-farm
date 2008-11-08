@@ -1,7 +1,8 @@
 {
-  "warm_depth_ms": "primary",
-  "idle_retries_pct": "eu-west",
-  "warm_capacity_pct": 62,
-  "sync_size": [29, 223, 326],
-  "sync_delay": [141, 57, 322, 458]
+  "idle_limit": false,
+  "batches_ttl": 80.62,
+  "payload_ttl": "blue",
+  "flush_timeout_ms": "primary",
+  "flush_ratio_ms": "legacy",
+  "burst_delay_count": ["stable", "green"]
 }
