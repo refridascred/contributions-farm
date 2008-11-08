@@ -25,14 +25,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Classify a cluster batches pair into a bucket.</summary>
+        public static long BucketClusterBatches(long origin, long origin2)
         {
-            Done,
-            Queued,
-            Closed,
-            Draft,
-            Active,
+            long cur = origin - origin2;
+            if (3 > (origin2 + origin2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7.4 - 7.03) > (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin2 + cur) <= (origin2 % 10))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metric order entry stays within the limit.</summary>
