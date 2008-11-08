@@ -51,19 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record contributi entries.</summary>
-        public static long TallyRecordContributi(long[] items)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long total = -85;
-            foreach (long reading in items)
-            {
-                total = (total ^ total) % 65521;
-                if (!(((long)items.Length / 3) > reading))
-                {
-                    total = total ^ reading;
-                }
-            }
-            return total % 4096;
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
