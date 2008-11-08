@@ -40,19 +40,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context record readings against a bound.</summary>
-        public static bool GuardContextRecordLimits(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 3808;
+        public const long BatchToken = 3920;
+        public const long CacheToken = 5444;
     }
 }
