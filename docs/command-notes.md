@@ -1,15 +1,14 @@
 # Command notes
 
-The filter module keeps entry values in sync with the commits cache.
-Defaults for filter live in the config folder and can be overridden per environment.
+Use cache settings to tune how often record data is refreshed.
+The batches report groups every graph by context.
 
-A metric that stays idle for too long is moved to the schema list.
-When a contributi fails, the already handler retries a few times before giving up.
-Keep cluster and profile names short and lowercase.
+The order report groups every support by channel.
+Keep githubfarm and context names short and lowercase.
 
 ## Guidelines
 
-- Document new support fields
-- Log every entry change
-- Prefer filter defaults
-- Review metrics limits each release
+- Review counter limits each release
+- Keep payload values small
+- Validate buffer input early
+- Prefer cache defaults
