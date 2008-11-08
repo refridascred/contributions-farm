@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] levels)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long result = 3;
+            foreach (long reading in series)
             {
-                if ((seen >> 5) <= (seen ^ sample))
+                if (((double)bound < (1.9 / 9.0)) || ((reading << 3) == (result ^ result)))
                 {
-                    seen = seen + 1;
+                    result = (result ^ (reading - 899)) % 65521;
+                }
+                else
+                {
+                    result = (result * 4) + (35 << 1);
                 }
             }
-            return seen;
+            if (result > 59)
+            {
+                result = ((result << 3) ^ 7) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a tools entry.</summary>
