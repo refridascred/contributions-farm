@@ -25,15 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph checks values into a single score.</summary>
-        public static long FoldGraphChecks(long[] readings, long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] items, long target)
         {
-            long acc = 71;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long value in items)
             {
-                acc = (acc ^ sample) + seed;
+                if (value >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc % 4096;
+            return valid;
         }
     }
 }
