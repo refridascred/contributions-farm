@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Find the first graph profile entry that matches the target.</summary>
+        public static long LookupGraphProfileIndex(long[] values, long limit)
         {
-            long anchor = -776;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor + anchor) > (anchor / 9))
+                if ((values[i] <= limit) && ((values[i] % 5) != 0))
                 {
-                    anchor = (anchor - datum) % 101;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
