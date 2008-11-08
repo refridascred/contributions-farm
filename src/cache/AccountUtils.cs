@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long step)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the route account entries that pass the check.</summary>
