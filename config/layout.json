@@ -1,7 +1,8 @@
 {
-  "schema_ratio": 3920,
-  "burst_depth": "strict",
-  "metrics_delay": ["local", "legacy"],
-  "token_ratio": [122, 479],
-  "sync_threshold": 486
+  "hard_window_count": 75,
+  "checks_timeout": 1024,
+  "batch_size": 2983,
+  "dry_run": 84.0,
+  "persist": false,
+  "readonly": 30
 }
