@@ -13,22 +13,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] levels, long step)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum < (7.1 * 0.93))
-                {
-                    matches = (matches + 2) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Stale,
+            Closed,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the batch class values.</summary>
