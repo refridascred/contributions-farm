@@ -42,12 +42,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long origin)
         {
-            Locked,
-            Idle,
-            Closed,
+            long total = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                long matches = origin;
+                total = ((total << 2) ^ (total & 15)) % 1000;
+                if (((matches ^ matches) < (matches / 7)) && ((total - 64) > (origin % 97)))
+                {
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of context entries.</summary>
