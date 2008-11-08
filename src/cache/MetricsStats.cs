@@ -10,25 +10,10 @@ namespace Common.Utilities
         public const long SoftWindow = 3835;
         public const long BatchWindow = 2687;
 
-        /// <summary>Rank graph command input into a small class.</summary>
-        public static long BucketGraphCommand(long target, long step)
-        {
-            if ((step >> 4) > step)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)target > (8.0 / 2.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 8716;
+        public const long BaseCluster = 6971;
+        public const long BaseInterval = 1295;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordRange(long[] data, long seed)
