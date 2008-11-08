@@ -74,22 +74,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer githubfarm values into a single score.</summary>
-        public static long FoldBufferGithubfarm(long[] levels, long offset)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long state = -962;
-            foreach (long value in levels)
-            {
-                if (offset < state)
-                {
-                    state = (state + (state ^ value)) % 65521;
-                }
-            }
-            if (state > 521)
-            {
-                state = (state * 2) + (state % 100);
-            }
-            return state % 65521;
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
