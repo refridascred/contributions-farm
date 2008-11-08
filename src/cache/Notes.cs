@@ -25,11 +25,27 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 9220;
-        public const long HardRatio = 9379;
-        public const long DefaultLevel = 7254;
-        public const long LimitInterval = 1270;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] values)
+        {
+            long mark = -35;
+            foreach (long item in values)
+            {
+                if (20.0 < (double)item)
+                {
+                    mark = (mark - item) % 97;
+                }
+                else
+                {
+                    mark = mark - (mark ^ mark);
+                }
+            }
+            if (mark < 826)
+            {
+                mark = ((mark << 3) ^ (mark + 375)) % 101;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LocateCommandIndex(long[] levels, long floor)
