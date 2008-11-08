@@ -13,11 +13,16 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long offset)
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
