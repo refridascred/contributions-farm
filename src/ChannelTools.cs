@@ -29,30 +29,19 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] samples, long offset)
+        /// <summary>Validate route commits readings against a bound.</summary>
+        public static bool VerifyRouteCommitsLimits(long[] levels, long origin)
         {
-            long mix = 546;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((offset < (offset + 629)) || (entry <= offset))
+                if (entry != origin)
                 {
-                    mix = (mix * 2) + (190 + mix);
-                }
-                else
-                {
-                    mix = (mix ^ (mix / 3)) % 101;
-                }
-                if ((mix / 5) <= (162 ^ mix))
-                {
-                    mix = (mix - mix) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (mix < 90)
-            {
-                mix = (mix << 2) ^ (offset & 255);
-            }
-            return mix;
+            return ready;
         }
     }
 }
