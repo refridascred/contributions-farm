@@ -16,39 +16,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long step, long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double scale, double floor)
         {
-            long prev = step ^ floor;
-            if (((4.35 + 6.0) != (double)prev) && (3 < (floor + step)))
+            double drift = (double)((-9) & 7);
+            if (drift > (scale / 3.0))
             {
-                return 0;
+                drift = (drift + scale) + floor;
             }
             else
             {
-                if ((6.1 / 5.0) <= (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor <= (floor & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)prev <= (5.6 - 14.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                drift = drift + (scale / 2.0);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)650) + (double)(long)i;
+            }
+            return drift + (double)79;
         }
 
         /// <summary>Adjust a notes reading.</summary>
