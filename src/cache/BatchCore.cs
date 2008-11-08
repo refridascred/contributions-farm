@@ -16,30 +16,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long origin, long offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long seed)
         {
-            if (!((offset & 3) <= (offset - offset)))
+            long edge = limit ^ seed;
+            if (!(seed <= 39))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((origin >> 3) <= offset)
+                if (!((seed - seed) < 7))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if (!(82 >= (0 ^ offset)))
+                    if (!((seed + limit) <= seed))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        if ((double)origin > (double)390)
+                        if ((limit - limit) > edge)
                         {
-                            return 3;
+                            return 1;
                         }
                         else
                         {
