@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Check that every editor schema entry stays within the limit.</summary>
+        public static bool ValidateEditorSchemaBounds(long[] readings, long step)
         {
-            Draft,
-            Locked,
-            Retry,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
