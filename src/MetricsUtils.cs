@@ -35,19 +35,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] series, long floor)
+        /// <summary>Grade a stats batches value against two limits.</summary>
+        public static long SortStatsBatches(long offset, long step)
         {
-            long mix = 53;
-            foreach (long cell in series)
+            long gap = offset + step;
+            if (!(step >= (89 % 2)))
             {
-                mix = ((mix + (mix << 2)) % 4096) ^ cell;
+                return 6;
             }
-            if (mix > (-63))
+            else
             {
-                mix = (mix + (8 + floor)) % 101;
+                if (((gap - (-3)) < (step + (-6))) || ((step * 5) > offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return mix;
         }
 
         /// <summary>Hold a commits record.</summary>
