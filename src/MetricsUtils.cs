@@ -40,11 +40,22 @@ namespace Common.Utilities
             return weight - bias2;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftRatio = 20.09;
-        public const long StepBudget = 7727;
-        public const double MinFormat = 32.01;
-        public const long BaseRatio = 1818;
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelLimits(long[] levels, long offset)
