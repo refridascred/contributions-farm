@@ -1,20 +1,7 @@
 {
-  "session_retries": false,
-  "audit": 28.54,
-  "layout_depth": "edge",
-  "poll_capacity_ms": {
-    "metrics_limit": 1024,
-    "batch_delay": "edge",
-    "compress": "open",
-    "batch_limit": "blue",
-    "default_limit_pct": {
-      "cache_size_pct": [493, 383, 276],
-      "burst_size_ms": 52.02,
-      "filter_size": "green",
-      "soft_capacity_ms": 8577,
-      "sync_window": 10
-    }
-  },
-  "soft_depth_pct": "legacy",
-  "readonly": 1024
+  "base_depth_count": "local",
+  "enabled": "stable",
+  "hard_depth_ms": true,
+  "counter_interval": "legacy",
+  "idle_window": "staging"
 }
