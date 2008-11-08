@@ -22,21 +22,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of counter stats readings.</summary>
-        public static long PairCounterStatsCount(long[] items)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Digest a series of stats queue entries.</summary>
