@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long HardRatio = 5522;
         public const double MinDepth = 66.52;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (sample >= (sample + 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 6581;
+        public const string StepCommits = "local-edge";
+        public const double IdleSize = 64.51;
+        public const double IdleFactor = 9.7;
 
         /// <summary>Validate context record readings against a bound.</summary>
         public static bool GuardContextRecordLimits(long[] data, long seed)
