@@ -23,19 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cluster channel value.</summary>
-        public static double SmoothClusterChannel(double weight, double floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double weight2 = 1.0;
-            if (weight2 >= weight2)
-            {
-                weight2 = weight2 + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + (floor / 4.0)) - (double)(long)i;
-            }
-            return weight2 - (weight2 + weight);
+            Paused,
+            Done,
+            Idle,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a report record.</summary>
