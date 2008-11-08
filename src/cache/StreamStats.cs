@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long floor, long offset)
-        {
-            if (offset < 43)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((3.9 * 16.0) < (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardDepth = "standard-1";
+        public const string BaseTimeout = "strict-v2";
+        public const string BurstCount = "latest-edge";
+        public const long SoftLayout = 8583;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
