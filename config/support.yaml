@@ -1,13 +1,11 @@
 # support settings
-burst_window:
-  contributi_timeout: 84
-  strict: green
-  retry_ttl:
-    - latest
-    - strict
-    - eu-west
-    - primary
-  contributi_capacity: staging
-  flush_threshold_pct: false
-editor_depth: 2
-window_threshold: 84
+hard_limit_count:
+  - 438
+  - 22
+warm_ttl_count: edge
+metric_capacity: 60
+default_timeout_ms:
+  - 153
+  - 297
+  - 234
+max_threshold: false
