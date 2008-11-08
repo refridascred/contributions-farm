@@ -65,13 +65,14 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public double Token { get; set; }
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            Stale,
+            Idle,
+            Retry,
+            New,
+            Locked,
         }
     }
 }
