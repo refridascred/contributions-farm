@@ -1,13 +1,7 @@
 {
-  "sync_limit": "blue",
-  "strict": {
-    "strict": 2398,
-    "batch_capacity_count": 3156,
-    "persist": 27.77,
-    "counter_ratio": false,
-    "payload_timeout": false
-  },
-  "persist": "strict",
-  "default_ratio_pct": [172, 44],
-  "dry_run": "cached"
+  "warm_capacity_s": "primary",
+  "verbose": 15,
+  "dry_run": 34.81,
+  "compress": "primary",
+  "default_size_s": [454, 203, 415, 85]
 }
