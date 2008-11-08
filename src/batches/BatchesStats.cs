@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinDepth = 8762;
-        public const long IdleRatio = 2403;
-        public const string LimitLayout = "legacy-v2";
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long limit, long floor)
+        {
+            if ((floor % 97) == (floor - 327))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor % 97) == (97 + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit >> 4) <= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor <= (floor & 127))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] levels)
