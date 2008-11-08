@@ -1,21 +1,24 @@
 # githubfarm settings
-filter_limit: 8552
-githubfarm_capacity: eu-west
-idle_ratio_pct:
-  - 28
-  - 204
-  - 346
-route_timeout: 21
-profile_capacity:
-  default_limit_s: open
-  min_ratio_ms:
-    - 43
-    - 193
-  flush_interval_s:
-    flush_window_count: 6.54
-    hard_retries_s:
-      - standard
-      - fallback
-      - staging
-      - fallback
-    burst_timeout_count: staging
+audit:
+  audit: false
+  flush_interval_pct: true
+  account_ttl:
+    flush_threshold_pct: 98
+    base_ttl_ms:
+      - latest
+      - eu-west
+    burst_capacity_s: 86.34
+    batch_ratio:
+      - strict
+      - blue
+    batch_interval: 18
+    counter_limit: legacy
+  dry_run:
+    - local
+    - eu-west
+  githubfarm_ratio:
+    - 302
+    - 313
+    - 87
+contributi_limit: 42.34
+flush_depth_ms: primary
