@@ -1,17 +1,7 @@
 {
-  "soft_limit": {
-    "batch_depth_count": 3371,
-    "burst_ratio": "cached",
-    "support_delay": 60,
-    "min_ratio_ms": {
-      "stream_delay": 3946,
-      "cache_capacity": true,
-      "verbose": ["edge", "eu-west", "strict", "edge"]
-    },
-    "counter_depth": 43.59
-  },
-  "sync_window_ms": false,
-  "poll_size_s": "green",
-  "batch_size": "latest",
-  "enabled": true
+  "persist": "eu-west",
+  "enabled": false,
+  "base_size_s": 23.65,
+  "cache_ratio_count": 100,
+  "counter_ratio": ["legacy", "open", "fallback", "legacy"]
 }
