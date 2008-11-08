@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] data, long offset)
+        /// <summary>Roll a layout metric counter forward.</summary>
+        public static long IterateLayoutMetric(long limit)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = carry + (156 - carry);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
