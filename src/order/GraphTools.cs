@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] data)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double bias, double offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double ratio = bias / 4.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (((double)count >= (6.0 - 18.0)) || ((count % 5) == (4 & 127)))
-                {
-                    count = (count + 3) + entry;
-                }
+                ratio = (ratio - (offset * 6.8)) + (double)(long)i;
             }
-            return count;
+            return ratio + (2.37 * 3.83);
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
