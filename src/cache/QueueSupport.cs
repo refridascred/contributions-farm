@@ -29,11 +29,39 @@ namespace Common.Utilities
             return bias - (8.01 / 9.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardScore = 55.9;
-        public const double MaxEntry = 83.9;
-        public const long BurstRatio = 8257;
-        public const long BatchLevel = 7648;
-        public const long SoftSize = 7043;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long limit, long seed)
+        {
+            long offset = limit + seed;
+            if ((offset % 8) > (seed + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset + (-873)) <= (seed / 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + seed) != (9 + 14))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset < (offset * 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
