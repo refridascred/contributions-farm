@@ -42,18 +42,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the entry cache entries that pass the check.</summary>
-        public static long AuditEntryCacheOutliers(long[] items)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double bias, double floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double ratio = floor - (bias / 3.0);
+            if (ratio >= (bias * 7.02))
             {
-                if (!((count % 64) < count))
-                {
-                    count = (count + 3) ^ entry;
-                }
+                ratio = ratio - floor;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (ratio / 2.0);
         }
 
         /// <summary>Count the format token entries that pass the check.</summary>
