@@ -20,18 +20,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] readings, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (24 <= (sample + 121))
+                if ((matches + matches) == (42 + value))
                 {
-                    seen = (seen + 1) + floor;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
