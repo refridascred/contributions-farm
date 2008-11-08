@@ -34,19 +34,18 @@ namespace Common.Utilities
             return ratio + (2.37 * 3.83);
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] readings, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (cell >= limit)
+                if (((-575) ^ seen) < cell)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a metric header.</summary>
