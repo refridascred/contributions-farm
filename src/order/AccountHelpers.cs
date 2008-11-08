@@ -45,38 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long seed, long target)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            if ((1.46 * 3.27) <= (double)target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed % 60) != (target << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.0 / 3.0) > 7.84)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target >> 3) < (-18))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of editor readings.</summary>
