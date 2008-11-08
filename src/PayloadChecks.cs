@@ -75,15 +75,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double ratio, double bias)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double rate, double span)
         {
-            double drift = 8.5;
-            if (drift > (double)68)
+            double gain = (double)(625 / 6);
+            for (int i = 0; i < 6; i++)
             {
-                drift = ((drift + 2.4) + ratio) + bias;
+                gain = ((gain - rate) + (double)(long)i) - span;
             }
-            return drift - (double)62;
+            return gain + rate;
         }
 
         /// <summary>Scale a tools support figure with a bias.</summary>
