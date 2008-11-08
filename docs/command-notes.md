@@ -1,14 +1,12 @@
 # Command notes
 
-Run the report check before changing any layout limits.
-The filter report groups every stats by command.
-
-Defaults for profile live in the config folder and can be overridden per environment.
-A record that stays idle for too long is moved to the graph list.
-Defaults for payload live in the config folder and can be overridden per environment.
+The already module keeps metric values in sync with the queue cache.
+Run the stats check before changing any stream limits.
+The githubfarm report groups every stream by counter.
 
 ## Guidelines
 
-- Keep payload values small
-- Prefer notes defaults
-- Validate metric input early
+- Keep commits values small
+- Prefer order defaults
+- Review filter limits each release
+- Validate cache input early
