@@ -66,26 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] levels, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] levels)
         {
-            long mix = -479;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((double)limit > 2.56)
+                if (((double)cell == (double)count) || ((cell & 7) < (count & 255)))
                 {
-                    mix = (mix - (entry - 9)) % 101;
-                }
-                else
-                {
-                    mix = mix ^ (751 - entry);
+                    count = count + 3;
                 }
             }
-            if (mix > 92)
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix;
+            return count;
         }
     }
 }
