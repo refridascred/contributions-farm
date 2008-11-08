@@ -73,21 +73,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long target, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((double)seed == (6.0 - 8.4)) || ((45 + seed) <= (seed + 8)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed + target) > 529)
                 {
-                    if ((data[i] - data[j]) > 4)
+                    return 5;
+                }
+                else
+                {
+                    if ((target - 966) != (target / 5))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target + seed) <= target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
