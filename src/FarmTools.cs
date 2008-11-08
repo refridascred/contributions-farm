@@ -19,11 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long origin)
         {
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!(acc < (long)i))
+                {
+                    acc = acc ^ (origin >> 2);
+                    continue;
+                }
+                else
+                {
+                    acc = (acc - origin) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
