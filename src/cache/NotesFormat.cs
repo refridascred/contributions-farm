@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a stats stream value against two limits.</summary>
-        public static long SortStatsStream(long limit, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] levels)
         {
-            if ((1.0 - 20.0) == (double)limit)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((627 + origin) != (186 >> 1)) || ((origin % 64) < (80 & 7)))
+                if (!(((double)item >= 8.01) && ((double)item < (7.15 + 11.0))))
                 {
-                    return 4;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    return 3;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first batch session entry that matches the target.</summary>
