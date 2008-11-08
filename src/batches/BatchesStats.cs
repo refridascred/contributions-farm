@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] samples, long target)
         {
-            long acc = 6;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (acc >= (entry + 7))
+                if (samples[i] == target)
                 {
-                    acc = (acc ^ 9) % 1000;
+                    return (long)i;
                 }
             }
-            if (acc > 522)
-            {
-                acc = acc ^ (acc / 9);
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate farm tools samples.</summary>
