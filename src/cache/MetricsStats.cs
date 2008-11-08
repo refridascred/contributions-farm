@@ -29,20 +29,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 2496;
+        public const long CacheCount = 4879;
+        public const double MinRatio = 40.04;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorRange(long[] series, long offset)
