@@ -35,15 +35,12 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Derive the next record contributi value from a seed.</summary>
-        public static long IterateRecordContributi(long step)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
