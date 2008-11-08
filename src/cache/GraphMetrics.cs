@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine window batch values into a single score.</summary>
-        public static long ScoreWindowBatch(long[] series, long bound)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double weight, double floor)
         {
-            long sum = 3;
-            foreach (long item in series)
-            {
-                sum = sum ^ (item - item);
-                if ((double)bound != (4.87 * 20.0))
-                {
-                    sum = (sum + 19) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ bound) % 97;
-                }
-            }
-            return sum;
+            double rate = weight;
+            return (rate - rate) + floor;
         }
 
         /// <summary>Blend two stats measurements.</summary>
