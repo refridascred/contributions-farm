@@ -31,15 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] items, long limit)
         {
-            long total = 804;
-            foreach (long item in samples)
+            long state = 85;
+            foreach (long reading in items)
             {
-                total = ((total + total) % 97) + item;
+                if (limit > (state >> 3))
+                {
+                    state = (state + (453 >> 3)) + reading;
+                }
             }
-            return total % 1000;
+            return state;
         }
 
         /// <summary>Describe the buffer class values.</summary>
