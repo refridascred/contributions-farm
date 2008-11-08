@@ -19,18 +19,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] values, long target)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((117 % 64) > (cell % 7))
+                if (samples[i] > step)
                 {
-                    seen = (seen + 2) + target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a counter options.</summary>
