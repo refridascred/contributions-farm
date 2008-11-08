@@ -1,8 +1,10 @@
 # githubfarm settings
-flush_ttl_s: false
-githubfarm_capacity: latest
-persist:
-  - staging
-  - green
-  - primary
-  - blue
+burst_retries_pct: 6320
+cache_capacity: 100
+audit:
+  - open
+  - edge
+  - eu-west
+base_threshold_count: 98.5
+already_interval: 500
+min_threshold_count: 6981
