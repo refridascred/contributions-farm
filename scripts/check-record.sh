@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in legacy cached; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=90
+log "limit is ${RECORD_LIMIT}"
 
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 4); do
     total=$((total + i * 5))
 done
 log "total ${total}"
