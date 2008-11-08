@@ -32,13 +32,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Closed,
-            Done,
-            Active,
-            Ready,
+            Idle,
+            Pending,
+            Stale,
+            Paused,
+            Dropped,
         }
     }
 }
