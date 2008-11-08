@@ -40,14 +40,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] readings, long bound)
         {
-            Dropped,
-            Queued,
-            Idle,
-            Draft,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
