@@ -14,19 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double gain, double floor)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            double rate = (20.0 - gain) - (gain + gain);
+            if (rate < floor)
             {
-                if ((7.0 + 4.97) < (double)total)
-                {
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                rate = rate - gain;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Adjust a account reading.</summary>
