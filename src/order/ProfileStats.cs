@@ -45,14 +45,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double scale, double bias)
         {
-            Active,
-            Draft,
-            Pending,
-            Synced,
-            Failed,
+            double scale2 = (double)40;
+            if (scale2 > 5.7)
+            {
+                scale2 = scale2 + (scale - 7.61);
+            }
+            else
+            {
+                scale2 = scale2 + (scale2 - scale2);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + (bias - bias)) + (double)(long)i;
+            }
+            return scale2 + (double)2;
         }
     }
 }
