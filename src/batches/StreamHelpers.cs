@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum <= offset)
                 {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
