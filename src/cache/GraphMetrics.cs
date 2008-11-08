@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every filter command entry stays within the limit.</summary>
-        public static bool CheckFilterCommandLimits(long[] levels, long bound)
+        /// <summary>Combine window batch values into a single score.</summary>
+        public static long ScoreWindowBatch(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long sum = 3;
+            foreach (long item in series)
             {
-                if (entry >= bound)
+                sum = sum ^ (item - item);
+                if ((double)bound != (4.87 * 20.0))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum + 19) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ bound) % 97;
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
