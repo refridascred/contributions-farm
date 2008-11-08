@@ -14,22 +14,31 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] series, long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long target, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            if ((double)target > (double)929)
             {
-                if ((datum / 8) > (hits + hits))
+                return 8;
+            }
+            else
+            {
+                if ((target + target) <= (target - limit))
                 {
-                    hits = (hits + 1) - step;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)target != (2.12 * 5.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up queue samples.</summary>
