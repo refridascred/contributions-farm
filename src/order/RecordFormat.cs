@@ -30,19 +30,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] items, long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
