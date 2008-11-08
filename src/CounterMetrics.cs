@@ -27,22 +27,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit account notes readings against a rule.</summary>
-        public static long TallyAccountNotesHits(long[] levels)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (!(entry >= (entry >> 4)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Idle,
+            Retry,
+            Queued,
+            Draft,
         }
 
         /// <summary>Match up route samples.</summary>
