@@ -64,26 +64,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] data, long floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long score = 3;
-            foreach (long value in data)
-            {
-                if ((score - score) != (value << 1))
-                {
-                    score = score - (value << 3);
-                }
-                else
-                {
-                    score = (score + (value % 3)) % 4096;
-                }
-            }
-            if (score < 624)
-            {
-                score = ((score * 2) + floor) % 4096;
-            }
-            return score;
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
