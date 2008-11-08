@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] values)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long mix = 75;
-            foreach (long value in values)
-            {
-                mix = (mix + (32 - value)) % 65521;
-                if ((long)values.Length < value)
-                {
-                    mix = mix - (value << 2);
-                }
-            }
-            return mix;
+            Failed,
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a token stats.</summary>
