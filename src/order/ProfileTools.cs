@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit graph metric readings against a rule.</summary>
-        public static long AuditGraphMetricGaps(long[] samples)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long state = 8;
+            foreach (long datum in data)
             {
-                if ((seen * 5) < 7)
+                if (!((state << 2) >= origin))
                 {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = ((state * 3) + ((-21) ^ origin)) ^ datum;
                 }
             }
-            return seen;
+            if (state > 587)
+            {
+                state = ((state * 5) + (origin + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
