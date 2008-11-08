@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] levels, long limit)
         {
-            Retry,
-            Stale,
-            Idle,
-            New,
-            Active,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (!((item - item) < (tally << 2)))
+                {
+                    tally = (tally + 2) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
