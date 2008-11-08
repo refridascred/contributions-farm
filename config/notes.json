@@ -1,7 +1,18 @@
 {
-  "poll_threshold_pct": 32.34,
-  "checks_window": [330, 106, 167, 489],
-  "poll_delay_pct": 3616,
-  "min_limit_s": "stable",
-  "commits_retries": 4064
+  "token_ttl": {
+    "verbose": {
+      "warm_interval_count": 1,
+      "max_window_s": 37,
+      "graph_limit": "edge",
+      "record_depth": 9695,
+      "already_delay": 70,
+      "readonly": 2.4
+    },
+    "persist": "local",
+    "base_depth": 30,
+    "strict": "fallback"
+  },
+  "stream_size": 1024,
+  "readonly": 44,
+  "min_ratio": 76
 }
