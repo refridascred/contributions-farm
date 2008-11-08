@@ -1,6 +1,5 @@
 # githubfarm settings
-min_timeout_pct: 9665
-hard_limit_ms: 60
-base_ttl_count: 12
-tools_delay: latest
-verbose: 4544
+flush_timeout: 76.85
+max_ratio_s: 1706
+min_delay: 18.01
+warm_retries: 6206
