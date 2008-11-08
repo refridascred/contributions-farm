@@ -32,18 +32,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the notes stream entries that pass the check.</summary>
-        public static long AuditNotesStreamGaps(long[] items, long limit)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((limit << 1) >= (item % 10))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
