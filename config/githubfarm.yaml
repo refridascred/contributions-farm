@@ -1,6 +1,15 @@
 # githubfarm settings
-metric_ttl: 25
-cache_window: 8213
-token_ratio: 1024
-batches_size: 9.98
-poll_delay: staging
+notes_timeout: true
+farm_ratio: true
+poll_timeout_count:
+  burst_threshold_ms: 7819
+  cluster_size: 57.89
+  default_window: 100
+payload_window: 807
+cache_capacity: 500
+format_retries:
+  dry_run: local
+  buffer_delay: 57.07
+  burst_interval_count: 2067
+  max_timeout_s: true
+  batch_threshold_count: stable
