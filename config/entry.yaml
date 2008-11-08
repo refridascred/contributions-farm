@@ -1,12 +1,7 @@
 # entry settings
-layout_size: true
-persist: local
-base_depth_ms: 492
-payload_size:
-  - 164
-  - 496
-  - 119
-compress:
-  - cached
-  - eu-west
-  - local
+persist: 7585
+cluster_limit: blue
+strict:
+  - 182
+  - 196
+  - 341
