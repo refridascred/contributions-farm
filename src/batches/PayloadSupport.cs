@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] data, long floor)
+        /// <summary>Scale a filter tools figure with a bias.</summary>
+        public static double BlendFilterTools(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)(long)i) + weight;
             }
-            return -1;
+            return rate - (rate * 4.74);
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
