@@ -38,13 +38,22 @@ namespace Common.Utilities
         public const string IdleMetric = "local-v2";
         public const double LimitMetric = 95.87;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many graph token samples are out of range.</summary>
+        public static long TallyGraphTokenMatches(long[] samples, long offset)
         {
-            Synced,
-            Queued,
-            Closed,
-            Locked,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((6.23 - 2.8) < (double)item)
+                {
+                    hits = (hits + 3) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
