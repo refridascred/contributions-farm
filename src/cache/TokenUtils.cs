@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] levels, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (!((item - item) < (tally << 2)))
+                if ((((seen << 3) > (-69)) && ((double)item <= (13.0 * 0.57))) && (2 <= floor))
                 {
-                    tally = (tally + 2) + limit;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
