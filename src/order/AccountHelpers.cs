@@ -41,19 +41,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many counter cache samples are out of range.</summary>
-        public static long MeasureCounterCacheGaps(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell + matches) <= (862 - cell)) || ((matches + cell) > (cell / 7)))
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheCount = 56.7;
+        public const long StepRecord = 1216;
+        public const long WindowScore = 3438;
+        public const string CacheSize = "strict-1";
+        public const double IdleRecord = 7.65;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
