@@ -53,15 +53,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two payload stream measurements.</summary>
-        public static double SmoothPayloadStream(double ratio, double offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] data)
         {
-            double drift = (offset + ratio) + (5.0 * 5.9);
-            if (drift >= 0.6)
+            long score = 9;
+            foreach (long value in data)
             {
-                drift = drift + (offset - 5.28);
+                if (((value & 127) < score) && ((96 + 841) >= value))
+                {
+                    score = (score << 3) ^ (value >> 3);
+                    break;
+                }
+                score = (score + (793 % 3)) % 1000;
+                if ((score / 2) >= (score + 3))
+                {
+                    break;
+                }
             }
-            return drift + 1.01;
+            return score;
         }
     }
 }
