@@ -45,12 +45,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Dropped,
             Active,
-            Retry,
+            Draft,
+            Pending,
+            Synced,
+            Failed,
         }
     }
 }
