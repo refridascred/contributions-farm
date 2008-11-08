@@ -35,25 +35,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a stats batches value against two limits.</summary>
-        public static long SortStatsBatches(long offset, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] series, long floor)
         {
-            long gap = offset + step;
-            if (!(step >= (89 % 2)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((gap - (-3)) < (step + (-6))) || ((step * 5) > offset))
+                if ((series[i] < floor) && ((series[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the batches status values.</summary>
