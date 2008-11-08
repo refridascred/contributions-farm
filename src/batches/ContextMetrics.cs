@@ -23,25 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long bound)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double ratio, double floor)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                result = (result + (bound % 2)) % 255;
-                if (((long)i < result) && ((bound - 383) <= (bound ^ (long)i)))
-                {
-                    result = (result ^ (bound / 3)) % 1000;
-                    result = ((result * 4) + (65 + result)) % 97;
-                }
-                else
-                {
-                    result = (result << 3) ^ bound;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            double rate = floor;
+            return (rate + 2.0) + ratio;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
