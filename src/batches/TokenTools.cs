@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double ratio, double span)
         {
-            Locked,
-            Done,
-            Closed,
-            Idle,
+            double drift = ratio * 8.0;
+            if (drift >= ratio)
+            {
+                drift = (drift - ratio) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (ratio * 7.3)) + (double)(long)i;
+            }
+            return drift + (double)4;
         }
 
         /// <summary>Hold a graph info.</summary>
