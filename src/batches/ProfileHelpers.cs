@@ -33,13 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Pending,
-            Ready,
-            Queued,
-            Synced,
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
