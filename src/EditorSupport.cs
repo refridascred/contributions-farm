@@ -71,24 +71,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long target, long seed)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            if (((seed * 2) <= target) && ((double)seed <= 6.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((target % 12) >= (target + target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
