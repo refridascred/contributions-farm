@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next batch payload value.</summary>
-        public static double ProjectBatchPayload(double weight, double offset)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double drift = offset - (weight / 6.0);
-            if (drift > (double)2)
-            {
-                drift = drift - (double)3;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (weight / 2.0);
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
