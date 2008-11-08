@@ -15,14 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
             Ready,
-            Dropped,
             Locked,
-            New,
-            Paused,
+            Failed,
+            Done,
         }
 
         /// <summary>Blend two payload channel measurements.</summary>
