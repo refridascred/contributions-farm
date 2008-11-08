@@ -12,39 +12,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a editor support pair into a bucket.</summary>
-        public static long ClassifyEditorSupport(long offset, long origin)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long edge = offset ^ origin;
-            if (!((2.0 / 4.0) != (double)origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (edge <= (edge * 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset > (offset & 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((edge / 4) > (offset % 97))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
