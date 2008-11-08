@@ -33,18 +33,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the command buffer entries that pass the check.</summary>
-        public static long TallyCommandBufferHits(long[] data, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long mark = 0;
+            foreach (long datum in samples)
             {
-                if (hits < (value + value))
+                if (((mark << 2) >= mark) && ((datum - datum) < (bound + bound)))
                 {
-                    hits = (hits + 1) - origin;
+                    mark = (mark + (datum + 935)) % 1000;
                 }
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
