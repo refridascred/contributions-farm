@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long CacheScore = 2370;
         public const long BatchFilter = 8255;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Measure how many command farm samples are out of range.</summary>
+        public static long CountCommandFarmGaps(long[] series, long origin)
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!(((origin >> 4) > (400 ^ (long)series.Length)) && ((origin ^ origin) > (origin & 1))))
+                {
+                    seen = (seen + 3) - value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
