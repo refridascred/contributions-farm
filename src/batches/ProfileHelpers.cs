@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] values, long seed)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((seed % 64) == (matches & 31))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
