@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 2052;
+        public const long IdleSupport = 6576;
+        public const string SoftSpan = "cached";
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long CombineQueue(long[] data)
