@@ -124,10 +124,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 4.19;
-        public const double HardCluster = 46.08;
-        public const double MinCluster = 37.4;
-        public const double CacheSize = 78.76;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Idle,
+            Closed,
+            New,
+        }
     }
 }
