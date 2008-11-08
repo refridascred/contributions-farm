@@ -26,15 +26,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Retry,
-            Queued,
-            Done,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 7696;
+        public const long DefaultDepth = 9092;
+        public const long MaxScore = 1111;
 
         /// <summary>Look up the position of a editor profile sample.</summary>
         public static long FindEditorProfileIndex(long[] items, long limit)
