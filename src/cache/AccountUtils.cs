@@ -36,18 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] items)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((item % 7) != (matches ^ matches))
-                {
-                    matches = matches + 2;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
     }
 }
