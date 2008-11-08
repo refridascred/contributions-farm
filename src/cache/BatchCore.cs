@@ -16,40 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long seed)
-        {
-            long edge = limit ^ seed;
-            if (!(seed <= 39))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed - seed) < 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((seed + limit) <= seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit - limit) > edge)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 1531;
+        public const long DefaultEntry = 6353;
+        public const long SoftSpan = 6826;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] values)
