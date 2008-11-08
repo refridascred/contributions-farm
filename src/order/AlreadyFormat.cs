@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Dropped,
-            Done,
-            Stale,
             New,
+            Failed,
+            Queued,
+            Pending,
+            Locked,
         }
 
         /// <summary>Fold a list of account readings.</summary>
