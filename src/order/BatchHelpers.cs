@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "open-1";
-        public const long IdleSize = 2465;
-        public const long RetryAlready = 842;
-        public const long MinLevel = 9767;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 7259;
+        public const long LimitSize = 3089;
+        public const long BaseScore = 6747;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long RollProfile(long seed)
