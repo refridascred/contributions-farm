@@ -15,25 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank editor schema input into a small class.</summary>
-        public static long BucketEditorSchema(long floor, long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long limit)
         {
-            long edge = floor ^ seed;
-            if (!((floor / 6) >= floor))
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 4;
+                total = ((total * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (!((3 << 3) < edge))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return total;
         }
 
         /// <summary>Match up metrics samples.</summary>
