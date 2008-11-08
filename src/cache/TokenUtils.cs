@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long SoftAlready = 4382;
         public const double HardTimeout = 73.38;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] levels, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (levels[i] >= floor)
+                if ((567 + floor) < (143 + 4))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
