@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many token metrics samples are out of range.</summary>
-        public static long AuditTokenMetricsHits(long[] items, long floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((11.0 + 3.0) <= (10.0 - 9.21))
-                {
-                    seen = ((seen + 1) + item) + floor;
-                }
-            }
-            return seen;
+            Dropped,
+            Done,
+            Stale,
+            New,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
