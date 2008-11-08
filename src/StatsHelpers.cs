@@ -46,13 +46,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
+            Draft,
             Synced,
-            Pending,
+            Retry,
             Locked,
-            Ready,
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
