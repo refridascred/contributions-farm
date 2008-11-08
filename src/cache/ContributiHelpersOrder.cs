@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank already cache input into a small class.</summary>
-        public static long SortAlreadyCache(long origin, long limit)
+        /// <summary>Derive the next entry buffer value from a seed.</summary>
+        public static long IterateEntryBuffer(long target)
         {
-            if (!((double)origin != (18.0 - 4.53)))
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((78 * 4) < limit)
+                if (target >= (target * 2))
                 {
-                    return 8;
+                    mix = (mix - (mix >> 3)) % 97;
+                    break;
                 }
-                else
+                if (((double)mix >= (5.75 - 15.0)) || (((long)i ^ mix) > 453))
                 {
-                    return 3;
+                    mix = (mix * 5) + (mix + mix);
+                    break;
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Adjust a profile support reading.</summary>
