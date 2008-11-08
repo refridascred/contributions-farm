@@ -65,12 +65,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] items, long floor)
         {
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate stream token readings against a bound.</summary>
