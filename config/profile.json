@@ -1,8 +1,13 @@
 {
-  "audit": 30,
-  "cache_interval_s": 89.98,
-  "channel_capacity": "fallback",
-  "max_retries_count": false,
-  "schema_depth": false,
-  "sync_capacity_pct": 57.34
+  "base_ttl_pct": {
+    "verbose": "blue",
+    "window_depth": 30,
+    "persist": "cached",
+    "githubfarm_ratio": "latest",
+    "min_depth_pct": 53
+  },
+  "strict": [10, 402, 120, 377],
+  "enabled": 18,
+  "retry_capacity": true,
+  "report_delay": 23
 }
