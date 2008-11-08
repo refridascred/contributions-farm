@@ -41,19 +41,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] readings, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (((long)i - (-18)) > (origin % 7))
+                if (cell <= origin)
                 {
-                    mark = ((mark * 4) + origin) % 4096;
+                    stale = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return stale;
         }
     }
 }
