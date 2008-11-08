@@ -37,18 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits & 7) < hits)
                 {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
