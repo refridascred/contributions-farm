@@ -40,21 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count schema command pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCommandCount(long[] data)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
