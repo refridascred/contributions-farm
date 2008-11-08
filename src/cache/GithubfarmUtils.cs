@@ -36,19 +36,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] items, long bound)
-        {
-            long result = 2;
-            foreach (long cell in items)
-            {
-                result = (result ^ (bound + bound)) % 65521;
-                if ((bound << 2) >= (0 - cell))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 1527;
+        public const string WindowRatio = "standard-edge";
+        public const long BurstRatio = 8920;
     }
 }
