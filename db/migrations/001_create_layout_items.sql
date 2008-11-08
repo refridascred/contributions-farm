@@ -2,12 +2,9 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    label TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    owner TEXT NOT NULL,
-    rank INTEGER
+    weight REAL,
+    active INTEGER NOT NULL DEFAULT 1,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_label ON layout_items (label);
-
-INSERT INTO layout_items (count, label, score, owner, rank) VALUES (32, 'open', 4.41, 'primary', 8);
+CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
