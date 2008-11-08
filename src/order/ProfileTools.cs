@@ -35,19 +35,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] series, long limit)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            long sum = 812;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum / 8) < (sample << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum + (limit % 2)) % 65521;
+                    if ((data[i] - data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = (sum * 4) + (limit + sum);
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
