@@ -22,11 +22,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstSize = 4446;
-        public const long BaseSpan = 3997;
-        public const double StepBuffer = 53.59;
-        public const long BurstBuffer = 3031;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsMatches(long[] data, long origin)
