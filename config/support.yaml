@@ -1,17 +1,8 @@
 # support settings
-default_window_pct: 4362
-support_retries:
-  retry_delay_pct:
-    batch_size: 34
-    persist:
-      - 109
-      - 376
-      - 188
-      - 296
-    batch_depth_s: eu-west
-  cluster_retries:
-    - primary
-    - stable
-    - local
-  default_size_s: 76.74
-max_ratio_ms: true
+verbose:
+  - strict
+  - blue
+  - eu-west
+base_depth_pct: primary
+strict: 73.75
+entry_size: 1259
