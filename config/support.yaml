@@ -1,5 +1,26 @@
 # support settings
-compress: true
-farm_window: 44.63
-flush_timeout_ms: false
-idle_interval: primary
+report_timeout:
+  audit:
+    - strict
+    - strict
+    - fallback
+    - open
+  session_interval: false
+  compress:
+    - legacy
+    - latest
+    - standard
+  batch_timeout_pct: green
+  strict:
+    - eu-west
+    - cached
+    - primary
+  default_limit_ms:
+    - 209
+    - 449
+cache_ttl_count:
+  - 283
+  - 413
+  - 152
+compress: stable
+poll_threshold_s: 95.78
