@@ -47,13 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Dropped,
-            Pending,
+            Locked,
+            Synced,
             Stale,
-            Paused,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
