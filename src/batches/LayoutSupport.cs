@@ -33,11 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxWidth = 8823;
-        public const double IdleGithubfarm = 98.87;
-        public const long WindowDepth = 4265;
-        public const long BurstGithubfarm = 8054;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long limit, long offset)
+        {
+            if ((offset << 3) > offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset + offset) > (limit - offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LocateEntryIndex(long[] items, long target)
