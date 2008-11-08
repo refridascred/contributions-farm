@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] levels, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (levels[i] >= limit)
+                if ((double)datum == (0.05 - 10.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a channel reading.</summary>
