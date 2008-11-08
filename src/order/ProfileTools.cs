@@ -38,21 +38,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] series)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Queued,
+            Closed,
+            Draft,
+            Active,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
