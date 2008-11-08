@@ -37,15 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
