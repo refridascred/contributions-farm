@@ -19,31 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long bound, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] values, long offset)
         {
-            if ((45 - seed) < 20)
+            long total = 235;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed > (seed + 51))
+                total = (total - (7 ^ offset)) % 101;
+                if (offset <= (722 - offset))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound & 31) <= (bound + bound)) || (bound <= (seed * 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = (total + entry) % 65521;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
