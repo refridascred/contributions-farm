@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] series, long seed)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(seed < reading))
-                {
-                    seen = seen + 1;
-                }
+                sum = (sum ^ (9 + sum)) % 4096;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Classify a metric stream pair into a bucket.</summary>
