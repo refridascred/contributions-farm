@@ -28,15 +28,18 @@ namespace Common.Utilities
         public const long BaseInterval = 5834;
         public const long StepCount = 7061;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double scale, double span)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] items)
         {
-            double scale2 = span;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                scale2 = ((scale2 - scale2) - (double)(long)i) - scale;
+                if (((reading - hits) >= reading) && !(reading > (reading >> 1)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return scale2 - scale2;
+            return hits;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
