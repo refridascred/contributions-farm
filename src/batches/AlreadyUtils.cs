@@ -37,32 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long seed, long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            long cur = seed - limit;
-            if ((double)limit >= (2.0 * 20.0))
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((limit + limit) >= limit) || ((seed + cur) == (cur & 1)))
+                if ((score << 1) != (30 & 255))
                 {
-                    return 8;
+                    score = score + limit;
                 }
-                else
-                {
-                    if (9.0 < (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Describe the account phase values.</summary>
