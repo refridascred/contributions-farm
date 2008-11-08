@@ -1,12 +1,22 @@
 # entry settings
-already_depth: standard
-enabled:
-  poll_timeout_ms:
-    - fallback
-    - strict
+sync_delay_count: 1024
+sync_limit: open
+retry_limit_s: open
+max_retries_count: false
+support_capacity: 72.38
+batches_limit:
+  burst_timeout_ms:
+    retry_size_count: 23.7
+    cache_interval: true
+    poll_retries: 45.82
+    poll_timeout_count: 2299
+    hard_threshold:
+      - latest
+      - local
+    counter_ttl: false
+  readonly: edge
+  dry_run: 18
+  enabled: 2825
+  sync_interval:
     - latest
-    - green
-  warm_delay_count: 81.01
-  tools_capacity: cached
-  batch_retries_pct: fallback
-payload_retries: 7579
+    - stable
