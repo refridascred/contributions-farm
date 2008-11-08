@@ -14,22 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of tools githubfarm entries.</summary>
-        public static long TotalToolsGithubfarm(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] values, long limit)
         {
-            long state = 387;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 5; i++)
+                if ((tally - limit) >= entry)
                 {
-                    state = (state + (state - value)) + (long)i;
-                }
-                if (((32 ^ state) >= 421) && ((16.0 * 6.39) >= (8.79 / 2.0)))
-                {
-                    state = ((state * 2) + (value + 1)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Match up batch samples.</summary>
