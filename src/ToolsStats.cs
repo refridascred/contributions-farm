@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a schema filter counter forward.</summary>
-        public static long StepSchemaFilter(long floor)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double weight, double bias)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            double load = (double)(214 - 19);
+            for (int i = 0; i < 3; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = (((carry << 3) ^ (84 * 5)) % 65521) - (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                load = (load + (bias - load)) + (double)(long)i;
             }
-            return carry;
+            return load - (weight - load);
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
