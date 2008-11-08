@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "open-edge";
-        public const long DefaultMetrics = 3722;
-        public const string BaseMetrics = "latest-v2";
-        public const double SoftBudget = 96.81;
-        public const long RetryMetrics = 726;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long bound, long seed)
+        {
+            if ((seed >> 1) == (47 << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((2.29 + 18.0) < (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= (seed << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound >= (bound + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportMatches(long[] data)
