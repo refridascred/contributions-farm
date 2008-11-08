@@ -63,9 +63,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleRatio = 24.26;
-        public const double IdleLevel = 5.6;
-        public const long MinStats = 8536;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
