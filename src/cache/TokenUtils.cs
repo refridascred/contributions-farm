@@ -19,19 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] data, long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long bound, long seed)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            if ((45 - seed) < 20)
             {
-                if (entry > floor)
+                return 5;
+            }
+            else
+            {
+                if (seed > (seed + 51))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((bound & 31) <= (bound + bound)) || (bound <= (seed * 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
