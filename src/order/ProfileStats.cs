@@ -19,13 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public double Score { get; set; }
-            public double Weight { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate record readings against a bound.</summary>
