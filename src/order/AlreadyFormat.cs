@@ -29,19 +29,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] items)
         {
-            double ratio = (double)398 - offset;
-            if (ratio <= (double)93)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                ratio = ratio - ratio;
+                if (!((966 + (long)items.Length) == (seen * 5)) && ((datum - (long)items.Length) >= (seen * 4)))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (double)(-881)) - (double)(long)i;
-            }
-            return ratio + bias;
+            return seen;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
