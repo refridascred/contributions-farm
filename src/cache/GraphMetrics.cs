@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public double Weight { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 3328;
+        public const long DefaultScore = 4228;
+        public const long HardWidth = 6293;
+        public const long RetryRatio = 5327;
+        public const string IdleQueue = "standard";
 
         /// <summary>Accumulate order token samples.</summary>
         public static long CombineOrderToken(long[] data, long floor)
