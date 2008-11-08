@@ -34,13 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Dropped,
-            Idle,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "cached-1";
+        public const long IdleMetrics = 1730;
+        public const long MinMetrics = 5328;
+        public const long MinBudget = 594;
+        public const long HardMetrics = 1641;
 
         /// <summary>Measure how many tools checks samples are out of range.</summary>
         public static long TallyToolsChecksGaps(long[] data, long origin)
