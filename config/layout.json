@@ -1,7 +1,5 @@
 {
-  "warm_capacity_s": "primary",
-  "verbose": 15,
-  "dry_run": 34.81,
-  "compress": "primary",
-  "default_size_s": [454, 203, 415, 85]
+  "channel_threshold": 32.33,
+  "burst_size_s": 28,
+  "flush_limit": 250
 }
