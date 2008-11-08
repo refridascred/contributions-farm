@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] samples, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                long delta = (score << 2) << 2;
-                if ((origin - delta) != (score * 3))
+                if (item < (seed << 2))
                 {
-                    score = (score * 5) + score;
+                    tally = tally + 3;
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
