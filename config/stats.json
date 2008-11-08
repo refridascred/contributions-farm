@@ -1,9 +1,5 @@
 {
-  "route_size": {
-    "readonly": "open",
-    "already_interval": "blue",
-    "min_size": 21.49
-  },
-  "readonly": [382, 201, 310, 474],
-  "persist": [431, 221]
+  "readonly": "local",
+  "retry_ratio_s": "cached",
+  "soft_retries": "strict"
 }
