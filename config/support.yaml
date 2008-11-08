@@ -1,12 +1,9 @@
 # support settings
-burst_capacity_s: 1722
-cache_threshold: 0.53
-min_retries:
-  - 205
-  - 465
-base_size_count: 91
-profile_interval:
-  - stable
-  - eu-west
-  - green
-already_limit: open
+sync_interval_ms: 500
+base_ratio_ms: 2496
+payload_retries:
+  retry_ratio_s: 6916
+  audit: 67
+  flush_capacity_count:
+    - 410
+    - 462
