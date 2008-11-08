@@ -62,38 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor githubfarm input into a small class.</summary>
-        public static long SortEditorGithubfarm(long origin, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] series, long limit)
         {
-            if (!((double)seed < (13.0 * 17.0)))
+            bool valid = true;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((862 + seed) > seed))
+                if (value != limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (origin > (origin & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin <= 0) || ((origin / 6) <= origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
