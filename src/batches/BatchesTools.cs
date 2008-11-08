@@ -24,14 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Done,
-            Pending,
-            Locked,
-            Active,
-            Ready,
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
