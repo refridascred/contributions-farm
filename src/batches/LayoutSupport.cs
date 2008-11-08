@@ -25,18 +25,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] data, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] values)
         {
-            long anchor = -2;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (((0.26 / 6.0) < (double)anchor) && ((double)anchor <= (9.5 - 4.21)))
+                if (value > (3 * 2))
                 {
-                    anchor = (anchor + (datum + anchor)) - offset;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
