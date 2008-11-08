@@ -52,23 +52,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double ratio, double floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long limit)
         {
-            double gain = ratio;
-            if (gain <= ratio)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                gain = gain - (floor - floor);
+                long step = acc ^ (limit + 435);
+                if (((0.4 / 9.0) > (double)step) || ((acc ^ acc) > limit))
+                {
+                    acc = (acc ^ acc) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                gain = gain + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + floor;
+            return acc;
         }
     }
 }
