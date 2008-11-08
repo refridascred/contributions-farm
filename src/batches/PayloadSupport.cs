@@ -32,11 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 9516;
-        public const long BurstCache = 1337;
-        public const long MaxCache = 1530;
-        public const long BatchWidth = 774;
-        public const long HardScore = 2189;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
