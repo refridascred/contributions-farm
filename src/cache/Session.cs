@@ -27,12 +27,20 @@ namespace Common.Utilities
         public const long BaseStream = 3331;
         public const string MaxStream = "primary-edge";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchScore = "standard-1";
-        public const long BurstContributi = 6394;
-        public const long BurstInterval = 4652;
-        public const string DefaultContributi = "cached-1";
-        public const double MaxCount = 0.92;
+        /// <summary>Check that every window contributi entry stays within the limit.</summary>
+        public static bool GuardWindowContributiLimits(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long SeriesNotes(long step)
