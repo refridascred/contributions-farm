@@ -47,14 +47,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] levels, long target)
         {
-            Active,
-            Paused,
-            Retry,
-            Closed,
-            Locked,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((target + target) < (target / 6))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate editor samples.</summary>
