@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+mode="${1:-fallback}"
 case "${mode}" in
-    standard)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in blue stable; do
+for item in open green cached; do
     log "checking ${item}"
 done
