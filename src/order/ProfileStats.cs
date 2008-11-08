@@ -37,13 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public double Size { get; set; }
-            public double Token { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
