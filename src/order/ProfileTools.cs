@@ -53,19 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric order entry stays within the limit.</summary>
-        public static bool CheckMetricOrderRange(long[] series, long seed)
+        /// <summary>Count the entry cache entries that pass the check.</summary>
+        public static long AuditEntryCacheOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (item >= seed)
+                if (!((count % 64) < count))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
