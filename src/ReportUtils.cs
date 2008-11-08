@@ -58,12 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Draft,
-            Dropped,
-            Pending,
+            Retry,
+            Paused,
+            Stale,
+            Synced,
         }
     }
 }
