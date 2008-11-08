@@ -40,21 +40,13 @@ namespace Common.Utilities
         public const string MaxBuffer = "open-1";
         public const long MinBuffer = 2317;
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
