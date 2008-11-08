@@ -34,23 +34,24 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double weight, double span)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long origin, long offset)
         {
-            double bias = span;
-            if (bias > (double)63)
+            if (!(origin > (origin ^ origin)))
             {
-                bias = bias + 7.6;
+                return 1;
             }
             else
             {
-                bias = bias + (weight + weight);
+                if ((459 - offset) >= origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (weight / 6.0)) + (double)(long)i;
-            }
-            return bias - bias;
         }
     }
 }
