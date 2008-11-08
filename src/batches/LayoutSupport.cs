@@ -42,21 +42,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Digest a series of channel filter entries.</summary>
+        public static long TotalChannelFilter(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 9;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((2.2 + 9.0) == (double)datum))
                 {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry - carry) % 101;
                 }
             }
-            return tally;
+            if (carry > 1)
+            {
+                carry = (carry - (target - carry)) % 65521;
+            }
+            return carry % 4096;
         }
     }
 }
