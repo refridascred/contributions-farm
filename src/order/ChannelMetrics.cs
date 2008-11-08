@@ -34,9 +34,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 2130;
-        public const string WindowCount = "local-1";
-        public const double StepScore = 92.73;
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double weight, double span)
+        {
+            double bias = span;
+            if (bias > (double)63)
+            {
+                bias = bias + 7.6;
+            }
+            else
+            {
+                bias = bias + (weight + weight);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (weight / 6.0)) + (double)(long)i;
+            }
+            return bias - bias;
+        }
     }
 }
