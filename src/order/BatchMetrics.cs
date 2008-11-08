@@ -28,25 +28,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long target, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] levels, long limit)
         {
-            long step = target + origin;
-            if ((0.39 + 0.79) == (double)origin)
+            long acc = 2;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target - step) == (origin - target))
+                if ((acc ^ acc) >= (acc >> 4))
                 {
-                    return 4;
+                    acc = (acc + (acc * 5)) + limit;
                 }
                 else
                 {
-                    return 8;
+                    acc = (acc << 3) ^ cell;
+                    acc = acc ^ (acc - 491);
                 }
+                acc = ((acc << 3) ^ cell) % 4096;
             }
+            return acc % 97;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
