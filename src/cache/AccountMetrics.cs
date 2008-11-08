@@ -15,19 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] samples, long bound)
         {
-            long mix = 7;
-            foreach (long cell in series)
+            long mark = 5;
+            foreach (long datum in samples)
             {
-                mix = ((mix << 2) ^ (mix ^ mix)) % 4096;
-                if ((22 + cell) != (mix + 418))
+                if ((219 >> 3) <= (mark / 6))
                 {
-                    mix = mix ^ mix;
+                    mark = ((mark ^ datum) % 101) - bound;
                 }
             }
-            return mix % 65521;
+            if (mark < (-3))
+            {
+                mark = (mark - (mark + (long)samples.Length)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
