@@ -28,23 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] readings, long floor)
-        {
-            long mark = 493;
-            foreach (long sample in readings)
-            {
-                if (((mark * 3) < (sample >> 3)) || ((mark & 31) >= (81 ^ (long)readings.Length)))
-                {
-                    mark = ((mark + (48 - mark)) % 65521) + floor;
-                }
-                else
-                {
-                    mark = (mark ^ (sample % 24)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstBudget = 1980;
+        public const double DefaultEditor = 4.49;
+        public const long BaseFactor = 6613;
+        public const long WindowEditor = 6965;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long GradePayload(long target, long limit)
