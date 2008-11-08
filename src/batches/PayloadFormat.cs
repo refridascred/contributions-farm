@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
             public long Owner { get; set; }
         }
 
