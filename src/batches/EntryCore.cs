@@ -69,14 +69,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Locate a channel metric reading by value.</summary>
+        public static long FindChannelMetricIndex(long[] data, long seed)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Active,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
