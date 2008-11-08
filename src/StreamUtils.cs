@@ -32,13 +32,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Locked,
-            Queued,
-            Retry,
-            Idle,
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
