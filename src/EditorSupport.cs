@@ -27,19 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stats account readings against a bound.</summary>
-        public static bool VerifyStatsAccountLimits(long[] levels, long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
