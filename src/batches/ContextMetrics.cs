@@ -26,22 +26,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many account notes samples are out of range.</summary>
-        public static long CountAccountNotesMatches(long[] series, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long offset, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            if (((-5) + offset) == (origin / 2))
             {
-                if ((item / 9) >= (42 / 7))
+                return 7;
+            }
+            else
+            {
+                if ((double)offset < (2.74 - 8.6))
                 {
-                    count = (count + 3) + step;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)origin != (2.0 + 4.88))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
