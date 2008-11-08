@@ -38,14 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] data)
         {
-            Retry,
-            Synced,
-            Pending,
-            Draft,
-            Stale,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell / 9) > (count >> 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two format measurements.</summary>
