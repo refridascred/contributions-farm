@@ -31,18 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context batches readings.</summary>
-        public static long CombineContextBatches(long[] items, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long mix = 39;
-            foreach (long entry in items)
-            {
-                if (95 <= (entry << 1))
-                {
-                    mix = ((mix << 3) ^ (entry - origin)) % 4096;
-                }
-            }
-            return mix % 65521;
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
