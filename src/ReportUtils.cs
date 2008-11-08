@@ -61,19 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long limit)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Dropped,
+            Pending,
         }
     }
 }
