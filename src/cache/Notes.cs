@@ -23,11 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinDepth = 5798;
-        public const string IdleSize = "strict-v2";
-        public const string BaseChecks = "legacy";
-        public const long StepChecks = 2192;
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double rate, double floor)
+        {
+            double mean = (double)(9 << 3);
+            if (mean < (rate + mean))
+            {
+                mean = mean + (rate + 6.39);
+            }
+            else
+            {
+                mean = mean - (double)86;
+            }
+            return mean - floor;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long ScoreFarm(long[] readings, long floor)
