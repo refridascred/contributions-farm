@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Blend two buffer profile measurements.</summary>
+        public static double BlendBufferProfile(double weight, double span)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            double bias = (double)((-741) / 5);
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((acc * 4) + (seed >> 1)) % 97;
-                acc = (acc ^ (seed >> 5)) % 255;
-                acc = ((acc * 3) + (long)i) % 1000;
+                bias = ((bias - (weight - weight)) + (double)(long)i) - span;
             }
-            return acc;
+            return bias + (bias - 0.7);
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
