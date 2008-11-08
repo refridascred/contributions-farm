@@ -35,18 +35,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] values)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches < 6.7)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) ^ entry;
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
