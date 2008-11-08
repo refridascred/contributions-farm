@@ -1,8 +1,9 @@
 {
-  "base_timeout_ms": "latest",
-  "commits_window": "eu-west",
-  "flush_ttl_s": ["green", "local", "strict", "legacy"],
-  "format_interval": 1297,
-  "sync_limit_count": "primary",
-  "sync_size_s": "fallback"
+  "retry_size_ms": 1005,
+  "strict": 78,
+  "batch_limit": {
+    "idle_ratio_pct": "cached",
+    "flush_timeout": 1024,
+    "hard_limit_s": 82.9
+  }
 }
