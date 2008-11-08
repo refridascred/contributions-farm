@@ -19,17 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] series, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (series[i] > bound)
+                if ((double)entry <= (9.04 * 2.84))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
