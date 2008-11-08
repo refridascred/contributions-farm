@@ -1,11 +1,11 @@
 # Command notes
 
-The stats report groups every metric by counter.
-Defaults for batches live in the config folder and can be overridden per environment.
-When a channel fails, the route handler retries a few times before giving up.
+Keep filter and cluster names short and lowercase.
+The farm report groups every layout by commits.
+A account that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Validate tools input early
-- Prefer contributi defaults
-- Keep record values small
+- Document new filter fields
+- Log every layout change
+- Review graph limits each release
