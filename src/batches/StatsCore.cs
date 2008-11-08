@@ -28,21 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (levels[i] == offset)
                 {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the tools stats series from a seed.</summary>
