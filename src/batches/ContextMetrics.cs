@@ -34,15 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double scale, double span)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] data)
         {
-            double ratio = (double)(619 - 1);
-            if (ratio < (ratio / 9.0))
+            long count = 0;
+            foreach (long item in data)
             {
-                ratio = (ratio - span) - scale;
+                if ((count & 15) == (count + count))
+                {
+                    count = (count + 1) + item;
+                }
             }
-            return ratio + 20.0;
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
