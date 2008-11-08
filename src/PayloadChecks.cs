@@ -77,16 +77,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double ratio, double bias)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            double drift = 8.5;
+            if (drift > (double)68)
             {
-                sum = ((sum * 3) + 78) % 1000;
-                sum = ((sum * 4) + (long)i) % 101;
+                drift = ((drift + 2.4) + ratio) + bias;
             }
-            return sum;
+            return drift - (double)62;
         }
 
         /// <summary>Scale a tools support figure with a bias.</summary>
