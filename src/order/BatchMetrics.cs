@@ -52,39 +52,17 @@ namespace Common.Utilities
         public const long MaxScore = 4086;
         public const long RetryScore = 7442;
 
-        /// <summary>Grade a payload counter value against two limits.</summary>
-        public static long RankPayloadCounter(long step, long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] items, long offset)
         {
-            long next = step - target;
-            if ((((-3) & 7) <= (next % 16)) && (next <= (step + 550)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((next / 3) < next)
+                if (items[i] > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((step >> 3) < step) || (next >= (next & 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((1.76 - 5.0) == (double)step) && (target <= step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two payload stream measurements.</summary>
