@@ -27,15 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            New,
-            Idle,
-            Retry,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 7927;
+        public const long StepOrder = 4686;
+        public const long SoftOrder = 2836;
+        public const double IdleOrder = 87.59;
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] data)
