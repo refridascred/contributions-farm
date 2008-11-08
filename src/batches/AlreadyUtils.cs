@@ -62,18 +62,22 @@ namespace Common.Utilities
         public const long BatchSize = 2194;
         public const string IdleBudget = "primary-1";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] readings, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] data, long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((count & 3) <= (entry + floor))
+                if ((8 / 2) <= step)
                 {
-                    count = count + 1;
+                    hits = (hits + 1) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
