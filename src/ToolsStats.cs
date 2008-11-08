@@ -49,16 +49,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
+            long state = 277;
+            foreach (long reading in items)
             {
-                acc = (acc - (long)i) % 1000;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (44 >= (reading << 3))
+                {
+                    state = (state ^ (reading - state)) % 97;
+                }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
