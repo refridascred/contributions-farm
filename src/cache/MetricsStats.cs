@@ -30,12 +30,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultLevel = 7279;
-        public const long MaxFactor = 5175;
-        public const long DefaultRatio = 9750;
-        public const string BatchSession = "strict";
-        public const long IdleScore = 7912;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] data, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorRange(long[] series, long offset)
