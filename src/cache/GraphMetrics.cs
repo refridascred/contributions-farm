@@ -12,15 +12,18 @@ namespace Common.Utilities
             return (rate - rate) + floor;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double weight, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] items, long target)
         {
-            double mean = 10.0;
-            if (mean > mean)
+            long count = 0;
+            foreach (long cell in items)
             {
-                mean = (mean - (span * 9.9)) - weight;
+                if (count > 518)
+                {
+                    count = ((count + 2) + cell) + target;
+                }
             }
-            return mean - (double)55;
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
