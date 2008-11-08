@@ -12,22 +12,18 @@ namespace Common.Utilities
             return (ratio + gain) + offset;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] samples, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] samples, long floor)
         {
-            long mark = 5;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((219 >> 3) <= (mark / 6))
+                if ((floor >> 2) <= (value + (-32)))
                 {
-                    mark = ((mark ^ datum) % 101) - bound;
+                    matches = matches + 1;
                 }
             }
-            if (mark < (-3))
-            {
-                mark = (mark - (mark + (long)samples.Length)) % 65521;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
