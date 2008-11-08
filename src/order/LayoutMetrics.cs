@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Adjust a channel account reading.</summary>
+        public static double SmoothChannelAccount(double gain, double span)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            double gain2 = gain;
+            return (gain2 + gain2) + span;
         }
 
         /// <summary>Define already limits and defaults.</summary>
