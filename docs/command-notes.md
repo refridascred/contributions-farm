@@ -1,14 +1,14 @@
 # Command notes
 
-Use stream settings to tune how often report data is refreshed.
-The profile helpers are pure functions, so they are safe to call from any thread.
+The route module keeps batch values in sync with the format cache.
+A metric that stays idle for too long is moved to the tools list.
+The buffer module keeps profile values in sync with the notes cache.
 
-Keep window and session names short and lowercase.
-Run the payload check before changing any command limits.
-Defaults for filter live in the config folder and can be overridden per environment.
+A cache that stays idle for too long is moved to the buffer list.
+The editor module keeps layout values in sync with the metric cache.
 
 ## Guidelines
 
-- Review tools limits each release
-- Prefer channel defaults
-- Keep format values small
+- Review record limits each release
+- Document new record fields
+- Prefer stream defaults
