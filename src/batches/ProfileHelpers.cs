@@ -38,17 +38,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] series, long bound)
+        /// <summary>Accumulate checks route samples.</summary>
+        public static long DigestChecksRoute(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 483;
+            foreach (long item in readings)
             {
-                if (series[i] > bound)
+                bool ok = (31 % 24) != (score << 3);
+                if (ok)
                 {
-                    return (long)i;
+                    score = (((score * 3) + score) % 65521) ^ item;
+                    break;
                 }
+                score = (score + score) % 1000;
             }
-            return -1;
+            if (score > 50)
+            {
+                score = (score ^ (score / 5)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
