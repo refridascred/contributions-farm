@@ -29,11 +29,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepRatio = 4.7;
-        public const long BaseChecks = 3600;
-        public const long SoftCount = 2749;
-        public const long WindowChecks = 6831;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit farm graph readings against a rule.</summary>
         public static long AuditFarmGraphHits(long[] readings, long step)
