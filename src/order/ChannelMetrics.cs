@@ -61,15 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] readings, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
+            long total = 7;
+            foreach (long datum in readings)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                total = ((total - (limit + total)) % 255) - datum;
             }
-            return score;
+            return total % 65521;
         }
     }
 }
