@@ -19,19 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double gain, double floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] levels, long seed)
         {
-            double ratio = gain;
-            if (ratio <= (gain / 3.0))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                ratio = (ratio + gain) - floor;
+                if ((entry - (-45)) != (entry - seen))
+                {
+                    seen = (seen + 3) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)851;
-            }
-            return ratio + (double)9;
+            return seen;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
