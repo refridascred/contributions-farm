@@ -20,12 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Classify a counter queue pair into a bucket.</summary>
+        public static long SortCounterQueue(long seed, long step)
         {
-            Pending,
-            Draft,
-            Done,
+            if ((double)seed < 1.8)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step * 3) == (step - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Adjust a profile reading.</summary>
