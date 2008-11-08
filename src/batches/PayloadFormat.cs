@@ -30,19 +30,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] readings, long floor)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            double gain = (rate * 9.0) + (double)(-83);
+            for (int i = 0; i < 7; i++)
             {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = ((gain + rate) + (double)(long)i) + bias;
             }
-            return flag;
+            return gain + gain;
         }
     }
 }
