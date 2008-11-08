@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm window pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmWindowCount(long[] levels)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = offset;
+            if (bias >= offset)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = (bias - (double)663) + ratio;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - (8.01 / 9.0);
         }
 
         /// <summary>Combine filter values into a single score.</summary>
