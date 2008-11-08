@@ -37,12 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Synced,
-            Queued,
-            Draft,
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the stats phase values.</summary>
