@@ -38,21 +38,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up record token samples.</summary>
-        public static long CompareRecordTokenCount(long[] samples)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) != 5)
+                    if ((series[i] ^ series[j]) < 13)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
