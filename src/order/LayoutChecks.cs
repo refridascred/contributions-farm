@@ -37,18 +37,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] readings)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!((9.8 / 2.0) >= (double)(long)readings.Length) && (seen > (reading - seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next token value.</summary>
