@@ -33,12 +33,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] samples, long offset)
         {
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
