@@ -32,12 +32,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Classify a metric stream pair into a bucket.</summary>
+        public static long BucketMetricStream(long origin, long origin2)
         {
-            Locked,
-            Paused,
-            Failed,
+            long span = origin - origin2;
+            if ((6.7 > (double)span) && (span <= (origin - origin2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin2 == (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
