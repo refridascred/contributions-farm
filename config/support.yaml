@@ -1,6 +1,28 @@
 # support settings
-format_limit:
-  - 136
-  - 61
-audit: true
-retry_timeout: 86.2
+default_retries_count:
+  stats_ttl:
+    - 57
+    - 309
+  poll_capacity_ms: 7683
+  compress: stable
+  entry_timeout:
+    - strict
+    - local
+    - blue
+idle_timeout_s:
+  - eu-west
+  - blue
+  - legacy
+idle_depth_s:
+  counter_capacity:
+    already_threshold: 12.97
+    batches_depth: staging
+    audit: 9644
+    strict: true
+    warm_ratio_ms: 36
+    format_limit: 6717
+  max_limit_count: false
+  audit: staging
+  sync_capacity_pct: 92
+compress: 32.05
+readonly: 53
