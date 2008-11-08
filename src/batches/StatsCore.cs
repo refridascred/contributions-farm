@@ -56,21 +56,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 13;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((9.72 / 8.0) > (double)floor) || ((floor ^ reading) >= reading))
                 {
-                    if ((data[i] + data[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (total % 60)) % 1000;
+                }
+                else
+                {
+                    total = (total - (total - total)) % 1000;
                 }
             }
-            return tally;
+            if (total < 114)
+            {
+                total = ((total << 2) ^ total) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
