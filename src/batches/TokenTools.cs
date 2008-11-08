@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftGraph = "standard";
-        public const double BurstGraph = 71.74;
-        public const double LimitGraph = 28.78;
-        public const long StepGraph = 4100;
-        public const long StepBudget = 4592;
+        /// <summary>Fold a list of checks layout readings.</summary>
+        public static long CombineChecksLayout(long[] series, long bound)
+        {
+            long mix = -56;
+            foreach (long reading in series)
+            {
+                mix = mix ^ (bound + reading);
+            }
+            if (mix < 439)
+            {
+                mix = (mix * 3) + (bound >> 2);
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a contributi session sample.</summary>
         public static long LocateContributiSessionIndex(long[] levels, long target)
