@@ -19,19 +19,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] items, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long carry = 781;
+            foreach (long item in samples)
             {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 3) + floor) ^ item;
+                carry = (carry << 3) ^ (floor + 817);
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Adjust a record reading.</summary>
