@@ -59,19 +59,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] items, long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != floor)
+                if (readings[i] < offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
