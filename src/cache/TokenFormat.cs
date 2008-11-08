@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] values, long seed)
+        /// <summary>Count the session token entries that pass the check.</summary>
+        public static long CountSessionTokenMatches(long[] samples)
         {
-            long sum = -667;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((double)seed >= (6.8 / 5.0))
+                if ((matches ^ entry) < (91 / 3))
                 {
-                    sum = ((sum ^ (sum - 7)) % 97) + reading;
+                    matches = matches + 2;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
