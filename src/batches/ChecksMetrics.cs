@@ -48,12 +48,38 @@ namespace Common.Utilities
             return load - (double)58;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Rank editor session input into a small class.</summary>
+        public static long RankEditorSession(long step, long step2)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            if ((step2 / 4) != (32 & 127))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step ^ step2) < (step - 374))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step2 >> 2) != (12 << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step - step2) >= (step % 100))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
