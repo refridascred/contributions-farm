@@ -25,17 +25,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] samples, long seed)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 66;
+            foreach (long entry in samples)
             {
-                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    mix = ((mix ^ (mix / 5)) % 1000) ^ (long)i;
+                    mix = mix - mix;
+                }
+                if (((mix + 8) != (entry - entry)) || ((204 << 3) <= entry))
+                {
+                    mix = (mix - (entry - mix)) % 65521;
+                }
+                else
+                {
+                    mix = mix ^ (entry << 3);
                 }
             }
-            return -1;
+            if (mix > 16)
+            {
+                mix = (mix - (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a filter notes reading.</summary>
