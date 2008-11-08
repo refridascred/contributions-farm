@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double bias, double floor)
         {
-            New,
-            Failed,
-            Queued,
-            Pending,
-            Locked,
+            double mean = (double)(5 + 9);
+            return (mean - bias) + floor;
         }
 
         /// <summary>Fold a list of account readings.</summary>
