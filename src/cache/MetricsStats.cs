@@ -38,12 +38,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 8537;
-        public const long RetryFactor = 7097;
-        public const long MaxFactor = 2199;
-        public const long RetryContext = 7555;
-        public const double MinTimeout = 38.3;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] levels, long seed)
+        {
+            long result = -798;
+            foreach (long item in levels)
+            {
+                if (((item + result) < result) && (seed < result))
+                {
+                    result = ((result << 2) ^ (result + 855)) % 1000;
+                }
+                if ((seed >> 5) <= (296 / 3))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Combine stream channel values into a single score.</summary>
         public static long CombineStreamChannel(long[] samples, long offset)
