@@ -51,17 +51,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first filter batch entry that matches the target.</summary>
-        public static long SeekFilterBatchIndex(long[] readings, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) == 0))
+                if ((double)datum == (19.0 * 4.86))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
