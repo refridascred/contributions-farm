@@ -34,18 +34,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many support entry samples are out of range.</summary>
-        public static long AuditSupportEntryMatches(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)count == (double)limit)
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleStats = "fallback-edge";
+        public const double HardStats = 34.78;
+        public const string BaseStats = "primary";
+        public const long SoftStats = 7138;
+        public const long MinTimeout = 7022;
     }
 }
