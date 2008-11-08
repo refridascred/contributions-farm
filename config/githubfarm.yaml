@@ -1,23 +1,14 @@
 # githubfarm settings
-batch_retries: false
-window_depth:
-  retry_ratio_s:
-    - 353
-    - 448
-    - 9
-  readonly: 70
-  hard_limit_pct: 14.01
-  soft_ttl: 500
-  enabled: standard
-  poll_limit: latest
-poll_interval_ms:
-  - 269
-  - 27
-  - 457
-  - 385
-batch_interval_pct: stable
-hard_timeout:
-  - 74
-  - 409
-  - 158
-  - 224
+min_ttl_count: 60
+burst_capacity_ms: false
+batch_depth:
+  min_ratio_count: true
+  cache_size_pct: 1024
+  cache_depth: strict
+  readonly: true
+  githubfarm_retries: fallback
+default_depth_s:
+  - standard
+  - latest
+hard_ratio_count: blue
+dry_run: 8852
