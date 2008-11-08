@@ -61,25 +61,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long target, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] readings, long bound)
         {
-            long bound = target - step;
-            if ((target * 4) == (1 & 3))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target < bound) || ((9.86 * 8.03) >= (double)target))
+                if (0.64 <= (double)bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    seen = (seen + 2) ^ sample;
                 }
             }
+            return seen;
         }
     }
 }
