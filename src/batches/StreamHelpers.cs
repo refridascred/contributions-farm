@@ -110,19 +110,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] data, long floor)
         {
-            long result = 3;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result + 5) % 1000;
-                if ((result / 4) >= reading)
+                if (data[i] <= floor)
                 {
-                    result = (result ^ (5 + reading)) % 97;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
