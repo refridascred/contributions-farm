@@ -30,19 +30,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double ratio, double bias)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double mean = (double)(9 << 3);
-            if (mean > (bias * 3.25))
-            {
-                mean = mean - (ratio + mean);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (double)(-223)) - (double)(long)i;
-            }
-            return mean - (mean / 9.0);
+            Synced,
+            Draft,
+            Active,
         }
 
         /// <summary>Derive the next githubfarm window value from a seed.</summary>
