@@ -69,19 +69,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] levels, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long step, long target)
         {
-            long score = 2;
-            foreach (long entry in levels)
+            if (!((22 >> 2) < step))
             {
-                score = (((score * 4) + entry) % 255) - target;
-                if ((entry & 31) >= (score % 97))
+                return 8;
+            }
+            else
+            {
+                if (target >= (target << 2))
                 {
-                    score = (score * 4) + (score + 861);
+                    return 6;
+                }
+                else
+                {
+                    if (5 <= (target ^ 65))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return score;
         }
     }
 }
