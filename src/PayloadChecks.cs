@@ -56,15 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double rate, double span)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            double gain = (double)(625 / 6);
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain - rate) + (double)(long)i) - span;
-            }
-            return gain + rate;
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Compare every pair of cluster payload readings.</summary>
