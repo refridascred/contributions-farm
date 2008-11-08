@@ -1,10 +1,7 @@
-id,region,count,owner
-1,cached,269,staging
-2,25.28,blue,108
-3,60.87,487,962
-4,199,609,30
-5,edge,93.58,30.79
-6,87.13,20.4,751
-7,32.29,8.59,56.2
-8,strict,eu-west,latest
-9,cached,471,800
+id,count,token
+1,613,edge
+2,38.73,46.92
+3,440,208
+4,12.5,52.14
+5,green,91.68
+6,24.54,legacy
