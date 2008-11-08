@@ -1,24 +1,5 @@
 # support settings
-base_ratio_s: 7.86
-max_threshold_count: true
-queue_interval:
-  githubfarm_timeout: 60
-  layout_ttl: stable
-  flush_threshold_s:
-    editor_delay: local
-    batch_capacity: 100
-    min_delay_count: false
-    already_limit: 48.6
-    entry_ttl: 44.91
-    audit: 89.75
-  sync_ratio: 4089
-base_size_s:
-  route_ttl:
-    - 251
-    - 333
-  hard_threshold_s:
-    profile_capacity: 8568
-    entry_limit: true
-    enabled: latest
-    layout_capacity: true
-  strict: open
+hard_interval: cached
+editor_timeout: 4331
+default_interval_pct: 30
+idle_ratio: 100
