@@ -53,13 +53,9 @@ namespace Common.Utilities
             return scale2 + (double)2;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public double Mode { get; set; }
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitReport = "fallback-1";
+        public const string DefaultScore = "strict";
+        public const string StepReport = "stable";
     }
 }
