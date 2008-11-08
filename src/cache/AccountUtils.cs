@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public double Rank { get; set; }
-            public double Token { get; set; }
-            public long Label { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
