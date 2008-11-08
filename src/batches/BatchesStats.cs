@@ -40,24 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double ratio, double offset)
-        {
-            double load = offset - ratio;
-            if (load > (load - 0.8))
-            {
-                load = load - (offset - 6.99);
-            }
-            else
-            {
-                load = load + 9.35;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)4) + (double)(long)i;
-            }
-            return load + (double)682;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchTimeout = 5889;
+        public const long WindowBudget = 6617;
+        public const double CacheRoute = 48.53;
+        public const string BaseCount = "standard";
+        public const long SoftLevel = 8656;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long CombineEditor(long[] values, long origin)
