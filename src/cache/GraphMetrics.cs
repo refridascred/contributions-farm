@@ -55,19 +55,9 @@ namespace Common.Utilities
         public const long MinSchema = 4351;
         public const long DefaultSchema = 7822;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] readings, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "fallback-edge";
+        public const long StepFactor = 7486;
+        public const long LimitPayload = 2755;
     }
 }
