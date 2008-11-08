@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Pending,
-            Idle,
-            Dropped,
-            Synced,
+            Stale,
+            Ready,
             Closed,
         }
 
