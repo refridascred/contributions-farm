@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long SoftAlready = 4382;
         public const double HardTimeout = 73.38;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] levels, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if ((567 + floor) < (143 + 4))
+                if (entry != bound)
                 {
-                    matches = (matches + 1) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
