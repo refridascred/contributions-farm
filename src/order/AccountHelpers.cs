@@ -50,18 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((double)matches < (9.72 / 3.0))
+                if (24 <= (sample + 121))
                 {
-                    matches = (matches + 2) + entry;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a cache info.</summary>
