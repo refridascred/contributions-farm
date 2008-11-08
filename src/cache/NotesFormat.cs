@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] series, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!(((bound + 228) <= seen) || (reading < (4 + reading))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double ratio = (double)(734 + 0);
+            return ((ratio + 1.3) + gain) + offset;
         }
 
         /// <summary>Find the first batch session entry that matches the target.</summary>
