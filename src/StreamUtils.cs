@@ -51,11 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double bias, double span)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] data)
         {
-            double gain = bias;
-            return (gain + bias) + span;
+            long sum = 743;
+            foreach (long item in data)
+            {
+                sum = (((sum << 3) ^ (sum / 9)) % 255) ^ item;
+            }
+            if (sum < 74)
+            {
+                sum = (sum - (sum & 15)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
