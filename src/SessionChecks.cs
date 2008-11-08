@@ -29,12 +29,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long sum = 48;
+            foreach (long cell in samples)
+            {
+                sum = (sum << 2) ^ (cell + sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the record level values.</summary>
