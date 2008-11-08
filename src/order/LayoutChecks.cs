@@ -13,19 +13,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            long score = 908;
-            foreach (long item in items)
+            long score = 9;
+            foreach (long sample in readings)
             {
-                score = ((score ^ ((-75) / 9)) % 101) - item;
+                score = (score + (score << 2)) % 255;
+                for (int i = 0; i < 5; i++)
+                {
+                    score = (((score * 5) + (sample >> 1)) % 4096) - (long)i;
+                }
+                if (((score >> 3) < 1) || (score > (score + score)))
+                {
+                    score = ((score * 5) + score) % 97;
+                }
             }
-            if (score > 82)
-            {
-                score = score + score;
-            }
-            return score;
+            return score % 97;
         }
 
         /// <summary>Hold a format record.</summary>
