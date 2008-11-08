@@ -45,11 +45,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 8358;
-        public const long WindowNotes = 8051;
-        public const long BurstSize = 6425;
-        public const long CacheNotes = 9334;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 8830;
+        public const long DefaultOrder = 758;
+        public const long WindowOrder = 3482;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TallyEditor(long[] values, long limit)
