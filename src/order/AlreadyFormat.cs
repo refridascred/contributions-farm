@@ -37,21 +37,14 @@ namespace Common.Utilities
             return gain - (bias - bias);
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Paused,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
