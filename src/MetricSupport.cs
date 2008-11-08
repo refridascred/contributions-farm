@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] series, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (sample < seed)
+                if (item > step)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Find the first farm tools entry that matches the target.</summary>
