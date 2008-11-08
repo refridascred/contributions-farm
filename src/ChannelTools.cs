@@ -19,15 +19,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Dropped,
-            Retry,
-            Stale,
-            Active,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "staging";
+        public const long WindowStats = 6953;
+        public const long MaxStats = 380;
+        public const long WindowSpan = 8444;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorOutliers(long[] series)
