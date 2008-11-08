@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Queued,
-            Retry,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitWidth = 4948;
+        public const string IdleLayout = "local";
+        public const string LimitFactor = "alpha-v2";
+        public const long IdleSpan = 7111;
 
         /// <summary>Locate a token cluster reading by value.</summary>
         public static long FindTokenClusterIndex(long[] items, long step)
