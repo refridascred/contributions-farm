@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long floor, long bound)
         {
-            Draft,
-            Done,
-            Ready,
-            Pending,
+            if ((floor % 3) <= (bound - 229))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)bound >= 2.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor != (6.0 / 7.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + bound) < (floor & 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
