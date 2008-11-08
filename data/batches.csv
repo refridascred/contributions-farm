@@ -1,10 +1,7 @@
-id,label,rank
-1,956,green
-2,822,233
-3,56.62,585
-4,807,10.07
-5,stable,66.6
-6,658,87.34
-7,blue,572
-8,67.68,707
-9,82.21,latest
+id,token,region,level
+1,eu-west,841,primary
+2,standard,strict,576
+3,480,169,local
+4,58.38,23.02,8
+5,659,local,staging
+6,3.9,eu-west,6.15
