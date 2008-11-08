@@ -1,6 +1,13 @@
 # githubfarm settings
-audit: 78
-sync_delay: true
-retry_delay: 80.79
-soft_delay: open
-burst_retries_count: 86.82
+dry_run:
+  - blue
+  - standard
+layout_limit: blue
+hard_window_ms:
+  - legacy
+  - blue
+  - stable
+  - primary
+batch_interval_s: 20.25
+batches_capacity: fallback
+strict: 3
