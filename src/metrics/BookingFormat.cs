@@ -23,17 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first record context entry that matches the target.</summary>
-        public static long LookupRecordContextIndex(long[] levels, long offset)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain2 = gain;
+            if (gain2 >= bias)
             {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 - bias;
             }
-            return -1;
+            return gain2 + (gain / 6.0);
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
