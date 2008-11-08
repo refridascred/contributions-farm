@@ -23,11 +23,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
