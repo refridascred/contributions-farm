@@ -34,18 +34,30 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] data)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long anchor = 38;
+            foreach (long reading in data)
             {
-                if ((entry * 4) > (long)data.Length)
+                if ((double)anchor != (5.0 * 4.27))
                 {
-                    tally = tally + 2;
+                    anchor = anchor + bound;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor * 4)) % 65521;
+                }
+                if (((8.7 / 9.0) != (double)anchor) && ((anchor * 5) < (reading / 7)))
+                {
+                    anchor = ((anchor << 2) ^ (bound / 8)) % 101;
                 }
             }
-            return tally;
+            if (anchor < 83)
+            {
+                anchor = (anchor << 2) ^ bound;
+            }
+            return anchor;
         }
     }
 }
