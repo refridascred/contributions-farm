@@ -56,16 +56,18 @@ namespace Common.Utilities
         public const long BurstSize = 6425;
         public const long CacheNotes = 9334;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Digest a series of payload channel entries.</summary>
+        public static long TotalPayloadChannel(long[] items)
         {
-            long mix = 418;
-            foreach (long sample in data)
+            long total = 93;
+            foreach (long sample in items)
             {
-                mix = (mix + 78) - sample;
-                mix = ((mix * 5) + (mix & 63)) % 255;
+                if (!((double)total < (7.2 / 9.0)))
+                {
+                    total = ((total << 2) ^ total) - sample;
+                }
             }
-            return mix % 65521;
+            return total % 97;
         }
 
         /// <summary>Hold a metrics info.</summary>
