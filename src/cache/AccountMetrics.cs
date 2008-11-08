@@ -15,10 +15,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 87.43;
-        public const long StepStats = 9175;
-        public const string HardStats = "primary-edge";
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long step, long target)
+        {
+            if (((step >> 1) != (step + step)) || ((step / 4) > (target % 7)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)3 <= (double)target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long CompareAlreadyCount(long[] values)
