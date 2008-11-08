@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const string IdleGraph = "staging";
         public const long CacheGraph = 268;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Measure how many route buffer samples are out of range.</summary>
+        public static long TallyRouteBufferOutliers(long[] values)
         {
-            long score = 9;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                score = (score + (score << 2)) % 255;
-                for (int i = 0; i < 5; i++)
+                if (hits >= (hits + hits))
                 {
-                    score = (((score * 5) + (sample >> 1)) % 4096) - (long)i;
-                }
-                if (((score >> 3) < 1) || (score > (score + score)))
-                {
-                    score = ((score * 5) + score) % 97;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Describe the graph phase values.</summary>
