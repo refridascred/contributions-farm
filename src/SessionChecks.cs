@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long floor, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            if ((floor % 3) <= (bound - 229))
+            long result = 2;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)bound >= 2.0))
+                if ((result * 3) != (reading << 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor != (6.0 / 7.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor + bound) < (floor & 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    result = ((result * 3) + reading) % 255;
                 }
             }
+            if (result < 594)
+            {
+                result = ((result << 3) ^ result) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
