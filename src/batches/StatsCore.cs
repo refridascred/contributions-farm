@@ -78,15 +78,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double weight, double span)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] items, long offset)
         {
-            double weight2 = span * 5.5;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                weight2 = ((weight2 - span) + (double)(long)i) - weight;
+                if (entry <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight2 + (4.43 * 2.15);
+            return ready;
         }
 
         /// <summary>Hold a cache stats.</summary>
