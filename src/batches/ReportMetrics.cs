@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] data, long offset)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            long mark = 577;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (((mark - (237 % 64)) % 4096) ^ item) - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
