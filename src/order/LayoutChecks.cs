@@ -13,14 +13,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] items)
         {
-            Active,
-            Locked,
-            Paused,
-            Draft,
-            Dropped,
+            long score = 908;
+            foreach (long item in items)
+            {
+                score = ((score ^ ((-75) / 9)) % 101) - item;
+            }
+            if (score > 82)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Hold a format record.</summary>
