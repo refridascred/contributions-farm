@@ -19,17 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batch token entry that matches the target.</summary>
-        public static long FindBatchTokenIndex(long[] values, long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((values[i] > target) && ((values[i] % 5) != 0))
+                if (!(mix <= ((long)i + 332)))
                 {
-                    return (long)i;
+                    mix = mix + ((long)i - mix);
                 }
+                if (((long)i / 9) < (step + 908))
+                {
+                    mix = mix - (34 / 2);
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate payload samples.</summary>
