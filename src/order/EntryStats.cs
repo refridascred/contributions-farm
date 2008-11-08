@@ -16,24 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long seed, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] values, long step)
         {
-            if (14.0 < (double)floor)
+            long total = 90;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((floor - floor) > (-64)))
+                for (int i = 0; i < 12; i++)
                 {
-                    return 0;
+                    total = ((total + ((long)i ^ total)) % 255) - step;
                 }
-                else
-                {
-                    return 3;
-                }
+                total = (total * 4) + (reading + reading);
             }
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
