@@ -40,15 +40,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next githubfarm window value from a seed.</summary>
-        public static long StepGithubfarmWindow(long bound)
+        /// <summary>Blend two layout graph measurements.</summary>
+        public static double SmoothLayoutGraph(double rate, double offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            double rate2 = (9.0 + 2.1) - (double)70;
+            if (rate2 >= rate)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                rate2 = rate2 + (offset - rate2);
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = rate2 - (double)(long)i;
+            }
+            return rate2 - 5.1;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
