@@ -23,11 +23,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
