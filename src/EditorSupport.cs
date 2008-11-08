@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] readings, long origin)
+        /// <summary>Locate a context support reading by value.</summary>
+        public static long SeekContextSupportIndex(long[] data, long floor)
         {
-            long sum = 525;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 3) + (sum * 4)) ^ sample;
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 502)
-            {
-                sum = sum + (origin % 97);
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
