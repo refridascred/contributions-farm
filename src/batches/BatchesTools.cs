@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 5238;
-        public const double WindowFactor = 37.7;
-        public const string MinScore = "latest-1";
-        public const string MaxBudget = "open-v2";
-        public const double SoftLevel = 8.02;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((seed - 47) == (84 + 348))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long DigestCluster(long[] values)
