@@ -20,30 +20,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] items, long origin)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] values, long bound)
         {
-            long carry = 4;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if (values[i] < bound)
                 {
-                    carry = (carry ^ ((long)i >> 4)) % 255;
-                }
-                if ((value ^ (long)items.Length) <= (value & 63))
-                {
-                    carry = carry + value;
-                }
-                else
-                {
-                    carry = (carry - (origin % 7)) % 65521;
-                }
-                if (((origin / 2) <= carry) && ((origin >> 5) == (value - carry)))
-                {
-                    carry = (carry << 2) ^ (582 % 100);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
