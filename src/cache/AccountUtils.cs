@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 5132;
-        public const long SoftFactor = 486;
-        public const long SoftEntry = 9049;
-        public const string MaxTimeout = "fallback-v2";
-        public const long IdleEntry = 8681;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public double Rank { get; set; }
+            public double Token { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Count the route account entries that pass the check.</summary>
         public static long MeasureRouteAccountHits(long[] levels, long seed)
