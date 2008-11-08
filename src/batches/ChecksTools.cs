@@ -21,21 +21,19 @@ namespace Common.Utilities
         public const long RetryReport = 5749;
         public const long MinFactor = 3296;
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Validate cache cluster readings against a bound.</summary>
+        public static bool ValidateCacheClusterRange(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample >= step)
                 {
-                    if ((items[i] - items[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Fold a list of report readings.</summary>
