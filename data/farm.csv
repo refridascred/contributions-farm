@@ -1,7 +1,8 @@
-id,state
-1,local
-2,28.43
-3,62
-4,staging
-5,63.83
-6,68.5
+id,state,count,rank,active
+1,cached,601,87.42,46
+2,eu-west,97,39,473
+3,215,887,31.98,234
+4,702,919,630,strict
+5,33,staging,27,47
+6,latest,319,330,4.71
+7,51.27,953,blue,813
