@@ -38,12 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Done,
-            Closed,
-            Draft,
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
