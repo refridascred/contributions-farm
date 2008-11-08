@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Active,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryWidth = 25.22;
+        public const long DefaultEditor = 5739;
+        public const string MaxDepth = "primary-1";
+        public const string MaxFactor = "fallback-v2";
+        public const long SoftSpan = 3967;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long ScoreBatches(long[] readings)
