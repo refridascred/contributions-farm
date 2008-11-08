@@ -59,18 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((double)cell == (double)count) || ((cell & 7) < (count & 255)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxTimeout = "legacy-1";
+        public const double RetryInterval = 22.84;
+        public const long IdleSize = 7668;
+        public const string StepContext = "local";
+        public const long BaseBudget = 8582;
     }
 }
