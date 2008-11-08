@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double bias, double offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] values, long offset)
         {
-            double scale = (double)(491 ^ 34);
-            if (scale >= scale)
+            long count = 0;
+            foreach (long reading in values)
             {
-                scale = scale - offset;
+                if ((1.59 + 4.0) <= (double)count)
+                {
+                    count = ((count + 2) + reading) + offset;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (scale + bias);
+            return count;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
