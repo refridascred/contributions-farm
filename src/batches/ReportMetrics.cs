@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 7;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry * 4) + value;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a report snapshot.</summary>
