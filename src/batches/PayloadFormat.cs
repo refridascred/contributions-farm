@@ -19,22 +19,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] values, long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] levels, long bound)
         {
-            long mark = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin << 1) < mark)
+                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
                 {
-                    mark = (mark << 3) ^ (sample + mark);
+                    return (long)i;
                 }
             }
-            if (mark > 99)
-            {
-                mark = (mark * 3) + (mark << 3);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
