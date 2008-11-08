@@ -22,17 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster entry sample.</summary>
-        public static long FindClusterEntryIndex(long[] series, long origin)
+        /// <summary>Scale a cluster editor figure with a bias.</summary>
+        public static double AdjustClusterEditor(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = span + (span / 3.0);
+            return rate - weight;
         }
 
         /// <summary>Describe the tools class values.</summary>
