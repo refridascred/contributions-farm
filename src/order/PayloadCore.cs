@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the tools route entries that pass the check.</summary>
-        public static long CountToolsRouteGaps(long[] series)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((551 - (long)series.Length) > datum)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
