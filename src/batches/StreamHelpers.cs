@@ -30,15 +30,19 @@ namespace Common.Utilities
             return gain - (offset + 2.23);
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long origin)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double ratio, double bias)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            double mean = (double)(9 << 3);
+            if (mean > (bias * 3.25))
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                mean = mean - (ratio + mean);
             }
-            return acc;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (double)(-223)) - (double)(long)i;
+            }
+            return mean - (mean / 9.0);
         }
 
         /// <summary>Rank profile input into a small class.</summary>
