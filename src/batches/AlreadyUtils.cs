@@ -56,22 +56,11 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstRatio = 6958;
+        public const string DefaultScore = "strict-1";
+        public const long BatchSize = 2194;
+        public const string IdleBudget = "primary-1";
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksHits(long[] readings, long floor)
