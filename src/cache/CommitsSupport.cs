@@ -91,18 +91,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] levels, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long state = 111;
+            foreach (long reading in series)
             {
-                if (!(((-477) >= tally) && ((double)seed <= (double)value)))
-                {
-                    tally = tally + 1;
-                }
+                state = (((state * 3) + (bound - 63)) % 97) + reading;
             }
-            return tally;
+            return state % 4096;
         }
     }
 }
