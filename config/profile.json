@@ -1,13 +1,13 @@
 {
-  "base_ttl_pct": {
-    "verbose": "blue",
-    "window_depth": 30,
-    "persist": "cached",
-    "githubfarm_ratio": "latest",
-    "min_depth_pct": 53
+  "profile_interval": 4941,
+  "warm_interval": 4,
+  "min_limit_s": ["legacy", "stable", "legacy"],
+  "notes_size": {
+    "audit": 32.71,
+    "enabled": false,
+    "idle_interval_ms": false,
+    "flush_limit": false,
+    "soft_capacity_count": ["primary", "latest", "local"]
   },
-  "strict": [10, 402, 120, 377],
-  "enabled": 18,
-  "retry_capacity": true,
-  "report_delay": 23
+  "retry_threshold_pct": 59.78
 }
