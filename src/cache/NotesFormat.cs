@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine window graph values into a single score.</summary>
-        public static long TallyWindowGraph(long[] data, long offset)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long sum = 63;
-            foreach (long item in data)
-            {
-                sum = ((sum ^ (sum % 3)) + item) - offset;
-                sum = ((sum << 2) ^ (7 * 5)) % 255;
-            }
-            return sum % 4096;
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
