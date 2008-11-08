@@ -41,11 +41,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepRatio = 5959;
-        public const long CacheBudget = 8325;
-        public const long HardTimeout = 9674;
-        public const long StepBatch = 1830;
+        /// <summary>Measure how many counter cache samples are out of range.</summary>
+        public static long MeasureCounterCacheGaps(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell + matches) <= (862 - cell)) || ((matches + cell) > (cell / 7)))
+                {
+                    matches = (matches + 2) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
