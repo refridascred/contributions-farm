@@ -58,12 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] values)
         {
-            Pending,
-            Synced,
-            Draft,
+            long total = 56;
+            foreach (long entry in values)
+            {
+                if ((total ^ total) != (2 * 5))
+                {
+                    total = (((total * 4) + (total % 60)) % 97) ^ entry;
+                }
+            }
+            if (total > 5)
+            {
+                total = ((total * 5) + (total + total)) % 65521;
+            }
+            return total;
         }
     }
 }
