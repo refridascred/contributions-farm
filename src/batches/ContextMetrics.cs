@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            Idle,
-            Closed,
-            Draft,
-            Locked,
-            Retry,
+            long mix = 75;
+            foreach (long value in values)
+            {
+                mix = (mix + (32 - value)) % 65521;
+                if ((long)values.Length < value)
+                {
+                    mix = mix - (value << 2);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a token stats.</summary>
