@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double rate, double offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] samples, long floor)
         {
-            double gain = 5.0;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                gain = (gain + (rate * 14.0)) + (double)(long)i;
+                if ((reading / 5) <= (floor - tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return gain - (offset + 2.23);
+            return tally;
         }
 
         /// <summary>Adjust a queue reading.</summary>
