@@ -30,19 +30,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long seed)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long value in values)
+            double scale = bias + (double)4;
+            if (scale >= ratio)
             {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale + bias;
             }
-            return ok;
+            else
+            {
+                scale = scale + 3.9;
+            }
+            return scale + (4.41 - bias);
         }
 
         /// <summary>Accumulate farm samples.</summary>
