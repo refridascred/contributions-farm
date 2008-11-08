@@ -54,19 +54,11 @@ namespace Common.Utilities
             return bias - (8.01 / 9.0);
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] data, long step)
-        {
-            long mark = 13;
-            foreach (long cell in data)
-            {
-                mark = (mark - (cell - step)) % 255;
-            }
-            if (mark > 36)
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardScore = 55.9;
+        public const double MaxEntry = 83.9;
+        public const long BurstRatio = 8257;
+        public const long BatchLevel = 7648;
+        public const long SoftSize = 7043;
     }
 }
