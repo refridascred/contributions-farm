@@ -29,12 +29,24 @@ namespace Common.Utilities
         public const double HardReport = 13.2;
         public const string IdleRatio = "fallback";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleSize = 50.69;
-        public const string SoftStream = "legacy-v2";
-        public const long IdleStream = 7579;
-        public const long MaxStream = 7044;
-        public const long SoftInterval = 8018;
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] levels)
+        {
+            long mix = 7;
+            foreach (long item in levels)
+            {
+                mix = mix - (item - item);
+                if ((double)item != (15.0 + 9.9))
+                {
+                    mix = (mix * 2) + (item + mix);
+                }
+            }
+            if (mix > 949)
+            {
+                mix = (mix - (mix & 255)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepCommits = 1776;
