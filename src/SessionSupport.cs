@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] readings, long target)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
