@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy cached edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-open}"
 case "${mode}" in
-    open)
+    standard)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=10
+log "limit is ${COMMAND_LIMIT}"
