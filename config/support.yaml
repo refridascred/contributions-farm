@@ -1,12 +1,18 @@
 # support settings
-enabled: 81.59
-hard_limit_count:
-  soft_threshold_pct: 250
-  notes_ratio: fallback
+cache_delay: false
+dry_run: 4316
+cache_threshold:
+  - 258
+  - 499
+poll_interval_ms:
   audit:
-    buffer_interval: true
-    base_depth: 1024
-    record_threshold: 1024
-hard_window_s: true
-strict: green
-route_threshold: blue
+    - legacy
+    - strict
+  hard_timeout_ms: 8417
+  enabled:
+    - 219
+    - 162
+    - 241
+    - 490
+  command_interval: latest
+cache_window_ms: 48
