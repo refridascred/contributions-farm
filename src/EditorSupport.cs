@@ -42,19 +42,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] series, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (item > floor)
+                if (!((4.9 + 7.3) <= (double)786))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) - cell;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Measure how many channel cache samples are out of range.</summary>
