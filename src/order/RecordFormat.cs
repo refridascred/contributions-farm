@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Validate context command readings against a bound.</summary>
+        public static bool GuardContextCommandLimits(long[] values, long bound)
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public double Level { get; set; }
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
