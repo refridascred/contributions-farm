@@ -55,16 +55,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double bias, double span)
-        {
-            double rate = (double)(-511) / 3.0;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - span) + (double)(long)i;
-            }
-            return rate + (rate + bias);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultScore = "standard";
+        public const long StepContext = 1771;
+        public const long CacheDepth = 4588;
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
