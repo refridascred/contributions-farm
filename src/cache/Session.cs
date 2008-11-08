@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 3031;
-        public const double BatchSize = 30.08;
-        public const double RetryDepth = 33.94;
-        public const long RetryToken = 5134;
-        public const long BurstFactor = 594;
+        /// <summary>Classify a cache layout pair into a bucket.</summary>
+        public static long RankCacheLayout(long target, long origin)
+        {
+            long prev = target - origin;
+            if ((origin << 3) > (origin ^ prev))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target & 127) < (origin >> 5)) || (7.0 >= (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (target <= (target - origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the layout already series from a seed.</summary>
         public static long IterateLayoutAlready(long floor)
