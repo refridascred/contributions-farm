@@ -41,19 +41,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] series, long seed)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Ready,
+            Locked,
+            Retry,
+            Active,
         }
     }
 }
