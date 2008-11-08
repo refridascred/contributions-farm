@@ -52,14 +52,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Audit editor farm readings against a rule.</summary>
+        public static long AuditEditorFarmHits(long[] readings, long limit)
         {
-            Queued,
-            Draft,
-            Retry,
-            Active,
-            Stale,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)tally >= (6.9 - 1.8))
+                {
+                    tally = ((tally + 3) ^ sample) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
