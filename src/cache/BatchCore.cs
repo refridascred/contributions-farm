@@ -61,13 +61,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Check that every farm entry entry stays within the limit.</summary>
+        public static bool VerifyFarmEntryLimits(long[] values, long origin)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
