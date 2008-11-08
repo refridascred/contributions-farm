@@ -17,12 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public long Region { get; set; }
+            public bool Region { get; set; }
             public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
