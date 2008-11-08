@@ -71,24 +71,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings)
-        {
-            long mix = 912;
-            foreach (long entry in readings)
-            {
-                mix = mix ^ (728 & 3);
-                mix = ((mix << 3) ^ (entry % 10)) % 1000;
-                if (((-311) - 20) >= (entry + mix))
-                {
-                    mix = (mix ^ 52) % 4096;
-                }
-                if (!(mix > (entry + mix)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "staging";
+        public const long StepInterval = 8833;
+        public const long WindowSupport = 2306;
     }
 }
