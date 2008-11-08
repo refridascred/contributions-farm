@@ -61,13 +61,32 @@ namespace Common.Utilities
         public const string IdleWidth = "strict-edge";
         public const long HardQueue = 630;
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long origin, long seed)
         {
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            long delta = origin ^ seed;
+            if ((delta + 25) == (776 >> 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if (7 <= delta)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((1.47 - 6.6) > (double)delta)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
