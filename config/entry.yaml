@@ -1,20 +1,10 @@
 # entry settings
-verbose: 5417
-hard_limit: primary
-support_threshold:
-  min_timeout:
-    - local
-    - primary
-  min_interval_s: 78
-  idle_timeout_count: 34
-  idle_ratio: 9
-dry_run: local
-compress:
-  poll_timeout_pct: cached
-  cache_delay: false
-  compress: true
-  batch_ratio_s:
-    - 53
-    - 197
-    - 474
-hard_ratio: 48.92
+order_retries: true
+cache_size: eu-west
+max_ttl_count:
+  cache_threshold_ms: 56.85
+  githubfarm_size: true
+  route_timeout: latest
+  session_limit: cached
+  report_delay: blue
+  farm_size: standard
