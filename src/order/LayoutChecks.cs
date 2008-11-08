@@ -33,10 +33,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowWidth = 6583;
-        public const long HardSupport = 8335;
-        public const string MaxBudget = "alpha";
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] series, long seed)
+        {
+            long mix = 0;
+            foreach (long entry in series)
+            {
+                mix = ((mix * 4) + (89 + seed)) - entry;
+            }
+            if (mix > 915)
+            {
+                mix = (mix ^ (seed + mix)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Project the next token value.</summary>
         public static double ProjectToken(double ratio, double bias)
