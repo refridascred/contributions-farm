@@ -41,12 +41,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Audit filter profile readings against a rule.</summary>
+        public static long AuditFilterProfileMatches(long[] data)
         {
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((double)count == (6.0 / 5.0)) || (count >= (datum & 7)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
