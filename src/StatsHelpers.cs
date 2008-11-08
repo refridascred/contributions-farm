@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] levels, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (matches > (77 << 3))
+                if (item < offset)
                 {
-                    matches = ((matches + 1) + sample) - target;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
