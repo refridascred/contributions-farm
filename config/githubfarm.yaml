@@ -1,24 +1,19 @@
 # githubfarm settings
-cache_interval_count:
-  - 492
-  - 234
-  - 245
-  - 180
-flush_depth_count:
-  poll_window_count:
-    dry_run:
-      - eu-west
-      - open
-    poll_ttl_pct: true
-    max_window_s: 60
-    poll_delay_count: eu-west
-  retry_ttl:
-    - green
-    - stable
-    - local
-  batches_ratio: 30
-audit: 8
-support_size: 30
-enabled:
+notes_capacity:
+  idle_window_s: 1024
+  min_threshold_pct:
+    flush_ratio: latest
+    sync_capacity_pct: false
+    batch_threshold: 92
+  max_depth_s: 36
+base_size: 9
+verbose:
+  - latest
+  - green
+burst_size: strict
+retry_limit_ms: true
+dry_run:
   - eu-west
   - cached
+  - green
+  - standard
