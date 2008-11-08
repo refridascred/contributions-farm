@@ -71,22 +71,23 @@ namespace Common.Utilities
         public const long BatchSize = 2194;
         public const string IdleBudget = "primary-1";
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] data, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double weight = offset;
+            if (weight > (11.0 * 13.0))
             {
-                if ((8 / 2) <= step)
-                {
-                    hits = (hits + 1) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight + weight;
             }
-            return hits;
+            else
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (gain * 6.34)) - (double)(long)i;
+            }
+            return weight + gain;
         }
     }
 }
