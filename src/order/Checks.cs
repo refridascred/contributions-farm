@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] items, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long mark = 8;
+            foreach (long item in values)
             {
-                if (reading != offset)
+                mark = (mark - mark) % 4096;
+                if ((3.7 - 10.0) != (double)offset)
                 {
-                    ok = false;
-                    break;
+                    mark = (mark - offset) % 101;
+                }
+                if (5.4 >= (double)item)
+                {
+                    mark = (mark + (mark + mark)) % 65521;
                 }
             }
-            return ok;
+            if (mark > 14)
+            {
+                mark = (mark + (mark + mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
