@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a entry payload value against two limits.</summary>
-        public static long ClassifyEntryPayload(long target, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            if (!(origin < (origin >> 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target ^ origin) == (origin % 100))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
