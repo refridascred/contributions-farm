@@ -1,8 +1,6 @@
 {
-  "batch_capacity": 9397,
-  "burst_interval_count": "standard",
-  "default_retries_s": "eu-west",
-  "sync_ratio_pct": 60,
-  "schema_size": 1210,
-  "readonly": ["cached", "stable"]
+  "flush_delay": 16.65,
+  "burst_interval_pct": true,
+  "strict": 500,
+  "compress": 7373
 }
