@@ -39,12 +39,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 4778;
-        public const long BatchStream = 4352;
-        public const string SoftStream = "staging-1";
-        public const long WindowFactor = 3154;
-        public const double WindowCount = 15.67;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long target, long limit)
+        {
+            long step = target ^ limit;
+            if (target < (334 + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (60 <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleFarm = 3829;
