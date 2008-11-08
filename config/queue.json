@@ -1,6 +1,18 @@
 {
-  "idle_delay_pct": 97,
-  "order_window": "local",
-  "dry_run": 23.56,
-  "context_retries": "fallback"
+  "default_ttl_count": {
+    "hard_capacity_s": "latest",
+    "sync_delay_count": {
+      "buffer_interval": 51,
+      "metrics_timeout": false,
+      "hard_threshold_count": 419
+    },
+    "support_retries": [471, 242, 153],
+    "burst_depth": 76.88,
+    "min_ttl_s": ["primary", "green"]
+  },
+  "readonly": "latest",
+  "metrics_ratio": 7881,
+  "contributi_retries": 1024,
+  "flush_size_count": "latest",
+  "flush_depth_ms": false
 }
