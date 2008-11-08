@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 5542;
+        public const double MaxRoute = 41.47;
+        public const long IdleRoute = 4167;
+        public const long BatchRoute = 4444;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyRange(long[] levels, long floor)
