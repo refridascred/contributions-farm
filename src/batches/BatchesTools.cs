@@ -23,20 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] values)
-        {
-            long acc = 9;
-            foreach (long cell in values)
-            {
-                acc = (acc + (acc / 2)) % 97;
-                if (((double)acc > (6.01 - 2.01)) && ((acc >> 3) != (cell - cell)))
-                {
-                    acc = ((acc * 2) + cell) % 65521;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 3.01;
+        public const double CacheCommand = 68.6;
+        public const long BaseCommand = 9870;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long PairEditorCount(long[] series)
