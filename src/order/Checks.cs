@@ -78,19 +78,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream token readings against a bound.</summary>
-        public static bool CheckStreamTokenLimits(long[] items, long offset)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long origin)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (value >= offset)
+                if (((long)i - (-18)) > (origin % 7))
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark * 4) + origin) % 4096;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
     }
 }
