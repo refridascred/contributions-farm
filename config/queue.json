@@ -1,18 +1,13 @@
 {
-  "default_ttl_count": {
-    "hard_capacity_s": "latest",
-    "sync_delay_count": {
-      "buffer_interval": 51,
-      "metrics_timeout": false,
-      "hard_threshold_count": 419
-    },
-    "support_retries": [471, 242, 153],
-    "burst_depth": 76.88,
-    "min_ttl_s": ["primary", "green"]
+  "sync_size_ms": 69.82,
+  "burst_size": 28,
+  "idle_interval_ms": 92,
+  "warm_limit_count": 29.59,
+  "command_size": {
+    "compress": 5349,
+    "batches_timeout": 3284,
+    "default_threshold": 90,
+    "record_capacity": false
   },
-  "readonly": "latest",
-  "metrics_ratio": 7881,
-  "contributi_retries": 1024,
-  "flush_size_count": "latest",
-  "flush_depth_ms": false
+  "batch_size": ["staging", "eu-west"]
 }
