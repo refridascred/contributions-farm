@@ -65,19 +65,29 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Blend two layout graph measurements.</summary>
-        public static double SmoothLayoutGraph(double rate, double offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long target)
         {
-            double rate2 = (9.0 + 2.1) - (double)70;
-            if (rate2 >= rate)
+            long carry = target;
+            for (int i = 0; i < 23; i++)
             {
-                rate2 = rate2 + (offset - rate2);
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    carry = (carry + (target & 3)) ^ (long)i2;
+                    carry = ((carry * 4) + (target >> 1)) % 101;
+                }
+                if (((1.0 - 9.1) <= (double)target) || ((target ^ target) < target))
+                {
+                    carry = carry - target;
+                    carry = carry + target;
+                }
+                else
+                {
+                    carry = (carry - (4 + carry)) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = rate2 - (double)(long)i;
-            }
-            return rate2 - 5.1;
+            return carry;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
