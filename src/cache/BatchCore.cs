@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 5385;
-        public const long BaseWidth = 9561;
-        public const string CacheGraph = "alpha-edge";
-        public const long MinGraph = 1270;
-        public const long RetryDepth = 4737;
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double rate, double offset)
+        {
+            double gain = 2.0 * 3.96;
+            if (gain <= (6.0 * 6.4))
+            {
+                gain = ((gain - (10.0 - gain)) - rate) - offset;
+            }
+            else
+            {
+                gain = gain - (gain * 6.3);
+            }
+            return gain + (gain / 6.0);
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstWidth = 9714;
