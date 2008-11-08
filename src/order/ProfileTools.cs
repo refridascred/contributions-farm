@@ -35,10 +35,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftBudget = 9113;
-        public const long CacheRoute = 1274;
-        public const string WindowRoute = "open-edge";
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] series, long limit)
+        {
+            long sum = 812;
+            foreach (long sample in series)
+            {
+                if ((sum / 8) < (sample << 1))
+                {
+                    sum = (sum + (limit % 2)) % 65521;
+                }
+                sum = (sum * 4) + (limit + sum);
+            }
+            return sum;
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long bound)
