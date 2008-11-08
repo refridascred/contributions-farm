@@ -14,12 +14,23 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowLevel = 39.69;
-        public const string BurstWidth = "alpha-v2";
-        public const double DefaultSession = 48.31;
-        public const string LimitSession = "fallback";
-        public const long WindowRatio = 2470;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum / 8) > (hits + hits))
+                {
+                    hits = (hits + 1) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long CompareQueueCount(long[] readings)
