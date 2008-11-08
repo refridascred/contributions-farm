@@ -18,24 +18,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a checks batches value against two limits.</summary>
-        public static long ClassifyChecksBatches(long offset, long limit)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            if ((offset * 3) > (limit % 64))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit < (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Region { get; set; }
+            public double Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
