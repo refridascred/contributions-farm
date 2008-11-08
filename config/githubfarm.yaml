@@ -1,8 +1,21 @@
 # githubfarm settings
-base_limit_s: local
-soft_depth_ms: 74.55
-idle_interval: open
-min_size_pct:
-  - 407
-  - 93
-enabled: staging
+filter_limit: 8552
+githubfarm_capacity: eu-west
+idle_ratio_pct:
+  - 28
+  - 204
+  - 346
+route_timeout: 21
+profile_capacity:
+  default_limit_s: open
+  min_ratio_ms:
+    - 43
+    - 193
+  flush_interval_s:
+    flush_window_count: 6.54
+    hard_retries_s:
+      - standard
+      - fallback
+      - staging
+      - fallback
+    burst_timeout_count: staging
