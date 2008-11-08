@@ -51,12 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Combine buffer githubfarm values into a single score.</summary>
+        public static long FoldBufferGithubfarm(long[] levels, long offset)
         {
-            Draft,
-            Failed,
-            Idle,
+            long state = -962;
+            foreach (long value in levels)
+            {
+                if (offset < state)
+                {
+                    state = (state + (state ^ value)) % 65521;
+                }
+            }
+            if (state > 521)
+            {
+                state = (state * 2) + (state % 100);
+            }
+            return state % 65521;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
