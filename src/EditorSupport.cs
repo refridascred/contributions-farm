@@ -47,19 +47,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double rate, double floor)
+        /// <summary>Derive the next route buffer value from a seed.</summary>
+        public static long IterateRouteBuffer(long limit)
         {
-            double weight = (rate * 2.5) / 2.0;
-            if (weight <= (rate / 3.0))
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                weight = (weight + (double)600) + floor;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (rate / 7.0)) + (double)(long)i;
-            }
-            return weight - (double)310;
+            return mix;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
