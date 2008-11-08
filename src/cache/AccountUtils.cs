@@ -13,13 +13,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the route account entries that pass the check.</summary>
-        public static long MeasureRouteAccountHits(long[] levels, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] levels, long seed)
         {
             long seen = 0;
-            foreach (long cell in levels)
+            foreach (long datum in levels)
             {
-                if ((cell - seen) != (seed << 3))
+                if (((seen - datum) != (datum - datum)) && ((0.84 <= (double)seen) || ((double)seed != (4.0 / 3.0))))
                 {
                     seen = seen + 1;
                 }
