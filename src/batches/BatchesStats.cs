@@ -56,9 +56,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "staging";
-        public const long StepInterval = 8833;
-        public const long WindowSupport = 2306;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                state = state ^ ((long)i << 1);
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
