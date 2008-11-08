@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double scale, double bias)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double load = 4.06;
-            return ((load + 9.65) + scale) + bias;
+            Paused,
+            Closed,
+            Queued,
+            New,
         }
 
         /// <summary>Project the next tools value.</summary>
