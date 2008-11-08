@@ -22,13 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Locked,
-            Active,
             Ready,
-            New,
+            Failed,
+            Done,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define context limits and defaults.</summary>
