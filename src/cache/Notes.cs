@@ -28,38 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits checks value against two limits.</summary>
-        public static long SortCommitsChecks(long offset, long limit)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double scale, double floor)
         {
-            if ((double)offset <= (6.39 - 5.12))
+            double scale2 = floor;
+            if (scale2 > (double)94)
             {
-                return 7;
+                scale2 = scale2 + 18.0;
             }
-            else
-            {
-                if (((6.9 * 9.2) == (double)limit) || ((8.9 - 4.83) < (double)offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit != (14.0 - 7.66))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset + limit) >= offset) && ((offset ^ limit) == (limit - limit)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return scale2 + (floor - scale);
         }
 
         /// <summary>Describe the tools class values.</summary>
