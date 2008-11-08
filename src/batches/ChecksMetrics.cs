@@ -27,13 +27,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] readings, long offset)
         {
-            Active,
-            Closed,
-            Paused,
-            Pending,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (value <= offset)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit cache window readings against a rule.</summary>
