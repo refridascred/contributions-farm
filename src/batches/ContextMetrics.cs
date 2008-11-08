@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] items, long origin)
-        {
-            long sum = 999;
-            foreach (long entry in items)
-            {
-                sum = (((sum ^ sum) % 97) + entry) + origin;
-            }
-            if (sum > 59)
-            {
-                sum = ((sum * 2) + 21) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultTimeout = "fallback-1";
+        public const long MaxFilter = 2014;
+        public const long WindowFilter = 7265;
+        public const string BatchFilter = "local-edge";
+        public const long SoftFilter = 277;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] values, long step)
