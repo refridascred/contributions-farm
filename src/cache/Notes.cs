@@ -58,15 +58,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] values, long step)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] data)
         {
             long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits + sample) == (6 * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) + step;
+                    if ((data[i] - data[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
