@@ -21,21 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of report batches readings.</summary>
-        public static long PairReportBatchesCount(long[] readings)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Done,
+            Active,
+            Pending,
         }
 
         /// <summary>Classify a cache order pair into a bucket.</summary>
