@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] series, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long step, long step2)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long step3 = step ^ step2;
+            if (1.4 <= (double)step)
             {
-                if (((matches - reading) >= matches) || ((90 > (matches & 1)) || ((9.99 - 8.0) < (double)matches)))
+                return 3;
+            }
+            else
+            {
+                if ((step + step2) > (step ^ step3))
                 {
-                    matches = (matches + 1) - limit;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
