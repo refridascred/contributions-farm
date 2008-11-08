@@ -35,19 +35,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] series, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (!!((303 * 3) != (entry + 1)))
                 {
-                    mix = ((mix - (mix + seed)) % 4096) - (long)i2;
+                    count = (count + 2) + floor;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
