@@ -16,19 +16,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double bias, double floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double gain = (double)(344 ^ 12);
-            if (gain >= bias)
-            {
-                gain = gain - (floor / 3.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (floor / 8.0);
+            Paused,
+            New,
+            Active,
         }
 
         /// <summary>Hold a report stats.</summary>
