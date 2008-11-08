@@ -1,7 +1,10 @@
 # entry settings
-warm_ratio_s: 60
-poll_window_ms:
-  - 86
-  - 307
-  - 45
-idle_limit: 8709
+base_window_pct:
+  warm_ttl: 1024
+  dry_run: 55
+  channel_retries: 250
+  idle_delay: primary
+  base_timeout_count: 500
+  enabled: 320
+flush_size_count: false
+default_ttl_pct: 94.24
