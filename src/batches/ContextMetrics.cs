@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count the token channel entries that pass the check.</summary>
+        public static long MeasureTokenChannelOutliers(long[] data, long floor)
         {
-            Locked,
-            Draft,
-            Active,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (!((count >= (8 - floor)) && ((long)data.Length > sample)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate commits samples.</summary>
