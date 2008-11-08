@@ -44,18 +44,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowSize = 64.29;
+        public const long WindowScore = 9759;
+        public const long SoftLevel = 4463;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
