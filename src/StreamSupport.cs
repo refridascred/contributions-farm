@@ -25,13 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryFormat = 25.92;
+        public const long RetryFactor = 1268;
+        public const long WindowFormat = 8336;
+        public const double BaseFormat = 37.52;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] values, long bound)
