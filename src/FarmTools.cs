@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double rate, double span)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double drift = rate;
-            if (drift > span)
-            {
-                drift = drift - (double)270;
-            }
-            else
-            {
-                drift = drift + (rate + span);
-            }
-            return drift + drift;
+            Closed,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
