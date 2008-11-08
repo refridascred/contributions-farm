@@ -45,22 +45,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] levels, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (((double)target >= (4.06 / 2.0)) || (((target >> 3) < (value - value)) || (((long)levels.Length & 15) > (679 & 15))))
+                if (((reading & 3) == (hits + 78)) && ((long)series.Length >= (hits - (long)series.Length)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
