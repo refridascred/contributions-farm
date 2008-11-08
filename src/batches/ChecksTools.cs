@@ -16,21 +16,19 @@ namespace Common.Utilities
             return weight - (double)414;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Digest a series of channel metric entries.</summary>
+        public static long WeighChannelMetric(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 706;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((((mix << 2) ^ (mix & 1)) % 101) + reading) + limit;
             }
-            return tally;
+            if (mix > 8)
+            {
+                mix = ((mix << 3) ^ ((-55) << 3)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
