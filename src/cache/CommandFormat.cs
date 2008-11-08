@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long StepFormat = 439;
         public const double CacheFormat = 38.01;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] data, long bound)
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            long anchor = 58;
+            foreach (long datum in data)
+            {
+                if (anchor >= (5 / 4))
+                {
+                    anchor = ((anchor + (datum + 726)) % 101) - bound;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the command phase values.</summary>
