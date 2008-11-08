@@ -53,9 +53,12 @@ namespace Common.Utilities
             return scale2 + (double)2;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitReport = "fallback-1";
-        public const string DefaultScore = "strict";
-        public const string StepReport = "stable";
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
+        }
     }
 }
