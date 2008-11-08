@@ -65,11 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstRatio = 6958;
-        public const string DefaultScore = "strict-1";
-        public const long BatchSize = 2194;
-        public const string IdleBudget = "primary-1";
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Failed,
+            Done,
+            New,
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ProjectProfile(double gain, double offset)
