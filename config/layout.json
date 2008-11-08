@@ -1,7 +1,23 @@
 {
-  "token_window": 3394,
-  "batch_retries": "fallback",
-  "retry_depth": 69,
-  "retry_limit_pct": 95.58,
-  "readonly": 100
+  "graph_ratio": true,
+  "format_depth": 12.59,
+  "verbose": {
+    "persist": 53.39,
+    "cache_retries_ms": 88,
+    "flush_depth_ms": 92.89,
+    "window_delay": {
+      "min_retries_ms": [270, 336, 424, 273],
+      "default_interval_ms": 30,
+      "idle_ttl_ms": "local",
+      "token_window": [207, 55, 397, 114]
+    },
+    "layout_depth": {
+      "commits_threshold": "primary",
+      "context_interval": 1024,
+      "soft_ttl_s": "open",
+      "base_threshold": 100
+    },
+    "report_depth": "edge"
+  },
+  "cache_threshold_pct": [27, 451, 292]
 }
