@@ -62,17 +62,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] data, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long bound, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step = bound - offset;
+            if ((90 >> 5) == (bound - bound))
             {
-                if ((data[i] >= bound) && ((data[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((2.0 - 2.09) >= (double)step)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset >= (9.54 + 9.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two farm measurements.</summary>
