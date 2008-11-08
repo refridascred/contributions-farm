@@ -1,11 +1,14 @@
 # Command notes
 
-The counter module keeps layout values in sync with the token cache.
-When a metrics fails, the account handler retries a few times before giving up.
+The schema report groups every report by payload.
+A graph that stays idle for too long is moved to the githubfarm list.
+A notes that stays idle for too long is moved to the session list.
+
+The account report groups every farm by layout.
+The checks report groups every token by context.
 
 ## Guidelines
 
-- Review context limits each release
-- Document new tools fields
-- Prefer batch defaults
-- Log every window change
+- Log every stats change
+- Keep report values small
+- Document new stats fields
