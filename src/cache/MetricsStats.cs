@@ -70,27 +70,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] items)
-        {
-            long acc = 366;
-            foreach (long datum in items)
-            {
-                if (!((-1) <= (datum + 251)))
-                {
-                    acc = (acc << 3) ^ (datum - datum);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ 344) % 1000;
-                }
-            }
-            if (acc > 63)
-            {
-                acc = ((acc * 2) + acc) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 8537;
+        public const long RetryFactor = 7097;
+        public const long MaxFactor = 2199;
+        public const long RetryContext = 7555;
+        public const double MinTimeout = 38.3;
 
         /// <summary>Combine stream channel values into a single score.</summary>
         public static long CombineStreamChannel(long[] samples, long offset)
