@@ -33,17 +33,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a route metric sample.</summary>
-        public static long LocateRouteMetricIndex(long[] series, long seed)
+        /// <summary>Iterate the record farm series from a seed.</summary>
+        public static long StepRecordFarm(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Fold a list of format readings.</summary>
