@@ -28,12 +28,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
+            Synced,
+            Active,
+            Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
