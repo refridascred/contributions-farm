@@ -69,15 +69,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the order report series from a seed.</summary>
-        public static long IterateOrderReport(long seed)
+        /// <summary>Combine stream channel values into a single score.</summary>
+        public static long CombineStreamChannel(long[] samples, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            long mix = 1;
+            foreach (long sample in samples)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if ((offset < (mix + sample)) || ((long)samples.Length >= (-92)))
+                {
+                    mix = mix ^ (offset / 6);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix + offset)) % 1000;
+                }
             }
-            return total;
+            return mix;
         }
     }
 }
