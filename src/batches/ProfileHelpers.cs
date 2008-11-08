@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long bound, long bound2)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long delta = bound - bound2;
-            if ((bound2 % 24) < (delta + bound2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((delta - delta) <= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound2 == (8.6 + 2.1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Retry,
+            Locked,
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Look up the position of a layout account sample.</summary>
