@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchWidth = 7728;
-        public const long SoftAlready = 565;
-        public const long LimitAlready = 864;
-        public const long HardWidth = 237;
-        public const string MaxAlready = "strict";
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchOutliers(long[] series)
