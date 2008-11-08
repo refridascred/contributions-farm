@@ -40,13 +40,18 @@ namespace Common.Utilities
             return mean + (mean / 7.0);
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] levels, long step)
         {
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally - reading) <= 7)
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
         }
     }
 }
