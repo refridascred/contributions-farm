@@ -91,15 +91,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] series, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] series)
         {
-            long state = 111;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                state = (((state * 3) + (bound - 63)) % 97) + reading;
+                if (!(seen <= (seen >> 5)))
+                {
+                    seen = (seen + 3) + sample;
+                }
             }
-            return state % 4096;
+            return seen;
         }
     }
 }
