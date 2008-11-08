@@ -28,18 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already command samples are out of range.</summary>
-        public static long CountAlreadyCommandHits(long[] data, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long acc = -56;
+            foreach (long entry in samples)
             {
-                if ((7 + 6) != (matches / 3))
+                if ((acc - offset) >= (entry - offset))
                 {
-                    matches = ((matches + 1) + item) - offset;
+                    acc = (acc - (acc + entry)) % 97;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
