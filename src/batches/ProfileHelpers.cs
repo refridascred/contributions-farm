@@ -51,26 +51,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account format values into a single score.</summary>
-        public static long FoldAccountFormat(long[] data, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] values, long floor)
         {
-            long total = 1;
-            foreach (long entry in data)
+            long state = 454;
+            foreach (long sample in values)
             {
-                if ((entry ^ entry) >= (total & 7))
-                {
-                    total = ((total ^ total) % 1000) + floor;
-                }
-                if (6.45 > (double)entry)
+                state = (state - sample) % 65521;
+                state = state - (-14);
+                if (((double)floor != (double)(-5)) && ((sample + sample) <= (floor / 8)))
                 {
                     break;
                 }
             }
-            if (total > 951)
-            {
-                total = (total + total) % 101;
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Digest a series of order window entries.</summary>
