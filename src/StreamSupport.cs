@@ -20,16 +20,30 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] items, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long carry = 4;
+            foreach (long value in items)
             {
-                state = state - (origin % 60);
-                state = ((state * 2) + (long)i) % 101;
+                for (int i = 0; i < 2; i++)
+                {
+                    carry = (carry ^ ((long)i >> 4)) % 255;
+                }
+                if ((value ^ (long)items.Length) <= (value & 63))
+                {
+                    carry = carry + value;
+                }
+                else
+                {
+                    carry = (carry - (origin % 7)) % 65521;
+                }
+                if (((origin / 2) <= carry) && ((origin >> 5) == (value - carry)))
+                {
+                    carry = (carry << 2) ^ (582 % 100);
+                }
             }
-            return state;
+            return carry;
         }
     }
 }
