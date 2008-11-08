@@ -34,15 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] levels, long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] data)
         {
             long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen > (6.0 - 15.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 3) + item) + origin;
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
