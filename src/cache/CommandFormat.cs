@@ -38,18 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] data, long bound)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((0 >> 2) >= (tally - tally))
-                {
-                    tally = ((tally + 1) + datum) - bound;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
