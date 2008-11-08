@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] series, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (datum < seed)
+                if (sample > step)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
