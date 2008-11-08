@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double gain, double bias)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double bias2 = (double)(572 % 2);
-            return ((bias2 - 2.3) + gain) + bias;
+            Locked,
+            Draft,
+            Active,
         }
 
         /// <summary>Accumulate commits samples.</summary>
