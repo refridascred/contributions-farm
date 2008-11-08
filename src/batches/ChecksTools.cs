@@ -36,14 +36,14 @@ namespace Common.Utilities
         public const string IdleMetric = "local-v2";
         public const double LimitMetric = 95.87;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            New,
-            Draft,
+            Queued,
             Synced,
-            Failed,
-            Ready,
+            Done,
+            Dropped,
+            Pending,
         }
     }
 }
