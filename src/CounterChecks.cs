@@ -56,11 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheScore = 4012;
-        public const long StepLevel = 8389;
-        public const string BurstWindow = "alpha-1";
-        public const long LimitWindow = 2931;
-        public const long BaseWindow = 3226;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
