@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const string IdleGraph = "staging";
         public const long CacheGraph = 268;
 
-        /// <summary>Accumulate route contributi samples.</summary>
-        public static long CombineRouteContributi(long[] levels, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] levels)
         {
-            long mix = 5;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (sample > (seed + mix))
+                if (7.29 >= (7.5 / 3.0))
                 {
-                    mix = mix ^ (seed + sample);
+                    hits = (hits + 3) ^ datum;
                 }
                 else
                 {
-                    mix = (mix + (mix - sample)) % 101;
+                    hits = hits - 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the graph phase values.</summary>
