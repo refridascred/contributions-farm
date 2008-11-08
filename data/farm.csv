@@ -1,8 +1,6 @@
-id,level,region
-1,749,standard
-2,green,702
-3,24,eu-west
-4,latest,864
-5,staging,16.34
-6,51.26,85.65
-7,local,434
+id,state,owner,level
+1,740,14.15,42.01
+2,eu-west,legacy,48.2
+3,853,12.8,387
+4,305,open,edge
+5,32.83,27.98,edge
