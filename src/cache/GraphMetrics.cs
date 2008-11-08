@@ -28,20 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstSize = 4446;
+        public const long BaseSpan = 3997;
+        public const double StepBuffer = 53.59;
+        public const long BurstBuffer = 3031;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long DeriveBatch(long offset)
