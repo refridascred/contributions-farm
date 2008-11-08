@@ -1,13 +1,8 @@
 # githubfarm settings
-dry_run:
-  - blue
-  - standard
-layout_limit: blue
-hard_window_ms:
-  - legacy
-  - blue
-  - stable
-  - primary
-batch_interval_s: 20.25
-batches_capacity: fallback
-strict: 3
+base_limit_s: local
+soft_depth_ms: 74.55
+idle_interval: open
+min_size_pct:
+  - 407
+  - 93
+enabled: staging
