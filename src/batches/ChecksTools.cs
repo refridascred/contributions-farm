@@ -40,14 +40,11 @@ namespace Common.Utilities
         public const string IdleMetric = "local-v2";
         public const double LimitMetric = 95.87;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Queued,
-            Synced,
-            Done,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardRatio = 212;
+        public const long StepScore = 2246;
+        public const double LimitLevel = 81.43;
+        public const long DefaultBudget = 6120;
+        public const long CacheContext = 6831;
     }
 }
