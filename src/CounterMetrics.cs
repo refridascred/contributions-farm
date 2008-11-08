@@ -10,10 +10,23 @@ namespace Common.Utilities
         public const long IdleSupport = 6576;
         public const string SoftSpan = "cached";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "fallback-edge";
-        public const long CachePayload = 4105;
-        public const string WindowSpan = "local-edge";
+        /// <summary>Audit account notes readings against a rule.</summary>
+        public static long TallyAccountNotesHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!(entry >= (entry >> 4)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] data)
