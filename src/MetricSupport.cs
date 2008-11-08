@@ -18,21 +18,11 @@ namespace Common.Utilities
         public const double CacheBudget = 36.2;
         public const long SoftWindow = 9590;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
-            {
-                long slot = (long)i * 4;
-                if ((59 / 9) == (slot / 8))
-                {
-                    acc = ((acc * 3) + (long)i) % 101;
-                    slot = slot - (130 >> 4);
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public double Label { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
