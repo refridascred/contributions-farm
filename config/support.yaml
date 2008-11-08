@@ -1,28 +1,10 @@
 # support settings
-default_retries_count:
-  stats_ttl:
-    - 57
-    - 309
-  poll_capacity_ms: 7683
-  compress: stable
-  entry_timeout:
-    - strict
-    - local
-    - blue
-idle_timeout_s:
-  - eu-west
-  - blue
-  - legacy
-idle_depth_s:
-  counter_capacity:
-    already_threshold: 12.97
-    batches_depth: staging
-    audit: 9644
-    strict: true
-    warm_ratio_ms: 36
-    format_limit: 6717
-  max_limit_count: false
-  audit: staging
-  sync_capacity_pct: 92
-compress: 32.05
-readonly: 53
+window_delay: false
+sync_interval_count: strict
+hard_ratio_ms: 3
+soft_timeout:
+  - 334
+  - 353
+  - 259
+  - 67
+strict: staging
