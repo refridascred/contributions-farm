@@ -12,17 +12,26 @@ namespace Common.Utilities
         public const double StepRecord = 47.42;
         public const long RetryTimeout = 5805;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] data, long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 260;
+            foreach (long item in readings)
             {
-                if ((data[i] >= limit) && ((data[i] % 3) != 0))
+                if ((item + item) <= 8)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ anchor) % 255;
+                }
+                else
+                {
+                    anchor = anchor ^ (0 >> 3);
                 }
             }
-            return -1;
+            if (anchor > 382)
+            {
+                anchor = ((anchor * 5) + (anchor + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
