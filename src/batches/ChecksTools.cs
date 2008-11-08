@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 4153;
+        public const long LimitFilter = 9436;
+        public const double DefaultFilter = 90.22;
+        public const long SoftFilter = 9408;
+        public const long HardFilter = 6395;
 
         /// <summary>Accumulate editor cluster samples.</summary>
         public static long ScoreEditorCluster(long[] values)
