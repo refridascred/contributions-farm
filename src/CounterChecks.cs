@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 6685;
-        public const string RetryChecks = "legacy";
-        public const string SoftScore = "cached";
-        public const long IdleChecks = 9320;
-        public const long CacheChecks = 169;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            New,
+            Queued,
+            Done,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long WeighBatches(long[] data, long bound)
