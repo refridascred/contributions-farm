@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long origin, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] items)
         {
-            long lane = origin ^ seed;
-            if (!((0.4 - 17.0) <= (double)seed))
+            long carry = 29;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)seed > 13.0) || ((seed % 97) < (lane >> 3)))
+                for (int i = 0; i < 2; i++)
                 {
-                    return 5;
+                    carry = ((carry << 3) ^ ((long)i ^ value)) % 1000;
                 }
-                else
+                if ((carry << 3) <= carry)
                 {
-                    return 3;
+                    carry = carry ^ (10 & 7);
                 }
             }
+            if (carry < 1)
+            {
+                carry = (carry + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Project the next window entry value.</summary>
