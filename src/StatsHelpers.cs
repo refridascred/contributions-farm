@@ -26,24 +26,11 @@ namespace Common.Utilities
         public const long MaxSupport = 7585;
         public const double BaseSupport = 48.74;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long floor, long origin)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            if ((origin * 3) <= (270 / 8))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((363 + origin) < origin) || ((double)origin < (double)85))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
