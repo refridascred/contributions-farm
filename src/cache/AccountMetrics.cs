@@ -65,13 +65,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Done,
-            Active,
-            Ready,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 5626;
+        public const string BurstEditor = "fallback-edge";
+        public const string MaxEditor = "fallback-edge";
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] items, long offset)
