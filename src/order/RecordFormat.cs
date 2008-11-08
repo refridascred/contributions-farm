@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] values, long bound)
+        /// <summary>Check that every format stats entry stays within the limit.</summary>
+        public static bool GuardFormatStatsBounds(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((count + 9) != (count / 3))
+                if (cell >= offset)
                 {
-                    count = ((count + 2) + item) + bound;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the profile mode values.</summary>
