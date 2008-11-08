@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long MaxTools = 4240;
         public const string BatchSize = "legacy-v2";
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] items, long step)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((datum & 63) == (datum >> 1))
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
