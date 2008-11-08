@@ -51,11 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetryDepth = "stable-1";
-        public const long WindowScore = 4063;
-        public const long CacheSpan = 809;
-        public const long BatchInterval = 5238;
-        public const long CacheSupport = 1053;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((offset + cell) == (cell + seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
