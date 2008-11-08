@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate context command readings against a bound.</summary>
-        public static bool GuardContextCommandLimits(long[] values, long bound)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Idle,
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
