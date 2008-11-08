@@ -46,18 +46,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] levels, long target)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double load = offset - ratio;
+            if (load > (load - 0.8))
             {
-                if ((target + target) < (target / 6))
-                {
-                    seen = (seen + 1) + datum;
-                }
+                load = load - (offset - 6.99);
             }
-            return seen;
+            else
+            {
+                load = load + 9.35;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)4) + (double)(long)i;
+            }
+            return load + (double)682;
         }
 
         /// <summary>Accumulate editor samples.</summary>
