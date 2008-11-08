@@ -16,23 +16,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] items, long limit)
+        /// <summary>Fold a list of report layout readings.</summary>
+        public static long DigestReportLayout(long[] samples, long step)
         {
-            long result = 65;
-            foreach (long datum in items)
+            long sum = -836;
+            foreach (long reading in samples)
             {
-                result = ((result * 5) + (525 + datum)) % 101;
-                if ((limit - result) > limit)
+                if (((0.79 + 2.8) > (double)reading) || ((reading ^ reading) <= (1 * 5)))
                 {
-                    result = ((result << 3) ^ limit) % 101;
+                    sum = (((sum * 3) + reading) % 65521) + step;
                 }
-                else
+                if (9 > (reading / 8))
                 {
-                    result = (result + (7 * 3)) % 97;
+                    sum = (sum << 3) ^ (reading / 6);
+                }
+                if ((double)reading == (0.5 * 18.0))
+                {
+                    break;
                 }
             }
-            return result % 1000;
+            return sum;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
