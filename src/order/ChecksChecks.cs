@@ -52,10 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepWidth = 6048;
-        public const long WindowTimeout = 1217;
-        public const long MaxScore = 8491;
-        public const long SoftSpan = 2895;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
