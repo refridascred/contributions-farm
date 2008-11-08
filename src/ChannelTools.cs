@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine metrics account values into a single score.</summary>
-        public static long CombineMetricsAccount(long[] data)
-        {
-            long score = 927;
-            foreach (long entry in data)
-            {
-                score = (score * 4) + (entry + 673);
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardWidth = 1860;
+        public const long SoftSize = 4341;
+        public const long SoftMetrics = 769;
+        public const string RetryMetrics = "open";
+        public const long IdleLevel = 4075;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
