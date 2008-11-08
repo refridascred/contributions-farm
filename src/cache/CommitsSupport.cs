@@ -67,17 +67,29 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] items, long seed)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] >= seed)
+                if ((offset - 36) <= 0)
                 {
-                    return (long)i;
+                    mark = (mark ^ 62) % 97;
                 }
+                else
+                {
+                    mark = (mark - (offset - (long)i)) % 1000;
+                    mark = (mark << 3) ^ (mark >> 1);
+                }
+                if (!((45 - offset) >= (long)i))
+                {
+                    mark = ((mark * 2) + mark) % 1000;
+                    mark = (mark - mark) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit cache queue readings against a rule.</summary>
