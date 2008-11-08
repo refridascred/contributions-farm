@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long bound, long seed)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double bias, double span)
         {
-            if ((seed >> 1) == (47 << 1))
+            double rate = (double)(791 / 9);
+            if (rate >= 3.0)
             {
-                return 0;
+                rate = rate - (bias * 9.7);
             }
-            else
-            {
-                if ((2.29 + 18.0) < (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= (seed << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound >= (bound + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return rate - (8.5 - span);
         }
 
         /// <summary>Project the next editor value.</summary>
