@@ -77,15 +77,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double rate, double span)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long offset)
         {
-            double bias = rate;
-            if (bias > (rate + 1.44))
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                bias = (bias - bias) + span;
+                acc = acc - (offset & 3);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return bias - rate;
+            return acc;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
