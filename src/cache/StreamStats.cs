@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Locate a farm contributi reading by value.</summary>
+        public static long LocateFarmContributiIndex(long[] samples, long floor)
         {
-            Active,
-            Draft,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
