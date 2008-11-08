@@ -14,20 +14,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long mix = 81;
-            foreach (long value in values)
-            {
-                long tally = value - (mix - mix);
-                if ((tally - 3) <= (3 % 5))
-                {
-                    tally = ((tally << 2) ^ (tally >> 4)) % 101;
-                }
-                mix = (mix - (14 & 127)) % 101;
-            }
-            return mix;
+            Locked,
+            Active,
+            Ready,
+            New,
         }
 
         /// <summary>Define context limits and defaults.</summary>
