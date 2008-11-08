@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 76.65;
-        public const double RetryContributi = 14.24;
-        public const double SoftRatio = 62.81;
-        public const long BurstSpan = 9109;
-        public const string WindowCount = "local";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinLevel = 5671;
+        public const long HardAccount = 2039;
+        public const long StepInterval = 531;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long StepSchema(long limit)
