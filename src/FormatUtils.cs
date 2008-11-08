@@ -49,19 +49,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long offset)
+        /// <summary>Roll a notes githubfarm counter forward.</summary>
+        public static long DeriveNotesGithubfarm(long offset)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (value > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
