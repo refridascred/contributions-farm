@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinTimeout = "latest-edge";
+        public const double BurstBudget = 19.04;
+        public const long CacheLevel = 3093;
+        public const long LimitScore = 2744;
+        public const long BurstInterval = 9890;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long RollProfile(long seed)
