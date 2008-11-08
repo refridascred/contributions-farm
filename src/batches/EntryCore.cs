@@ -26,19 +26,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double ratio, double bias)
+        /// <summary>Match up window order samples.</summary>
+        public static long MatchWindowOrderCount(long[] samples)
         {
-            double scale = bias + (double)4;
-            if (scale >= ratio)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + 3.9;
-            }
-            return scale + (4.41 - bias);
+            return count;
         }
 
         /// <summary>Accumulate farm samples.</summary>
