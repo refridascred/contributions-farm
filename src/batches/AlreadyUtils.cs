@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] samples, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (sample != offset)
+                if (!((double)step != (7.0 - 0.8)))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Match up entry samples.</summary>
