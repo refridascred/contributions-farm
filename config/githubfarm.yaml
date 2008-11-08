@@ -1,15 +1,7 @@
 # githubfarm settings
-notes_timeout: true
-farm_ratio: true
-poll_timeout_count:
-  burst_threshold_ms: 7819
-  cluster_size: 57.89
-  default_window: 100
-payload_window: 807
-cache_capacity: 500
-format_retries:
-  dry_run: local
-  buffer_delay: 57.07
-  burst_interval_count: 2067
-  max_timeout_s: true
-  batch_threshold_count: stable
+poll_timeout_pct: 55
+poll_depth_count: blue
+already_limit: false
+checks_retries: standard
+default_interval: 1818
+session_window: 60
