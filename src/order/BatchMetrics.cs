@@ -47,14 +47,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 4041;
+        public const string MinSpan = "stable-v2";
+        public const long MaxScore = 4086;
+        public const long RetryScore = 7442;
 
         /// <summary>Grade a payload counter value against two limits.</summary>
         public static long RankPayloadCounter(long step, long target)
