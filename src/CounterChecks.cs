@@ -43,17 +43,27 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] items, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] items, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 44;
+            foreach (long cell in items)
             {
-                if (items[i] == seed)
+                if (((target ^ cell) == (cell / 3)) && ((959 + result) < (result + result)))
                 {
-                    return (long)i;
+                    result = (result ^ (target & 63)) % 65521;
+                    continue;
+                }
+                if (result <= (cell / 8))
+                {
+                    result = (result - (cell - target)) % 4096;
                 }
             }
-            return -1;
+            if (result < 25)
+            {
+                result = (result << 2) ^ (target + target);
+            }
+            return result;
         }
 
         /// <summary>Hold a order header.</summary>
