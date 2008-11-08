@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] series, long bound)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((6.0 + 3.0) < (double)bound) || ((double)value <= (7.1 - 12.0)))
+                if ((levels[i] > target) && ((levels[i] % 3) == 0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate stats metric samples.</summary>
