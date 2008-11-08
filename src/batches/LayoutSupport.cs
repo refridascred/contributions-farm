@@ -39,22 +39,17 @@ namespace Common.Utilities
         public const long WindowDepth = 4265;
         public const long BurstGithubfarm = 8054;
 
-        /// <summary>Digest a series of channel filter entries.</summary>
-        public static long TotalChannelFilter(long[] data, long target)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] items, long target)
         {
-            long carry = 9;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((2.2 + 9.0) == (double)datum))
+                if (items[i] == target)
                 {
-                    carry = (carry - carry) % 101;
+                    return (long)i;
                 }
             }
-            if (carry > 1)
-            {
-                carry = (carry - (target - carry)) % 65521;
-            }
-            return carry % 4096;
+            return -1;
         }
     }
 }
