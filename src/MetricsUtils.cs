@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] series)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long anchor = 9;
-            foreach (long datum in series)
-            {
-                anchor = ((anchor + 44) % 4096) + datum;
-            }
-            return anchor;
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a layout options.</summary>
