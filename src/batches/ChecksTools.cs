@@ -20,18 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a session report sample.</summary>
-        public static long LookupSessionReportIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryContributi = 55.41;
+        public const long SoftTimeout = 6800;
+        public const long BatchContributi = 5177;
 
         /// <summary>Grade a payload cluster value against two limits.</summary>
         public static long SortPayloadCluster(long origin, long floor)
