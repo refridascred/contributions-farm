@@ -82,16 +82,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            long anchor = 96;
+            foreach (long reading in data)
             {
-                acc = acc - (offset & 3);
-                acc = ((acc * 5) + (long)i) % 4093;
+                anchor = anchor + (reading + reading);
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Digest a series of order window entries.</summary>
