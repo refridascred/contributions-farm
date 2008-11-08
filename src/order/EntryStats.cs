@@ -16,19 +16,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every tools githubfarm entry stays within the limit.</summary>
-        public static bool GuardToolsGithubfarmBounds(long[] values, long floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long seed, long floor)
         {
-            bool ok = true;
-            foreach (long value in values)
+            if (14.0 < (double)floor)
             {
-                if (value >= floor)
+                return 1;
+            }
+            else
+            {
+                if (!((floor - floor) > (-64)))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
