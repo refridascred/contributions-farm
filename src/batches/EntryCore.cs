@@ -41,12 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public double Label { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftFactor = 4025;
+        public const string BatchStats = "legacy-1";
+        public const double IdleScore = 26.48;
+        public const string LimitStats = "fallback";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsRange(long[] items, long seed)
