@@ -52,11 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi metrics value.</summary>
-        public static double SmoothContributiMetrics(double scale, double offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            double bias = (double)545 * 3.0;
-            return ((bias + (double)6) + scale) + offset;
+            Locked,
+            Active,
+            Draft,
         }
     }
 }
