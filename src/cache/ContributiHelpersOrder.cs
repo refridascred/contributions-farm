@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            New,
+            Idle,
+            Ready,
         }
 
         /// <summary>Compare every pair of entry stream readings.</summary>
