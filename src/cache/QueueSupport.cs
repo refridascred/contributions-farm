@@ -15,14 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Validate context githubfarm readings against a bound.</summary>
+        public static bool CheckContextGithubfarmLimits(long[] data, long limit)
         {
-            Locked,
-            Closed,
-            Active,
-            Synced,
-            Ready,
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
