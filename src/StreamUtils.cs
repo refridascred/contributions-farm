@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Accumulate metrics route samples.</summary>
+        public static long DigestMetricsRoute(long[] levels)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long sum = 46;
+            foreach (long cell in levels)
             {
-                if (!((limit << 1) >= (limit - limit)))
-                {
-                    total = ((total << 2) ^ limit) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                sum = sum - (cell ^ sum);
             }
-            return total;
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of cluster commits entries.</summary>
