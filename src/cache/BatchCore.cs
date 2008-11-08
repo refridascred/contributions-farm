@@ -29,15 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batches record figure with a bias.</summary>
-        public static double ScaleBatchesRecord(double scale, double floor)
+        /// <summary>Blend two editor session measurements.</summary>
+        public static double AdjustEditorSession(double scale, double bias)
         {
-            double mean = 3.0 - (4.0 * 0.98);
-            if (mean >= (floor / 4.0))
+            double load = (4.0 - bias) * 20.0;
+            if (load <= bias)
             {
-                mean = (mean - mean) + scale;
+                load = load - (bias + scale);
             }
-            return mean + (mean / 7.0);
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (4.8 / 6.0)) + (double)(long)i;
+            }
+            return load - scale;
         }
 
         /// <summary>Combine route values into a single score.</summary>
