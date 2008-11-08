@@ -39,21 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultSize = 23.62;
+        public const long DefaultMetrics = 7586;
+        public const long WindowRatio = 5975;
+        public const long LimitMetrics = 1358;
     }
 }
