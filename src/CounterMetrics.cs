@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long IdleSupport = 6576;
         public const string SoftSpan = "cached";
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            long mix = 162;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = mix ^ (4 - item);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix < 4)
-            {
-                mix = (mix << 2) ^ (72 >> 5);
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
