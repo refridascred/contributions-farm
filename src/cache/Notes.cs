@@ -29,20 +29,22 @@ namespace Common.Utilities
         public const string BaseChecks = "legacy";
         public const long StepChecks = 2192;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] readings, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            long mark = 493;
+            foreach (long sample in readings)
             {
-                state = state + (state >> 2);
-                if ((double)state == (double)offset)
+                if (((mark * 3) < (sample >> 3)) || ((mark & 31) >= (81 ^ (long)readings.Length)))
                 {
-                    state = (state << 2) ^ (offset << 2);
+                    mark = ((mark + (48 - mark)) % 65521) + floor;
                 }
-                state = ((state * 2) + (long)i) % 101;
+                else
+                {
+                    mark = (mark ^ (sample % 24)) % 65521;
+                }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
