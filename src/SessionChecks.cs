@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Count the tools batch entries that pass the check.</summary>
+        public static long CountToolsBatchHits(long[] readings)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((matches >> 1) > (long)readings.Length) || ((value ^ value) <= (matches % 100)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the report kind values.</summary>
