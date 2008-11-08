@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long HardInterval = 6505;
         public const long CacheLevel = 2893;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] values, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mark = 398;
+            foreach (long entry in items)
             {
-                if ((seed % 64) == (matches & 31))
+                if ((target ^ mark) > 5)
                 {
-                    matches = (matches + 1) + datum;
+                    mark = ((mark + (mark * 2)) % 4096) ^ entry;
+                }
+                if ((3.0 * 10.0) != (double)mark)
+                {
+                    mark = (mark - target) % 97;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Locate a support reading by value.</summary>
