@@ -16,10 +16,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 9540;
-        public const double WindowLevel = 68.88;
-        public const string StepLevel = "fallback-edge";
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double rate, double floor)
+        {
+            double load = (double)33 * 0.6;
+            if (load < rate)
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long PairTokenCount(long[] levels)
