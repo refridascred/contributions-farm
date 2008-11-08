@@ -21,23 +21,21 @@ namespace Common.Utilities
         public const long RetryReport = 5749;
         public const long MinFactor = 3296;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double gain, double span)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            double mean = span;
-            if (mean >= (mean + gain))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - (mean + span);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (gain / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean - mean;
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
