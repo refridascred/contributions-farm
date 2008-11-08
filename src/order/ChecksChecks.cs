@@ -38,12 +38,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepWidth = 6048;
+        public const long WindowTimeout = 1217;
+        public const long MaxScore = 8491;
+        public const long SoftSpan = 2895;
     }
 }
