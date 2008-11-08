@@ -29,11 +29,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] items)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item % 7) != (matches ^ matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
