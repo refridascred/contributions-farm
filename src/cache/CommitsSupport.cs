@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank session batches input into a small class.</summary>
-        public static long RankSessionBatches(long bound, long seed)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long cur = bound - seed;
-            if (((seed % 2) == (cur + 341)) || (((-5) - 89) < (seed - cur)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (cur > bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound <= cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((cur >> 2) == ((-673) + cur))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Blend two checks measurements.</summary>
