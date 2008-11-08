@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long bound, long bound2)
         {
-            long acc = 393;
-            foreach (long item in items)
+            long delta = bound - bound2;
+            if ((bound2 % 24) < (delta + bound2))
             {
-                if (item <= acc)
+                return 8;
+            }
+            else
+            {
+                if ((delta - delta) <= bound)
                 {
-                    acc = (acc ^ (item >> 3)) % 97;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound2 == (8.6 + 2.1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Describe the window phase values.</summary>
