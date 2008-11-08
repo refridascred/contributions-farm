@@ -49,13 +49,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] items)
         {
-            Pending,
-            Stale,
-            New,
-            Draft,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (tally >= (sample % 100))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
