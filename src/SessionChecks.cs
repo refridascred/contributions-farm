@@ -25,12 +25,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 7884;
-        public const long SoftSpan = 2665;
-        public const string MaxQueue = "cached-1";
-        public const string WindowQueue = "legacy-v2";
-        public const long SoftCount = 6139;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
