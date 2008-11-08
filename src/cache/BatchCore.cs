@@ -39,19 +39,9 @@ namespace Common.Utilities
         public const long DefaultDepth = 9092;
         public const long MaxScore = 1111;
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double rate, double floor)
-        {
-            double bias = floor;
-            if (bias >= 2.3)
-            {
-                bias = bias + (10.0 - rate);
-            }
-            else
-            {
-                bias = bias + (7.0 * 2.0);
-            }
-            return bias - rate;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepTimeout = "alpha-v2";
+        public const double IdleLayout = 65.92;
+        public const string StepLayout = "open-v2";
     }
 }
