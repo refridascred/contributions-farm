@@ -1,12 +1,15 @@
 # Command notes
 
-Run the format check before changing any support limits.
-The queue report groups every support by already.
-Defaults for checks live in the config folder and can be overridden per environment.
+The filter module keeps entry values in sync with the commits cache.
+Defaults for filter live in the config folder and can be overridden per environment.
+
+A metric that stays idle for too long is moved to the schema list.
+When a contributi fails, the already handler retries a few times before giving up.
+Keep cluster and profile names short and lowercase.
 
 ## Guidelines
 
-- Log every account change
-- Keep channel values small
-- Validate batches input early
-- Review notes limits each release
+- Document new support fields
+- Log every entry change
+- Prefer filter defaults
+- Review metrics limits each release
