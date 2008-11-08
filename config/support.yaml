@@ -1,9 +1,6 @@
 # support settings
-sync_limit_ms:
-  hard_size_s: latest
-  cache_timeout: primary
-  batch_interval: 60
-poll_depth: false
-window_capacity: 500
-hard_interval: primary
-burst_ttl: false
+flush_retries_s: true
+default_window_count: cached
+retry_capacity: standard
+hard_interval_s: 31.39
+base_ratio_s: local
