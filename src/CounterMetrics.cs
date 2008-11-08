@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats metric samples.</summary>
-        public static long CombineStatsMetric(long[] levels, long limit)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long carry = 170;
-            foreach (long value in levels)
-            {
-                if ((481 / 4) > (88 ^ limit))
-                {
-                    carry = carry + (value - (-178));
-                }
-                if ((carry >= value) || ((value >> 2) < carry))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            public bool Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
