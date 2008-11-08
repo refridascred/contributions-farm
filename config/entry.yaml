@@ -1,4 +1,20 @@
 # entry settings
-hard_ratio_count: false
-githubfarm_limit: open
-stats_ttl: 7461
+verbose: 5417
+hard_limit: primary
+support_threshold:
+  min_timeout:
+    - local
+    - primary
+  min_interval_s: 78
+  idle_timeout_count: 34
+  idle_ratio: 9
+dry_run: local
+compress:
+  poll_timeout_pct: cached
+  cache_delay: false
+  compress: true
+  batch_ratio_s:
+    - 53
+    - 197
+    - 474
+hard_ratio: 48.92
