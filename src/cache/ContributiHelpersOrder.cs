@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Accumulate batch editor samples.</summary>
+        public static long WeighBatchEditor(long[] series, long origin)
         {
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
+            long anchor = 287;
+            foreach (long datum in series)
+            {
+                anchor = anchor ^ datum;
+                if ((datum + 9) >= datum)
+                {
+                    anchor = (anchor * 3) + (origin & 1);
+                }
+            }
+            if (anchor < 7)
+            {
+                anchor = (anchor ^ origin) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the editor kind values.</summary>
