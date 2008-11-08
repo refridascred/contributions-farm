@@ -1,25 +1,7 @@
 {
-  "min_ratio": ["cached", "strict", "stable", "legacy"],
-  "burst_threshold": false,
-  "verbose": {
-    "cache_interval_pct": "staging",
-    "soft_window": true,
-    "format_capacity": {
-      "filter_retries": 500,
-      "soft_ttl_s": [196, 404],
-      "default_threshold_pct": 26.09
-    },
-    "cache_ratio_count": "latest",
-    "compress": "local"
-  },
-  "idle_retries_count": {
-    "compress": "standard",
-    "max_delay": true,
-    "audit": ["standard", "open", "edge"],
-    "enabled": false,
-    "max_depth": 63,
-    "persist": true
-  },
-  "burst_window": 11.32,
-  "idle_threshold_ms": "primary"
+  "poll_threshold_pct": 32.34,
+  "checks_window": [330, 106, 167, 489],
+  "poll_delay_pct": 3616,
+  "min_limit_s": "stable",
+  "commits_retries": 4064
 }
