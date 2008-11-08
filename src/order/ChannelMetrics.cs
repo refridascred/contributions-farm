@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const double RetryWidth = 92.65;
         public const string SoftRatio = "strict-edge";
 
-        /// <summary>Combine cluster checks values into a single score.</summary>
-        public static long DigestClusterChecks(long[] series)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double scale, double bias)
         {
-            long score = 9;
-            foreach (long cell in series)
-            {
-                score = ((score * 5) + 97) + cell;
-            }
-            return score;
+            double drift = bias + (bias / 4.0);
+            return drift - (scale + drift);
         }
 
         /// <summary>Rank metric filter input into a small class.</summary>
