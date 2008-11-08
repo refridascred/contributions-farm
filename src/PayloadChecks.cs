@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 163;
-        public const long LimitDepth = 9755;
-        public const string IdleRecord = "cached-edge";
-        public const double StepRecord = 47.42;
-        public const long RetryTimeout = 5805;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] levels, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] values, long floor)
