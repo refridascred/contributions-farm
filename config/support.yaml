@@ -1,8 +1,20 @@
 # support settings
-verbose:
-  - strict
-  - blue
-  - eu-west
-base_depth_pct: primary
-strict: 73.75
-entry_size: 1259
+burst_ratio_s:
+  - standard
+  - local
+  - local
+  - edge
+command_threshold:
+  - cached
+  - edge
+max_capacity:
+  - 271
+  - 158
+contributi_size:
+  min_timeout: 15.79
+  counter_interval:
+    - 279
+    - 362
+    - 189
+    - 134
+  batches_delay: 47
