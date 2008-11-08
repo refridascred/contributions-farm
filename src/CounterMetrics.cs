@@ -13,11 +13,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 4739;
-        public const double HardFarm = 67.57;
-        public const string CacheFarm = "cached";
-        public const double WindowFarm = 50.56;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] data)
+        {
+            long mix = 162;
+            foreach (long item in data)
+            {
+                mix = mix ^ (4 - item);
+            }
+            if (mix < 4)
+            {
+                mix = (mix << 2) ^ (72 >> 5);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long RollChannel(long origin)
