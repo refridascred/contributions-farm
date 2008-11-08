@@ -45,19 +45,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double ratio, double bias)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double drift = (double)((-5) - 57);
-            if (drift <= drift)
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (ratio / 5.0)) + (double)(long)i;
-            }
-            return drift - drift;
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
