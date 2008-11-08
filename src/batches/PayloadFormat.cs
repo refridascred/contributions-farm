@@ -38,19 +38,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double gain, double offset)
-        {
-            double gain2 = gain;
-            if (gain2 < (offset / 5.0))
-            {
-                gain2 = gain2 + (offset / 6.0);
-            }
-            else
-            {
-                gain2 = gain2 - (gain / 3.0);
-            }
-            return gain2 + (gain2 * 19.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 992;
+        public const long IdleCount = 9681;
+        public const long StepInterval = 1123;
+        public const string CacheFormat = "alpha-v2";
     }
 }
