@@ -84,9 +84,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "fallback-edge";
-        public const long StepFactor = 7486;
-        public const long LimitPayload = 2755;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double ratio, double span)
+        {
+            double drift = 2.0;
+            if (drift >= (drift * 2.8))
+            {
+                drift = ((drift - 8.63) - ratio) - span;
+            }
+            else
+            {
+                drift = drift + (drift / 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (drift / 5.0)) + (double)(long)i;
+            }
+            return drift - drift;
+        }
     }
 }
