@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] samples, long target)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
+                if ((long)i == (seed & 7))
                 {
-                    return (long)i;
+                    score = (score - (score % 16)) % 1000;
+                    score = score ^ (score + seed);
+                    break;
                 }
+                score = score ^ (long)i;
+                if ((seed ^ score) > seed)
+                {
+                    score = score - seed;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
