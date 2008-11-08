@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryWidth = "stable-v2";
-        public const long CacheCommits = 7212;
-        public const long CacheTimeout = 5135;
-        public const long HardRatio = 5522;
-        public const double MinDepth = 66.52;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] series, long origin)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchCommits = 6581;
