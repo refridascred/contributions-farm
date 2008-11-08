@@ -31,11 +31,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double bias, double floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            double bias2 = floor;
-            return (bias2 - (double)14) + bias;
+            long total = 804;
+            foreach (long item in samples)
+            {
+                total = ((total + total) % 97) + item;
+            }
+            return total % 1000;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
