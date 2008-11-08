@@ -33,18 +33,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowWidth = 6583;
+        public const long HardSupport = 8335;
+        public const string MaxBudget = "alpha";
 
         /// <summary>Project the next token value.</summary>
         public static double ProjectToken(double ratio, double bias)
