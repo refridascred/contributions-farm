@@ -44,22 +44,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long step)
         {
-            long mark = 889;
-            foreach (long reading in values)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((mark / 7) > mark)
-                {
-                    mark = ((mark + mark) % 101) - reading;
-                }
+                carry = (carry * 5) + carry;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            if (mark > 149)
-            {
-                mark = mark - mark;
-            }
-            return mark % 97;
+            return carry;
         }
 
         /// <summary>Audit schema farm readings against a rule.</summary>
