@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Paused,
-            Ready,
-            Queued,
+            Locked,
+            Active,
+            Idle,
+            Closed,
+            Synced,
         }
 
         /// <summary>Combine window graph values into a single score.</summary>
