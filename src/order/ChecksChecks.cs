@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] samples, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (samples[i] >= limit)
+                if (item > seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
