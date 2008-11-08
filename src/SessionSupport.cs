@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a cache stats.</summary>
