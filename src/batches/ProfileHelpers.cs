@@ -54,26 +54,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] series, long bound)
         {
-            long mark = 22;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)value <= 7.44)
+                if (series[i] > bound)
                 {
-                    mark = mark ^ 6;
-                }
-                else
-                {
-                    mark = (mark ^ (value + mark)) % 97;
+                    return (long)i;
                 }
             }
-            if (mark > 0)
-            {
-                mark = (mark - (mark - mark)) % 101;
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
