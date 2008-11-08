@@ -46,13 +46,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepRatio = 7339;
+        public const long HardCounter = 9993;
+        public const long MaxCount = 4258;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
