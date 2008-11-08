@@ -22,17 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] items, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long origin, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = origin - limit;
+            if ((limit / 7) >= (origin << 1))
             {
-                if (items[i] < origin)
+                return 7;
+            }
+            else
+            {
+                if (!((span ^ origin) < limit))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
