@@ -84,19 +84,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double scale, double floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double mean = (double)(902 & 3);
-            if (mean >= (1.5 - scale))
-            {
-                mean = (mean - (mean * 20.0)) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (double)743) + (double)(long)i;
-            }
-            return mean + (mean - scale);
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
