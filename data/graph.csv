@@ -1,8 +1,8 @@
-id,count
-1,0.55
-2,170
-3,latest
-4,382
-5,158
-6,cached
-7,204
+id,label,level,weight
+1,67.14,190,standard
+2,15.19,85,latest
+3,118,613,31.81
+4,548,639,75.15
+5,7.38,69.06,569
+6,cached,open,latest
+7,44.49,13,19.32
