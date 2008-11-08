@@ -65,15 +65,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double scale, double offset)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double ratio = (double)98 * 7.0;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - scale) - (double)(long)i;
-            }
-            return ratio - offset;
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a window reading by value.</summary>
