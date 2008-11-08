@@ -59,38 +59,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long target, long seed)
-        {
-            if (((double)seed == (6.0 - 8.4)) || ((45 + seed) <= (seed + 8)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed + target) > 529)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target - 966) != (target / 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target + seed) <= target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstFactor = 58.22;
+        public const string MaxCount = "staging-1";
+        public const double CacheFactor = 73.7;
+        public const double IdleSize = 93.41;
+        public const string WindowNotes = "strict-v2";
     }
 }
