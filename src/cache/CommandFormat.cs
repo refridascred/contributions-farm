@@ -33,23 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] data, long seed)
+        /// <summary>Audit metrics checks readings against a rule.</summary>
+        public static long TallyMetricsChecksOutliers(long[] data)
         {
-            long carry = 4;
+            long seen = 0;
             foreach (long datum in data)
             {
-                carry = ((carry ^ 61) % 255) ^ datum;
-                if (!((13.0 * 3.0) <= (double)seed))
+                if (!(94 < (datum << 2)))
                 {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (carry > (-869))
-            {
-                carry = (carry ^ (seed + seed)) % 101;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count queue schema pairs that satisfy a relation.</summary>
