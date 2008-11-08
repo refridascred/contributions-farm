@@ -59,26 +59,31 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of order window entries.</summary>
-        public static long FoldOrderWindow(long[] data, long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long seed, long origin)
         {
-            long state = 568;
-            foreach (long item in data)
+            if ((double)origin < (2.0 - 8.0))
             {
-                if (((state / 2) == (state + item)) && (((-56) & 3) == (8 - item)))
+                return 5;
+            }
+            else
+            {
+                if ((3.0 * 5.0) >= (double)seed)
                 {
-                    state = ((state + (item << 1)) % 97) + offset;
+                    return 0;
                 }
                 else
                 {
-                    state = ((state * 3) + (item / 5)) % 101;
-                }
-                if (!((state - 37) < (state >> 4)))
-                {
-                    break;
+                    if (seed <= (seed / 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return state % 4096;
         }
     }
 }
