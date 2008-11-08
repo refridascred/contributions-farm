@@ -35,12 +35,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "standard-1";
-        public const long SoftLevel = 8026;
-        public const string BurstFactor = "latest-v2";
-        public const string HardRoute = "fallback-1";
-        public const long MinWidth = 1637;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] levels, long seed)
+        {
+            long anchor = 840;
+            foreach (long cell in levels)
+            {
+                anchor = (((anchor + 39) % 255) ^ cell) - seed;
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long DeriveEntry(long floor)
