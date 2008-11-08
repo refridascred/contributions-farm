@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const long RetryReport = 5749;
         public const long MinFactor = 3296;
 
-        /// <summary>Validate cache cluster readings against a bound.</summary>
-        public static bool ValidateCacheClusterRange(long[] values, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long total = 9;
+            foreach (long cell in series)
             {
-                if (sample >= step)
+                if ((cell / 3) >= total)
                 {
-                    valid = false;
-                    break;
+                    total = (total ^ (total * 4)) - seed;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Fold a list of report readings.</summary>
