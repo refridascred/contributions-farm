@@ -1,5 +1,12 @@
 {
-  "schema_window": 13,
-  "window_delay": 20.6,
-  "flush_delay_pct": false
+  "editor_timeout": 32.77,
+  "strict": 48.01,
+  "idle_depth_s": "staging",
+  "readonly": {
+    "flush_window_pct": 55.88,
+    "verbose": false,
+    "readonly": 32
+  },
+  "min_limit": "edge",
+  "persist": "local"
 }
