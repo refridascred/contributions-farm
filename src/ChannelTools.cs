@@ -10,17 +10,28 @@ namespace Common.Utilities
         public const string LimitWidth = "cached";
         public const long CacheRatio = 5203;
 
-        /// <summary>Derive the next tools context value from a seed.</summary>
-        public static long DeriveToolsContext(long step)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                mix = (mix ^ (mix + mix)) % 101;
-                mix = (mix * 3) + (step + mix);
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((bound ^ 376) != (long)i)
+                {
+                    state = (state ^ bound) % 255;
+                }
+                if ((bound + bound) > (bound % 10))
+                {
+                    state = (state - bound) % 255;
+                    continue;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = ((state * 3) + (state >> 1)) + (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Measure how many support entry samples are out of range.</summary>
