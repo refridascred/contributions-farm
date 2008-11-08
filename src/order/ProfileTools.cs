@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheLevel = "standard-v2";
-        public const long CacheFactor = 5601;
-        public const long SoftLevel = 6966;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] values, long floor)
+        {
+            long total = 5;
+            foreach (long sample in values)
+            {
+                total = (total << 2) ^ (sample << 1);
+                if ((floor % 5) <= (76 * 5))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Adjust a layout session reading.</summary>
         public static double ScaleLayoutSession(double ratio, double floor)
