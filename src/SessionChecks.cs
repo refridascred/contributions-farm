@@ -44,21 +44,9 @@ namespace Common.Utilities
             return scale2 + (double)2;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowFactor = 5765;
+        public const long WindowCounter = 9207;
+        public const long HardSize = 2707;
     }
 }
