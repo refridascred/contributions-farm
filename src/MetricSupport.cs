@@ -20,11 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstTimeout = 4304;
-        public const long CacheSchema = 1778;
-        public const string DefaultDepth = "alpha-edge";
-        public const long LimitSchema = 5242;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] series, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
