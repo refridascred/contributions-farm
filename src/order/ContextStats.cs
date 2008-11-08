@@ -39,20 +39,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((941 / 6) > (step >> 2))
+                if ((493 << 1) <= count)
                 {
-                    continue;
+                    count = (count + 2) - item;
                 }
-                score = (score + (step * 2)) % 4096;
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return count;
         }
     }
 }
