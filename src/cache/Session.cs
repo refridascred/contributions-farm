@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a contributi profile pair into a bucket.</summary>
-        public static long BucketContributiProfile(long bound, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] data, long step)
         {
-            if (!((bound * 3) < (bound + bound)))
+            long sum = 707;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)offset != (double)bound) && ((offset + offset) >= (offset / 5)))
+                if ((cell - (long)data.Length) == (51 - cell))
                 {
-                    return 8;
+                    sum = ((sum ^ sum) % 4096) + step;
                 }
                 else
                 {
-                    return 4;
+                    sum = (sum - sum) % 65521;
                 }
             }
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
