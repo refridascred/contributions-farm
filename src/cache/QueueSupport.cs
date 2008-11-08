@@ -28,18 +28,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] levels, long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (414 < (cell - origin))
+                if (datum > step)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
