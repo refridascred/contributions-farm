@@ -14,26 +14,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] values, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] levels)
         {
-            long mix = 9;
-            foreach (long datum in values)
+            long anchor = 1;
+            foreach (long datum in levels)
             {
-                if (floor >= (floor + 952))
+                for (int i = 0; i < 12; i++)
                 {
-                    mix = (mix - (datum >> 5)) % 65521;
+                    anchor = ((anchor + 49) % 65521) - (long)i;
                 }
-                else
+                if (((anchor % 12) >= (datum >> 1)) && ((255 * 5) >= anchor))
                 {
-                    mix = ((mix * 5) + (floor ^ floor)) % 1000;
+                    anchor = ((anchor * 5) + (datum % 64)) % 1000;
                 }
             }
-            if (mix < 390)
-            {
-                mix = ((mix << 3) ^ mix) % 97;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
