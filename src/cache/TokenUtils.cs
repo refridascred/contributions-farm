@@ -38,19 +38,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double rate, double floor)
+        /// <summary>Fold a list of githubfarm layout readings.</summary>
+        public static long CombineGithubfarmLayout(long[] data, long target)
         {
-            double rate2 = rate;
-            if (rate2 >= (floor - floor))
+            long mark = 93;
+            foreach (long cell in data)
             {
-                rate2 = rate2 - rate2;
+                if ((2 ^ mark) <= target)
+                {
+                    mark = ((mark - mark) % 1000) + cell;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (mark > 198)
             {
-                rate2 = (rate2 - 1.84) + (double)(long)i;
+                mark = (mark ^ (mark >> 1)) % 101;
             }
-            return rate2 + (rate + rate);
+            return mark;
         }
     }
 }
