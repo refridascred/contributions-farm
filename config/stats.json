@@ -1,6 +1,8 @@
 {
-  "sync_interval": 8056,
-  "soft_ttl_ms": 4494,
-  "poll_limit_count": "blue",
-  "idle_retries_s": 33.13
+  "base_depth_pct": 2.09,
+  "min_ratio": 98.27,
+  "readonly": 65.4,
+  "githubfarm_depth": [408, 85],
+  "strict": 8729,
+  "cache_ttl_pct": "standard"
 }
