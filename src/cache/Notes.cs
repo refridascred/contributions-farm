@@ -53,24 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long seed, long origin)
-        {
-            if (seed <= (812 * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin / 8) != (seed - origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 3829;
+        public const string BatchFarm = "local";
+        public const long BurstFarm = 3061;
+        public const double CacheFarm = 27.17;
+        public const long StepFarm = 5524;
     }
 }
