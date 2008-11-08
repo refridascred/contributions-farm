@@ -20,29 +20,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = carry - ((long)i + target);
-                if (((double)(long)i <= (double)carry) && ((5.0 / 7.0) == (double)(long)i))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry * 3) + ((long)i * 4)) % 97;
-                    break;
+                    if ((series[i] + series[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry + (17 + (long)i)) % 97;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = ((carry * 4) + ((long)i2 << 3)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
