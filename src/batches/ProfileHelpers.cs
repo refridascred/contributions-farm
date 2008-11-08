@@ -19,13 +19,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public bool Token { get; set; }
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
+            Pending,
+            Ready,
+            Queued,
+            Synced,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
