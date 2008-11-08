@@ -53,19 +53,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] series, long floor)
         {
-            long sum = 743;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                sum = (((sum << 3) ^ (sum / 9)) % 255) ^ item;
+                if ((((double)sample != (3.7 - 6.2)) && (((long)series.Length + floor) > sample)) && (((sample / 7) < (floor << 2)) || ((sample >> 1) <= (long)series.Length)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (sum < 74)
-            {
-                sum = (sum - (sum & 15)) % 4096;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
