@@ -1,7 +1,7 @@
 {
-  "support_timeout": true,
-  "default_interval_s": 500,
-  "flush_limit_ms": "cached",
-  "dry_run": "staging",
-  "max_ratio": 5770
+  "checks_capacity": ["eu-west", "open", "edge"],
+  "strict": "staging",
+  "cache_timeout": 60,
+  "entry_interval": 24.16,
+  "warm_delay": 1024
 }
