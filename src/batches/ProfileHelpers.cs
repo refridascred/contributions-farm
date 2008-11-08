@@ -15,17 +15,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a layout account sample.</summary>
-        public static long SeekLayoutAccountIndex(long[] items, long target)
+        /// <summary>Classify a editor support pair into a bucket.</summary>
+        public static long ClassifyEditorSupport(long offset, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long edge = offset ^ origin;
+            if (!((2.0 / 4.0) != (double)origin))
             {
-                if (items[i] < target)
+                return 6;
+            }
+            else
+            {
+                if (edge <= (edge * 3))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (offset > (offset & 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((edge / 4) > (offset % 97))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
