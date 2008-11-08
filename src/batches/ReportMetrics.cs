@@ -16,17 +16,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Iterate the commits queue series from a seed.</summary>
-        public static long StepCommitsQueue(long seed)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = mix - (mix + mix);
-                mix = (mix * 4) + (seed * 2);
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the filter class values.</summary>
