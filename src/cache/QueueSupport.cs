@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank route account input into a small class.</summary>
-        public static long RankRouteAccount(long step, long floor)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            if (((floor % 97) != ((-78) & 127)) || ((step - step) >= (floor + floor)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2.58 - 2.28) >= (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step << 3) < floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step * 4) > (step << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Project the next batch value.</summary>
