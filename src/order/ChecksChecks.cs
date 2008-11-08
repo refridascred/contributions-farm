@@ -52,19 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] readings, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long result = -49;
+            foreach (long cell in data)
             {
-                if (cell < bound)
+                if ((result - 46) < target)
                 {
-                    ready = false;
-                    break;
+                    result = result ^ (target + cell);
                 }
             }
-            return ready;
+            if (result < 253)
+            {
+                result = ((result * 3) + (target - result)) % 255;
+            }
+            return result % 1000;
         }
     }
 }
