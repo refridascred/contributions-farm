@@ -78,9 +78,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetrySpan = 7492;
-        public const long BurstOrder = 2454;
-        public const long HardCount = 1001;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Closed,
+            Dropped,
+            Synced,
+            Active,
+            Locked,
+        }
     }
 }
