@@ -1,6 +1,6 @@
 {
-  "soft_threshold_ms": 85,
-  "channel_ttl": 79.52,
-  "max_timeout_count": 39.73,
-  "order_limit": 91
+  "warm_depth_count": 7175,
+  "poll_window": "fallback",
+  "metric_ttl": ["open", "blue"],
+  "base_depth_count": true
 }
