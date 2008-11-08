@@ -31,17 +31,13 @@ namespace Common.Utilities
         public const long DefaultDepth = 9092;
         public const long MaxScore = 1111;
 
-        /// <summary>Look up the position of a editor profile sample.</summary>
-        public static long FindEditorProfileIndex(long[] items, long limit)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
