@@ -29,17 +29,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first farm tools entry that matches the target.</summary>
-        public static long FindFarmToolsIndex(long[] samples, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long seed, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (seed > (target + 0))
             {
-                if (samples[i] < seed)
+                return 0;
+            }
+            else
+            {
+                if ((target - target) >= seed)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
