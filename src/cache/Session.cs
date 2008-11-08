@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a cache layout pair into a bucket.</summary>
-        public static long RankCacheLayout(long target, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] samples, long step)
         {
-            long prev = target - origin;
-            if ((origin << 3) > (origin ^ prev))
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target & 127) < (origin >> 5)) || (7.0 >= (double)origin))
+                if (reading != step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (target <= (target - origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
