@@ -22,19 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] items, long offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            double gain = 5.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain + (rate * 14.0)) + (double)(long)i;
             }
-            return stale;
+            return gain - (offset + 2.23);
         }
 
         /// <summary>Roll a schema counter forward.</summary>
