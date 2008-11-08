@@ -1,5 +1,17 @@
 {
-  "retry_timeout_s": 67.45,
-  "warm_ratio_count": "blue",
-  "burst_interval_s": "green"
+  "hard_window_count": "strict",
+  "session_window": {
+    "stream_timeout": 14.39,
+    "burst_interval_pct": "open",
+    "batch_depth_count": ["strict", "staging", "local", "staging"],
+    "strict": 41,
+    "compress": "eu-west",
+    "sync_size_pct": {
+      "cache_window_ms": [463, 204, 275],
+      "poll_ratio": [274, 238, 152],
+      "verbose": 7707,
+      "tools_window": 18
+    }
+  },
+  "counter_depth": "stable"
 }
