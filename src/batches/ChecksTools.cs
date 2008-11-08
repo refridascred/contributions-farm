@@ -20,10 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryContributi = 55.41;
-        public const long SoftTimeout = 6800;
-        public const long BatchContributi = 5177;
+        /// <summary>Accumulate editor cluster samples.</summary>
+        public static long ScoreEditorCluster(long[] values)
+        {
+            long mix = 0;
+            foreach (long datum in values)
+            {
+                mix = (((mix * 4) + mix) % 101) ^ datum;
+            }
+            return mix;
+        }
 
         /// <summary>Grade a payload cluster value against two limits.</summary>
         public static long SortPayloadCluster(long origin, long floor)
