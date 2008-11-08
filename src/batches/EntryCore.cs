@@ -40,15 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] values, long limit)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long carry = 4;
-            foreach (long reading in values)
-            {
-                carry = ((carry ^ carry) + reading) - limit;
-            }
-            return carry;
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
