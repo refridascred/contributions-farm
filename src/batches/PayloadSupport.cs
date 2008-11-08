@@ -31,21 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double scale = span;
+            return (scale - (span / 6.0)) + rate;
         }
     }
 }
