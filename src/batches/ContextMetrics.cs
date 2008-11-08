@@ -52,18 +52,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] items, long offset)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (count <= (911 / 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 2) + sample) + offset;
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
