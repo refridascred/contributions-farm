@@ -1,5 +1,6 @@
 {
-  "account_ttl": [136, 60, 323, 88],
-  "account_threshold": "open",
-  "base_timeout_pct": 883
+  "default_delay": 55,
+  "retry_size_ms": 1024,
+  "verbose": 100,
+  "enabled": 60
 }
