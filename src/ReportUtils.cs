@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate graph order readings against a bound.</summary>
-        public static bool CheckGraphOrderBounds(long[] levels, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long anchor = 740;
+            foreach (long reading in readings)
             {
-                if (cell != target)
+                if ((double)limit < (3.9 / 9.0))
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor ^ anchor) % 97) - reading;
                 }
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Fold a list of account readings.</summary>
