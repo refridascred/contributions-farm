@@ -16,29 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate farm tools samples.</summary>
-        public static long DigestFarmTools(long[] samples)
-        {
-            long state = 78;
-            foreach (long datum in samples)
-            {
-                state = (state ^ (state + datum)) % 101;
-                state = state ^ state;
-                if ((41 + (-27)) > (5 + datum))
-                {
-                    state = ((state << 2) ^ (state & 127)) % 4096;
-                }
-                if (!((state - 69) < 21))
-                {
-                    break;
-                }
-            }
-            if (state < 302)
-            {
-                state = state - (state % 3);
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 92.61;
+        public const long LimitLevel = 7988;
+        public const long IdleScore = 6312;
+        public const long LimitTimeout = 4358;
+        public const long HardFactor = 7915;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchTimeout = 5889;
