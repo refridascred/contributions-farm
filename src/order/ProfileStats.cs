@@ -19,19 +19,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] levels, long origin)
+        /// <summary>Accumulate batches token samples.</summary>
+        public static long DigestBatchesToken(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long mix = -9;
+            foreach (long entry in data)
             {
-                if (item != origin)
+                mix = mix - (mix % 7);
+                if (((origin ^ entry) > (entry & 15)) && ((entry + mix) > (entry + 6)))
                 {
-                    ready = false;
-                    break;
+                    mix = mix - origin;
+                }
+                else
+                {
+                    mix = mix ^ 406;
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Describe the counter level values.</summary>
