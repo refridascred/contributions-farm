@@ -55,12 +55,18 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
-            Dropped,
-            Locked,
-            Synced,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((422 + reading) <= (tally - (long)readings.Length))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
