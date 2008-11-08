@@ -1,24 +1,8 @@
 # githubfarm settings
-audit:
-  audit: false
-  flush_interval_pct: true
-  account_ttl:
-    flush_threshold_pct: 98
-    base_ttl_ms:
-      - latest
-      - eu-west
-    burst_capacity_s: 86.34
-    batch_ratio:
-      - strict
-      - blue
-    batch_interval: 18
-    counter_limit: legacy
-  dry_run:
-    - local
-    - eu-west
-  githubfarm_ratio:
-    - 302
-    - 313
-    - 87
-contributi_limit: 42.34
-flush_depth_ms: primary
+flush_ttl_s: false
+githubfarm_capacity: latest
+persist:
+  - staging
+  - green
+  - primary
+  - blue
