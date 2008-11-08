@@ -15,20 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] data, long bound)
+        /// <summary>Count buffer queue pairs that satisfy a relation.</summary>
+        public static long OverlapBufferQueueCount(long[] items)
         {
-            long state = -1;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 2) + (state << 3)) - item;
-                state = ((state << 2) ^ (state + bound)) % 4096;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (state > 303)
-            {
-                state = state + state;
-            }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
