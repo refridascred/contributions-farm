@@ -33,15 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] levels, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((double)seen > (6.0 - 15.0))
+                {
+                    seen = ((seen + 3) + item) + origin;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
