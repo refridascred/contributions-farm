@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double ratio, double span)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            double drift = ratio * 8.0;
-            if (drift >= ratio)
-            {
-                drift = (drift - ratio) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (ratio * 7.3)) + (double)(long)i;
-            }
-            return drift + (double)4;
+            Dropped,
+            Draft,
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a graph info.</summary>
