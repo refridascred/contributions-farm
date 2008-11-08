@@ -32,18 +32,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "primary-edge";
+        public const double CacheCount = 46.72;
+        public const long CacheContext = 8792;
+        public const string RetrySize = "primary-1";
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] data)
