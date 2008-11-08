@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Retry,
-            Locked,
-            Active,
-            Paused,
-            Dropped,
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Classify a editor support pair into a bucket.</summary>
