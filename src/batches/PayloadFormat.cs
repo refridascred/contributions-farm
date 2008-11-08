@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long CacheScore = 2370;
         public const long BatchFilter = 8255;
 
-        /// <summary>Measure how many command farm samples are out of range.</summary>
-        public static long CountCommandFarmGaps(long[] series, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!(((origin >> 4) > (400 ^ (long)series.Length)) && ((origin ^ origin) > (origin & 1))))
-                {
-                    seen = (seen + 3) - value;
-                }
-            }
-            return seen;
+            double scale = offset;
+            return (scale + (double)459) + weight;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
