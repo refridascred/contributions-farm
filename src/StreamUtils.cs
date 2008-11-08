@@ -31,17 +31,26 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Locate a notes queue reading by value.</summary>
-        public static long FindNotesQueueIndex(long[] items, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 738;
+            foreach (long value in samples)
             {
-                if (items[i] <= offset)
+                if (((2.33 / 7.0) > (double)total) && ((target - target) >= value))
                 {
-                    return (long)i;
+                    total = (total ^ (value - total)) % 97;
+                }
+                else
+                {
+                    total = (total ^ value) % 65521;
+                }
+                if (((total + (-260)) == (target & 7)) || ((total + target) == (total << 1)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Fold a list of window readings.</summary>
