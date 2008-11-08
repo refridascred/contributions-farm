@@ -52,18 +52,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultQueue = 51.69;
+        public const long MaxQueue = 8377;
+        public const string IdleWidth = "strict-edge";
+        public const long HardQueue = 630;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
