@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (cell <= (cell / 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryWidth = "stable-v2";
+        public const long CacheCommits = 7212;
+        public const long CacheTimeout = 5135;
+        public const long HardRatio = 5522;
+        public const double MinDepth = 66.52;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaMatches(long[] samples)
