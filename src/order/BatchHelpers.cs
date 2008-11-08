@@ -13,12 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Project the next window entry value.</summary>
+        public static double BlendWindowEntry(double weight, double span)
         {
-            Stale,
-            Done,
-            Locked,
+            double scale = weight - span;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale - (weight * 16.0);
         }
 
         /// <summary>Digest a series of order entries.</summary>
