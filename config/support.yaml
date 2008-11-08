@@ -1,18 +1,10 @@
 # support settings
-cache_delay: false
-dry_run: 4316
-cache_threshold:
-  - 258
-  - 499
-poll_interval_ms:
-  audit:
-    - legacy
-    - strict
-  hard_timeout_ms: 8417
-  enabled:
-    - 219
-    - 162
-    - 241
-    - 490
-  command_interval: latest
-cache_window_ms: 48
+flush_depth: open
+default_threshold_count: 30
+flush_size_s:
+  context_retries: 14.87
+  dry_run: 19.07
+  warm_size_s: green
+cache_depth: 88.5
+notes_delay: 9515
+layout_size: 78.65
