@@ -1,5 +1,13 @@
 {
-  "schema_depth": "strict",
-  "enabled": "blue",
-  "soft_capacity_ms": "legacy"
+  "order_ratio": {
+    "idle_retries_pct": "eu-west",
+    "persist": 15.59,
+    "compress": "eu-west",
+    "schema_size": true
+  },
+  "contributi_ratio": "open",
+  "hard_ttl_s": ["standard", "eu-west", "cached", "fallback"],
+  "strict": [99, 452, 319],
+  "max_ratio_ms": 1024,
+  "burst_limit": "local"
 }
