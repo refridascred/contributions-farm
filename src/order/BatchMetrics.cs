@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] values, long step)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 89;
+            foreach (long reading in levels)
             {
-                if (values[i] <= step)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    result = ((result ^ ((long)levels.Length << 2)) - (long)i) ^ reading;
                 }
+                result = result ^ (64 / 6);
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
