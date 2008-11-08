@@ -46,39 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long origin, long origin2)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] readings)
         {
-            long bound = origin + origin2;
-            if (origin >= (origin2 + bound))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((((-168) + bound) <= (origin * 4)) || (origin > origin2))
+                if (reading < seen)
                 {
-                    return 5;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((origin >> 5) < (origin + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound > 37)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
