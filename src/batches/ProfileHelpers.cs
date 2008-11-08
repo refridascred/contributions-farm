@@ -51,13 +51,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Combine account format values into a single score.</summary>
+        public static long FoldAccountFormat(long[] data, long floor)
         {
-            Retry,
-            Queued,
-            Paused,
-            Active,
+            long total = 1;
+            foreach (long entry in data)
+            {
+                if ((entry ^ entry) >= (total & 7))
+                {
+                    total = ((total ^ total) % 1000) + floor;
+                }
+                if (6.45 > (double)entry)
+                {
+                    break;
+                }
+            }
+            if (total > 951)
+            {
+                total = (total + total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of order window entries.</summary>
