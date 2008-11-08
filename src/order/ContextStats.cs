@@ -20,15 +20,20 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long origin)
         {
-            long mark = -405;
-            foreach (long datum in readings)
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
             {
-                mark = (mark ^ mark) - datum;
+                long slot = ((long)i % 7) >> 2;
+                if (!(slot >= ((long)i >> 5)))
+                {
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return mark % 97;
+            return acc;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
