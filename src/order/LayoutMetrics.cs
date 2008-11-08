@@ -20,9 +20,18 @@ namespace Common.Utilities
             return (gain2 + gain2) + span;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "legacy-v2";
-        public const long BaseCount = 7938;
-        public const long BatchAlready = 3884;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((((10.0 - 20.0) != (double)cell) && ((double)cell == (6.4 + 2.2))) && ((double)hits >= (double)limit))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
