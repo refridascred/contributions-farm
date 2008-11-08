@@ -32,12 +32,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public double Total { get; set; }
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
+            Locked,
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
