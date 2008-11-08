@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double scale, double bias)
         {
-            Stale,
-            Ready,
-            Closed,
+            double weight = bias * 4.4;
+            if (weight >= (double)5)
+            {
+                weight = weight + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + scale) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
