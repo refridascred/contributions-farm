@@ -51,18 +51,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the context payload entries that pass the check.</summary>
-        public static long AuditContextPayloadMatches(long[] samples, long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((value + value) >= (82 / 9)) && (matches <= (step - step)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a batch snapshot.</summary>
