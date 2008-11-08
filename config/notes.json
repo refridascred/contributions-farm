@@ -1,5 +1,7 @@
 {
-  "max_ttl_pct": false,
-  "soft_capacity": true,
-  "dry_run": 250
+  "soft_ttl_ms": true,
+  "soft_interval": ["local", "latest"],
+  "hard_depth_s": 2.41,
+  "record_threshold": "eu-west",
+  "base_interval_s": 22
 }
