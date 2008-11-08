@@ -1,8 +1,5 @@
 {
-  "contributi_window": "eu-west",
-  "flush_timeout": "cached",
-  "cache_depth_s": 30,
-  "soft_retries_count": 9967,
-  "batch_interval": "stable",
-  "command_window": "eu-west"
+  "buffer_size": "blue",
+  "profile_interval": 95.25,
+  "channel_threshold": "stable"
 }
