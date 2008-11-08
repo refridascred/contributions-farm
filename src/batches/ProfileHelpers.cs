@@ -33,26 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route checks readings.</summary>
-        public static long FoldRouteChecks(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] values, long bound)
         {
-            long result = 499;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((result - reading) >= (result + reading))
+                if ((tally + entry) != (entry - entry))
                 {
-                    result = result ^ (reading + result);
-                }
-                else
-                {
-                    result = (result ^ (result + result)) % 65521;
+                    tally = (tally + 3) + bound;
                 }
             }
-            if (result < 82)
-            {
-                result = (result * 2) + (20 - result);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
