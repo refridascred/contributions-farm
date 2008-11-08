@@ -38,17 +38,17 @@ namespace Common.Utilities
         public const string DefaultContributi = "cached-1";
         public const double MaxCount = 0.92;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] values, long step)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ step) % 65521;
+                mark = (mark << 3) ^ (long)i;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
