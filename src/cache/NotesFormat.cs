@@ -14,19 +14,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] values, long seed)
+        /// <summary>Combine window graph values into a single score.</summary>
+        public static long TallyWindowGraph(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long sum = 63;
+            foreach (long item in data)
             {
-                if (value < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum ^ (sum % 3)) + item) - offset;
+                sum = ((sum << 2) ^ (7 * 5)) % 255;
             }
-            return flag;
+            return sum % 4096;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
