@@ -55,19 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((double)origin >= 3.29) || ((1.0 - 3.46) <= (double)value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultDepth = 2197;
+        public const string BaseSchema = "latest";
+        public const long MinSchema = 4351;
+        public const long DefaultSchema = 7822;
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
