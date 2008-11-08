@@ -42,11 +42,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowInterval = 5951;
-        public const double MaxCount = 52.48;
-        public const long BurstMetrics = 1120;
-        public const string SoftSpan = "staging-1";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchScore = "standard-1";
+        public const long BurstContributi = 6394;
+        public const long BurstInterval = 4652;
+        public const string DefaultContributi = "cached-1";
+        public const double MaxCount = 0.92;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] values, long step)
