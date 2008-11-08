@@ -39,22 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] items, long step)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double gain, double offset)
         {
-            long mark = 30;
-            foreach (long entry in items)
+            double gain2 = gain;
+            if (gain2 < (offset / 5.0))
             {
-                if (step > (mark << 1))
-                {
-                    mark = (((mark * 4) + mark) % 65521) + entry;
-                }
+                gain2 = gain2 + (offset / 6.0);
             }
-            if (mark < 2)
+            else
             {
-                mark = mark ^ (mark + mark);
+                gain2 = gain2 - (gain / 3.0);
             }
-            return mark;
+            return gain2 + (gain2 * 19.0);
         }
     }
 }
