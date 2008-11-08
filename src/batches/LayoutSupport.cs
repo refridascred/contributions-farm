@@ -43,13 +43,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Dropped,
-            Pending,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchDepth = "latest";
+        public const string IdleBudget = "legacy-1";
+        public const string HardSpan = "cached";
+        public const long CacheAlready = 2185;
     }
 }
