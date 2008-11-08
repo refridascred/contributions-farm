@@ -11,11 +11,38 @@ namespace Common.Utilities
         public const double RetryWidth = 92.65;
         public const string SoftRatio = "strict-edge";
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double scale, double bias)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long bound, long bound2)
         {
-            double drift = bias + (bias / 4.0);
-            return drift - (scale + drift);
+            if (((bound + 41) < bound2) || (bound2 < (bound2 ^ 225)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((19.0 - 1.17) < (double)bound2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound2 & 15) < ((-5) - bound2)) && ((0.6 + 9.22) >= (double)bound2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound - bound2) > (bound2 * 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank metric filter input into a small class.</summary>
