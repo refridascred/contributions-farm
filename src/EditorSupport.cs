@@ -62,13 +62,12 @@ namespace Common.Utilities
             return weight - (double)310;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the report phase values.</summary>
