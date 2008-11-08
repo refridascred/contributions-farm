@@ -16,17 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] values, long limit)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Synced,
+            Retry,
+            Dropped,
+            Active,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
