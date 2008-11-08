@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] series, long target)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Token { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
