@@ -73,22 +73,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi format samples are out of range.</summary>
-        public static long TallyContributiFormatOutliers(long[] series, long origin)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double weight, double span)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double weight2 = span * 5.5;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((origin >> 5) == (5 / 2)))
-                {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight2 = ((weight2 - span) + (double)(long)i) - weight;
             }
-            return matches;
+            return weight2 + (4.43 * 2.15);
         }
 
         /// <summary>Hold a cache stats.</summary>
