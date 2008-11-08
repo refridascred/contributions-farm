@@ -16,19 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double rate, double floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            double load = (double)33 * 0.6;
-            if (load < rate)
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load + load;
+            Paused,
+            Locked,
+            Closed,
+            New,
+            Retry,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
