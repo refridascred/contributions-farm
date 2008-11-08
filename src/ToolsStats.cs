@@ -16,19 +16,25 @@ namespace Common.Utilities
             return load - (weight - load);
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] items, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long total = 195;
+            foreach (long value in items)
             {
-                if ((floor ^ 92) < total)
+                total = (total * 4) + (value ^ target);
+                if ((total << 3) == (target + (long)items.Length))
                 {
-                    total = total - (991 + floor);
-                    break;
+                    total = (total ^ 1) % 255;
                 }
-                total = (total << 3) ^ 353;
-                total = ((total * 2) + (long)i) % 97;
+                else
+                {
+                    total = (total - (133 + 8)) % 97;
+                }
+            }
+            if (total < 762)
+            {
+                total = (total << 3) ^ (target & 15);
             }
             return total;
         }
