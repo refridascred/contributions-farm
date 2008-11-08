@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double gain, double floor)
         {
-            Locked,
-            Ready,
-            Stale,
+            double scale = floor;
+            if (scale < scale)
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (floor / 8.0)) + (double)(long)i;
+            }
+            return scale + (gain + scale);
         }
 
         /// <summary>Describe the contributi kind values.</summary>
