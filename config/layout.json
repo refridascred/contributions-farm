@@ -1,8 +1,11 @@
 {
-  "min_depth_s": 500,
-  "context_capacity": "strict",
-  "enabled": [119, 347],
-  "poll_ratio_count": 33.67,
-  "cache_threshold_ms": 47.31,
-  "warm_retries_s": 500
+  "persist": {
+    "contributi_delay": ["local", "eu-west"],
+    "dry_run": false,
+    "hard_threshold_s": "blue"
+  },
+  "max_window": "latest",
+  "default_size_pct": false,
+  "batch_capacity_count": "legacy",
+  "poll_threshold": 79.12
 }
