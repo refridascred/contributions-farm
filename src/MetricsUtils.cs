@@ -25,19 +25,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] data, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long mix = 53;
+            foreach (long cell in series)
             {
-                if (cell > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix + (mix << 2)) % 4096) ^ cell;
             }
-            return stale;
+            if (mix > (-63))
+            {
+                mix = (mix + (8 + floor)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Match up entry samples.</summary>
