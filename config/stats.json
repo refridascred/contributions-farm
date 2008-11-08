@@ -1,7 +1,8 @@
 {
-  "max_capacity_ms": 61.71,
-  "notes_ttl": "cached",
-  "warm_capacity_ms": "fallback",
-  "min_interval_pct": false,
-  "max_interval": "legacy"
+  "verbose": 22.37,
+  "warm_delay_ms": "local",
+  "layout_threshold": 500,
+  "support_window": ["eu-west", "standard", "strict", "legacy"],
+  "compress": true,
+  "flush_timeout_pct": "local"
 }
