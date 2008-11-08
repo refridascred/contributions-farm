@@ -50,13 +50,15 @@ namespace Common.Utilities
             return weight + (rate + rate);
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
