@@ -25,24 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] levels, long offset)
-        {
-            long state = 61;
-            foreach (long cell in levels)
-            {
-                state = (state - (offset + state)) % 65521;
-                if (cell < state)
-                {
-                    state = (state << 3) ^ (state << 2);
-                }
-                if ((state % 8) < 6)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "legacy-v2";
+        public const long BaseStats = 6936;
+        public const long StepLevel = 7399;
+        public const long LimitRatio = 3396;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long WindowInterval = 5951;
