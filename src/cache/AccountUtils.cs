@@ -22,13 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Count the token farm entries that pass the check.</summary>
+        public static long AuditTokenFarmGaps(long[] data, long floor)
         {
-            Dropped,
-            Idle,
-            Closed,
-            Locked,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((floor >> 4) != (count + count))
+                {
+                    count = (count + 3) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
