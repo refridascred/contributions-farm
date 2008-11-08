@@ -73,22 +73,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] data, long seed)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long result = 704;
-            foreach (long sample in data)
-            {
-                if ((17.0 - 17.0) > (double)seed)
-                {
-                    result = ((result << 2) ^ (sample - 6)) % 101;
-                }
-                else
-                {
-                    result = (result << 3) ^ 297;
-                }
-            }
-            return result;
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
