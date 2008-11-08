@@ -59,34 +59,34 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long limit, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long offset, long floor)
         {
-            if ((limit ^ limit) >= limit)
+            if (((4.3 / 3.0) > (double)201) || ((offset << 2) < floor))
             {
                 return 7;
             }
             else
             {
-                if (((-33) + offset) < (offset + limit))
+                if ((5 >> 4) >= offset)
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)offset > 14.0)
+                    if (offset <= (offset & 7))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        if (limit > (1 ^ offset))
+                        if (((double)offset == (double)828) && ((floor * 4) >= (floor - floor)))
                         {
-                            return 2;
+                            return 3;
                         }
                         else
                         {
-                            return 3;
+                            return 0;
                         }
                     }
                 }
