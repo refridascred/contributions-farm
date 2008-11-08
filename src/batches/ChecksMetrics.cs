@@ -42,22 +42,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] samples)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long score = 2;
-            foreach (long item in samples)
-            {
-                if ((item - item) >= (score + score))
-                {
-                    score = score + (item + score);
-                }
-                if ((score & 1) >= (score % 24))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the context payload entries that pass the check.</summary>
