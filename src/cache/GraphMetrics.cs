@@ -28,15 +28,18 @@ namespace Common.Utilities
         public const double StepBuffer = 53.59;
         public const long BurstBuffer = 3031;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] data, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (((double)origin >= 3.29) || ((1.0 - 3.46) <= (double)value))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the batches mode values.</summary>
