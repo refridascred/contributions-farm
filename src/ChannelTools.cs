@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long MinSpan = 8854;
         public const long WindowInterval = 1654;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "staging";
-        public const long WindowStats = 6953;
-        public const long MaxStats = 380;
-        public const long WindowSpan = 8444;
+        /// <summary>Audit checks filter readings against a rule.</summary>
+        public static long TallyChecksFilterGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!((cell - cell) <= (hits << 1)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorOutliers(long[] series)
