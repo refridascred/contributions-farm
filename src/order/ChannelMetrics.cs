@@ -41,15 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] readings, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] series, long seed)
         {
-            long total = 7;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long item in series)
             {
-                total = ((total - (limit + total)) % 255) - datum;
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total % 65521;
+            return stale;
         }
     }
 }
