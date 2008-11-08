@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the token channel entries that pass the check.</summary>
-        public static long MeasureTokenChannelOutliers(long[] data, long floor)
+        /// <summary>Accumulate format cache samples.</summary>
+        public static long TotalFormatCache(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long anchor = 1;
+            foreach (long entry in levels)
             {
-                if (!((count >= (8 - floor)) && ((long)data.Length > sample)))
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 97;
+                if ((double)entry < (4.2 / 7.0))
                 {
-                    count = count + 3;
+                    anchor = (anchor ^ (anchor & 127)) % 97;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Accumulate commits samples.</summary>
