@@ -1,16 +1,7 @@
 # entry settings
-warm_ttl: 0.33
-hard_ratio_s:
-  - fallback
+filter_timeout: legacy
+contributi_ttl: true
+cache_threshold:
+  - primary
   - stable
-poll_size_ms: eu-west
-retry_window_s: 100
-buffer_window:
-  - cached
-  - standard
-stats_depth:
-  batch_retries_ms: 71
-  burst_delay_ms: primary
-  cache_ratio_pct: fallback
-  max_ratio_s: primary
-  counter_delay: staging
+idle_interval: 30
