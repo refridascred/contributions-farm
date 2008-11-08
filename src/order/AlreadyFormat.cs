@@ -19,38 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long limit, long step)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long step)
         {
-            if ((limit + step) < 49)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.0 * 9.8) < (double)step)
+                if ((7.0 + 4.97) < (double)total)
                 {
-                    return 8;
+                    continue;
                 }
-                else
-                {
-                    if (((limit - limit) >= (step % 24)) && (step > 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)limit == (17.0 * 0.4)) && ((step << 3) >= step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Adjust a account reading.</summary>
