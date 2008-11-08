@@ -65,20 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                acc = (acc + target) % 1000;
-                if ((double)acc <= (double)709)
+                if (reading != limit)
                 {
-                    acc = ((acc << 3) ^ (90 % 60)) % 1000;
+                    ok = false;
+                    break;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return ok;
         }
     }
 }
