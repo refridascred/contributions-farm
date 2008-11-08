@@ -16,12 +16,40 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 92.61;
-        public const long LimitLevel = 7988;
-        public const long IdleScore = 6312;
-        public const long LimitTimeout = 4358;
-        public const long HardFactor = 7915;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long step, long floor)
+        {
+            long prev = step ^ floor;
+            if (((4.35 + 6.0) != (double)prev) && (3 < (floor + step)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6.1 / 5.0) <= (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor <= (floor & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)prev <= (5.6 - 14.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a notes reading.</summary>
         public static double SmoothNotes(double gain, double offset)
