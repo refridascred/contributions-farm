@@ -1,10 +1,7 @@
 # entry settings
-order_retries: true
-cache_size: eu-west
-max_ttl_count:
-  cache_threshold_ms: 56.85
-  githubfarm_size: true
-  route_timeout: latest
-  session_limit: cached
-  report_delay: blue
-  farm_size: standard
+warm_ratio_s: 60
+poll_window_ms:
+  - 86
+  - 307
+  - 45
+idle_limit: 8709
