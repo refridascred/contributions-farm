@@ -1,7 +1,9 @@
-id,token,region,level
-1,eu-west,841,primary
-2,standard,strict,576
-3,480,169,local
-4,58.38,23.02,8
-5,659,local,staging
-6,3.9,eu-west,6.15
+id,count,rank
+1,523,401
+2,370,92.35
+3,35,750
+4,edge,82.23
+5,950,90.73
+6,11.24,24.92
+7,stable,597
+8,1.75,primary
