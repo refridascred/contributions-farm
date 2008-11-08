@@ -27,22 +27,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] values)
+        /// <summary>Find the first schema command entry that matches the target.</summary>
+        public static long LookupSchemaCommandIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > (3 * 2))
+                if (values[i] < offset)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the command mode values.</summary>
