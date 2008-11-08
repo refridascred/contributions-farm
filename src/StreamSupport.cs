@@ -21,18 +21,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] values)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (2.6 >= (double)matches)
-                {
-                    matches = (matches + 1) + reading;
-                }
+                mix = (mix << 2) ^ (target + 22);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
