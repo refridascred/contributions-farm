@@ -62,11 +62,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double gain, double floor)
+        /// <summary>Audit schema farm readings against a rule.</summary>
+        public static long TallySchemaFarmHits(long[] data)
         {
-            double gain2 = (double)(-96) / 8.0;
-            return (gain2 + (floor + floor)) + gain;
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((hits + item) <= item)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
