@@ -16,22 +16,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of cluster commits entries.</summary>
-        public static long CombineClusterCommits(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double bias, double floor)
         {
-            long mix = 968;
-            foreach (long entry in items)
+            double gain = (double)(344 ^ 12);
+            if (gain >= bias)
             {
-                if ((2.17 + 4.0) < (double)mix)
-                {
-                    mix = (mix ^ (36 + 3)) - entry;
-                }
-                else
-                {
-                    mix = ((mix * 2) + mix) % 101;
-                }
+                gain = gain - (floor / 3.0);
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (floor / 8.0);
         }
 
         /// <summary>Hold a report stats.</summary>
