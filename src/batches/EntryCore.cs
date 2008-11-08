@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] data)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (((hits >> 2) < hits) || (3.02 < (double)hits))
+                if (cell >= limit)
                 {
-                    hits = (hits + 2) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
