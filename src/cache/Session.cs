@@ -33,23 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout already series from a seed.</summary>
-        public static long IterateLayoutAlready(long floor)
+        /// <summary>Classify a metrics batch pair into a bucket.</summary>
+        public static long ClassifyMetricsBatch(long floor, long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            if (limit > (limit * 5))
             {
-                if ((double)floor == (double)total)
+                return 1;
+            }
+            else
+            {
+                if (!((floor / 8) < (limit & 31)))
                 {
-                    continue;
+                    return 6;
                 }
                 else
                 {
-                    total = (total - (long)i) % 255;
+                    if (((4.5 + 4.0) < (double)limit) && ((limit + limit) >= limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)floor <= 2.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
