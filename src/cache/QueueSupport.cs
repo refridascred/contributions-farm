@@ -29,39 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long limit, long seed)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long offset = limit + seed;
-            if ((offset % 8) > (seed + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset + (-873)) <= (seed / 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + seed) != (9 + 14))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset < (offset * 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Active,
+            Ready,
         }
     }
 }
