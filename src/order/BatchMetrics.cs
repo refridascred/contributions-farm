@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - (-45)) != (entry - seen))
-                {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 4844;
+        public const long BaseCounter = 3245;
+        public const string SoftCounter = "alpha-v2";
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
