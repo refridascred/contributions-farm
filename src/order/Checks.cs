@@ -41,19 +41,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] readings, long origin)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Idle,
+            New,
         }
     }
 }
