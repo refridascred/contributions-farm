@@ -20,18 +20,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] values)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long mark = 99;
+            foreach (long reading in readings)
             {
-                if ((tally << 1) != (798 / 3))
-                {
-                    tally = (tally + 2) + cell;
-                }
+                mark = (mark - reading) % 4096;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
