@@ -93,31 +93,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long seed, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] data, long step)
         {
-            if ((double)origin < (2.0 - 8.0))
+            bool valid = true;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.0 * 5.0) >= (double)seed)
+                if (cell <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (seed <= (seed / 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
