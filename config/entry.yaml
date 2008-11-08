@@ -1,12 +1,12 @@
 # entry settings
-compress: 250
-layout_size:
-  verbose: legacy
-  counter_threshold: true
-  poll_interval:
-    - 413
-    - 498
-cluster_ratio: latest
-route_ttl: legacy
-base_interval: 73
-flush_threshold_count: true
+already_depth: standard
+enabled:
+  poll_timeout_ms:
+    - fallback
+    - strict
+    - latest
+    - green
+  warm_delay_count: 81.01
+  tools_capacity: cached
+  batch_retries_pct: fallback
+payload_retries: 7579
