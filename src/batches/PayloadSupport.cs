@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSchema = 64.71;
+        public const long LimitSchema = 1173;
+        public const string IdleCount = "local-edge";
+        public const string SoftSchema = "legacy";
+        public const long HardSize = 9250;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesGaps(long[] samples)
