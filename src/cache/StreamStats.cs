@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardDepth = "standard-1";
-        public const string BaseTimeout = "strict-v2";
-        public const string BurstCount = "latest-edge";
-        public const long SoftLayout = 8583;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!(seed < reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
