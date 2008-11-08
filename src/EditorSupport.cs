@@ -35,32 +35,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a window buffer value against two limits.</summary>
-        public static long GradeWindowBuffer(long limit, long floor)
-        {
-            if ((floor / 8) <= (limit ^ floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor + floor) != (floor << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor > (floor << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 7460;
+        public const string MinFactor = "strict-v2";
+        public const long BaseWidth = 9164;
+        public const long HardEditor = 7256;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
