@@ -29,18 +29,32 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] items)
+        /// <summary>Classify a cache order pair into a bucket.</summary>
+        public static long GradeCacheOrder(long target, long target2)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long offset = target + target2;
+            if (((target2 % 2) != (target * 2)) && ((double)offset == (4.9 * 1.0)))
             {
-                if (!((966 + (long)items.Length) == (seen * 5)) && ((datum - (long)items.Length) >= (seen * 4)))
+                return 1;
+            }
+            else
+            {
+                if (((4.38 / 9.0) < (double)offset) && ((offset + target) >= (offset - (-66))))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((target & 255) > (target2 - target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
