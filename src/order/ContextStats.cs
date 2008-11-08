@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] series, long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double rate, double span)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double gain = (rate + span) * 7.27;
+            if (gain > span)
             {
-                if ((double)hits < (double)sample)
-                {
-                    hits = (hits + 3) + offset;
-                }
+                gain = gain + rate;
             }
-            return hits;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (6.0 + span)) + (double)(long)i;
+            }
+            return gain - (double)0;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
