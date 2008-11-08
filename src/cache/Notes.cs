@@ -17,14 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinDepth = 5798;
+        public const string IdleSize = "strict-v2";
+        public const string BaseChecks = "legacy";
+        public const long StepChecks = 2192;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long RollToken(long offset)
