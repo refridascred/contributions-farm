@@ -63,18 +63,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many entry metrics samples are out of range.</summary>
-        public static long AuditEntryMetricsOutliers(long[] data)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((item + item) >= 786) || ((5.0 - 6.27) > (double)matches))
+                if (items[i] == limit)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
