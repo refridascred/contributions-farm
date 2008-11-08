@@ -33,12 +33,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] values)
         {
-            Draft,
-            Done,
-            Failed,
+            long mark = 1;
+            foreach (long item in values)
+            {
+                if ((double)mark >= 9.79)
+                {
+                    mark = (mark + (item + item)) % 255;
+                }
+            }
+            return mark;
         }
     }
 }
