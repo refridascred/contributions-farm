@@ -51,17 +51,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a channel metric reading by value.</summary>
-        public static long FindChannelMetricIndex(long[] data, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((data[i] >= seed) && ((data[i] % 3) != 0))
+                if (sample <= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
