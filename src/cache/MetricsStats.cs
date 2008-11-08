@@ -42,20 +42,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Grade a checks record value against two limits.</summary>
+        public static long ClassifyChecksRecord(long offset, long offset2)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            if ((offset <= offset2) && (offset <= (offset2 % 2)))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (((acc * 2) + (target % 7)) % 97) ^ (long)i2;
-                    acc = (acc << 2) ^ (acc >> 1);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((offset2 % 64) != (offset2 + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Adjust a command reading.</summary>
