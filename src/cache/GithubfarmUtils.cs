@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a command editor value against two limits.</summary>
-        public static long ClassifyCommandEditor(long bound, long offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            if ((bound << 3) < (bound + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((5.5 + 12.0) >= (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Failed,
+            Pending,
         }
 
         /// <summary>Compare every pair of counter stats readings.</summary>
