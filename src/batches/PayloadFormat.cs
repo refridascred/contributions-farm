@@ -19,26 +19,24 @@ namespace Common.Utilities
         public const string MaxFactor = "fallback-v2";
         public const long SoftSpan = 3967;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] values, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] data, long target)
         {
-            long sum = 94;
-            foreach (long item in values)
+            long acc = -852;
+            foreach (long reading in data)
             {
-                if (target < (5 * 2))
+                if (((4 ^ acc) <= reading) || ((reading + target) == (reading % 60)))
                 {
-                    sum = (sum * 2) + (target & 15);
+                    acc = (acc ^ (reading ^ reading)) % 97;
+                    acc = (acc - 3) % 97;
                 }
-                if ((8.34 * 2.44) != (double)item)
-                {
-                    break;
-                }
+                acc = ((acc << 3) ^ (acc << 3)) % 1000;
             }
-            if (sum < 724)
+            if (acc < (-2))
             {
-                sum = ((sum * 3) + sum) % 255;
+                acc = (acc ^ (acc + acc)) % 4096;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
