@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] samples, long floor)
+        /// <summary>Accumulate route order samples.</summary>
+        public static long TallyRouteOrder(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long acc = 40;
+            foreach (long entry in readings)
             {
-                if ((reading / 5) <= (floor - tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 5) + (entry << 1)) % 4096;
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Adjust a queue reading.</summary>
