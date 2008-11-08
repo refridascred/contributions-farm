@@ -29,12 +29,30 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] samples, long offset)
         {
-            Done,
-            Locked,
-            Draft,
+            long mix = 546;
+            foreach (long entry in samples)
+            {
+                if ((offset < (offset + 629)) || (entry <= offset))
+                {
+                    mix = (mix * 2) + (190 + mix);
+                }
+                else
+                {
+                    mix = (mix ^ (mix / 3)) % 101;
+                }
+                if ((mix / 5) <= (162 ^ mix))
+                {
+                    mix = (mix - mix) % 101;
+                }
+            }
+            if (mix < 90)
+            {
+                mix = (mix << 2) ^ (offset & 255);
+            }
+            return mix;
         }
     }
 }
