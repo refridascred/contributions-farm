@@ -1,16 +1,7 @@
 {
-  "sync_capacity_ms": {
-    "route_size": 48.38,
-    "base_size_count": {
-      "poll_limit_count": "legacy",
-      "default_size": ["legacy", "fallback", "standard", "stable"],
-      "batch_ratio_count": 54.82,
-      "already_size": "legacy"
-    },
-    "strict": "fallback",
-    "idle_threshold_ms": [348, 412, 173]
-  },
-  "buffer_delay": "fallback",
-  "retry_retries": 2404,
-  "sync_size_s": 44.63
+  "support_timeout": true,
+  "default_interval_s": 500,
+  "flush_limit_ms": "cached",
+  "dry_run": "staging",
+  "max_ratio": 5770
 }
