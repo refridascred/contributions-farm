@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double bias, double floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long limit)
         {
-            double mean = (double)(5 + 9);
-            return (mean - bias) + floor;
+            long state = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((limit & 31) <= limit) && ((5.13 + 2.0) > (double)limit))
+                {
+                    state = ((state * 2) + state) % 65521;
+                }
+                state = ((state << 3) ^ (limit % 16)) % 97;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of account readings.</summary>
