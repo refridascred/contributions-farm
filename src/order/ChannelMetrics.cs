@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 25.36;
-        public const long MaxTools = 7915;
-        public const double RetryWidth = 92.65;
-        public const string SoftRatio = "strict-edge";
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] readings, long floor)
+        {
+            long sum = 738;
+            foreach (long sample in readings)
+            {
+                if ((((long)readings.Length / 6) >= (930 * 5)) && ((7.22 - 6.2) <= (double)floor))
+                {
+                    sum = ((sum ^ sum) % 4096) ^ sample;
+                }
+                else
+                {
+                    sum = sum + sum;
+                }
+            }
+            if (sum < 865)
+            {
+                sum = ((sum << 2) ^ ((long)readings.Length & 31)) % 65521;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long BucketGithubfarm(long bound, long bound2)
