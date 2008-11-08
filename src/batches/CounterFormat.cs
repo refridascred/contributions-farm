@@ -29,9 +29,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinSize = "stable-edge";
-        public const double BatchGraph = 96.7;
-        public const string HardGraph = "open";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleSpan = 17.78;
+        public const long MaxRatio = 1502;
+        public const long RetryScore = 5846;
     }
 }
