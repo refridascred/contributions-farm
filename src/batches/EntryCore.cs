@@ -16,14 +16,18 @@ namespace Common.Utilities
             return bias2 - (weight - weight);
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Audit session record readings against a rule.</summary>
+        public static long AuditSessionRecordGaps(long[] items, long floor)
         {
-            Retry,
-            Queued,
-            Active,
-            Pending,
-            Synced,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell > matches) || (8.0 <= (double)matches))
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up window order samples.</summary>
