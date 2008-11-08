@@ -19,15 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double rate, double floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] values, long step)
         {
-            double bias = rate;
-            if (bias <= bias)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                bias = bias + floor;
+                if ((sample + matches) >= matches)
+                {
+                    matches = (matches + 3) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return bias - rate;
+            return matches;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
