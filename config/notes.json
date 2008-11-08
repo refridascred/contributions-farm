@@ -1,7 +1,12 @@
 {
-  "soft_ttl_ms": true,
-  "soft_interval": ["local", "latest"],
-  "hard_depth_s": 2.41,
-  "record_threshold": "eu-west",
-  "base_interval_s": 22
+  "poll_timeout_pct": 2490,
+  "sync_limit_count": 8,
+  "warm_ttl_ms": {
+    "readonly": 2193,
+    "channel_ratio": ["eu-west", "staging", "latest"],
+    "cache_capacity": 250,
+    "session_timeout": false,
+    "warm_window_pct": "legacy",
+    "retry_depth_s": "cached"
+  }
 }
