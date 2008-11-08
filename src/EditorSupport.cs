@@ -71,12 +71,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public double Owner { get; set; }
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Roll a notes counter forward.</summary>
