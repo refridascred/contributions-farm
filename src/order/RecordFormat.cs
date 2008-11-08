@@ -19,28 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] items, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] series)
         {
-            long acc = 126;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (acc > (sample - 228))
+                if (8.5 >= (double)sample)
                 {
-                    acc = (acc ^ (sample & 255)) + seed;
-                    acc = (acc - 2) % 255;
-                    continue;
-                }
-                if ((long)items.Length < (sample + sample))
-                {
-                    acc = ((acc * 4) + (acc - (long)items.Length)) % 97;
+                    hits = hits + 2;
                 }
             }
-            if (acc < 0)
-            {
-                acc = (acc * 4) + ((-8) & 3);
-            }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Fold a list of window queue readings.</summary>
