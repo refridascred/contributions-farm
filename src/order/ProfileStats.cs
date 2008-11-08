@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Derive the next batches payload value from a seed.</summary>
+        public static long StepBatchesPayload(long step)
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long state = step;
+            for (int i = 0; i < 4; i++)
+            {
+                state = state + ((long)i >> 4);
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
