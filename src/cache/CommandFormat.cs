@@ -20,31 +20,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long mix = 66;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = ((mix ^ (mix / 5)) % 1000) ^ (long)i;
-                    mix = mix - mix;
-                }
-                if (((mix + 8) != (entry - entry)) || ((204 << 3) <= entry))
-                {
-                    mix = (mix - (entry - mix)) % 65521;
-                }
-                else
-                {
-                    mix = mix ^ (entry << 3);
-                }
-            }
-            if (mix > 16)
-            {
-                mix = (mix - (mix + mix)) % 1000;
-            }
-            return mix;
+            Idle,
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Adjust a filter notes reading.</summary>
