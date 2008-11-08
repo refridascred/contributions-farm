@@ -21,19 +21,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a stats batch reading.</summary>
-        public static double BlendStatsBatch(double scale, double span)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double scale2 = 5.53 + (scale + scale);
-            if (scale2 < (span * 4.54))
-            {
-                scale2 = scale2 - (scale + 7.89);
-            }
-            else
-            {
-                scale2 = scale2 + scale;
-            }
-            return scale2 + (double)2;
+            Idle,
+            New,
+            Failed,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
