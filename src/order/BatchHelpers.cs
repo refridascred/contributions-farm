@@ -10,25 +10,19 @@ namespace Common.Utilities
         public const long LimitSize = 3089;
         public const long BaseScore = 6747;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                mark = (mark ^ (819 % 2)) % 1000;
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    mark = ((mark + (mark - 936)) % 1000) ^ (long)i2;
-                    mark = mark ^ (mark << 2);
+                    score = ((score - ((long)i + 143)) % 65521) ^ (long)i2;
                 }
-                if (!!(((long)i << 3) >= seed))
-                {
-                    mark = (mark + mark) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a stats entry.</summary>
