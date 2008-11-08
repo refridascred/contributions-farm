@@ -1,4 +1,10 @@
 # entry settings
-poll_depth_s: staging
-retry_size_pct: stable
-poll_window: fallback
+min_depth_s: false
+flush_ratio: 83.73
+min_threshold_pct:
+  - edge
+  - blue
+batch_timeout:
+  - 226
+  - 295
+  - 389
