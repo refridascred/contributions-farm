@@ -43,21 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit editor farm readings against a rule.</summary>
