@@ -45,18 +45,15 @@ namespace Common.Utilities
             return mean - (mean / 9.0);
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] items)
+        /// <summary>Derive the next githubfarm window value from a seed.</summary>
+        public static long StepGithubfarmWindow(long bound)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (hits >= (long)items.Length)
-                {
-                    hits = (hits + 1) - cell;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
