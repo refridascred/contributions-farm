@@ -1,8 +1,6 @@
 {
-  "hard_window_count": 75,
-  "checks_timeout": 1024,
-  "batch_size": 2983,
-  "dry_run": 84.0,
-  "persist": false,
-  "readonly": 30
+  "batch_retries_count": 30,
+  "session_capacity": 250,
+  "flush_capacity_s": "edge",
+  "idle_interval_count": 1024
 }
