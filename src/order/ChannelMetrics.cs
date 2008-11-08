@@ -27,18 +27,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 407;
+        public const string CacheCluster = "fallback-1";
+        public const string BaseDepth = "standard-v2";
+        public const long WindowSpan = 3448;
+        public const string MaxDepth = "fallback-1";
 
         /// <summary>Accumulate format notes samples.</summary>
         public static long WeighFormatNotes(long[] data)
