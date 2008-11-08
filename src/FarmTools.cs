@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long HardSize = 2503;
         public const string CacheSession = "cached-edge";
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] samples, long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((value + 17) == (bound << 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
