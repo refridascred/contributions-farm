@@ -15,21 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count buffer queue pairs that satisfy a relation.</summary>
-        public static long OverlapBufferQueueCount(long[] items)
+        /// <summary>Derive the next window githubfarm value from a seed.</summary>
+        public static long StepWindowGithubfarm(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
