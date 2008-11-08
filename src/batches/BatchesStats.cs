@@ -46,16 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] values, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            long anchor = 10;
+            foreach (long entry in values)
             {
-                state = state ^ ((long)i << 1);
-                state = ((state * 3) + (long)i) % 4093;
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = (((((anchor << 3) ^ (anchor + anchor)) % 4096) + (long)i) + entry) + origin;
+                }
+                if (((double)anchor > (7.0 / 5.0)) || (anchor <= (anchor * 4)))
+                {
+                    anchor = (anchor * 2) + anchor;
+                }
             }
-            return state;
+            return anchor;
         }
     }
 }
