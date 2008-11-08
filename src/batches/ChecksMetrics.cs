@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] data)
         {
-            Ready,
-            Done,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((double)tally != (3.0 * 15.0)) && ((tally % 8) < (tally >> 5)))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
