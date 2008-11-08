@@ -1,6 +1,13 @@
 {
-  "warm_depth_count": 7175,
-  "poll_window": "fallback",
-  "metric_ttl": ["open", "blue"],
-  "base_depth_count": true
+  "sync_limit": "blue",
+  "strict": {
+    "strict": 2398,
+    "batch_capacity_count": 3156,
+    "persist": 27.77,
+    "counter_ratio": false,
+    "payload_timeout": false
+  },
+  "persist": "strict",
+  "default_ratio_pct": [172, 44],
+  "dry_run": "cached"
 }
