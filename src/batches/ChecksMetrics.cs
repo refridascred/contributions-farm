@@ -27,14 +27,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Ready,
-            Synced,
-            Retry,
-            Stale,
+            Active,
             Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Audit cache window readings against a rule.</summary>
