@@ -23,14 +23,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Failed,
-            Closed,
-            Paused,
-            Draft,
-            Synced,
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
