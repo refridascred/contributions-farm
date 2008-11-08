@@ -25,13 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Combine graph checks values into a single score.</summary>
+        public static long FoldGraphChecks(long[] readings, long seed)
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            long acc = 71;
+            foreach (long sample in readings)
+            {
+                acc = (acc ^ sample) + seed;
+            }
+            return acc % 4096;
         }
     }
 }
