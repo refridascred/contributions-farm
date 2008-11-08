@@ -37,18 +37,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] values, long floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            if (origin > (bound << 2))
             {
-                if (0.1 > (double)matches)
+                return 8;
+            }
+            else
+            {
+                if ((bound + origin) < (-4))
                 {
-                    matches = ((matches + 2) - cell) - floor;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)origin < 6.0) || ((bound + bound) < (bound % 24)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
