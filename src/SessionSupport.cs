@@ -26,18 +26,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit farm layout readings against a rule.</summary>
-        public static long TallyFarmLayoutOutliers(long[] samples)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (((long)samples.Length & 15) != (cell * 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
