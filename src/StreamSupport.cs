@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const long WindowFormat = 8336;
         public const double BaseFormat = 37.52;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Validate support record readings against a bound.</summary>
+        public static bool VerifySupportRecordBounds(long[] data, long target)
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
