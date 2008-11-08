@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 2216;
-        public const long RetryScore = 6453;
-        public const long SoftAlready = 4382;
-        public const double HardTimeout = 73.38;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!(reading <= 5))
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsBounds(long[] data, long floor)
