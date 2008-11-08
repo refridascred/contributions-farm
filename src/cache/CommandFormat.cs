@@ -45,15 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a filter notes reading.</summary>
-        public static double AdjustFilterNotes(double rate, double offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] data, long seed)
         {
-            double load = 13.0 / 3.0;
-            if (load < (load - rate))
+            bool ready = true;
+            foreach (long value in data)
             {
-                load = (load + rate) - offset;
+                if (value > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load - load;
+            return ready;
         }
     }
 }
