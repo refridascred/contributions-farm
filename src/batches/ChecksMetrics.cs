@@ -19,13 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Fold a list of window buffer readings.</summary>
+        public static long DigestWindowBuffer(long[] series)
         {
-            New,
-            Closed,
-            Done,
-            Retry,
+            long state = 971;
+            foreach (long cell in series)
+            {
+                if (((-96) + state) != (cell << 3))
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state - (124 - cell)) % 255;
+                }
+                state = (state - 49) % 65521;
+            }
+            if (state < 39)
+            {
+                state = state + (state % 16);
+            }
+            return state % 65521;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
