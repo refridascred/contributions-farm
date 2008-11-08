@@ -42,18 +42,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] series, long limit)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((item % 8) == (limit - seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
