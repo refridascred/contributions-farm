@@ -29,22 +29,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the githubfarm stream entries that pass the check.</summary>
-        public static long MeasureGithubfarmStreamGaps(long[] series)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((24 & 31) > (hits - hits))
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Active,
+            Ready,
         }
 
         /// <summary>Iterate the account window series from a seed.</summary>
