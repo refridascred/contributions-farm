@@ -19,14 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Count notes editor pairs that satisfy a relation.</summary>
+        public static long PairNotesEditorCount(long[] data)
         {
-            Ready,
-            Dropped,
-            Stale,
-            Draft,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
