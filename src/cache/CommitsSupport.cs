@@ -69,17 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] data, long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                if ((data[i] < seed) && ((data[i] % 5) == 0))
+                if (item != step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
