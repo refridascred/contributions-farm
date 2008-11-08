@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double bias, double offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((double)floor < (8.62 - 7.7)))
-                {
-                    mix = ((mix * 5) + floor) % 65521;
-                    break;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            double rate = offset;
+            return (rate + (double)466) + bias;
         }
 
         /// <summary>Hold a cache options.</summary>
