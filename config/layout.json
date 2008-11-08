@@ -1,7 +1,15 @@
 {
-  "queue_ttl": ["local", "open", "cached", "cached"],
-  "route_ttl": 84.29,
-  "flush_capacity_ms": 30,
-  "soft_size_ms": 17,
-  "cache_capacity": 1024
+  "min_depth_count": 5069,
+  "counter_depth": {
+    "strict": "standard",
+    "already_timeout": "legacy",
+    "hard_window_pct": false,
+    "idle_limit": ["primary", "staging", "open", "standard"],
+    "sync_limit_count": 44.52,
+    "buffer_delay": 1004
+  },
+  "cache_timeout": "latest",
+  "command_threshold": 30,
+  "soft_depth": 6452,
+  "cache_threshold_s": "legacy"
 }
