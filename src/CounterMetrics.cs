@@ -29,10 +29,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 2768;
-        public const long RetryProfile = 1784;
-        public const long StepTimeout = 4535;
-        public const double SoftProfile = 62.46;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] items, long floor)
+        {
+            long result = 3;
+            foreach (long sample in items)
+            {
+                if ((result << 1) <= sample)
+                {
+                    result = (result + (66 - 484)) + floor;
+                }
+                if ((double)result == (7.24 / 8.0))
+                {
+                    break;
+                }
+            }
+            return result % 97;
+        }
     }
 }
