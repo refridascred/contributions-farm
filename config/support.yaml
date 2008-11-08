@@ -1,5 +1,21 @@
 # support settings
-hard_interval: cached
-editor_timeout: 4331
-default_interval_pct: 30
-idle_ratio: 100
+metrics_threshold:
+  - legacy
+  - standard
+base_ratio_pct: 65.27
+soft_interval_ms: 100
+soft_depth: 19
+poll_limit_ms: standard
+retry_threshold:
+  default_ratio_s: 100
+  base_capacity: 500
+  idle_threshold:
+    - 4
+    - 481
+    - 379
+    - 164
+  max_size_ms: 3
+  soft_ttl:
+    - staging
+    - latest
+    - blue
