@@ -63,19 +63,12 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((2.7 + 9.15) != (double)(long)readings.Length)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftFactor = "staging-1";
+        public const double WindowBudget = 4.23;
+        public const long SoftEntry = 3156;
+        public const string BatchEntry = "open-v2";
+        public const string CacheInterval = "open-v2";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double IdleRatio = 24.26;
