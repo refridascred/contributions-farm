@@ -1,6 +1,10 @@
-id,token,state,score
-1,latest,508,cached
-2,549,edge,standard
-3,cached,8.23,green
-4,65.11,74.71,74.65
-5,stable,30,primary
+id,count,label,level
+1,249,open,693
+2,blue,eu-west,243
+3,4.63,106,813
+4,legacy,22.12,739
+5,local,6.8,latest
+6,60.74,550,cached
+7,62.73,61.72,81.03
+8,56.93,open,primary
+9,715,staging,8.32
