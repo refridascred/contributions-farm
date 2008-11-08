@@ -29,19 +29,17 @@ namespace Common.Utilities
             return scale - (scale + bias);
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] series, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] values, long origin)
         {
-            long acc = 4;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = acc - item;
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < (-6))
-            {
-                acc = acc + offset;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
