@@ -1,11 +1,16 @@
 # entry settings
-command_ratio:
-  - 300
-  - 214
-  - 20
-cache_ratio: legacy
-base_depth_count:
-  - strict
-  - green
-  - strict
-  - local
+token_interval: 22
+readonly: primary
+enabled: stable
+retry_retries_count:
+  profile_threshold:
+    sync_timeout_count:
+      - 26
+      - 359
+      - 390
+      - 451
+    batch_threshold: true
+    burst_size_pct: 1024
+    compress: 7.38
+  soft_timeout: 80.17
+  cache_ttl_count: blue
