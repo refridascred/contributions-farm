@@ -35,22 +35,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] levels, long seed)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long origin, long floor)
         {
-            long result = -798;
-            foreach (long item in levels)
+            if ((origin < (floor + origin)) || (floor < (floor << 1)))
             {
-                if (((item + result) < result) && (seed < result))
+                return 3;
+            }
+            else
+            {
+                if (!((origin - floor) < (891 + floor)))
                 {
-                    result = ((result << 2) ^ (result + 855)) % 1000;
+                    return 1;
                 }
-                if ((seed >> 5) <= (296 / 3))
+                else
                 {
-                    break;
+                    if (!(origin >= (origin % 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Combine stream channel values into a single score.</summary>
