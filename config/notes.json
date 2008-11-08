@@ -1,12 +1,13 @@
 {
-  "cache_ttl_count": true,
-  "base_limit": {
-    "retry_threshold": 50,
-    "default_size": 78.02,
-    "retry_interval_s": "latest",
-    "readonly": "open"
+  "token_delay": true,
+  "min_interval_count": {
+    "base_interval_s": "edge",
+    "batch_retries": 68.19,
+    "idle_capacity": 60,
+    "entry_limit": [88, 175],
+    "default_threshold_pct": ["legacy", "strict"],
+    "min_depth_ms": 98.16
   },
-  "checks_threshold": 6085,
-  "min_ttl_count": 15,
-  "hard_retries": "stable"
+  "readonly": 63,
+  "soft_ratio": true
 }
