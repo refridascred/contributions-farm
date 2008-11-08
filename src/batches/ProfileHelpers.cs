@@ -93,19 +93,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] data, long step)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
