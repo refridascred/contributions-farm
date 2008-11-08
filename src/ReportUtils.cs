@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] readings, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] values)
         {
-            long anchor = 740;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((double)limit < (3.9 / 9.0))
+                if ((double)matches == (5.61 - 0.5))
                 {
-                    anchor = ((anchor ^ anchor) % 97) - reading;
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a account entry.</summary>
