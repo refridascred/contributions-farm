@@ -1,7 +1,27 @@
 {
-  "base_depth_count": "local",
-  "enabled": "stable",
-  "hard_depth_ms": true,
-  "counter_interval": "legacy",
-  "idle_window": "staging"
+  "format_limit": [474, 384],
+  "route_size": {
+    "base_timeout": {
+      "hard_window": 74,
+      "queue_limit": true,
+      "cluster_interval": false
+    },
+    "poll_delay": ["green", "staging", "fallback", "staging"],
+    "soft_ratio": "primary",
+    "base_window": 74.33,
+    "batch_interval_ms": true
+  },
+  "cache_limit_s": 4086,
+  "max_limit_count": {
+    "batches_depth": "standard",
+    "strict": {
+      "compress": false,
+      "warm_depth_pct": "staging",
+      "default_capacity_count": ["standard", "stable"],
+      "warm_ratio_pct": [463, 443, 409],
+      "hard_size_count": "stable",
+      "farm_window": 40.74
+    },
+    "verbose": ["edge", "blue", "blue"]
+  }
 }
