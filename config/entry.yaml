@@ -1,5 +1,4 @@
 # entry settings
-persist: 250
-idle_timeout: 32
-enabled: 60
-sync_ttl: true
+poll_depth_s: staging
+retry_size_pct: stable
+poll_window: fallback
