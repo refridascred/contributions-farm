@@ -12,11 +12,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxTimeout = 233;
-        public const long DefaultChannel = 4414;
-        public const string BaseChannel = "local";
-        public const long BatchChannel = 4794;
+        /// <summary>Compare every pair of counter stats readings.</summary>
+        public static long PairCounterStatsCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountHits(long[] readings)
