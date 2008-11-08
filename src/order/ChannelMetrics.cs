@@ -34,22 +34,19 @@ namespace Common.Utilities
         public const long WindowSpan = 3448;
         public const string MaxDepth = "fallback-1";
 
-        /// <summary>Accumulate format notes samples.</summary>
-        public static long WeighFormatNotes(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] levels, long step)
         {
-            long acc = 980;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((double)reading >= (7.0 * 16.0))
+                if (sample < step)
                 {
-                    acc = ((acc * 5) + acc) % 255;
-                }
-                if ((double)reading >= 9.1)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return acc;
+            return ready;
         }
     }
 }
