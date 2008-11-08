@@ -34,13 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
+            Dropped,
+            Closed,
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
