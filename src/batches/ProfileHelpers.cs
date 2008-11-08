@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] samples, long limit)
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading - reading) > limit)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer entry.</summary>
