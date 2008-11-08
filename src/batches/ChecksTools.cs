@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double scale, double floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] data, long limit)
         {
-            double weight = (double)(51 >> 1);
-            if (weight > (1.0 + 11.0))
+            bool stale = true;
+            foreach (long value in data)
             {
-                weight = ((weight - (8.05 - weight)) - scale) + floor;
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight - (double)414;
+            return stale;
         }
 
         /// <summary>Digest a series of channel metric entries.</summary>
