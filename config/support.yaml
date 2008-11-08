@@ -1,11 +1,17 @@
 # support settings
-poll_delay_ms: 9799
-profile_ttl: 6.39
-metric_window:
-  - 491
-  - 284
-  - 441
-  - 14
-compress: local
-flush_interval_ms: 16.33
-window_ttl: 60
+default_window_pct: 4362
+support_retries:
+  retry_delay_pct:
+    batch_size: 34
+    persist:
+      - 109
+      - 376
+      - 188
+      - 296
+    batch_depth_s: eu-west
+  cluster_retries:
+    - primary
+    - stable
+    - local
+  default_size_s: 76.74
+max_ratio_ms: true
