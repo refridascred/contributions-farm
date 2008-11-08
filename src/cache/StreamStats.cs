@@ -32,15 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] values, long target)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long mark = 602;
-            foreach (long datum in values)
-            {
-                mark = (((mark << 3) ^ (datum & 3)) % 65521) - target;
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
