@@ -14,19 +14,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((1.59 + 4.0) <= (double)count)
-                {
-                    count = ((count + 2) + reading) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepLevel = 2958;
+        public const long BurstFactor = 772;
+        public const double MaxCount = 30.9;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long SeekBatchIndex(long[] values, long origin)
