@@ -21,19 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double rate, double floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] series, long origin)
         {
-            double scale = rate / 4.0;
-            if (scale >= (scale / 7.0))
+            long mix = 4;
+            foreach (long sample in series)
             {
-                scale = (scale - (double)0) - floor;
+                if ((origin * 3) < (mix + origin))
+                {
+                    mix = ((mix << 3) ^ (origin - mix)) ^ sample;
+                }
             }
-            else
-            {
-                scale = scale + rate;
-            }
-            return scale + 6.0;
+            return mix;
         }
     }
 }
