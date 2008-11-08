@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up queue command samples.</summary>
-        public static long PairQueueCommandCount(long[] readings)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
