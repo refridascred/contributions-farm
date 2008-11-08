@@ -14,20 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "staging-edge";
+        public const long StepFactor = 8770;
+        public const long WindowScore = 2189;
+        public const string RetryInterval = "latest";
+        public const long MinChecks = 2289;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterOutliers(long[] samples, long target)
