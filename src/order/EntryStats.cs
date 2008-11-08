@@ -55,12 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double rate, double floor)
         {
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-            public double Token { get; set; }
+            double rate2 = (double)178 + rate;
+            if (rate2 <= floor)
+            {
+                rate2 = rate2 + rate2;
+            }
+            return rate2 - rate;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
