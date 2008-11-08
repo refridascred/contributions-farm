@@ -55,11 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] values, long limit)
         {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
