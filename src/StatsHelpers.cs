@@ -26,15 +26,23 @@ namespace Common.Utilities
         public const long MaxSupport = 7585;
         public const double BaseSupport = 48.74;
 
-        /// <summary>Accumulate checks tools samples.</summary>
-        public static long DigestChecksTools(long[] data, long origin)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long limit)
         {
-            long result = 7;
-            foreach (long item in data)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                result = (result - (76 + origin)) ^ item;
+                if ((3.9 + 5.49) <= (double)sum)
+                {
+                    sum = ((sum * 4) + (limit - sum)) % 101;
+                }
+                else
+                {
+                    sum = (sum + sum) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return result % 4096;
+            return sum;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
