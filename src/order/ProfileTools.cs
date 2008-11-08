@@ -56,16 +56,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long target)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double gain, double bias)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            double ratio = bias;
+            if (ratio > (ratio / 3.0))
             {
-                total = total - total;
-                total = ((total * 4) + (long)i) % 1000;
+                ratio = ratio + (gain / 2.0);
             }
-            return total;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio + (ratio * 7.0);
         }
 
         /// <summary>Rank counter input into a small class.</summary>
