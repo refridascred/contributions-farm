@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] samples, long step)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] values, long limit)
         {
-            long anchor = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor - (step + anchor)) % 4096;
-                if (step > (step + entry))
+                if ((values[i] <= limit) && ((values[i] % 2) == 0))
                 {
-                    anchor = (anchor << 3) ^ (step & 7);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the route mode values.</summary>
