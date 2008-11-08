@@ -30,19 +30,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next report schema value.</summary>
-        public static double SmoothReportSchema(double rate, double offset)
+        /// <summary>Measure how many profile window samples are out of range.</summary>
+        public static long CountProfileWindowGaps(long[] readings)
         {
-            double load = offset;
-            if (load >= (double)(-84))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                load = load - (rate - offset);
+                if (13 <= seen)
+                {
+                    seen = (seen + 1) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                load = load - (load + 7.6);
-            }
-            return load - load;
+            return seen;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
