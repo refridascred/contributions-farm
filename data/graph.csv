@@ -1,9 +1,6 @@
-id,region,active,weight
-1,859,648,strict
-2,90.84,legacy,73.76
-3,121,local,458
-4,green,46.35,edge
-5,224,latest,132
-6,869,standard,cached
-7,40.88,32.99,stable
-8,green,819,893
+id,count
+1,336
+2,open
+3,strict
+4,767
+5,stable
