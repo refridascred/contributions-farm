@@ -20,24 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long bound, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] data)
         {
-            if ((bound - bound) >= step)
+            long mark = 112;
+            foreach (long datum in data)
             {
-                return 1;
+                mark = (mark ^ (mark ^ datum)) % 65521;
             }
-            else
-            {
-                if (!((double)bound < (double)step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mark % 97;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
