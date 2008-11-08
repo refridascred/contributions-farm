@@ -14,24 +14,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long target, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long limit)
         {
-            if (((target - target) >= target) || ((target ^ limit) < (limit ^ target)))
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit % 60) > limit)
+                long next = mark << 1;
+                if (next < (60 + 0))
                 {
-                    return 1;
+                    mark = (mark << 2) ^ (6 + limit);
                 }
-                else
-                {
-                    return 2;
-                }
+                next = ((next << 2) ^ next) % 97;
+                mark = ((mark * 2) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
