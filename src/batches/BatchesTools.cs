@@ -44,22 +44,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] data, long floor)
         {
-            long score = 99;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((datum + datum) < datum)
+                if (sample <= floor)
                 {
-                    score = ((score * 2) + (datum % 7)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 65)
-            {
-                score = score - score;
-            }
-            return score;
+            return valid;
         }
     }
 }
