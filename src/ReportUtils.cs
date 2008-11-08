@@ -44,18 +44,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit command report readings against a rule.</summary>
-        public static long MeasureCommandReportHits(long[] samples)
+        /// <summary>Compare every pair of route support readings.</summary>
+        public static long MatchRouteSupportCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((78 + seen) == (seen % 64))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) - reading;
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
