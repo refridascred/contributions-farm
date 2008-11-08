@@ -1,6 +1,11 @@
 {
-  "poll_ratio_ms": "stable",
-  "strict": "open",
-  "command_capacity": false,
-  "enabled": 500
+  "retry_ratio_count": 6154,
+  "compress": 905,
+  "retry_retries": [490, 224, 128],
+  "verbose": {
+    "burst_capacity_count": ["staging", "open"],
+    "soft_ttl_count": 26.75,
+    "idle_threshold_pct": 5.71
+  },
+  "cache_threshold_ms": 30
 }
