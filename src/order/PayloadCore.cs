@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Count the tools route entries that pass the check.</summary>
+        public static long CountToolsRouteGaps(long[] series)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((551 - (long)series.Length) > datum)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
