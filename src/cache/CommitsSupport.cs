@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public double Flag { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Blend two checks measurements.</summary>
