@@ -17,21 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((210 / 5) < ((-37) + (long)i)) && ((anchor + step) <= anchor))
-                {
-                    anchor = ((anchor << 2) ^ ((long)i << 1)) % 255;
-                    break;
-                }
-                anchor = ((anchor << 3) ^ ((long)i / 9)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
