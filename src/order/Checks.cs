@@ -60,12 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] readings)
         {
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((2.2 * 6.9) == (double)reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
