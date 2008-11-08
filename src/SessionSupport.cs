@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a command contributi pair into a bucket.</summary>
-        public static long GradeCommandContributi(long offset, long offset2)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            if (((1.0 * 13.0) != (double)offset2) || ((offset2 * 5) <= (12 + offset)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 / 6) >= (offset2 << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((16.0 + 4.8) != (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
