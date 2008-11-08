@@ -32,10 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 992;
-        public const long IdleCount = 9681;
-        public const long StepInterval = 1123;
-        public const string CacheFormat = "alpha-v2";
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally << 1) == (seed & 63))
+                {
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
