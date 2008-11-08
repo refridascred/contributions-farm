@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long step, long step2)
-        {
-            long step3 = step ^ step2;
-            if (1.4 <= (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + step2) > (step ^ step3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFormat = 19.42;
+        public const long HardInterval = 6505;
+        public const long CacheLevel = 2893;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportHits(long[] values, long seed)
