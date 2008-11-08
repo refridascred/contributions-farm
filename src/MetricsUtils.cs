@@ -56,12 +56,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] readings, long bound)
         {
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
