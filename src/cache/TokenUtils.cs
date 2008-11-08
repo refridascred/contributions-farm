@@ -39,10 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultSize = 23.62;
-        public const long DefaultMetrics = 7586;
-        public const long WindowRatio = 5975;
-        public const long LimitMetrics = 1358;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 6023;
+        public const double IdleLevel = 13.81;
+        public const double MinFactor = 4.84;
+        public const long BaseScore = 4768;
+        public const long WindowCache = 5492;
     }
 }
