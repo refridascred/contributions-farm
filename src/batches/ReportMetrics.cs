@@ -16,22 +16,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items, long step)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            long carry = 733;
-            foreach (long cell in items)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((carry >> 4) > carry)
-                {
-                    carry = ((carry + (carry << 2)) ^ cell) - step;
-                }
+                acc = ((acc * 4) + (seed >> 1)) % 97;
+                acc = (acc ^ (seed >> 5)) % 255;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            if (carry < 151)
-            {
-                carry = (carry * 3) + (carry - 167);
-            }
-            return carry % 65521;
+            return acc;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
