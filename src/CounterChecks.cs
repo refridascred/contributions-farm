@@ -35,18 +35,12 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Audit commits graph readings against a rule.</summary>
-        public static long AuditCommitsGraphOutliers(long[] items, long limit)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (count >= (limit + (long)items.Length))
-                {
-                    count = (count + 1) ^ sample;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
