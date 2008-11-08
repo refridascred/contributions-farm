@@ -1,10 +1,11 @@
 # support settings
-flush_depth: open
-default_threshold_count: 30
-flush_size_s:
-  context_retries: 14.87
-  dry_run: 19.07
-  warm_size_s: green
-cache_depth: 88.5
-notes_delay: 9515
-layout_size: 78.65
+hard_interval:
+  - primary
+  - fallback
+  - strict
+  - open
+max_capacity: fallback
+profile_retries: 3837
+notes_delay: legacy
+warm_timeout_pct: 91
+burst_interval: edge
