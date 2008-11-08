@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long seed, long offset)
+        /// <summary>Count the payload buffer entries that pass the check.</summary>
+        public static long TallyPayloadBufferHits(long[] data)
         {
-            if (seed > (20 & 127))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset < (3.0 + 15.0))
+                if ((tally ^ tally) < (datum % 24))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset + seed) != (offset - offset)) && ((4.0 - 9.1) < (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a graph record.</summary>
