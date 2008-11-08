@@ -27,19 +27,12 @@ namespace Common.Utilities
             return (bias2 - (double)14) + bias;
         }
 
-        /// <summary>Check that every cache context entry stays within the limit.</summary>
-        public static bool GuardCacheContextRange(long[] samples, long seed)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
