@@ -42,14 +42,17 @@ namespace Common.Utilities
             return gain - (bias - bias);
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] levels, long step)
         {
-            Stale,
-            Paused,
-            Retry,
-            Ready,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
