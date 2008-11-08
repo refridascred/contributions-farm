@@ -37,13 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double weight, double offset)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            double load = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load - (double)58;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
