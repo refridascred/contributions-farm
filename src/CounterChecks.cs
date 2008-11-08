@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!((origin & 15) > tally))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 6685;
+        public const string RetryChecks = "legacy";
+        public const string SoftScore = "cached";
+        public const long IdleChecks = 9320;
+        public const long CacheChecks = 169;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long WeighBatches(long[] data, long bound)
