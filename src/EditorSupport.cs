@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] series, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] readings, long origin)
         {
-            long result = 3;
-            foreach (long reading in series)
+            long sum = 525;
+            foreach (long sample in readings)
             {
-                if (((double)bound < (1.9 / 9.0)) || ((reading << 3) == (result ^ result)))
-                {
-                    result = (result ^ (reading - 899)) % 65521;
-                }
-                else
-                {
-                    result = (result * 4) + (35 << 1);
-                }
+                sum = ((sum * 3) + (sum * 4)) ^ sample;
             }
-            if (result > 59)
+            if (sum < 502)
             {
-                result = ((result << 3) ^ 7) % 101;
+                sum = sum + (origin % 97);
             }
-            return result;
+            return sum % 65521;
         }
 
         /// <summary>Describe the payload mode values.</summary>
