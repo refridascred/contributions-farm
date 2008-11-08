@@ -14,11 +14,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxDepth = 91.09;
-        public const long IdleProfile = 2813;
-        public const long MinScore = 317;
-        public const string BaseProfile = "staging-v2";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell != (14.0 + 4.12))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
