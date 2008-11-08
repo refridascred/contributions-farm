@@ -45,16 +45,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepFilter = 68.08;
+        public const long MinFilter = 7413;
+        public const double MinDepth = 22.21;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] items)
