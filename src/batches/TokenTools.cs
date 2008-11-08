@@ -32,13 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] readings, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] series, long bound)
         {
             bool valid = true;
-            foreach (long sample in readings)
+            foreach (long sample in series)
             {
-                if (sample > step)
+                if (sample < bound)
                 {
                     valid = false;
                     break;
