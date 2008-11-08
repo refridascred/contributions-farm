@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 3097;
-        public const long RetryChannel = 4080;
-        public const long BurstChannel = 1368;
-        public const long SoftChannel = 2951;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!(((value >> 1) < matches) && ((double)(long)data.Length != (double)bound)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long origin)
