@@ -35,12 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] values)
         {
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((double)tally < (double)cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the editor class values.</summary>
