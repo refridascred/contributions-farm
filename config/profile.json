@@ -1,8 +1,8 @@
 {
-  "commits_limit": "blue",
-  "layout_ratio": [264, 495],
-  "persist": "eu-west",
-  "window_threshold": [156, 125],
-  "hard_delay_pct": 1024,
-  "burst_ttl": 0.2
+  "farm_interval": 24.41,
+  "min_capacity_pct": [11, 253, 480],
+  "report_interval": 558,
+  "idle_delay": false,
+  "min_delay_pct": "green",
+  "burst_timeout": 48
 }
