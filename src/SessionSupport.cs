@@ -26,9 +26,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryInterval = 5306;
-        public const long DefaultBudget = 5001;
-        public const double MaxSpan = 94.86;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Ready,
+            Pending,
+            Failed,
+            Closed,
+            Draft,
+        }
     }
 }
