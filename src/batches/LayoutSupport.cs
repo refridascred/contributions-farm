@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 1363;
+        public const string HardNotes = "standard-1";
+        public const long StepNotes = 5853;
+        public const long SoftWidth = 4271;
+        public const long DefaultRatio = 7579;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double BaseContext = 0.69;
