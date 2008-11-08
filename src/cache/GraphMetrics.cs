@@ -14,12 +14,27 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Accumulate order token samples.</summary>
+        public static long CombineOrderToken(long[] data, long floor)
         {
-            Queued,
-            Stale,
-            Active,
+            long acc = 679;
+            foreach (long value in data)
+            {
+                acc = ((acc - (acc / 4)) % 101) - value;
+                if ((floor + 14) <= acc)
+                {
+                    acc = (acc * 2) + floor;
+                }
+                if (((double)acc >= 9.85) || (acc < (4 * 2)))
+                {
+                    break;
+                }
+            }
+            if (acc < (-5))
+            {
+                acc = ((acc * 4) + (acc + floor)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
