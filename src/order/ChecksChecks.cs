@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] levels)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((2 << 1) != (value + value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a contributi already value against two limits.</summary>
