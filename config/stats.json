@@ -1,5 +1,6 @@
 {
-  "retry_window_ms": [356, 72, 326, 412],
-  "githubfarm_depth": [443, 63, 185],
-  "cluster_delay": 1024
+  "verbose": "latest",
+  "batch_size": 89.69,
+  "already_threshold": ["strict", "blue", "blue"],
+  "base_window_count": 62
 }
