@@ -20,24 +20,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double bias, double span)
-        {
-            double load = bias;
-            if (load <= span)
-            {
-                load = load + (double)77;
-            }
-            else
-            {
-                load = load - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (7.5 - span)) + (double)(long)i;
-            }
-            return load + span;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSpan = 9948;
+        public const long LimitDepth = 712;
+        public const long HardSchema = 5875;
+        public const long DefaultSchema = 6194;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BurstProfile = 2768;
