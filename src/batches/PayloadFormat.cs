@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            New,
-            Paused,
-            Stale,
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
