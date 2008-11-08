@@ -24,12 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
+            Synced,
+            Ready,
             New,
             Idle,
-            Ready,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
