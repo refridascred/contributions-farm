@@ -1,4 +1,4 @@
 # githubfarm settings
-persist: edge
-warm_window_s: 3607
-readonly: false
+poll_limit: false
+metric_ratio: 1440
+command_ratio: green
