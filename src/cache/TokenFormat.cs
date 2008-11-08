@@ -19,10 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftSpan = "standard-v2";
-        public const long BatchLevel = 3152;
-        public const string HardDepth = "open-edge";
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long ScoreFormat(long[] data)
