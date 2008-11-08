@@ -1,11 +1,13 @@
 # Command notes
 
-Run the channel check before changing any schema limits.
-Each report is validated before it reaches the account queue.
+A metric that stays idle for too long is moved to the checks list.
+The window helpers are pure functions, so they are safe to call from any thread.
+
+Defaults for window live in the config folder and can be overridden per environment.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every token change
-- Validate stats input early
-- Review githubfarm limits each release
-- Keep queue values small
+- Validate cluster input early
+- Document new command fields
+- Keep report values small
