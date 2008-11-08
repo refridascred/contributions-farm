@@ -19,39 +19,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a notes checks value against two limits.</summary>
-        public static long ClassifyNotesChecks(long target, long target2)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long bound = target - target2;
-            if ((double)target != (5.09 / 8.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound ^ bound) == (target << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target % 60) <= (961 - 0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound - 716) < (target / 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
