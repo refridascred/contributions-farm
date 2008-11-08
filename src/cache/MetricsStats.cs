@@ -37,19 +37,19 @@ namespace Common.Utilities
         public const string BatchSession = "strict";
         public const long IdleScore = 7912;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] values, long floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (reading >= floor)
+                if (item > offset)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Adjust a command reading.</summary>
