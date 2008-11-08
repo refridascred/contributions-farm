@@ -1,6 +1,5 @@
 {
-  "batch_delay_ms": "latest",
-  "audit": 24.32,
-  "stream_window": "standard",
-  "flush_timeout_s": false
+  "idle_delay": ["eu-west", "local"],
+  "dry_run": "staging",
+  "checks_delay": 100
 }
