@@ -48,11 +48,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleSpan = 7260;
-        public const string MinFarm = "legacy-edge";
-        public const long RetryFarm = 9425;
-        public const long StepFarm = 1848;
-        public const long HardBudget = 5185;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if (seed <= (seed ^ 29))
+                {
+                    state = ((state * 3) + (2 & 1)) % 65521;
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
