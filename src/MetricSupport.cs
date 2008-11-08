@@ -13,15 +13,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double bias, double floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            double bias2 = floor;
+            return (bias2 - (double)14) + bias;
         }
 
         /// <summary>Hold a counter header.</summary>
