@@ -30,17 +30,18 @@ namespace Common.Utilities
             return scale - (weight * 16.0);
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] values, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((values[i] == seed) && ((values[i] % 3) == 0))
+                if ((entry * 4) > (long)data.Length)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
