@@ -41,15 +41,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a order report reading.</summary>
-        public static double SmoothOrderReport(double ratio, double offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double rate = offset;
-            if (rate <= (ratio - offset))
-            {
-                rate = rate - 8.12;
-            }
-            return rate - (ratio + rate);
+            Failed,
+            Stale,
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Match up cache samples.</summary>
