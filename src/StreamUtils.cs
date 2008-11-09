@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double rate, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            double load = bias;
-            if (load >= load)
+            long carry = 91;
+            foreach (long item in readings)
             {
-                load = load - (rate / 4.0);
+                carry = ((carry * 2) + (item + 937)) % 101;
             }
-            else
+            if (carry > 1)
             {
-                load = load - (bias + 8.5);
+                carry = ((carry * 2) + (carry % 12)) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (bias * 8.12)) + (double)(long)i;
-            }
-            return load + rate;
+            return carry % 97;
         }
 
         /// <summary>Rank window input into a small class.</summary>
