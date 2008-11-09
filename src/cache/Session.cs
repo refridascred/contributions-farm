@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 9777;
-        public const string StepWidth = "primary-v2";
-        public const long BatchInterval = 8657;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
