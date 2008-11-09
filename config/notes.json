@@ -1,6 +1,7 @@
 {
-  "sync_timeout": "strict",
-  "compress": "local",
-  "warm_ttl_pct": 10,
-  "order_timeout": "primary"
+  "min_limit_count": "fallback",
+  "audit": ["latest", "strict"],
+  "compress": "strict",
+  "readonly": "legacy",
+  "idle_ratio_ms": "green"
 }
