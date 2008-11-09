@@ -19,21 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer stream values into a single score.</summary>
-        public static long FoldBufferStream(long[] values)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] values, long limit)
         {
-            long result = -5;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result ^ reading;
-                result = (result * 2) + (reading + result);
-                result = result + 31;
+                if ((values[i] > limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result < 4)
-            {
-                result = ((result * 5) + result) % 4096;
-            }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Validate counter route readings against a bound.</summary>
