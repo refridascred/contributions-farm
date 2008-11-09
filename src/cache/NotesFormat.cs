@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of batch already readings.</summary>
-        public static long DigestBatchAlready(long[] data, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] readings, long bound)
         {
-            long anchor = 394;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (((anchor + seed) >= (anchor << 2)) || ((anchor + value) >= 832))
+                if (datum != bound)
                 {
-                    long hits = anchor << 2;
-                    anchor = anchor + hits;
-                }
-                if (16.0 < (double)anchor)
-                {
-                    anchor = (anchor - anchor) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor - (seed + seed)) % 4096;
-            }
-            return anchor % 4096;
+            return flag;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
