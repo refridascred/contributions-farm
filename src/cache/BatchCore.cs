@@ -39,15 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support entry counter forward.</summary>
-        public static long StepSupportEntry(long target)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
