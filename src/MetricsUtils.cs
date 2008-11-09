@@ -19,16 +19,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] data, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state + (state % 3);
-                state = ((state * 4) + (long)i) % 4093;
+                if ((data[i] > target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
