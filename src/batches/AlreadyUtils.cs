@@ -20,22 +20,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] series, long step)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (!((double)step != (7.0 - 0.8)))
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
