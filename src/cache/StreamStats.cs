@@ -37,11 +37,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many order format samples are out of range.</summary>
+        public static long TallyOrderFormatOutliers(long[] levels, long floor)
         {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((matches / 9) >= (item + item))
+                {
+                    matches = (matches + 3) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
