@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double ratio, double offset)
-        {
-            double gain = (double)(75 / 2);
-            return ((gain + 2.7) + ratio) + offset;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftWidth = 267;
+        public const long BurstFactor = 8562;
+        public const double BatchAlready = 48.43;
+        public const long SoftRatio = 2028;
+        public const long BurstDepth = 8409;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
