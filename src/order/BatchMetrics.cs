@@ -34,19 +34,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (entry > (matches + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardSpan = "strict";
+        public const double StepFactor = 47.07;
+        public const long LimitOrder = 1379;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long MeasureWindowGaps(long[] items)
