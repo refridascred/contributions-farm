@@ -43,10 +43,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowSize = 64.29;
-        public const long WindowScore = 9759;
-        public const long SoftLevel = 4463;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardScore = 50.9;
+        public const long RetrySchema = 4835;
+        public const double DefaultSchema = 72.52;
+        public const long MaxInterval = 3283;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool ValidateContextBounds(long[] samples, long seed)
