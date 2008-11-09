@@ -48,22 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitCount = 85.44;
+        public const long MaxProfile = 6602;
+        public const double MaxSpan = 62.07;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long WindowLevel = 9211;
