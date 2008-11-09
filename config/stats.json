@@ -1,5 +1,8 @@
 {
-  "poll_interval_count": [12, 387, 116],
-  "hard_timeout": [13, 196, 129, 308],
-  "metric_capacity": ["open", "open", "fallback", "green"]
+  "flush_limit": "standard",
+  "checks_capacity": 89.43,
+  "editor_delay": 3,
+  "base_retries_pct": "local",
+  "buffer_limit": 57.69,
+  "session_capacity": "stable"
 }
