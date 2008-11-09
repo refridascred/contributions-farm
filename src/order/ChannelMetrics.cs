@@ -16,11 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleDepth = 32.68;
-        public const long MinWindow = 4854;
-        public const string BurstWindow = "open-1";
-        public const long RetryWindow = 1530;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry % 8) >= (-6))
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long FoldQueue(long[] series, long floor)
