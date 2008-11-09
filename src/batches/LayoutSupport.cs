@@ -19,11 +19,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define editor limits and defaults.</summary>
-        public const double MinEditor = 96.97;
-        public const long CacheEditor = 8248;
-        public const string SoftRatio = "open-v2";
-        public const double HardEditor = 29.06;
-        public const long DefaultDepth = 8485;
+        public const long MinEditor = 8870;
+        public const long SoftEditor = 6950;
+        public const long LimitRatio = 5498;
+        public const long DefaultEditor = 9112;
+        public const long BaseRatio = 7129;
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
