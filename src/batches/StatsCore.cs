@@ -16,11 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchTimeout = 12.6;
-        public const long MaxLevel = 9943;
-        public const long StepCount = 1828;
-        public const long WindowCache = 1034;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long FoldCommits(long[] levels)
