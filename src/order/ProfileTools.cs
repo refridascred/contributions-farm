@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultAccount = 80.87;
-        public const long SoftSize = 1578;
-        public const long LimitLevel = 6318;
-        public const long IdleAccount = 4126;
+        /// <summary>Validate command batches readings against a bound.</summary>
+        public static bool CheckCommandBatchesRange(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
