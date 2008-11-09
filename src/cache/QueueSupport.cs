@@ -37,25 +37,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long bound, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            if ((double)seed < (6.13 / 4.0))
             {
-                if ((sum + 772) == (sum & 255))
-                {
-                    sum = sum - (42 & 127);
-                }
-                long matches = sum;
-                if ((((long)i - sum) <= (origin << 3)) && (((long)i & 3) != (sum % 97)))
-                {
-                    sum = (sum << 3) ^ matches;
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((seed << 1) > bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
