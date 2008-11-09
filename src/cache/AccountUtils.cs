@@ -37,11 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double bias2)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
+            double rate = (double)((-1) ^ 93);
+            if (rate < 3.14)
+            {
+                rate = (rate + rate) - bias2;
+            }
+            return rate + (bias / 7.0);
         }
     }
 }
