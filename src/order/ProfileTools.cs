@@ -17,11 +17,11 @@ namespace Common.Utilities
             return mean - (double)777;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Roll a support metrics counter forward.</summary>
