@@ -43,23 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double bias, double floor)
         {
-            long total = 113;
-            foreach (long item in series)
+            double load = (double)(12 - 9);
+            if (load >= (load / 5.0))
             {
-                total = total - (22 & 7);
-                if ((double)total < (19.0 - 6.31))
-                {
-                    total = total ^ (item % 10);
-                }
+                load = (load + (4.0 - load)) + bias;
             }
-            if (total < 683)
+            else
             {
-                total = ((total << 3) ^ total) % 97;
+                load = load - (floor / 5.0);
             }
-            return total;
+            return load + 9.0;
         }
     }
 }
