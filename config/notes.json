@@ -1,6 +1,7 @@
 {
-  "batch_size": 9355,
-  "dry_run": "primary",
-  "hard_size": 15.05,
-  "verbose": 17
+  "batch_limit_ms": 1024,
+  "cache_ratio": 53,
+  "retry_capacity_pct": "edge",
+  "soft_capacity": "primary",
+  "idle_limit": "cached"
 }
