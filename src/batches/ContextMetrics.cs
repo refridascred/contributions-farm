@@ -52,11 +52,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next checks window value.</summary>
-        public static double BlendChecksWindow(double weight, double bias)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double span)
         {
-            double mean = weight;
-            return (mean + 1.7) + bias;
+            double mean = span;
+            if (mean >= 1.21)
+            {
+                mean = mean - (scale + mean);
+            }
+            else
+            {
+                mean = mean - (4.0 - scale);
+            }
+            return mean + 7.07;
         }
     }
 }
