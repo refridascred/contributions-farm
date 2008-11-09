@@ -1,11 +1,8 @@
 {
-  "dry_run": {
-    "flush_depth": "legacy",
-    "warm_threshold_s": [301, 210, 365],
-    "payload_interval": 100
-  },
-  "soft_timeout_pct": 32,
-  "base_retries": false,
-  "burst_delay": [349, 137, 373],
-  "readonly": 500
+  "token_timeout": "edge",
+  "max_retries_count": 2,
+  "persist": 65,
+  "retry_limit_s": 86.05,
+  "base_retries": 20.85,
+  "checks_depth": 19.79
 }
