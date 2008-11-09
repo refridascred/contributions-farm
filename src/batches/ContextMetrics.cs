@@ -13,12 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            Queued,
+            Stale,
+            Closed,
+            Synced,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
