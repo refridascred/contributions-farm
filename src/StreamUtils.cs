@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Count the cluster account entries that pass the check.</summary>
+        public static long CountClusterAccountOutliers(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                score = score + (8 - limit);
-                score = ((score * 2) + (long)i) % 65521;
+                if (hits > datum)
+                {
+                    hits = hits + 3;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Rank window input into a small class.</summary>
