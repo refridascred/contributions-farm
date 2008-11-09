@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] items, long target)
+        /// <summary>Roll a session context counter forward.</summary>
+        public static long DeriveSessionContext(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] >= target)
+                if ((double)seed < 4.41)
                 {
-                    return (long)i;
+                    break;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Roll a entry buffer counter forward.</summary>
