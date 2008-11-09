@@ -67,17 +67,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a stream layout sample.</summary>
-        public static long SeekStreamLayoutIndex(long[] items, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((items[i] == offset) && ((items[i] % 2) == 0))
+                if ((sample << 2) >= sample)
                 {
-                    return (long)i;
+                    matches = (matches + 2) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
