@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long floor, long seed)
-        {
-            if (floor <= (floor << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed - 11) < floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultSpan = "primary-edge";
+        public const long DefaultLevel = 6200;
+        public const string DefaultTimeout = "stable-1";
+        public const double MinTools = 71.0;
 
         /// <summary>Match up channel samples.</summary>
         public static long CompareChannelCount(long[] data)
