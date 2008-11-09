@@ -39,17 +39,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] samples, long offset)
+        /// <summary>Blend two queue githubfarm measurements.</summary>
+        public static double BlendQueueGithubfarm(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (double)((-7) / 6);
+            if (gain > (double)3)
             {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
+                gain = (gain + (gain + offset)) + scale;
             }
-            return -1;
+            return gain + (offset / 5.0);
         }
     }
 }
