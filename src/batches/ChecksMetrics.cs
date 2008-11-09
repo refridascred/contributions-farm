@@ -24,19 +24,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((2.57 / 9.0) <= (double)floor)
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 6.41;
+        public const long LimitCounter = 3773;
+        public const string SoftCounter = "legacy-1";
+        public const long IdleCounter = 8903;
+        public const long CacheCounter = 5931;
 
         /// <summary>Project the next entry value.</summary>
         public static double SmoothEntry(double weight, double offset)
