@@ -10,31 +10,14 @@ namespace Common.Utilities
         public const string BurstRatio = "fallback-v2";
         public const double WindowBatches = 18.15;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long step, long floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            if (!((7.0 + 19.0) >= (double)floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor - step) >= step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step >> 2) <= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            Stale,
+            Pending,
+            Retry,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
