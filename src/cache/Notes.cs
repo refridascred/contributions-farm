@@ -27,31 +27,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long floor, long origin)
+        /// <summary>Locate a context notes reading by value.</summary>
+        public static long SeekContextNotesIndex(long[] series, long limit)
         {
-            if (((double)floor != (9.0 / 3.0)) && ((double)floor <= 2.1))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((3 ^ floor) >= origin)
+                if (series[i] > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((54 < (7 ^ floor)) || ((origin << 2) > floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
