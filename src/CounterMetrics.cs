@@ -39,22 +39,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] samples)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long offset3 = offset ^ offset2;
+            if ((double)offset3 >= (double)offset2)
             {
-                if ((count >> 5) >= (3 / 8))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset2 < (5.04 / 3.0))
                 {
-                    count = (count + 3) ^ entry;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((offset2 ^ offset2) != (offset2 * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset2 % 24) < (offset2 / 9))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
