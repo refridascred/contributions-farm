@@ -27,17 +27,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = (carry + (floor - 99)) % 97;
-                carry = (carry + (floor << 2)) % 255;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
