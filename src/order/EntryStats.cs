@@ -37,11 +37,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftCount = 9879;
-        public const string DefaultAlready = "cached";
-        public const long BaseAlready = 191;
-        public const double IdleRatio = 17.55;
-        public const double IdleAlready = 33.14;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitDepth = 5707;
+        public const string DefaultLevel = "fallback-v2";
+        public const long SoftBatch = 5523;
+        public const long BaseLevel = 8095;
     }
 }
