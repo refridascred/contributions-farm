@@ -23,20 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleSpan = "cached-edge";
+        public const long IdleWidth = 6059;
+        public const double MaxMetrics = 51.7;
+        public const long LimitMetrics = 7391;
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
