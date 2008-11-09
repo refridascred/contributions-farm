@@ -23,25 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the layout entry series from a seed.</summary>
-        public static long IterateLayoutEntry(long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            long mix = 5;
+            foreach (long reading in levels)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((mix & 127) <= (mix << 2))
                 {
-                    mark = (mark ^ (limit & 31)) + (long)i2;
-                    mark = mark ^ (mark << 1);
+                    mix = ((mix << 2) ^ (mix ^ mix)) + reading;
                 }
-                if (!(((long)i + limit) == (6 - 438)))
-                {
-                    mark = mark - ((long)i + limit);
-                    mark = (mark * 4) + ((long)i * 4);
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Accumulate window samples.</summary>
