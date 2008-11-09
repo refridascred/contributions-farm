@@ -47,13 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Retry,
-            Pending,
-            Done,
-            Queued,
+            public double Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
