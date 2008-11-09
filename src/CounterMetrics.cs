@@ -23,22 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Combine buffer stream values into a single score.</summary>
+        public static long FoldBufferStream(long[] values)
         {
-            long carry = 4;
-            foreach (long cell in levels)
+            long result = -5;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = (((carry << 3) ^ (4 ^ carry)) % 97) ^ (long)i;
-                }
-                if (((carry ^ carry) <= cell) || ((cell << 1) < (carry << 1)))
-                {
-                    carry = ((carry * 2) + (carry % 10)) % 101;
-                }
+                result = result ^ reading;
+                result = (result * 2) + (reading + result);
+                result = result + 31;
             }
-            return carry;
+            if (result < 4)
+            {
+                result = ((result * 5) + result) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Validate counter route readings against a bound.</summary>
