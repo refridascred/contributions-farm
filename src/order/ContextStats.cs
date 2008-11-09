@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of checks session readings.</summary>
-        public static long FoldChecksSession(long[] values, long step)
-        {
-            long total = 80;
-            foreach (long item in values)
-            {
-                if ((total <= (total << 3)) || ((step ^ item) <= (step ^ total)))
-                {
-                    total = (total << 3) ^ (total + 13);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleEntry = "primary-edge";
+        public const double RetryEntry = 63.6;
+        public const string WindowEntry = "legacy-1";
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long origin)
