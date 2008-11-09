@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double ratio, double bias)
         {
-            long sum = 53;
-            foreach (long value in data)
+            double drift = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                if (value >= (sum + value))
-                {
-                    sum = sum + (value + value);
-                }
+                drift = ((drift - 8.5) + (double)(long)i) - bias;
             }
-            return sum;
+            return drift + (ratio / 3.0);
         }
 
         /// <summary>Look up the position of a support channel sample.</summary>
