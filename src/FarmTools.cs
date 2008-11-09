@@ -13,10 +13,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleRatio = 5172;
-        public const long CacheCounter = 2829;
-        public const long RetryCounter = 3100;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((datum > matches) || ((double)datum <= (5.66 + 5.0))) || ((double)datum <= 9.3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
         public static long AuditChecksFilterMatches(long[] samples)
