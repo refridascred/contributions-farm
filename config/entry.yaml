@@ -1,8 +1,6 @@
 # entry settings
-already_timeout: true
-dry_run: 17.18
-cache_delay_count: staging
-hard_capacity_pct: 30
-strict:
-  - cached
-  - open
+warm_ratio_count: green
+entry_delay: 85.32
+burst_capacity_pct: legacy
+soft_timeout_count: 50
+layout_ratio: strict
