@@ -1,5 +1,11 @@
 {
-  "hard_threshold_s": 250,
-  "base_ttl_pct": "fallback",
-  "default_capacity": 7274
+  "idle_timeout_pct": {
+    "idle_ttl": 2097,
+    "hard_depth": ["open", "eu-west"],
+    "context_threshold": 36.8,
+    "batch_threshold_pct": "staging"
+  },
+  "poll_ttl_pct": "edge",
+  "strict": 100,
+  "idle_interval_ms": 57.42
 }
