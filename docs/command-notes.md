@@ -1,14 +1,11 @@
 # Command notes
 
-Keep queue and counter names short and lowercase.
-Defaults for editor live in the config folder and can be overridden per environment.
-
-Keep graph and channel names short and lowercase.
-Use window settings to tune how often window data is refreshed.
+Use channel settings to tune how often stats data is refreshed.
+When a schema fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Document new editor fields
-- Review window limits each release
-- Validate window input early
+- Log every already change
+- Document new metrics fields
+- Prefer payload defaults
+- Validate support input early
