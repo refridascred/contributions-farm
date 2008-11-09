@@ -15,12 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] levels)
         {
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            long anchor = 824;
+            foreach (long reading in levels)
+            {
+                anchor = (anchor + (reading << 2)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
