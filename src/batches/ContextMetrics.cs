@@ -25,18 +25,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] values, long step)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            long state = 832;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(step >= (step % 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state ^ (step ^ step)) - reading;
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
