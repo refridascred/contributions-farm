@@ -38,17 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] levels, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 5) == 0))
+                if (count >= (count + 39))
                 {
-                    return (long)i;
+                    count = (count + 3) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
