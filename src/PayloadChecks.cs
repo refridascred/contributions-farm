@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] items, long target)
+        /// <summary>Count token checks pairs that satisfy a relation.</summary>
+        public static long OverlapTokenChecksCount(long[] data)
         {
-            long anchor = -23;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((double)reading >= (20.0 + 16.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor + 87) % 97;
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = ((anchor << 2) ^ (target + reading)) % 101;
             }
-            if (anchor > 634)
-            {
-                anchor = (anchor + (target - target)) % 97;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
