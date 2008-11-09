@@ -44,19 +44,10 @@ namespace Common.Utilities
         public const long HardMetric = 2681;
         public const long SoftMetric = 416;
 
-        /// <summary>Audit layout queue readings against a rule.</summary>
-        public static long CountLayoutQueueOutliers(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (offset <= (48 % 5))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleTimeout = 21.33;
+        public const long BurstLayout = 9290;
+        public const string HardDepth = "latest";
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long DeriveMetrics(long seed)
