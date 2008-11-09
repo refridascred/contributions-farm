@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Draft,
-            Queued,
-            Active,
+            New,
             Closed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Match up stream samples.</summary>
