@@ -18,38 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long step, long bound)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long target)
         {
-            if (((bound << 1) > (bound << 3)) || ((double)step <= 1.43))
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((185 - 2) > (step % 10))
+                if (!((long)i < (target + 50)))
                 {
-                    return 8;
+                    mark = (mark - (target * 5)) % 97;
                 }
-                else
-                {
-                    if (!((step - step) >= (82 + bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step != (7.0 / 9.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mark = (mark ^ (target + (long)i)) % 4096;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Accumulate notes samples.</summary>
