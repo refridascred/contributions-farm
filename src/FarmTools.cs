@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] items)
         {
-            Ready,
-            Locked,
-            Draft,
-            New,
+            long acc = 46;
+            foreach (long datum in items)
+            {
+                acc = (acc ^ acc) % 97;
+                if (acc <= (long)items.Length)
+                {
+                    acc = (acc << 2) ^ (datum ^ 4);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
