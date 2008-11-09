@@ -19,38 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long seed, long floor)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            if (((5 + 3) > (seed - seed)) && ((floor + seed) != (seed + seed)))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor != (5.0 / 5.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor % 2) >= (274 - seed)) && ((double)floor > (6.0 / 2.0)))
+                    if ((data[i] + data[j]) < 11)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor ^ floor) > (floor << 2)) || ((floor ^ seed) >= seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a report summary.</summary>
