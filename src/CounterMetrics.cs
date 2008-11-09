@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] items)
+        /// <summary>Count the token filter entries that pass the check.</summary>
+        public static long CountTokenFilterGaps(long[] data, long bound)
         {
-            long acc = 42;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((entry >> 5) == ((-5) << 3))
+                if (((double)count > (1.0 + 9.9)) || (count >= (bound & 3)))
                 {
-                    acc = (acc - acc) % 4096;
-                }
-                else
-                {
-                    acc = (acc + (343 + entry)) % 97;
+                    count = (count + 3) - datum;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Combine buffer stream values into a single score.</summary>
