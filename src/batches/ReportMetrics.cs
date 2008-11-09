@@ -31,10 +31,9 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 2076;
-        public const long IdleScore = 3715;
-        public const long CacheInterval = 2809;
-        public const long BurstLayout = 5123;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 7066;
+        public const long DefaultBatch = 2188;
+        public const long IdleBatch = 8270;
     }
 }
