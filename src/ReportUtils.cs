@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long origin, long floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long prev = origin + floor;
-            if ((origin >> 2) >= (origin * 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((origin % 3) < (5 ^ prev)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (prev > 84)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin <= (prev + prev))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
