@@ -19,13 +19,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Roll a checks editor counter forward.</summary>
+        public static long DeriveChecksEditor(long limit)
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                result = (result + (long)i) % 101;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = (result - (result - limit)) - (long)i2;
+                    result = (result << 3) ^ ((long)i * 2);
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
