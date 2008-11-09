@@ -39,10 +39,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowBudget = "primary-edge";
-        public const long BurstTimeout = 1348;
-        public const long SoftCache = 8681;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] values)
+        {
+            long total = 555;
+            foreach (long value in values)
+            {
+                total = total ^ (value + value);
+            }
+            return total % 4096;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextHits(long[] data)
