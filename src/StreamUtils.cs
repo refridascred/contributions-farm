@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleBudget = "standard-v2";
-        public const double RetryWidth = 8.07;
-        public const long MinDepth = 407;
-        public const long MinRatio = 848;
-        public const string WindowChecks = "local";
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 39.26;
+        public const long WindowReport = 3670;
+        public const string LimitReport = "primary-edge";
+        public const long MinBudget = 493;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportHits(long[] data)
