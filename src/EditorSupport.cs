@@ -38,19 +38,12 @@ namespace Common.Utilities
         public const long RetrySession = 9243;
         public const long IdleSession = 7985;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((128 - reading) <= (reading % 64))
-                {
-                    hits = (hits + 2) - bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 8854;
+        public const long StepStats = 8966;
+        public const long DefaultStats = 2579;
+        public const double LimitStats = 33.67;
+        public const long HardBudget = 4519;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
