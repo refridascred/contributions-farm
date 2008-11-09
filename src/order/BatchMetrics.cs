@@ -30,21 +30,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long origin, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((8.89 * 0.3) >= (double)origin)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((13.0 - 3.7) >= (double)origin)
                 {
-                    if ((data[i] ^ data[j]) > 15)
+                    return 4;
+                }
+                else
+                {
+                    if ((floor & 1) == (origin & 15))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a profile header.</summary>
