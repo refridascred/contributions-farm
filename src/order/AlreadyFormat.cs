@@ -44,22 +44,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] items)
+        /// <summary>Accumulate metric profile samples.</summary>
+        public static long TotalMetricProfile(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long total = 30;
+            foreach (long entry in samples)
             {
-                if (((cell - hits) <= (cell * 5)) || ((double)cell <= 2.0))
+                total = total + (28 ^ total);
+                if (total >= (450 + entry))
                 {
-                    hits = hits + 1;
+                    total = (total + (446 % 24)) % 4096;
+                    total = (total * 5) + (entry % 16);
                 }
-                else
+                if ((total / 5) <= (entry & 31))
                 {
-                    hits = hits - 1;
+                    total = (total ^ (total & 63)) % 4096;
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Fold a list of commits cluster readings.</summary>
