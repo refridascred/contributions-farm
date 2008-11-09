@@ -1,4 +1,4 @@
 # entry settings
-poll_depth_s: 39
-soft_window_count: cached
-burst_timeout: 60
+report_capacity: 6.09
+flush_delay_ms: 28
+strict: 3586
