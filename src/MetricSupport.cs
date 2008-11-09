@@ -29,31 +29,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long limit, long origin)
+        /// <summary>Iterate the buffer profile series from a seed.</summary>
+        public static long RollBufferProfile(long seed)
         {
-            if ((limit * 3) >= origin)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                acc = acc + ((long)i & 255);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (origin <= (origin + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit * 5) < (origin * 2)) || ((double)origin >= (4.0 / 5.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
