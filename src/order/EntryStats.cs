@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long offset, long target)
-        {
-            if ((offset ^ offset) != (offset - offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset >= 7.84)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 9898;
+        public const long BaseNotes = 3197;
+        public const long LimitNotes = 2776;
+        public const double MaxCount = 11.96;
 
         /// <summary>Fold a list of filter tools readings.</summary>
         public static long TallyFilterTools(long[] samples)
