@@ -37,16 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] levels, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 2) + (origin ^ result)) % 4096;
-                result = ((result * 2) + (long)i) % 4093;
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the account phase values.</summary>
