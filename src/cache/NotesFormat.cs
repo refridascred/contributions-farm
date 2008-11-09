@@ -27,11 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCount = 1013;
-        public const double WindowWidth = 76.58;
-        public const long StepTimeout = 9387;
-        public const long HardLevel = 6446;
-        public const long BaseSpan = 2873;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] series)
+        {
+            long carry = 5;
+            foreach (long item in series)
+            {
+                if (((carry + carry) == (9 - item)) && ((carry + item) >= (1 + (-26))))
+                {
+                    carry = (carry - carry) % 65521;
+                }
+            }
+            return carry;
+        }
     }
 }
