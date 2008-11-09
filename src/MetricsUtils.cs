@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] levels, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long origin, long limit)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long gap = origin + limit;
+            if (((gap + gap) >= limit) && ((7 + origin) < 52))
             {
-                if (count > (value << 1))
+                return 2;
+            }
+            else
+            {
+                if ((4.0 - 7.7) < (double)origin)
                 {
-                    count = (count + 2) - seed;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin >= (gap * 5)) && (50 < gap))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (20.0 < (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
