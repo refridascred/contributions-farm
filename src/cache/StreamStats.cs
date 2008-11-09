@@ -51,9 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 3808;
-        public const long BatchToken = 3920;
-        public const long CacheToken = 5444;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] levels, long origin)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
