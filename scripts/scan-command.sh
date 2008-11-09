@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached staging stable; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-legacy}"
+mode="${1:-green}"
 case "${mode}" in
-    local)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=16
-log "limit is ${COMMAND_LIMIT}"
