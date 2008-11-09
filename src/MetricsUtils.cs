@@ -30,15 +30,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double gain, double bias)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            double load = bias;
-            for (int i = 0; i < 2; i++)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                load = ((load + 8.6) - (double)(long)i) - gain;
+                result = result ^ (result * 5);
+                result = ((result * 4) + (long)i) % 97;
             }
-            return load + (3.0 + bias);
+            return result;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
