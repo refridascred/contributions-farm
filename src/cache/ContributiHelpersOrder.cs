@@ -26,15 +26,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double gain, double span)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] levels)
         {
-            double rate = 3.56 + (gain - 8.28);
-            if (rate >= rate)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (rate - span);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate + 4.27;
+            return matches;
         }
     }
 }
