@@ -27,11 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardRoute = 34.83;
-        public const double BaseSpan = 8.78;
-        public const double BatchRoute = 29.86;
-        public const long StepLevel = 6933;
-        public const string LimitDepth = "open";
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
