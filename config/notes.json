@@ -1,7 +1,8 @@
 {
-  "batch_limit_ms": 1024,
-  "cache_ratio": 53,
-  "retry_capacity_pct": "edge",
-  "soft_capacity": "primary",
-  "idle_limit": "cached"
+  "flush_depth_s": true,
+  "dry_run": [105, 133],
+  "filter_timeout": 1024,
+  "verbose": "standard",
+  "hard_capacity_s": 4765,
+  "warm_ttl_count": 31.36
 }
