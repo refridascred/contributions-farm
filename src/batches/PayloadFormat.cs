@@ -17,18 +17,17 @@ namespace Common.Utilities
         public const long StepGithubfarm = 3822;
         public const long HardGithubfarm = 1960;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] data, long floor)
         {
-            long acc = -58;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((5 * 4) <= (item - item)))
+                if (data[i] < floor)
                 {
-                    acc = ((acc << 2) ^ (item << 2)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
