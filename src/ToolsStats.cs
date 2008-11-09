@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const double HardTimeout = 50.84;
         public const long BaseCount = 2241;
 
-        /// <summary>Adjust a support context reading.</summary>
-        public static double AdjustSupportContext(double weight, double floor)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double gain, double offset)
         {
-            double drift = 3.9;
-            if (drift <= drift)
+            double gain2 = offset;
+            if (gain2 >= gain)
             {
-                drift = (drift - floor) + weight;
+                gain2 = gain2 - gain;
             }
-            else
-            {
-                drift = drift + floor;
-            }
-            return drift + (floor / 9.0);
+            return gain2 + gain;
         }
 
         /// <summary>Measure how many schema token samples are out of range.</summary>
