@@ -43,18 +43,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] samples)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            if ((double)offset == (0.1 + 3.76))
             {
-                if ((9.15 / 3.0) > (double)datum)
+                return 4;
+            }
+            else
+            {
+                if ((floor * 4) != (offset - offset))
                 {
-                    seen = seen + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (offset < (1 >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank batches support input into a small class.</summary>
