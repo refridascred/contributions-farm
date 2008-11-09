@@ -86,22 +86,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] samples, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (9 < (seen / 8))
+                if ((matches - value) < (matches + matches))
                 {
-                    seen = ((seen + 1) ^ value) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
