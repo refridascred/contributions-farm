@@ -69,12 +69,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Match up graph editor samples.</summary>
+        public static long MatchGraphEditorCount(long[] items)
         {
-            Failed,
-            Pending,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
