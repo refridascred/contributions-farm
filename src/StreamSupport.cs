@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] levels, long step)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long mix = 5;
-            foreach (long value in levels)
-            {
-                if (!(step >= mix))
-                {
-                    mix = (mix - step) ^ value;
-                }
-            }
-            return mix;
+            public long Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
