@@ -41,17 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long floor)
+        /// <summary>Validate counter route readings against a bound.</summary>
+        public static bool GuardCounterRouteBounds(long[] samples, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                total = ((total * 3) + (total & 255)) % 101;
-                total = (total * 4) + (floor % 16);
-                total = ((total * 3) + (long)i) % 1000;
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
