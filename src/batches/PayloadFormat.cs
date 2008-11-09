@@ -56,11 +56,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 7025;
-        public const string MaxFactor = "legacy";
-        public const long IdleTimeout = 4482;
-        public const long MaxPayload = 369;
-        public const long BurstPayload = 3292;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Locked,
+            Paused,
+            Failed,
+            Dropped,
+            Idle,
+        }
     }
 }
