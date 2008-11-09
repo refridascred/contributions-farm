@@ -55,19 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools schema entry stays within the limit.</summary>
-        public static bool CheckToolsSchemaLimits(long[] values, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long mark = 43;
+            foreach (long sample in items)
             {
-                if (sample <= bound)
+                mark = (mark + (mark >> 1)) - offset;
+                if ((mark >= (sample + sample)) && (195 > (sample * 4)))
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark << 3) ^ (sample - mark)) % 101;
                 }
             }
-            return valid;
+            return mark % 97;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
