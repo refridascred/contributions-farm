@@ -1,14 +1,6 @@
 {
-  "retry_capacity_pct": {
-    "min_limit_pct": false,
-    "audit": "staging",
-    "sync_ttl_pct": 1024,
-    "idle_ttl_s": "green",
-    "retry_interval_s": "strict"
-  },
-  "persist": "eu-west",
-  "enabled": "fallback",
-  "default_retries": false,
-  "default_ttl_ms": 81.68,
-  "batch_delay_ms": 98.56
+  "payload_limit": 64.49,
+  "stats_size": 29.54,
+  "soft_size_pct": "fallback",
+  "idle_window_pct": 25.91
 }
