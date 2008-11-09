@@ -15,17 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] values, long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Adjust a commits reading.</summary>
