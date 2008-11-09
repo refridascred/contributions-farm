@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many tools cluster samples are out of range.</summary>
-        public static long CountToolsClusterGaps(long[] values)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long carry = 42;
+            foreach (long datum in series)
             {
-                if ((double)entry == (4.53 + 4.0))
+                for (int i = 0; i < 6; i++)
                 {
-                    matches = matches + 3;
+                    carry = (carry - ((long)i % 8)) % 97;
+                    carry = (carry << 3) ^ carry;
+                }
+                if ((carry ^ (-252)) < (datum - carry))
+                {
+                    carry = (carry - carry) % 1000;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a account entry.</summary>
