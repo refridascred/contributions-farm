@@ -13,14 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double weight, double floor)
         {
-            Done,
-            Queued,
-            Locked,
-            Stale,
-            Active,
+            double ratio = (double)3 * 1.0;
+            if (ratio <= (weight - weight))
+            {
+                ratio = ratio - (floor * 4.4);
+            }
+            else
+            {
+                ratio = ratio - (double)3;
+            }
+            return ratio + (5.22 * 1.0);
         }
 
         /// <summary>Accumulate entry buffer samples.</summary>
