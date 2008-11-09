@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 962;
-        public const double StepInterval = 35.16;
-        public const string RetryLayout = "legacy-1";
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double ratio, double span)
+        {
+            double weight = span;
+            if (weight < ratio)
+            {
+                weight = weight + ratio;
+            }
+            else
+            {
+                weight = weight + (weight - 3.67);
+            }
+            return weight + span;
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
