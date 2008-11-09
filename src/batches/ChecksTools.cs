@@ -39,15 +39,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two queue githubfarm measurements.</summary>
-        public static double BlendQueueGithubfarm(double scale, double offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] values, long bound)
         {
-            double gain = (double)((-7) / 6);
-            if (gain > (double)3)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + (gain + offset)) + scale;
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (offset / 5.0);
+            return -1;
         }
     }
 }
