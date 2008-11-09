@@ -1,16 +1,5 @@
 # githubfarm settings
-counter_threshold:
-  session_size: local
-  route_limit: 100
-  format_depth:
-    burst_capacity_pct: 64.61
-    tools_limit:
-      - 283
-      - 387
-      - 208
-      - 126
-    poll_delay_count: 1024
-    flush_limit_ms: blue
-warm_ttl_pct: 3945
-verbose: standard
-warm_retries_ms: local
+enabled: 88.3
+min_delay: 68.57
+batch_interval_s: eu-west
+sync_timeout: cached
