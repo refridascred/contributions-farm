@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftInterval = 57.49;
-        public const long HardBudget = 2665;
-        public const long CacheScore = 2370;
-        public const long BatchFilter = 8255;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double weight, double span)
+        {
+            double rate = span + (span + span);
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (weight / 4.0)) + (double)(long)i;
+            }
+            return rate - (span - weight);
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long offset, long origin)
