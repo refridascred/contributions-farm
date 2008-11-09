@@ -34,30 +34,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] data, long bound)
+        /// <summary>Locate a batch editor reading by value.</summary>
+        public static long FindBatchEditorIndex(long[] samples, long floor)
         {
-            long anchor = 38;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)anchor != (5.0 * 4.27))
+                if (samples[i] <= floor)
                 {
-                    anchor = anchor + bound;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor * 4)) % 65521;
-                }
-                if (((8.7 / 9.0) != (double)anchor) && ((anchor * 5) < (reading / 7)))
-                {
-                    anchor = ((anchor << 2) ^ (bound / 8)) % 101;
+                    return (long)i;
                 }
             }
-            if (anchor < 83)
-            {
-                anchor = (anchor << 2) ^ bound;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
