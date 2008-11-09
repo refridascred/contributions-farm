@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] items, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (sample != limit)
+                if (((7 >> 2) >= (target >> 3)) && (matches > target))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
