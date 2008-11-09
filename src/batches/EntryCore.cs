@@ -39,16 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double ratio, double bias)
-        {
-            double ratio2 = (double)807 / 8.0;
-            if (ratio2 < ratio2)
-            {
-                ratio2 = (ratio2 + ratio) + bias;
-            }
-            return ratio2 - 5.6;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinStats = 38.29;
+        public const double CacheFactor = 85.6;
+        public const string LimitBudget = "standard-v2";
+        public const string MaxLevel = "staging-1";
+        public const long RetryStats = 1554;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
