@@ -39,11 +39,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowCluster = "stable";
-        public const long CacheCluster = 3064;
-        public const long BurstCluster = 5536;
-        public const long BaseDepth = 9497;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Find the first metrics contributi entry that matches the target.</summary>
         public static long LocateMetricsContributiIndex(long[] items, long offset)
