@@ -8,22 +8,20 @@ log() {
 
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 3))
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-fallback}"
+mode="${1:-legacy}"
 case "${mode}" in
-    latest)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in green primary staging legacy; do
+    log "checking ${item}"
+done
