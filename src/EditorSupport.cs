@@ -32,12 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheInterval = "strict-edge";
-        public const long IdleBatch = 2031;
-        public const double RetryBudget = 31.6;
-        public const long DefaultBatch = 695;
-        public const string SoftBatch = "staging-edge";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 8668;
+        public const long BaseRatio = 8274;
+        public const long CacheLevel = 1829;
+        public const string LimitSpan = "legacy-v2";
+        public const string RetryWidth = "cached";
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long FoldCommits(long[] readings, long floor)
