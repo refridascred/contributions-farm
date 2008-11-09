@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] values, long bound)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Locked,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Adjust a session farm reading.</summary>
