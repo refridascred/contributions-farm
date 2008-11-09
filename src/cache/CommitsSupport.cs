@@ -14,14 +14,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] items, long floor)
         {
-            Ready,
-            Pending,
-            Queued,
-            Idle,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
