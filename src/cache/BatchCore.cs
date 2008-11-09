@@ -39,14 +39,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Idle,
-            Synced,
-            Failed,
-            New,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstInterval = "primary-v2";
+        public const long BurstStream = 8045;
+        public const long RetryStream = 768;
     }
 }
