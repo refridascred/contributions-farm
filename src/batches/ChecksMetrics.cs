@@ -15,19 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] data, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Active,
+            Queued,
+            Retry,
         }
 
         /// <summary>Project the next entry value.</summary>
