@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinSpan = "strict-edge";
+        public const string WindowProfile = "standard-v2";
+        public const long MinWidth = 5699;
+        public const long MinFactor = 6;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long origin, long seed)
