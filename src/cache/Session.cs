@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string StepWidth = "primary-v2";
         public const long BatchInterval = 8657;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] levels, long target)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (64 < (target & 3))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
+            Draft,
+            Queued,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a metric options.</summary>
