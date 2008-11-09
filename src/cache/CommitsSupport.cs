@@ -14,12 +14,27 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultScore = 1565;
-        public const long DefaultSupport = 1750;
-        public const long WindowSpan = 7002;
-        public const long LimitTimeout = 9613;
-        public const long HardSupport = 2604;
+        /// <summary>Digest a series of profile batches entries.</summary>
+        public static long FoldProfileBatches(long[] readings)
+        {
+            long sum = 23;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) < (entry + sum))
+                {
+                    sum = ((sum * 5) + (entry * 5)) % 255;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (entry ^ sum);
+                }
+            }
+            if (sum > 869)
+            {
+                sum = (sum - (long)readings.Length) % 4096;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long CombinePayload(long[] readings)
