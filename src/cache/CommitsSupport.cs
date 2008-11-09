@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a filter command reading by value.</summary>
-        public static long SeekFilterCommandIndex(long[] readings, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (readings[i] <= seed)
+                if (reading < step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
