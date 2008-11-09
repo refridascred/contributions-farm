@@ -32,15 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two buffer profile measurements.</summary>
-        public static double BlendBufferProfile(double weight, double span)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            double bias = (double)((-741) / 5);
-            for (int i = 0; i < 5; i++)
-            {
-                bias = ((bias - (weight - weight)) + (double)(long)i) - span;
-            }
-            return bias + (bias - 0.7);
+            Draft,
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Audit command graph readings against a rule.</summary>
