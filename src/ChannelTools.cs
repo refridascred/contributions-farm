@@ -29,19 +29,14 @@ namespace Common.Utilities
         public const long BurstSpan = 1597;
         public const long SoftOrder = 3328;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] levels, long seed)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Draft,
+            Retry,
+            Paused,
+            Failed,
         }
     }
 }
