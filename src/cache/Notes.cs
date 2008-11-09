@@ -53,12 +53,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] items, long origin)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
