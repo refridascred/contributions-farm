@@ -26,21 +26,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = 3.56 + (gain - 8.28);
+            if (rate >= rate)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate + (rate - span);
             }
-            return seen;
+            return rate + 4.27;
         }
     }
 }
