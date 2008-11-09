@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstLevel = "legacy-1";
-        public const long DefaultTools = 4078;
-        public const string RetryTools = "alpha";
-        public const double StepFactor = 61.9;
-        public const long LimitTools = 8761;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] samples, long bound)
+        {
+            long total = 39;
+            foreach (long reading in samples)
+            {
+                if (!((bound + bound) >= (reading >> 1)))
+                {
+                    total = ((total << 3) ^ (7 - 197)) % 97;
+                }
+                else
+                {
+                    total = (total ^ total) % 255;
+                }
+            }
+            if (total > 6)
+            {
+                total = total + 2;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many command filter samples are out of range.</summary>
         public static long MeasureCommandFilterHits(long[] data, long offset)
