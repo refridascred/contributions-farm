@@ -16,25 +16,19 @@ namespace Common.Utilities
             return scale - (scale * 11.0);
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long limit, long offset)
+        /// <summary>Adjust a queue stream reading.</summary>
+        public static double ProjectQueueStream(double bias, double offset)
         {
-            long diff = limit + offset;
-            if ((offset + limit) >= diff)
+            double load = (double)(5 - 47);
+            if (load > (offset / 5.0))
             {
-                return 7;
+                load = (load + (load + load)) + bias;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((diff - diff) <= (offset / 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
+                load = (load - (load / 3.0)) + (double)(long)i;
             }
+            return load + offset;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
