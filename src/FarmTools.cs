@@ -17,13 +17,23 @@ namespace Common.Utilities
         public const long StepOrder = 4093;
         public const long SoftSpan = 7503;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] values)
         {
-            Closed,
-            Dropped,
-            Paused,
-            Draft,
+            long anchor = 92;
+            foreach (long sample in values)
+            {
+                if ((double)2 > (double)anchor)
+                {
+                    anchor = (anchor - (anchor << 1)) + sample;
+                }
+                anchor = ((anchor << 3) ^ anchor) % 1000;
+            }
+            if (anchor < 206)
+            {
+                anchor = (anchor - (anchor >> 1)) % 255;
+            }
+            return anchor;
         }
     }
 }
