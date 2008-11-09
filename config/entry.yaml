@@ -1,4 +1,7 @@
 # entry settings
-context_threshold: 83.95
-poll_limit_pct: green
-commits_window: 58
+retry_retries: true
+idle_delay_ms: primary
+entry_depth: 29
+tools_timeout: true
+farm_depth: legacy
+stream_size: 31.83
