@@ -68,10 +68,24 @@ namespace Common.Utilities
         public const long BatchWidth = 6590;
         public const double MaxDepth = 44.28;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseCommits = "cached-1";
-        public const long BaseBudget = 1753;
-        public const long BatchCommits = 2841;
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] series, long bound)
+        {
+            long state = 1;
+            foreach (long reading in series)
+            {
+                state = (((state << 3) ^ ((-68) & 1)) % 4096) + reading;
+                if ((721 << 2) > (bound / 6))
+                {
+                    state = (state - 307) % 4096;
+                }
+            }
+            if (state < 78)
+            {
+                state = (state - (62 + bound)) % 97;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double DefaultSession = 18.73;
