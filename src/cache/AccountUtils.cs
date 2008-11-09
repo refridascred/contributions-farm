@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 45.84;
-        public const long MaxRatio = 905;
-        public const string BurstFactor = "legacy-v2";
-        public const long BaseBudget = 5360;
-        public const long BaseFactor = 1843;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!((174 >> 1) == (reading & 3)))
+                {
+                    matches = (matches + 1) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double MinContributi = 85.55;
