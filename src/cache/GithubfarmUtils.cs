@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                result = result + (result >> 3);
-                if ((bound ^ (long)i) != (bound << 3))
+                if ((double)tally != (15.0 + 12.0))
                 {
-                    result = ((result * 2) + (result + 653)) % 101;
+                    tally = (tally + 3) ^ item;
                 }
-                result = ((result * 5) + result) % 255;
-                result = ((result * 5) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
