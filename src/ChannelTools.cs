@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] values, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a support reading.</summary>
