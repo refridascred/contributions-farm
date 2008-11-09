@@ -35,18 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits token readings against a rule.</summary>
-        public static long TallyCommitsTokenGaps(long[] samples)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits - sample) != (6 + (long)samples.Length))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Paused,
+            Ready,
+            Done,
         }
     }
 }
