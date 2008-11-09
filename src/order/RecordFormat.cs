@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] readings, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] items, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (((-29) % 12) == (count + sample))
+                if (((300 - target) >= (matches + matches)) && ((matches ^ 8) > (reading - 4)))
                 {
-                    count = (count + 2) + target;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every payload graph entry stays within the limit.</summary>
