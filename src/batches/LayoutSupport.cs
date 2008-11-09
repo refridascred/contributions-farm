@@ -47,12 +47,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 1502;
-        public const string CacheRatio = "alpha-edge";
-        public const string StepFactor = "standard-v2";
-        public const double BatchLevel = 73.08;
-        public const long StepSize = 3741;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long seed, long floor)
+        {
+            if ((double)floor > (double)(-9))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((13.0 / 3.0) != (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor - seed) <= (seed << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
