@@ -46,39 +46,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long offset, long offset2)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            long offset3 = offset ^ offset2;
-            if ((double)offset3 >= (double)offset2)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset2 < (5.04 / 3.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset2 ^ offset2) != (offset2 * 2))
+                    if ((readings[i] + readings[j]) > 8)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset2 % 24) < (offset2 / 9))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
