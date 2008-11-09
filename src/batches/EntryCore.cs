@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a editor order value against two limits.</summary>
-        public static long BucketEditorOrder(long target, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] items, long step)
         {
-            if (2 >= (origin % 24))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (target <= origin)
+                if (((tally << 2) != (entry % 2)) || (74 <= (tally + entry)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin >> 5) != (origin - origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(4.1 >= (double)target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 3) - step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
