@@ -17,12 +17,21 @@ namespace Common.Utilities
         public const double BurstFormat = 2.96;
         public const string HardFormat = "staging";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepScore = 2505;
-        public const long BaseBudget = 4948;
-        public const long CacheAlready = 3778;
-        public const long BatchAlready = 1602;
-        public const long MinSize = 1577;
+        /// <summary>Fold a list of support schema readings.</summary>
+        public static long CombineSupportSchema(long[] values)
+        {
+            long score = 690;
+            foreach (long item in values)
+            {
+                score = (score * 3) + (item + 831);
+                score = ((score << 2) ^ (item + score)) % 65521;
+            }
+            if (score > 0)
+            {
+                score = (score * 5) + (score + score);
+            }
+            return score;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesHits(long[] samples)
