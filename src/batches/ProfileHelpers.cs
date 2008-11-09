@@ -40,19 +40,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] readings, long offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long result = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell < offset)
+                if (((-3) % 60) == (offset << 2))
                 {
-                    flag = false;
-                    break;
+                    result = ((result * 2) + result) % 4096;
+                    result = (result + (offset + offset)) % 65521;
                 }
+                else
+                {
+                    result = result ^ (offset / 9);
+                }
+                result = ((result << 2) ^ (offset ^ result)) % 101;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
