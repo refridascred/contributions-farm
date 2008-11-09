@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Failed,
-            New,
-            Draft,
-            Synced,
-            Queued,
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Find the first batches window entry that matches the target.</summary>
