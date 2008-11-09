@@ -1,8 +1,5 @@
 {
-  "filter_ratio": ["edge", "blue"],
-  "buffer_interval": true,
-  "queue_ratio": ["latest", "edge", "blue"],
-  "default_capacity_count": 30,
-  "batch_delay_s": true,
-  "order_capacity": "latest"
+  "batches_retries": "blue",
+  "max_ttl": false,
+  "poll_ttl_count": 1024
 }
