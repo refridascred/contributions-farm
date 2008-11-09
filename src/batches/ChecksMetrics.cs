@@ -58,39 +58,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long origin, long target)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long gap = origin + target;
-            if (4.62 > (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (gap >= 55)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + target) >= (-42))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target + origin) != (origin ^ origin)) || ((origin * 3) < (gap & 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
