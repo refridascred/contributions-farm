@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] series)
         {
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long mix = 0;
+            foreach (long reading in series)
+            {
+                mix = mix ^ (reading ^ mix);
+                if ((mix < (mix & 127)) || ((double)reading <= (5.55 * 4.6)))
+                {
+                    mix = mix + (mix & 31);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the checks state values.</summary>
