@@ -30,24 +30,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long origin, long origin2)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            if ((double)origin2 <= (2.4 / 9.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((20.0 + 3.27) <= (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
