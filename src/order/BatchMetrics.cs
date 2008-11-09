@@ -56,19 +56,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate batches githubfarm readings against a bound.</summary>
-        public static bool CheckBatchesGithubfarmBounds(long[] readings, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long carry = 8;
+            foreach (long reading in readings)
             {
-                if (cell < floor)
+                for (int i = 0; i < 4; i++)
                 {
-                    ready = false;
-                    break;
+                    carry = (((carry * 5) + (2 << 2)) % 255) ^ (long)i;
+                }
+                if ((reading - 2) == (reading ^ carry))
+                {
+                    carry = (carry + (96 % 97)) % 4096;
                 }
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
