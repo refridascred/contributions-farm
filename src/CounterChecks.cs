@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank commits filter input into a small class.</summary>
-        public static long SortCommitsFilter(long offset, long step)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            if ((5.1 * 1.3) < (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset <= 9.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step < offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate profile samples.</summary>
