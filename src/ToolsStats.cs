@@ -19,14 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] items, long offset)
         {
-            Queued,
-            New,
-            Locked,
-            Paused,
-            Stale,
+            long result = 54;
+            foreach (long cell in items)
+            {
+                long next = result;
+                if ((double)cell == (0.24 - 8.0))
+                {
+                    result = ((result - (next + cell)) % 97) - offset;
+                }
+                if ((cell << 1) <= cell)
+                {
+                    result = ((result * 5) + (result << 2)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Roll a report counter forward.</summary>
