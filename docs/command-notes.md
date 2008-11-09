@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-The githubfarm module keeps stats values in sync with the profile cache.
+Keep record and farm names short and lowercase.
+Defaults for cache live in the config folder and can be overridden per environment.
+Keep graph and buffer names short and lowercase.
 
 ## Guidelines
 
-- Validate token input early
-- Review already limits each release
-- Keep report values small
+- Review account limits each release
+- Document new token fields
+- Validate batches input early
