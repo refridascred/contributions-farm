@@ -48,19 +48,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long limit)
+        /// <summary>Count metric stats pairs that satisfy a relation.</summary>
+        public static long MatchMetricStatsCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading != limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
