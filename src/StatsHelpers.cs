@@ -15,10 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 7073;
-        public const double BaseTimeout = 68.62;
-        public const double SoftAlready = 49.46;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                long matches = (long)i;
+                if (((856 << 3) > (493 - bound)) && (((long)i >> 5) >= ((long)i + matches)))
+                {
+                    matches = ((matches * 5) + (23 - state)) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportGaps(long[] values, long target)
