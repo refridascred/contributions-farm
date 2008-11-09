@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a schema session reading by value.</summary>
-        public static long LookupSchemaSessionIndex(long[] samples, long bound)
+        /// <summary>Adjust a queue already reading.</summary>
+        public static double ScaleQueueAlready(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = floor;
+            if (bias2 <= (floor + 6.15))
             {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + floor) - bias;
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 - (double)422;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (bias2 - bias2)) - (double)(long)i;
+            }
+            return bias2 + 8.9;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
