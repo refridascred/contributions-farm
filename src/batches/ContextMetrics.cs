@@ -42,12 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxRatio = 2470;
+        public const double DefaultStream = 72.85;
+        public const string MaxScore = "primary-edge";
+        public const long BurstStream = 6505;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long RetryChannel = 9043;
