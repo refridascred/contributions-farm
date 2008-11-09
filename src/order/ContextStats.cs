@@ -17,19 +17,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double weight, double offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double bias, double floor)
         {
-            double mean = (double)((-6) << 1);
-            if (mean >= (double)6)
+            double gain = (bias + bias) / 4.0;
+            if (gain >= floor)
             {
-                mean = (mean + weight) - offset;
+                gain = gain - (gain * 7.0);
             }
             else
             {
-                mean = mean - (double)1;
+                gain = gain - (double)81;
             }
-            return mean - (double)9;
+            return gain - (9.7 * 9.0);
         }
 
         /// <summary>Iterate the context queue series from a seed.</summary>
