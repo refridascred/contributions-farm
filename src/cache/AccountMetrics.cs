@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many support stats samples are out of range.</summary>
-        public static long AuditSupportStatsGaps(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long mix = 0;
+            foreach (long datum in values)
             {
-                if ((seen ^ 36) >= seen)
+                if ((double)offset >= (2.6 - 20.0))
                 {
-                    seen = (seen + 1) + datum;
+                    mix = mix + (offset - datum);
                 }
             }
-            return seen;
+            if (mix > 2)
+            {
+                mix = (mix + (offset + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a buffer info.</summary>
