@@ -18,20 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] values)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] series)
         {
-            long sum = 58;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum + (sum >> 2)) % 101) + item;
-                sum = (sum ^ ((long)values.Length + sum)) % 4096;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (sum > 762)
-            {
-                sum = sum ^ (sum << 1);
-            }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Locate a batch editor reading by value.</summary>
