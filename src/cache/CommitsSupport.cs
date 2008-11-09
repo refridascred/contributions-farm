@@ -39,19 +39,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] data, long step)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
