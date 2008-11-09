@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] series)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            long total = 7;
-            foreach (long item in series)
+            long sum = 6;
+            foreach (long value in readings)
             {
-                total = (total * 5) + (item >> 4);
+                sum = (((sum << 3) ^ (sum << 2)) % 65521) ^ value;
             }
-            return total;
+            return sum % 1000;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
