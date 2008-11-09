@@ -69,21 +69,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] samples)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 5;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total ^ (reading ^ total)) % 1000) + step;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
