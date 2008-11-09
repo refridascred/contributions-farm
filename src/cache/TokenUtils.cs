@@ -16,13 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] data, long limit)
         {
-            public string Weight { get; set; } = "";
-            public bool Count { get; set; }
-            public double Owner { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm layout readings.</summary>
