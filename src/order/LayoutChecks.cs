@@ -45,23 +45,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double floor)
+        /// <summary>Look up the position of a window route sample.</summary>
+        public static long LookupWindowRouteIndex(long[] items, long target)
         {
-            double drift = (double)(97 * 3);
-            if (drift > weight)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - (7.0 - floor);
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (6.3 - floor);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 9.81) + (double)(long)i;
-            }
-            return drift + drift;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
