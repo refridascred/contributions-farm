@@ -1,15 +1,9 @@
 # githubfarm settings
-checks_depth:
-  hard_size: 1320
-  min_depth_count:
-    soft_interval: 7.64
-    burst_ratio: 16
-    warm_interval: 250
-    window_window: 15
-  flush_ttl_s: 1024
-  persist: 65
-  order_ratio: true
-  max_ratio_count: false
-warm_size: 51.28
-compress: 20
-entry_capacity: 46
+sync_interval_ms: 49.07
+cache_window_pct:
+  - green
+  - edge
+  - cached
+cache_threshold_ms: standard
+farm_size: legacy
+default_ratio_count: 32.53
