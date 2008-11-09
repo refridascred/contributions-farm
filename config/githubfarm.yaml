@@ -1,10 +1,26 @@
 # githubfarm settings
-min_timeout: local
-default_delay: 71
-hard_ratio: open
-payload_retries: 73.54
-context_delay: 5223
-base_depth_s:
-  - standard
-  - eu-west
-  - latest
+compress:
+  max_retries: fallback
+  soft_size_s: 62.76
+  record_delay: 1024
+  warm_delay_count:
+    cache_delay_pct: false
+    burst_threshold:
+      - green
+      - blue
+      - legacy
+    notes_interval: 15.93
+    default_interval: standard
+    dry_run:
+      - standard
+      - standard
+    retry_limit_s: 45
+  payload_ratio:
+    enabled: 1
+    soft_ratio_pct: false
+    burst_window_count: false
+    strict: blue
+    flush_ttl_pct: 52.22
+    flush_limit_ms: false
+warm_timeout_pct: true
+audit: false
