@@ -26,11 +26,31 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long bound, long step)
         {
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
+            if (((step + step) == (bound * 5)) && ((step - step) > (bound ^ bound)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step > (95 + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound >= (2.3 / 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metric buffer samples are out of range.</summary>
