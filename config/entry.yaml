@@ -1,10 +1,4 @@
 # entry settings
-idle_retries_s: 1024
-compress: 1024
-soft_retries_count: 18
-order_depth:
-  - 500
-  - 284
-  - 320
-sync_capacity: true
-burst_capacity_s: 71
+context_threshold: 83.95
+poll_limit_pct: green
+commits_window: 58
