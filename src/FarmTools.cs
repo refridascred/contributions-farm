@@ -20,28 +20,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                long gap = result;
-                if (!((double)floor <= (8.0 / 3.0)))
-                {
-                    gap = ((gap << 2) ^ (long)i) % 255;
-                }
-                if ((result % 24) == (long)i)
-                {
-                    result = (result + (gap - result)) % 255;
-                }
-                else
-                {
-                    result = (result + gap) % 101;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Closed,
+            Dropped,
+            Paused,
+            Draft,
         }
     }
 }
