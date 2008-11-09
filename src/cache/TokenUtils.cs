@@ -19,18 +19,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score - (score - score)) % 1000;
-                long delta = (84 << 1) / 7;
-                score = (score - (delta << 3)) % 4096;
-                score = ((score * 3) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
