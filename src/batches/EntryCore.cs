@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] items, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long acc = 4;
+            foreach (long sample in data)
             {
-                if (((tally << 2) != (entry % 2)) || (74 <= (tally + entry)))
-                {
-                    tally = (tally + 3) - step;
-                }
+                acc = (acc ^ (37 >> 1)) + target;
+                acc = (acc << 3) ^ (sample ^ 758);
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
