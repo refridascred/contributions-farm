@@ -35,19 +35,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] values, long bound)
+        /// <summary>Look up the position of a editor account sample.</summary>
+        public static long SeekEditorAccountIndex(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= bound)
+                if ((data[i] <= limit) && ((data[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
