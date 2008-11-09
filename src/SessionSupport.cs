@@ -22,17 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] values, long origin)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the checks state values.</summary>
