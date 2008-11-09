@@ -14,18 +14,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] values)
+        /// <summary>Combine command schema values into a single score.</summary>
+        public static long TotalCommandSchema(long[] series)
         {
-            long result = -692;
-            foreach (long sample in values)
+            long sum = 919;
+            foreach (long sample in series)
             {
-                if ((sample ^ result) > (result - sample))
+                if (sample >= (sample >> 5))
                 {
-                    result = (result - (0 * 4)) % 255;
+                    sum = ((sum * 5) + (sample % 60)) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum + sample)) % 4096;
+                }
+                if ((0.7 + 6.6) == (double)sample)
+                {
+                    break;
                 }
             }
-            return result;
+            return sum % 4096;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
