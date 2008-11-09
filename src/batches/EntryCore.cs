@@ -39,17 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] data, long seed)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio2 = (double)807 / 8.0;
+            if (ratio2 < ratio2)
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 + ratio) + bias;
             }
-            return -1;
+            return ratio2 - 5.6;
         }
 
         /// <summary>Hold a metrics stats.</summary>
