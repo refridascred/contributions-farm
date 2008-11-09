@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] values, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((values[i] <= seed) && ((values[i] % 5) != 0))
+                if (datum < seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Check that every channel support entry stays within the limit.</summary>
