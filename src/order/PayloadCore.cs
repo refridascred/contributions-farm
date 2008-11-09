@@ -41,27 +41,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] data, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] levels, long bound)
         {
-            long result = 5;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (result > 4)
+                if (entry < bound)
                 {
-                    result = result + value;
-                }
-                if (value > (bound - 35))
-                {
-                    result = (result ^ bound) % 4096;
-                    result = result ^ (value - value);
-                }
-                if ((value * 5) > result)
-                {
-                    result = (result + (result + value)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
     }
 }
