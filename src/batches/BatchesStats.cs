@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Draft,
+            Stale,
+            Locked,
             Paused,
-            Failed,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
