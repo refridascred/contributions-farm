@@ -47,12 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            Paused,
+            Queued,
+            Synced,
+            Failed,
         }
     }
 }
