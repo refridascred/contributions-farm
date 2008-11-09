@@ -12,11 +12,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetrySize = 1282;
-        public const long CacheAccount = 5228;
-        public const long BatchAccount = 5761;
-        public const double MinFactor = 65.09;
+        /// <summary>Roll a metric window counter forward.</summary>
+        public static long IterateMetricWindow(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 5) + (55 ^ 83)) % 1000;
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a tools command counter forward.</summary>
         public static long IterateToolsCommand(long origin)
