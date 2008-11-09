@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "latest-1";
-        public const long RetrySize = 2424;
-        public const string BurstSize = "local-v2";
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderMatches(long[] readings, long offset)
