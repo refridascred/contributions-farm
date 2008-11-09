@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long seed, long floor)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long diff = seed ^ floor;
+            if (diff > 81)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed + 705) > (seed / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Roll a record counter forward.</summary>
