@@ -33,11 +33,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 9379;
-        public const string StepLayout = "primary-edge";
-        public const long MinBudget = 9632;
-        public const double MaxWidth = 43.76;
-        public const string LimitLayout = "strict-v2";
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] readings)
+        {
+            long anchor = 337;
+            foreach (long reading in readings)
+            {
+                anchor = ((anchor + (anchor - 7)) % 97) + reading;
+            }
+            return anchor % 1000;
+        }
     }
 }
