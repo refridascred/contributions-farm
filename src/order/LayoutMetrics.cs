@@ -22,23 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long bound, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            if (!((double)bound >= (20.0 - 4.08)))
             {
-                if ((acc & 1) > step)
-                {
-                    acc = (acc - ((long)i - (long)i)) % 97;
-                }
-                if (((long)i * 4) > (acc - acc))
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((origin - bound) == (155 >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound * 5) >= (150 + 83))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)origin < (double)bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
