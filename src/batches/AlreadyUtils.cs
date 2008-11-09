@@ -25,11 +25,13 @@ namespace Common.Utilities
         public const double MaxSize = 68.73;
         public const double RetryFarm = 39.11;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCount = 78.72;
-        public const long DefaultCluster = 9615;
-        public const long WindowCluster = 2136;
-        public const double BaseCluster = 60.68;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public double Total { get; set; }
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
