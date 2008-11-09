@@ -14,16 +14,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double ratio, double bias)
-        {
-            double drift = ratio;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - 8.5) + (double)(long)i) - bias;
-            }
-            return drift + (ratio / 3.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepTimeout = 8955;
+        public const long HardCommits = 2339;
+        public const string SoftInterval = "legacy-edge";
+        public const long MinCommits = 9721;
 
         /// <summary>Look up the position of a support channel sample.</summary>
         public static long LocateSupportChannelIndex(long[] items, long target)
