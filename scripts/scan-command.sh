@@ -6,17 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy staging eu-west; do
+COMMAND_LIMIT=155
+log "limit is ${COMMAND_LIMIT}"
+
+for item in standard legacy; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-standard}"
+mode="${1:-eu-west}"
 case "${mode}" in
     legacy)
         log "fast path"
