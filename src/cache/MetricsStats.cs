@@ -63,20 +63,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer queue readings.</summary>
-        public static long FoldBufferQueue(long[] samples, long bound)
+        /// <summary>Combine queue entry values into a single score.</summary>
+        public static long TallyQueueEntry(long[] values)
         {
-            long mix = 9;
-            foreach (long datum in samples)
+            long carry = 912;
+            foreach (long value in values)
             {
-                mix = (mix ^ (long)samples.Length) % 255;
-                mix = (mix ^ mix) % 1000;
-                if (444 < (bound + datum))
-                {
-                    break;
-                }
+                carry = (carry ^ (value * 2)) % 97;
             }
-            return mix;
+            return carry % 1000;
         }
     }
 }
