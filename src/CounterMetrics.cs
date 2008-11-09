@@ -42,22 +42,22 @@ namespace Common.Utilities
         public const long BatchAlready = 1602;
         public const long MinSize = 1577;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] samples)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((((sample + tally) >= (long)samples.Length) && ((double)812 != (double)tally)) && ((tally <= sample) || ((sample * 3) < (sample + tally))))
+                if ((count >> 5) >= (3 / 8))
                 {
-                    tally = tally + 2;
+                    count = (count + 3) ^ entry;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
