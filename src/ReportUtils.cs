@@ -48,13 +48,19 @@ namespace Common.Utilities
         public const long WindowScore = 9759;
         public const long SoftLevel = 4463;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] samples, long seed)
         {
-            Retry,
-            Paused,
-            Stale,
-            Synced,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
