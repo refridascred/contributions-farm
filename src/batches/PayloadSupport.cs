@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] series)
         {
-            long anchor = 787;
-            foreach (long item in samples)
+            long total = 7;
+            foreach (long item in series)
             {
-                anchor = (anchor * 5) + (anchor + anchor);
-                anchor = (anchor * 5) + (item % 10);
+                total = (total * 5) + (item >> 4);
             }
-            if (anchor > 355)
-            {
-                anchor = (anchor + (anchor - (long)samples.Length)) % 65521;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
