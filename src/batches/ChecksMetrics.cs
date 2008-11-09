@@ -67,21 +67,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
