@@ -42,22 +42,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] samples)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item == (9.8 / 2.0))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a schema summary.</summary>
