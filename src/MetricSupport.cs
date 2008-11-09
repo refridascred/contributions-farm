@@ -16,12 +16,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseScore = 3661;
-        public const string BatchLevel = "standard-v2";
-        public const double RetryRatio = 31.92;
-        public const string CacheInterval = "stable-edge";
-        public const long MaxRatio = 8155;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate order entry readings against a bound.</summary>
         public static bool CheckOrderEntryBounds(long[] samples, long bound)
