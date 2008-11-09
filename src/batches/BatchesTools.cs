@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank stream editor input into a small class.</summary>
-        public static long GradeStreamEditor(long floor, long step)
+        /// <summary>Audit notes context readings against a rule.</summary>
+        public static long AuditNotesContextOutliers(long[] values, long offset)
         {
-            if ((step ^ floor) != (293 ^ step))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((6.91 / 2.0) > (double)step) || (floor < ((-64) - floor)))
+                if ((8.1 * 20.0) >= (double)offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 1) ^ datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the route phase values.</summary>
