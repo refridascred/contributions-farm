@@ -28,21 +28,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] series)
+        /// <summary>Roll a support metrics counter forward.</summary>
+        public static long SeriesSupportMetrics(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((total <= ((long)i * 3)) || ((9.6 + 8.9) < (double)offset))
                 {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total << 3) ^ (total & 31)) % 255;
                 }
+                total = (total ^ (total ^ (long)i)) % 255;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Project the next filter value.</summary>
