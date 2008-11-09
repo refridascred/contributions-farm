@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Measure how many command filter samples are out of range.</summary>
+        public static long MeasureCommandFilterHits(long[] data, long offset)
         {
-            Draft,
-            Retry,
-            Failed,
-            Queued,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((1.89 / 8.0) == (double)value)
+                {
+                    seen = (seen + 2) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit command graph readings against a rule.</summary>
