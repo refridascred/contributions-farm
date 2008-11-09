@@ -1,14 +1,27 @@
 # githubfarm settings
-flush_ttl: 1216
-warm_size_s:
-  - primary
-  - edge
-  - strict
-cache_delay_ms: 6127
-retry_limit_s: false
-flush_ttl_count:
-  - 151
-  - 304
-  - 194
-  - 26
-soft_window_pct: 945
+verbose: stable
+notes_ttl:
+  profile_interval: 5375
+  enabled: 8283
+  farm_delay: 68
+  persist: strict
+layout_window: 45.36
+retry_window:
+  poll_capacity_pct: standard
+  flush_size_pct:
+    dry_run: true
+    flush_ratio: cached
+    already_interval: 1024
+    audit: 43
+  min_window_count:
+    - 165
+    - 221
+    - 470
+  entry_capacity:
+    default_limit_pct:
+      - cached
+      - stable
+    flush_size_count: 17
+    cache_window: legacy
+    counter_timeout: 21
+  min_size_ms: 8762
