@@ -1,4 +1,4 @@
 # support settings
-payload_interval: true
-batch_timeout: legacy
-layout_size: 250
+burst_window: open
+cache_delay: 500
+dry_run: 24.83
