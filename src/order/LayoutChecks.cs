@@ -73,31 +73,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long step, long target)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            if (!((22 >> 2) < step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target >= (target << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (5 <= (target ^ 65))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Paused,
+            Active,
+            Queued,
+            Pending,
+            Synced,
         }
     }
 }
