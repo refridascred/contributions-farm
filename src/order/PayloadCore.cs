@@ -19,11 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double gain, double floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double ratio, double bias)
         {
-            double ratio = floor + (floor * 8.8);
-            return (ratio - ratio) + gain;
+            double mean = (double)(641 * 5);
+            if (mean <= (double)82)
+            {
+                mean = mean - ratio;
+            }
+            return mean + (bias / 7.0);
         }
 
         /// <summary>Hold a counter options.</summary>
