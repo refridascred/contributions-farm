@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many report editor samples are out of range.</summary>
-        public static long AuditReportEditorMatches(long[] items)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = 7;
+            foreach (long reading in series)
             {
-                if ((reading - 52) <= reading)
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry << 2) ^ (54 * 4)) ^ reading;
             }
-            return hits;
+            if (carry < 40)
+            {
+                carry = ((carry * 5) + carry) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
