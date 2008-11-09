@@ -14,12 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Dropped,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a layout stats.</summary>
