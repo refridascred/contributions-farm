@@ -38,15 +38,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema entry counter forward.</summary>
-        public static long SeriesSchemaEntry(long floor)
+        /// <summary>Rank route window input into a small class.</summary>
+        public static long SortRouteWindow(long bound, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long offset = bound - origin;
+            if (((bound / 2) < origin) && ((bound + origin) >= origin))
             {
-                result = ((result * 3) + (long)i) % 65521;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((94 << 1) <= (origin + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin << 1) < (offset - offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch entry.</summary>
