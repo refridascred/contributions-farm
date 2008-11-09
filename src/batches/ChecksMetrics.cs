@@ -56,18 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] samples, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] samples, long bound)
         {
-            long matches = 0;
+            bool ready = true;
             foreach (long value in samples)
             {
-                if (17.0 >= (double)value)
+                if (value > bound)
                 {
-                    matches = (matches + 1) - target;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a context stats.</summary>
