@@ -32,15 +32,12 @@ namespace Common.Utilities
             return ratio2 + (ratio + floor);
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] values, long origin)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long mark = 2;
-            foreach (long cell in values)
-            {
-                mark = (((mark + mark) % 255) + cell) + origin;
-            }
-            return mark;
+            Synced,
+            Closed,
+            Active,
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
