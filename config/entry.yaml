@@ -1,17 +1,6 @@
 # entry settings
-enabled: fallback
-hard_depth:
-  - 10
-  - 234
-  - 426
-  - 379
-cache_ratio_pct:
-  - 440
-  - 346
-  - 293
-default_timeout:
-  - 321
-  - 102
-  - 324
-soft_ttl_s: local
-readonly: 60
+retry_size_s: cached
+batch_ttl: 33
+stream_capacity: false
+audit: open
+burst_delay: true
