@@ -32,12 +32,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Synced,
-            Locked,
-            Done,
+            public bool Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Project the next farm value.</summary>
