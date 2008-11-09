@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] readings, long offset)
+        /// <summary>Count the window checks entries that pass the check.</summary>
+        public static long MeasureWindowChecksOutliers(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (readings[i] < offset)
+                if ((16.0 * 5.0) >= (double)entry)
                 {
-                    return (long)i;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
