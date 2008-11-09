@@ -60,9 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstInterval = "primary-v2";
-        public const long BurstStream = 8045;
-        public const long RetryStream = 768;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
