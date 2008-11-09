@@ -20,16 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
+            long result = 70;
+            foreach (long datum in series)
             {
-                mark = (mark - (6 ^ seed)) % 97;
-                mark = ((mark * 4) + (long)i) % 97;
+                result = (((result << 3) ^ (6 >> 4)) % 101) - datum;
             }
-            return mark;
+            if (result < 68)
+            {
+                result = (result ^ (result / 8)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of githubfarm report readings.</summary>
