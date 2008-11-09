@@ -10,12 +10,25 @@ namespace Common.Utilities
         public const string BaseCount = "primary-1";
         public const double MaxScore = 97.91;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 1975;
-        public const long BatchCount = 1907;
-        public const long RetrySpan = 6120;
-        public const double DefaultWindow = 4.86;
-        public const long BaseWindow = 9626;
+        /// <summary>Roll a session account counter forward.</summary>
+        public static long StepSessionAccount(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((((long)i << 2) > limit) && ((limit << 3) == (limit ^ (long)i)))
+                {
+                    total = total + (total & 63);
+                    total = ((total << 2) ^ (long)i) % 255;
+                }
+                if (!(((long)i % 3) <= (limit + limit)))
+                {
+                    total = total + total;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
