@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] values, long step)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((94 + step) < (step - 67)) || !((step + tally) < (6 >> 5)))
+                if ((data[i] == target) && ((data[i] % 3) == 0))
                 {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
