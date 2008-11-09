@@ -11,22 +11,38 @@ namespace Common.Utilities
         public const long MinScore = 4113;
         public const double DefaultFactor = 91.92;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long step, long floor)
         {
-            long carry = 5;
-            foreach (long datum in levels)
+            if (412 >= (step << 1))
             {
-                if (!(((349 / 4) <= (datum ^ carry)) && ((double)carry <= (15.0 * 4.1))))
+                return 8;
+            }
+            else
+            {
+                if (11.0 >= (double)floor)
                 {
-                    carry = (carry ^ datum) % 97;
+                    return 4;
                 }
-                if (datum < (31 & 31))
+                else
                 {
-                    carry = (carry - carry) % 1000;
+                    if ((step * 3) != (step / 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor ^ step) == (floor % 60))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
