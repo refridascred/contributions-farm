@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] readings, long seed)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long anchor = -95;
-            foreach (long reading in readings)
-            {
-                anchor = ((anchor - (3 % 5)) + reading) + seed;
-            }
-            return anchor;
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Fold a list of metric readings.</summary>
