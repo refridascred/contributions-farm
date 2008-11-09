@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit command channel readings against a rule.</summary>
-        public static long AuditCommandChannelOutliers(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (((cell << 3) > floor) && (((cell ^ 40) >= (seen ^ floor)) && (((-43) - floor) > seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetrySize = 8812;
+        public const long IdleGraph = 1238;
+        public const long BatchGraph = 2990;
+        public const string SoftGraph = "primary-1";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string WindowCount = "local-edge";
