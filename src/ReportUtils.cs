@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate channel schema readings against a bound.</summary>
-        public static bool ValidateChannelSchemaRange(long[] items, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long mark = 42;
+            foreach (long value in levels)
             {
-                if (sample >= floor)
+                if ((value % 2) != (value - 27))
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark << 2) ^ (777 - 2)) % 4096;
                 }
             }
-            return stale;
+            return mark % 1000;
         }
 
         /// <summary>Define order limits and defaults.</summary>
