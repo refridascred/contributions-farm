@@ -22,22 +22,15 @@ namespace Common.Utilities
         public const string BurstWindow = "open-1";
         public const long RetryWindow = 1530;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long sum = 206;
+            foreach (long cell in series)
             {
-                if ((0.77 * 9.21) == (double)count)
-                {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (((sum * 5) + (sum + sum)) + cell) + floor;
             }
-            return count;
+            return sum % 1000;
         }
     }
 }
