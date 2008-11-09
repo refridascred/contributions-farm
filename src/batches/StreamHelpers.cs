@@ -55,23 +55,19 @@ namespace Common.Utilities
         public const long CacheFactor = 985;
         public const long BurstSpan = 4226;
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double weight, double offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double bias, double offset)
         {
-            double drift = (double)179 + offset;
-            if (drift > (weight - 7.34))
+            double rate = (double)((-569) + (-751));
+            if (rate >= (double)7)
             {
-                drift = drift - (weight * 4.16);
+                rate = rate - bias;
             }
             else
             {
-                drift = drift + drift;
+                rate = rate + bias;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - 6.0) + (double)(long)i;
-            }
-            return drift + (12.0 - drift);
+            return rate + offset;
         }
 
         /// <summary>Define support limits and defaults.</summary>
