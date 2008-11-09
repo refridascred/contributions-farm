@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] data)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((double)matches < (double)4)
+                if (datum > limit)
                 {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
