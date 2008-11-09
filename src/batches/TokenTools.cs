@@ -25,11 +25,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double bias, double span)
+        /// <summary>Grade a support cluster value against two limits.</summary>
+        public static long RankSupportCluster(long floor, long floor2)
         {
-            double bias2 = span / 5.0;
-            return (bias2 + (bias2 * 4.2)) + bias;
+            long next = floor ^ floor2;
+            if (((double)floor2 != (10.0 / 4.0)) || ((next / 4) != (floor * 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor2 << 3) <= (floor2 + 724))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((5.2 - 4.7) <= (double)next)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((next - floor2) <= (floor + floor2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
