@@ -1,11 +1,6 @@
 # entry settings
-payload_timeout:
-  - 446
-  - 167
-  - 233
-  - 34
-flush_interval_s: 12.07
-verbose: 60
-readonly: 79.48
-persist: 98
-profile_interval: 31.03
+enabled: 9104
+min_threshold: 82.58
+readonly: staging
+order_retries: 3708
+sync_interval_s: fallback
