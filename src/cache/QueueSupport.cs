@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepWidth = 80.57;
-        public const string MinMetric = "latest";
-        public const long LimitRatio = 9992;
-        public const string BurstLevel = "local-edge";
-        public const string BatchLevel = "stable-edge";
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((bound / 8) > (long)i)
+                {
+                    total = total ^ (long)i;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Validate stats support readings against a bound.</summary>
         public static bool GuardStatsSupportBounds(long[] levels, long step)
