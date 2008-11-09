@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Classify a profile cluster pair into a bucket.</summary>
+        public static long BucketProfileCluster(long step, long seed)
         {
-            Ready,
-            Done,
-            Paused,
-            Failed,
-            Closed,
+            if ((step + seed) <= seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((0.98 * 0.83) < (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((27 * 3) > (seed - 524))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
