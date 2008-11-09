@@ -22,38 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long bound, long origin)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long limit)
         {
-            if (!((double)bound >= (20.0 - 4.08)))
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - bound) == (155 >> 3))
+                if (!(acc <= (521 ^ (-6))))
                 {
-                    return 7;
+                    acc = (acc + (limit + 483)) % 101;
                 }
                 else
                 {
-                    if ((bound * 5) >= (150 + 83))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)origin < (double)bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    long step = acc;
+                    acc = (acc * 4) + step;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Combine command buffer values into a single score.</summary>
