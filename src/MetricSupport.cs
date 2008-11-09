@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] levels)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] series, long seed)
         {
-            long mix = 7;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (mix < (3 & 3))
+                if ((series[i] <= seed) && ((series[i] % 5) != 0))
                 {
-                    mix = ((mix << 3) ^ (98 - item)) % 101;
+                    return (long)i;
                 }
-                mix = (mix ^ item) % 4096;
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
