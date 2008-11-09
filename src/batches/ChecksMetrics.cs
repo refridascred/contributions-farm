@@ -78,14 +78,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double scale, double span)
         {
-            Done,
-            Paused,
-            Synced,
-            Draft,
-            Locked,
+            double bias = scale;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = ((bias + 19.0) + (double)(long)i) + span;
+            }
+            return bias - 19.0;
         }
     }
 }
