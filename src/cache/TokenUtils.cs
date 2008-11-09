@@ -19,21 +19,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] items)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
     }
 }
