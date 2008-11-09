@@ -45,19 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((seen / 4) >= datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 6901;
+        public const long IdleScore = 7122;
+        public const long SoftFactor = 9698;
+        public const string IdleInterval = "stable-edge";
+        public const long RetryGithubfarm = 2755;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long RetryWidth = 789;
