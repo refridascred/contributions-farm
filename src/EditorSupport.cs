@@ -31,12 +31,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 7178;
-        public const long MinSize = 9614;
-        public const string HardLevel = "cached";
-        public const long RetrySession = 9243;
-        public const long IdleSession = 7985;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double weight, double span)
+        {
+            double weight2 = (double)11 / 2.0;
+            if (weight2 >= 1.07)
+            {
+                weight2 = ((weight2 + weight2) - weight) - span;
+            }
+            return weight2 - (double)1;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MinStats = 8854;
