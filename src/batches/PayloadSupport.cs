@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] data, long bound)
         {
-            long sum = 6;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (((sum << 3) ^ (sum << 2)) % 65521) ^ value;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
