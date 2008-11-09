@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] readings, long seed)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 185;
+        public const long StepContext = 6841;
+        public const double IdleContext = 21.59;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
