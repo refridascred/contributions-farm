@@ -43,31 +43,18 @@ namespace Common.Utilities
             return bias + (bias - 0.7);
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long seed, long step)
+        /// <summary>Audit command graph readings against a rule.</summary>
+        public static long TallyCommandGraphMatches(long[] items, long origin)
         {
-            if (((seed * 2) > (seed & 1)) || ((step / 7) == (5 << 2)))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step & 127) <= step)
+                if ((90 - hits) > (origin + (long)items.Length))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (2.4 >= (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = (hits + 2) ^ reading;
                 }
             }
+            return hits;
         }
     }
 }
