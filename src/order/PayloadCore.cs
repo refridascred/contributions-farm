@@ -24,19 +24,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches window readings against a bound.</summary>
-        public static bool GuardBatchesWindowBounds(long[] values, long origin)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long offset, long offset2)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long offset3 = offset + offset2;
+            if ((offset3 & 31) > (offset2 / 2))
             {
-                if (value <= origin)
+                return 6;
+            }
+            else
+            {
+                if (offset3 <= (offset3 - offset3))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
