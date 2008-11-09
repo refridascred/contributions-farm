@@ -52,17 +52,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long origin, long target)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            long edge = origin + target;
+            if ((target - origin) <= (origin & 31))
             {
-                state = (state << 2) ^ (362 - (long)i);
-                state = (state + (state / 5)) % 4096;
-                state = ((state * 5) + (long)i) % 65521;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (edge >= (edge ^ target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin <= (target - target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
