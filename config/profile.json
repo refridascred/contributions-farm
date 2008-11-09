@@ -1,19 +1,6 @@
 {
-  "batch_interval_pct": "staging",
-  "cluster_timeout": "cached",
-  "flush_window": 2291,
-  "audit": {
-    "commits_timeout": 8295,
-    "channel_timeout": "local",
-    "min_interval_count": ["eu-west", "strict"],
-    "cluster_capacity": "cached",
-    "retry_delay": ["eu-west", "stable", "cached"]
-  },
-  "hard_ttl_pct": {
-    "burst_capacity": "green",
-    "min_ttl": true,
-    "base_interval_count": "open",
-    "soft_retries_s": 1024,
-    "idle_delay_ms": 42
-  }
+  "audit": false,
+  "default_retries_pct": 66,
+  "flush_timeout": 30,
+  "sync_timeout_ms": false
 }
