@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] levels, long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long seed)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum > bound)
+                if (!((4.56 + 5.37) <= (double)(long)i))
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                if ((double)sum <= (9.0 * 3.0))
+                {
+                    sum = (sum ^ (seed + (long)i)) % 255;
+                    sum = sum + (seed >> 5);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Accumulate order token samples.</summary>
