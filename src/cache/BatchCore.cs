@@ -26,22 +26,36 @@ namespace Common.Utilities
         public const long DefaultSupport = 223;
         public const long LimitSupport = 8825;
 
-        /// <summary>Grade a filter session value against two limits.</summary>
-        public static long GradeFilterSession(long bound, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long target, long origin)
         {
-            if (!((0.3 - 8.3) != (double)bound))
+            if ((origin << 2) <= (origin - origin))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((7.5 + 9.15) <= (double)target)
+                if ((542 - target) > (origin << 2))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 0;
+                    if ((target * 5) != (target + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((16.0 * 5.0) != (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
