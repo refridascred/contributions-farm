@@ -35,33 +35,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long floor, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
+            long step = floor + limit;
+            if ((floor * 2) <= step)
             {
-                if (carry > (carry - target))
-                {
-                    carry = ((carry << 3) ^ (carry ^ (long)i)) % 101;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (long)i) % 255;
-                }
-                if ((carry * 3) > target)
-                {
-                    carry = ((carry * 3) + (target % 10)) % 101;
-                    carry = (carry - ((long)i + target)) % 255;
-                    continue;
-                }
-                else
-                {
-                    carry = carry ^ (long)i;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((step - 545) < (limit - step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((8.37 + 4.93) > (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
