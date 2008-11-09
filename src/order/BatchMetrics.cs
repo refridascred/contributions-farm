@@ -60,10 +60,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 9823;
-        public const double BatchCount = 80.35;
-        public const string DefaultScore = "staging-edge";
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double BatchContext = 24.61;
