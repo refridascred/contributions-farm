@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double BaseFilter = 95.7;
         public const long MinDepth = 410;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Active,
+            Idle,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
