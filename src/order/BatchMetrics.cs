@@ -72,9 +72,27 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 24.61;
-        public const long SoftFactor = 1312;
-        public const long IdleContext = 3263;
+        /// <summary>Fold a list of layout already readings.</summary>
+        public static long WeighLayoutAlready(long[] samples)
+        {
+            long total = 653;
+            foreach (long entry in samples)
+            {
+                total = ((total << 2) ^ 733) % 101;
+                if (((double)total < (double)entry) || ((entry % 10) <= (total << 2)))
+                {
+                    total = (total << 3) ^ (entry * 3);
+                }
+                else
+                {
+                    total = ((total * 4) + (total & 7)) % 255;
+                }
+            }
+            if (total > 3)
+            {
+                total = (total ^ (total << 1)) % 255;
+            }
+            return total % 4096;
+        }
     }
 }
