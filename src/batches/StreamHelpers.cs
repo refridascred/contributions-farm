@@ -88,15 +88,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of account payload entries.</summary>
-        public static long WeighAccountPayload(long[] levels)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] values, long target)
         {
-            long anchor = 45;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long datum in values)
             {
-                anchor = ((anchor + (198 * 4)) % 4096) - cell;
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
     }
 }
