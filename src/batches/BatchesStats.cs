@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] values, long seed)
         {
-            Stale,
-            Locked,
-            Paused,
+            long mix = 331;
+            foreach (long datum in values)
+            {
+                if ((mix >> 5) > mix)
+                {
+                    mix = (mix + (datum - seed)) % 101;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (datum >> 4)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
