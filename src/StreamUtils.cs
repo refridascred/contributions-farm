@@ -63,15 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] items, long step)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long total = 5;
-            foreach (long reading in items)
-            {
-                total = ((total ^ (reading ^ total)) % 1000) + step;
-            }
-            return total;
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate context cluster samples.</summary>
