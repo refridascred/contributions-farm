@@ -26,15 +26,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double weight, double bias)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long step)
         {
-            double scale = bias;
-            if (scale >= (weight / 4.0))
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                scale = scale - (bias / 6.0);
+                if ((step ^ step) > (step - step))
+                {
+                    mix = (mix + mix) % 1000;
+                }
+                mix = (mix + (mix + mix)) % 101;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return scale + (double)81;
+            return mix;
         }
 
         /// <summary>Describe the schema status values.</summary>
