@@ -35,17 +35,22 @@ namespace Common.Utilities
             return gain2 - floor;
         }
 
-        /// <summary>Find the first context buffer entry that matches the target.</summary>
-        public static long FindContextBufferIndex(long[] readings, long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 6;
+            foreach (long datum in readings)
             {
-                if (readings[i] < bound)
+                if ((carry + 37) == (carry ^ datum))
                 {
-                    return (long)i;
+                    carry = (carry * 3) + (701 + 9);
                 }
             }
-            return -1;
+            if (carry < 8)
+            {
+                carry = carry ^ ((-52) ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Accumulate editor samples.</summary>
