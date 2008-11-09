@@ -44,15 +44,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] items, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long anchor = 5;
+            foreach (long value in items)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                anchor = (anchor - (limit + limit)) + value;
+                anchor = (anchor - anchor) % 65521;
+                if ((double)(long)items.Length == (6.0 + 1.3))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (anchor > 904)
+            {
+                anchor = ((anchor * 3) + (67 / 2)) % 1000;
+            }
+            return anchor;
         }
     }
 }
