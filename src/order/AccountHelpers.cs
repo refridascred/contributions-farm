@@ -48,13 +48,18 @@ namespace Common.Utilities
         public const string CacheSize = "strict-1";
         public const double IdleRecord = 7.65;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] readings)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((9 ^ sample) > (seen << 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
