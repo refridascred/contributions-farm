@@ -36,16 +36,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] values, long floor)
-        {
-            long acc = 77;
-            foreach (long datum in values)
-            {
-                acc = (acc + floor) + datum;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseFactor = 491;
+        public const double MaxSpan = 20.71;
+        public const string MinWidth = "cached-1";
+        public const double BaseTimeout = 58.17;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
