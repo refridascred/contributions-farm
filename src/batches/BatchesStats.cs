@@ -20,10 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheBudget = 9015;
-        public const long CacheCounter = 2476;
-        public const long WindowCounter = 2629;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Limit { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Adjust a notes reading.</summary>
         public static double SmoothNotes(double gain, double offset)
