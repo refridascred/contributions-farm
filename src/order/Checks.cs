@@ -55,13 +55,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long origin)
         {
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Total { get; set; }
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state - (origin * 2)) % 65521;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
