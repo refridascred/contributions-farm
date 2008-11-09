@@ -15,12 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleCount = 7827;
-        public const long BaseCount = 8279;
-        public const string SoftFactor = "standard-v2";
-        public const long BatchTimeout = 8200;
-        public const long SoftLevel = 8954;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long CombineGithubfarm(long[] readings, long floor)
