@@ -37,24 +37,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long bound, long seed)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            if ((double)seed < (6.13 / 4.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed << 1) > bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Pending,
+            New,
+            Paused,
+            Locked,
+            Draft,
         }
     }
 }
