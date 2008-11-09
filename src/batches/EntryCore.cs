@@ -31,20 +31,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheScore = 3800;
+        public const long BaseCount = 178;
+        public const long IdleSpan = 8609;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long RollMetrics(long limit)
