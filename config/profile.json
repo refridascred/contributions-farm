@@ -1,5 +1,11 @@
 {
-  "soft_retries": false,
-  "base_capacity_s": "blue",
-  "warm_limit": false
+  "compress": 67,
+  "min_ttl_pct": {
+    "command_size": true,
+    "command_limit": [17, 127, 386],
+    "batch_interval": ["fallback", "open", "primary", "blue"],
+    "report_retries": "open",
+    "route_ttl": "staging"
+  },
+  "idle_ttl_s": "green"
 }
