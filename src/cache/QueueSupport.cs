@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a commits route pair into a bucket.</summary>
-        public static long ClassifyCommitsRoute(long limit, long floor)
-        {
-            long span = limit ^ floor;
-            if ((434 ^ limit) > (limit + span))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((span << 3) <= (floor << 1)) && (floor < (floor + span)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + limit) != (30 >> 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((39 / 8) > limit) || (floor >= span))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepWidth = 80.57;
+        public const string MinMetric = "latest";
+        public const long LimitRatio = 9992;
+        public const string BurstLevel = "local-edge";
+        public const string BatchLevel = "stable-edge";
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
