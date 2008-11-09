@@ -39,13 +39,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Count queue route pairs that satisfy a relation.</summary>
+        public static long CompareQueueRouteCount(long[] levels)
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
