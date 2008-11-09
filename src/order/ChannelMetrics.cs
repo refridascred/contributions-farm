@@ -35,11 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] samples, long origin)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
