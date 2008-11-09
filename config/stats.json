@@ -1,5 +1,13 @@
 {
-  "min_threshold_s": "open",
-  "burst_threshold_pct": "stable",
-  "min_interval_ms": "edge"
+  "sync_delay": 60,
+  "default_timeout_pct": {
+    "retry_delay_count": 53,
+    "hard_ttl_ms": false,
+    "token_capacity": 30.65,
+    "sync_timeout_ms": "eu-west",
+    "idle_ttl_ms": 1629
+  },
+  "batch_ratio": ["stable", "edge"],
+  "enabled": "staging",
+  "burst_capacity_pct": false
 }
