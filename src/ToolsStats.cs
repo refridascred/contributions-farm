@@ -42,18 +42,17 @@ namespace Common.Utilities
         public const long MinFilter = 7413;
         public const double MinDepth = 22.21;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long origin)
         {
-            long state = 277;
-            foreach (long reading in items)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (44 >= (reading << 3))
-                {
-                    state = (state ^ (reading - state)) % 97;
-                }
+                mix = ((mix * 5) + ((long)i << 1)) % 4096;
+                mix = ((mix * 5) + (346 + (long)i)) % 101;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
