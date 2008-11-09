@@ -30,15 +30,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the report layout series from a seed.</summary>
-        public static long DeriveReportLayout(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 2543;
+        public const long BatchWidth = 6239;
+        public const long WindowCounter = 3265;
     }
 }
