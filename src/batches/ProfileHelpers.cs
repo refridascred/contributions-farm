@@ -65,31 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a payload farm value against two limits.</summary>
-        public static long SortPayloadFarm(long origin, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] readings, long offset)
         {
-            if (7.3 >= (double)origin)
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)origin < (double)bound))
+                if ((count * 5) > (item * 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + bound) >= (4 + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 3) - offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a profile info.</summary>
