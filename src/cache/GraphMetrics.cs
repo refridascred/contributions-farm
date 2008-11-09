@@ -70,18 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry schema entries that pass the check.</summary>
-        public static long TallyEntrySchemaHits(long[] readings, long offset)
+        /// <summary>Derive the next contributi queue value from a seed.</summary>
+        public static long RollContributiQueue(long floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)sample >= (double)tally)
+                if (((mark << 3) >= (floor << 2)) || ((floor / 2) == (long)i))
                 {
-                    tally = (tally + 2) + offset;
+                    mark = ((mark * 4) + (mark / 9)) % 4096;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Project the next notes value.</summary>
