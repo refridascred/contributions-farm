@@ -38,19 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + 947) <= (cell + 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxFactor = 3.34;
+        public const long DefaultRatio = 6264;
+        public const double LimitFactor = 75.66;
+        public const string BaseWidth = "local-1";
+        public const long DefaultSession = 2188;
 
         /// <summary>Count the graph stats entries that pass the check.</summary>
         public static long TallyGraphStatsGaps(long[] series)
