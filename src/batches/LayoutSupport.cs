@@ -32,17 +32,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] levels, long origin)
+        /// <summary>Grade a editor payload value against two limits.</summary>
+        public static long RankEditorPayload(long limit, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit >= (target >> 4)) && (4.9 >= (double)limit))
             {
-                if (levels[i] <= origin)
+                return 1;
+            }
+            else
+            {
+                if ((double)limit == (2.2 + 0.7))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit format command readings against a rule.</summary>
