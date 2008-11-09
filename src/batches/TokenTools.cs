@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long limit, long limit2)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            if ((382 ^ limit2) >= limit2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8 * 4) != (2 + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit2 * 3) > (69 + 4)) && (92 < (limit / 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)limit2 < 15.0) && ((double)limit2 < (16.0 * 6.4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            New,
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the batch phase values.</summary>
