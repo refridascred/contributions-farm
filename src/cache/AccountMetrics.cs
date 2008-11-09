@@ -59,19 +59,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] readings, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Retry,
+            Stale,
+            Synced,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
