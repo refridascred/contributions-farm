@@ -29,24 +29,17 @@ namespace Common.Utilities
             return mean + (double)66;
         }
 
-        /// <summary>Classify a layout checks pair into a bucket.</summary>
-        public static long BucketLayoutChecks(long floor, long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] series, long bound)
         {
-            if ((floor * 2) >= (floor + step))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)step == (6.87 * 5.1)) && (floor < ((-95) + step)))
+                if (series[i] <= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
