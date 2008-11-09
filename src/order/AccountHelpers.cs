@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 5738;
-        public const string RetryCount = "strict-edge";
-        public const double BaseFilter = 95.7;
-        public const long MinDepth = 410;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchGithubfarm = 46.13;
+        public const long MinCount = 1670;
+        public const string CacheGithubfarm = "legacy";
+        public const string RetryCount = "standard-1";
+        public const long MinInterval = 6168;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
