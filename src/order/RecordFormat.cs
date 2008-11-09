@@ -18,38 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long seed, long limit)
+        /// <summary>Locate a schema session reading by value.</summary>
+        public static long LookupSchemaSessionIndex(long[] samples, long bound)
         {
-            if ((78 << 3) == (limit % 97))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit <= (limit + seed)) || ((seed % 60) != (158 >> 3)))
+                if (samples[i] <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((0 + limit) < limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((51 / 9) <= limit) && ((double)limit <= 0.8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine channel route values into a single score.</summary>
