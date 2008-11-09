@@ -65,13 +65,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long floor)
         {
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long state = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                state = (state - (state & 127)) % 65521;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
