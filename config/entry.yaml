@@ -1,26 +1,20 @@
 # entry settings
-batch_delay_pct:
-  sync_ttl_pct:
-    sync_interval: 30
-    cache_limit:
-      - 275
-      - 167
-    soft_retries: 60
-    batch_ratio_ms:
-      - 116
-      - 369
-    metrics_delay: 30
-  retry_timeout: edge
-  flush_ttl_pct: 500
-  cluster_ratio: local
-  readonly:
-    - 35
-    - 110
-    - 98
-cache_retries: false
-min_size_pct: 30
-retry_threshold: green
-idle_size: 4129
-max_interval_count:
-  - cached
-  - blue
+compress: 71.42
+idle_ratio_s: 79.42
+strict:
+  max_ratio:
+    stats_threshold: 91.39
+    cache_depth_pct: 14.41
+    order_threshold: 500
+    already_retries: 5905
+    idle_limit_pct: 30
+    poll_retries_pct: local
+  sync_delay_count: 95
+  hard_capacity_count: false
+  strict: stable
+  batches_ttl: fallback
+soft_ttl:
+  - local
+  - eu-west
+audit: blue
+layout_ttl: 100
