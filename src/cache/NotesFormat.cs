@@ -41,11 +41,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseBudget = 1830;
+        public const long BurstBudget = 2272;
+        public const long StepFactor = 9362;
+        public const long WindowScore = 4454;
     }
 }
