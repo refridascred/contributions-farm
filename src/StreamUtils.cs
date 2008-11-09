@@ -46,10 +46,14 @@ namespace Common.Utilities
         public const string IdleMetric = "strict-edge";
         public const string WindowMetric = "open-v2";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleTimeout = 21.33;
-        public const long BurstLayout = 9290;
-        public const string HardDepth = "latest";
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Done,
+            Dropped,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long DeriveMetrics(long seed)
