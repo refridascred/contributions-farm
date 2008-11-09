@@ -47,17 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] values, long target)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 3;
+            foreach (long datum in readings)
             {
-                if ((values[i] > target) && ((values[i] % 3) == 0))
+                if ((step ^ datum) < (step * 4))
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (step << 3);
                 }
             }
-            return -1;
+            return acc % 1000;
         }
     }
 }
