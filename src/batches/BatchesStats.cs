@@ -36,13 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Closed,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowGithubfarm = 46.29;
+        public const string IdleSpan = "alpha-edge";
+        public const long IdleGithubfarm = 8892;
 
         /// <summary>Blend two batch tools measurements.</summary>
         public static double BlendBatchTools(double gain, double bias)
