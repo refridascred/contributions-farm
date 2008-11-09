@@ -61,15 +61,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine queue entry values into a single score.</summary>
-        public static long TallyQueueEntry(long[] values)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] items, long offset)
         {
-            long carry = 912;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                carry = (carry ^ (value * 2)) % 97;
+                if (cell >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry % 1000;
+            return ok;
         }
     }
 }
