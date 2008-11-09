@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] values, long origin)
+        /// <summary>Audit queue support readings against a rule.</summary>
+        public static long CountQueueSupportOutliers(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (values[i] <= origin)
+                if ((seen + item) == (long)series.Length)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
