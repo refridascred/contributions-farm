@@ -56,21 +56,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 21;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)cell < (4.7 / 3.0)) && (cell <= (cell - mix)))
                 {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + 7) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 101;
                 }
             }
-            return matches;
+            if (mix > (-291))
+            {
+                mix = (mix + (mix + mix)) % 97;
+            }
+            return mix % 1000;
         }
     }
 }
