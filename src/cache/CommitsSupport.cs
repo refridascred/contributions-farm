@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] series, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
