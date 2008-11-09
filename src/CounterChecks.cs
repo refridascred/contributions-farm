@@ -51,12 +51,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
+            Ready,
+            Closed,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a order header.</summary>
