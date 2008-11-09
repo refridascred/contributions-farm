@@ -48,23 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double scale, double floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] samples, long floor)
         {
-            double rate = floor;
-            if (rate >= (scale - 6.8))
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                rate = rate - floor;
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (scale - 1.83);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - rate;
+            return ok;
         }
 
         /// <summary>Adjust a account reading.</summary>
