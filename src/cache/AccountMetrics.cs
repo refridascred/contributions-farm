@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double scale, double offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] data, long bound)
         {
-            double drift = offset;
-            if (drift <= (drift + offset))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                drift = (drift - (offset - drift)) + scale;
+                if ((((double)entry == (6.1 / 2.0)) || ((5 + hits) >= ((-74) << 3))) && (entry <= 946))
+                {
+                    hits = (hits + 2) + bound;
+                }
             }
-            return drift - offset;
+            return hits;
         }
 
         /// <summary>Describe the format state values.</summary>
