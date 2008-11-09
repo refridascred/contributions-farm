@@ -10,28 +10,21 @@ namespace Common.Utilities
         public const long MinSize = 1585;
         public const long StepFormat = 8214;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items, long target)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            long state = -15;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + 863) % 1000;
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state ^ (target ^ target)) % 4096;
-                    state = state ^ (state + (long)i);
-                }
-                if (((262 % 12) == (value % 24)) && (((-1) & 127) < state))
-                {
-                    state = (state << 2) ^ (target - value);
-                }
-                else
-                {
-                    state = (state + state) % 97;
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
