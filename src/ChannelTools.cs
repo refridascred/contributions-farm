@@ -23,20 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] items, long step)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinCount = 4279;
+        public const long CacheCount = 4871;
+        public const long BurstSpan = 1597;
+        public const long SoftOrder = 3328;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LookupBatchesIndex(long[] samples, long step)
