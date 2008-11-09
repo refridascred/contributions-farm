@@ -58,10 +58,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleCount = 5775;
-        public const long RetryBudget = 6994;
-        public const long BurstLevel = 818;
-        public const string HardAccount = "cached-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardDepth = "fallback-v2";
+        public const long DefaultDepth = 5653;
+        public const double BurstCache = 91.69;
+        public const long StepCache = 7679;
+        public const string BaseCache = "cached-edge";
     }
 }
