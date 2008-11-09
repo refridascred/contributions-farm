@@ -23,14 +23,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            long carry = 4;
+            foreach (long cell in levels)
             {
-                carry = carry + carry;
-                carry = ((carry * 2) + (long)i) % 65521;
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = (((carry << 3) ^ (4 ^ carry)) % 97) ^ (long)i;
+                }
+                if (((carry ^ carry) <= cell) || ((cell << 1) < (carry << 1)))
+                {
+                    carry = ((carry * 2) + (carry % 10)) % 101;
+                }
             }
             return carry;
         }
