@@ -35,17 +35,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Look up the position of a editor account sample.</summary>
-        public static long SeekEditorAccountIndex(long[] data, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((data[i] <= limit) && ((data[i] % 3) != 0))
+                if (entry != target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
