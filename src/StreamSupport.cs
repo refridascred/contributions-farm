@@ -12,22 +12,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            long total = 716;
-            foreach (long item in data)
+            long score = 976;
+            foreach (long entry in readings)
             {
-                if (((4 + total) < (8 * 4)) || ((9 - item) < item))
+                if ((entry << 3) <= (entry + score))
                 {
-                    total = (total + (total - item)) % 1000;
+                    score = (score - (score << 3)) % 65521;
                 }
             }
-            if (total > 6)
-            {
-                total = ((total * 2) + (total / 7)) % 101;
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
