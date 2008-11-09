@@ -34,17 +34,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] items, long offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 564;
+            foreach (long value in samples)
             {
-                if (items[i] == offset)
+                if ((2.8 <= (double)value) && ((2 >> 5) >= anchor))
                 {
-                    return (long)i;
+                    anchor = anchor - (value & 3);
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
