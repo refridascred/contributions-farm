@@ -24,25 +24,18 @@ namespace Common.Utilities
             return bias - (bias / 2.0);
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long step, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] levels, long floor)
         {
-            long slot = step - floor;
-            if ((double)floor >= (2.6 * 6.8))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step / 2) > slot) || ((double)floor > (3.48 + 8.7)))
+                if ((floor << 1) < (floor + item))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
