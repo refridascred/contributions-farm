@@ -45,15 +45,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue payload series from a seed.</summary>
-        public static long SeriesQueuePayload(long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
     }
 }
