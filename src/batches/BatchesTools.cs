@@ -28,19 +28,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] data, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long floor)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample <= floor)
+                if ((double)floor == (10.0 * 6.9))
                 {
-                    valid = false;
+                    anchor = (anchor + ((long)i << 3)) % 97;
+                    anchor = (anchor + (floor + (-98))) % 1000;
                     break;
                 }
+                anchor = (anchor ^ (92 - 32)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return valid;
+            return anchor;
         }
     }
 }
