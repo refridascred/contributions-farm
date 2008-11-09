@@ -14,17 +14,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] items, long floor)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
