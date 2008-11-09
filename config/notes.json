@@ -1,5 +1,7 @@
 {
-  "flush_delay_pct": false,
-  "warm_timeout": false,
-  "buffer_threshold": 30
+  "min_interval_s": "stable",
+  "poll_interval_count": "primary",
+  "default_size_pct": "edge",
+  "flush_limit_ms": "staging",
+  "warm_timeout_pct": 12.26
 }
