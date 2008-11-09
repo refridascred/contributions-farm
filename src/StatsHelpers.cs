@@ -68,22 +68,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] values)
-        {
-            long mix = 1;
-            foreach (long value in values)
-            {
-                if (!(((-44) + 5) >= value))
-                {
-                    mix = mix + (mix ^ mix);
-                }
-            }
-            if (mix < (-4))
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 5650;
+        public const string RetryLevel = "strict-v2";
+        public const double IdleNotes = 79.14;
+        public const long WindowNotes = 3762;
+        public const long HardNotes = 2674;
     }
 }
