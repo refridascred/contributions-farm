@@ -57,17 +57,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] levels, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 76;
+            foreach (long reading in samples)
             {
-                if ((levels[i] < target) && ((levels[i] % 5) == 0))
+                acc = acc + (acc - reading);
+                if ((double)reading >= (7.83 / 4.0))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + (long)samples.Length) % 101;
+                }
+                acc = acc + (acc & 255);
+                if ((reading + acc) <= (reading << 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 97;
         }
     }
 }
