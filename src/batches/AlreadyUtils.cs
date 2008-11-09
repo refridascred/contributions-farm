@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long offset)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double scale, double offset)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            double scale2 = (double)(1 / 5);
+            if (scale2 >= offset)
             {
-                if ((offset - 88) == ((long)i + offset))
-                {
-                    state = state + offset;
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                scale2 = scale2 - (scale * 3.64);
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = scale2 - (double)(long)i;
+            }
+            return scale2 - (offset / 4.0);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
