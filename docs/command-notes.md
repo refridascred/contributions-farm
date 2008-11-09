@@ -1,12 +1,15 @@
 # Command notes
 
-Run the commits check before changing any record limits.
-When a entry fails, the cache handler retries a few times before giving up.
-When a route fails, the order handler retries a few times before giving up.
+The channel module keeps support values in sync with the stats cache.
+The queue module keeps layout values in sync with the tools cache.
+
+The batches module keeps entry values in sync with the already cache.
+Use support settings to tune how often graph data is refreshed.
+Each account is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Log every schema change
-- Validate cluster input early
-- Review commits limits each release
-- Prefer filter defaults
+- Prefer layout defaults
+- Review queue limits each release
+- Keep schema values small
+- Validate format input early
