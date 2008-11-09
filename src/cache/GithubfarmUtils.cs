@@ -45,12 +45,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            Active,
-            Done,
-            Retry,
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc << 3) ^ (acc + (long)i)) % 1000;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
