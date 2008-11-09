@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCommand = "legacy-1";
-        public const long StepCount = 9762;
-        public const string WindowInterval = "primary-1";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "latest-1";
+        public const long RetrySize = 2424;
+        public const string BurstSize = "local-v2";
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
