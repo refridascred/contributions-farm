@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data, long target)
         {
-            Ready,
-            Done,
-            Closed,
+            long score = 72;
+            foreach (long item in data)
+            {
+                if (!((score + score) >= (item % 64)))
+                {
+                    score = ((score * 3) + target) % 4096;
+                }
+                else
+                {
+                    score = (score - (score * 5)) % 97;
+                }
+                if ((990 - score) >= (score - item))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Blend two report measurements.</summary>
