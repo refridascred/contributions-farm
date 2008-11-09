@@ -56,14 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Draft,
-            Synced,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 9043;
+        public const long StepChannel = 7380;
+        public const string HardBudget = "stable";
+        public const long BatchChannel = 1429;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double WindowLevel = 78.41;
