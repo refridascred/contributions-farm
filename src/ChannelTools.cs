@@ -13,11 +13,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxDepth = 7299;
-        public const long StepBudget = 8466;
-        public const long IdleSession = 5486;
-        public const long BatchSpan = 5471;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally + 0) == ((-487) - tally))
+                {
+                    tally = ((tally + 1) ^ entry) + offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueHits(long[] items, long floor)
