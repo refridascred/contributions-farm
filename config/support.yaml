@@ -1,7 +1,4 @@
 # support settings
-cache_limit: cached
-cache_retries_count: 5959
-githubfarm_depth: standard
-buffer_size: 90
-batch_capacity_s: eu-west
-contributi_ratio: local
+poll_ttl_ms: 99
+editor_timeout: true
+sync_capacity_s: 61.16
