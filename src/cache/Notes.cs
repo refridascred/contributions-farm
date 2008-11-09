@@ -56,13 +56,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 4409;
+        public const double MaxSpan = 37.9;
+        public const string DefaultNotes = "standard-edge";
+        public const long HardNotes = 4141;
     }
 }
