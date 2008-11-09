@@ -45,18 +45,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] readings, long step)
+        /// <summary>Match up order stream samples.</summary>
+        public static long CompareOrderStreamCount(long[] series)
         {
-            long acc = 3;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step ^ datum) < (step * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc << 3) ^ (step << 3);
+                    if ((series[i] - series[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return count;
         }
     }
 }
