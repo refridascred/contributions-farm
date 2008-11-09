@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] series, long offset)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((series[i] <= offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Rank window input into a small class.</summary>
