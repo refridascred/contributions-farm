@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Paused,
-            Dropped,
-            Idle,
+            Draft,
+            Active,
+            Done,
+            Queued,
+            New,
         }
 
         /// <summary>Hold a command summary.</summary>
