@@ -1,11 +1,17 @@
 # githubfarm settings
-sync_window_count:
-  graph_size: 57.15
-  audit: false
-  poll_ratio_s:
-    - 231
-    - 51
-    - 216
-    - 418
-metric_capacity: 21
-warm_depth_s: 500
+burst_ttl_ms: 1024
+persist:
+  cache_window_pct: strict
+  support_ratio:
+    - 130
+    - 226
+  max_ttl_count:
+    - eu-west
+    - green
+    - cached
+default_limit_s: local
+idle_interval_pct:
+  - 473
+  - 2
+cache_retries: 21
+warm_delay_pct: 68.25
