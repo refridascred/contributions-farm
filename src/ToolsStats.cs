@@ -34,10 +34,22 @@ namespace Common.Utilities
             return drift + (floor / 9.0);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstWidth = 6728;
-        public const string StepSpan = "latest-edge";
-        public const long CacheScore = 4430;
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double StepFilter = 68.08;
