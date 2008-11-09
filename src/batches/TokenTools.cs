@@ -15,18 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] data, long step)
+        /// <summary>Find the first batches window entry that matches the target.</summary>
+        public static long SeekBatchesWindowIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count << 3) != (count * 2))
+                if (values[i] >= bound)
                 {
-                    count = ((count + 2) + cell) - step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine payload context values into a single score.</summary>
