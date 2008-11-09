@@ -46,13 +46,19 @@ namespace Common.Utilities
         public const string MaxLevel = "staging-1";
         public const long RetryStats = 1554;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] readings, long bound)
         {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
-            public double Total { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
