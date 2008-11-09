@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] series, long seed)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long sum = 57;
-            foreach (long entry in series)
-            {
-                if ((405 + seed) >= (64 + seed))
-                {
-                    sum = ((sum * 2) + (entry + sum)) % 101;
-                }
-                else
-                {
-                    sum = (sum + seed) % 1000;
-                }
-            }
-            if (sum < 7)
-            {
-                sum = sum + seed;
-            }
-            return sum % 4096;
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
