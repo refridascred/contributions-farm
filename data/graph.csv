@@ -1,6 +1,11 @@
-id,weight,token,level
-1,stable,latest,3.02
-2,826,36.78,blue
-3,stable,eu-west,796
-4,437,733,11.91
-5,88.54,97.46,open
+id,owner,active,rank,score
+1,green,35.09,fallback,primary
+2,54.86,91.33,blue,17.29
+3,primary,287,933,70.25
+4,23.38,latest,689,402
+5,974,fallback,7.59,932
+6,68.05,green,526,cached
+7,55.66,stable,fallback,323
+8,59.81,blue,open,eu-west
+9,15.8,staging,261,946
+10,stable,141,532,788
