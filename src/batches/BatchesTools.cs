@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] data)
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((double)hits > 8.0) && (((double)cell > 13.0) && ((cell ^ cell) < cell)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
