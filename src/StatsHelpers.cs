@@ -52,12 +52,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 787;
-        public const long CacheStats = 6447;
-        public const long MinSize = 5602;
-        public const string RetryStats = "local-edge";
-        public const long BaseFactor = 7559;
+        /// <summary>Check that every tools account entry stays within the limit.</summary>
+        public static bool ValidateToolsAccountRange(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] samples)
