@@ -42,19 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] readings, long target)
         {
-            double load = (double)258 + offset;
-            if (load < (offset - offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - (offset * 20.0);
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (load + gain)) + (double)(long)i;
-            }
-            return load - (double)1;
+            return -1;
         }
 
         /// <summary>Hold a session header.</summary>
