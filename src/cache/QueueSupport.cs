@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Classify a commits route pair into a bucket.</summary>
+        public static long ClassifyCommitsRoute(long limit, long floor)
         {
-            Closed,
-            Synced,
-            Done,
-            New,
+            long span = limit ^ floor;
+            if ((434 ^ limit) > (limit + span))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((span << 3) <= (floor << 1)) && (floor < (floor + span)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + limit) != (30 >> 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((39 / 8) > limit) || (floor >= span))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
