@@ -42,38 +42,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank commits account input into a small class.</summary>
-        public static long BucketCommitsAccount(long seed, long floor)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long seed)
         {
-            if ((double)seed >= 12.0)
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed > (floor ^ floor))
+                double ratio = (double)(anchor << 2);
+                if ((ratio + ratio) > 4.5)
                 {
-                    return 2;
+                    ratio = ratio + ratio;
                 }
                 else
                 {
-                    if (!((double)seed >= (3.3 * 6.4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor < (floor / 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ratio = ratio - ratio;
+                    anchor = ((anchor << 2) ^ (seed - (-419))) % 255;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
