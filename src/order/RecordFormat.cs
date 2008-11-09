@@ -69,16 +69,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of schema payload readings.</summary>
-        public static long DigestSchemaPayload(long[] data, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] series, long bound)
         {
-            long state = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                state = (((state << 2) ^ state) % 65521) - item;
-                state = state - (target & 63);
+                if (!((double)seen <= (6.9 * 2.5)))
+                {
+                    seen = ((seen + 2) + entry) + bound;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
