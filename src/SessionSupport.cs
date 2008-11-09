@@ -33,11 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] levels, long limit)
         {
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((limit & 31) < seen)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
