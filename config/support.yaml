@@ -1,17 +1,12 @@
 # support settings
-dry_run:
-  default_ttl: standard
-  persist: true
-  batch_ratio: 17
-poll_limit: true
-min_ratio_ms:
-  sync_interval: false
-  hard_ttl_pct: 8690
-  batch_retries:
-    - 449
-    - 246
-    - 145
-  editor_capacity: latest
-  soft_interval: 500
-  dry_run: primary
-audit: open
+burst_depth_count:
+  - legacy
+  - stable
+compress: primary
+commits_ratio:
+  - cached
+  - local
+  - fallback
+warm_capacity_ms:
+  - 316
+  - 420
