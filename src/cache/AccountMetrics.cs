@@ -30,13 +30,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Done,
             New,
-            Dropped,
-            Paused,
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Project the next order value.</summary>
