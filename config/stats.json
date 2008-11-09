@@ -1,23 +1,9 @@
 {
-  "counter_window": false,
-  "default_timeout_ms": true,
-  "sync_size_s": {
-    "persist": "latest",
-    "cache_interval": 500,
-    "default_ttl": {
-      "report_ratio": "latest",
-      "flush_timeout_s": "fallback",
-      "warm_ratio_count": 5.68,
-      "retry_ttl_pct": "open",
-      "strict": 68.02,
-      "max_interval_count": "fallback"
-    },
-    "retry_size": {
-      "contributi_ttl": "open",
-      "default_retries": "stable",
-      "min_delay_ms": 88
-    },
-    "idle_interval_ms": false
+  "max_depth_ms": "green",
+  "persist": {
+    "idle_ratio_ms": true,
+    "strict": 36,
+    "cache_ratio": 500
   },
-  "flush_ttl_pct": [59, 69, 225, 217]
+  "token_timeout": 58.63
 }
