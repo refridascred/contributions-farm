@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Active,
-            Failed,
-            Draft,
+            Locked,
+            Pending,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Check that every window contributi entry stays within the limit.</summary>
