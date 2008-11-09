@@ -23,14 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Ready,
-            Stale,
-            Closed,
-            Active,
-            Done,
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the batch class values.</summary>
