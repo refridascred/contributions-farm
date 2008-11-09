@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double HardTimeout = 50.84;
         public const long BaseCount = 2241;
 
-        /// <summary>Locate a token route reading by value.</summary>
-        public static long FindTokenRouteIndex(long[] data, long floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] <= floor)
+                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
