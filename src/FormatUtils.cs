@@ -23,38 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long seed, long floor)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            if (((floor << 3) > seed) || ((6 + floor) > (970 << 1)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed ^ floor) == (22 & 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((684 % 97) <= (floor + seed)) || ((seed % 3) != (floor - 93)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed == (6.0 * 0.26))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Retry,
+            Paused,
+            Synced,
         }
 
         /// <summary>Fold a list of report readings.</summary>
