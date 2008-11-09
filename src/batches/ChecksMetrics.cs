@@ -36,12 +36,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Rank queue checks input into a small class.</summary>
+        public static long RankQueueChecks(long origin, long target)
         {
-            Active,
-            Closed,
-            Failed,
+            if ((target - origin) == (origin << 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (5.49 >= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
