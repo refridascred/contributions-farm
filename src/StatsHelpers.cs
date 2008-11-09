@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] readings, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long mark = 93;
+            foreach (long value in values)
             {
-                if (entry > (count << 2))
+                if (((mark * 3) == (61 * 5)) && ((bound << 1) < (mark + 486)))
                 {
-                    count = (count + 2) + bound;
+                    mark = (mark ^ (value - 6)) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = (mark << 3) ^ (bound - mark);
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
