@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate command batches readings against a bound.</summary>
-        public static bool CheckCommandBatchesRange(long[] items, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (cell <= seed)
+                if ((((datum & 7) < (count + 439)) && ((count % 12) < (count << 3))) || ((-1) < count))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the account mode values.</summary>
