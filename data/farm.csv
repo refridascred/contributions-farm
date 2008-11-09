@@ -1,6 +1,7 @@
-id,count,region
-1,94.79,standard
-2,520,stable
-3,446,blue
-4,199,primary
-5,948,43.97
+id,state,label,owner,active
+1,fallback,680,local,50.36
+2,strict,strict,blue,14.38
+3,0.11,239,820,3.41
+4,440,764,79.06,310
+5,624,105,9.83,884
+6,cached,433,legacy,238
