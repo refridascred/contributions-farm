@@ -1,7 +1,4 @@
 # entry settings
-idle_threshold_count: 18.55
-poll_timeout_pct: 6167
-batch_size_pct: false
-retry_depth: edge
-editor_ttl: 1024
-verbose: 6909
+contributi_window: 48.36
+default_delay_pct: open
+dry_run: 2066
