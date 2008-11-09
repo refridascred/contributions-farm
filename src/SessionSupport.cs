@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleDepth = 1327;
-        public const double IdleSpan = 68.48;
-        public const long BurstCount = 7650;
-        public const long BurstWidth = 2486;
+        /// <summary>Look up the position of a account batches sample.</summary>
+        public static long LookupAccountBatchesIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LookupWindowIndex(long[] values, long origin)
