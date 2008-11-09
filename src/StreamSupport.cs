@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Check that every entry payload entry stays within the limit.</summary>
