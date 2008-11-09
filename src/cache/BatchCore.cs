@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] items, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((double)bound < (double)count)
+                if (item >= floor)
                 {
-                    count = (count + 3) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define support limits and defaults.</summary>
