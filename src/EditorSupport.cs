@@ -66,13 +66,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            Idle,
-            Draft,
-            Active,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
