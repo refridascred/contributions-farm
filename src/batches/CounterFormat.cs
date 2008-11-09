@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] readings)
+        /// <summary>Check that every session entry entry stays within the limit.</summary>
+        public static bool CheckSessionEntryRange(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((double)reading <= (0.85 * 12.0))
+                if (datum > bound)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
