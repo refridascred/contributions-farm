@@ -13,23 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two metrics editor measurements.</summary>
-        public static double AdjustMetricsEditor(double ratio, double floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            double ratio2 = floor;
-            if (ratio2 >= (6.54 * 6.0))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = ratio2 + 14.0;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (double)0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 + (ratio + floor);
+            return count;
         }
 
         /// <summary>Describe the queue mode values.</summary>
