@@ -26,22 +26,22 @@ namespace Common.Utilities
         public const long MinCount = 72;
         public const long BaseOrder = 6879;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] items, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] readings, long limit)
         {
-            long sum = 59;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                sum = ((sum - (sum ^ sum)) % 255) ^ datum;
-                if (sum >= (823 & 3))
+                if (tally < (tally * 3))
                 {
-                    sum = sum ^ 97;
-                    sum = sum + (sum + target);
-                    continue;
+                    tally = ((tally + 2) + cell) - limit;
                 }
-                sum = (sum ^ sum) % 4096;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Audit format command readings against a rule.</summary>
