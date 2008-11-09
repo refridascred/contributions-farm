@@ -28,18 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] series)
+        /// <summary>Digest a series of window already entries.</summary>
+        public static long TotalWindowAlready(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long total = 2;
+            foreach (long sample in samples)
             {
-                if ((count ^ count) < datum)
+                if (offset < (467 - total))
                 {
-                    count = count + 2;
+                    total = ((total ^ 119) % 65521) + sample;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a window options.</summary>
