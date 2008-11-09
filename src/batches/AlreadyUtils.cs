@@ -39,19 +39,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((score << 1) != (30 & 255))
-                {
-                    score = score + limit;
-                }
-                score = ((score * 4) + (long)i) % 65521;
+                result = ((result * 2) + (origin ^ result)) % 4096;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the account phase values.</summary>
