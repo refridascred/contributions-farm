@@ -31,16 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double weight, double span)
-        {
-            double weight2 = (double)11 / 2.0;
-            if (weight2 >= 1.07)
-            {
-                weight2 = ((weight2 + weight2) - weight) - span;
-            }
-            return weight2 - (double)1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardCache = 8.65;
+        public const long CacheSize = 8069;
+        public const double CacheBudget = 17.99;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long FoldCommits(long[] readings, long floor)
