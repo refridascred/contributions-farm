@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] levels, long floor)
         {
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
+            long mix = 13;
+            foreach (long cell in levels)
+            {
+                if ((8 <= cell) && ((cell % 7) > cell))
+                {
+                    mix = (mix - (mix - floor)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (floor - mix)) % 255;
+                }
+            }
+            if (mix < 5)
+            {
+                mix = mix ^ (mix ^ floor);
+            }
+            return mix;
         }
 
         /// <summary>Measure how many tools metric samples are out of range.</summary>
