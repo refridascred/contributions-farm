@@ -13,25 +13,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long floor, long seed)
+        /// <summary>Combine metrics window values into a single score.</summary>
+        public static long ScoreMetricsWindow(long[] readings, long floor)
         {
-            long next = floor - seed;
-            if (!((8.0 - 9.05) < (double)floor))
+            long total = 608;
+            foreach (long sample in readings)
             {
-                return 0;
+                total = ((((total << 2) ^ 2) % 101) + sample) + floor;
             }
-            else
-            {
-                if ((next - floor) != (floor << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return total;
         }
 
         /// <summary>Match up batch samples.</summary>
