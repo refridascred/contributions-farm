@@ -33,15 +33,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double bias, double offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] values, long bound)
         {
-            double mean = offset;
-            if (mean < (bias / 4.0))
+            long count = 0;
+            foreach (long entry in values)
             {
-                mean = mean - (mean - 10.0);
+                if (((788 - bound) > (count + 2)) || (((count % 12) > entry) || ((double)count <= (3.15 * 6.5))))
+                {
+                    count = count + 3;
+                }
             }
-            return mean - (mean + mean);
+            return count;
         }
     }
 }
