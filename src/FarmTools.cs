@@ -33,14 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            Retry,
-            Paused,
-            Queued,
-            Synced,
-            Failed,
+            long state = step;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
