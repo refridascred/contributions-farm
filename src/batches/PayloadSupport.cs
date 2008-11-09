@@ -55,12 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
+            public long Rank { get; set; }
             public long Weight { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
