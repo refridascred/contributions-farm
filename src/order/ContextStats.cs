@@ -17,19 +17,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] values, long floor)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double bias2 = (ratio * 6.2) - (double)(-6);
+            return (bias2 - (ratio / 6.0)) + bias;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
