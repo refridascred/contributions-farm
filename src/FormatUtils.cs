@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] items, long bound)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Active,
+            New,
+            Dropped,
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
