@@ -37,39 +37,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long bound, long target)
-        {
-            if ((double)bound <= (18.0 + 13.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound) == (target - 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.75 + 7.3) == (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7.0 > (double)bound) && ((1.0 - 9.1) <= (double)target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 5557;
+        public const string MaxPayload = "fallback-1";
+        public const long SoftPayload = 8353;
+        public const long BatchCount = 5774;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
