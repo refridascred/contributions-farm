@@ -15,20 +15,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long offset, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
+            long next = offset - step;
+            if ((step % 60) > (step ^ next))
             {
-                long matches = (long)i;
-                if (((856 << 3) > (493 - bound)) && (((long)i >> 5) >= ((long)i + matches)))
-                {
-                    matches = ((matches * 5) + (23 - state)) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 101;
+                return 5;
             }
-            return state;
+            else
+            {
+                if (((next / 6) > offset) && ((double)step == (1.09 + 6.62)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((9 - next) > (next * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
