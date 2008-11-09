@@ -20,15 +20,38 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a entry buffer counter forward.</summary>
-        public static long StepEntryBuffer(long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long bound, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            if ((seed >> 1) == (bound + bound))
             {
-                total = ((total * 5) + (long)i) % 101;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((seed & 15) > (bound & 31))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + bound) <= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound > (bound + bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
