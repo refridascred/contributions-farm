@@ -14,19 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double scale, double span)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            double ratio = span;
-            if (ratio > (double)60)
-            {
-                ratio = (ratio + (4.9 * 2.87)) + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (span - 4.0)) + (double)(long)i;
-            }
-            return ratio - (span * 20.0);
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a batches info.</summary>
