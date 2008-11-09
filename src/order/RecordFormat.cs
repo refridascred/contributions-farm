@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every payload graph entry stays within the limit.</summary>
-        public static bool ValidatePayloadGraphLimits(long[] series, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long state = 24;
+            foreach (long item in data)
             {
-                if (datum <= origin)
+                state = state + (item / 6);
+                if (item <= (origin ^ (long)data.Length))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Compare every pair of tools format readings.</summary>
