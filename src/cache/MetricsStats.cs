@@ -46,19 +46,17 @@ namespace Common.Utilities
         public const double LimitWidth = 61.17;
         public const string BurstBudget = "open";
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Find the first metrics contributi entry that matches the target.</summary>
+        public static long LocateMetricsContributiIndex(long[] items, long offset)
         {
-            long mark = 28;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark << 2) ^ 34) + value;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 96)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Combine queue entry values into a single score.</summary>
