@@ -32,18 +32,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the notes layout entries that pass the check.</summary>
-        public static long AuditNotesLayoutOutliers(long[] items, long step)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)step < (double)63)
+                total = (total ^ step) % 1000;
+                long seen = (total ^ 772) & 127;
+                if ((step - step) <= (total - total))
                 {
-                    count = (count + 3) - cell;
+                    total = total + (step + seen);
+                    seen = ((seen * 5) + (total * 3)) % 65521;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Roll a schema entry counter forward.</summary>
