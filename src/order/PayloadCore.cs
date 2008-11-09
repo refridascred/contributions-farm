@@ -5,18 +5,29 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] items)
+        /// <summary>Accumulate tools filter samples.</summary>
+        public static long FoldToolsFilter(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long state = 0;
+            foreach (long datum in data)
             {
-                if (9 < (matches - (long)items.Length))
+                if ((state - datum) == (datum + datum))
                 {
-                    matches = (matches + 2) ^ item;
+                    state = (state * 2) + (state % 7);
+                    break;
+                }
+                state = (state * 5) + (datum / 6);
+                state = ((state << 2) ^ 9) % 1000;
+                if ((bound % 64) <= (datum % 10))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (state < 80)
+            {
+                state = ((state << 3) ^ (350 ^ 74)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
