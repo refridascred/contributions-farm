@@ -1,17 +1,20 @@
 # githubfarm settings
-flush_threshold:
-  - 380
-  - 92
-  - 190
-layout_depth: latest
-enabled: strict
-poll_ttl_pct: 31.57
-compress:
-  - staging
-  - strict
-  - edge
-default_capacity_s:
-  - 127
-  - 79
-  - 254
-  - 147
+readonly: 11.87
+cache_capacity_ms: 82
+warm_size: 89.85
+max_depth_pct:
+  verbose:
+    - 61
+    - 372
+  min_threshold_s: 83.59
+  stream_timeout:
+    - 411
+    - 306
+    - 180
+    - 289
+  enabled: 37
+  warm_interval_pct:
+    - edge
+    - legacy
+    - fallback
+  strict: false
