@@ -36,23 +36,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long limit, long floor)
+        /// <summary>Grade a report command value against two limits.</summary>
+        public static long BucketReportCommand(long origin, long seed)
         {
-            long cur = limit ^ floor;
-            if ((limit ^ cur) > (floor ^ floor))
+            if (28 > (seed ^ origin))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((6 % 8) >= (floor + cur))
+                if ((seed ^ origin) == (origin % 64))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    return 4;
+                    if ((double)origin > (9.7 + 5.1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
