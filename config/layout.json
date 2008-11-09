@@ -1,11 +1,6 @@
 {
-  "readonly": 55,
-  "contributi_retries": false,
-  "strict": 100,
-  "burst_ttl": {
-    "default_ratio": "local",
-    "soft_interval": false,
-    "window_window": ["stable", "local", "eu-west", "cached"]
-  },
-  "base_timeout_ms": "eu-west"
+  "schema_size": 64.55,
+  "filter_interval": 0.36,
+  "cache_threshold_count": 1024,
+  "record_timeout": true
 }
