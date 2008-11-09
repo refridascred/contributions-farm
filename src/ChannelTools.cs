@@ -32,15 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] series, long seed)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long result = 3;
-            foreach (long value in series)
-            {
-                result = ((result - (8 + seed)) % 1000) - value;
-            }
-            return result % 1000;
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
