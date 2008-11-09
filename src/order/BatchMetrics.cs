@@ -24,31 +24,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long origin, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values, long seed)
         {
-            if ((8.89 * 0.3) >= (double)origin)
+            long anchor = 607;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((13.0 - 3.7) >= (double)origin)
+                if ((double)anchor >= (3.97 / 5.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor & 1) == (origin & 15))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = ((anchor * 3) + (seed - cell)) % 101;
                 }
             }
+            if (anchor > 87)
+            {
+                anchor = (anchor + (anchor - seed)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Match up batch samples.</summary>
