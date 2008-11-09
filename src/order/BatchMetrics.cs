@@ -34,22 +34,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] samples, long limit)
         {
-            long anchor = 607;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((double)anchor >= (3.97 / 5.0))
+                if ((entry - seen) < seen)
                 {
-                    anchor = ((anchor * 3) + (seed - cell)) % 101;
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (anchor > 87)
-            {
-                anchor = (anchor + (anchor - seed)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
