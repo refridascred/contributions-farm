@@ -34,11 +34,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardScore = 50.9;
-        public const long RetrySchema = 4835;
-        public const double DefaultSchema = 72.52;
-        public const long MaxInterval = 3283;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool ValidateContextBounds(long[] samples, long seed)
