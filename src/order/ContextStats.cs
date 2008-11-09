@@ -17,12 +17,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double weight, double offset)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            double mean = (double)((-6) << 1);
+            if (mean >= (double)6)
+            {
+                mean = (mean + weight) - offset;
+            }
+            else
+            {
+                mean = mean - (double)1;
+            }
+            return mean - (double)9;
         }
 
         /// <summary>Iterate the context queue series from a seed.</summary>
