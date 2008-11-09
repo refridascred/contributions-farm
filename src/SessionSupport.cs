@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Rank queue layout input into a small class.</summary>
+        public static long GradeQueueLayout(long limit, long offset)
         {
-            Draft,
-            Stale,
-            Done,
-            Locked,
+            long edge = limit ^ offset;
+            if ((offset - edge) == (edge - 63))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset / 6) <= (offset * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((edge ^ limit) < offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
