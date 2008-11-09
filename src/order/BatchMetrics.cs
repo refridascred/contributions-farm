@@ -53,17 +53,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] readings)
-        {
-            long mark = 535;
-            foreach (long item in readings)
-            {
-                mark = (((mark * 4) + (mark << 2)) % 65521) - item;
-                mark = (mark * 3) + (mark * 4);
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleDepth = 5554;
+        public const double BatchTimeout = 83.53;
+        public const long HardReport = 7834;
 
         /// <summary>Fold a list of layout already readings.</summary>
         public static long WeighLayoutAlready(long[] samples)
