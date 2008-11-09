@@ -1,12 +1,12 @@
 {
-  "readonly": 5518,
-  "retry_interval_ms": 58.7,
-  "compress": 88.83,
-  "retry_limit_s": "strict",
-  "warm_delay_ms": {
-    "flush_window_s": "open",
-    "burst_timeout": ["latest", "fallback", "blue"],
-    "base_delay_count": 18.62,
-    "batch_ratio": 13.49
-  }
+  "stats_interval": {
+    "min_depth_s": 30,
+    "strict": "stable",
+    "payload_limit": [53, 493, 337, 386],
+    "route_delay": 3069,
+    "sync_ratio_s": "blue",
+    "max_window_ms": "blue"
+  },
+  "soft_depth": 22,
+  "cache_timeout": [142, 157]
 }
