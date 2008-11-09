@@ -15,12 +15,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double ratio, double span)
         {
-            Paused,
-            New,
-            Draft,
+            double weight = (double)9 * 6.0;
+            if (weight <= (15.0 - span))
+            {
+                weight = (weight + span) + ratio;
+            }
+            else
+            {
+                weight = weight + 16.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight + 6.1;
         }
 
         /// <summary>Combine payload context values into a single score.</summary>
