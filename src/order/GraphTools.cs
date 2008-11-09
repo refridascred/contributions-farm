@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 9397;
-        public const long MaxTools = 4240;
-        public const string BatchSize = "legacy-v2";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftFactor = 66.92;
+        public const long StepScore = 9584;
+        public const long BurstScore = 2080;
+        public const long MaxCluster = 4325;
+        public const long BurstCount = 2250;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
