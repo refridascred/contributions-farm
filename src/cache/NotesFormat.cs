@@ -27,25 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long floor, long bound)
+        /// <summary>Fold a list of window context readings.</summary>
+        public static long FoldWindowContext(long[] samples, long bound)
         {
-            long slot = floor - bound;
-            if ((bound << 3) != (bound ^ bound))
+            long result = 6;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (slot < (floor ^ floor))
+                if ((item % 64) < (bound ^ 857))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    result = ((result << 2) ^ (5 / 5)) % 255;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
