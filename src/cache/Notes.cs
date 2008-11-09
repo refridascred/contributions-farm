@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double weight, double offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double mean = (20.0 + offset) * 15.0;
-            if (mean > (offset * 17.0))
-            {
-                mean = mean - offset;
-            }
-            return mean + (offset - weight);
+            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
