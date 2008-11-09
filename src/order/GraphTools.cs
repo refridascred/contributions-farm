@@ -20,18 +20,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] series)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (((-575) ^ seen) < cell)
+                if (reading != origin)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Rank commits account input into a small class.</summary>
