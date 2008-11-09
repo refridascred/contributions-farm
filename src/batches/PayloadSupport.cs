@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] readings)
+        /// <summary>Roll a support farm counter forward.</summary>
+        public static long SeriesSupportFarm(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((carry - origin) > (carry << 3)) || ((long)i <= (8 * 3)))
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 5) + (479 / 2)) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
