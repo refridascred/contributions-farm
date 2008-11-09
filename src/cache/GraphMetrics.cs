@@ -40,12 +40,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitTimeout = 4078;
-        public const long IdlePayload = 6296;
-        public const long IdleScore = 1928;
-        public const string DefaultPayload = "local";
-        public const double BatchPayload = 29.32;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 1327;
+        public const long RetryInterval = 7877;
+        public const string StepSize = "strict-1";
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderHits(long[] series, long offset)
