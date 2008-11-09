@@ -1,5 +1,24 @@
 # githubfarm settings
-audit: stable
-cache_delay_pct: 1564
-compress: fallback
-default_threshold_pct: stable
+warm_window_count:
+  - stable
+  - strict
+  - local
+  - primary
+min_window_s: 7370
+format_window: 1024
+warm_limit: legacy
+batches_interval: open
+session_ttl:
+  strict: true
+  burst_retries_ms: false
+  buffer_limit: blue
+  max_timeout_s:
+    - 4
+    - 176
+    - 209
+    - 101
+  entry_depth:
+    - 409
+    - 64
+    - 294
+    - 313
