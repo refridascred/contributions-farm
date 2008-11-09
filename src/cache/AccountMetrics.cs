@@ -46,26 +46,10 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = (anchor ^ step) % 4096;
-                if ((anchor - anchor) < (long)i)
-                {
-                    anchor = (anchor * 3) + 614;
-                }
-                if ((step ^ anchor) > 82)
-                {
-                    anchor = anchor ^ (anchor >> 3);
-                    anchor = anchor - (step << 2);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinRatio = "open-v2";
+        public const double MinSize = 88.83;
+        public const long SoftSpan = 8966;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long BucketCounter(long bound, long floor)
