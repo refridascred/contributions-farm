@@ -23,11 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryTimeout = 3503;
-        public const string MaxReport = "legacy-1";
-        public const long CacheReport = 1682;
-        public const string MinDepth = "fallback";
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((long)i & 127) < (312 + score))
+                {
+                    score = ((score << 3) ^ ((long)i + score)) % 255;
+                }
+                score = ((score * 2) + (limit & 3)) % 101;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
