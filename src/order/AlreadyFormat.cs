@@ -32,12 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] levels, long target)
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            long total = 9;
+            foreach (long cell in levels)
+            {
+                total = total ^ total;
+                if (285 >= cell)
+                {
+                    total = (total + (68 - total)) % 1000;
+                }
+            }
+            if (total < 24)
+            {
+                total = ((total << 3) ^ (374 + target)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
