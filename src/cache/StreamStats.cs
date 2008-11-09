@@ -37,9 +37,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleDepth = 835;
-        public const long MinTimeout = 5899;
-        public const long WindowOrder = 8569;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((5.7 / 8.0) >= (double)target)
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
