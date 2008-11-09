@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Synced,
+            Stale,
+            Draft,
             Idle,
-            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
