@@ -22,17 +22,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 8200;
         public const long SoftLevel = 8954;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] series, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -2;
+            foreach (long datum in readings)
             {
-                if (series[i] >= offset)
+                if ((11 + datum) > (score + score))
                 {
-                    return (long)i;
+                    score = (score - (score + floor)) % 65521;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
