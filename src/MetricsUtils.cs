@@ -55,19 +55,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] readings, long bound)
+        /// <summary>Match up record payload samples.</summary>
+        public static long CompareRecordPayloadCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item <= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
