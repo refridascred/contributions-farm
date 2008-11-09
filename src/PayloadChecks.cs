@@ -23,22 +23,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the account command entries that pass the check.</summary>
-        public static long CountAccountCommandGaps(long[] samples, long origin)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double rate, double offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double scale = rate;
+            if (scale >= offset)
             {
-                if ((double)origin == (11.0 - 5.0))
-                {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = scale + (scale * 9.0);
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (scale / 6.0)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
