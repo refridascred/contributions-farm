@@ -1,24 +1,17 @@
 # support settings
-compress: local
-stream_size:
-  retry_depth_s: 67.05
-  batch_window_count: primary
-  hard_interval:
-    already_limit: blue
-    max_timeout_pct: 95
-    burst_timeout_ms: staging
-  dry_run:
-    sync_threshold:
-      - 481
-      - 108
-      - 152
-    sync_limit_ms: 4238
-    burst_interval_count: 115
-    retry_timeout_pct: primary
-    burst_size: 1329
-idle_capacity_s:
-  - 415
-  - 232
-  - 63
-  - 327
-already_ratio: 5423
+sync_ttl:
+  - staging
+  - strict
+queue_threshold:
+  - cached
+  - standard
+  - staging
+burst_ratio_count: 21.27
+cache_retries_pct:
+  max_ttl_s: 24.69
+  session_limit:
+    - 490
+    - 102
+  graph_interval: staging
+  default_limit_count: 100
+  dry_run: strict
