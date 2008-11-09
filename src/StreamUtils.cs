@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the cluster account entries that pass the check.</summary>
-        public static long CountClusterAccountOutliers(long[] samples)
+        /// <summary>Rank cache channel input into a small class.</summary>
+        public static long RankCacheChannel(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if ((origin % 16) > (offset >> 4))
             {
-                if (hits > datum)
+                return 0;
+            }
+            else
+            {
+                if (!((offset + origin) >= (offset ^ offset)))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin <= (7.33 * 18.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset >= (origin + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank window input into a small class.</summary>
