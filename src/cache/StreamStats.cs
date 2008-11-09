@@ -47,10 +47,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowSpan = 71.42;
-        public const long DefaultDepth = 8782;
-        public const string CacheEntry = "legacy-edge";
-        public const long RetryEntry = 2223;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchSpan = 5016;
+        public const double LimitCluster = 32.38;
+        public const long BaseSize = 1284;
     }
 }
