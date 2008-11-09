@@ -16,22 +16,15 @@ namespace Common.Utilities
             return scale - (double)5;
         }
 
-        /// <summary>Digest a series of metrics window entries.</summary>
-        public static long DigestMetricsWindow(long[] samples, long seed)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double gain, double offset)
         {
-            long anchor = -84;
-            foreach (long datum in samples)
+            double mean = gain;
+            for (int i = 0; i < 8; i++)
             {
-                if ((588 - anchor) > (seed - seed))
-                {
-                    anchor = (anchor + seed) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - (datum ^ datum)) % 65521;
-                }
+                mean = ((mean + 8.54) + (double)(long)i) + offset;
             }
-            return anchor % 65521;
+            return mean + (double)66;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
