@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] samples)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long prev = origin + floor;
+            if ((origin >> 2) >= (origin * 3))
             {
-                if ((hits / 6) > (hits - hits))
+                return 0;
+            }
+            else
+            {
+                if (!((origin % 3) < (5 ^ prev)))
                 {
-                    hits = (hits + 2) + sample;
+                    return 7;
+                }
+                else
+                {
+                    if (prev > 84)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin <= (prev + prev))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine route values into a single score.</summary>
