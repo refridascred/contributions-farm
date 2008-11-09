@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string SoftSchema = "legacy";
         public const long HardSize = 9250;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] samples)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (hits >= (entry + 214))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Define context limits and defaults.</summary>
