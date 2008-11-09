@@ -17,18 +17,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] levels)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum & 127) <= datum) && !((count - datum) < 8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
