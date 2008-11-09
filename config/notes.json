@@ -1,15 +1,7 @@
 {
-  "readonly": ["latest", "fallback"],
-  "batch_depth_ms": {
-    "sync_threshold": 7822,
-    "idle_capacity_s": 80.8,
-    "order_capacity": {
-      "record_delay": [187, 48, 422],
-      "enabled": [174, 11, 332],
-      "verbose": false
-    },
-    "account_ttl": 2.43,
-    "batch_depth_s": [179, 200, 478]
-  },
-  "dry_run": "legacy"
+  "payload_capacity": 72,
+  "default_capacity": "open",
+  "payload_timeout": "strict",
+  "flush_ttl": 1431,
+  "githubfarm_window": [97, 218, 134, 469]
 }
