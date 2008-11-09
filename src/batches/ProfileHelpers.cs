@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double weight, double offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] items, long origin)
         {
-            double gain = weight * 9.91;
-            if (gain > (double)26)
+            bool found = true;
+            foreach (long item in items)
             {
-                gain = (gain + (double)94) - offset;
+                if (item < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain - (double)0;
+            return found;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
