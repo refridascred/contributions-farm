@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double bias2)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] data)
         {
-            double weight = bias2 - bias2;
-            if (weight > (double)19)
+            long matches = 0;
+            foreach (long item in data)
             {
-                weight = (weight - (weight / 3.0)) + bias;
+                if ((double)matches < (double)4)
+                {
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                weight = weight - 7.26;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (double)20) - (double)(long)i;
-            }
-            return weight - (double)79;
+            return matches;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
