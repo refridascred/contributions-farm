@@ -61,19 +61,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] items, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseScore = 8699;
+        public const long SoftAccount = 106;
+        public const long IdleDepth = 7387;
+        public const long IdleAccount = 9531;
+        public const string BurstCount = "open-edge";
     }
 }
