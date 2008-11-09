@@ -1,4 +1,13 @@
 # support settings
-burst_window: open
-cache_delay: 500
-dry_run: 24.83
+batch_ratio_s: staging
+cache_timeout: 2588
+buffer_window: staging
+githubfarm_retries:
+  - 27
+  - 208
+max_retries:
+  - 102
+  - 80
+  - 363
+  - 243
+filter_ttl: 59.03
