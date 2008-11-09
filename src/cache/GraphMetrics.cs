@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((value > ((long)values.Length ^ (long)values.Length)) && ((value + tally) <= (tally - value))) && (((62 + value) >= value) && (2 >= (tally << 1))))
                 {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Locate a command reading by value.</summary>
