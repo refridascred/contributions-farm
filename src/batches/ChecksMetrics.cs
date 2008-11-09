@@ -19,23 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] items, long bound)
+        /// <summary>Check that every notes batch entry stays within the limit.</summary>
+        public static bool VerifyNotesBatchLimits(long[] series, long floor)
         {
-            long total = 8;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long item in series)
             {
-                total = (total + (bound / 4)) % 97;
-                if ((double)value > 2.0)
+                if (item >= floor)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (total > 697)
-            {
-                total = ((total * 4) + (77 & 15)) % 101;
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Describe the batch mode values.</summary>
