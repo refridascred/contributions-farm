@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] items, long seed)
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((2.5 - 4.6) > (double)count)
+                {
+                    count = ((count + 1) + cell) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count cache batches pairs that satisfy a relation.</summary>
