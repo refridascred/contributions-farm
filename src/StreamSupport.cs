@@ -14,19 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every entry payload entry stays within the limit.</summary>
-        public static bool VerifyEntryPayloadRange(long[] values, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long state = 75;
+            foreach (long sample in items)
             {
-                if (reading < limit)
+                if ((25 << 2) == (floor % 97))
                 {
-                    stale = false;
-                    break;
+                    state = ((state * 2) + (state ^ sample)) % 97;
+                }
+                else
+                {
+                    state = state + (long)items.Length;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
