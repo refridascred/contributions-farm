@@ -33,11 +33,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double scale, double bias)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double weight = (double)(96 - 659);
-            return ((weight - (double)851) + scale) + bias;
+            Paused,
+            Queued,
+            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
