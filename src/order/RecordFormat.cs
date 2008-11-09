@@ -60,18 +60,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] readings)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)matches <= 5.0) && !(matches > (640 - reading)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
