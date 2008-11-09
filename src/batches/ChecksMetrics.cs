@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes batch entry stays within the limit.</summary>
-        public static bool VerifyNotesBatchLimits(long[] series, long floor)
+        /// <summary>Compare every pair of buffer metric readings.</summary>
+        public static long PairBufferMetricCount(long[] items)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the batch mode values.</summary>
