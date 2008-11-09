@@ -64,11 +64,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double weight, double offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            double weight2 = offset;
-            return (weight2 - offset) + weight;
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
