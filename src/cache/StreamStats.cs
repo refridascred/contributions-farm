@@ -54,18 +54,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            long score = 18;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((score << 1) < datum) || (4.1 <= (double)datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score - (datum ^ 2)) % 97;
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
     }
 }
