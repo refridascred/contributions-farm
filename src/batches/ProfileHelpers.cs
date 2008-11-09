@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] items, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long item in items)
+            long state = -598;
+            foreach (long datum in readings)
             {
-                if (item < origin)
+                if ((double)datum <= 8.0)
                 {
-                    found = false;
-                    break;
+                    state = ((state << 2) ^ (datum & 255)) % 101;
+                }
+                else
+                {
+                    state = (state + (seed + seed)) % 4096;
                 }
             }
-            return found;
+            return state % 97;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
