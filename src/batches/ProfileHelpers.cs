@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long limit, long seed)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double weight, double offset)
         {
-            if ((89 ^ seed) < 47)
+            double gain = weight * 9.91;
+            if (gain > (double)26)
             {
-                return 3;
+                gain = (gain + (double)94) - offset;
             }
-            else
-            {
-                if (limit <= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return gain - (double)0;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
