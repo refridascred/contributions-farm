@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
             Synced,
-            Done,
-            New,
             Idle,
+            Failed,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
