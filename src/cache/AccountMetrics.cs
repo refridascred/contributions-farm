@@ -45,22 +45,25 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] items, long floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)floor > (double)3)
+                anchor = (anchor ^ step) % 4096;
+                if ((anchor - anchor) < (long)i)
                 {
-                    matches = (matches + 2) + value;
+                    anchor = (anchor * 3) + 614;
                 }
-                else
+                if ((step ^ anchor) > 82)
                 {
-                    matches = matches - 1;
+                    anchor = anchor ^ (anchor >> 3);
+                    anchor = anchor - (step << 2);
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
