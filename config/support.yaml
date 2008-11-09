@@ -1,23 +1,17 @@
 # support settings
-retry_interval_count: 43
-cache_window_s:
-  batch_ratio: 4043
-  persist: 7791
-  readonly: open
-  entry_retries:
-    soft_timeout_count: 71.72
-    soft_limit_pct: primary
-    readonly: standard
-    min_threshold: 22.37
-    poll_retries_ms: 500
-  hard_depth_count: 73.06
-  queue_interval: eu-west
-default_ttl:
-  metrics_ratio: true
-  soft_ratio_ms: 33.01
-  poll_window_ms: true
-  account_size: 608
-  idle_window_ms:
-    - 313
-    - 491
-  route_threshold: 19.41
+dry_run:
+  default_ttl: standard
+  persist: true
+  batch_ratio: 17
+poll_limit: true
+min_ratio_ms:
+  sync_interval: false
+  hard_ttl_pct: 8690
+  batch_retries:
+    - 449
+    - 246
+    - 145
+  editor_capacity: latest
+  soft_interval: 500
+  dry_run: primary
+audit: open
