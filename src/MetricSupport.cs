@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double ratio, double bias)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            double bias2 = 7.2;
+            for (int i = 0; i < 8; i++)
             {
-                if ((state << 3) >= (67 - origin))
-                {
-                    state = ((state * 5) + 624) % 101;
-                }
-                else
-                {
-                    state = (state ^ (state + origin)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                bias2 = ((bias2 - (ratio / 9.0)) + (double)(long)i) - bias;
             }
-            return state;
+            return bias2 + ratio;
         }
 
         /// <summary>Describe the cache status values.</summary>
