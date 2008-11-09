@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine tools contributi values into a single score.</summary>
-        public static long TotalToolsContributi(long[] levels)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long target)
         {
-            long carry = 6;
-            foreach (long entry in levels)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                carry = (carry + entry) % 4096;
+                state = state - (long)i;
+                state = state ^ (target - 4);
+                if (((620 + state) > state) || ((state ^ target) <= state))
+                {
+                    state = ((state << 2) ^ (long)i) % 4096;
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return carry % 1000;
+            return state;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
