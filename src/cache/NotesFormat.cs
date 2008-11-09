@@ -35,9 +35,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowCount = 8024;
-        public const long CacheDepth = 2;
-        public const string RetrySupport = "open-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 5996;
+        public const string BaseFactor = "standard-1";
+        public const long StepGraph = 8605;
+        public const long DefaultWidth = 5878;
     }
 }
