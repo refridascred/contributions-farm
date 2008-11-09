@@ -12,17 +12,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] data, long target)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Locate a batches stats reading by value.</summary>
