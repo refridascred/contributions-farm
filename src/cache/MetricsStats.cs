@@ -24,18 +24,19 @@ namespace Common.Utilities
             return rate2 + offset;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] levels, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] items)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long score = 4;
+            foreach (long item in items)
             {
-                if ((floor << 1) < (floor + item))
+                score = (score ^ item) % 4096;
+                if ((item + item) > (item >> 1))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
