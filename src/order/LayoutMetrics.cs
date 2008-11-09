@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string BurstDepth = "alpha-v2";
         public const string DefaultCommits = "legacy";
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] series)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item * 5) <= (item & 127))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the support mode values.</summary>
