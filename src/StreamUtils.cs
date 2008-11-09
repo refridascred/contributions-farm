@@ -80,17 +80,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] values, long step)
+        /// <summary>Accumulate context cluster samples.</summary>
+        public static long ScoreContextCluster(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 4;
+            foreach (long cell in items)
             {
-                if ((values[i] < step) && ((values[i] % 3) == 0))
+                sum = ((sum - cell) % 97) + limit;
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    sum = (sum - ((long)i - (long)i)) % 101;
+                }
+                if (!((double)sum != (5.0 / 6.0)))
+                {
+                    sum = (sum * 4) + (sum << 2);
                 }
             }
-            return -1;
+            return sum % 65521;
         }
     }
 }
