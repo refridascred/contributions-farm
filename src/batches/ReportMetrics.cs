@@ -20,22 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of already window readings.</summary>
-        public static long TallyAlreadyWindow(long[] data)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long seed)
         {
-            long carry = 5;
-            foreach (long value in data)
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)value > (5.1 - 9.9))
-                {
-                    carry = (carry + value) % 97;
-                }
-                else
-                {
-                    carry = (carry * 3) + (carry >> 1);
-                }
+                mark = (mark - (6 ^ seed)) % 97;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return carry % 65521;
+            return mark;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
