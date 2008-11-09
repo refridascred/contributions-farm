@@ -29,22 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm layout readings.</summary>
-        public static long CombineGithubfarmLayout(long[] data, long target)
+        /// <summary>Derive the next queue batch value from a seed.</summary>
+        public static long IterateQueueBatch(long origin)
         {
-            long mark = 93;
-            foreach (long cell in data)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((2 ^ mark) <= target)
+                if ((2.78 * 14.0) > (double)mix)
                 {
-                    mark = ((mark - mark) % 1000) + cell;
+                    continue;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            if (mark > 198)
-            {
-                mark = (mark ^ (mark >> 1)) % 101;
-            }
-            return mark;
+            return mix;
         }
     }
 }
