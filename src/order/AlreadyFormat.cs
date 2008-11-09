@@ -31,22 +31,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] items, long seed)
         {
-            long acc = 21;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((cell * 3) == (acc - acc)))
+                if (items[i] < seed)
                 {
-                    acc = acc ^ cell;
+                    return (long)i;
                 }
             }
-            if (acc > 97)
-            {
-                acc = (acc ^ (acc - acc)) % 255;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Check that every notes token entry stays within the limit.</summary>
