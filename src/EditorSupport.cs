@@ -39,11 +39,19 @@ namespace Common.Utilities
         public const string LimitSpan = "legacy-v2";
         public const string RetryWidth = "cached";
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double ratio, double offset)
+        /// <summary>Derive the next account queue value from a seed.</summary>
+        public static long DeriveAccountQueue(long origin)
         {
-            double weight = (offset * 4.72) / 5.0;
-            return (weight - (double)2) + ratio;
+            long state = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((long)i * 4) > (origin & 63))
+                {
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of window entries.</summary>
