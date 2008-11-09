@@ -7,14 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in blue local standard staging; do
+mode="${1:-local}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in primary stable eu-west local; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=246
-log "limit is ${RECORD_LIMIT}"
