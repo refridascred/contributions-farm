@@ -19,17 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] samples, long step)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = floor + (floor * 8.8);
+            return (ratio - ratio) + gain;
         }
 
         /// <summary>Hold a counter options.</summary>
