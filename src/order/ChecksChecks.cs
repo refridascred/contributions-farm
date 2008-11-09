@@ -25,10 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinRatio = 7613;
-        public const long LimitScore = 2443;
-        public const long MaxSize = 2687;
-        public const long BaseOrder = 2283;
+        /// <summary>Locate a batches stats reading by value.</summary>
+        public static long LocateBatchesStatsIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
