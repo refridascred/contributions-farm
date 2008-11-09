@@ -1,6 +1,8 @@
 # entry settings
-audit: true
-cache_ratio: 14.7
-compress: 56.1
-poll_ttl_pct: false
-default_capacity_pct: false
+already_timeout: true
+dry_run: 17.18
+cache_delay_count: staging
+hard_capacity_pct: 30
+strict:
+  - cached
+  - open
