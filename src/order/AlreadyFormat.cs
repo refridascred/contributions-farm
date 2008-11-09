@@ -14,26 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine command schema values into a single score.</summary>
-        public static long TotalCommandSchema(long[] series)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long sum = 919;
-            foreach (long sample in series)
-            {
-                if (sample >= (sample >> 5))
-                {
-                    sum = ((sum * 5) + (sample % 60)) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum + sample)) % 4096;
-                }
-                if ((0.7 + 6.6) == (double)sample)
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            Locked,
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
