@@ -27,17 +27,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] levels, long origin)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double ratio, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = offset;
+            if (rate >= (ratio / 5.0))
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                rate = rate - rate;
             }
-            return -1;
+            return rate - (offset * 4.89);
         }
 
         /// <summary>Digest a series of route entries.</summary>
