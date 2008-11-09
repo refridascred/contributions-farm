@@ -17,19 +17,24 @@ namespace Common.Utilities
         public const long CacheFarm = 2898;
         public const double MaxSpan = 0.37;
 
-        /// <summary>Check that every farm entry entry stays within the limit.</summary>
-        public static bool VerifyFarmEntryLimits(long[] values, long origin)
+        /// <summary>Grade a filter session value against two limits.</summary>
+        public static long GradeFilterSession(long bound, long target)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            if (!((0.3 - 8.3) != (double)bound))
             {
-                if (datum != origin)
+                return 3;
+            }
+            else
+            {
+                if ((7.5 + 9.15) <= (double)target)
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ready;
         }
 
         /// <summary>Roll a support entry counter forward.</summary>
