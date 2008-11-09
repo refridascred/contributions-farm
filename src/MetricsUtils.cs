@@ -29,12 +29,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double gain, double bias)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            double load = bias;
+            for (int i = 0; i < 2; i++)
+            {
+                load = ((load + 8.6) - (double)(long)i) - gain;
+            }
+            return load + (3.0 + bias);
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
