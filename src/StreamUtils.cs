@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank cache channel input into a small class.</summary>
-        public static long RankCacheChannel(long offset, long origin)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            if ((origin % 16) > (offset >> 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((offset + origin) >= (offset ^ offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin <= (7.33 * 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset >= (origin + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Rank window input into a small class.</summary>
