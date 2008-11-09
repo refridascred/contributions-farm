@@ -43,14 +43,11 @@ namespace Common.Utilities
         public const long SoftPayload = 8353;
         public const long BatchCount = 5774;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Stale,
-            Closed,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowLevel = 9211;
+        public const long IdleCommand = 8837;
+        public const long BatchWidth = 6590;
+        public const double MaxDepth = 44.28;
 
         /// <summary>Measure how many record token samples are out of range.</summary>
         public static long AuditRecordTokenOutliers(long[] levels, long offset)
