@@ -38,31 +38,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a report command value against two limits.</summary>
-        public static long BucketReportCommand(long origin, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            if (28 > (seed ^ origin))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed ^ origin) == (origin % 64))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin > (9.7 + 5.1))
+                    if ((readings[i] + readings[j]) != 13)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
