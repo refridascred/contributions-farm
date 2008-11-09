@@ -22,11 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepSize = "fallback";
-        public const double BatchTools = 52.77;
-        public const long LimitInterval = 1116;
-        public const long StepBudget = 1730;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchTimeout = 32.4;
+        public const long MaxInterval = 8461;
+        public const long SoftRecord = 9729;
+        public const long MinRecord = 3543;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double RetryGraph = 41.41;
