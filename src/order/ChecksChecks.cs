@@ -14,26 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] values)
         {
-            long result = 67;
+            long hits = 0;
             foreach (long value in values)
             {
-                if (7 > (value ^ result))
+                if (((value + value) != (hits + value)) && (((long)values.Length & 3) < value))
                 {
-                    result = ((result << 2) ^ (value + (long)values.Length)) % 4096;
-                }
-                else
-                {
-                    result = result + (value << 3);
+                    hits = hits + 1;
                 }
             }
-            if (result > 78)
-            {
-                result = (result + (result - result)) % 255;
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Describe the farm kind values.</summary>
