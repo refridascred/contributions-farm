@@ -26,24 +26,17 @@ namespace Common.Utilities
         public const long BatchLevel = 8596;
         public const long DefaultTimeout = 4794;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] levels)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] items, long target)
         {
-            long sum = 1;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum + (sample & 7)) % 97;
-                sum = (sum ^ (sum ^ 0)) % 65521;
-                if ((2.53 + 7.63) >= (double)sum)
+                if (items[i] < target)
                 {
-                    sum = (sum ^ (37 ^ sum)) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum * 5)) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
