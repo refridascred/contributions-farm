@@ -18,23 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue filter samples.</summary>
-        public static long DigestQueueFilter(long[] series)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long seed, long floor)
         {
-            long acc = 37;
-            foreach (long datum in series)
+            if ((double)floor <= (4.73 / 8.0))
             {
-                acc = (acc ^ (datum + 44)) % 255;
-                if ((double)acc <= (0.19 * 2.76))
+                return 5;
+            }
+            else
+            {
+                if (((double)floor == (double)seed) && ((floor & 255) == (floor << 1)))
                 {
-                    acc = (acc * 3) + (datum % 12);
+                    return 6;
+                }
+                else
+                {
+                    if ((floor <= (seed - seed)) && ((45 - seed) < (seed & 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (acc < (-2))
-            {
-                acc = ((acc * 5) + (acc + acc)) % 65521;
-            }
-            return acc;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
