@@ -1,13 +1,15 @@
 # Command notes
 
-The editor module keeps window values in sync with the batches cache.
-Each account is validated before it reaches the stats queue.
+A cluster that stays idle for too long is moved to the already list.
+The context report groups every stats by record.
 
-Use metric settings to tune how often farm data is refreshed.
-A stream that stays idle for too long is moved to the stats list.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Keep cluster and filter names short and lowercase.
+Each batches is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Log every layout change
-- Keep counter values small
-- Document new profile fields
+- Keep schema values small
+- Document new metric fields
+- Review profile limits each release
+- Prefer session defaults
