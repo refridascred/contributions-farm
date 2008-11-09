@@ -35,16 +35,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                mix = ((mix << 2) ^ (mix + limit)) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((sum + 772) == (sum & 255))
+                {
+                    sum = sum - (42 & 127);
+                }
+                long matches = sum;
+                if ((((long)i - sum) <= (origin << 3)) && (((long)i & 3) != (sum % 97)))
+                {
+                    sum = (sum << 3) ^ matches;
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return mix;
+            return sum;
         }
     }
 }
