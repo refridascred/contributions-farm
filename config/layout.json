@@ -1,17 +1,8 @@
 {
-  "audit": "open",
-  "cluster_size": {
-    "batch_delay_ms": "standard",
-    "verbose": {
-      "hard_timeout_ms": true,
-      "batches_timeout": ["stable", "staging"],
-      "default_threshold_s": [401, 452, 487]
-    },
-    "batches_ratio": "local",
-    "queue_size": ["legacy", "latest", "local"]
-  },
-  "queue_size": [422, 71, 342, 237],
-  "burst_threshold": 81.08,
-  "account_ratio": 6902,
-  "min_depth": 29.16
+  "stream_interval": "staging",
+  "persist": "legacy",
+  "account_threshold": 76.32,
+  "flush_threshold_s": 30,
+  "retry_capacity": 6425,
+  "soft_ttl_count": 51
 }
