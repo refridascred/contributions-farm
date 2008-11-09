@@ -21,17 +21,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] series, long offset)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = bias;
+            if (scale >= (weight / 4.0))
             {
-                if ((series[i] < offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (bias / 6.0);
             }
-            return -1;
+            return scale + (double)81;
         }
 
         /// <summary>Describe the schema status values.</summary>
