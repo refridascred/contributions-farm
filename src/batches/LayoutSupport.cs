@@ -33,17 +33,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first schema command entry that matches the target.</summary>
-        public static long LookupSchemaCommandIndex(long[] values, long offset)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            New,
+            Queued,
+            Ready,
+            Draft,
         }
 
         /// <summary>Describe the batches phase values.</summary>
