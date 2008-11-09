@@ -35,32 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long floor, long limit)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long step = floor + limit;
-            if ((floor * 2) <= step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step - 545) < (limit - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8.37 + 4.93) > (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
