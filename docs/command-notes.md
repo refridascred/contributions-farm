@@ -1,11 +1,14 @@
 # Command notes
 
-When a profile fails, the schema handler retries a few times before giving up.
-A command that stays idle for too long is moved to the stream list.
-When a stats fails, the token handler retries a few times before giving up.
+Keep queue and counter names short and lowercase.
+Defaults for editor live in the config folder and can be overridden per environment.
+
+Keep graph and channel names short and lowercase.
+Use window settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Document new cluster fields
-- Keep support values small
-- Review contributi limits each release
+- Prefer commits defaults
+- Document new editor fields
+- Review window limits each release
+- Validate window input early
