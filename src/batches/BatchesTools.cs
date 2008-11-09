@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long state = 94;
+            foreach (long sample in data)
             {
-                if (((4 >> 2) >= cell) && (cell <= (cell >> 3)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (((state << 2) ^ state) % 4096) ^ sample;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
