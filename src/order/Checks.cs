@@ -39,21 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count stream cluster pairs that satisfy a relation.</summary>
-        public static long CompareStreamClusterCount(long[] readings)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a route options.</summary>
