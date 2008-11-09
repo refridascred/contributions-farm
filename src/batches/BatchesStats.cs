@@ -48,13 +48,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Rank metric profile input into a small class.</summary>
+        public static long ClassifyMetricProfile(long seed, long limit)
         {
-            Paused,
-            Closed,
-            Synced,
-            Locked,
+            long gap = seed ^ limit;
+            if (3.32 < (double)gap)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((gap + limit) <= gap))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((4.78 / 4.0) != (double)limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((gap >> 2) <= (88 - gap)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
