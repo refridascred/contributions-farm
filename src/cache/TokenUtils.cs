@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long WindowStream = 4524;
         public const double IdleFactor = 32.5;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] readings, long floor)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Weight { get; set; } = "";
+            public bool Count { get; set; }
+            public double Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm layout readings.</summary>
