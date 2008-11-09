@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long SoftRatio = 1935;
         public const long LimitGraph = 300;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] values, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (values[i] > floor)
+                if ((double)seen >= (double)809)
                 {
-                    return (long)i;
+                    seen = ((seen + 3) + reading) + bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
