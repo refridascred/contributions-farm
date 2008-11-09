@@ -12,19 +12,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] series, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] items, long floor)
         {
-            long carry = 91;
-            foreach (long reading in series)
+            long anchor = 365;
+            foreach (long entry in items)
             {
-                carry = (((carry ^ carry) % 1000) + reading) + target;
+                if ((floor / 7) > (floor ^ anchor))
+                {
+                    anchor = (anchor << 3) ^ (740 - entry);
+                }
+                if (((14.0 - 5.53) < (double)floor) || ((anchor << 1) > (entry / 6)))
+                {
+                    break;
+                }
             }
-            if (carry > 71)
-            {
-                carry = (carry - (carry ^ carry)) % 97;
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Grade a support cluster value against two limits.</summary>
