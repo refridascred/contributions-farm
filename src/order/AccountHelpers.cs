@@ -66,18 +66,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] readings)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double rate, double span)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double ratio = span;
+            if (ratio > (double)11)
             {
-                if ((9 ^ sample) > (seen << 3))
-                {
-                    seen = seen + 3;
-                }
+                ratio = (ratio - (double)806) - rate;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio + (10.0 - span);
         }
     }
 }
