@@ -48,18 +48,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((tally & 127) < (19 << 3))
+                if ((double)datum != (double)584)
                 {
-                    tally = (tally + 1) + entry;
+                    count = (count + 1) + origin;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
