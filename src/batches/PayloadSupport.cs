@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((long)i < (target + 50)))
-                {
-                    mark = (mark - (target * 5)) % 97;
-                }
-                mark = (mark ^ (target + (long)i)) % 4096;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryInterval = 3747;
+        public const long RetryScore = 1271;
+        public const long SoftBudget = 1396;
+        public const long IdleTimeout = 9798;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long ScoreNotes(long[] series)
