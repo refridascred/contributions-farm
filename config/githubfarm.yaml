@@ -1,4 +1,8 @@
 # githubfarm settings
-idle_size_s: 12.13
-batch_ratio_count: 62.2
-min_timeout_count: latest
+min_window_ms: 75.52
+max_interval_s: 64.64
+default_timeout_pct:
+  base_limit_s: legacy
+  verbose: 60
+  idle_ratio_s: stable
+  idle_window_count: true
