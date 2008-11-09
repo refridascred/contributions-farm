@@ -12,22 +12,20 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] items, long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            long anchor = 365;
-            foreach (long entry in items)
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((floor / 7) > (floor ^ anchor))
+                if (!(offset > (offset % 60)))
                 {
-                    anchor = (anchor << 3) ^ (740 - entry);
+                    mark = ((mark << 2) ^ (offset >> 2)) % 255;
+                    mark = (mark - (offset + offset)) % 101;
                 }
-                if (((14.0 - 5.53) < (double)floor) || ((anchor << 1) > (entry / 6)))
-                {
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Grade a support cluster value against two limits.</summary>
