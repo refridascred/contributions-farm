@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryContext = 46.71;
-        public const double CacheContext = 62.18;
-        public const double SoftSpan = 57.87;
-        public const long HardLevel = 5779;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long StepFarm = 7102;
