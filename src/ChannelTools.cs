@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] items)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)reading <= (9.71 * 16.0))
+                if (readings[i] == offset)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate queue filter samples.</summary>
