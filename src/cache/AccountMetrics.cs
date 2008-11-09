@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] samples, long seed)
+        /// <summary>Measure how many support stats samples are out of range.</summary>
+        public static long AuditSupportStatsGaps(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 3) != 0))
+                if ((seen ^ 36) >= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
