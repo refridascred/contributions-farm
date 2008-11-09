@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count token checks pairs that satisfy a relation.</summary>
-        public static long OverlapTokenChecksCount(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 748;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(result <= (result + entry)))
                 {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result * 2) + entry;
                 }
             }
-            return hits;
+            if (result < 852)
+            {
+                result = ((result << 3) ^ 764) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Count the account command entries that pass the check.</summary>
