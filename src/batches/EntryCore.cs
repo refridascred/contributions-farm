@@ -46,15 +46,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double weight, double bias)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] samples)
         {
-            double ratio = weight / 8.0;
-            if (ratio < 5.0)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio - (double)(-15);
+            return count;
         }
 
         /// <summary>Describe the batches class values.</summary>
