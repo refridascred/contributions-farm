@@ -1,6 +1,13 @@
 {
-  "warm_ttl_ms": "local",
-  "burst_interval_count": "staging",
-  "contributi_depth": 54.83,
-  "checks_interval": "fallback"
+  "idle_window_ms": ["fallback", "strict"],
+  "retry_capacity_ms": 49,
+  "route_threshold": 1024,
+  "schema_window": {
+    "default_timeout_pct": [299, 490, 407],
+    "batch_size_s": ["latest", "blue", "staging"],
+    "hard_threshold_s": 70.05,
+    "graph_size": "cached",
+    "flush_size_s": 4298
+  },
+  "hard_delay_ms": 66.21
 }
