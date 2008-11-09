@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Ready,
-            Done,
-            Draft,
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Match up graph samples.</summary>
