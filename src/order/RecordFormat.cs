@@ -40,15 +40,19 @@ namespace Common.Utilities
             return (bias + (double)831) + gain;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double scale, double span)
+        /// <summary>Check that every tools schema entry stays within the limit.</summary>
+        public static bool CheckToolsSchemaLimits(long[] values, long bound)
         {
-            double scale2 = span;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                scale2 = ((scale2 - (5.5 / 6.0)) + (double)(long)i) + scale;
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale2 + (scale2 - span);
+            return valid;
         }
 
         /// <summary>Fold a list of schema payload readings.</summary>
