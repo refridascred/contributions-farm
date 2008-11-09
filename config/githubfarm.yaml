@@ -1,7 +1,10 @@
 # githubfarm settings
-cache_ratio_pct: 100
-min_window_count:
-  - 120
-  - 193
-base_ratio_s: 13.2
-cache_ttl: 3721
+soft_capacity:
+  - edge
+  - blue
+  - latest
+schema_limit: 30
+verbose: open
+soft_ratio_count:
+  - 491
+  - 485
