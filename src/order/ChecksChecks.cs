@@ -30,13 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Iterate the report layout series from a seed.</summary>
+        public static long DeriveReportLayout(long origin)
         {
-            Queued,
-            Failed,
-            Pending,
-            Done,
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
