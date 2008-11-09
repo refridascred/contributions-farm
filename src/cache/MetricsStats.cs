@@ -38,12 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxFactor = 3.34;
-        public const long DefaultRatio = 6264;
-        public const double LimitFactor = 75.66;
-        public const string BaseWidth = "local-1";
-        public const long DefaultSession = 2188;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "fallback";
+        public const double LimitRoute = 58.78;
+        public const double DefaultSpan = 30.91;
+        public const double LimitWidth = 61.17;
+        public const string BurstBudget = "open";
 
         /// <summary>Count the graph stats entries that pass the check.</summary>
         public static long TallyGraphStatsGaps(long[] series)
