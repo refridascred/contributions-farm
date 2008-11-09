@@ -46,22 +46,21 @@ namespace Common.Utilities
         public const long RetryInterval = 7877;
         public const string StepSize = "strict-1";
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] series, long offset)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)offset >= 9.2)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
