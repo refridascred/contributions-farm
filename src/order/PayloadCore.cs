@@ -41,22 +41,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long acc = 6;
-            foreach (long value in data)
-            {
-                if ((double)acc > (20.0 + 2.2))
-                {
-                    acc = (acc ^ acc) - value;
-                }
-            }
-            if (acc > 24)
-            {
-                acc = (acc * 2) + 740;
-            }
-            return acc;
+            Synced,
+            Active,
+            Ready,
+            Draft,
+            Idle,
         }
     }
 }
