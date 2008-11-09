@@ -62,36 +62,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long origin, long bound)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long limit, long step)
         {
-            if ((5.1 / 3.0) < (double)origin)
+            long gap = limit ^ step;
+            if (!((2.1 / 3.0) <= (double)step))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((double)origin == (3.88 / 6.0))
+                if (limit >= (gap & 127))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((bound + bound) == (75 - origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin == (10.0 / 6.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
