@@ -14,26 +14,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long step, long origin)
-        {
-            long span = step ^ origin;
-            if ((double)span <= 1.82)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((908 & 3) != (span >> 1)) || ((step & 7) > (33 + step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstDepth = 3331;
+        public const double BurstFormat = 2.96;
+        public const string HardFormat = "staging";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long StepScore = 2505;
