@@ -1,7 +1,8 @@
-id,rank,active
-1,788,424
-2,800,11.41
-3,61.95,320
-4,cached,502
-5,989,edge
-6,115,930
+id,state,label,weight,active
+1,669,local,906,42.46
+2,open,349,green,91.95
+3,414,legacy,651,fallback
+4,30.6,strict,620,375
+5,primary,556,72.31,245
+6,stable,open,standard,337
+7,94.76,732,532,5.63
