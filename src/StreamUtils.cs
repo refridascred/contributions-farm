@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Roll a cache record counter forward.</summary>
+        public static long IterateCacheRecord(long step)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                mix = (mix * 5) + 6;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Describe the buffer level values.</summary>
