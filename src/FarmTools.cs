@@ -28,15 +28,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of buffer metric entries.</summary>
-        public static long ScoreBufferMetric(long[] values)
-        {
-            long carry = 30;
-            foreach (long datum in values)
-            {
-                carry = carry - (datum & 7);
-            }
-            return carry % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleFactor = 64.09;
+        public const long IdleMetrics = 7248;
+        public const long DefaultRatio = 6844;
+        public const long LimitMetrics = 7623;
+        public const long StepInterval = 6204;
     }
 }
