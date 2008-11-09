@@ -33,24 +33,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long origin, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] values, long target)
         {
-            if (((6 - origin) == (origin / 9)) || (origin >= (step ^ step)))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step - origin) < step)
+                if ((1.33 > (double)target) || ((double)cell >= (0.5 - 7.2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next order value.</summary>
