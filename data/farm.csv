@@ -1,9 +1,6 @@
-id,active,weight,region
-1,575,362,7.04
-2,3.99,17.83,488
-3,39.71,stable,cached
-4,staging,815,50.97
-5,cached,legacy,62.24
-6,cached,514,131
-7,81.66,355,34
-8,latest,72.48,eu-west
+id,count,ratio,level,score
+1,15,primary,green,46.09
+2,45.06,cached,legacy,549
+3,local,80.78,123,blue
+4,96.21,139,legacy,76.45
+5,468,526,66.12,73
