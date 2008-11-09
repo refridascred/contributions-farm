@@ -16,13 +16,19 @@ namespace Common.Utilities
             return scale - (scale * 11.0);
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] levels, long offset)
         {
-            Synced,
-            Active,
-            Done,
-            Queued,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the profile level values.</summary>
