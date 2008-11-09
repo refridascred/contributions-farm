@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] items, long target)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a filter summary.</summary>
