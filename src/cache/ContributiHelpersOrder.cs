@@ -12,21 +12,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count metric window pairs that satisfy a relation.</summary>
-        public static long MatchMetricWindowCount(long[] samples)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Active,
+            Stale,
+            Done,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
