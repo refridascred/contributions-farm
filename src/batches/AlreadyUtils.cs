@@ -27,34 +27,35 @@ namespace Common.Utilities
         public const double MaxSize = 68.73;
         public const double RetryFarm = 39.11;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long limit, long origin)
+        /// <summary>Rank format farm input into a small class.</summary>
+        public static long RankFormatFarm(long seed, long step)
         {
-            if ((double)origin > (1.93 * 12.0))
+            long slot = seed - step;
+            if ((double)step >= 13.0)
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (!((origin - limit) >= (origin ^ origin)))
+                if (((step - step) <= (58 - step)) && ((double)step > (7.77 / 2.0)))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if (limit < (origin * 3))
+                    if ((seed > (seed >> 3)) || (0.85 >= (double)seed))
                     {
-                        return 6;
+                        return 3;
                     }
                     else
                     {
-                        if ((limit << 2) <= (14 + limit))
+                        if ((7.0 - 8.61) >= (double)slot)
                         {
-                            return 2;
+                            return 7;
                         }
                         else
                         {
-                            return 7;
+                            return 6;
                         }
                     }
                 }
