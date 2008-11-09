@@ -76,20 +76,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next already counter value from a seed.</summary>
-        public static long SeriesAlreadyCounter(long bound)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((double)state <= (2.73 / 5.0)))
-                {
-                    state = state ^ bound;
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Closed,
+            Draft,
+            Dropped,
         }
     }
 }
