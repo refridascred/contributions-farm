@@ -45,20 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] data)
-        {
-            long mix = 6;
-            foreach (long sample in data)
-            {
-                mix = mix ^ (sample + 7);
-            }
-            if (mix < 52)
-            {
-                mix = (mix ^ (mix ^ mix)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleBudget = "standard-v2";
+        public const double RetryWidth = 8.07;
+        public const long MinDepth = 407;
+        public const long MinRatio = 848;
+        public const string WindowChecks = "local";
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportHits(long[] data)
