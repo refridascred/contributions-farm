@@ -1,7 +1,8 @@
 {
-  "min_interval_s": "stable",
-  "poll_interval_count": "primary",
-  "default_size_pct": "edge",
-  "flush_limit_ms": "staging",
-  "warm_timeout_pct": 12.26
+  "support_ttl": ["latest", "strict", "local"],
+  "poll_depth_count": "latest",
+  "hard_retries_pct": 95.68,
+  "strict": 2238,
+  "batch_capacity": false,
+  "cache_window_ms": 7934
 }
