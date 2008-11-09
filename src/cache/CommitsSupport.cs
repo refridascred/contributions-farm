@@ -40,22 +40,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] series)
         {
-            long score = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (score <= item)
+                if (!((seen + sample) < (sample + sample)))
                 {
-                    score = (score ^ (score << 1)) % 65521;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    score = (score * 5) + (item + 133);
+                    seen = seen - 1;
                 }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
