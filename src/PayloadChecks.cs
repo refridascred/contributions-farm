@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] levels, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long acc = 920;
+            foreach (long value in readings)
             {
-                if (reading >= limit)
+                if ((double)value < (1.9 + 7.64))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc - (42 % 60)) % 97;
+                }
+                else
+                {
+                    acc = acc ^ (value + acc);
                 }
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Locate a account reading by value.</summary>
