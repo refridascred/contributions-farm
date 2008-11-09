@@ -22,11 +22,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchBudget = "alpha-edge";
-        public const long BaseBatch = 3816;
-        public const double CacheInterval = 18.75;
-        public const long BurstCount = 390;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long limit, long target)
+        {
+            long edge = limit + target;
+            if ((limit * 3) <= (edge + limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target & 7) <= (470 + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit >> 1) <= (edge >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long FindContextIndex(long[] values, long step)
