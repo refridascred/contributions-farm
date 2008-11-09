@@ -1,11 +1,11 @@
 # Command notes
 
-Run the notes check before changing any order limits.
-The commits module keeps notes values in sync with the batch cache.
-When a schema fails, the window handler retries a few times before giving up.
+The notes report groups every order by channel.
+The account report groups every stream by graph.
+Use metrics settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Validate queue input early
-- Review format limits each release
-- Log every window change
+- Review channel limits each release
+- Prefer report defaults
+- Keep command values small
