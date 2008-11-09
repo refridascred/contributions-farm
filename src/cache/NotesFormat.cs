@@ -41,10 +41,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseBudget = 1830;
-        public const long BurstBudget = 2272;
-        public const long StepFactor = 9362;
-        public const long WindowScore = 4454;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardDepth = 4246;
+        public const string BatchTools = "strict";
+        public const long SoftTools = 1303;
+        public const long CacheTools = 6839;
+        public const string CacheSpan = "strict";
     }
 }
