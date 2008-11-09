@@ -41,17 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry metric reading by value.</summary>
-        public static long LocateEntryMetricIndex(long[] readings, long offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] < offset) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
