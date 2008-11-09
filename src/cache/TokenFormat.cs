@@ -12,15 +12,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long state = 617;
-            foreach (long datum in samples)
-            {
-                state = ((state << 2) ^ (datum - state)) % 4096;
-            }
-            return state % 97;
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
