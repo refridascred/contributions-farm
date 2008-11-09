@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Adjust a session token reading.</summary>
+        public static double BlendSessionToken(double scale, double bias)
         {
-            long carry = 534;
-            foreach (long datum in series)
+            double mean = bias / 9.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((datum * 4) >= (datum + carry))
-                {
-                    carry = (carry << 3) ^ ((-339) << 2);
-                }
-                if ((17.0 * 0.9) >= (double)carry)
-                {
-                    carry = (carry ^ (datum ^ datum)) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (datum - carry);
-                }
+                mean = (mean + scale) - (double)(long)i;
             }
-            return carry;
+            return mean + (double)(-8);
         }
 
         /// <summary>Fold a list of window context readings.</summary>
