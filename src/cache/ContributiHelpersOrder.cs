@@ -23,10 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxRecord = 52.41;
-        public const long MinRecord = 1870;
-        public const long CacheRecord = 6078;
+        /// <summary>Look up the position of a stats editor sample.</summary>
+        public static long LocateStatsEditorIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long OverlapRouteCount(long[] items)
