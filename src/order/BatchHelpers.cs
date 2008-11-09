@@ -39,17 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batch editor reading by value.</summary>
-        public static long FindBatchEditorIndex(long[] samples, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (samples[i] <= floor)
+                if (reading >= floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
