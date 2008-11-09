@@ -47,11 +47,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] series, long target)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
