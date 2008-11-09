@@ -45,16 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] series, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                acc = ((acc << 3) ^ (acc + (long)i)) % 1000;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
     }
 }
