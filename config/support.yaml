@@ -1,9 +1,14 @@
 # support settings
-default_interval: 93.57
-compress:
-  sync_delay: open
-  hard_ttl_ms: 82
-  farm_threshold: standard
-  persist: 15
-  soft_size_s: true
-order_retries: primary
+persist: true
+verbose: 52.6
+batches_capacity:
+  enabled: 57.6
+  poll_ttl: 100
+  order_timeout: eu-west
+  dry_run: 93
+hard_size:
+  - 187
+  - 435
+  - 365
+  - 364
+contributi_delay: 30.66
