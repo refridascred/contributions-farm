@@ -1,7 +1,9 @@
-id,rank,level,weight,active
-1,fallback,65.61,blue,3.81
-2,343,927,418,64.07
-3,358,local,3.89,standard
-4,78.91,746,21.69,eu-west
-5,969,strict,blue,fallback
-6,853,10.11,884,82.11
+id,active,weight,region
+1,575,362,7.04
+2,3.99,17.83,488
+3,39.71,stable,cached
+4,staging,815,50.97
+5,cached,legacy,62.24
+6,cached,514,131
+7,81.66,355,34
+8,latest,72.48,eu-west
