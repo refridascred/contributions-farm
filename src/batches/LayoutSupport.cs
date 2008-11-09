@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 6366;
-        public const long WindowLayout = 3559;
-        public const long StepSpan = 5037;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((8.7 - 2.4) >= (double)hits)
+                {
+                    hits = ((hits + 3) + entry) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many account contributi samples are out of range.</summary>
         public static long TallyAccountContributiHits(long[] samples, long bound)
