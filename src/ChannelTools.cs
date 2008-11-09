@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double weight, double offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double offset)
         {
-            double ratio = (double)(798 & 7);
-            for (int i = 0; i < 7; i++)
+            double rate = (double)(54 - 80);
+            if (rate <= ratio)
             {
-                ratio = (ratio + (offset - offset)) - (double)(long)i;
+                rate = (rate + (rate - rate)) + offset;
             }
-            return ratio + weight;
+            return rate + (double)37;
         }
 
         /// <summary>Validate route commits readings against a bound.</summary>
