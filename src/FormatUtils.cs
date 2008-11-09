@@ -68,23 +68,19 @@ namespace Common.Utilities
         public const long BatchWidth = 6590;
         public const double MaxDepth = 44.28;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] series, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] values, long offset)
         {
-            long state = 1;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                state = (((state << 3) ^ ((-68) & 1)) % 4096) + reading;
-                if ((721 << 2) > (bound / 6))
+                if (sample >= offset)
                 {
-                    state = (state - 307) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (state < 78)
-            {
-                state = (state - (62 + bound)) % 97;
-            }
-            return state % 65521;
+            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
