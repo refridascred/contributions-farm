@@ -11,26 +11,17 @@ namespace Common.Utilities
         public const long StepGithubfarm = 8877;
         public const long BurstSpan = 190;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] values, long offset)
+        /// <summary>Look up the position of a session graph sample.</summary>
+        public static long LocateSessionGraphIndex(long[] items, long offset)
         {
-            long result = 51;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if (items[i] == offset)
                 {
-                    result = ((result ^ (datum ^ offset)) % 255) + (long)i;
-                }
-                if ((datum ^ datum) >= (offset & 1))
-                {
-                    result = (result - (result + offset)) % 4096;
+                    return (long)i;
                 }
             }
-            if (result < 110)
-            {
-                result = ((result << 2) ^ (result - offset)) % 1000;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate batches window readings against a bound.</summary>
