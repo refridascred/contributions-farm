@@ -1,5 +1,6 @@
 {
-  "min_limit_pct": "eu-west",
-  "default_timeout": "fallback",
-  "persist": "primary"
+  "sync_timeout": "strict",
+  "compress": "local",
+  "warm_ttl_pct": 10,
+  "order_timeout": "primary"
 }
