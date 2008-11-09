@@ -34,14 +34,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the stream batch entries that pass the check.</summary>
+        public static long MeasureStreamBatchOutliers(long[] values, long step)
         {
-            Done,
-            Dropped,
-            Locked,
-            Failed,
-            Paused,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (!(((double)step >= (3.7 * 5.5)) || ((double)datum >= (1.8 - 2.5))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
