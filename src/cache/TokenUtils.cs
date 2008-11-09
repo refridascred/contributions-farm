@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long BaseStream = 8396;
         public const string BurstStream = "staging-v2";
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] data, long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
