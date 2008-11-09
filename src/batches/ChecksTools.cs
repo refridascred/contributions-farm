@@ -39,14 +39,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            New,
-            Idle,
-            Pending,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseInterval = 1539;
+        public const long DefaultCounter = 1082;
+        public const string HardRatio = "legacy-edge";
+        public const long SoftCount = 2835;
     }
 }
