@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const string BaseCount = "primary-1";
         public const double MaxScore = 97.91;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double weight, double floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            double mean = (weight + floor) * 4.81;
+            return mean - (double)777;
         }
 
         /// <summary>Hold a metrics header.</summary>
