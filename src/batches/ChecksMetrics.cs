@@ -46,13 +46,11 @@ namespace Common.Utilities
         public const string HardTimeout = "latest-1";
         public const long MaxRatio = 417;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultSpan = 1403;
+        public const long CacheDepth = 2924;
+        public const long IdleSpan = 3759;
+        public const string LimitCommand = "cached-edge";
 
         /// <summary>Validate support commits readings against a bound.</summary>
         public static bool GuardSupportCommitsBounds(long[] data, long limit)
