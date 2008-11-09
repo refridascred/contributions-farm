@@ -43,25 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks route samples.</summary>
-        public static long DigestChecksRoute(long[] readings)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            long score = 483;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                bool ok = (31 % 24) != (score << 3);
-                if (ok)
+                if ((count % 12) > value)
                 {
-                    score = (((score * 3) + score) % 65521) ^ item;
-                    break;
+                    count = count + 3;
                 }
-                score = (score + score) % 1000;
             }
-            if (score > 50)
-            {
-                score = (score ^ (score / 5)) % 1000;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
