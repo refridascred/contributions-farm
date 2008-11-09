@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long target, long step)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long seed)
         {
-            if ((target ^ step) != (target - step))
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
+                state = (state + (55 >> 3)) % 65521;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (5.5 < (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return state;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
