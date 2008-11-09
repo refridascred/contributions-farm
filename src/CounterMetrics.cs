@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] items, long step)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long score = 41;
-            foreach (long datum in items)
-            {
-                if ((0.33 + 19.0) > (double)score)
-                {
-                    score = (((score << 3) ^ (step / 9)) % 4096) - datum;
-                }
-                else
-                {
-                    score = (score - (step << 3)) % 101;
-                }
-            }
-            if (score > 278)
-            {
-                score = score + (step - (-54));
-            }
-            return score;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
