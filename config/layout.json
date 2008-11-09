@@ -1,7 +1,7 @@
 {
-  "enabled": "local",
-  "already_limit": 2772,
-  "hard_interval": 87,
-  "cache_capacity": "staging",
-  "soft_threshold_count": false
+  "githubfarm_limit": "staging",
+  "default_ratio": "latest",
+  "warm_window": 52.23,
+  "base_depth": 30,
+  "counter_delay": "blue"
 }
