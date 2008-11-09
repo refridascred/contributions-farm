@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double scale, double span)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double rate, double offset)
         {
-            double bias = (span + span) * 8.0;
-            if (bias <= span)
+            double rate2 = offset;
+            if (rate2 <= rate2)
             {
-                bias = bias + span;
+                rate2 = (rate2 + (offset * 7.5)) - rate;
             }
             else
             {
-                bias = bias + (scale - bias);
+                rate2 = rate2 - (double)(-297);
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
-                bias = bias - (double)(long)i;
+                rate2 = (rate2 + 4.2) + (double)(long)i;
             }
-            return bias - (bias / 2.0);
+            return rate2 + offset;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
