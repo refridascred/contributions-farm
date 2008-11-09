@@ -45,22 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] readings)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] readings, long offset)
         {
-            long carry = 6;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry + 37) == (carry ^ datum))
+                if (readings[i] < offset)
                 {
-                    carry = (carry * 3) + (701 + 9);
+                    return (long)i;
                 }
             }
-            if (carry < 8)
-            {
-                carry = carry ^ ((-52) ^ carry);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the cluster level values.</summary>
