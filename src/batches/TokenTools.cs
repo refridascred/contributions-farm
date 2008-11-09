@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Synced,
-            New,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BasePayload = "alpha-edge";
+        public const long DefaultBudget = 9499;
+        public const long MinDepth = 9663;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long ClassifyCounter(long floor, long seed)
