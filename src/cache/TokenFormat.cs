@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank checks already input into a small class.</summary>
-        public static long RankChecksAlready(long limit, long seed)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long offset = limit ^ seed;
-            if (seed <= (27 - 918))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit >> 4) != (seed - 368))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit < (13.0 + 2.4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((offset % 5) == ((-996) + 629)) || ((double)offset != (double)limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the queue class values.</summary>
