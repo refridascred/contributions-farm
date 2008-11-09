@@ -72,13 +72,11 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
