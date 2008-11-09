@@ -46,19 +46,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] readings, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] series, long bound)
         {
-            long sum = 712;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor % 5) != (sum / 3))
+                if (series[i] == bound)
                 {
-                    sum = (((sum << 3) ^ (floor * 4)) % 97) ^ reading;
+                    return (long)i;
                 }
-                sum = ((sum << 2) ^ sum) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the report phase values.</summary>
