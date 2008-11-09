@@ -20,19 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double bias)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long bound, long step)
         {
-            double mean = weight;
-            if (mean > (double)(-727))
+            if ((bound >> 4) >= (step >> 1))
             {
-                mean = mean - (mean * 9.2);
+                return 2;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                mean = (mean + weight) + (double)(long)i;
+                if (step <= (step + (-9)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + step) >= (0 * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return mean + (bias * 14.0);
         }
 
         /// <summary>Describe the token level values.</summary>
