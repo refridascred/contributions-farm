@@ -24,13 +24,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            Active,
+            Closed,
+            New,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
