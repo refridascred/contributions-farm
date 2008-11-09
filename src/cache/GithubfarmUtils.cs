@@ -53,25 +53,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long target, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double rate, double span)
         {
-            long slot = target - bound;
-            if ((target >> 2) > slot)
+            double load = rate;
+            if (load < span)
             {
-                return 8;
+                load = load + load;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (2.9 >= (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                load = (load + (rate - rate)) + (double)(long)i;
             }
+            return load + (double)(-69);
         }
     }
 }
