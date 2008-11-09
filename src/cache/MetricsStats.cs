@@ -25,29 +25,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate editor format samples.</summary>
-        public static long FoldEditorFormat(long[] data)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] values)
         {
-            long state = 24;
-            foreach (long reading in data)
+            long mark = 4;
+            foreach (long datum in values)
             {
-                state = state + (reading + state);
-                if (state <= (602 + state))
-                {
-                    state = (state ^ (1 * 3)) % 101;
-                    state = (state + (state + 54)) % 255;
-                    break;
-                }
-                if (!(79 < reading))
-                {
-                    state = state + (4 % 5);
-                }
-                else
-                {
-                    state = (state << 2) ^ reading;
-                }
+                mark = ((mark + (mark & 255)) % 255) ^ datum;
             }
-            return state % 1000;
+            return mark;
         }
 
         /// <summary>Count the graph stats entries that pass the check.</summary>
