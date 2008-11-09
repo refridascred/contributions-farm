@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const double HardTimeout = 50.84;
         public const long BaseCount = 2241;
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double weight, double span)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            double gain = (double)6;
-            if (gain >= gain)
-            {
-                gain = (gain + (4.78 * 16.0)) - weight;
-            }
-            return gain + (span / 6.0);
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many schema token samples are out of range.</summary>
