@@ -15,22 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the queue entry series from a seed.</summary>
-        public static long RollQueueEntry(long limit)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                long tally = (767 >> 5) + (state + limit);
-                if ((long)i < ((long)i + state))
-                {
-                    long slot = (0 ^ tally) / 4;
-                    tally = tally + (limit ^ slot);
-                }
-                tally = tally + ((long)i - 4);
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a already summary.</summary>
