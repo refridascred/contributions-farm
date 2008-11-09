@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long origin, long limit)
+        /// <summary>Count counter route pairs that satisfy a relation.</summary>
+        public static long MatchCounterRouteCount(long[] data)
         {
-            long gap = origin + limit;
-            if (((gap + gap) >= limit) && ((7 + origin) < 52))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((4.0 - 7.7) < (double)origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin >= (gap * 5)) && (50 < gap))
+                    if ((data[i] ^ data[j]) == 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (20.0 < (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
