@@ -14,25 +14,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of already payload entries.</summary>
-        public static long CombineAlreadyPayload(long[] items, long target)
-        {
-            long acc = -849;
-            foreach (long cell in items)
-            {
-                if (acc <= (acc - target))
-                {
-                    acc = (acc - (29 >> 2)) % 1000;
-                    acc = acc + (cell - cell);
-                    continue;
-                }
-                if (((8.4 - 4.0) > (double)target) || ((cell & 3) >= target))
-                {
-                    acc = (acc ^ (acc % 5)) % 65521;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 9658;
+        public const string RetryTimeout = "primary-edge";
+        public const long IdleLevel = 6022;
+        public const long MinEditor = 6236;
+        public const long IdleSpan = 9931;
 
         /// <summary>Accumulate window samples.</summary>
         public static long DigestWindow(long[] samples)
