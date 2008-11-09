@@ -16,18 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 1537;
+        public const double HardNotes = 64.04;
+        public const long BatchLevel = 8596;
+        public const long DefaultTimeout = 4794;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long FoldCommits(long[] levels)
