@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] series)
+        /// <summary>Audit command channel readings against a rule.</summary>
+        public static long AuditCommandChannelOutliers(long[] data, long floor)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((cell << 3) > floor) && (((cell ^ 40) >= (seen ^ floor)) && (((-43) - floor) > seen)))
                 {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
