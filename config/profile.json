@@ -1,6 +1,5 @@
 {
-  "flush_interval_ms": "primary",
-  "warm_interval": "green",
-  "sync_ttl_count": "edge",
-  "flush_depth": 1024
+  "sync_ttl_count": "fallback",
+  "soft_size": true,
+  "warm_limit": "eu-west"
 }
