@@ -32,19 +32,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double rate, double offset)
+        /// <summary>Roll a support entry counter forward.</summary>
+        public static long StepSupportEntry(long target)
         {
-            double rate2 = offset;
-            if (rate2 > (rate2 - rate))
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                rate2 = rate2 + (double)(-53);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 - (rate - rate)) + (double)(long)i;
-            }
-            return rate2 - offset;
+            return acc;
         }
     }
 }
