@@ -14,11 +14,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchTimeout = 32.4;
-        public const long MaxInterval = 8461;
-        public const long SoftRecord = 9729;
-        public const long MinRecord = 3543;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Ready,
+            Pending,
+            Queued,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double RetryGraph = 41.41;
