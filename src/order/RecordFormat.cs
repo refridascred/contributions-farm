@@ -38,12 +38,22 @@ namespace Common.Utilities
             return rate - (offset * 4.89);
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] data)
         {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((long)data.Length - reading) > (633 / 4))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
