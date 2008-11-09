@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] values, long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long step)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum > origin)
+                if ((8.27 < (double)acc) || (((-26) >> 4) > (step >> 5)))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
