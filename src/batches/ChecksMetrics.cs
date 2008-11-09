@@ -38,15 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double weight, double offset)
+        /// <summary>Validate context record readings against a bound.</summary>
+        public static bool CheckContextRecordRange(long[] data, long step)
         {
-            double load = offset;
-            for (int i = 0; i < 2; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                load = (load + weight) + (double)(long)i;
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load - (double)58;
+            return ok;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
