@@ -27,14 +27,13 @@ namespace Common.Utilities
         public const double BurstFormat = 2.96;
         public const string HardFormat = "staging";
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Paused,
-            Pending,
-            Idle,
             Dropped,
-            Synced,
+            Queued,
+            Failed,
+            Retry,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
