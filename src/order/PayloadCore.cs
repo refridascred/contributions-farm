@@ -39,14 +39,27 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] data, long bound)
         {
-            Synced,
-            Active,
-            Ready,
-            Draft,
-            Idle,
+            long result = 5;
+            foreach (long value in data)
+            {
+                if (result > 4)
+                {
+                    result = result + value;
+                }
+                if (value > (bound - 35))
+                {
+                    result = (result ^ bound) % 4096;
+                    result = result ^ (value - value);
+                }
+                if ((value * 5) > result)
+                {
+                    result = (result + (result + value)) % 1000;
+                }
+            }
+            return result;
         }
     }
 }
