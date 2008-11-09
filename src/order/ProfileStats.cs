@@ -23,17 +23,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of entry profile readings.</summary>
-        public static long CombineEntryProfile(long[] levels, long offset)
-        {
-            long mark = 214;
-            foreach (long entry in levels)
-            {
-                mark = mark ^ entry;
-                mark = ((mark << 3) ^ (offset / 4)) % 255;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheSpan = 9403;
+        public const double RetryCache = 6.41;
+        public const string LimitSpan = "latest-edge";
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextLimits(long[] readings, long target)
