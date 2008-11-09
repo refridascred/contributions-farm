@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 5;
+            foreach (long value in levels)
             {
-                if (levels[i] < seed)
+                if (!(step >= mix))
                 {
-                    return (long)i;
+                    mix = (mix - step) ^ value;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
