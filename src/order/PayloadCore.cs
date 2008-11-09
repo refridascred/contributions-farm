@@ -26,17 +26,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] readings, long floor)
+        /// <summary>Validate batches window readings against a bound.</summary>
+        public static bool GuardBatchesWindowBounds(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((readings[i] < floor) && ((readings[i] % 5) == 0))
+                if (value <= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
