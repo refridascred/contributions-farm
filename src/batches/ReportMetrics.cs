@@ -30,26 +30,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of contributi report entries.</summary>
-        public static long WeighContributiReport(long[] data, long seed)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            long score = 476;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((score * 3) <= seed) && ((score - value) != (value & 127)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score * 4) + (seed - score)) % 65521;
-                }
-                else
-                {
-                    score = (score * 2) + (value << 1);
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score < 866)
-            {
-                score = ((score << 2) ^ (seed % 16)) % 255;
-            }
-            return score;
+            return count;
         }
     }
 }
