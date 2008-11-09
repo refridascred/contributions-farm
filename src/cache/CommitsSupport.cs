@@ -71,18 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Validate contributi layout readings against a bound.</summary>
+        public static bool VerifyContributiLayoutBounds(long[] readings, long bound)
         {
-            long sum = 7;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((4.1 >= (double)sum) || (((long)data.Length % 64) >= (8 << 3)))
+                if (item != bound)
                 {
-                    sum = (sum + (sum / 8)) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Audit cache queue readings against a rule.</summary>
