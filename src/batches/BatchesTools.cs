@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 7318;
-        public const long WindowDepth = 28;
-        public const string LimitScore = "primary-edge";
-        public const double LimitQueue = 95.54;
-        public const long StepQueue = 6468;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public long Weight { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] items)
