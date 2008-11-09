@@ -40,31 +40,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long bound, long offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            if (!(bound <= (bound + offset)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound * 5) <= (334 << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset % 8) <= (bound >> 3)) && ((offset >> 1) <= bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            Idle,
+            Ready,
+            Dropped,
         }
     }
 }
