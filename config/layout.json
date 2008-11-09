@@ -1,6 +1,17 @@
 {
-  "compress": false,
-  "max_threshold": 5084,
-  "support_retries": false,
-  "dry_run": true
+  "audit": "open",
+  "cluster_size": {
+    "batch_delay_ms": "standard",
+    "verbose": {
+      "hard_timeout_ms": true,
+      "batches_timeout": ["stable", "staging"],
+      "default_threshold_s": [401, 452, 487]
+    },
+    "batches_ratio": "local",
+    "queue_size": ["legacy", "latest", "local"]
+  },
+  "queue_size": [422, 71, 342, 237],
+  "burst_threshold": 81.08,
+  "account_ratio": 6902,
+  "min_depth": 29.16
 }
