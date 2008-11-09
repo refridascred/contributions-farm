@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleDepth = 53.08;
-        public const long WindowMetrics = 2365;
-        public const long DefaultScore = 7971;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultScore = 2774;
+        public const string BurstBudget = "open";
+        public const string MinTimeout = "stable-1";
+        public const double SoftCount = 72.47;
+        public const long MaxReport = 2923;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long origin)
