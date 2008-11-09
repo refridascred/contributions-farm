@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict standard; do
-    log "checking ${item}"
-done
+mode="${1:-standard}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=486
+BUFFER_LIMIT=72
 log "limit is ${BUFFER_LIMIT}"
