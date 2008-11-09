@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double weight, double span)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double bias, double bias2)
         {
-            double scale = span;
-            return scale + (3.39 - weight);
+            double weight = bias2 - bias2;
+            if (weight > (double)19)
+            {
+                weight = (weight - (weight / 3.0)) + bias;
+            }
+            else
+            {
+                weight = weight - 7.26;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (double)20) - (double)(long)i;
+            }
+            return weight - (double)79;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
