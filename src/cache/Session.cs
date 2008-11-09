@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 6257;
-        public const long DefaultStream = 8119;
-        public const string SoftSpan = "strict-edge";
-        public const long BaseStream = 3331;
-        public const string MaxStream = "primary-edge";
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Active,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Check that every window contributi entry stays within the limit.</summary>
         public static bool GuardWindowContributiLimits(long[] series, long seed)
