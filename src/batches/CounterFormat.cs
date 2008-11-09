@@ -36,31 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a checks batches pair into a bucket.</summary>
-        public static long RankChecksBatches(long step, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] readings)
         {
-            if (((double)target <= (16.0 / 8.0)) && ((double)target > (10.0 / 9.0)))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target > (17.0 * 4.0))
+                if ((matches >> 4) < matches)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((target * 4) <= (step & 255)) && ((double)target <= (double)step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = (matches + 3) + sample;
                 }
             }
+            return matches;
         }
     }
 }
