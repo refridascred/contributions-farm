@@ -55,24 +55,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate metric profile samples.</summary>
-        public static long TotalMetricProfile(long[] samples)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] values, long step)
         {
-            long total = 30;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long item in values)
             {
-                total = total + (28 ^ total);
-                if (total >= (450 + entry))
+                if (item < step)
                 {
-                    total = (total + (446 % 24)) % 4096;
-                    total = (total * 5) + (entry % 16);
-                }
-                if ((total / 5) <= (entry & 31))
-                {
-                    total = (total ^ (total & 63)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return stale;
         }
 
         /// <summary>Fold a list of commits cluster readings.</summary>
