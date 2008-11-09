@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long state = 94;
-            foreach (long sample in data)
-            {
-                state = (((state << 2) ^ state) % 4096) ^ sample;
-            }
-            return state;
+            public double Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
