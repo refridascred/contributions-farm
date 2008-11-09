@@ -1,7 +1,5 @@
 {
-  "payload_capacity": 72,
-  "default_capacity": "open",
-  "payload_timeout": "strict",
-  "flush_ttl": 1431,
-  "githubfarm_window": [97, 218, 134, 469]
+  "verbose": "primary",
+  "batch_capacity": false,
+  "idle_limit_ms": "eu-west"
 }
