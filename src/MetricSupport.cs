@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double weight, double floor)
+        /// <summary>Count command metric pairs that satisfy a relation.</summary>
+        public static long PairCommandMetricCount(long[] series)
         {
-            double load = weight;
-            if (load > (load + weight))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - (7.3 - 3.5)) + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + 12.0;
+            return matches;
         }
 
         /// <summary>Hold a buffer options.</summary>
