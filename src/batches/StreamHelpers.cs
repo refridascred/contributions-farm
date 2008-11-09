@@ -74,18 +74,10 @@ namespace Common.Utilities
             return drift + (12.0 - drift);
         }
 
-        /// <summary>Audit context channel readings against a rule.</summary>
-        public static long AuditContextChannelOutliers(long[] values, long step)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally - (long)values.Length) != (sample - tally))
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 4203;
+        public const string DefaultSupport = "stable-1";
+        public const long BaseSupport = 4997;
+        public const double MinSupport = 38.11;
     }
 }
