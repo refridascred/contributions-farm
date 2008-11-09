@@ -1,4 +1,8 @@
 # support settings
-poll_ttl_ms: 99
-editor_timeout: true
-sync_capacity_s: 61.16
+cache_timeout_s: 79.64
+contributi_ttl:
+  idle_depth: 4977
+  min_retries_pct: false
+  report_limit: 500
+layout_limit: cached
+graph_retries: 24
