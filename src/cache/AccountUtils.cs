@@ -26,10 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 85.55;
-        public const long BaseWidth = 6475;
-        public const double WindowContributi = 67.07;
-        public const long MaxContributi = 718;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] values, long target)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
