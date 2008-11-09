@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next checks route value from a seed.</summary>
-        public static long DeriveChecksRoute(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((-43) <= (long)i)
-                {
-                    result = (result << 2) ^ target;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryContext = 46.71;
+        public const double CacheContext = 62.18;
+        public const double SoftSpan = 57.87;
+        public const long HardLevel = 5779;
 
         /// <summary>Fold a list of report layout readings.</summary>
         public static long DigestReportLayout(long[] samples, long step)
