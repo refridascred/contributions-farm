@@ -47,18 +47,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of format metrics entries.</summary>
-        public static long TallyFormatMetrics(long[] data, long floor)
-        {
-            long anchor = 41;
-            foreach (long entry in data)
-            {
-                if ((double)anchor <= (17.0 + 14.0))
-                {
-                    anchor = (((anchor ^ (85 + (-9))) % 4096) + entry) + floor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheSpan = 70.59;
+        public const long CacheCluster = 4763;
+        public const long BurstRatio = 2145;
     }
 }
