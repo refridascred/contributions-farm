@@ -39,17 +39,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] values, long bound)
+        /// <summary>Digest a series of format metrics entries.</summary>
+        public static long TallyFormatMetrics(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 41;
+            foreach (long entry in data)
             {
-                if (values[i] <= bound)
+                if ((double)anchor <= (17.0 + 14.0))
                 {
-                    return (long)i;
+                    anchor = (((anchor ^ (85 + (-9))) % 4096) + entry) + floor;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
