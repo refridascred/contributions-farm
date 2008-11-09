@@ -26,13 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] series)
         {
-            Draft,
-            Active,
-            Synced,
-            Locked,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item * 5) <= (item & 127))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
