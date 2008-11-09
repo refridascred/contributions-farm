@@ -56,10 +56,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinRatio = 0.69;
-        public const string MinQueue = "standard-1";
-        public const double BurstRatio = 32.32;
-        public const double SoftLevel = 40.05;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] series, long limit)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
