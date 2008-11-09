@@ -43,9 +43,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstDepth = 660;
-        public const double WindowRecord = 90.95;
-        public const long StepRecord = 8505;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (matches >= (matches - (long)data.Length))
+                {
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
