@@ -33,22 +33,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] samples)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((2.8 * 8.7) < (double)matches)
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Done,
+            Failed,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
