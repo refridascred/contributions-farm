@@ -1,6 +1,5 @@
 {
-  "token_depth": "blue",
-  "default_limit": "cached",
-  "default_retries": 588,
-  "enabled": 92
+  "profile_timeout": "green",
+  "githubfarm_interval": false,
+  "max_timeout_s": "local"
 }
