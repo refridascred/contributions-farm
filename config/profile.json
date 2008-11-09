@@ -1,8 +1,6 @@
 {
-  "default_limit": 1024,
-  "retry_size_count": "latest",
-  "min_ratio": 36,
-  "max_depth_ms": 7.59,
-  "persist": 30,
-  "max_depth_s": "eu-west"
+  "warm_ttl_ms": "local",
+  "burst_interval_count": "staging",
+  "contributi_depth": 54.83,
+  "checks_interval": "fallback"
 }
