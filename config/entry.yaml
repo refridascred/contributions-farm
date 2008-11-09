@@ -1,4 +1,8 @@
 # entry settings
-compress: local
-enabled: staging
-soft_delay_s: eu-west
+audit: 45
+persist:
+  - 469
+  - 101
+cache_depth: false
+batches_window: false
+flush_depth_pct: standard
