@@ -1,11 +1,12 @@
 # Command notes
 
-Keep record and farm names short and lowercase.
-Defaults for cache live in the config folder and can be overridden per environment.
-Keep graph and buffer names short and lowercase.
+The account report groups every farm by order.
+Run the layout check before changing any cache limits.
+The filter module keeps schema values in sync with the record cache.
 
 ## Guidelines
 
-- Review account limits each release
-- Document new token fields
-- Validate batches input early
+- Document new cluster fields
+- Prefer commits defaults
+- Keep farm values small
+- Validate contributi input early
