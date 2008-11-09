@@ -46,13 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] data, long target)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
