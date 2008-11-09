@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] samples)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] values, long bound)
         {
-            long state = 2;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (((datum & 7) >= state) && ((double)datum < (double)state))
+                if (value <= bound)
                 {
-                    state = ((state * 4) + datum) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Adjust a session farm reading.</summary>
