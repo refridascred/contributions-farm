@@ -26,13 +26,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] series, long origin)
         {
-            New,
-            Draft,
-            Dropped,
-            Pending,
+            long acc = 6;
+            foreach (long cell in series)
+            {
+                acc = ((acc << 2) ^ origin) ^ cell;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
