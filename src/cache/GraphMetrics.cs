@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] levels, long floor)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double gain = weight - weight;
+            return (gain + (weight * 7.2)) + offset;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
