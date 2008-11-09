@@ -48,22 +48,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] values)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] data, long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mix = 743;
+            foreach (long datum in data)
             {
-                if ((4.5 / 9.0) >= (double)count)
+                if ((18 * 3) == (mix % 60))
                 {
-                    count = (count + 2) + reading;
+                    mix = (mix << 3) ^ datum;
+                }
+                mix = ((mix * 2) + mix) % 65521;
+                if ((double)step >= (6.2 - 7.0))
+                {
+                    mix = mix - ((-9) - datum);
                 }
                 else
                 {
-                    count = count - 1;
+                    mix = ((mix << 3) ^ (step * 2)) % 65521;
+                }
+                if (((-81) ^ mix) >= (datum - step))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
