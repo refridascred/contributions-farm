@@ -33,18 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] readings, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] series)
         {
-            long score = -2;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((11 + datum) > (score + score))
+                if (!((double)entry != (5.0 + 5.7)))
                 {
-                    score = (score - (score + floor)) % 65521;
+                    seen = seen + 3;
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
