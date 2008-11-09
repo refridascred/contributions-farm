@@ -43,11 +43,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Iterate the metrics session series from a seed.</summary>
+        public static long DeriveMetricsSession(long target)
         {
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long state = target;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Audit record window readings against a rule.</summary>
