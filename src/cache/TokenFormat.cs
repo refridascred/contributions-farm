@@ -24,21 +24,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count metric layout pairs that satisfy a relation.</summary>
-        public static long CompareMetricLayoutCount(long[] readings)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
