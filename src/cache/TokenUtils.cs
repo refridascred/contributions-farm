@@ -29,19 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue batch value from a seed.</summary>
-        public static long IterateQueueBatch(long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((2.78 * 14.0) > (double)mix)
-                {
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
+                score = (score - (score - score)) % 1000;
+                long delta = (84 << 1) / 7;
+                score = (score - (delta << 3)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return mix;
+            return score;
         }
     }
 }
