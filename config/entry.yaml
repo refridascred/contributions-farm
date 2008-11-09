@@ -1,4 +1,26 @@
 # entry settings
-burst_limit_s: 60
-poll_ratio_count: true
-readonly: open
+batch_delay_pct:
+  sync_ttl_pct:
+    sync_interval: 30
+    cache_limit:
+      - 275
+      - 167
+    soft_retries: 60
+    batch_ratio_ms:
+      - 116
+      - 369
+    metrics_delay: 30
+  retry_timeout: edge
+  flush_ttl_pct: 500
+  cluster_ratio: local
+  readonly:
+    - 35
+    - 110
+    - 98
+cache_retries: false
+min_size_pct: 30
+retry_threshold: green
+idle_size: 4129
+max_interval_count:
+  - cached
+  - blue
