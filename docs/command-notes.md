@@ -1,11 +1,12 @@
 # Command notes
 
-The support module keeps counter values in sync with the commits cache.
-The editor module keeps schema values in sync with the editor cache.
-Use command settings to tune how often contributi data is refreshed.
+Run the commits check before changing any record limits.
+When a entry fails, the cache handler retries a few times before giving up.
+When a route fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer session defaults
-- Log every counter change
-- Validate queue input early
+- Log every schema change
+- Validate cluster input early
+- Review commits limits each release
+- Prefer filter defaults
