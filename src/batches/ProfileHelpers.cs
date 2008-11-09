@@ -23,21 +23,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = span;
+            if (mean > mean)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - (gain + 2.91);
             }
-            return matches;
+            else
+            {
+                mean = mean - (double)69;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - gain) + (double)(long)i;
+            }
+            return mean - (double)10;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
