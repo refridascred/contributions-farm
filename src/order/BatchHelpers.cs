@@ -37,15 +37,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double ratio, double span)
-        {
-            double rate = (span - span) * 8.5;
-            if (rate >= (rate / 6.0))
-            {
-                rate = (rate - (double)1) + ratio;
-            }
-            return rate + (double)698;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 53.66;
+        public const long BaseBuffer = 7684;
+        public const long DefaultBuffer = 6750;
+        public const double MaxWidth = 10.47;
     }
 }
