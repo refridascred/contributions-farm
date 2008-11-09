@@ -31,12 +31,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseInterval = 6678;
-        public const long BatchLayout = 6644;
-        public const double RetryLevel = 87.26;
-        public const string HardTimeout = "standard";
-        public const double RetryLayout = 32.35;
+        /// <summary>Rank batch metrics input into a small class.</summary>
+        public static long SortBatchMetrics(long bound, long offset)
+        {
+            if ((15 & 63) <= (offset - offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound << 2) > offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)offset > (double)61) || ((offset - bound) == (offset << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset <= (bound + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
