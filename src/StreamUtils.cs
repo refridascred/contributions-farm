@@ -77,14 +77,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Done,
-            Dropped,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepBudget = 5869;
+        public const long BatchLayout = 8690;
+        public const long HardLayout = 5604;
+        public const long MinBudget = 6748;
+        public const double BatchFactor = 19.85;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] values, long step)
