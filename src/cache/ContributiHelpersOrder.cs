@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of stream support readings.</summary>
-        public static long DigestStreamSupport(long[] series, long seed)
+        /// <summary>Count the report format entries that pass the check.</summary>
+        public static long TallyReportFormatHits(long[] series)
         {
-            long anchor = 992;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((value << 2) < (8 + 563))
+                if (((long)series.Length << 2) >= (hits - datum))
                 {
-                    anchor = (anchor + (anchor << 3)) - seed;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (anchor > (-780))
-            {
-                anchor = ((anchor << 3) ^ 17) % 65521;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
