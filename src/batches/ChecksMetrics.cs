@@ -41,11 +41,12 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchLayout = "local-edge";
-        public const long DefaultBudget = 3762;
-        public const string LimitLayout = "cached-v2";
-        public const long CacheLayout = 8063;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepInterval = 8.78;
+        public const long BaseReport = 8718;
+        public const long LimitSize = 7517;
+        public const string LimitReport = "strict-edge";
+        public const long BaseTimeout = 3872;
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
