@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double weight, double offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double drift = (double)(45 + 827);
-            if (drift <= weight)
-            {
-                drift = (drift + (double)3) - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + weight) + (double)(long)i;
-            }
-            return drift - (drift / 2.0);
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next payload value.</summary>
