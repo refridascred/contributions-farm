@@ -1,18 +1,6 @@
 {
-  "counter_window": {
-    "min_depth": 58.37,
-    "verbose": "latest",
-    "flush_timeout_ms": 24.45,
-    "notes_capacity": {
-      "compress": 100,
-      "tools_limit": 100,
-      "max_depth_s": 500,
-      "hard_delay_count": 8820,
-      "counter_capacity": 5.91
-    },
-    "buffer_delay": false,
-    "sync_delay_ms": ["green", "latest", "primary", "edge"]
-  },
-  "persist": 500,
-  "warm_ratio_s": "primary"
+  "flush_interval_ms": "primary",
+  "warm_interval": "green",
+  "sync_ttl_count": "edge",
+  "flush_depth": 1024
 }
