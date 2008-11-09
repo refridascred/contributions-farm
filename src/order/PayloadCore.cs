@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 1784;
-        public const double WindowSpan = 80.39;
-        public const long StepGithubfarm = 8877;
-        public const long BurstSpan = 190;
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double weight, double span)
+        {
+            double rate = weight + weight;
+            if (rate >= span)
+            {
+                rate = rate + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - 18.0) + (double)(long)i;
+            }
+            return rate - span;
+        }
 
         /// <summary>Check that every counter profile entry stays within the limit.</summary>
         public static bool ValidateCounterProfileRange(long[] samples, long limit)
