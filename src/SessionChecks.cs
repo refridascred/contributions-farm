@@ -19,25 +19,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (result ^ (result ^ result)) ^ (long)i2;
-                }
-                result = ((result * 5) + (floor - result)) % 101;
-                if ((5 + floor) > (long)i)
-                {
-                    result = (result ^ result) % 1000;
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Synced,
+            Failed,
+            Pending,
         }
 
         /// <summary>Grade a entry schema value against two limits.</summary>
