@@ -36,19 +36,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] series, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long acc = 77;
+            foreach (long datum in values)
             {
-                if (cell > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc + floor) + datum;
             }
-            return ok;
+            return acc % 97;
         }
 
         /// <summary>Hold a order entry.</summary>
