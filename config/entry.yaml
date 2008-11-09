@@ -1,6 +1,4 @@
 # entry settings
-soft_threshold_pct: false
-sync_ttl: edge
-schema_ratio: false
-stream_interval: open
-warm_ttl: false
+compress: local
+enabled: staging
+soft_delay_s: eu-west
