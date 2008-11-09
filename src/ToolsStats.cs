@@ -67,19 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] items, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (entry != step)
+                if (((value - 95) <= value) && ((double)step <= (4.9 * 9.5)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
