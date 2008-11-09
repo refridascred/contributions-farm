@@ -52,10 +52,21 @@ namespace Common.Utilities
         public const string IdleInterval = "stable-edge";
         public const long RetryGithubfarm = 2755;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryWidth = 789;
-        public const string RetrySize = "standard-1";
-        public const long HardLevel = 9179;
-        public const double BatchChannel = 54.02;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
