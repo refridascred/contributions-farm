@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate batches support samples.</summary>
-        public static long TotalBatchesSupport(long[] series)
-        {
-            long result = 4;
-            foreach (long entry in series)
-            {
-                result = result ^ (9 - result);
-                if (!(entry <= (result / 2)))
-                {
-                    result = (result + (result + entry)) % 255;
-                }
-            }
-            if (result < 15)
-            {
-                result = (result ^ (result & 3)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 6313;
+        public const long LimitDepth = 1262;
+        public const long HardTimeout = 365;
+        public const string MinContributi = "fallback-edge";
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long PairSupportCount(long[] readings)
