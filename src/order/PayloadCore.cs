@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long StepGithubfarm = 8877;
         public const long BurstSpan = 190;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepEditor = "primary-edge";
-        public const long StepSize = 2623;
-        public const long SoftEditor = 1060;
-        public const long CacheInterval = 9497;
-        public const long MinLevel = 9565;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LocateFormatIndex(long[] readings, long floor)
