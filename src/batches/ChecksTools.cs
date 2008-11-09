@@ -35,18 +35,12 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] samples, long floor)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((9.7 / 5.0) >= (double)hits)
-                {
-                    hits = ((hits + 3) ^ datum) + floor;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
