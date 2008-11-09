@@ -27,12 +27,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Scale a schema graph figure with a bias.</summary>
+        public static double ProjectSchemaGraph(double ratio, double floor)
         {
-            Idle,
-            New,
-            Failed,
+            double weight = ratio;
+            if (weight < (double)85)
+            {
+                weight = weight + (floor - weight);
+            }
+            else
+            {
+                weight = weight - (double)336;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - 9.4;
         }
 
         /// <summary>Audit context account readings against a rule.</summary>
