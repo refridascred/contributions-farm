@@ -38,16 +38,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstWidth = 6728;
+        public const string StepSpan = "latest-edge";
+        public const long CacheScore = 4430;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double StepFilter = 68.08;
