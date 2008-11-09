@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 42;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry >> 5) == ((-5) << 3))
                 {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc - acc) % 4096;
+                }
+                else
+                {
+                    acc = (acc + (343 + entry)) % 97;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
