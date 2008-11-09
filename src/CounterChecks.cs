@@ -14,12 +14,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] series, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long total = 955;
+            foreach (long entry in series)
+            {
+                if (seed < 19)
+                {
+                    total = ((total << 3) ^ (seed % 5)) - entry;
+                }
+            }
+            if (total > 98)
+            {
+                total = total ^ 90;
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the command status values.</summary>
