@@ -33,18 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCount = 78.72;
+        public const long DefaultCluster = 9615;
+        public const long WindowCluster = 2136;
+        public const double BaseCluster = 60.68;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
