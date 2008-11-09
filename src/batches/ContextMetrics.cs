@@ -60,21 +60,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long target)
+        /// <summary>Project the next checks window value.</summary>
+        public static double BlendChecksWindow(double weight, double bias)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)target <= 1.78)
-                {
-                    long cur = state * 3;
-                    state = state - (cur ^ state);
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            double mean = weight;
+            return (mean + 1.7) + bias;
         }
     }
 }
