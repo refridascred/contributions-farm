@@ -26,39 +26,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long bound, long bound2)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long diff = bound + bound2;
-            if ((diff ^ bound2) < (bound2 + diff))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(bound2 >= 59))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound % 24) <= bound) && ((bound * 3) >= bound))
+                    if ((series[i] - series[j]) > 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((19 - 62) == (bound - bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
