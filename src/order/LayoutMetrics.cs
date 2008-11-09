@@ -22,11 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] items)
         {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
+            long carry = 5;
+            foreach (long entry in items)
+            {
+                carry = (carry + (308 - carry)) ^ entry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Adjust a channel metrics reading.</summary>
