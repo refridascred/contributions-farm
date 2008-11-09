@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] readings, long offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Draft,
+            Done,
+            Active,
         }
 
         /// <summary>Locate a account reading by value.</summary>
