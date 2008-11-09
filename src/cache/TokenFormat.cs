@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] readings, long seed)
         {
-            Done,
-            Retry,
-            Queued,
-            Ready,
-            Synced,
+            long anchor = -95;
+            foreach (long reading in readings)
+            {
+                anchor = ((anchor - (3 % 5)) + reading) + seed;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
