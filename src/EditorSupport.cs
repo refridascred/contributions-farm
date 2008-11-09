@@ -67,22 +67,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the buffer queue entries that pass the check.</summary>
-        public static long AuditBufferQueueOutliers(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!((4.2 <= (double)matches) && ((origin << 2) >= item)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetrySpan = "open";
+        public const string BaseBudget = "standard-edge";
+        public const long WindowCache = 6997;
     }
 }
