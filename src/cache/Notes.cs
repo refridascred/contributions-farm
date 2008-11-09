@@ -48,18 +48,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] values, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((3.5 / 6.0) < (10.0 + 16.0))
+                if ((tally & 127) < (19 << 3))
                 {
-                    seen = ((seen + 1) + sample) + seed;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
