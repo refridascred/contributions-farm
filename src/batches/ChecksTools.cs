@@ -39,10 +39,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseInterval = 1539;
-        public const long DefaultCounter = 1082;
-        public const string HardRatio = "legacy-edge";
-        public const long SoftCount = 2835;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long step, long bound)
+        {
+            long offset = step + bound;
+            if (8 > step)
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset <= (step - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
