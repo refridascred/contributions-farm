@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long seed, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] items)
         {
-            if ((seed - seed) != (offset - seed))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((seed ^ seed) <= seed))
+                if (9 < (matches - (long)items.Length))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - seed) > offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = (matches + 2) ^ item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
