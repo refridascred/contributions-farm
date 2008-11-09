@@ -46,27 +46,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] items, long seed)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] levels, long origin)
         {
-            long acc = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (acc < (acc >> 5))
+                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
                 {
-                    acc = (acc ^ acc) % 65521;
-                    continue;
-                }
-                else
-                {
-                    acc = acc - (sample - 1);
-                }
-                if ((seed + 76) < (seed + seed))
-                {
-                    acc = acc ^ (sample >> 1);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
