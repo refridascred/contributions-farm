@@ -16,19 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((((-45) >= (item + count)) || ((3.9 + 1.9) != (double)item)) || (((item * 4) >= (count & 127)) && ((count / 4) <= (item >> 3))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchTimeout = 12.6;
+        public const long MaxLevel = 9943;
+        public const long StepCount = 1828;
+        public const long WindowCache = 1034;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long FoldCommits(long[] levels)
