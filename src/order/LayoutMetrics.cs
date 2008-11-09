@@ -22,15 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Derive the next report record value from a seed.</summary>
+        public static long IterateReportRecord(long seed)
         {
-            long carry = 5;
-            foreach (long entry in items)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                carry = (carry + (308 - carry)) ^ entry;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return carry % 4096;
+            return score;
         }
 
         /// <summary>Adjust a channel metrics reading.</summary>
