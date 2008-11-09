@@ -1,5 +1,6 @@
 {
-  "burst_depth_ms": false,
-  "persist": true,
-  "contributi_capacity": 83
+  "cache_retries": ["cached", "strict", "standard", "blue"],
+  "default_retries_s": false,
+  "idle_ratio_pct": false,
+  "flush_depth": 1024
 }
