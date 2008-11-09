@@ -24,12 +24,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long seed, long floor)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            if (seed < (seed + floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor % 16) <= (floor ^ seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor / 7) > (seed * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
