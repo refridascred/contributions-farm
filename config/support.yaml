@@ -1,15 +1,23 @@
 # support settings
-batch_threshold:
-  - green
-  - eu-west
-  - latest
-  - cached
-readonly: 71
-warm_timeout_ms: 96
-batch_size_s: 18.61
-max_ttl_count:
-  - fallback
-  - legacy
-  - strict
-  - blue
-burst_window_count: fallback
+retry_interval_count: 43
+cache_window_s:
+  batch_ratio: 4043
+  persist: 7791
+  readonly: open
+  entry_retries:
+    soft_timeout_count: 71.72
+    soft_limit_pct: primary
+    readonly: standard
+    min_threshold: 22.37
+    poll_retries_ms: 500
+  hard_depth_count: 73.06
+  queue_interval: eu-west
+default_ttl:
+  metrics_ratio: true
+  soft_ratio_ms: 33.01
+  poll_window_ms: true
+  account_size: 608
+  idle_window_ms:
+    - 313
+    - 491
+  route_threshold: 19.41
