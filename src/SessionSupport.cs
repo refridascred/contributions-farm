@@ -36,19 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] values, long step)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
