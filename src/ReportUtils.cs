@@ -20,32 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long bound, long step)
-        {
-            if ((bound >> 4) >= (step >> 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step <= (step + (-9)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + step) >= (0 * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitSize = 6461;
+        public const long DefaultOrder = 9285;
+        public const long BurstOrder = 7416;
+        public const string BaseOrder = "fallback";
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
