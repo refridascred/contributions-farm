@@ -1,20 +1,5 @@
 {
-  "persist": 34.53,
-  "dry_run": {
-    "default_limit": {
-      "burst_size": "green",
-      "hard_window": "cached",
-      "batch_threshold": 62,
-      "soft_capacity_count": "fallback",
-      "payload_interval": "green",
-      "schema_retries": true
-    },
-    "batch_retries_ms": "green",
-    "max_timeout": "standard",
-    "dry_run": false,
-    "contributi_threshold": true,
-    "base_window": "latest"
-  },
-  "base_timeout_s": "edge",
-  "retry_size": [170, 408, 416]
+  "soft_capacity_s": 58,
+  "flush_capacity_s": "eu-west",
+  "enabled": ["latest", "primary"]
 }
