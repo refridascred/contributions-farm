@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8778;
-        public const string MinWidth = "latest";
-        public const double DefaultBatches = 87.78;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] readings)
