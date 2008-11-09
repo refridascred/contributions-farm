@@ -47,21 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count entry notes pairs that satisfy a relation.</summary>
-        public static long CompareEntryNotesCount(long[] samples)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Idle,
+            Pending,
+            Draft,
+            Dropped,
         }
     }
 }
