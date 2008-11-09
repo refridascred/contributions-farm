@@ -53,19 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batch tools measurements.</summary>
-        public static double BlendBatchTools(double gain, double bias)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] readings, long floor)
         {
-            double rate = (gain * 7.89) * 3.0;
-            if (rate > (bias - gain))
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                rate = rate + (double)2;
+                if (sample > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (bias * 1.2)) - (double)(long)i;
-            }
-            return rate + rate;
+            return valid;
         }
     }
 }
