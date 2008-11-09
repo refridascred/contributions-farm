@@ -1,19 +1,4 @@
 # githubfarm settings
-dry_run: 53.95
-audit:
-  idle_limit_pct: primary
-  flush_ttl: 4220
-  payload_capacity:
-    - strict
-    - stable
-    - cached
-  payload_delay: 1114
-  retry_size:
-    - 42
-    - 10
-    - 110
-strict: 5341
-sync_interval:
-  - 382
-  - 359
-  - 54
+idle_size_s: 12.13
+batch_ratio_count: 62.2
+min_timeout_count: latest
