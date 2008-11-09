@@ -44,17 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] data, long floor)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = offset;
+            if (ratio <= offset)
             {
-                if ((data[i] > floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (6.73 / 9.0)) - weight;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - offset;
+            }
+            return ratio - (double)219;
         }
 
         /// <summary>Combine layout profile values into a single score.</summary>
