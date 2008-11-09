@@ -33,19 +33,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum <= (20.0 / 6.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinScore = 35.17;
+        public const double BurstFilter = 84.32;
+        public const string SoftCount = "local";
+        public const long BatchInterval = 6121;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double RetryFormat = 70.61;
