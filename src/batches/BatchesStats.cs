@@ -23,12 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 5680;
-        public const long MinBuffer = 8236;
-        public const long BatchLevel = 1529;
-        public const long MaxScore = 6353;
-        public const double RetryDepth = 83.53;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryTimeout = 3503;
+        public const string MaxReport = "legacy-1";
+        public const long CacheReport = 1682;
+        public const string MinDepth = "fallback";
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
