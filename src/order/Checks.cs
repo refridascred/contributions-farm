@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] values)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mix = 12;
-            foreach (long sample in values)
-            {
-                if (sample >= (sample + sample))
-                {
-                    mix = (mix << 2) ^ (mix % 60);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ sample;
-                }
-                if (((double)sample != (3.3 / 9.0)) || ((double)sample >= (0.7 * 19.0)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
