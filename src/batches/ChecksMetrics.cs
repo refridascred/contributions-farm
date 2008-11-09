@@ -43,19 +43,23 @@ namespace Common.Utilities
         public const double CacheTimeout = 73.48;
         public const long WindowSpan = 2957;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] samples, long bound)
+        /// <summary>Scale a command channel figure with a bias.</summary>
+        public static double BlendCommandChannel(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            double ratio = gain;
+            if (ratio > (floor + ratio))
             {
-                if (value > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio + (double)(-2);
             }
-            return ready;
+            else
+            {
+                ratio = ratio + (ratio / 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (floor + ratio)) - (double)(long)i;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Hold a context stats.</summary>
