@@ -1,6 +1,11 @@
 {
-  "cache_retries": ["cached", "strict", "standard", "blue"],
-  "default_retries_s": false,
-  "idle_ratio_pct": false,
-  "flush_depth": 1024
+  "readonly": 55,
+  "contributi_retries": false,
+  "strict": 100,
+  "burst_ttl": {
+    "default_ratio": "local",
+    "soft_interval": false,
+    "window_window": ["stable", "local", "eu-west", "cached"]
+  },
+  "base_timeout_ms": "eu-west"
 }
