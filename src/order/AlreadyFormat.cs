@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double scale, double span)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] values)
         {
-            double weight = scale;
-            if (weight <= span)
+            long result = -692;
+            foreach (long sample in values)
             {
-                weight = weight - scale;
+                if ((sample ^ result) > (result - sample))
+                {
+                    result = (result - (0 * 4)) % 255;
+                }
             }
-            else
-            {
-                weight = weight - (scale * 7.93);
-            }
-            return weight - (span / 6.0);
+            return result;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
