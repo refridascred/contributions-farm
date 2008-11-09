@@ -44,11 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            Stale,
+            Retry,
+            New,
         }
     }
 }
