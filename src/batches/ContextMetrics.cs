@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((floor + result) >= ((long)i % 12))
-                {
-                    result = ((result * 3) + 589) % 1000;
-                    continue;
-                }
-                else
-                {
-                    result = ((result << 2) ^ floor) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Draft,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
