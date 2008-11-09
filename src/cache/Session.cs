@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] levels, long target)
         {
-            Locked,
-            Pending,
-            Closed,
-            Dropped,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (64 < (target & 3))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every window contributi entry stays within the limit.</summary>
