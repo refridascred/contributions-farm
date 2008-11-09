@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
