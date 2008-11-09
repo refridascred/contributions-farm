@@ -24,11 +24,18 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] values)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((((double)count > (9.0 * 3.2)) && (793 >= (item - item))) || ((double)item == (9.4 - 3.35)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a schema entry counter forward.</summary>
