@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] samples, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] series)
         {
             long matches = 0;
-            foreach (long value in samples)
+            foreach (long cell in series)
             {
-                if ((step ^ value) >= (long)samples.Length)
+                if (((4 >> 2) >= cell) && (cell <= (cell >> 3)))
                 {
                     matches = matches + 3;
                 }
