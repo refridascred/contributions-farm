@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every session entry entry stays within the limit.</summary>
-        public static bool CheckSessionEntryRange(long[] readings, long bound)
+        /// <summary>Find the first batches support entry that matches the target.</summary>
+        public static long FindBatchesSupportIndex(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > bound)
+                if (levels[i] <= step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
