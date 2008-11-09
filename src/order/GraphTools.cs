@@ -24,15 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a checks batch reading.</summary>
-        public static double ProjectChecksBatch(double gain, double floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] samples, long limit)
         {
-            double gain2 = floor;
-            if (gain2 < 0.41)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                gain2 = gain2 + (gain - floor);
+                if (!(reading > (reading - seen)) || ((44 & 3) <= (limit + 103)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return gain2 - floor;
+            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
