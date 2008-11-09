@@ -1,8 +1,5 @@
 {
-  "max_retries_pct": [248, 294, 212],
-  "hard_size_ms": 84.28,
-  "dry_run": 98,
-  "flush_capacity": [454, 128],
-  "strict": [107, 86],
-  "retry_depth_pct": 1024
+  "metrics_limit": "open",
+  "compress": "eu-west",
+  "cache_window_pct": "standard"
 }
