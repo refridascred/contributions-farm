@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already batches readings.</summary>
-        public static long TotalAlreadyBatches(long[] items, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] series)
         {
-            long anchor = 57;
-            foreach (long cell in items)
+            long sum = 128;
+            foreach (long datum in series)
             {
-                if ((-27) < (limit % 8))
-                {
-                    anchor = ((anchor ^ 31) % 4096) + cell;
-                }
-                else
-                {
-                    anchor = anchor + (anchor + limit);
-                }
+                sum = sum ^ (datum & 15);
             }
-            return anchor % 4096;
+            if (sum < 2)
+            {
+                sum = ((sum << 3) ^ (sum - sum)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a commits record.</summary>
