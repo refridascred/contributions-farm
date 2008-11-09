@@ -19,26 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] data, long origin)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long result = 724;
-            foreach (long datum in data)
-            {
-                if (result <= (origin % 2))
-                {
-                    result = ((result * 4) + (datum - origin)) % 101;
-                }
-                else
-                {
-                    result = (result + result) % 65521;
-                }
-            }
-            if (result > 189)
-            {
-                result = result - (result << 3);
-            }
-            return result;
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
