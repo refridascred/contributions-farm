@@ -37,22 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] series)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double bias)
         {
-            long count = 0;
-            foreach (long value in series)
+            double rate = 3.0;
+            if (rate < (double)990)
             {
-                if ((((-946) + 101) <= count) && ((double)count >= 10.0))
-                {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = (rate + (bias * 0.6)) - gain;
             }
-            return count;
+            else
+            {
+                rate = rate + 17.0;
+            }
+            return rate + bias;
         }
 
         /// <summary>Hold a route options.</summary>
