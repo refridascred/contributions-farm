@@ -51,19 +51,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] samples, long seed)
+        /// <summary>Grade a graph checks value against two limits.</summary>
+        public static long GradeGraphChecks(long target, long origin)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            if ((target * 2) < (target << 1))
             {
-                if (item < seed)
+                return 5;
+            }
+            else
+            {
+                if ((origin & 3) <= origin)
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((8 - target) != (target / 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
