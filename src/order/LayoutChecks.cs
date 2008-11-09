@@ -57,21 +57,11 @@ namespace Common.Utilities
         public const long CacheContext = 8792;
         public const string RetrySize = "primary-1";
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
