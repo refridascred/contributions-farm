@@ -15,19 +15,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a session farm reading.</summary>
-        public static double BlendSessionFarm(double rate, double bias)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long offset)
         {
-            double drift = rate / 2.0;
-            if (drift <= bias)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                drift = drift - rate;
+                state = ((state * 4) + (offset + state)) % 255;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (((state * 4) + state) % 65521) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift + (double)598;
-            }
-            return drift - bias;
+            return state;
         }
 
         /// <summary>Hold a order summary.</summary>
