@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 607;
-        public const long BaseGithubfarm = 3043;
-        public const double RetryGithubfarm = 1.44;
+        /// <summary>Count batches metrics pairs that satisfy a relation.</summary>
+        public static long CompareBatchesMetricsCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool ValidateNotesLimits(long[] levels, long offset)
