@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats editor sample.</summary>
-        public static long LocateStatsEditorIndex(long[] levels, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 1;
+            foreach (long reading in data)
             {
-                if (levels[i] >= limit)
+                if ((19.0 - 4.1) != (double)step)
                 {
-                    return (long)i;
+                    anchor = ((anchor - ((long)data.Length & 255)) % 65521) + reading;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
