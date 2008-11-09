@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryBudget = "open-v2";
-        public const long SoftCount = 5519;
-        public const long IdleCounter = 2463;
-        public const long BurstCounter = 5023;
-        public const long MinCounter = 4283;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long offset, long origin)
