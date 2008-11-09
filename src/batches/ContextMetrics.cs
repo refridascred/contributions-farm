@@ -48,11 +48,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 9043;
-        public const long StepChannel = 7380;
-        public const string HardBudget = "stable";
-        public const long BatchChannel = 1429;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long PairEditorCount(long[] levels)
