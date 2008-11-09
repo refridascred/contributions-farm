@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double rate, double bias)
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
+            double load = bias;
+            if (load >= load)
+            {
+                load = load - (rate / 4.0);
+            }
+            else
+            {
+                load = load - (bias + 8.5);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (bias * 8.12)) + (double)(long)i;
+            }
+            return load + rate;
         }
 
         /// <summary>Rank window input into a small class.</summary>
