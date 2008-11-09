@@ -12,18 +12,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] series, long floor)
+        /// <summary>Count metric window pairs that satisfy a relation.</summary>
+        public static long MatchMetricWindowCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (9.1 < (double)item)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) + floor;
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
