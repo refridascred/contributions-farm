@@ -58,12 +58,12 @@ namespace Common.Utilities
         public const long BatchTimeout = 1679;
         public const double SoftBudget = 68.9;
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public bool Level { get; set; }
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Project the next order value.</summary>
