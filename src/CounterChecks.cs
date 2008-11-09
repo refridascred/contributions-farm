@@ -50,14 +50,38 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Grade a channel context value against two limits.</summary>
+        public static long SortChannelContext(long target, long bound)
         {
-            Stale,
-            Active,
-            Ready,
-            Idle,
-            Done,
+            if ((double)target > 1.7)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound - target) > (target / 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-4) / 7) == (bound + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target - bound) == (bound + target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the layout level values.</summary>
