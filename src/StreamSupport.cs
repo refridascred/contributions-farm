@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Locked,
-            Done,
-            Idle,
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Match up githubfarm profile samples.</summary>
