@@ -37,14 +37,13 @@ namespace Common.Utilities
             return drift + (offset - offset);
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Paused,
-            Queued,
-            Idle,
-            Locked,
-            Stale,
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
