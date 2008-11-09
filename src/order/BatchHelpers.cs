@@ -16,21 +16,24 @@ namespace Common.Utilities
             return scale - (scale * 11.0);
         }
 
-        /// <summary>Compare every pair of cache order readings.</summary>
-        public static long PairCacheOrderCount(long[] values)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (126 >= (offset >> 5))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ 9) > target)
                 {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the profile level values.</summary>
