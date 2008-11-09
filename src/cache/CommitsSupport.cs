@@ -57,18 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph payload readings against a rule.</summary>
-        public static long TallyGraphPayloadMatches(long[] series, long step)
+        /// <summary>Combine layout profile values into a single score.</summary>
+        public static long TotalLayoutProfile(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mix = 60;
+            foreach (long entry in samples)
             {
-                if (((886 - tally) != (item >> 5)) && !((item * 4) < (item + item)))
-                {
-                    tally = (tally + 1) - step;
-                }
+                mix = ((mix + (entry * 3)) % 4096) + step;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Roll a order counter forward.</summary>
