@@ -1,13 +1,4 @@
 # support settings
-notes_timeout: false
-soft_size_s: primary
-poll_size:
-  poll_window: 87
-  persist:
-    - 86
-    - 156
-  burst_delay_s: open
-  route_depth:
-    - 38
-    - 401
-warm_threshold_ms: eu-west
+support_window: 30
+warm_ratio_pct: 48
+retry_delay: false
