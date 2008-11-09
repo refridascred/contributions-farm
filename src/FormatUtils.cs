@@ -49,18 +49,12 @@ namespace Common.Utilities
         public const long BatchWidth = 6590;
         public const double MaxDepth = 44.28;
 
-        /// <summary>Measure how many record token samples are out of range.</summary>
-        public static long AuditRecordTokenOutliers(long[] levels, long offset)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (count > offset)
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
