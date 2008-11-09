@@ -1,6 +1,16 @@
 # entry settings
-route_ratio: 9099
-sync_delay_ms: 1024
-hard_depth: open
-cache_window_s: legacy
-account_limit: legacy
+base_delay:
+  - open
+  - edge
+  - primary
+  - green
+burst_retries:
+  compress: 7250
+  batch_ttl_s:
+    - 498
+    - 241
+    - 111
+  audit: true
+  flush_ratio_pct: 3073
+  strict: standard
+warm_delay: 100
