@@ -1,6 +1,7 @@
 {
-  "burst_capacity_s": [368, 152],
-  "payload_ttl": false,
-  "entry_capacity": false,
-  "idle_ttl": 2384
+  "max_depth": 44.4,
+  "hard_ttl_pct": 4538,
+  "flush_interval_s": "eu-west",
+  "base_timeout": "green",
+  "base_depth": "open"
 }
