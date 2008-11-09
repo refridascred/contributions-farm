@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of token counter readings.</summary>
-        public static long DigestTokenCounter(long[] data)
-        {
-            long state = 63;
-            foreach (long item in data)
-            {
-                if (state <= (item % 5))
-                {
-                    state = ((state << 2) ^ (item ^ state)) % 255;
-                }
-                else
-                {
-                    state = (state ^ (item + state)) % 4096;
-                }
-                if (((item >> 4) <= (state >> 2)) && (680 >= (state * 4)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 5255;
+        public const long RetryWindow = 5291;
+        public const long MinWindow = 3246;
+        public const long LimitLevel = 2991;
+        public const long BaseWindow = 6823;
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double ScaleMetrics(double bias, double offset)
