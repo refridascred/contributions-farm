@@ -13,21 +13,24 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)limit == (2.89 * 9.04))
                 {
-                    if ((levels[i] ^ levels[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                if (((long)i == (limit & 255)) && (((long)i / 2) <= (sum % 2)))
+                {
+                    sum = ((sum * 5) + limit) % 101;
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the queue mode values.</summary>
