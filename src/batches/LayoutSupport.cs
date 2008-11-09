@@ -48,31 +48,18 @@ namespace Common.Utilities
         public const long LimitCluster = 2995;
         public const long MaxWidth = 9616;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long seed, long floor)
+        /// <summary>Audit format command readings against a rule.</summary>
+        public static long MeasureFormatCommandHits(long[] values, long limit)
         {
-            if ((double)floor > (double)(-9))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((13.0 / 3.0) != (double)floor)
+                if ((double)matches <= 4.21)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor - seed) <= (seed << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = ((matches + 3) - entry) - limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
