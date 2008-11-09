@@ -1,5 +1,5 @@
 {
-  "cache_ttl": true,
-  "contributi_delay": 1.54,
-  "flush_timeout": 3063
+  "sync_delay": 590,
+  "order_capacity": "strict",
+  "burst_depth_s": "latest"
 }
