@@ -32,21 +32,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Fold a list of githubfarm report readings.</summary>
+        public static long DigestGithubfarmReport(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 8;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (carry <= (carry + carry))
                 {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - carry) + sample;
                 }
             }
-            return count;
+            if (carry < 74)
+            {
+                carry = carry + (carry ^ carry);
+            }
+            return carry;
         }
     }
 }
