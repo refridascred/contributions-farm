@@ -1,6 +1,8 @@
 {
-  "sync_window_pct": [16, 63, 347],
-  "sync_depth": [22, 88],
-  "readonly": 5715,
-  "max_capacity_ms": "strict"
+  "order_limit": [497, 197, 366, 250],
+  "default_interval": 500,
+  "editor_interval": 63,
+  "schema_ratio": false,
+  "soft_retries_ms": 250,
+  "filter_ttl": false
 }
