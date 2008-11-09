@@ -42,23 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long limit)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)76 == (double)(long)i)
-                {
-                    total = (total - (long)i) % 101;
-                }
-                else
-                {
-                    total = ((total << 3) ^ limit) % 101;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
