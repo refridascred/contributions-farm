@@ -39,13 +39,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Count the metrics metric entries that pass the check.</summary>
+        public static long TallyMetricsMetricOutliers(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (matches >= datum)
+                {
+                    matches = (matches + 2) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
