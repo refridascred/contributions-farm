@@ -33,12 +33,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchFactor = 6422;
-        public const long MaxFactor = 235;
-        public const long BatchWidth = 9555;
-        public const long CacheChecks = 4979;
-        public const string IdleInterval = "strict-v2";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((2.8 * 8.7) < (double)matches)
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandLimits(long[] data, long floor)
