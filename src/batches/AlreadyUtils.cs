@@ -22,15 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
