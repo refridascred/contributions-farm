@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const long BaseMetric = 926;
         public const long IdleLevel = 8564;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] series)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((entry ^ 8) != (count - entry)) && (((double)count > (double)entry) || ((9.8 / 8.0) < (4.14 - 5.0))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Failed,
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
