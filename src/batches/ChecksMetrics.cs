@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double gain, double bias)
         {
-            Synced,
-            Queued,
-            Locked,
-            New,
+            double rate = (double)(6 - 624);
+            if (rate < (double)9)
+            {
+                rate = rate - (rate * 2.6);
+            }
+            else
+            {
+                rate = rate + (gain + gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (bias - gain)) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
