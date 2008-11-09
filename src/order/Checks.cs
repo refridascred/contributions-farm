@@ -16,14 +16,19 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] values, long origin)
         {
-            Active,
-            Done,
-            Stale,
-            Pending,
-            New,
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
