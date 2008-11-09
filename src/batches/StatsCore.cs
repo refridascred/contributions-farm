@@ -71,18 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] values)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((((1.41 / 9.0) < (double)item) || (hits <= item)) || ((hits % 7) >= (hits + hits)))
+                if (entry > offset)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
