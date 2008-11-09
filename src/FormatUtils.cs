@@ -47,25 +47,19 @@ namespace Common.Utilities
         public const long BatchWidth = 6590;
         public const double MaxDepth = 44.28;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long limit, long seed)
+        /// <summary>Validate window format readings against a bound.</summary>
+        public static bool GuardWindowFormatRange(long[] samples, long seed)
         {
-            long delta = limit + seed;
-            if (seed > 613)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((delta & 15) <= limit)
+                if (item > seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define session limits and defaults.</summary>
