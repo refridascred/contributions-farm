@@ -46,21 +46,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the batches class values.</summary>
