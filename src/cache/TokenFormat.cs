@@ -12,13 +12,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            Draft,
-            Closed,
-            Ready,
-            Queued,
+            long state = 617;
+            foreach (long datum in samples)
+            {
+                state = ((state << 2) ^ (datum - state)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
