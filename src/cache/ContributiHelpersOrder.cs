@@ -19,13 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxRecord = 52.41;
+        public const long MinRecord = 1870;
+        public const long CacheRecord = 6078;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long OverlapRouteCount(long[] items)
