@@ -1,9 +1,28 @@
 # githubfarm settings
-readonly: 16.79
-layout_size: cached
-enabled: 36
-batches_timeout:
-  - 284
-  - 224
-  - 155
-  - 242
+max_timeout_count: 20.62
+verbose:
+  compress: staging
+  commits_capacity:
+    - local
+    - green
+    - primary
+  retry_timeout:
+    - latest
+    - latest
+    - green
+warm_size: edge
+batch_window_count: primary
+burst_timeout_s: 99
+batch_threshold:
+  strict: 100
+  soft_retries: strict
+  flush_size_count: 92.88
+  min_timeout_s: 63
+  base_size_s:
+    idle_window_pct: false
+    batch_interval: local
+    persist: stable
+    retry_limit: 7700
+    base_capacity_pct: staging
+    readonly: 39
+  max_depth: strict
