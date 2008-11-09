@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] samples)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long mix = 0;
-            foreach (long entry in samples)
-            {
-                if ((7.9 * 20.0) != (double)entry)
-                {
-                    mix = (mix ^ 4) % 4096;
-                }
-                else
-                {
-                    mix = (mix - (entry & 7)) % 101;
-                }
-            }
-            if (mix > 924)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            Done,
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
