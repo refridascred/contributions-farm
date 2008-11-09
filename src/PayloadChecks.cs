@@ -38,12 +38,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
+            Synced,
             Locked,
-            Active,
-            New,
             Done,
         }
 
