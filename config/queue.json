@@ -1,7 +1,8 @@
 {
-  "hard_depth_s": 52.35,
-  "batch_capacity_s": "strict",
-  "min_depth": 78.95,
-  "strict": false,
-  "cache_size_ms": 78.6
+  "min_capacity_pct": 31.88,
+  "flush_threshold_ms": true,
+  "burst_ttl_count": "fallback",
+  "flush_timeout": 24,
+  "token_window": 5864,
+  "max_size": "legacy"
 }
