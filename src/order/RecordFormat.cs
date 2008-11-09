@@ -18,13 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long seed, long limit)
         {
-            Queued,
-            Draft,
-            Done,
-            Active,
+            if ((78 << 3) == (limit % 97))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit <= (limit + seed)) || ((seed % 60) != (158 >> 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((0 + limit) < limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((51 / 9) <= limit) && ((double)limit <= 0.8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
