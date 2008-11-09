@@ -25,15 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] values, long origin)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] data, long bound)
         {
-            long acc = 59;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc ^ acc) % 1000) ^ item) + origin;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Locate a support reading by value.</summary>
