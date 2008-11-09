@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double weight, double span)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] levels, long offset)
         {
-            double scale = (8.9 + 9.23) / 6.0;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (((scale + (double)22) + (double)(long)i) + weight) - span;
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return scale - (double)5;
+            return -1;
         }
 
         /// <summary>Project the next report value.</summary>
