@@ -68,19 +68,25 @@ namespace Common.Utilities
         public const long BatchWidth = 6590;
         public const double MaxDepth = 44.28;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] values, long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long limit, long seed)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long delta = limit + seed;
+            if (seed > 613)
             {
-                if (sample >= offset)
+                return 0;
+            }
+            else
+            {
+                if ((delta & 15) <= limit)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
