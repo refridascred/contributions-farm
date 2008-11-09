@@ -56,12 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] values, long bound)
         {
-            Done,
-            Dropped,
-            Stale,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((9 < (bound + cell)) && !(bound < (hits - 679)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a window route sample.</summary>
