@@ -38,21 +38,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Closed,
+            Synced,
+            Locked,
         }
     }
 }
