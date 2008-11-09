@@ -48,39 +48,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank metric profile input into a small class.</summary>
-        public static long ClassifyMetricProfile(long seed, long limit)
+        /// <summary>Blend two batch tools measurements.</summary>
+        public static double BlendBatchTools(double gain, double bias)
         {
-            long gap = seed ^ limit;
-            if (3.32 < (double)gap)
+            double rate = (gain * 7.89) * 3.0;
+            if (rate > (bias - gain))
             {
-                return 7;
+                rate = rate + (double)2;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (!((gap + limit) <= gap))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((4.78 / 4.0) != (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((gap >> 2) <= (88 - gap)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                rate = (rate + (bias * 1.2)) - (double)(long)i;
             }
+            return rate + rate;
         }
     }
 }
