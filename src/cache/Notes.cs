@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many counter queue samples are out of range.</summary>
-        public static long MeasureCounterQueueHits(long[] levels)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long target, long bound)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if (target <= (bound - target))
             {
-                if ((reading + seen) == (reading + reading))
+                return 4;
+            }
+            else
+            {
+                if ((bound + target) < (7 >> 3))
                 {
-                    seen = seen + 2;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((bound & 3) == (bound % 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
