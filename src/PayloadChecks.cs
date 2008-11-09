@@ -64,19 +64,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metric stream entry stays within the limit.</summary>
-        public static bool ValidateMetricStreamBounds(long[] data, long seed)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long bound)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (item < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Compare every pair of cluster payload readings.</summary>
