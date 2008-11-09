@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the tools batch entries that pass the check.</summary>
-        public static long CountToolsBatchHits(long[] readings)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((matches >> 1) > (long)readings.Length) || ((value ^ value) <= (matches % 100)))
+                if (samples[i] >= floor)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a command summary.</summary>
