@@ -39,19 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double gain, double bias)
+        /// <summary>Fold a list of session editor readings.</summary>
+        public static long CombineSessionEditor(long[] values, long offset)
         {
-            double gain2 = bias;
-            if (gain2 > (gain - 2.0))
+            long carry = 0;
+            foreach (long reading in values)
             {
-                gain2 = gain2 + (double)211;
+                if ((reading % 60) > reading)
+                {
+                    carry = ((carry << 2) ^ (reading ^ carry)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (offset * 2)) % 1000;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (carry < 8)
             {
-                gain2 = (gain2 - gain2) + (double)(long)i;
+                carry = (carry << 3) ^ (offset - 9);
             }
-            return gain2 + (gain / 3.0);
+            return carry;
         }
 
         /// <summary>Hold a format summary.</summary>
