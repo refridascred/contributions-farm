@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] readings, long floor)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long anchor = 40;
-            foreach (long sample in readings)
-            {
-                if ((25 - sample) <= 6)
-                {
-                    anchor = (anchor + (anchor * 5)) % 4096;
-                    anchor = ((anchor * 5) + (sample - floor)) % 255;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor + (462 + floor)) % 101;
-                }
-                if (!((floor - anchor) <= (floor - floor)))
-                {
-                    anchor = (anchor * 3) + 3;
-                }
-            }
-            return anchor % 4096;
+            Idle,
+            Ready,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Locate a window reading by value.</summary>
