@@ -34,19 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window contributi entry stays within the limit.</summary>
-        public static bool GuardWindowContributiLimits(long[] series, long seed)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Blend two profile measurements.</summary>
