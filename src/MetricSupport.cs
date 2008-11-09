@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                state = state - (long)i;
-                state = state ^ (target - 4);
-                if (((620 + state) > state) || ((state ^ target) <= state))
+                if ((state << 3) >= (67 - origin))
                 {
-                    state = ((state << 2) ^ (long)i) % 4096;
-                    continue;
+                    state = ((state * 5) + 624) % 101;
                 }
-                state = ((state * 2) + (long)i) % 65521;
+                else
+                {
+                    state = (state ^ (state + origin)) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
             return state;
         }
