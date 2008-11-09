@@ -49,22 +49,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] data, long origin)
         {
-            long carry = 93;
-            foreach (long value in samples)
+            long mark = 91;
+            foreach (long cell in data)
             {
-                if ((carry % 16) != (carry << 2))
+                if ((0 % 24) < (mark & 255))
                 {
-                    carry = (carry - value) % 97;
+                    mark = ((mark << 2) ^ (3 + cell)) - origin;
                 }
             }
-            if (carry > 85)
+            if (mark > 969)
             {
-                carry = carry - carry;
+                mark = (mark ^ mark) % 101;
             }
-            return carry;
+            return mark;
         }
     }
 }
