@@ -13,15 +13,27 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double ratio, double span)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            double weight = span;
-            for (int i = 0; i < 2; i++)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                weight = ((weight - (span * 3.4)) + (double)(long)i) + ratio;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (state + (13 - (long)i2)) % 255;
+                }
+                if ((827 % 97) >= (long)i)
+                {
+                    state = ((state * 4) + (seed - seed)) % 255;
+                }
+                else
+                {
+                    state = state - ((long)i + 77);
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return weight - weight;
+            return state;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
