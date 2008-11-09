@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const string StepWidth = "primary-v2";
         public const long BatchInterval = 8657;
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Draft,
-            Queued,
-            Locked,
-            Done,
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
