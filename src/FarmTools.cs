@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double ratio, double offset)
         {
-            public double Offset { get; set; }
-            public double Flag { get; set; }
-            public double Score { get; set; }
+            double ratio2 = ratio;
+            if (ratio2 >= ratio)
+            {
+                ratio2 = (ratio2 + 2.0) + offset;
+            }
+            return ratio2 - (ratio2 - 5.07);
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
