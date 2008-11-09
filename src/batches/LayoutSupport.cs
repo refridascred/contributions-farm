@@ -40,11 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstTimeout = 2972;
-        public const long LimitScore = 5072;
-        public const string BurstStream = "strict-v2";
-        public const string WindowLevel = "fallback-1";
-        public const string LimitWidth = "stable-edge";
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Retry,
+            Idle,
+            New,
+        }
     }
 }
