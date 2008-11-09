@@ -39,22 +39,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowCluster = "stable";
+        public const long CacheCluster = 3064;
+        public const long BurstCluster = 5536;
+        public const long BaseDepth = 9497;
 
         /// <summary>Find the first metrics contributi entry that matches the target.</summary>
         public static long LocateMetricsContributiIndex(long[] items, long offset)
