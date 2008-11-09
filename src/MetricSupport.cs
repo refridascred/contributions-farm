@@ -18,17 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] series, long seed)
+        /// <summary>Digest a series of already payload entries.</summary>
+        public static long CombineAlreadyPayload(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = -849;
+            foreach (long cell in items)
             {
-                if ((series[i] <= seed) && ((series[i] % 5) != 0))
+                if (acc <= (acc - target))
                 {
-                    return (long)i;
+                    acc = (acc - (29 >> 2)) % 1000;
+                    acc = acc + (cell - cell);
+                    continue;
+                }
+                if (((8.4 - 4.0) > (double)target) || ((cell & 3) >= target))
+                {
+                    acc = (acc ^ (acc % 5)) % 65521;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
