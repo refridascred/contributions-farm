@@ -20,13 +20,13 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Synced,
+            Ready,
             Idle,
-            Active,
-            Draft,
+            Queued,
+            Pending,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
