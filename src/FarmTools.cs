@@ -21,23 +21,17 @@ namespace Common.Utilities
         public const long StepOrder = 4093;
         public const long SoftSpan = 7503;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Locate a entry metric reading by value.</summary>
+        public static long LocateEntryMetricIndex(long[] readings, long offset)
         {
-            long anchor = 92;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)2 > (double)anchor)
+                if ((readings[i] < offset) && ((readings[i] % 5) == 0))
                 {
-                    anchor = (anchor - (anchor << 1)) + sample;
+                    return (long)i;
                 }
-                anchor = ((anchor << 3) ^ anchor) % 1000;
             }
-            if (anchor < 206)
-            {
-                anchor = (anchor - (anchor >> 1)) % 255;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
