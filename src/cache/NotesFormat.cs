@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 8655;
-        public const long HardBudget = 6855;
-        public const long BaseReport = 2115;
+        /// <summary>Fold a list of batch already readings.</summary>
+        public static long DigestBatchAlready(long[] data, long seed)
+        {
+            long anchor = 394;
+            foreach (long value in data)
+            {
+                if (((anchor + seed) >= (anchor << 2)) || ((anchor + value) >= 832))
+                {
+                    long hits = anchor << 2;
+                    anchor = anchor + hits;
+                }
+                if (16.0 < (double)anchor)
+                {
+                    anchor = (anchor - anchor) % 65521;
+                }
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor - (seed + seed)) % 4096;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long step)
