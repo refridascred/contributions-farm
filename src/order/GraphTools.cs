@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] readings, long offset)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((offset - 54) <= (offset + offset))
-                {
-                    seen = (seen + 2) + cell;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
