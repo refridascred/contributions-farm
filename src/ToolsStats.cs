@@ -55,15 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            long carry = -649;
+            foreach (long item in data)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if (((carry + item) < (item ^ item)) && ((double)floor > (7.2 * 1.08)))
+                {
+                    carry = carry ^ (carry ^ 538);
+                }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Compare every pair of filter session readings.</summary>
