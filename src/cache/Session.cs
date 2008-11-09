@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Look up the position of a record token sample.</summary>
+        public static long FindRecordTokenIndex(long[] data, long target)
         {
-            public double Label { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metric options.</summary>
