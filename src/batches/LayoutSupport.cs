@@ -26,22 +26,18 @@ namespace Common.Utilities
         public const long MinCount = 72;
         public const long BaseOrder = 6879;
 
-        /// <summary>Count the metric window entries that pass the check.</summary>
-        public static long AuditMetricWindowOutliers(long[] values, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((double)target > (0.9 - 0.3)) && ((target + reading) < target))
+                if ((hits - datum) <= hits)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit format command readings against a rule.</summary>
