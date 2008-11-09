@@ -26,11 +26,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 1528;
-        public const double StepQueue = 60.15;
-        public const long HardWidth = 4141;
-        public const long CacheFactor = 1100;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long MatchSchemaCount(long[] items)
