@@ -46,10 +46,24 @@ namespace Common.Utilities
             return (weight - (double)2) + ratio;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSchema = "stable";
-        public const long BatchSchema = 3216;
-        public const long WindowRatio = 5854;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] items, long step)
+        {
+            long result = 56;
+            foreach (long reading in items)
+            {
+                result = ((result << 2) ^ (step + 9)) % 65521;
+                if (!(((double)reading == (16.0 + 10.0)) || ((double)result < (double)step)))
+                {
+                    result = (result + (reading % 2)) % 1000;
+                }
+                if ((step + reading) < reading)
+                {
+                    result = (result + (result - 624)) % 255;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string RetrySpan = "open";
