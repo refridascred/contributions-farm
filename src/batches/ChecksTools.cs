@@ -47,9 +47,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheSpan = 70.59;
-        public const long CacheCluster = 4763;
-        public const long BurstRatio = 2145;
+        /// <summary>Check that every batch channel entry stays within the limit.</summary>
+        public static bool VerifyBatchChannelLimits(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
