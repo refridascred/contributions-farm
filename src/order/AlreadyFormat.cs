@@ -81,15 +81,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of commits cluster readings.</summary>
-        public static long TotalCommitsCluster(long[] levels, long origin)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double gain, double offset)
         {
-            long result = -710;
-            foreach (long reading in levels)
+            double ratio = (double)39 + (offset * 1.39);
+            if (ratio > (double)70)
             {
-                result = (result + origin) + reading;
+                ratio = (ratio + ratio) - gain;
             }
-            return result;
+            else
+            {
+                ratio = ratio + offset;
+            }
+            return ratio - offset;
         }
     }
 }
