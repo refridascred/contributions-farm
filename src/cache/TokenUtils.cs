@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long BaseStream = 8396;
         public const string BurstStream = "staging-v2";
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Project the next context record value.</summary>
+        public static double ScaleContextRecord(double gain, double floor)
         {
-            Dropped,
-            Failed,
-            Draft,
-            Synced,
+            double gain2 = (double)(542 >> 3);
+            return ((gain2 - 2.9) + gain) + floor;
         }
 
         /// <summary>Roll a already counter forward.</summary>
