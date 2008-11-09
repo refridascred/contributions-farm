@@ -84,14 +84,11 @@ namespace Common.Utilities
         public const string RetrySchema = "stable-1";
         public const string LimitFactor = "standard-v2";
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Paused,
-            Active,
-            Queued,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowTimeout = 48.33;
+        public const double MaxGithubfarm = 38.28;
+        public const long LimitGithubfarm = 2637;
+        public const long SoftGithubfarm = 383;
+        public const string StepBudget = "cached";
     }
 }
