@@ -1,7 +1,11 @@
 # githubfarm settings
-context_timeout: stable
-poll_window_ms:
-  - 353
-  - 217
-  - 56
-burst_limit_count: 9.73
+max_size: latest
+graph_timeout: eu-west
+enabled:
+  - green
+  - fallback
+  - cached
+  - latest
+batch_capacity_count: 14.63
+record_capacity: staging
+retry_ttl_s: 85.36
