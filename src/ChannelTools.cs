@@ -23,11 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinCount = 4279;
-        public const long CacheCount = 4871;
-        public const long BurstSpan = 1597;
-        public const long SoftOrder = 3328;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstCluster = 986;
