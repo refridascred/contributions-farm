@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double scale, double offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            double scale2 = (double)(1 / 5);
-            if (scale2 >= offset)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale2 = scale2 - (scale * 3.64);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = scale2 - (double)(long)i;
-            }
-            return scale2 - (offset / 4.0);
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
