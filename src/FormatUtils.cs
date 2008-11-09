@@ -71,22 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks window samples.</summary>
-        public static long MatchChecksWindowCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 94.44;
+        public const string MaxScore = "staging-1";
+        public const long CacheSupport = 129;
+        public const long DefaultLevel = 8359;
+        public const long MinSupport = 2491;
 
         /// <summary>Measure how many record token samples are out of range.</summary>
         public static long AuditRecordTokenOutliers(long[] levels, long offset)
