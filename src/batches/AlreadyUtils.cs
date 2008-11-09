@@ -19,12 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 6206;
-        public const string RetryRatio = "standard-v2";
-        public const string BaseRatio = "staging-v2";
-        public const string HardFactor = "open-edge";
-        public const double RetryGraph = 40.54;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchSpan = "cached-1";
+        public const double MaxSize = 68.73;
+        public const double RetryFarm = 39.11;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double BatchCount = 78.72;
