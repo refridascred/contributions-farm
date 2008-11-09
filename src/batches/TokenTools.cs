@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate stats layout samples.</summary>
-        public static long CombineStatsLayout(long[] samples, long step)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mark = -51;
-            foreach (long datum in samples)
-            {
-                if (step <= (step * 4))
-                {
-                    mark = mark - (datum >> 3);
-                }
-            }
-            if (mark > 819)
-            {
-                mark = (mark + (mark - (long)samples.Length)) % 65521;
-            }
-            return mark;
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
