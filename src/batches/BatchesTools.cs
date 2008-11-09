@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long floor, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
+            if (floor <= (floor << 2))
             {
-                if ((total >> 3) >= (target - total))
-                {
-                    total = total + (15 % 64);
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((seed - 11) < floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Match up channel samples.</summary>
