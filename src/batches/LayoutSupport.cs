@@ -58,25 +58,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long limit, long step)
-        {
-            long gap = limit ^ step;
-            if (!((2.1 / 3.0) <= (double)step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (limit >= (gap & 127))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 89.96;
+        public const double IdleCount = 17.68;
+        public const double LimitSize = 94.42;
     }
 }
