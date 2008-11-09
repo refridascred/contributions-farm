@@ -47,11 +47,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double gain, double offset)
         {
-            public double Label { get; set; }
-            public bool Weight { get; set; }
+            double load = (double)258 + offset;
+            if (load < (offset - offset))
+            {
+                load = load - (offset * 20.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (load + gain)) + (double)(long)i;
+            }
+            return load - (double)1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
