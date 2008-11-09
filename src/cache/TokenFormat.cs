@@ -32,12 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            Synced,
+            Locked,
+            Failed,
+            Closed,
+            Stale,
         }
     }
 }
