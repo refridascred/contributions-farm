@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] levels, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] items, long bound)
         {
-            long carry = 92;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1 < (carry & 255)) || ((carry + carry) >= (carry + step)))
+                if ((items[i] > bound) && ((items[i] % 2) != 0))
                 {
-                    carry = ((carry - (step + 21)) % 65521) - value;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
