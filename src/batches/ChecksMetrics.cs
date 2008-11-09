@@ -52,12 +52,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            public bool Level { get; set; }
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Classify a metrics contributi pair into a bucket.</summary>
