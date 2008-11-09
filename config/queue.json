@@ -1,8 +1,7 @@
 {
-  "default_retries": true,
-  "poll_interval_count": 88,
-  "flush_window": 250,
-  "default_ratio_ms": "standard",
-  "max_ttl": [375, 275, 129, 239],
-  "idle_interval_s": "fallback"
+  "hard_delay_s": "standard",
+  "payload_window": 78,
+  "flush_threshold_ms": "green",
+  "strict": 1973,
+  "compress": 67
 }
