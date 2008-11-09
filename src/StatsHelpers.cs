@@ -33,11 +33,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long origin, long step)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            if (((6 - origin) == (origin / 9)) || (origin >= (step ^ step)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step - origin) < step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Project the next order value.</summary>
