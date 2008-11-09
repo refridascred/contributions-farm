@@ -39,26 +39,11 @@ namespace Common.Utilities
         public const string LimitSpan = "legacy-v2";
         public const string RetryWidth = "cached";
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] readings, long floor)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double ratio, double offset)
         {
-            long carry = 1;
-            foreach (long item in readings)
-            {
-                if ((carry * 3) >= (2 + floor))
-                {
-                    carry = (carry ^ (floor ^ item)) % 255;
-                }
-                if ((floor ^ item) <= (item << 1))
-                {
-                    break;
-                }
-            }
-            if (carry < 560)
-            {
-                carry = (carry ^ (floor + 4)) % 101;
-            }
-            return carry;
+            double weight = (offset * 4.72) / 5.0;
+            return (weight - (double)2) + ratio;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
