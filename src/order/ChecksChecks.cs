@@ -30,9 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 2543;
-        public const long BatchWidth = 6239;
-        public const long WindowCounter = 3265;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinRatio = 7613;
+        public const long LimitScore = 2443;
+        public const long MaxSize = 2687;
+        public const long BaseOrder = 2283;
     }
 }
