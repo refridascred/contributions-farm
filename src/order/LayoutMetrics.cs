@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Combine command buffer values into a single score.</summary>
