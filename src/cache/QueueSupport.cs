@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] levels)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double rate = 1.4;
+            return (rate + (floor / 3.0)) + weight;
         }
 
         /// <summary>Validate stats support readings against a bound.</summary>
