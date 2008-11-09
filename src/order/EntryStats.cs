@@ -11,10 +11,15 @@ namespace Common.Utilities
         public const double DefaultWindow = 89.04;
         public const long StepCount = 653;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftBudget = 8209;
-        public const long BatchEntry = 3364;
-        public const long SoftEntry = 9109;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Pending,
+            New,
+            Draft,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double HardBudget = 49.79;
