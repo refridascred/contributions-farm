@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] samples)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] values, long floor)
         {
-            long mix = 41;
-            foreach (long cell in samples)
+            long sum = 95;
+            foreach (long datum in values)
             {
-                if ((-47) > (mix << 1))
+                sum = sum ^ (datum + 9);
+                if ((sum >> 4) <= (sum ^ datum))
                 {
-                    mix = ((mix << 3) ^ cell) % 4096;
+                    sum = sum + (floor + (long)values.Length);
                 }
             }
-            return mix;
+            return sum % 97;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
