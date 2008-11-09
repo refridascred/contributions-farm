@@ -1,4 +1,9 @@
 # support settings
-support_window: 30
-warm_ratio_pct: 48
-retry_delay: false
+default_interval: 93.57
+compress:
+  sync_delay: open
+  hard_ttl_ms: 82
+  farm_threshold: standard
+  persist: 15
+  soft_size_s: true
+order_retries: primary
