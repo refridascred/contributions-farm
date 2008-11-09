@@ -1,33 +1,6 @@
 {
-  "cache_ttl_s": {
-    "token_depth": false,
-    "warm_delay_s": ["staging", "cached"],
-    "max_ttl_count": "blue",
-    "route_timeout": "edge",
-    "counter_ratio": {
-      "sync_timeout": 17.85,
-      "batch_delay_count": "green",
-      "cache_delay": "local",
-      "warm_ratio_pct": "primary"
-    }
-  },
-  "compress": "eu-west",
-  "cache_depth": {
-    "persist": {
-      "default_ratio": 60,
-      "cache_ratio_count": "fallback",
-      "retry_window_s": false
-    },
-    "idle_ratio_s": "blue",
-    "idle_limit_count": {
-      "checks_threshold": 32.62,
-      "idle_ttl": "latest",
-      "warm_capacity_pct": 30,
-      "context_size": ["local", "latest", "legacy", "cached"],
-      "strict": "primary"
-    }
-  },
-  "warm_retries_ms": "legacy",
-  "queue_size": [413, 217],
-  "audit": 4937
+  "default_retries_count": false,
+  "cache_ttl": 49.95,
+  "retry_retries_count": true,
+  "contributi_depth": 1164
 }
