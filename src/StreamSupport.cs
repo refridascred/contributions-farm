@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Dropped,
-            Draft,
-            Failed,
-            Paused,
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
