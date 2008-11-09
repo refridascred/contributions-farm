@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 8870;
-        public const long SoftEditor = 6950;
-        public const long LimitRatio = 5498;
-        public const long DefaultEditor = 9112;
-        public const long BaseRatio = 7129;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] readings, long origin)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
