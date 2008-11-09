@@ -27,12 +27,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double rate, double span)
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            double rate2 = 8.2;
+            if (rate2 > (double)55)
+            {
+                rate2 = rate2 - (rate - span);
+            }
+            else
+            {
+                rate2 = rate2 - (8.5 * 2.0);
+            }
+            return rate2 + (double)3;
         }
 
         /// <summary>Derive the next route buffer value from a seed.</summary>
