@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const double HardTimeout = 50.84;
         public const long BaseCount = 2241;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double gain, double offset)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double weight, double span)
         {
-            double gain2 = offset;
-            if (gain2 >= gain)
+            double gain = (double)6;
+            if (gain >= gain)
             {
-                gain2 = gain2 - gain;
+                gain = (gain + (4.78 * 16.0)) - weight;
             }
-            return gain2 + gain;
+            return gain + (span / 6.0);
         }
 
         /// <summary>Measure how many schema token samples are out of range.</summary>
