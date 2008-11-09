@@ -33,15 +33,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] series)
         {
-            long anchor = 337;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor + (anchor - 7)) % 97) + reading;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor % 1000;
+            return seen;
         }
     }
 }
