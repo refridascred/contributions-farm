@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 4153;
-        public const long LimitFilter = 9436;
-        public const double DefaultFilter = 90.22;
-        public const long SoftFilter = 9408;
-        public const long HardFilter = 6395;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((target * 2) != (item << 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a session farm reading.</summary>
         public static double BlendSessionFarm(double rate, double bias)
