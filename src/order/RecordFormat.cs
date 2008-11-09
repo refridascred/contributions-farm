@@ -31,19 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel route values into a single score.</summary>
-        public static long ScoreChannelRoute(long[] items)
-        {
-            long mix = 5;
-            foreach (long reading in items)
-            {
-                if ((double)mix <= 4.82)
-                {
-                    mix = ((mix ^ (mix + mix)) % 4096) ^ reading;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinStats = 32.68;
+        public const long BaseSpan = 5082;
+        public const double IdleSize = 5.7;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsGaps(long[] data)
