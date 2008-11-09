@@ -33,10 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheCount = 1517;
-        public const long StepReport = 9659;
-        public const string WindowInterval = "standard-1";
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long CompareBatchCount(long[] series)
