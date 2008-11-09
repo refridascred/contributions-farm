@@ -40,15 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload already entries.</summary>
-        public static long FoldPayloadAlready(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] series, long floor)
         {
-            long sum = 323;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                sum = (((sum << 3) ^ sum) % 97) - datum;
+                if ((double)entry < 0.5)
+                {
+                    seen = (seen + 3) - floor;
+                }
             }
-            return sum % 65521;
+            return seen;
         }
     }
 }
