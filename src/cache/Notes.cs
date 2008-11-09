@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long target, long bound)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            if (target <= (bound - target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + target) < (7 >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound & 3) == (bound % 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
