@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowBudget = 81.55;
-        public const long CacheMetrics = 6552;
-        public const long IdleRatio = 3010;
-        public const long CacheWidth = 981;
-        public const long WindowMetrics = 4428;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 6213;
+        public const long BurstLevel = 7302;
+        public const double BurstCache = 85.83;
+        public const string BaseInterval = "strict";
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] readings, long origin)
