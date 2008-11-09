@@ -1,9 +1,11 @@
 # githubfarm settings
-sync_interval_ms: 49.07
-cache_window_pct:
-  - green
-  - edge
-  - cached
-cache_threshold_ms: standard
-farm_size: legacy
-default_ratio_count: 32.53
+report_limit:
+  - blue
+  - standard
+  - blue
+  - local
+flush_window: false
+counter_capacity:
+  - open
+  - strict
+  - open
