@@ -1,9 +1,20 @@
 {
-  "max_depth_ms": "green",
-  "persist": {
-    "idle_ratio_ms": true,
-    "strict": 36,
-    "cache_ratio": 500
+  "record_threshold": {
+    "base_timeout_count": false,
+    "payload_delay": true,
+    "idle_threshold_ms": false
   },
-  "token_timeout": 58.63
+  "strict": "local",
+  "window_window": 16.33,
+  "batch_interval_s": {
+    "window_ttl": 35.08,
+    "buffer_capacity": {
+      "audit": ["stable", "stable", "primary"],
+      "verbose": 81,
+      "warm_timeout_s": 250,
+      "buffer_depth": false
+    },
+    "persist": 49,
+    "dry_run": "edge"
+  }
 }
